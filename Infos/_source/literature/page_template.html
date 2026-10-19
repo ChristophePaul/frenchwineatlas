@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le vin en citations</title>
+<meta name="description" content="Plus de cent citations sur le vin, d’Homère à Colette : un moteur de recherche bilingue par mot, auteur, thème et époque, avec la source de chaque citation.">
+<style>
+@@BASE_CSS@@
+  /* quotes page */
+  .sect-strip{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px;}
+  .sect-strip a,.sect-strip span{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold);text-decoration:none;}
+  .sect-strip .on{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+  .sect-strip a:hover{border-color:var(--hair-hi);}
+  .sect-strip small{font-size:9.5px;letter-spacing:.1em;font-weight:600;opacity:.85;}
+
+  /* hero: quote of the day */
+  .hero{position:relative;padding:clamp(26px,4vw,48px) clamp(22px,5vw,64px) clamp(22px,3vw,34px);text-align:center;overflow:hidden;}
+  .hero .kick{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 16px;}
+  .hero blockquote{margin:0 auto;max-width:860px;font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.9vw,31px);line-height:1.38;color:var(--title);}
+  .hero .orig{max-width:760px;margin:14px auto 0;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.5;color:var(--muted);}
+  .hero .who{margin:18px 0 0;font-size:14px;color:var(--muted);}
+  .hero .who b{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--gold-soft);font-style:normal;}
+  .hero .bigq{position:absolute;font-family:var(--serif);font-size:clamp(150px,20vw,260px);line-height:1;color:var(--gold);opacity:.13;pointer-events:none;}
+  .hero .bigq.l{left:clamp(4px,2vw,26px);top:-14px;}
+  .hero .bigq.r{right:clamp(4px,2vw,26px);bottom:-110px;}
+  .hero-act{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px;}
+  .btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 15px;border-radius:999px;border:1px solid var(--hair);color:var(--gold);background:var(--glass);transition:border-color .2s,background .2s;}
+  .btn:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .btn svg{width:15px;height:15px;}
+  .btn.solid{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+  #hero-q{transition:opacity .25s;}
+  #hero-q.fade{opacity:0;}
+
+  /* search panel */
+  .search{margin-top:22px;padding:clamp(18px,2.8vw,28px);}
+  .sbox{position:relative;}
+  .sbox svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--gold);pointer-events:none;}
+  .sbox input{width:100%;font:inherit;font-size:17px;padding:15px 48px 15px 50px;border-radius:999px;border:1px solid var(--hair-hi);background:var(--glass-hi);color:var(--title);outline:none;}
+  .sbox input::placeholder{color:var(--faint);}
+  .sbox input:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 22%,transparent);}
+  .sbox .clr{all:unset;cursor:pointer;position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--faint);padding:4px 6px;display:none;}
+  .sbox.has .clr{display:block;}
+  .ideas{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0 4px;font-size:12.5px;color:var(--faint);}
+  .ideas button{all:unset;cursor:pointer;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold-soft);padding:2px 9px;border-radius:999px;border:1px dashed var(--hair);}
+  .ideas button:hover,.ideas button:focus-visible{border-color:var(--hair-hi);border-style:solid;}
+  .facets{display:grid;gap:12px;margin-top:16px;}
+  .facet{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px;align-items:start;}
+  .facet h4{margin:7px 0 0;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .fc{all:unset;cursor:pointer;font-size:12.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--parchment);transition:border-color .15s,background .15s;}
+  .fc:hover{border-color:var(--hair-hi);}
+  .fc:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .fc i{font-style:normal;font-size:10.5px;color:var(--faint);margin-left:5px;}
+  .fc.on{background:var(--gold);border-color:var(--gold);color:var(--solid);}
+  .fc.on i{color:var(--solid);opacity:.7;}
+  .fc .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--c);}
+  .row-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:18px;padding-top:14px;border-top:1px solid var(--hair);}
+  .count{font-family:var(--serif);font-size:19px;color:var(--title);margin-right:auto;}
+  .count small{font-family:var(--sans);font-size:12.5px;color:var(--faint);margin-left:4px;}
+  .row-tools label{font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:7px;}
+  .row-tools select{font:inherit;font-size:13px;padding:6px 10px;border-radius:10px;border:1px solid var(--hair);background:var(--glass-hi);color:var(--title);}
+
+  /* results */
+  .results{columns:3 330px;column-gap:16px;margin-top:20px;}
+  .qc{break-inside:avoid;display:inline-block;width:100%;margin:0 0 16px;position:relative;padding:20px 20px 14px;border-radius:18px;background:var(--glass);border:1px solid var(--hair);box-shadow:var(--shadow);}
+  html[data-theme="cream"] .qc{box-shadow:0 4px 18px rgba(90,30,40,.07);}
+  .qc.flash{animation:flash 2.2s ease-out;}
+  @keyframes flash{0%,30%{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 35%,transparent);}}
+  .qc::before{content:"“";position:absolute;left:12px;top:-6px;font-family:var(--serif);font-size:70px;line-height:1;color:var(--gold);opacity:.28;}
+  .qc blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:18.5px;line-height:1.48;color:var(--title);position:relative;}
+  .qc .orig{margin:10px 0 0;padding-left:12px;border-left:2px solid var(--hair-hi);font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.5;color:var(--muted);}
+  .qc .orig small,.hero .orig small{display:block;font-family:var(--sans);font-style:normal;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:2px;}
+  .qc .by{margin:14px 0 0;font-size:13px;line-height:1.5;color:var(--muted);}
+  .qc .by .au{all:unset;cursor:pointer;font-family:var(--serif);font-size:17px;color:var(--gold-soft);}
+  .qc .by .au:hover,.qc .by .au:focus-visible{text-decoration:underline;}
+  .qc .by .life{font-size:11.5px;color:var(--faint);margin-left:4px;}
+  .qc .by .nat{display:block;font-size:12px;color:var(--faint);}
+  .qc .wk{display:block;margin-top:3px;font-size:12.8px;color:var(--muted);}
+  .qc .wk i{font-family:var(--serif);}
+  .qc .note{margin:10px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted);padding:8px 10px;border-radius:10px;background:var(--track);}
+  .qc .foot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--hair);}
+  .tg{all:unset;cursor:pointer;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;color:var(--gold);border:1px solid var(--hair);}
+  .tg:hover,.tg:focus-visible{border-color:var(--hair-hi);}
+  .st{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);cursor:help;}
+  html:not([data-theme="cream"]) .st{color:color-mix(in srgb,var(--c) 50%,#fff);}
+  .acts{margin-left:auto;display:flex;gap:2px;}
+  .ic{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;color:var(--gold);}
+  .ic:hover,.ic:focus-visible{background:var(--track);}
+  .ic svg{width:16px;height:16px;}
+  mark{background:color-mix(in srgb,var(--gold) 34%,transparent);color:inherit;border-radius:3px;padding:0 1px;}
+  .empty{text-align:center;padding:40px 20px;color:var(--muted);}
+  .empty b{display:block;font-family:var(--serif);font-weight:500;font-size:24px;color:var(--title);margin-bottom:6px;}
+  .more{display:flex;justify-content:center;margin-top:6px;}
+
+  /* about */
+  .about{padding:clamp(18px,2.8vw,28px);margin-top:clamp(36px,5vw,60px);}
+  .about h3{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--title);margin:0 0 10px;}
+  .about p{margin:0 0 10px;font-size:14px;line-height:1.65;}
+  .legend3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 14px;}
+  .legend3 div{padding:12px 14px;border-radius:14px;border:1px solid var(--hair);background:var(--glass);font-size:13.4px;line-height:1.55;}
+  .legend3 .st{display:inline-block;margin-bottom:6px;cursor:default;}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;pointer-events:none;padding:10px 18px;border-radius:999px;background:var(--gold);color:var(--solid);font-size:13px;font-weight:600;transition:opacity .2s,transform .2s;z-index:50;}
+  .toast.on{opacity:1;transform:translate(-50%,0);}
+
+  @media (max-width:760px){
+    .facet{grid-template-columns:1fr;gap:6px;}
+    .facet h4{margin:0;}
+    .legend3{grid-template-columns:1fr;}
+    .hero .bigq{opacity:.08;}
+  }
+  @media (prefers-reduced-motion:reduce){ #hero-q,.qc{transition:none;animation:none;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Littérature &amp; jeux" data-en="Literature &amp; games">Littérature &amp; jeux</p>
+    <h1 data-fr="Le vin <em>en citations</em>" data-en="Wine <em>in quotations</em>">Le vin <em>en citations</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" id="tagline"></p>
+    <nav class="sect-strip" aria-label="Littérature &amp; jeux">
+      <span class="on" aria-current="page" data-fr="Citations" data-en="Quotations">Citations</span>
+      <a href="Jeux.html" data-fr="Jeux" data-en="Games">Jeux</a>
+      <a href="Wine_Quiz.html" data-fr="Le grand quiz" data-en="The great quiz">Le grand quiz</a>
+      <a href="Taste_Quiz.html" data-fr="Goûtez votre savoir" data-en="Taste your knowledge">Goûtez votre savoir</a>
+    </nav>
+  </header>
+
+  <section class="panel hero" aria-live="polite">
+    <span class="bigq l" aria-hidden="true">“</span><span class="bigq r" aria-hidden="true">”</span>
+    <p class="kick" id="hero-kick"></p>
+    <div id="hero-q"></div>
+    <div class="hero-act">
+      <button class="btn solid" type="button" id="rnd">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        <span data-fr="Une autre au hasard" data-en="Another at random">Une autre au hasard</span></button>
+      <button class="btn" type="button" id="hero-copy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg>
+        <span data-fr="Copier" data-en="Copy">Copier</span></button>
+    </div>
+  </section>
+
+  <section class="panel search" id="recherche" role="search">
+    <div class="sbox" id="sbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" aria-label="Rechercher une citation">
+      <button class="clr" id="clr" type="button" aria-label="Effacer / Clear">✕</button>
+    </div>
+    <div class="ideas" id="ideas"></div>
+    <div class="facets">
+      <div class="facet"><h4 data-fr="Thèmes" data-en="Themes">Thèmes</h4><div class="chips" id="f-th"></div></div>
+      <div class="facet"><h4 data-fr="Époque" data-en="Period">Époque</h4><div class="chips" id="f-era"></div></div>
+      <div class="facet"><h4 data-fr="Langue d’origine" data-en="Original language">Langue d’origine</h4><div class="chips" id="f-lang"></div></div>
+      <div class="facet"><h4 data-fr="Fiabilité" data-en="Reliability">Fiabilité</h4><div class="chips" id="f-st"></div></div>
+    </div>
+    <div class="row-tools">
+      <div class="count" id="count" aria-live="polite"></div>
+      <label><span data-fr="Trier" data-en="Sort">Trier</span>
+        <select id="sort">
+          <option value="rel" data-fr="par pertinence" data-en="by relevance">par pertinence</option>
+          <option value="chr" data-fr="chronologiquement" data-en="chronologically">chronologiquement</option>
+          <option value="aut" data-fr="par auteur (A→Z)" data-en="by author (A→Z)">par auteur (A→Z)</option>
+          <option value="rnd" data-fr="au hasard" data-en="at random">au hasard</option>
+        </select></label>
+      <button class="btn" type="button" id="reset" data-fr="Tout effacer" data-en="Clear all">Tout effacer</button>
+    </div>
+  </section>
+
+  <div class="results" id="results"></div>
+  <div class="more" id="more"></div>
+
+  <section class="panel about" id="sources">
+    <h3 data-fr="À propos de ces citations" data-en="About these quotations">À propos de ces citations</h3>
+    <p class="L fr">Les citations sur le vin circulent beaucoup… et beaucoup sont fausses ou déformées. Chaque citation porte donc un indice de fiabilité :</p>
+    <p class="L en">Wine quotations travel far… and many are fake or garbled. Each quotation therefore carries a reliability badge:</p>
+    <div class="legend3" id="legend3"></div>
+    <p class="L fr">Le texte est donné dans la langue de la page ; quand l’original est dans une autre langue, il figure en dessous. Les traductions sont les nôtres, sauf la Bible (Louis Segond 1910 ; King James 1611) et Omar Khayyām (version anglaise d’Edward FitzGerald, 1859). Les extraits d’auteurs modernes sont de courtes citations, avec leur source, au titre du droit de citation.</p>
+    <p class="L en">The text is shown in the page language; when the original is in another language, it appears below. Translations are ours, except the Bible (Louis Segond 1910; King James 1611) and Omar Khayyam (Edward FitzGerald’s English version, 1859). Extracts from modern authors are short, sourced quotations, under the right of quotation.</p>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var DATA = @@DATA@@;
+  var Q = DATA.q, M = DATA.m;
+  var $ = function(id){ return document.getElementById(id); };
+  var LANG = (function(){ try{ return localStorage.getItem('fw_lang') || document.documentElement.lang || 'fr'; }catch(e){ return 'fr'; } })();
+  if(LANG!=='en') LANG = 'fr';
+  var L = function(pair){ return LANG==='fr' ? pair[0] : pair[1]; };
+  var ST_C = {src:'#3f8f5a', attr:'#c08a1a', apo:'#b3122e'};
+  var ERA_ORDER = ['ant','med','cla','19','20','prov'];
+  var ERA_MID = {ant:-500, med:1400, cla:1700, '19':1850, '20':1950, prov:3000};
+  var PAGE = 30;
+
+  /* ---------- text helpers ---------- */
+  function fold(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[’‘`]/g,"'").replace(/œ/g,'oe').replace(/æ/g,'ae').toLowerCase(); }
+  function strip(s){ return (s||'').replace(/<[^>]+>/g,''); }
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  /* fold char by char so indexes map back to the original string */
+  function foldMap(s){
+    var out='', map=[];
+    for(var i=0;i<s.length;i++){ var f=fold(s[i]); for(var k=0;k<f.length;k++){ out+=f[k]; map.push(i); } }
+    return {s:out, map:map};
+  }
+  function hl(text, terms){
+    if(!terms.length) return esc(text);
+    var fm = foldMap(text), marks = [];
+    terms.forEach(function(t){
+      var from=0, i;
+      while(t && (i = fm.s.indexOf(t, from)) > -1){ marks.push([fm.map[i], fm.map[i+t.length-1]+1]); from = i + t.length; }
+    });
+    if(!marks.length) return esc(text);
+    marks.sort(function(a,b){ return a[0]-b[0]; });
+    var merged=[marks[0]];
+    for(var j=1;j<marks.length;j++){ var last=merged[merged.length-1]; if(marks[j][0]<=last[1]) last[1]=Math.max(last[1],marks[j][1]); else merged.push(marks[j]); }
+    var out='', pos=0;
+    merged.forEach(function(m){ out += esc(text.slice(pos,m[0])) + '<mark>' + esc(text.slice(m[0],m[1])) + '</mark>'; pos=m[1]; });
+    return out + esc(text.slice(pos));
+  }
+  function author(q){ return LANG==='fr' ? q.a : q.ae; }
+  function work(q){ return LANG==='fr' ? q.wf : q.we; }
+  function yearTxt(y){
+    if(y===null || y===undefined) return '';
+    if(y<0) return LANG==='fr' ? 'v. '+(-y)+' av. J.-C.' : 'c. '+(-y)+' BC';
+    return String(y);
+  }
+  /* search index: both languages, so a French word finds an English-original quote and vice versa */
+  Q.forEach(function(q, i){
+    q.i = i;
+    q.kAu = fold(q.a+' '+q.ae);
+    q.kTx = fold(q.fr+' '+q.en+' '+q.o);
+    q.kWk = fold(strip(q.wf+' '+q.we));
+    q.kNo = fold(strip(q.nof+' '+q.noe+' '+q.nf+' '+q.ne));
+    q.kTh = fold(q.th.map(function(t){ return M.themes[t].join(' '); }).join(' ')+' '+M.eras[q.era].map(strip).join(' '));
+    q.sortY = (q.y===null ? ERA_MID[q.era] : q.y) + ERA_ORDER.indexOf(q.era)*0.001;
+  });
+
+  /* ---------- state ---------- */
+  var S = {q:'', th:{}, era:{}, lang:{}, st:{}, sort:'rel', shown:PAGE, seed:Math.random()};
+  function anyOn(o){ for(var k in o) if(o[k]) return true; return false; }
+  function terms(){ return fold(S.q).split(/[\s,;]+/).filter(function(t){ return t.length>1 || /\d/.test(t); }); }
+  function score(q, ts){
+    var s=0;
+    for(var i=0;i<ts.length;i++){
+      var t=ts[i], hit=0;
+      if(q.kAu.indexOf(t)>-1) hit+=6;
+      if(q.kTx.indexOf(t)>-1) hit+=4;
+      if(q.kTh.indexOf(t)>-1) hit+=3;
+      if(q.kWk.indexOf(t)>-1) hit+=2;
+      if(q.kNo.indexOf(t)>-1) hit+=1;
+      if(!hit) return 0;          /* every word must match somewhere */
+      s+=hit;
+    }
+    return s;
+  }
+  function passFacets(q, skip){
+    if(skip!=='th' && anyOn(S.th) && !q.th.some(function(t){ return S.th[t]; })) return false;
+    if(skip!=='era' && anyOn(S.era) && !S.era[q.era]) return false;
+    if(skip!=='lang' && anyOn(S.lang) && !S.lang[q.lang]) return false;
+    if(skip!=='st' && anyOn(S.st) && !S.st[q.st]) return false;
+    return true;
+  }
+  function hash01(n){ var x=Math.sin(n*9301+S.seed*49297)*233280; return x-Math.floor(x); }
+  function results(){
+    var ts=terms(), out=[];
+    Q.forEach(function(q){
+      if(!passFacets(q)) return;
+      var sc = ts.length ? score(q, ts) : 1;
+      if(sc) out.push({q:q, s:sc});
+    });
+    var mode = S.sort==='rel' && !ts.length ? 'chr' : S.sort;
+    out.sort(function(a,b){
+      if(mode==='rel') return b.s-a.s || a.q.sortY-b.q.sortY;
+      if(mode==='aut') return fold(author(a.q)).localeCompare(fold(author(b.q))) || a.q.sortY-b.q.sortY;
+      if(mode==='rnd') return hash01(a.q.i)-hash01(b.q.i);
+      return a.q.sortY-b.q.sortY;
+    });
+    return out.map(function(r){ return r.q; });
+  }
+
+  /* ---------- rendering ---------- */
+  var ICO_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg>';
+  var ICO_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>';
+  function origHTML(q, ts){
+    var txt='', lg=q.lang;
+    if(q.o) txt=q.o;
+    else if((lg==='fr'||lg==='en') && lg!==LANG) txt=q[lg];
+    if(!txt) return '';
+    var lbl = (LANG==='fr' ? 'Texte original · ' : 'Original · ') + L(M.langs[lg]);
+    return '<p class="orig"><small>'+lbl+'</small>'+hl(txt, ts)+'</p>';
+  }
+  function stBadge(q){
+    if(q.era==='prov') return '';
+    var tip = q.st==='src' ? (LANG==='fr'?'Texte vérifié dans l’œuvre citée':'Text checked against the work cited')
+            : q.st==='attr' ? (LANG==='fr'?'Attribution traditionnelle, aucune source primaire trouvée':'Traditional attribution, no primary source found')
+            : (LANG==='fr'?'Citation inventée ou faussement attribuée':'Invented or misattributed quotation');
+    return '<span class="st" style="--c:'+ST_C[q.st]+'" title="'+esc(tip)+'">'+L(M.status[q.st])+'</span>';
+  }
+  function card(q, ts){
+    var main = q[LANG], yt = yearTxt(q.y), nat = L([q.nf,q.ne]), note = L([q.nof,q.noe]);
+    var w = work(q);
+    var wk = w ? '<span class="wk"><i>'+w+'</i>'+(yt && w.indexOf(yt)<0 ? ', '+yt : '')+'</span>' : '';
+    var life = LANG==='fr' ? q.l : q.le;
+    var tags = q.th.map(function(t){ return '<button class="tg" type="button" data-th="'+t+'">'+L(M.themes[t])+'</button>'; }).join('');
+    return '<article class="qc" id="'+q.id+'">'
+      + '<blockquote>'+hl(main, ts)+'</blockquote>'
+      + origHTML(q, ts)
+      + '<p class="by"><button class="au" type="button" data-au="'+esc(author(q))+'">'+hl(author(q), ts)+'</button>'
+      + (life ? '<span class="life">('+life+')</span>' : '')
+      + (nat ? '<span class="nat">'+nat+'</span>' : '') + wk + '</p>'
+      + (note ? '<p class="note">'+note+'</p>' : '')
+      + '<div class="foot">'+stBadge(q)+tags
+      + '<span class="acts"><button class="ic" type="button" data-copy="'+q.i+'" title="'+(LANG==='fr'?'Copier la citation':'Copy the quotation')+'">'+ICO_COPY+'</button>'
+      + '<button class="ic" type="button" data-link="'+q.id+'" title="'+(LANG==='fr'?'Copier le lien':'Copy the link')+'">'+ICO_LINK+'</button></span>'
+      + '</div></article>';
+  }
+  function facetChips(){
+    function counts(skip, key){
+      var c={}; Q.forEach(function(q){ if(!passFacets(q, skip)) return; var ts=terms(); if(ts.length && !score(q,ts)) return;
+        (key==='th' ? q.th : [q[key]]).forEach(function(v){ c[v]=(c[v]||0)+1; }); });
+      return c;
+    }
+    function build(el, key, order, label, color){
+      var c = counts(key, key);
+      $(el).innerHTML = order.map(function(k){
+        var on = !!S[key][k], n = c[k]||0;
+        return '<button type="button" class="fc'+(on?' on':'')+'" data-f="'+key+'" data-v="'+k+'" aria-pressed="'+on+'"'+(n||on?'':' style="opacity:.45"')+'>'
+          + (color ? '<span class="dot" style="--c:'+color[k]+'"></span>' : '') + label(k) + '<i>'+n+'</i></button>';
+      }).join('');
+    }
+    build('f-th', 'th', Object.keys(M.themes), function(k){ return L(M.themes[k]); });
+    build('f-era', 'era', ERA_ORDER, function(k){ return L(M.eras[k]); });
+    var langs = Object.keys(M.langs).filter(function(k){ return Q.some(function(q){ return q.lang===k; }); });
+    build('f-lang', 'lang', langs, function(k){ var s=L(M.langs[k]); return s.charAt(0).toUpperCase()+s.slice(1); });
+    build('f-st', 'st', ['src','attr','apo'], function(k){ return L(M.status[k]); }, ST_C);
+  }
+  function render(keepPage){
+    if(!keepPage) S.shown = PAGE;
+    var ts = terms(), list = results();
+    facetChips();
+    var n = list.length;
+    $('count').innerHTML = n + ' ' + (LANG==='fr' ? (n>1?'citations':'citation') : (n===1?'quotation':'quotations'))
+      + (n<Q.length ? '<small>'+(LANG==='fr'?'sur ':'of ')+Q.length+'</small>' : '');
+    $('sbox').classList.toggle('has', !!S.q);
+    if(!n){
+      $('results').innerHTML = '';
+      $('more').innerHTML = '<div class="empty"><b>'+(LANG==='fr'?'Aucune citation trouvée':'No quotation found')+'</b>'
+        + (LANG==='fr'?'Essayez un autre mot, ou retirez un filtre.':'Try another word, or remove a filter.') + '</div>';
+      return;
+    }
+    $('results').innerHTML = list.slice(0, S.shown).map(function(q){ return card(q, ts); }).join('');
+    $('more').innerHTML = n > S.shown
+      ? '<button class="btn" type="button" id="morebtn">'+(LANG==='fr'?'Afficher plus':'Show more')+' ('+(n-S.shown)+')</button>' : '';
+  }
+
+  /* ---------- hero: quote of the day / random ---------- */
+  var heroIdx, heroIsDay = true;
+  var SAFE = Q.filter(function(q){ return q.st==='src' && q.era!=='prov' && q[LANG].length < 260; });
+  function dayIndex(){ var d = Math.floor((Date.now() - new Date().getTimezoneOffset()*6e4)/864e5); return SAFE[d % SAFE.length].i; }
+  function renderHero(){
+    var q = Q[heroIdx], yt = yearTxt(q.y), w = work(q);
+    $('hero-kick').textContent = heroIsDay ? (LANG==='fr'?'La citation du jour':'Quotation of the day') : (LANG==='fr'?'Au hasard':'At random');
+    var o = LANG==='fr' ? '«&nbsp;' : '“', c = LANG==='fr' ? '&nbsp;»' : '”';
+    $('hero-q').innerHTML = '<blockquote>'+o+esc(q[LANG])+c+'</blockquote>'
+      + origHTML(q, [])
+      + '<p class="who"><b>'+esc(author(q))+'</b>'+(w ? ' — <i>'+w+'</i>'+(yt && w.indexOf(yt)<0?', '+yt:'') : '')+'</p>';
+  }
+  $('rnd').addEventListener('click', function(){
+    var pool = results(); if(pool.length<2) pool = Q;
+    var next; do { next = pool[Math.floor(Math.random()*pool.length)].i; } while(next===heroIdx && pool.length>1);
+    var el = $('hero-q'); el.classList.add('fade');
+    setTimeout(function(){ heroIdx = next; heroIsDay = false; renderHero(); el.classList.remove('fade'); }, 200);
+  });
+  $('hero-copy').addEventListener('click', function(){ copy(quoteText(Q[heroIdx])); });
+
+  /* ---------- copy / toast ---------- */
+  function quoteText(q){
+    var yt = yearTxt(q.y), w = strip(work(q));
+    return (LANG==='fr' ? '« '+q.fr+' »' : '“'+q.en+'”') + ' — ' + author(q) + (w ? ', '+w : '') + (yt && w.indexOf(yt)<0 ? ' ('+yt+')' : '');
+  }
+  var tt;
+  function toast(msg){ var t=$('toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){ t.classList.remove('on'); }, 1600); }
+  function copy(txt, msg){
+    var done = function(){ toast(msg || (LANG==='fr'?'Citation copiée':'Quotation copied')); };
+    if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(txt).then(done, fallback); } else fallback();
+    function fallback(){ var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta); }
+  }
+
+  /* ---------- events ---------- */
+  var tmr;
+  $('q').addEventListener('input', function(){ S.q = this.value; clearTimeout(tmr); tmr = setTimeout(function(){ render(); syncHash(); }, 120); });
+  $('clr').addEventListener('click', function(){ $('q').value=''; S.q=''; render(); syncHash(); $('q').focus(); });
+  $('sort').addEventListener('change', function(){ S.sort = this.value; S.seed = Math.random(); render(); });
+  $('reset').addEventListener('click', function(){ S.q=''; $('q').value=''; S.th={}; S.era={}; S.lang={}; S.st={}; S.sort='rel'; $('sort').value='rel'; render(); syncHash(); });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('button'); if(!b) return;
+    if(b.hasAttribute('data-f')){ var k=b.getAttribute('data-f'), v=b.getAttribute('data-v'); S[k][v] = !S[k][v]; render(); syncHash(); }
+    else if(b.hasAttribute('data-th')){ S.th = {}; S.th[b.getAttribute('data-th')] = true; render(); syncHash(); $('recherche').scrollIntoView({behavior:'smooth', block:'start'}); }
+    else if(b.hasAttribute('data-au')){ S.q = b.getAttribute('data-au'); $('q').value = S.q; render(); syncHash(); $('recherche').scrollIntoView({behavior:'smooth', block:'start'}); }
+    else if(b.hasAttribute('data-copy')){ copy(quoteText(Q[+b.getAttribute('data-copy')])); }
+    else if(b.hasAttribute('data-link')){ var u = location.href.split('#')[0] + '#q=' + b.getAttribute('data-link'); copy(u, LANG==='fr'?'Lien copié':'Link copied'); }
+    else if(b.id==='morebtn'){ S.shown += PAGE; render(true); }
+    else if(b.hasAttribute('data-idea')){ S.q = b.getAttribute('data-idea'); $('q').value = S.q; render(); syncHash(); }
+  });
+
+  /* ---------- deep links: #s=word  #t=theme  #q=quote-id ---------- */
+  function syncHash(){
+    var th = Object.keys(S.th).filter(function(k){ return S.th[k]; });
+    var h = S.q ? 's='+encodeURIComponent(S.q) : '';
+    if(th.length) h += (h?'&':'') + 't=' + th.join(',');
+    try{ history.replaceState(null, '', h ? '#'+h : location.pathname + location.search); }catch(e){}
+  }
+  function readHash(){
+    var h = location.hash.slice(1); if(!h) return null;
+    var p = {}; h.split('&').forEach(function(kv){ var i=kv.indexOf('='); if(i>0) p[kv.slice(0,i)] = decodeURIComponent(kv.slice(i+1)); });
+    if(p.s){ S.q = p.s; $('q').value = p.s; }
+    if(p.t) p.t.split(',').forEach(function(t){ if(M.themes[t]) S.th[t] = true; });
+    return p.q || null;
+  }
+
+  /* ---------- language ---------- */
+  var IDEAS = {fr:['amour','vérité','terroir','champagne','santé','Baudelaire','Rabelais','Shakespeare','bordeaux'],
+               en:['love','truth','terroir','champagne','health','Baudelaire','Rabelais','Shakespeare','claret']};
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Le vin en citations' : 'Wine in quotations';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    $('q').placeholder = LANG==='fr' ? 'Un mot, un auteur, une œuvre… (ex. : amour, Baudelaire)' : 'A word, an author, a work… (e.g. love, Baudelaire)';
+    $('q').setAttribute('aria-label', LANG==='fr' ? 'Rechercher une citation' : 'Search for a quotation');
+    $('tagline').textContent = LANG==='fr'
+      ? Q.length+' citations sur le vin, d’Homère à Colette, de la Bible aux dictons de vignerons. Cherchez par mot, auteur, thème ou époque : chaque citation est donnée avec sa source, et les fausses attributions sont signalées.'
+      : Q.length+' quotations about wine, from Homer to Colette, from the Bible to vine-growers’ sayings. Search by word, author, theme or period: each quotation comes with its source, and false attributions are flagged.';
+    $('ideas').innerHTML = '<span>'+(LANG==='fr'?'Idées :':'Ideas:')+'</span>' + IDEAS[LANG].map(function(w){ return '<button type="button" data-idea="'+w+'">'+w+'</button>'; }).join('');
+    $('legend3').innerHTML = ['src','attr','apo'].map(function(k){
+      var d = {src:['Le texte a été vérifié dans l’œuvre, la lettre ou l’entretien cité.','The text was checked against the work, letter or interview cited.'],
+               attr:['Attribution traditionnelle : la phrase circule sous ce nom, mais aucune source primaire n’a été trouvée.','Traditional attribution: the line circulates under this name, but no primary source has been found.'],
+               apo:['Citation inventée ou faussement attribuée — gardée ici pour rétablir les faits.','Invented or misattributed quotation — kept here to set the record straight.']}[k];
+      return '<div><span class="st" style="--c:'+ST_C[k]+'">'+L(M.status[k])+'</span><br>'+L(d)+'</div>';
+    }).join('');
+    renderHero();
+    render(true);
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+
+  /* ---------- start ---------- */
+  var target = readHash();
+  heroIdx = dayIndex();
+  applyLang();
+  if(target){
+    var el = $(target);
+    if(!el){ var t = Q.filter(function(q){ return q.id===target; })[0]; if(t){ S.shown = Q.length; render(true); el = $(target); } }
+    if(el){ setTimeout(function(){ el.scrollIntoView({block:'center'}); el.classList.add('flash'); }, 60); }
+  }
+})();
+</script>
+</body>
+</html>

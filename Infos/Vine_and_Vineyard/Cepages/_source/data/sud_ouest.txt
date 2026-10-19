@@ -1,0 +1,141 @@
+= Corrèze | Sud-Ouest | AGRT1720024A CDC AOP-CORREZE -vdef
+Rouge: cabernet franc N/P ≥50 %; merlot N/A; cabernet-sauvignon N/A
+Rouge (Coteaux de la Vézère): cabernet franc N
+Blanc (Coteaux de la Vézère): chenin B
+Vin de paille: cabernet franc N; cabernet-sauvignon N; chardonnay B; merlot N; sauvignon B
+
+= Béarn | Sud-Ouest | CDC Bearn
+Rouge: tannat N/P ≥50 %; cabernet franc N/P; cabernet-sauvignon N/P; courbu noir N/A; fer N/A; manseng noir N/A
+Rosé: tannat N/P ≥25 %; cabernet franc N/P; cabernet-sauvignon N/P; courbu noir N/A; fer N/A; manseng noir N/A
+Blanc: raffiat de Moncade B/P ≥50 %; gros manseng B/P; petit manseng B/P; camaralet B/A; courbu B/A; lauzet B/A; petit courbu B/A; sauvignon B/A
+
+= Bergerac | Sud-Ouest | CDC Bergerac
+Rouge, Rosé: cabernet franc N/P; cabernet-sauvignon N/P; cot N/P; merlot N/P; fer N/A; mérille N/A
+Blanc: muscadelle B/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; ugni blanc B/C; chenin B/A; ondenc B/A
+! Au moins 2 cépages principaux, ≥50 % de l'assemblage ; principaux ≥75 % du vignoble ; accessoires ≤20 % (blancs).
+
+= Brulhois | Sud-Ouest | CDC Brulhois
+Rouge, Rosé: cabernet franc N/P; merlot N/P; tannat N/P 15–40 % (vignoble); cabernet-sauvignon N/C; cot N/C; fer N/C; abouriou N/A <10 %
+! Principaux ≥50 % de l'assemblage, aucun cépage >70 % ; rouges : au moins 3 cépages.
+
+= Buzet | Sud-Ouest | CDC Buzet
+Rouge, Rosé: cabernet franc N/P; cabernet-sauvignon N/P; cot N/P; merlot N/P; abouriou N/A; petit verdot N/A; marselan N/A (variété d'adaptation); nielluccio N/A (variété d'adaptation); syrah N/A (variété d'adaptation); tempranillo N/A (variété d'adaptation); vidoc N/A (variété d'adaptation); artaban N/A (variété d'adaptation)
+Blanc: muscadelle B/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; colombard B/A; gros manseng B/A; petit manseng B/A; floréal B/A (variété d'adaptation); voltis B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation)
+! Principaux ≥70 % de l'assemblage ; variétés d'adaptation ≤10 %.
+
+= Cahors | Sud-Ouest | CDC Cahors
+Rouge: cot N/P ≥70 %; merlot N/A; tannat N/A
+! Peut être issu du seul cot (malbec).
+
+= Coteaux du Quercy | Sud-Ouest | CDC Coteaux-du-Quercy
+Rouge: cabernet franc N/P 40–80 %; cot N/C <25 %; merlot N/C <25 %; tannat N/C <25 %; gamay N/A <10 %
+Rosé: cabernet franc N/P 40–90 %; cot N/C; merlot N/C; tannat N/C; gamay N/A
+! Au moins 2 cépages ; cabernet franc majoritaire.
+
+= Côtes de Millau | Sud-Ouest | CDC Cotes de Millau
+Rouge: gamay N/P ≥30 %; syrah N/P ≥30 %; cabernet-sauvignon N/C 10–30 %; duras N/A ≤20 %; fer N/A ≤20 %
+Rosé: gamay N/P ≥50 %; cabernet-sauvignon N/A; duras N/A; fer N/A; syrah N/A
+Blanc: chenin B/P ≥50 %; mauzac B/C ≥10 %
+
+= Côtes de Montravel | Sud-Ouest | CDC Cotes de Montravel
+Blanc moelleux: sémillon B/P ≥30 %; muscadelle B/P; sauvignon B/P; sauvignon gris G/P; ondenc B/A ≤10 %
+! Principaux ≥80 % de l'assemblage.
+
+= Côtes de Duras | Sud-Ouest | CDC Côtes-de-Duras
+Rouge: cabernet franc N; cabernet-sauvignon N; cot N; merlot N
+Rosé: cabernet franc N/P; cabernet-sauvignon N/P; cot N/P; merlot N/P; muscadelle B/A ≤10 %; sauvignon B/A ≤10 %; sauvignon gris G/A ≤10 %; sémillon B/A
+Blanc: chenin B/P; mauzac B/P; muscadelle B/P; ondenc B/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; colombard B/A ≤10 %; ugni blanc B/A
+! Principaux ≥50 % de l'assemblage ; accessoires ≤20 % (rosés), ≤25 % (blancs).
+
+= Côtes du Marmandais | Sud-Ouest | CDC Côtes-du-Marmandais
+Rouge, Rosé: cabernet franc N/P; cabernet-sauvignon N/P; merlot N/P; abouriou N/C; cot N/C; fer N/C; gamay N/C; syrah N/C
+Blanc: sauvignon B/P; sauvignon gris G/P; muscadelle B/A; sémillon B/A
+! Rouges : au moins 2 cépages dont un principal ; bordelais ≤85 %, complémentaires ≤50 % du vignoble. Blancs : muscadelle + sémillon ≤30 %.
+
+= Entraygues-Le Fel | Sud-Ouest | CDC Entraygues-et-Le-Fel
+Rouge, Rosé: fer N/P ≥40 %; cabernet franc N/C; cabernet-sauvignon N/C; mouyssaguès N/A; négret de Banhars N/A
+Blanc: chenin B/P ≥90 %; saint-côme B/A; mauzac B/A
+
+= Estaing | Sud-Ouest | CDC Estaing
+Blanc: chenin B/P ≥50 %; mauzac B/C ≥10 %; saint-côme B/A
+Rouge, Rosé: gamay N/P; fer N/P; cabernet franc N/C; cabernet-sauvignon N/C; abouriou N/A; castets N/A; duras N/A; négret de Banhars N/A; merlot N/A; mouyssaguès N/A; pinot noir N/A
+! Rouges, rosés : au moins 3 cépages ; gamay + fer ≥50 %.
+
+= Floc de Gascogne | Sud-Ouest | CDC Floc de Gascogne
+Vin de liqueur blanc: colombard B/P ≤50 %; gros manseng B/P ≤50 %; ugni blanc B/P ≤50 %; baroque B/A; folle blanche B/A; mauzac B/A; petit manseng B/A; sauvignon B/A; sauvignon gris G/A; sémillon B/A
+Vin de liqueur rosé: cabernet franc N; cabernet-sauvignon N; cot N; fer N; merlot N; tannat N ≤50 %
+! Blancs : principaux ≥70 % du vignoble.
+
+= Fronton | Sud-Ouest | CDC Fronton
+Rouge, Rosé: négrette N/P ≥40 % (≥51 % vignoble); cabernet franc N/A; cabernet-sauvignon N/A; cinsaut N/A; cot N/A; fer N/A; gamay N/A; mérille N/A; syrah N/A; négret pounjut N/A <10 %; bouysselet B/A <10 %; marselan N/A ≤10 % (variété d'adaptation)
+! Peut être issu de la seule négrette.
+
+= Gaillac | Sud-Ouest | CDC_AOP Gaillac 2025
+Blanc, Mousseux: len de l'el B/P; mauzac B/P; mauzac rose Rs/P; muscadelle B/P ≤70 %; ondenc B/A; sauvignon B/A; alvarinho B/A (variété d'adaptation); felen B/A (variété d'adaptation); furmint B/A (variété d'adaptation); verdanel B/A (variété d'adaptation)
+Rouge, Rosé: duras N/P; fer N/P; prunelard N/P; syrah N/P; cabernet franc N/A; cabernet-sauvignon N/A; gamay N/A; merlot N/A; jurançon noir N/A ≤5 % (variété d'adaptation)
+Rouge primeur: gamay N; duras N
+Méthode ancestrale: mauzac B; mauzac rose Rs
+Vendanges tardives: len de l'el B/P; ondenc B/P; mauzac B/A ≤20 %; mauzac rose Rs/A ≤20 %; muscadelle B/A ≤20 %
+! Blancs : principaux ≥70 % de l'assemblage. Rouges : au moins 2 des 4 cépages principaux ; duras + fer + prunelard ≥40 % du vignoble.
+
+= Haut-Montravel | Sud-Ouest | CDC Haut-Montravel
+Blanc moelleux: sémillon B/P ≥50 %; muscadelle B/P; sauvignon B/P; sauvignon gris G/P; ondenc B/A ≤10 %
+
+= Irouléguy | Sud-Ouest | CDC Irouléguy
+Blanc: courbu B; gros manseng B; petit courbu B; petit manseng B
+Rosé: cabernet franc N/P; cabernet-sauvignon N/P; tannat N/P; courbu B/A ≤10 %; gros manseng B/A ≤10 %; petit courbu B/A ≤10 %; petit manseng B/A ≤10 %
+Rouge: cabernet franc N/P; tannat N/P; cabernet-sauvignon N/A
+! Blancs : au moins 2 cépages. Rouges : principaux ≥50 % de l'assemblage.
+
+= Jurançon | Sud-Ouest | CDC Jurancon
+Blanc sec, moelleux: gros manseng B/P; petit manseng B/P; camaralet B/A; courbu B/A; lauzet B/A; petit courbu B/A
+Vendanges tardives: petit manseng B; gros manseng B
+! Cépages principaux majoritaires ; jamais des seuls accessoires.
+
+= Madiran | Sud-Ouest | CDC Madiran
+Rouge: tannat N/P ≥60 %; cabernet franc N/A; cabernet-sauvignon N/A; fer N/A; manseng noir N/A
+
+= Marcillac | Sud-Ouest | CDC Marcillac
+Rouge, Rosé: fer N/P ≥80 %; cabernet-sauvignon N/A; merlot N/A; prunelard N/A
+! Peut être issu du seul fer servadou (mansois).
+
+= Monbazillac | Sud-Ouest | CDC Monbazillac
+Blanc liquoreux: muscadelle B/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; chenin B/A; ondenc B/A; ugni blanc B/A
+! Principaux ≥80 % de l'assemblage.
+
+= Montravel | Sud-Ouest | CDC Montravel
+Blanc sec: muscadelle B/P; sauvignon B/P ≥25 % avec sauvignon gris (vignoble); sauvignon gris G/P; sémillon B/P ≥25 % (vignoble); ondenc B/A ≤10 %
+Rouge: merlot N/P ≥50 % (vignoble); cabernet franc N/C; cabernet-sauvignon N/C; cot N/C
+! Au moins 2 cépages.
+
+= Pacherenc du Vic-Bilh | Sud-Ouest | CDC Pacherenc-du-Vic-Bilh
+Blanc moelleux: petit manseng B/P; arrufiac B/A; courbu B/A; gros manseng B/A; petit courbu B/A; sauvignon B/A ≤10 %
+Blanc sec: petit courbu B/P; petit manseng B/P; gros manseng B/P; arrufiac B/A; courbu B/A; sauvignon B/A ≤10 %
+! Au moins 2 cépages ; principaux ≥60 % de l'assemblage ; chaque principal ≤80 % du vignoble.
+
+= Pécharmant | Sud-Ouest | CDC Pecharmant
+Rouge: cabernet franc N ≤65 %; cabernet-sauvignon N ≤65 %; cot N ≤65 %; merlot N ≤65 %
+! Au moins 3 cépages.
+
+= Rosette | Sud-Ouest | CDC Rosette
+Blanc moelleux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+! Au moins 2 cépages ; sauvignons 15–70 % du vignoble.
+
+= Saint-Mont | Sud-Ouest | CDC Saint-Mont
+Rouge: tannat N/P ≥60 %; cabernet-sauvignon N/C; fer N/C; cabernet franc N/A; merlot N/A; tardif N/A; manseng noir N/A ≤10 % (variété d'adaptation)
+Rosé: tannat N/P; cabernet-sauvignon N/P; fer N/P; cabernet franc N/A; merlot N/A; tardif N/A; gros manseng B/A; arrufiac B/A; petit courbu B/A; courbu B/A; petit manseng B/A; manseng noir N/A (variété d'adaptation)
+Blanc: gros manseng B/P ≥60 % (vignoble); arrufiac B/C; petit courbu B/C; courbu B/A; petit manseng B/A
+
+= Saint-Sardos | Sud-Ouest | CDC Saint-Sardos
+Rouge: syrah N/P majoritaire ≤80 %; tannat N/P ≥20 % (vignoble); cabernet franc N/A; merlot N/A ≤15 %
+Rosé: syrah N/P majoritaire; tannat N/P; cabernet franc N/A; merlot N/A
+! Rouges : syrah + tannat ≥60 % de l'assemblage.
+
+= Saussignac | Sud-Ouest | CDC Saussignac
+Blanc liquoreux: muscadelle B/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; chenin B/A; ondenc B/A; ugni blanc B/A
+! Accessoires ≤10 % du vignoble.
+
+= Tursan | Sud-Ouest | CDC Tursan
+Blanc: baroque B/P 20–60 %; gros manseng B/P 20–60 %; chenin B/A ≤20 %; petit manseng B/A ≤20 %; sauvignon B/A ≤20 %; sauvignon gris G/A ≤20 %
+Rouge, Rosé: cabernet franc N/P 20–60 %; tannat N/P 20–60 %; cabernet-sauvignon N/A ≤20 %; fer N/A ≤20 %
+! Les 2 cépages principaux obligatoires.

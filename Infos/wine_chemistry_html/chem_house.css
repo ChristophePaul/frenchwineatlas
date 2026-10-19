@@ -1,0 +1,55 @@
+/* « Chimie du vin » pages restyled like the rest of the site (2026-10-19, user): centred serif title with an
+   italic second half, eyebrow + rule + tagline, the house cream / burgundy backgrounds and the same "glass" text
+   panel (cream rgba(255,253,248,.86) on the cream theme). Linked file: assets/theme_apply.py does not read it.
+   Header markup: Infos/_source/wine_chemistry_fr/house_style.py. */
+html:root[data-theme="cream"]{--h-gold:#9a6a1f;--h-gold-soft:#8e1f33;--h-title:#3a1219;--h-text:#2e1419;--h-muted:rgba(46,20,25,.74);
+  --h-glass:rgba(255,253,248,.86);--h-glass-hi:#fffdf8;--h-hair:rgba(142,31,51,.16);--h-hair-hi:rgba(142,31,51,.45);
+  --h-soft:rgba(154,106,31,.07);--h-row:rgba(154,106,31,.045);--h-link:#8e1f33;--h-shadow:0 10px 30px rgba(90,30,40,.10);}
+html:root[data-theme="dark"]{--h-gold:#d9b36b;--h-gold-soft:#e7cf9c;--h-title:#fff;--h-text:#f5efe3;--h-muted:rgba(245,239,227,.72);
+  --h-glass:rgba(24,5,11,.42);--h-glass-hi:rgba(38,10,18,.6);--h-hair:rgba(217,179,107,.18);--h-hair-hi:rgba(217,179,107,.5);
+  --h-soft:rgba(217,179,107,.07);--h-row:rgba(245,239,227,.035);--h-link:#e7cf9c;--h-shadow:0 18px 50px rgba(10,1,4,.5);}
+
+html:root body{color:var(--h-text) !important;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif !important;}
+html:root[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+  linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0 !important;}
+html:root[data-theme="dark"] body{background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+  radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+  url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18 !important;}
+
+/* header: same as the other Infos pages */
+html:root .site-header{background:none !important;color:var(--h-title) !important;text-align:center;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) clamp(22px,3vw,34px) !important;}
+html:root .site-header .wrap{max-width:1120px;margin:0 auto;}
+html:root .site-header .topbar{display:flex;justify-content:flex-start;margin-bottom:clamp(22px,4vw,40px);}
+html:root .site-header .back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--h-gold);border:1px solid var(--h-hair);border-radius:999px;padding:8px 16px;background:var(--h-glass);}
+html:root .site-header .back:hover{border-color:var(--h-hair-hi);background:var(--h-glass-hi);}
+html:root .site-header .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--h-gold) !important;
+  margin:0 0 18px;padding-left:.42em;max-width:none;opacity:1;}
+html:root .site-header h1{font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif !important;font-weight:500;
+  font-size:clamp(40px,7.5vw,82px) !important;line-height:.98 !important;margin:0;color:var(--h-title) !important;letter-spacing:-.01em;}
+html:root[data-theme="dark"] .site-header h1{text-shadow:0 4px 40px rgba(0,0,0,.5);}
+html:root .site-header h1 em{font-style:italic;color:var(--h-gold-soft);}
+html:root .site-header .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--h-gold),transparent);margin:26px auto 20px;}
+html:root .site-header p.tagline{font-size:clamp(14px,1.7vw,16px) !important;line-height:1.7;font-weight:300;color:var(--h-muted) !important;max-width:760px;margin:0 auto;opacity:1;}
+
+/* the text panel: house "glass" */
+html:root .page{background:var(--h-glass) !important;color:var(--h-text);border:1px solid var(--h-hair);border-radius:18px;box-shadow:var(--h-shadow) !important;
+  max-width:1120px;margin:0 auto 64px !important;-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);}
+html:root[data-theme="cream"] .page{-webkit-backdrop-filter:none;backdrop-filter:none;}
+html:root .page h2,html:root .page h3,html:root .page h4{font-family:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif !important;font-weight:500;}
+html:root .page h2{color:var(--h-gold-soft) !important;border-bottom:1px solid var(--h-hair-hi) !important;}
+html:root .page h3,html:root .page h4{color:var(--h-title) !important;}
+html:root .page .section-intro h2{color:#fff !important;border:0 !important;}
+html:root .page a{color:var(--h-link) !important;}
+html:root .page .section-intro a{color:#fff !important;}
+html:root .toc,html:root blockquote,html:root .key{background:var(--h-soft) !important;border-color:var(--h-hair) !important;color:var(--h-text) !important;}
+html:root .toc{border:1px solid var(--h-hair) !important;}
+html:root blockquote{border-left:4px solid var(--h-gold) !important;}
+html:root .table-wrap{background:transparent !important;border:1px solid var(--h-hair) !important;}
+html:root th,html:root td{border-color:var(--h-hair) !important;}
+html:root tbody tr:nth-child(odd){background:transparent !important;}
+html:root tbody tr:nth-child(even){background:var(--h-row) !important;}
+html:root caption{color:var(--h-gold-soft) !important;}
+html:root .figure img{border-color:var(--h-hair) !important;}
+html:root .figure figcaption,html:root .source-note{color:var(--h-muted) !important;}
+html:root .source-note{border-top-color:var(--h-hair) !important;}

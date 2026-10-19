@@ -1,0 +1,52 @@
+# Format:
+# = AOC name | Region | CDC file
+# Wine label: grape CODE[/ROLE][ pct]; ...
+# ROLE: P principal, C complémentaire, S secondaire, A accessoire (S/A = minor, italic). No role = authorised (major).
+# ! note line
+
+= Château-Grillet | Vallée du Rhône | CDC Chateau Grillet
+Blanc: viognier B
+
+= Châtillon-en-Diois | Vallée du Rhône | CDC Chatillon En Diois
+Rouge, Rosé: gamay N/P ≥60 % (assemblage); pinot noir N/A; syrah N/A
+Blanc: aligoté B; chardonnay B
+
+= Clairette de Die | Vallée du Rhône | CDC Clairette de Die
+Méthode ancestrale: muscat à petits grains B/P ≥75 %; muscat à petits grains Rg/A; clairette B/A; clairette Rs/A
+Brut (2e fermentation en bouteille): clairette B
+
+= Condrieu | Vallée du Rhône | CDC Condrieu
+Blanc: viognier B
+
+= Cornas | Vallée du Rhône | CDC Cornas
+Rouge: syrah N
+
+= Coteaux de Die | Vallée du Rhône | CDC Coteaux de Die
+Blanc: clairette B
+! Clairette Rs tolérée jusqu'à 10 % des pieds (mutation).
+
+= Côte-Rôtie | Vallée du Rhône | CDC Côte Rôtie
+Rouge: syrah N/P ≥80 %; viognier B/A ≤20 %
+
+= Côtes du Rhône | Vallée du Rhône | CDC Côtes du Rhône
+Rouge, Rosé: grenache N/P majoritaire (≥40 % vignoble); mourvèdre N/C; syrah N/C; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; marselan N/A ≤10 %; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; ugni blanc B/A; viognier B/A
+Blanc: bourboulenc B/P; clairette B/P; grenache blanc B/P; marsanne B/P; roussanne B/P; viognier B/P; piquepoul blanc B/A; ugni blanc B/A
+! Rouges/rosés : mourvèdre + syrah ≥15 % du vignoble ; cépages blancs ≤5 % (rouges) / ≤20 % (rosés). Blancs : cépages principaux ≥80 %. Au nord de Montélimar, les règles grenache ne s'appliquent pas.
+
+= Crémant de Die | Vallée du Rhône | CDC Crémant de Die
+Blanc effervescent: clairette B/P ≥55 %; aligoté B/S ≥10 %; muscat à petits grains B/S 5–10 %
+
+= Crozes-Hermitage | Vallée du Rhône | CDC Crozes-Hermitage
+Rouge: syrah N/P ≥85 %; marsanne B/A; roussanne B/A
+Blanc: marsanne B; roussanne B
+
+= Hermitage | Vallée du Rhône | CDC Hermitage
+Rouge: syrah N/P ≥85 %; marsanne B/A; roussanne B/A
+Blanc, Vin de paille: marsanne B; roussanne B
+
+= Saint-Joseph | Vallée du Rhône | CDC Saint Joseph
+Rouge: syrah N/P ≥90 %; marsanne B/A; roussanne B/A
+Blanc: marsanne B; roussanne B
+
+= Saint-Péray | Vallée du Rhône | CDC Saint Peray
+Blanc tranquille et mousseux: marsanne B; roussanne B

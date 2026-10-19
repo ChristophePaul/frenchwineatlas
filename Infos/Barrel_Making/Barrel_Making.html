@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Comment naît une barrique" data-en="Birth of a wine barrel">Comment naît une barrique</title>
+<meta name="description" content="Comment se fabrique une barrique de chêne, du tronc au fût marqué : fendage, séchage, douelles, cintrage au feu, bousinage, fonds et cerclage — en photos, à la tonnellerie François Frères (Saint-Romain).">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+
+  sup.ref{font-size:.68em;line-height:0;margin-left:1px;}
+  sup.ref a{color:var(--gold);text-decoration:none;font-weight:700;}
+  .figs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px clamp(18px,3vw,36px);margin-top:26px;}
+  .fig{text-align:center;min-width:110px;}
+  .fig b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);color:var(--gold-soft);line-height:1.05;}
+  .fig span{font-size:11.5px;letter-spacing:.06em;color:var(--muted);}
+  .lede{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .lede p{margin:0 0 12px;font-size:15px;line-height:1.72;}
+  .lede h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .lede .side{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .lede ul{margin:0;padding-left:18px;font-size:14px;line-height:1.6;color:var(--muted);}
+  .lede li{margin-bottom:6px;}
+  .lede li b{color:var(--parchment);font-weight:600;}
+
+  .stage{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(16px,2.6vw,32px);align-items:start;margin-top:clamp(36px,5vw,64px);}
+  .stage.rev .st-text{order:2;}
+  .st-text{padding:clamp(20px,2.6vw,30px);position:sticky;top:20px;}
+  .st-text .kick{display:flex;align-items:baseline;gap:12px;margin:0 0 6px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);}
+  .st-n{font-family:var(--serif);font-size:44px;letter-spacing:0;line-height:.9;color:var(--gold-soft);font-weight:500;}
+  .st-text h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.2vw,36px);color:var(--title);margin:0 0 14px;line-height:1.1;}
+  .st-text p{margin:0 0 12px;font-size:15px;line-height:1.72;}
+  .st-text p:last-child{margin-bottom:0;}
+  .st-text b{color:var(--gold-soft);font-weight:600;}
+  .st-ph{display:grid;grid-template-columns:1fr 1fr;gap:10px;grid-auto-flow:dense;}
+  .st-ph.one{grid-template-columns:minmax(0,1fr);max-width:460px;}
+  .st-ph figure{margin:0;display:flex;flex-direction:column;gap:6px;min-width:0;}
+  .st-ph .ph-w{grid-column:span 2;}
+  .st-ph .ph-tall{grid-row:span 2;}
+  .st-ph.one .ph-w{grid-column:auto;}
+  .st-ph .zoom{display:block;width:100%;padding:0;border:1px solid var(--hair);border-radius:14px;overflow:hidden;cursor:zoom-in;background:#2a1a10;box-shadow:var(--shadow);}
+  .st-ph .ph-tall .zoom{flex:1;}
+  .st-ph img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .st-ph .zoom:hover img{transform:scale(1.035);}
+  .st-ph figcaption{font-size:12px;line-height:1.4;color:var(--muted);padding:0 4px;}
+  .toast{padding:16px 18px;grid-column:1/-1;}
+  .toast h3{font-family:var(--serif);font-weight:500;font-size:19px;margin:0 0 8px;color:var(--title);}
+  .toast p{margin:0 0 12px;font-size:13.5px;line-height:1.6;color:var(--muted);}
+  .toast b{color:var(--parchment);}
+  .tbar{display:grid;grid-template-columns:repeat(4,1fr);height:12px;border-radius:6px;overflow:hidden;}
+  .tbar .t1{background:#e3c08e}.tbar .t2{background:#b9834a}.tbar .t3{background:#86522a}.tbar .t4{background:#4a2814}
+  .tlab{display:grid;grid-template-columns:repeat(4,1fr);font-size:11px;color:var(--muted);margin-top:5px;text-align:center;}
+
+  .seal{margin-top:clamp(20px,3vw,32px);}   /* outside the stage grid, so the sticky text panel stops above it */
+  .seal h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.4vw,26px);color:var(--title);margin:0 0 12px;}
+  .seal-card{background:#fbf5e8;border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow);padding:clamp(6px,1.4vw,16px);overflow-x:auto;}
+  .seal-svg{display:block;width:100%;min-width:620px;height:auto;}
+  .draw-tile{aspect-ratio:.74;background:#fbf5e8;border:1px solid var(--paper-edge);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;display:flex;align-items:center;}
+  .seal-svg.head-svg{min-width:0;height:100%;}
+  .seal-notes{list-style:none;margin:14px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:10px;}
+  .seal-notes li{display:flex;gap:10px;padding:12px 14px;border-radius:14px;border:1px solid var(--hair);background:var(--glass);}
+  .seal-notes .sn-n{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;background:#9b2235;}
+  .seal-notes b{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--title);margin-bottom:4px;}
+  .seal-notes p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .anat-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow);padding:clamp(8px,1.6vw,18px);}
+  .anat{display:block;width:100%;height:auto;}
+  .anat-card{background:#fff;}
+  .anat-zoom{display:block;margin:0 auto;max-width:640px;width:100%;padding:0;border:0;background:none;cursor:zoom-in;}
+  .anat-zoom img{display:block;width:100%;height:auto;}
+  .anat .ld{stroke:#7a2333;stroke-width:1.1;}
+  .anat .ldot{fill:#7a2333;}
+  .anat .lb{font-family:var(--sans);font-size:15px;fill:#2e1419;font-weight:600;}
+  .anat .lb.sm{font-size:13.5px;}
+  .anat .lb.cap{font-size:12.5px;font-style:italic;font-weight:500;fill:#6b4a2a;}
+  .anat .lb.tiny{font-size:11px;font-weight:500;fill:#8a6a4a;}
+
+  .fgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+  .fmt{padding:16px 18px;}
+  .fmt .vol{display:block;font-family:var(--serif);font-weight:500;font-size:30px;color:var(--gold-soft);line-height:1;}
+  .fmt h3{font-family:var(--serif);font-weight:500;font-size:18px;margin:6px 0 6px;color:var(--title);}
+  .fmt p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);}
+
+  details.pro28{margin-top:16px;padding:0;overflow:hidden;}
+  details.pro28 summary{cursor:pointer;list-style:none;padding:16px 20px;display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:19px;color:var(--title);}
+  details.pro28 summary::-webkit-details-marker{display:none;}
+  details.pro28 summary::after{content:"›";margin-left:auto;font-size:22px;color:var(--gold);transition:transform .2s;}
+  details.pro28[open] summary::after{transform:rotate(90deg);}
+  .t28wrap{padding:0 20px 18px;overflow-x:auto;}
+  .t28{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .t28 th,.t28 td{text-align:left;padding:7px 10px;border-top:1px solid var(--hair);vertical-align:top;}
+  .t28 thead th{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-top:0;}
+  .t28 tr.grp th{font-family:var(--serif);font-weight:500;font-size:15px;color:var(--gold-soft);padding-top:14px;}
+  .t28 td.n{color:var(--faint);width:28px;font-variant-numeric:tabular-nums;}
+  .t28 td:nth-child(3){color:var(--muted);}
+  .chips-note{font-size:14px;line-height:1.65;padding:16px 20px;margin-top:16px;}
+  .chips-note p{margin:0;}
+
+  .sources-list{margin:0;padding-left:26px;font-size:13px;line-height:1.6;color:var(--muted);columns:2;column-gap:34px;}
+  .sources-list li{break-inside:avoid;margin-bottom:6px;}
+  .sources-list li:target{color:var(--title);background:color-mix(in srgb,var(--gold) 14%,transparent);border-radius:6px;}
+  .sources-list a{color:var(--gold);}
+  .credit{font-size:12px;color:var(--faint);margin-top:16px;line-height:1.6;}
+
+  /* lightbox with caption and arrows */
+  dialog.blb{border:none;padding:0;background:transparent;max-width:96vw;max-height:96vh;overflow:visible;}
+  dialog.blb::backdrop{background:rgba(12,3,6,.88);}
+  dialog.blb img{display:block;max-width:94vw;max-height:calc(96vh - 60px);border-radius:10px;margin:0 auto;}
+  dialog.blb p{margin:10px 0 0;text-align:center;color:#f4ecd8;font-size:14px;font-family:var(--sans);}
+  dialog.blb p small{opacity:.6;margin-left:8px;}
+  dialog.blb button{position:fixed;width:44px;height:44px;border-radius:50%;border:1px solid rgba(244,236,216,.35);background:rgba(20,8,10,.6);color:#f4ecd8;font-size:22px;cursor:pointer;}
+  dialog.blb .x{top:14px;right:14px;}
+  dialog.blb .pv{left:14px;top:50%;margin-top:-22px;}
+  dialog.blb .nx{right:14px;top:50%;margin-top:-22px;}
+
+  @media (max-width:900px){
+    .lede{grid-template-columns:1fr;}
+    .lede .side{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:16px;}
+    .stage{grid-template-columns:minmax(0,1fr);}
+    .stage.rev .st-text{order:0;}
+    .st-text{position:static;}
+    .fgrid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .sources-list{columns:1;}
+  }
+  @media (max-width:520px){
+    .fgrid{grid-template-columns:minmax(0,1fr);}
+    .st-ph{grid-template-columns:minmax(0,1fr);}
+    .st-ph .ph-w{grid-column:auto;}
+    .st-ph .ph-tall{grid-row:auto;}
+    .st-ph .ph-tall .zoom{aspect-ratio:.75;}
+  }
+
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .lede .side{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .st-ph .zoom{box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .seal-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .draw-tile{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .seal-notes li{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .anat-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .t28 th,html[data-theme="cream"] .t28 td{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.blb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.blb p{color:#2e1419}
+html[data-theme="cream"] dialog.blb button{border:1px solid rgba(90,30,40,0.36);background:rgba(255,253,248,0.92);color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .lede .side{border-top:1px solid rgba(90,30,40,0.18)}}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La tonnellerie" data-en="Cooperage">La tonnellerie</p>
+    <h1 data-fr="Comment naît <em>une barrique</em>" data-en="Birth of <em>a wine barrel</em>">Comment naît <em>une barrique</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Du chêne abattu en forêt au fût marqué au laser : dix étapes, en photos, chez un tonnelier de Bourgogne."
+       data-en="From an oak felled in the forest to a laser-marked cask: ten steps, in pictures, at a Burgundy cooperage.">Du chêne abattu en forêt au fût marqué au laser : dix étapes, en photos, chez un tonnelier de Bourgogne.</p>
+    <div class="figs">
+      <div class="fig"><b>1–3</b><span data-fr="ans de séchage en plein air" data-en="years of open-air seasoning">ans de séchage en plein air</span><sup class="ref"><a href="#src-acad">1</a></sup></div>
+      <div class="fig"><b>&lt; 100 °C</b><span data-fr="pour cintrer les douelles" data-en="to bend the staves">pour cintrer les douelles</span><sup class="ref"><a href="#src-acad">1</a></sup></div>
+      <div class="fig"><b>≈ 200 °C</b><span data-fr="pour le bousinage" data-en="for the toast">pour le bousinage</span><sup class="ref"><a href="#src-acad">1</a></sup></div>
+      <div class="fig"><b>28</b><span data-fr="étapes de fabrication" data-en="manufacturing steps">étapes de fabrication</span><sup class="ref"><a href="#src-genty">2</a></sup></div>
+      <div class="fig"><b>≈ 540 000</b><span data-fr="barriques faites en France en 2024" data-en="barrels made in France in 2024">barriques faites en France en 2024</span><sup class="ref"><a href="#src-acad">1</a></sup></div>
+    </div>
+    <nav class="toc"><a href="#chene">01 · <span data-fr="Le chêne" data-en="The oak">Le chêne</span></a><a href="#fendage">02 · <span data-fr="Fendre" data-en="Splitting">Fendre</span></a><a href="#sechage">03 · <span data-fr="Laisser mûrir" data-en="Seasoning">Laisser mûrir</span></a><a href="#douelles">04 · <span data-fr="Façonner les douelles" data-en="Shaping the staves">Façonner les douelles</span></a><a href="#rose">05 · <span data-fr="Monter en rose" data-en="Raising the barrel">Monter en rose</span></a><a href="#cintrage">06 · <span data-fr="Cintrer au feu" data-en="Bending over the fire">Cintrer au feu</span></a><a href="#bousinage">07 · <span data-fr="Le bousinage" data-en="Toasting">Le bousinage</span></a><a href="#fonds">08 · <span data-fr="Les fonds" data-en="The heads">Les fonds</span></a><a href="#cerclage">09 · <span data-fr="Cercler" data-en="Hooping">Cercler</span></a><a href="#finitions">10 · <span data-fr="Percer, éprouver, marquer" data-en="Bung, test, mark">Percer, éprouver, marquer</span></a><a href="#anatomie"><span data-fr="Anatomie" data-en="Anatomy">Anatomie</span></a><a href="#formats"><span data-fr="Formats" data-en="Sizes">Formats</span></a></nav>
+  </header>
+
+  <section class="sec" id="intro">
+    <div class="lede panel">
+      <div><p class="L fr">Le tonneau tel qu’on le connaît a été inventé dans le monde celte il y a près de trois mille ans ; plus léger et plus solide que l’amphore, il l’a vite supplantée dans le commerce du vin entre Rome et l’Europe du Nord. Sa forme galbée permet de le serrer avec des cercles, et de rouler sans effort un fût de plusieurs centaines de kilos.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en">The barrel as we know it was invented in the Celtic world nearly three thousand years ago; lighter and stronger than the amphora, it soon replaced it in the wine trade between Rome and Northern Europe. Its curved shape lets hoops tighten it, and lets a cask of several hundred kilos be rolled with ease.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L fr">Aujourd’hui, la France fabrique environ 540 000 barriques par an (2024). Un tiers reste en France, le reste part à l’export, surtout aux États-Unis.<sup class="ref"><a href="#src-acad">1</a></sup> Les photos de cette page ont été prises en novembre 2013 à la tonnellerie François Frères, fondée en 1910 à Saint-Romain, dans la Côte-d’Or.<sup class="ref"><a href="#src-jr">5</a></sup></p><p class="L en">Today France makes about 540,000 barrels a year (2024). A third stay in France; the rest are exported, mostly to the United States.<sup class="ref"><a href="#src-acad">1</a></sup> The photos on this page were taken in November 2013 at the François Frères cooperage, founded in 1910 in Saint-Romain, in the Côte-d’Or.<sup class="ref"><a href="#src-jr">5</a></sup></p></div>
+      <div class="side">
+        <h3 data-fr="Ce que le bois apporte au vin" data-en="What the wood gives the wine">Ce que le bois apporte au vin</h3>
+        <div class="L fr"><ul><li><b>De l’oxygène, à petites doses.</b> Le bois agit comme une membrane semi-perméable : il laisse passer un peu d’oxygène, d’eau et d’alcool.</li><li><b>Des tanins et des arômes.</b> Le chêne contient une centaine de molécules solubles dans l’eau ou l’alcool, qui passent dans le vin.</li><li><b>Une vie microbienne.</b> Champignons et bactéries du bois modifient tanins et arômes.</li><li><b>De l’inertie.</b> Le bois isole le vin des écarts de température.</li></ul><sup class="ref"><a href="#src-acad">1</a></sup></div><div class="L en"><ul><li><b>Oxygen, in small doses.</b> Wood acts as a semi-permeable membrane: it lets a little oxygen, water and alcohol through.</li><li><b>Tannins and aromas.</b> Oak contains around a hundred molecules soluble in water or alcohol, which pass into the wine.</li><li><b>Microbial life.</b> The wood’s fungi and bacteria modify tannins and aromas.</li><li><b>Inertia.</b> Wood shields the wine from temperature swings.</li></ul><sup class="ref"><a href="#src-acad">1</a></sup></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="chene">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">01</span><span data-fr="Choisir le bois" data-en="Choosing the wood">Choisir le bois</span></p>
+      <h2 data-fr="Le chêne" data-en="The oak">Le chêne</h2>
+      <p class="L fr">Une barrique naît en forêt. On utilise les deux grands chênes à feuilles caduques de la forêt française, le chêne sessile et le chêne pédonculé : leur bois est solide, se fend, s’usine et se cintre bien, et il est riche en tanins et en arômes qui passeront dans le vin. Les tonneliers distinguent mal les deux espèces ; ils regardent d’abord la largeur des cernes, plus grande chez le pédonculé.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en">A barrel begins in the forest. Coopers use the two great deciduous oaks of the French forest, sessile oak and pedunculate oak: their wood is strong, splits, machines and bends well, and it is rich in tannins and aromas that will pass into the wine. Coopers find the two species hard to tell apart; they look first at the width of the growth rings, larger in pedunculate oak.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L fr">Les plus beaux arbres sont vendus comme des grands crus. À Darney, dans les Vosges, des chênes de plusieurs siècles qui grossissent d’environ 2 mm de diamètre par an — d’où leur grain très fin — se sont vendus en moyenne 907 € le mètre cube en 2020, et jusqu’à 1 443 €, quand le bois de chauffage vaut 30 à 40 €. Le grain doit être régulier : un grain irrégulier, et la barrique fuit.<sup class="ref"><a href="#src-darney">4</a></sup></p><p class="L en">The finest trees are sold like grands crus. At Darney, in the Vosges, oaks several centuries old that grow about 2 mm in diameter a year — hence their very fine grain — sold for an average of €907 per cubic metre in 2020, and up to €1,443, when firewood fetches €30 to €40. The grain must be regular: an irregular grain, and the barrel leaks.<sup class="ref"><a href="#src-darney">4</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-w"><button type="button" class="zoom" data-i="0" style="aspect-ratio:2" aria-label="Agrandir / Enlarge"><img src="img/logs.webp" alt="Les grumes de chêne / Oak logs" loading="lazy" decoding="async" width="1600" height="1067"></button><figcaption data-fr="Les grumes de chêne" data-en="Oak logs">Les grumes de chêne</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="1" style="aspect-ratio:.8" aria-label="Agrandir / Enlarge"><img src="img/grain.webp" alt="L’écorce et le bois, en coupe / Bark and wood, in section" loading="lazy" decoding="async" width="1600" height="1067"></button><figcaption data-fr="L’écorce et le bois, en coupe" data-en="Bark and wood, in section">L’écorce et le bois, en coupe</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="2" style="aspect-ratio:.8" aria-label="Agrandir / Enlarge"><img src="img/grain_2.webp" alt="Les cernes : un an de croissance par anneau / Growth rings: one year per ring" loading="lazy" decoding="async" width="1067" height="1600"></button><figcaption data-fr="Les cernes : un an de croissance par anneau" data-en="Growth rings: one year per ring">Les cernes : un an de croissance par anneau</figcaption></figure></div>
+  </section>
+  <section class="stage rev" id="fendage">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">02</span><span data-fr="Du tronc au merrain" data-en="From log to stave wood">Du tronc au merrain</span></p>
+      <h2 data-fr="Fendre" data-en="Splitting">Fendre</h2>
+      <p class="L fr">Le tronc est débité « sur quartier » : on le fend en suivant le fil du bois, à l’origine à la main, aujourd’hui à la fendeuse hydraulique. On obtient des planches sans défaut et de fil très droit, d’environ un mètre de long : les <b>merrains</b>.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en">The log is cut “on the quarter”: it is split along the grain, once by hand, today with a hydraulic splitter. The result is defect-free, very straight-grained boards about one metre long: the <b>merrains</b> (stave wood).<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L fr">Fendre plutôt que scier, c’est respecter les fibres : une douelle qui suit le fil reste étanche. Les merrains sont ensuite mis en bottes, prêts à sécher.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-darney">4</a></sup></p><p class="L en">Splitting rather than sawing respects the fibres: a stave that follows the grain stays watertight. The merrains are then bundled, ready to dry.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-darney">4</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-h"><button type="button" class="zoom" data-i="3" style="aspect-ratio:.75" aria-label="Agrandir / Enlarge"><img src="img/splitting.webp" alt="La fendeuse ouvre le billon dans le fil du bois / The splitter opens the log along the grain" loading="lazy" decoding="async" width="1187" height="1600"></button><figcaption data-fr="La fendeuse ouvre le billon dans le fil du bois" data-en="The splitter opens the log along the grain">La fendeuse ouvre le billon dans le fil du bois</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="4" style="aspect-ratio:.75" aria-label="Agrandir / Enlarge"><img src="img/split_bundles.webp" alt="Les merrains fendus, en bottes / Split stave wood, in bundles" loading="lazy" decoding="async" width="1261" height="1600"></button><figcaption data-fr="Les merrains fendus, en bottes" data-en="Split stave wood, in bundles">Les merrains fendus, en bottes</figcaption></figure></div>
+  </section>
+  <section class="stage" id="sechage">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">03</span><span data-fr="Un à trois ans dehors" data-en="One to three years outdoors">Un à trois ans dehors</span></p>
+      <h2 data-fr="Laisser mûrir" data-en="Seasoning">Laisser mûrir</h2>
+      <p class="L fr">Les merrains sèchent à l’air libre, sans abri, de un à trois ans, empilés en croisillons. Le bois passe d’environ 60 % d’humidité dans l’arbre à 15–16 %. Cette alternance de pluie, de soleil et de vent évite les fentes de séchage.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en">The merrains dry in the open air, unsheltered, for one to three years, stacked in criss-cross piles. The wood goes from about 60 % moisture in the tree to 15–16 %. The alternation of rain, sun and wind prevents drying cracks.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L fr">C’est aussi une <b>maturation</b> : des champignons et des bactéries s’installent dans le bois et transforment ses tanins. Le merrain devient moins amer et plus aromatique. Un séchage forcé, en séchoir, ne prend qu’une semaine environ — mais ne fait pas mûrir le bois.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-genty">2</a></sup></p><p class="L en">It is also a <b>maturation</b>: fungi and bacteria settle in the wood and transform its tannins. The stave wood becomes less bitter and more aromatic. Forced drying, in a kiln, takes only about a week — but does not mature the wood.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-genty">2</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-w"><button type="button" class="zoom" data-i="5" style="aspect-ratio:2.1" aria-label="Agrandir / Enlarge"><img src="img/seasoning_yard.webp" alt="Le parc à bois : des allées de merrains / The stave yard: aisles of stave wood" loading="lazy" decoding="async" width="1600" height="758"></button><figcaption data-fr="Le parc à bois : des allées de merrains" data-en="The stave yard: aisles of stave wood">Le parc à bois : des allées de merrains</figcaption></figure><figure class="ph-w"><button type="button" class="zoom" data-i="6" style="aspect-ratio:1.8" aria-label="Agrandir / Enlarge"><img src="img/seasoning_close.webp" alt="Les piles croisées laissent passer l’air et la pluie / Criss-cross piles let air and rain through" loading="lazy" decoding="async" width="1496" height="1600"></button><figcaption data-fr="Les piles croisées laissent passer l’air et la pluie" data-en="Criss-cross piles let air and rain through">Les piles croisées laissent passer l’air et la pluie</figcaption></figure></div>
+  </section>
+  <section class="stage rev" id="douelles">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">04</span><span data-fr="Usinage et appareillage" data-en="Machining and matching">Usinage et appareillage</span></p>
+      <h2 data-fr="Façonner les douelles" data-en="Shaping the staves">Façonner les douelles</h2>
+      <p class="L fr">Le merrain sec devient une <b>douelle</b>. Quatre gestes, autrefois à la scie, à la plane, au couteau de revers et à la colombe, aujourd’hui sur une machine combinée : l’<b>écourtage</b> (la mise à longueur), le <b>dolage</b> (la face extérieure), l’<b>évidage</b> (la face intérieure, creusée) et le <b>jointage</b> (les chants, taillés en biais pour que les douelles se rejoignent en cercle).<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">The dry merrain becomes a <b>stave</b>. Four operations, once done with a handsaw, a drawknife, a hollowing knife and a long jointer plane, today on a combined machine: <b>docking</b> (cutting to length), <b>backing</b> (the outer face), <b>hollowing</b> (the inner face) and <b>jointing</b> (the edges, bevelled so that the staves close into a circle).<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L fr">Vient l’<b>appareillage</b> : on assemble des douelles de largeurs différentes pour former exactement la circonférence d’une barrique.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">Then comes <b>matching</b>: staves of different widths are put together to make up exactly the circumference of one barrel.<sup class="ref"><a href="#src-genty">2</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-tall"><button type="button" class="zoom" data-i="7" aria-label="Agrandir / Enlarge"><img src="img/stave_matching.webp" alt="L’appareillage : choisir les douelles d’une même barrique / Matching: choosing the staves for one barrel" loading="lazy" decoding="async" width="1142" height="1599"></button><figcaption data-fr="L’appareillage : choisir les douelles d’une même barrique" data-en="Matching: choosing the staves for one barrel">L’appareillage : choisir les douelles d’une même barrique</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="8" style="aspect-ratio:1.45" aria-label="Agrandir / Enlarge"><img src="img/stave_machining.webp" alt="L’usinage des douelles / Machining the staves" loading="lazy" decoding="async" width="1600" height="1302"></button><figcaption data-fr="L’usinage des douelles" data-en="Machining the staves">L’usinage des douelles</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="9" style="aspect-ratio:1.45" aria-label="Agrandir / Enlarge"><img src="img/stave_machining_2.webp" alt="Le merrain passe à la scie / The stave wood goes through the saw" loading="lazy" decoding="async" width="1600" height="1439"></button><figcaption data-fr="Le merrain passe à la scie" data-en="The stave wood goes through the saw">Le merrain passe à la scie</figcaption></figure></div>
+  </section>
+  <section class="stage" id="rose">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">05</span><span data-fr="Le montage" data-en="Assembly">Le montage</span></p>
+      <h2 data-fr="Monter en rose" data-en="Raising the barrel">Monter en rose</h2>
+      <p class="L fr">Le tonnelier dresse les douelles debout, serrées dans un cercle de montage : c’est la <b>mise en rose</b>. Le haut est fermé, le bas s’ouvre en jupe — la barrique a la forme d’un tronc de cône.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">The cooper stands the staves upright, held tight in a raising hoop: this is <b>raising</b> (in French, <i>mise en rose</i>, “setting up the rose”). The top is closed, the bottom splays like a skirt — the barrel is shaped like a truncated cone.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L fr">Des cercles provisoires, chassés au marteau, tiennent l’ensemble.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">Temporary hoops, driven down with a hammer, hold it all together.<sup class="ref"><a href="#src-genty">2</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-h"><button type="button" class="zoom" data-i="10" style="aspect-ratio:.71" aria-label="Agrandir / Enlarge"><img src="img/raising.webp" alt="Les douelles montées dans le cercle de montage / The staves raised inside the raising hoop" loading="lazy" decoding="async" width="1130" height="1601"></button><figcaption data-fr="Les douelles montées dans le cercle de montage" data-en="The staves raised inside the raising hoop">Les douelles montées dans le cercle de montage</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="11" style="aspect-ratio:.71" aria-label="Agrandir / Enlarge"><img src="img/raising_2.webp" alt="La « rose » : une jupe de douelles / The “rose”: a skirt of staves" loading="lazy" decoding="async" width="1152" height="1600"></button><figcaption data-fr="La « rose » : une jupe de douelles" data-en="The “rose”: a skirt of staves">La « rose » : une jupe de douelles</figcaption></figure></div>
+  </section>
+  <section class="stage rev" id="cintrage">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">06</span><span data-fr="Le cintrage" data-en="Bending">Le cintrage</span></p>
+      <h2 data-fr="Cintrer au feu" data-en="Bending over the fire">Cintrer au feu</h2>
+      <p class="L fr">Pour refermer la jupe, il faut courber les douelles. On les chauffe à cœur — à moins de 100 °C — en les mouillant : ici, à l’ancienne, un feu brûle dans la barrique pendant que le tonnelier arrose le bois.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-genty">2</a></sup></p><p class="L en">To close the skirt, the staves must be bent. They are heated right through — below 100 °C — while being moistened: here, the traditional way, a fire burns inside the barrel while the cooper waters the wood.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-genty">2</a></sup></p><p class="L fr">Le bois assoupli, un câble tiré par un cabestan resserre peu à peu le bas de la barrique, jusqu’à ce que les douelles se rejoignent : la barrique a pris son galbe. D’autres ateliers cintrent à la vapeur ou par immersion.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">Once the wood is supple, a cable drawn by a windlass slowly tightens the bottom of the barrel until the staves meet: the barrel has its curve. Other workshops bend with steam or by immersion.<sup class="ref"><a href="#src-genty">2</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-h"><button type="button" class="zoom" data-i="12" style="aspect-ratio:.667" aria-label="Agrandir / Enlarge"><img src="img/bending_water.webp" alt="Le feu dedans, l’eau dehors / Fire inside, water outside" loading="lazy" decoding="async" width="1067" height="1600"></button><figcaption data-fr="Le feu dedans, l’eau dehors" data-en="Fire inside, water outside">Le feu dedans, l’eau dehors</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="13" style="aspect-ratio:.667" aria-label="Agrandir / Enlarge"><img src="img/bending_fire.webp" alt="Le feu de cintrage / The bending fire" loading="lazy" decoding="async" width="1067" height="1600"></button><figcaption data-fr="Le feu de cintrage" data-en="The bending fire">Le feu de cintrage</figcaption></figure></div>
+  </section>
+  <section class="stage" id="bousinage">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">07</span><span data-fr="La chauffe aromatique" data-en="The aromatic toast">La chauffe aromatique</span></p>
+      <h2 data-fr="Le bousinage" data-en="Toasting">Le bousinage</h2>
+      <p class="L fr">Une seconde chauffe, plus forte — vers 200 °C —, grille l’intérieur de la barrique : c’est le <b>bousinage</b>. Il fixe définitivement le cintrage et commence à dégrader la lignine et les hémicelluloses du bois, d’où naissent de nouveaux arômes.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en">A second, stronger heating — around 200 °C — toasts the inside of the barrel: this is <b>toasting</b> (<i>bousinage</i>). It permanently sets the bend and begins to break down the wood’s lignin and hemicelluloses, which gives rise to new aromas.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L fr">Les tonneliers la considèrent comme l’étape la plus délicate. Sa durée et son intensité se choisissent selon le vin ou l’eau-de-vie qui sera élevé dans le fût — jusqu’à un début de carbonisation pour certains alcools forts.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en">Coopers consider it the most delicate step. Its length and intensity are chosen according to the wine or spirit that will age in the cask — up to the first stage of charring for some spirits.<sup class="ref"><a href="#src-acad">1</a></sup></p>
+    </div>
+    <div class="st-ph one"><figure class="ph-h"><button type="button" class="zoom" data-i="14" style="aspect-ratio:.75" aria-label="Agrandir / Enlarge"><img src="img/toasting.webp" alt="Le bousinage : le feu grille l’intérieur du fût / Toasting: the fire toasts the inside of the cask" loading="lazy" decoding="async" width="1026" height="1601"></button><figcaption data-fr="Le bousinage : le feu grille l’intérieur du fût" data-en="Toasting: the fire toasts the inside of the cask">Le bousinage : le feu grille l’intérieur du fût</figcaption></figure><div class="toast panel"><h3 data-fr="Ce que la chauffe change" data-en="What the toast changes">Ce que la chauffe change</h3><p class="L fr">Dans une étude sur des copeaux de chêne plongés dans un vin modèle, une chauffe plus forte a fait <b>monter le gaïacol</b> (notes fumées) et <b>baisser les lactones du chêne</b> (noix de coco) au-delà d’une chauffe moyenne ; la vanilline était la plus abondante après une chauffe forte. Ces composés naissent de la lignine et des sucres du bois.<sup class="ref"><a href="#src-pollon">3</a>,<a href="#src-acad">1</a></sup></p><p class="L en">In a study of oak chips steeped in a model wine, a stronger toast <b>raised guaiacol</b> (smoky notes) and <b>lowered the oak lactones</b> (coconut) beyond a medium toast; vanillin was most abundant after a heavy toast. These compounds come from the wood’s lignin and sugars.<sup class="ref"><a href="#src-pollon">3</a>,<a href="#src-acad">1</a></sup></p>
+<div class="tbar" aria-hidden="true"><span class="t1"></span><span class="t2"></span><span class="t3"></span><span class="t4"></span></div>
+<div class="tlab"><span data-fr="légère" data-en="light">légère</span><span data-fr="moyenne" data-en="medium">moyenne</span><span data-fr="moyenne +" data-en="medium +">moyenne +</span><span data-fr="forte" data-en="heavy">forte</span></div></div></div>
+  </section>
+  <section class="stage rev" id="fonds">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">08</span><span data-fr="Fermer la barrique" data-en="Closing the barrel">Fermer la barrique</span></p>
+      <h2 data-fr="Les fonds" data-en="The heads">Les fonds</h2>
+      <p class="L fr">Les deux <b>fonds</b> sont faits de planches de chêne rabotées sur leurs quatre faces, assemblées autrefois par des chevilles (tourillons), aujourd’hui à rainure et languette (bouvetage), puis taillées en disque.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">The two <b>heads</b> are made of oak boards planed on all four faces, once joined with dowels, today tongue-and-groove, then cut into a disc.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L fr">Aux deux extrémités des douelles, la machine creuse le <b>jable</b>, une rainure où viendra s’emboîter le fond, et taille le <b>chanfrein</b>. Le tonnelier ouvre légèrement la barrique et y insère le fond : c’est le <b>fonçage</b>. Autrefois, on ajoutait de la farine de froment pour parfaire l’étanchéité ; plus aujourd’hui.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">At both ends of the staves, the machine cuts the <b>croze</b>, a groove into which the head will fit, and the <b>chamfer</b>. The cooper slightly loosens the barrel and fits the head in: this is <b>heading</b>. In the past wheat flour was added to perfect the seal; no longer.<sup class="ref"><a href="#src-genty">2</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-h"><button type="button" class="zoom" data-i="15" style="aspect-ratio:.74" aria-label="Agrandir / Enlarge"><img src="img/head_boards.webp" alt="Les planches de fond, assemblées / Head boards, joined" loading="lazy" decoding="async" width="1600" height="1118"></button><figcaption data-fr="Les planches de fond, assemblées" data-en="Head boards, joined">Les planches de fond, assemblées</figcaption></figure><figure class="ph-h"><div class="draw-tile"><svg class="seal-svg head-svg" viewBox="435 32 330 448" role="img" aria-label="Le fond vu de dessus / The head seen from above"><style>.seal-svg .h{font:600 17px var(--serif,Georgia),serif;fill:#2e1419}.seal-svg .st{font:italic 12.5px var(--sans,sans-serif);fill:#6b4a2a}.seal-svg .tl{font:600 12.5px var(--sans,sans-serif);fill:#3a2414}.seal-svg .tw{font:italic 600 14px var(--sans,sans-serif);fill:#7a1f2e;opacity:.8}.seal-svg .n{font:700 12px var(--sans,sans-serif);fill:#fff}</style><g><text x="600" y="54" text-anchor="middle" class="h" data-fr="Le fond vu de dessus" data-en="The head seen from above">Le fond vu de dessus</text><text x="600" y="74" text-anchor="middle" class="st" data-fr="des planches assemblées" data-en="boards joined together">des planches assemblées</text><clipPath id="sgDisc"><circle cx="600" cy="262" r="118"/></clipPath><g clip-path="url(#sgDisc)"><rect x="482" y="144" width="42" height="236" fill="#d8b07a"/><line x1="492.5" y1="144" x2="495.5" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="503.0" y1="144" x2="506.0" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="513.5" y1="144" x2="516.5" y2="380" stroke="#c99c62" stroke-width=".8"/><rect x="524" y="144" width="46" height="236" fill="#e6c896"/><line x1="535.5" y1="144" x2="538.5" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="547.0" y1="144" x2="550.0" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="558.5" y1="144" x2="561.5" y2="380" stroke="#c99c62" stroke-width=".8"/><rect x="570" y="144" width="48" height="236" fill="#d8b07a"/><line x1="582.0" y1="144" x2="585.0" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="594.0" y1="144" x2="597.0" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="606.0" y1="144" x2="609.0" y2="380" stroke="#c99c62" stroke-width=".8"/><rect x="618" y="144" width="46" height="236" fill="#e6c896"/><line x1="629.5" y1="144" x2="632.5" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="641.0" y1="144" x2="644.0" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="652.5" y1="144" x2="655.5" y2="380" stroke="#c99c62" stroke-width=".8"/><rect x="664" y="144" width="54" height="236" fill="#d8b07a"/><line x1="677.5" y1="144" x2="680.5" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="691.0" y1="144" x2="694.0" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="704.5" y1="144" x2="707.5" y2="380" stroke="#c99c62" stroke-width=".8"/><line x1="524" y1="144" x2="524" y2="380" stroke="#3a2414" stroke-width="1.3"/><rect x="511" y="197" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="511" y="259" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="511" y="321" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><line x1="570" y1="144" x2="570" y2="380" stroke="#3a2414" stroke-width="1.3"/><rect x="557" y="197" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="557" y="259" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="557" y="321" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><line x1="618" y1="144" x2="618" y2="380" stroke="#3a2414" stroke-width="1.3"/><rect x="605" y="197" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="605" y="259" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="605" y="321" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><line x1="664" y1="144" x2="664" y2="380" stroke="#3a2414" stroke-width="1.3"/><rect x="651" y="197" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="651" y="259" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/><rect x="651" y="321" width="26" height="6" rx="3" fill="none" stroke="#9b2235" stroke-width="1.3" stroke-dasharray="3 2"/></g><circle cx="600" cy="262" r="118" fill="none" stroke="#3a2414" stroke-width="1.8"/><circle cx="600" cy="262" r="106" fill="none" stroke="#3a2414" stroke-width="1" stroke-dasharray="5 4"/><text x="600" y="402" text-anchor="middle" class="tl" data-fr="biseau du bord (entre dans le jable)" data-en="bevelled rim (fits into the croze)">biseau du bord (entre dans le jable)</text><circle cx="592" cy="170" r="11" fill="#9b2235"/><text x="592" y="174.2" text-anchor="middle" class="n">4</text><rect x="530" y="424" width="66" height="22" fill="#d8b07a" stroke="#3a2414" stroke-width="1.2"/><path d="M604,424 L670,424 L670,446 L604,446 L604,439 L596,439 L596,431 L604,431 Z" fill="#e6c896" stroke="#3a2414" stroke-width="1.2"/><path d="M596,431 L588,431 L588,439 L596,439" fill="none" stroke="#3a2414" stroke-width="1" stroke-dasharray="2 2"/><line x1="634" y1="435" x2="620.0" y2="435.0" stroke="#3a2414" stroke-width="1.4"/><path d="M610,435 L620.0,440.0 L620.0,430.0 Z" fill="#3a2414"/><text x="600" y="466" text-anchor="middle" class="st" data-fr="rainure et languette" data-en="tongue and groove">rainure et languette</text></g></svg></div><figcaption data-fr="Schéma : le fond vu de dessus" data-en="Diagram: the head seen from above">Schéma : le fond vu de dessus</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="16" style="aspect-ratio:.9" aria-label="Agrandir / Enlarge"><img src="img/head_cutting.webp" alt="La taille du fond en disque / Cutting the head into a disc" loading="lazy" decoding="async" width="1560" height="1600"></button><figcaption data-fr="La taille du fond en disque" data-en="Cutting the head into a disc">La taille du fond en disque</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="17" style="aspect-ratio:.9" aria-label="Agrandir / Enlarge"><img src="img/heading.webp" alt="Le fonçage : le fond entre dans le jable / Heading: the head goes into the croze" loading="lazy" decoding="async" width="1304" height="1600"></button><figcaption data-fr="Le fonçage : le fond entre dans le jable" data-en="Heading: the head goes into the croze">Le fonçage : le fond entre dans le jable</figcaption></figure></div>
+  </section><div class="seal" id="etancheite"><h3 data-fr="Comment le fond tient, et pourquoi le vin ne fuit pas" data-en="How the head stays in, and why the wine does not leak">Comment le fond tient, et pourquoi le vin ne fuit pas</h3><div class="seal-card"><svg class="seal-svg" viewBox="0 0 760 520" role="img" aria-label="Comment le fond est tenu et comment la barrique devient étanche / How the head is held and how the barrel is made watertight"><defs><linearGradient id="sgOak" x1="0" x2="1"><stop offset="0" stop-color="#c99c62"/><stop offset=".5" stop-color="#e6c896"/><stop offset="1" stop-color="#d8b07a"/></linearGradient></defs><style>.seal-svg .h{font:600 17px var(--serif,Georgia),serif;fill:#2e1419}.seal-svg .st{font:italic 12.5px var(--sans,sans-serif);fill:#6b4a2a}.seal-svg .tl{font:600 12.5px var(--sans,sans-serif);fill:#3a2414}.seal-svg .tw{font:italic 600 14px var(--sans,sans-serif);fill:#7a1f2e;opacity:.8}.seal-svg .n{font:700 12px var(--sans,sans-serif);fill:#fff}</style><g><rect x="112" y="176" width="256" height="276" fill="#7a1f2e" opacity=".16"/><text x="240.0" y="330" text-anchor="middle" class="tw" data-fr="le vin" data-en="the wine">le vin</text><path d="M80,92 L92,92 L112,124 L112,148 L99,156 L99,170 L112,178 L112,452 L80,452 Z" fill="url(#sgOak)" stroke="#3a2414" stroke-width="1.6"/><line x1="90.66666666666667" y1="132" x2="90.66666666666667" y2="448" stroke="#c99c62" stroke-width="1"/><line x1="101.33333333333333" y1="132" x2="101.33333333333333" y2="448" stroke="#c99c62" stroke-width="1"/><path d="M400,92 L388,92 L368,124 L368,148 L381,156 L381,170 L368,178 L368,452 L400,452 Z" fill="url(#sgOak)" stroke="#3a2414" stroke-width="1.6"/><line x1="389.3333333333333" y1="132" x2="389.3333333333333" y2="448" stroke="#c99c62" stroke-width="1"/><line x1="378.6666666666667" y1="132" x2="378.6666666666667" y2="448" stroke="#c99c62" stroke-width="1"/><path d="M112,148 L368,148 L380,157 L380,169 L368,178 L112,178 L100,169 L100,157 Z" fill="#e6c896" stroke="#3a2414" stroke-width="1.6"/><line x1="180" y1="148" x2="180" y2="178" stroke="#3a2414" stroke-width=".9" stroke-dasharray="3 2"/><line x1="256" y1="148" x2="256" y2="178" stroke="#3a2414" stroke-width=".9" stroke-dasharray="3 2"/><line x1="316" y1="148" x2="316" y2="178" stroke="#3a2414" stroke-width=".9" stroke-dasharray="3 2"/><rect x="71" y="112" width="9" height="24" fill="#3b3430"/><rect x="400" y="112" width="9" height="24" fill="#3b3430"/><line x1="24" y1="124.0" x2="56.0" y2="124.0" stroke="#9b2235" stroke-width="2.4"/><path d="M66,124.0 L56.0,119.0 L56.0,129.0 Z" fill="#9b2235"/><line x1="456" y1="124.0" x2="424.0" y2="124.0" stroke="#9b2235" stroke-width="2.4"/><path d="M414,124.0 L424.0,129.0 L424.0,119.0 Z" fill="#9b2235"/><rect x="71" y="214" width="9" height="24" fill="#3b3430"/><rect x="400" y="214" width="9" height="24" fill="#3b3430"/><line x1="24" y1="226.0" x2="56.0" y2="226.0" stroke="#9b2235" stroke-width="2.4"/><path d="M66,226.0 L56.0,221.0 L56.0,231.0 Z" fill="#9b2235"/><line x1="456" y1="226.0" x2="424.0" y2="226.0" stroke="#9b2235" stroke-width="2.4"/><path d="M414,226.0 L424.0,231.0 L424.0,221.0 Z" fill="#9b2235"/><path d="M74,452 l12,-6 l12,8 l12,-6 l12,6" fill="none" stroke="#fbf5e8" stroke-width="5"/><path d="M362,452 l12,-6 l12,8 l12,-6 l12,6" fill="none" stroke="#fbf5e8" stroke-width="5"/><text x="240" y="54" text-anchor="middle" class="h" data-fr="Coupe au bout du fût" data-en="Section at the end of the cask">Coupe au bout du fût</text><text x="240" y="74" text-anchor="middle" class="st" data-fr="debout, l’extérieur à gauche et à droite" data-en="standing upright, outside left and right">debout, l’extérieur à gauche et à droite</text><text x="46" y="108" text-anchor="middle" class="tl" data-fr="cercle" data-en="hoop">cercle</text><text x="240.0" y="138" text-anchor="middle" class="tl" data-fr="le fond" data-en="the head">le fond</text><text x="96" y="474" text-anchor="middle" class="tl" data-fr="douelle" data-en="stave">douelle</text><text x="384" y="474" text-anchor="middle" class="tl" data-fr="douelle" data-en="stave">douelle</text><circle cx="134" cy="198" r="11" fill="#9b2235"/><text x="134" y="202.2" text-anchor="middle" class="n">1</text><line x1="125" y1="191" x2="108" y2="172" stroke="#9b2235" stroke-width="1.4"/><circle cx="16" cy="176" r="11" fill="#9b2235"/><text x="16" y="180.2" text-anchor="middle" class="n">2</text><circle cx="300" cy="128" r="11" fill="#9b2235"/><text x="300" y="132.2" text-anchor="middle" class="n">4</text></g><g transform="translate(-260,0)"><g><text x="870" y="54" text-anchor="middle" class="h" data-fr="Deux douelles en coupe" data-en="Two staves in section">Deux douelles en coupe</text><text x="870" y="74" text-anchor="middle" class="st" data-fr="vues par le bout, sous un cercle" data-en="seen end-on, under a hoop">vues par le bout, sous un cercle</text><path d="M766.5,173.6 A400,400 0 0 1 835.1,161.5 L838.4,199.4 A362,362 0 0 0 776.3,210.3 Z" fill="#d8b07a" stroke="#3a2414" stroke-width="1.4"/><path d="M835.1,161.5 A400,400 0 0 1 904.9,161.5 L901.6,199.4 A362,362 0 0 0 838.4,199.4 Z" fill="#e6c896" stroke="#3a2414" stroke-width="1.4"/><path d="M904.9,161.5 A400,400 0 0 1 973.5,173.6 L963.7,210.3 A362,362 0 0 0 901.6,199.4 Z" fill="#d8b07a" stroke="#3a2414" stroke-width="1.4"/><path d="M753.8,167.8 A409,409 0 0 1 986.2,167.8" fill="none" stroke="#3b3430" stroke-width="9"/><line x1="792.900209115883" y1="122.74535766257964" x2="796.0" y2="140.5" stroke="#9b2235" stroke-width="2.4"/><path d="M797.762358090557,150.31997474692145 L800.9,139.6 L791.1,141.3 Z" fill="#9b2235"/><line x1="870.0" y1="116.0" x2="870.0" y2="134.0" stroke="#9b2235" stroke-width="2.4"/><path d="M870.0,144.0 L875.0,134.0 L865.0,134.0 Z" fill="#9b2235"/><line x1="947.099790884117" y1="122.74535766257964" x2="944.0" y2="140.5" stroke="#9b2235" stroke-width="2.4"/><path d="M942.237641909443,150.31997474692145 L948.9,141.3 L939.1,139.6 Z" fill="#9b2235"/><line x1="840.0" y1="217.3" x2="838.1" y2="195.4" stroke="#9b2235" stroke-width="1.4"/><line x1="900.0" y1="217.3" x2="901.9" y2="195.4" stroke="#9b2235" stroke-width="1.4"/><circle cx="898.9357065922225" cy="229.26336023354048" r="11" fill="#9b2235"/><text x="898.9357065922225" y="233.46336023354047" text-anchor="middle" class="n">3</text><text x="870" y="262" text-anchor="middle" class="tl" data-fr="chants en biais" data-en="bevelled edges">chants en biais</text><text x="870" y="280" text-anchor="middle" class="tl" data-fr="plaqués l’un contre l’autre" data-en="pressed against each other">plaqués l’un contre l’autre</text><text x="870" y="320" text-anchor="middle" class="st" data-fr="intérieur" data-en="inside">intérieur</text><circle cx="761.1351469801496" cy="123.36692317580156" r="11" fill="#9b2235"/><text x="761.1351469801496" y="127.56692317580156" text-anchor="middle" class="n">2</text></g></g></svg></div><ol class="seal-notes"><li><span class="sn-n">1</span><div><b data-fr="Le jable" data-en="The croze">Le jable</b><p class="L fr">Une rainure creusée à l’intérieur, au bout des douelles. Le bord du fond, taillé en biseau, s’y emboîte : c’est lui qui tient le fond. Le jable doit être parfaitement régulier sur tout le tour, sinon la barrique fuit.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">A groove cut on the inside, near the ends of the staves. The edge of the head, bevelled, fits into it: that is what holds the head. The croze must be perfectly even all the way round, or the barrel leaks.<sup class="ref"><a href="#src-genty">2</a></sup></p></div></li><li><span class="sn-n">2</span><div><b data-fr="Les cercles serrent" data-en="The hoops squeeze">Les cercles serrent</b><p class="L fr">Chassés sur la barrique, les cercles plaquent les douelles les unes contre les autres et contre le fond. C’est ce serrage qui fait l’étanchéité — sans colle ni clou. La forme galbée du fût permet de le serrer ainsi avec des cercles de diamètres adaptés.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en">Driven onto the barrel, the hoops press the staves against one another and against the head. This squeeze is what makes it watertight — with no glue and no nails. The cask’s curved shape is what lets hoops of the right diameters tighten it.<sup class="ref"><a href="#src-acad">1</a></sup></p></div></li><li><span class="sn-n">3</span><div><b data-fr="Des douelles jointives" data-en="Staves that meet">Des douelles jointives</b><p class="L fr">Fendues dans le fil du bois, les douelles n’ont pas de fibres coupées par où le vin pourrait passer ; leurs chants, taillés en biais au jointage, se plaquent exactement l’un contre l’autre.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-darney">4</a>,<a href="#src-genty">2</a></sup></p><p class="L en">Split along the grain, the staves have no cut fibres for the wine to seep through; their edges, bevelled during jointing, press exactly against each other.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-darney">4</a>,<a href="#src-genty">2</a></sup></p></div></li><li><span class="sn-n">4</span><div><b data-fr="Un fond d’un seul tenant" data-en="A head in one piece">Un fond d’un seul tenant</b><p class="L fr">Les planches du fond sont assemblées autrefois par des chevilles, aujourd’hui à rainure et languette. Au fonçage, on ajoutait jadis de la farine de froment pour parfaire l’étanchéité.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">The head boards were once joined with dowels, today with tongue and groove. At heading, wheat flour was once added to perfect the seal.<sup class="ref"><a href="#src-genty">2</a></sup></p></div></li><li><span class="sn-n">5</span><div><b data-fr="L’épreuve" data-en="The test">L’épreuve</b><p class="L fr">Avant de quitter l’atelier, chaque barrique est éprouvée par échaudage — à la vapeur aujourd’hui — pour vérifier qu’elle ne fuit pas.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">Before leaving the workshop, every barrel is tested by scalding — with steam today — to check that it does not leak.<sup class="ref"><a href="#src-genty">2</a></sup></p></div></li></ol></div>
+  <section class="stage" id="cerclage">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">09</span><span data-fr="Serrer et finir" data-en="Tightening and finishing">Serrer et finir</span></p>
+      <h2 data-fr="Cercler" data-en="Hooping">Cercler</h2>
+      <p class="L fr">Les cercles d’acier sont découpés, mis en forme (le gironnage) et rivetés. Une cercleuse hydraulique les chasse ensuite sur la barrique — le travail que faisaient autrefois la chasse et le marteau.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">The steel hoops are cut, shaped (flared to fit the barrel’s curve) and riveted. A hydraulic hooping machine then drives them onto the barrel — the job once done with a hoop driver and a hammer.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L fr">La barrique est poncée et reçoit ses cercles définitifs — sur les photos, les cercles de travail noirs ont fait place à des cercles brillants.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">The barrel is sanded and gets its final hoops — in the photos, the black working hoops have given way to shiny ones.<sup class="ref"><a href="#src-genty">2</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-tall"><button type="button" class="zoom" data-i="18" aria-label="Agrandir / Enlarge"><img src="img/hoop_press.webp" alt="La cercleuse chasse les cercles / The hooping machine drives the hoops down" loading="lazy" decoding="async" width="1101" height="1600"></button><figcaption data-fr="La cercleuse chasse les cercles" data-en="The hooping machine drives the hoops down">La cercleuse chasse les cercles</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="19" style="aspect-ratio:1.45" aria-label="Agrandir / Enlarge"><img src="img/hoop_press_2.webp" alt="Aux commandes de la cercleuse / At the controls of the hooping machine" loading="lazy" decoding="async" width="1576" height="1600"></button><figcaption data-fr="Aux commandes de la cercleuse" data-en="At the controls of the hooping machine">Aux commandes de la cercleuse</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="20" style="aspect-ratio:1.45" aria-label="Agrandir / Enlarge"><img src="img/final_hoops.webp" alt="Les cercles définitifs / The final hoops" loading="lazy" decoding="async" width="1600" height="1301"></button><figcaption data-fr="Les cercles définitifs" data-en="The final hoops">Les cercles définitifs</figcaption></figure><figure class="ph-w"><button type="button" class="zoom" data-i="21" style="aspect-ratio:2" aria-label="Agrandir / Enlarge"><img src="img/final_hoops_2.webp" alt="Les barriques terminées attendent le contrôle / Finished barrels waiting to be checked" loading="lazy" decoding="async" width="1600" height="1420"></button><figcaption data-fr="Les barriques terminées attendent le contrôle" data-en="Finished barrels waiting to be checked">Les barriques terminées attendent le contrôle</figcaption></figure></div>
+  </section>
+  <section class="stage rev" id="finitions">
+    <div class="st-text panel">
+      <p class="kick"><span class="st-n">10</span><span data-fr="Les finitions" data-en="Finishing">Les finitions</span></p>
+      <h2 data-fr="Percer, éprouver, marquer" data-en="Bung, test, mark">Percer, éprouver, marquer</h2>
+      <p class="L fr">On perce le <b>trou de bonde</b> sur le bouge, la partie la plus large. La barrique est éprouvée : un échaudage, à la vapeur aujourd’hui, vérifie son étanchéité, et on mesure sa contenance exacte.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-genty">2</a></sup></p><p class="L en">The <b>bung hole</b> is drilled on the bilge, the widest part. The barrel is tested: scalding, with steam today, checks that it is watertight, and its exact capacity is measured.<sup class="ref"><a href="#src-acad">1</a>,<a href="#src-genty">2</a></sup></p><p class="L fr">Enfin, la marque : le nom du tonnelier, et souvent la chauffe ou l’origine du bois, gravés au fond — autrefois au burin ou au fer, aujourd’hui au laser. Ici, la marque de la tonnellerie François Frères, fondée en 1910 à Saint-Romain, dans la Côte-d’Or.<sup class="ref"><a href="#src-genty">2</a>,<a href="#src-jr">5</a></sup></p><p class="L en">Finally, the mark: the cooper’s name, and often the toast or the origin of the wood, engraved on the head — once with a chisel or a branding iron, today by laser. Here, the mark of the François Frères cooperage, founded in 1910 in Saint-Romain, in the Côte-d’Or.<sup class="ref"><a href="#src-genty">2</a>,<a href="#src-jr">5</a></sup></p>
+    </div>
+    <div class="st-ph"><figure class="ph-h"><button type="button" class="zoom" data-i="22" style="aspect-ratio:.68" aria-label="Agrandir / Enlarge"><img src="img/finished_barrel.webp" alt="Le trou de bonde, sur le bouge / The bung hole, on the bilge" loading="lazy" decoding="async" width="1090" height="1601"></button><figcaption data-fr="Le trou de bonde, sur le bouge" data-en="The bung hole, on the bilge">Le trou de bonde, sur le bouge</figcaption></figure><figure class="ph-h"><button type="button" class="zoom" data-i="23" style="aspect-ratio:.68" aria-label="Agrandir / Enlarge"><img src="img/laser_mark.webp" alt="Le marquage au laser / Laser marking" loading="lazy" decoding="async" width="1600" height="1377"></button><figcaption data-fr="Le marquage au laser" data-en="Laser marking">Le marquage au laser</figcaption></figure></div>
+  </section>
+
+  <section class="sec" id="anatomie">
+    <div class="sec-head">
+      <h2 data-fr="Anatomie <em>d’une barrique</em>" data-en="Anatomy <em>of a barrel</em>">Anatomie <em>d’une barrique</em></h2>
+      <p data-fr="Les mots du tonnelier, de la douelle au jable." data-en="The cooper’s words, from stave to croze.">Les mots du tonnelier, de la douelle au jable.</p>
+    </div>
+    <div class="anat-card"><button type="button" class="zoom anat-zoom" data-i="24" aria-label="Agrandir / Enlarge"><img src="img/barrel_anatomy_fr.webp" data-src-fr="img/barrel_anatomy_fr.webp" data-src-en="img/barrel_anatomy.webp" alt="Anatomie d’une barrique / Anatomy of a barrel" loading="lazy" decoding="async" width="1144" height="1375"></button></div>
+  </section>
+
+  <section class="sec" id="formats">
+    <div class="sec-head">
+      <h2 data-fr="Les formats <em>de fûts</em>" data-en="Cask <em>sizes</em>">Les formats <em>de fûts</em></h2>
+      <p data-fr="Chaque région a son fût. Trois contenances restent courantes dans les tonnelleries françaises : 225, 228 et 350 litres."
+         data-en="Each region has its cask. Three capacities remain common in French cooperages: 225, 228 and 350 litres.">Chaque région a son fût. Trois contenances restent courantes dans les tonnelleries françaises : 225, 228 et 350 litres.</p>
+    </div>
+    <div class="fgrid"><div class="fmt panel"><b class="vol">225 L</b><h3 data-fr="Barrique bordelaise" data-en="Bordeaux barrique">Barrique bordelaise</h3><p class="L fr">La barrique du Bordelais.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">The Bordeaux cask.<sup class="ref"><a href="#src-genty">2</a></sup></p></div><div class="fmt panel"><b class="vol">228 L</b><h3 data-fr="Pièce de Bourgogne" data-en="Burgundy pièce">Pièce de Bourgogne</h3><p class="L fr">Dite aussi « pièce de Beaune ».<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">Also called the “pièce de Beaune”.<sup class="ref"><a href="#src-genty">2</a></sup></p></div><div class="fmt panel"><b class="vol">212 L</b><h3 data-fr="Mâconnaise" data-en="Mâconnaise">Mâconnaise</h3><p class="L fr">Un des trois fûts fixés par la loi du 13 juin 1866, abrogée en 2007.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">One of the three casks set by the law of 13 June 1866, repealed in 2007.<sup class="ref"><a href="#src-genty">2</a></sup></p></div><div class="fmt panel"><b class="vol">350 L</b><h3 data-fr="Fût à Cognac" data-en="Cognac cask">Fût à Cognac</h3><p class="L fr">Agrandi depuis un modèle ancien de 275–280 L, de même forme.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">Enlarged from an older 275–280 L model of the same shape.<sup class="ref"><a href="#src-genty">2</a></sup></p></div><div class="fmt panel"><b class="vol">600 L</b><h3 data-fr="Demi-muid" data-en="Demi-muid">Demi-muid</h3><p class="L fr">Un grand fût, au-delà des barriques.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">A large cask, beyond barrique size.<sup class="ref"><a href="#src-genty">2</a></sup></p></div><div class="fmt panel"><b class="vol">900 L</b><h3 data-fr="Tonneau (unité de vente)" data-en="Tonneau (trade unit)">Tonneau (unité de vente)</h3><p class="L fr">À Bordeaux, une unité de compte du vrac : 4 barriques. Pas un fût.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en">In Bordeaux, a unit for bulk sales: 4 barriques. Not a cask.<sup class="ref"><a href="#src-genty">2</a></sup></p></div></div>
+    <div class="chips-note panel"><p class="L fr"><b>Barrique ou copeaux&nbsp;?</b> Depuis 2005, l’Union européenne autorise l’élevage du vin avec des copeaux de chêne, en cuve. C’est bien moins cher, et ce sont souvent les tonneliers qui les fournissent, à partir des chutes de fabrication : les deux se complètent plus qu’ils ne s’opposent.<sup class="ref"><a href="#src-acad">1</a></sup></p><p class="L en"><b>Barrel or chips?</b> Since 2005 the European Union has allowed wine to be aged with oak chips, in tanks. It is far cheaper, and it is often coopers who supply them, from manufacturing offcuts: the two complement each other more than they compete.<sup class="ref"><a href="#src-acad">1</a></sup></p></div>
+    <details class="pro28 panel" id="etapes">
+      <summary><span data-fr="Les 28 étapes d’une barrique, d’hier à aujourd’hui" data-en="The 28 steps of a barrel, then and now">Les 28 étapes d’une barrique, d’hier à aujourd’hui</span></summary>
+      <div class="t28wrap"><p class="L fr note">Aucune étape n’a disparu avec la mécanisation : les machines ont seulement remplacé les outils.<sup class="ref"><a href="#src-genty">2</a></sup></p><p class="L en note">No step has disappeared with mechanisation: machines have simply replaced the tools.<sup class="ref"><a href="#src-genty">2</a></sup></p><table class="t28"><thead><tr><th></th><th><span data-fr="Étape" data-en="Step">Étape</span></th><th><span data-fr="Autrefois" data-en="Then">Autrefois</span></th><th><span data-fr="Aujourd’hui" data-en="Now">Aujourd’hui</span></th></tr></thead><tbody><tr class="grp"><th colspan="4"><span data-fr="Commun" data-en="Common">Commun</span></th></tr><tr><td class="n">1</td><td><span data-fr="Maturation" data-en="Maturation">Maturation</span></td><td><span data-fr="Maturation passive" data-en="Passive maturation">Maturation passive</span></td><td><span data-fr="Maturation contrôlée ou active" data-en="Controlled or active maturation">Maturation contrôlée ou active</span></td></tr><tr><td class="n">2</td><td><span data-fr="Séchage" data-en="Drying">Séchage</span></td><td><span data-fr="Séchage passif" data-en="Passive drying">Séchage passif</span></td><td><span data-fr="Séchage actif" data-en="Active drying">Séchage actif</span></td></tr><tr class="grp"><th colspan="4"><span data-fr="La coque" data-en="The body">La coque</span></th></tr><tr><td class="n">3</td><td><span data-fr="Écourtage" data-en="Docking">Écourtage</span></td><td><span data-fr="Scie égoïne" data-en="Handsaw">Scie égoïne</span></td><td><span data-fr="Machine combinée" data-en="Combined machine">Machine combinée</span></td></tr><tr><td class="n">4</td><td><span data-fr="Dolage" data-en="Backing">Dolage</span></td><td><span data-fr="Plane" data-en="Drawknife">Plane</span></td><td><span data-fr="Machine combinée" data-en="Combined machine">Machine combinée</span></td></tr><tr><td class="n">5</td><td><span data-fr="Évidage" data-en="Hollowing">Évidage</span></td><td><span data-fr="Couteau de revers" data-en="Hollowing knife">Couteau de revers</span></td><td><span data-fr="Machine combinée" data-en="Combined machine">Machine combinée</span></td></tr><tr><td class="n">6</td><td><span data-fr="Jointage" data-en="Jointing">Jointage</span></td><td><span data-fr="Colombe" data-en="Long jointer plane">Colombe</span></td><td><span data-fr="Machine combinée" data-en="Combined machine">Machine combinée</span></td></tr><tr><td class="n">7</td><td><span data-fr="Appareillage" data-en="Matching">Appareillage</span></td><td><span data-fr="Table d’appareillage" data-en="Matching bench">Table d’appareillage</span></td><td><span data-fr="Automatisation" data-en="Automated">Automatisation</span></td></tr><tr><td class="n">8</td><td><span data-fr="Montage" data-en="Raising">Montage</span></td><td><span data-fr="Clef de montage + cercle de moule" data-en="Raising key + raising hoop">Clef de montage + cercle de moule</span></td><td><span data-fr="Machine à mettre en rose" data-en="Raising machine">Machine à mettre en rose</span></td></tr><tr><td class="n">9</td><td><span data-fr="Chauffe de cintrage" data-en="Bending heat">Chauffe de cintrage</span></td><td><span data-fr="Feu + eau" data-en="Fire + water">Feu + eau</span></td><td><span data-fr="Vapeur ou immersion" data-en="Steam or immersion">Vapeur ou immersion</span></td></tr><tr><td class="n">10</td><td><span data-fr="Cintrage" data-en="Bending">Cintrage</span></td><td><span data-fr="Cabestan à câble" data-en="Cable windlass">Cabestan à câble</span></td><td><span data-fr="Cabestan à câble / mâchoires" data-en="Cable windlass / jaws">Cabestan à câble / mâchoires</span></td></tr><tr><td class="n">11</td><td><span data-fr="Bousinage" data-en="Toasting">Bousinage</span></td><td><span data-fr="Chauffe humaine" data-en="Fire tended by hand">Chauffe humaine</span></td><td><span data-fr="Chauffe thermorégulée" data-en="Temperature-controlled">Chauffe thermorégulée</span></td></tr><tr><td class="n">12</td><td><span data-fr="Rognage – chanfrein" data-en="Trimming – chamfer">Rognage – chanfrein</span></td><td><span data-fr="Asse" data-en="Adze">Asse</span></td><td><span data-fr="Rogneuse" data-en="Trimming machine">Rogneuse</span></td></tr><tr><td class="n">13</td><td><span data-fr="Rognage – mise à niveau" data-en="Trimming – levelling">Rognage – mise à niveau</span></td><td><span data-fr="Rabot" data-en="Plane">Rabot</span></td><td><span data-fr="Rogneuse" data-en="Trimming machine">Rogneuse</span></td></tr><tr><td class="n">14</td><td><span data-fr="Rognage – pas d’asse" data-en="Trimming – howel">Rognage – pas d’asse</span></td><td><span data-fr="Asse" data-en="Adze">Asse</span></td><td><span data-fr="Rogneuse" data-en="Trimming machine">Rogneuse</span></td></tr><tr><td class="n">15</td><td><span data-fr="Rognage – jable" data-en="Trimming – croze">Rognage – jable</span></td><td><span data-fr="Ruelle" data-en="Croze">Ruelle</span></td><td><span data-fr="Rogneuse" data-en="Trimming machine">Rogneuse</span></td></tr><tr class="grp"><th colspan="4"><span data-fr="Les fonds" data-en="The heads">Les fonds</span></th></tr><tr><td class="n">16</td><td><span data-fr="Usinage" data-en="Machining">Usinage</span></td><td><span data-fr="Rabot" data-en="Plane">Rabot</span></td><td><span data-fr="Corroyeuse 4 faces" data-en="Four-sided planer">Corroyeuse 4 faces</span></td></tr><tr><td class="n">17</td><td><span data-fr="Assemblage" data-en="Joining">Assemblage</span></td><td><span data-fr="Tourillons / pointes" data-en="Dowels / nails">Tourillons / pointes</span></td><td><span data-fr="Bouvetage" data-en="Tongue and groove">Bouvetage</span></td></tr><tr><td class="n">18</td><td><span data-fr="Taillage" data-en="Cutting">Taillage</span></td><td><span data-fr="Scie à chantourner + plane" data-en="Bow saw + drawknife">Scie à chantourner + plane</span></td><td><span data-fr="Taileuse de fonds" data-en="Head-cutting machine">Taileuse de fonds</span></td></tr><tr class="grp"><th colspan="4"><span data-fr="Les cercles" data-en="The hoops">Les cercles</span></th></tr><tr><td class="n">19</td><td><span data-fr="Découpage" data-en="Cutting">Découpage</span></td><td><span data-fr="Burin / marteau" data-en="Chisel / hammer">Burin / marteau</span></td><td><span data-fr="Cisaille" data-en="Shears">Cisaille</span></td></tr><tr><td class="n">20</td><td><span data-fr="Gironnage" data-en="Flaring">Gironnage</span></td><td><span data-fr="Poinçonnage / torsion" data-en="Punching / twisting">Poinçonnage / torsion</span></td><td><span data-fr="À plat / sur la tranche" data-en="Flat / on edge">À plat / sur la tranche</span></td></tr><tr><td class="n">21</td><td><span data-fr="Rivetage" data-en="Riveting">Rivetage</span></td><td><span data-fr="Marteau + poinçon / riveuse" data-en="Hammer + punch / riveter">Marteau + poinçon / riveuse</span></td><td><span data-fr="Riveteuse" data-en="Riveting machine">Riveteuse</span></td></tr><tr class="grp"><th colspan="4"><span data-fr="Commun" data-en="Common">Commun</span></th></tr><tr><td class="n">22</td><td><span data-fr="Fonçage" data-en="Heading">Fonçage</span></td><td><span data-fr="Ajout de farine de froment" data-en="Wheat flour added">Ajout de farine de froment</span></td><td><span data-fr="Pas d’ajout" data-en="Nothing added">Pas d’ajout</span></td></tr><tr><td class="n">23</td><td><span data-fr="Cerclage" data-en="Hooping">Cerclage</span></td><td><span data-fr="Chasse + marteau" data-en="Hoop driver + hammer">Chasse + marteau</span></td><td><span data-fr="Cercleuse" data-en="Hooping machine">Cercleuse</span></td></tr><tr><td class="n">24</td><td><span data-fr="Trou de bonde" data-en="Bung hole">Trou de bonde</span></td><td><span data-fr="Bondonnière" data-en="Bung auger">Bondonnière</span></td><td><span data-fr="Perceuse" data-en="Drill">Perceuse</span></td></tr><tr><td class="n">25</td><td><span data-fr="Ponçage" data-en="Sanding">Ponçage</span></td><td><span data-fr="Bastringue + guistre" data-en="Spokeshave + scraper">Bastringue + guistre</span></td><td><span data-fr="Ponceuse" data-en="Sander">Ponceuse</span></td></tr><tr><td class="n">26</td><td><span data-fr="Étanchéité" data-en="Leak test">Étanchéité</span></td><td><span data-fr="Échaudage" data-en="Scalding">Échaudage</span></td><td><span data-fr="Échaudage vapeur" data-en="Steam scalding">Échaudage vapeur</span></td></tr><tr><td class="n">27</td><td><span data-fr="Contenance" data-en="Capacity">Contenance</span></td><td><span data-fr="Pesée en eau" data-en="Weighing with water">Pesée en eau</span></td><td><span data-fr="Machine à épalement" data-en="Gauging machine">Machine à épalement</span></td></tr><tr><td class="n">28</td><td><span data-fr="Personnalisation" data-en="Marking">Personnalisation</span></td><td><span data-fr="Burin / marque à feu ou à encre" data-en="Chisel / brand or ink">Burin / marque à feu ou à encre</span></td><td><span data-fr="Laser" data-en="Laser">Laser</span></td></tr></tbody></table></div>
+    </details>
+  </section>
+
+  <section class="sec" id="sources">
+    <div class="sec-head"><h2 data-fr="Sources" data-en="Sources">Sources</h2></div>
+    <ol class="sources-list"><li id="src-acad"><span data-fr="B. Thibaut et R. Teissier du Cros, « Bois et tonnellerie : le mariage de la vigne et de la forêt », Académie d’Agriculture de France, Encyclopédie, fiche Questions sur… n° 02.03.Q13 (2018, revue en mars 2026). <a href=&quot;https://www.academie-agriculture.fr/sites/default/files/publications/encyclopedie/bois_et_tonnellerie.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>PDF</a>" data-en="B. Thibaut and R. Teissier du Cros, “Bois et tonnellerie : le mariage de la vigne et de la forêt” (Wood and cooperage: the marriage of vine and forest), French Academy of Agriculture, Encyclopaedia, sheet No. 02.03.Q13 (2018, revised March 2026). <a href=&quot;https://www.academie-agriculture.fr/sites/default/files/publications/encyclopedie/bois_et_tonnellerie.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>PDF</a>">B. Thibaut et R. Teissier du Cros, « Bois et tonnellerie : le mariage de la vigne et de la forêt », Académie d’Agriculture de France, Encyclopédie, fiche Questions sur… n° 02.03.Q13 (2018, revue en mars 2026). <a href="https://www.academie-agriculture.fr/sites/default/files/publications/encyclopedie/bois_et_tonnellerie.pdf" target="_blank" rel="noopener">PDF</a></span></li><li id="src-genty"><span data-fr="C. Genty (2025), « Entre réalité semi-mécanisée et esprit artisanal, la tonnellerie française, une activité économique millénaire », <i>Revue forestière française</i>, 76(1), p. 87-96 — dont le tableau des 28 étapes de la tonnellerie et la loi du 13 juin 1866 sur les contenances. <a href=&quot;https://doi.org/10.20870/revforfr.2024.9253&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>doi:10.20870/revforfr.2024.9253</a>" data-en="C. Genty (2025), “Entre réalité semi-mécanisée et esprit artisanal, la tonnellerie française, une activité économique millénaire” (French cooperage between semi-mechanisation and craftsmanship), <i>Revue forestière française</i>, 76(1), pp. 87-96 — including the table of the 28 steps of cooperage and the law of 13 June 1866 on capacities. <a href=&quot;https://doi.org/10.20870/revforfr.2024.9253&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>doi:10.20870/revforfr.2024.9253</a>">C. Genty (2025), « Entre réalité semi-mécanisée et esprit artisanal, la tonnellerie française, une activité économique millénaire », <i>Revue forestière française</i>, 76(1), p. 87-96 — dont le tableau des 28 étapes de la tonnellerie et la loi du 13 juin 1866 sur les contenances. <a href="https://doi.org/10.20870/revforfr.2024.9253" target="_blank" rel="noopener">doi:10.20870/revforfr.2024.9253</a></span></li><li id="src-pollon"><span data-fr="M. Pollon et al. (2023), « Volatile Compound Release from Oak Chips in Model Wine Media: Combined Influence of Toasting Degree, Size, Time of Contact, and Ethanol Content », <i>Journal of Agricultural and Food Chemistry</i>, 71(36), p. 13440-13450. <a href=&quot;https://pubmed.ncbi.nlm.nih.gov/37664949/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>PubMed</a>" data-en="M. Pollon et al. (2023), “Volatile Compound Release from Oak Chips in Model Wine Media: Combined Influence of Toasting Degree, Size, Time of Contact, and Ethanol Content”, <i>Journal of Agricultural and Food Chemistry</i>, 71(36), pp. 13440-13450. <a href=&quot;https://pubmed.ncbi.nlm.nih.gov/37664949/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>PubMed</a>">M. Pollon et al. (2023), « Volatile Compound Release from Oak Chips in Model Wine Media: Combined Influence of Toasting Degree, Size, Time of Contact, and Ethanol Content », <i>Journal of Agricultural and Food Chemistry</i>, 71(36), p. 13440-13450. <a href="https://pubmed.ncbi.nlm.nih.gov/37664949/" target="_blank" rel="noopener">PubMed</a></span></li><li id="src-darney"><span data-fr="AFP, « “Grand cru” des forêts françaises, le chêne de Darney s’arrache à prix d’or », 13 décembre 2020 (vente ONF de Darney, Vosges). <a href=&quot;https://www.linfodurable.fr/grand-cru-des-forets-francaises-le-chene-de-darney-sarrache-prix-dor-21922&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>L’Info durable</a>" data-en="AFP, “‘Grand cru’ des forêts françaises, le chêne de Darney s’arrache à prix d’or” (The grand cru of French forests: Darney oak fetches a fortune), 13 December 2020 (ONF sale at Darney, Vosges). <a href=&quot;https://www.linfodurable.fr/grand-cru-des-forets-francaises-le-chene-de-darney-sarrache-prix-dor-21922&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>L’Info durable</a>">AFP, « “Grand cru” des forêts françaises, le chêne de Darney s’arrache à prix d’or », 13 décembre 2020 (vente ONF de Darney, Vosges). <a href="https://www.linfodurable.fr/grand-cru-des-forets-francaises-le-chene-de-darney-sarrache-prix-dor-21922" target="_blank" rel="noopener">L’Info durable</a></span></li><li id="src-jr"><span data-fr="JancisRobinson.com, « The first family of oak » (la tonnellerie François Frères, fondée en 1910 à Saint-Romain). <a href=&quot;https://www.jancisrobinson.com/articles/the-first-family-of-oak&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>jancisrobinson.com</a>" data-en="JancisRobinson.com, “The first family of oak” (the François Frères cooperage, founded in 1910 in Saint-Romain). <a href=&quot;https://www.jancisrobinson.com/articles/the-first-family-of-oak&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>jancisrobinson.com</a>">JancisRobinson.com, « The first family of oak » (la tonnellerie François Frères, fondée en 1910 à Saint-Romain). <a href="https://www.jancisrobinson.com/articles/the-first-family-of-oak" target="_blank" rel="noopener">jancisrobinson.com</a></span></li></ol>
+    <p class="credit"><span data-fr="Textes et photos : © 2026 Christophe A. Paul. Photos prises à la tonnellerie François Frères, Saint-Romain (Côte-d’Or), en novembre 2013 ; schéma « Anatomie d’une barrique » : Christophe A. Paul. Les faits cités renvoient aux sources ci-dessus." data-en="Text and photos: © 2026 Christophe A. Paul. Photos taken at the François Frères cooperage, Saint-Romain (Côte-d’Or), in November 2013; “Anatomy of a barrel” picture: Christophe A. Paul. The facts quoted refer to the sources above.">Textes et photos : © 2026 Christophe A. Paul. Photos prises à la tonnellerie François Frères, Saint-Romain (Côte-d’Or), en novembre 2013 ; schéma « Anatomie d’une barrique » : Christophe A. Paul. Les faits cités renvoient aux sources ci-dessus.</span></p>
+  </section>
+
+</div>
+<dialog class="blb" id="blb"><img alt=""><p></p><button type="button" class="x" aria-label="Fermer / Close">✕</button><button type="button" class="pv" aria-label="Précédente / Previous">‹</button><button type="button" class="nx" aria-label="Suivante / Next">›</button></dialog>
+<script>
+(function(){
+  var G = [{s:"img/logs.webp",fr:"Les grumes de chêne",en:"Oak logs"},{s:"img/grain.webp",fr:"L’écorce et le bois, en coupe",en:"Bark and wood, in section"},{s:"img/grain_2.webp",fr:"Les cernes : un an de croissance par anneau",en:"Growth rings: one year per ring"},{s:"img/splitting.webp",fr:"La fendeuse ouvre le billon dans le fil du bois",en:"The splitter opens the log along the grain"},{s:"img/split_bundles.webp",fr:"Les merrains fendus, en bottes",en:"Split stave wood, in bundles"},{s:"img/seasoning_yard.webp",fr:"Le parc à bois : des allées de merrains",en:"The stave yard: aisles of stave wood"},{s:"img/seasoning_close.webp",fr:"Les piles croisées laissent passer l’air et la pluie",en:"Criss-cross piles let air and rain through"},{s:"img/stave_matching.webp",fr:"L’appareillage : choisir les douelles d’une même barrique",en:"Matching: choosing the staves for one barrel"},{s:"img/stave_machining.webp",fr:"L’usinage des douelles",en:"Machining the staves"},{s:"img/stave_machining_2.webp",fr:"Le merrain passe à la scie",en:"The stave wood goes through the saw"},{s:"img/raising.webp",fr:"Les douelles montées dans le cercle de montage",en:"The staves raised inside the raising hoop"},{s:"img/raising_2.webp",fr:"La « rose » : une jupe de douelles",en:"The “rose”: a skirt of staves"},{s:"img/bending_water.webp",fr:"Le feu dedans, l’eau dehors",en:"Fire inside, water outside"},{s:"img/bending_fire.webp",fr:"Le feu de cintrage",en:"The bending fire"},{s:"img/toasting.webp",fr:"Le bousinage : le feu grille l’intérieur du fût",en:"Toasting: the fire toasts the inside of the cask"},{s:"img/head_boards.webp",fr:"Les planches de fond, assemblées",en:"Head boards, joined"},{s:"img/head_cutting.webp",fr:"La taille du fond en disque",en:"Cutting the head into a disc"},{s:"img/heading.webp",fr:"Le fonçage : le fond entre dans le jable",en:"Heading: the head goes into the croze"},{s:"img/hoop_press.webp",fr:"La cercleuse chasse les cercles",en:"The hooping machine drives the hoops down"},{s:"img/hoop_press_2.webp",fr:"Aux commandes de la cercleuse",en:"At the controls of the hooping machine"},{s:"img/final_hoops.webp",fr:"Les cercles définitifs",en:"The final hoops"},{s:"img/final_hoops_2.webp",fr:"Les barriques terminées attendent le contrôle",en:"Finished barrels waiting to be checked"},{s:"img/finished_barrel.webp",fr:"Le trou de bonde, sur le bouge",en:"The bung hole, on the bilge"},{s:"img/laser_mark.webp",fr:"Le marquage au laser",en:"Laser marking"},{s:"img/barrel_anatomy_fr.webp",sen:"img/barrel_anatomy.webp",fr:"Anatomie d’une barrique",en:"Anatomy of a barrel"}], cur = 0;
+  var dlg = document.getElementById('blb'), im = dlg.querySelector('img'), cap = dlg.querySelector('p');
+  function lang(){ return document.documentElement.lang === 'en' ? 'en' : 'fr'; }
+  function show(i){
+    cur = (i + G.length) % G.length;
+    im.src = (lang() === 'en' && G[cur].sen) || G[cur].s; im.alt = G[cur][lang()];
+    cap.innerHTML = G[cur][lang()] + '<small>' + (cur+1) + ' / ' + G.length + '</small>';
+  }
+  var z = document.querySelectorAll('.st-ph .zoom, .anat-zoom');
+  for(var i=0;i<z.length;i++) z[i].addEventListener('click', function(){ show(+this.getAttribute('data-i')); if(dlg.showModal) dlg.showModal(); });
+  dlg.querySelector('.x').addEventListener('click', function(){ dlg.close(); });
+  dlg.querySelector('.pv').addEventListener('click', function(e){ e.stopPropagation(); show(cur-1); });
+  dlg.querySelector('.nx').addEventListener('click', function(e){ e.stopPropagation(); show(cur+1); });
+  dlg.addEventListener('click', function(e){ if(e.target === dlg) dlg.close(); });
+  document.addEventListener('keydown', function(e){
+    if(!dlg.open) return;
+    if(e.key === 'ArrowLeft') show(cur-1); else if(e.key === 'ArrowRight') show(cur+1);
+  });
+  /* language: the site menu sets <html lang>; data-fr/data-en nodes follow, .L blocks switch by CSS */
+  function apply(){
+    var l = lang();
+    var n = document.querySelectorAll('[data-fr][data-en]');
+    for(var i=0;i<n.length;i++){ if(n[i].tagName.toLowerCase() === 'text') n[i].textContent = n[i].getAttribute('data-'+l); else n[i].innerHTML = n[i].getAttribute('data-'+l); }
+    var t = document.querySelector('title[data-en]'); if(t) document.title = t.getAttribute('data-'+l);
+    var im2 = document.querySelectorAll('img[data-src-'+l+']');
+    for(i=0;i<im2.length;i++) im2[i].src = im2[i].getAttribute('data-src-'+l);
+    if(dlg.open) show(cur);
+  }
+  new MutationObserver(apply).observe(document.documentElement, {attributes:true, attributeFilter:['lang']});
+  if(document.documentElement.lang === 'en') apply();
+})();
+</script>
+</body>
+</html>

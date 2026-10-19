@@ -1,0 +1,251 @@
+@include bourgogne_common
+@h1 Specification of the controlled designation of origin “Givry”
+@h2 approved by decree no. 2011-1497 of 9 November 2011, JORF of 11 November 2011
+@title Specification of the controlled designation of origin “GIVRY”
+@center approved by decree no. 2011-1497 of 9 November 2011, JORF of 11 November 2011
+# CHAPTER I
+## I. – Name of the designation
+Only wines meeting the specific provisions set out below may claim the controlled designation of origin “Givry”, initially recognised by the decree of 8 February 1946.
+## II. – Geographical denominations and complementary terms
+1° – The name of the controlled designation of origin may be supplemented by the term “premier cru” for wines meeting the production conditions laid down for this term in the present specification.
+2° – The name of the controlled designation of origin may be supplemented by the term “premier cru” and followed by the name of one of the climats listed below, for wines meeting the production conditions laid down for the term “premier cru” in the present specification.
+3° – The name of the controlled designation of origin may be followed by the name of one of the climats listed below, for wines meeting the production conditions laid down for the term “premier cru” in the present specification.
+| LIST OF CLIMATS | < |
+| – “A Vigne Rouge”; – “Clos du Cellier aux Moines”; – “Champ Nalot”; – “Clos Charlé”; – “Clos de la Baraude”; – “Clos du Cras long”; – “Clos du Vernoy”; – “Clos Jus”; – “Clos Marceaux”; – “Clos Marole”; – “Clos Salomon”; – “Clos Saint-Paul”; – “Clos Saint-Pierre”; – “Crausot”; – “Crémillons”; – “En Choué”; – “En Veau”; – “La Brûlée”; – “La Grande Berge”; | – “La Matrosse”; – “La Petite Berge”; – “La Plante”; – “Le Champ Lalot”; – “Le Médenchot”; – “Le Paradis”; – “Le Petit Prétan”; – “Le Vernoy”; – “Le Vigron”; – “Les Bois Chevaux”; – “Les Bois Gautiers”; – “Les Combes”; – “Les Galaffres”; – “Les Grandes Vignes”; – “Les Grands Prétans”; – “Le Pied du Clou”; – “Petit Marole”; – “Pied de Chaume”; – “Servoisine”. |
+## III. – Colour and types of product
+| CONTROLLED DESIGNATION OF ORIGIN, TERM, NAME OF CLIMAT | COLOUR AND TYPE OF PRODUCT |
+| AOC “Givry” | Still white or red wines |
+| AOC “Givry”: – supplemented by the term “premier cru”; – or supplemented by the term “premier cru” and followed by the name of one of the climats referred to in point II; – or followed by the name of one of the climats referred to in point II. | Still white or red wines |
+## IV. – Areas and zones in which the various operations are carried out
+### 1° – Geographical area
+The harvesting of the grapes, the vinification, the elaboration and the ageing of the wines are carried out within the territory of the following communes of the Saône-et-Loire department: Dracy-le-Fort, Givry and Jambles.
+### 2° – Delimited parcel area
+a) – The wines come exclusively from vines situated within the delimited parcel production area as approved by the National Institute of Origin and Quality at the session of the competent national committee of 6 March 1997. The National Institute of Origin and Quality lodges with the town halls of the communes referred to in 1° the graphic documents establishing the parcel boundaries of the production area thus approved.
+b) – Wines eligible for the term “premier cru” come exclusively from vines situated within the specific delimited parcel production area as approved by the National Institute of Origin and Quality at the sessions of the competent national committee of 6 March 1997 and 16 November 2010. The National Institute of Origin and Quality lodges with the town halls of the communes referred to in 1° the graphic documents establishing the parcel boundaries of the production area thus approved.
+### 3° – Immediate proximity area
+The immediate proximity area, defined by derogation for the vinification, the elaboration and the ageing of the wines, is made up of the territory of the following communes:
+@listop BG_PROX_CO | +Gevrey-Chambertin
+@@BG_PROX_RH
+@listop BG_PROX_SL | -Dracy-le-Fort | -Givry | -Jambles
+@@BG_PROX_YO
+## V. – Grape varieties
+### 1° – Grape varieties
+a) – The white wines come from the following varieties:
+- main variety: chardonnay B;
+- accessory varieties: pinot blanc B and pinot gris G.
+b) – The red wines come from the following varieties:
+- main variety: pinot noir N;
+- accessory varieties: chardonnay B and pinot gris G.
+### 2° – Proportion rules on the holding
+The accessory varieties are authorised only as mixed plantings within the vines, and their total proportion is limited to 15 % within each parcel.
+## VI. – Management of the vineyard
+### 1° – Training methods
+a) – Planting density
+- The vines have a minimum planting density of 8,000 plants per hectare, with a spacing between rows less than or equal to 1.40 metres and a spacing between plants within the same row greater than or equal to 0.80 metre;
+- The vines may be planted “en foule” (randomly, without rows), provided that the minimum planting density is respected and the spacing between plants is greater than 0.50 metre.
+b) – Pruning rules
+The wines come from vines pruned according to the following provisions:
+| COLOUR OF THE WINES | PRUNING RULES |
+| **GENERAL PROVISIONS** | < |
+| White wines | The vines are pruned with a maximum of 10 free eyes per plant: – either short pruning (vines trained as Royat cordon, bilateral cordon and fan); – or single Guyot long pruning. |
+| Red wines | The vines are pruned with a maximum of 8 free eyes per plant: – either short pruning (vines trained as Royat cordon, bilateral cordon, gobelet and fan); – or single Guyot long pruning. |
+| **PARTICULAR PROVISIONS** | < |
+| Single Guyot pruning may be adapted with a 2nd spur allowing the position of the cane to be alternated from one year to the next. Whatever the pruning method, the vines may be pruned with additional free eyes provided that, at the phenological stage corresponding to 11 or 12 leaves, the number of fruit-bearing shoots of the year per plant is less than or equal to the number of free eyes defined in the pruning rules. | < |
+c) – Trellising and foliage height rules
+- The height of trellised foliage is at least equal to 0.6 times the spacing between rows, the height of trellised foliage being measured between the lower limit of the foliage, set at least 0.30 metre above the ground, and the upper trimming limit;
+- When the vines are not trained in gobelet, they must be raised on a stake or trellised; the trellising is maintained;
+- When the vines are planted “en foule”, they are trained on stakes.
+d) – Average maximum load per parcel
+The average maximum load per parcel is set at:
+- 10,500 kilograms per hectare for the white wines;
+- 9,000 kilograms per hectare for the red wines.
+e) – Threshold of missing vines
+The percentage of dead or missing vine plants referred to in Article D. 645-4 of the Rural and Maritime Fishing Code is set at 20 %.
+f) – Cultivation condition of the vine
+The parcels are managed so as to ensure a good overall cultivation condition of the vine, in particular its sanitary condition and the upkeep of its soil.
+### 2° – Other cultivation practices
+a) – In order to preserve the characteristics of the physical and biological environment, which constitutes a fundamental element of the terroir:
+- Permanent grass cover of the headlands is compulsory;
+- Any substantial modification of the morphology, the subsoil, the arable layer or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin is prohibited, with the exception of classic deep-ploughing works.
+b) – Vine plantings and replacements are carried out with healthy plant material that has undergone hot-water treatment or any other method making it possible to combat flavescence dorée.
+### 3° – Irrigation
+Irrigation is prohibited.
+## VII. – Harvest, transport and ripeness of the grapes
+### 1° – Harvest
+a) – The wines come from grapes harvested at good ripeness.
+b) – Particular provisions for transport of the harvest
+The harvest is protected from rain during its transport and on its reception.
+### 2° – Ripeness of the grapes
+The sugar content of the grapes and the natural alcoholic strengths by volume of the wines meet the following characteristics:
+| COLOUR OF THE WINES | MINIMUM SUGAR CONTENT OF THE GRAPES (grams per litre of must) | MINIMUM NATURAL ALCOHOLIC STRENGTH BY VOLUME |
+| **AOC “Givry”** | < | < |
+| White wines | 178 | 11.0 % |
+| Red wines | 180 | 10.5 % |
+| **Wines eligible for the term “premier cru”** | < | < |
+| White wines | 187 | 11.5 % |
+| Red wines | 189 | 11.0 % |
+## VIII. – Yields – Entry into production
+### 1° – Yield and limit yield
+The yield and limit yield referred to in Article D. 645-7 of the Rural and Maritime Fishing Code are set at:
+| COLOUR OF THE WINES | YIELD (hectolitres per hectare) | LIMIT YIELD (hectolitres per hectare) |
+| **AOC “Givry”** | < | < |
+| White wines | 60 | 64 |
+| Red wines | 54 | 58 |
+| **Wines eligible for the term “premier cru”** | < | < |
+| White wines | 58 | 62 |
+| Red wines | 52 | 56 |
+### 2° – Entry into production of young vines
+The benefit of the controlled designation of origin may only be granted to wines coming from:
+- parcels of young vines only from the 2nd year following that in the course of which planting was carried out in place before 31 July;
+- parcels of young vines only from the 1st year following that in the course of which grafting in place was carried out before 31 July;
+- parcels of vines that have been top-grafted, at the earliest in the 1st year following that in the course of which the top-grafting was carried out before 31 July, and once the parcels no longer contain any variety other than those permitted for the appellation. By derogation, in the year following that in the course of which the top-grafting was carried out before 31 July, the varieties permitted for the appellation may represent only 80 % of the planting of each parcel concerned.
+## IX. – Processing, elaboration, ageing, packaging, storage
+### 1° – General provisions
+The wines are vinified in accordance with local, fair and constant usages.
+a) – Blending of varieties
+Wines produced from parcels with mixed plantings are vinified by blending the grapes.
+b) – Malolactic fermentation
+At the packaging stage, the red wines have a maximum malic acid content of 0.4 gram per litre.
+c) – Analytical standards
+Finished wines, ready to be released for consumption within the meaning of Article D. 645-18-I of the Rural and Maritime Fishing Code, have a maximum fermentable sugar content (glucose + fructose) of:
+| COLOUR OF THE WINES | MAXIMUM FERMENTABLE SUGAR CONTENT (glucose + fructose) |
+| White wines | – 3 grams per litre; – or 4 grams per litre if the total acidity is greater than or equal to 55.10 milliequivalents per litre, i.e. 4.13 grams per litre expressed as tartaric acid (or 2.7 grams per litre expressed as H2SO4). |
+| Red wines | 2 grams per litre |
+d) – Oenological practices and physical treatments
+- Subtractive enrichment techniques (TSE) are authorised for the red wines within the limit of a concentration rate of 10 %;
+- The use of pieces of wood is prohibited;
+- After enrichment, the wines do not exceed the following total alcoholic strengths by volume:
+| CONTROLLED DESIGNATION OF ORIGIN, TERM | TOTAL ALCOHOLIC STRENGTH BY VOLUME |
+| AOC “Givry” | 13.5 % |
+| Wines eligible for the term “premier cru” | 14 % |
+e) – Prohibited equipment
+Continuous presses are prohibited.
+f) – Vat capacity
+Every operator has an overall vat capacity (vinification and storage) equivalent to at least:
+- for the white wines, the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration;
+- for the red wines, 150 % of the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration.
+g) – Upkeep of the cellar and equipment
+The cellar and the vinification equipment are well maintained; this is reflected in particular by:
+- general hygiene of the elaboration premises, with general cleanliness, well-maintained floors, adequate drainage and a surface avoiding stagnation;
+- harmlessness of the equipment and products coming into contact with the wine;
+- separation and specificity of the premises: premises without the same functions must be separated, such as storage areas for plant-protection products, cleaning products or hydrocarbons, from the premises for vinification, ageing and storage of dry goods (corks, cartons);
+- management of wine effluents: effluents must be removed as quickly as possible from foodstuff premises and deposited in well-maintained containers that are easy to clean and can be closed; waste storage areas must be kept clean; waste must be disposed of hygienically and in an environmentally friendly manner; a waste storage and removal area must be provided;
+- absence of hazardous or odorous substances in the vinification, ageing and storage premises (odour).
+h) – Ageing
+- The wines are aged at least until 1 April of the year following that of the harvest;
+- The temperature of the containers during the ageing phase is controlled and less than or equal to 25 °C.
+### 2° – Provisions relating to packaging
+For every packaged lot, the operator keeps available for the approved control body:
+- the information appearing in the register of handling operations referred to in Article D. 645-18 of the Rural and Maritime Fishing Code;
+- the reports of analyses carried out before or after packaging.
+These analysis reports are kept for a period of 6 months from the date of packaging.
+### 3° – Provisions relating to storage
+The operator provides evidence of a protected storage place for wines packaged in unlabelled bottles, with a temperature of between 5 °C and 22 °C.
+### 4° – Provisions relating to the circulation of products and placing on the market for the consumer
+At the end of the ageing period, the wines are placed on the market for the consumer from 15 April of the year following that of the harvest.
+## X. – Link with the geographical area
+### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+The geographical area is part of the “Côte chalonnaise”, in Burgundy. It is situated about ten kilometres west of Chalon-sur-Saône, in the Saône-et-Loire department. The “Côte chalonnaise” is a limestone relief stretching in a north–south direction, generally facing east. It forms the boundary between the limestone foothills of the granite massif of Mont-Saint-Vincent to the west and the Saône plain to the east. The geographical area thus extends over the territory of the communes of Dracy-le-Fort, Givry and Jambles.
+The main relief takes the form of a hillside sloping gently in its lower part, on a limestone substratum, and steeper in its upper part. The whole dates from the Upper Jurassic. Small valleys cut across the main slope. They expose Middle Jurassic limestone formations and locally reach the Lias marls. This topography generates a certain diversity of exposures. The altitude of the hillsides of “Givry” is between 200 metres and 420 metres. All the substrata are covered by a stony slope deposit.
+The calcareous nature of the subsoil, combined with the eastward dip of the geological layers, generates relatively undiversified clay-limestone soils. Shallow, rather dry and of moderate fertility on the limestone levels, they are deeper and benefit from a good water reserve on the marly levels.
+The climate is a modified oceanic climate subject to southern and continental influences. Southern mildness penetrates through the Saône valley, attenuating oceanic influences and giving very sunny summer months and average annual rainfall of less than 800 millimetres. Rainfall is evenly distributed over the year, with no summer drought. The general exposure of the vine parcels allows the atmosphere to warm up quickly, early in the morning.
+b) – Description of the human factors contributing to the link
+The establishment of the vine on the “Côte chalonnaise” dates back at least to the 3rd century AD. The vineyard of “Givry” developed from the 10th century, notably under the impetus of the clergy, but also through the creation of lay estates such as “Le Clos Salomon”.
+The wine of “Givry” was highly prized in the Middle Ages, and from 1390 CHARLES VII drank it. HENRI IV made it his everyday wine and even exempted it from entry duties into Paris. At that time the fine Burgundian varieties, pinot noir N and chardonnay B, were already grown on the renowned “climats” (regional name for lieux-dits).
+Nineteenth-century writings, in particular those of JULLIEN, show that the renown of the wines of “Givry” continued to grow and that at that time the vineyard of “Givry” was likened to the vineyard of the “Côte d’Or”. During that century, the area of the vineyard of “Givry” expanded considerably. The remarks made by Jules GUYOT in the 19th century on the high density of plants per hectare still hold true today, as does the strong presence of the pinot noir N variety.
+From the early 1920s, the producers of “Givry” took steps to protect their name, which led to the recognition of a designation of origin by the decree of 8 February 1946. Twenty years after the recognition of the controlled designation of origin “Givry”, the producers of the Saint-Vincent mutual aid committee of the village of Givry created the brotherhood of the “Chevaliers du Cep HENRI IV”, thus perpetuating the attachment of “Givry” to this monarch.
+The vines are mainly worked by small family estates (7 hectares on average). Sales are mainly in bottle. The vineyard, whose area is close to 300 hectares, is planted essentially with the pinot noir N variety, which represents 90 % of the area planted within the delimited area for wines benefiting from the term “premier cru” and 80 % of the area planted within the delimited area for wines benefiting from the controlled designation of origin “Givry”. Annual production reaches 12,000 hectolitres.
+### 2° – Information on the quality and characteristics of the products
+The red wines are fine and elegant, supple, with present but silky tannins and complex aromas generally dominated by fruity notes, most often evolving towards spicy and animal notes. They are slightly rounder and more powerful, and have greater ageing potential, when they come from the “climats” classified as “premier cru”.
+The white wines are dry, fresh and fruity, with a touch of minerality, complex and round on the palate.
+### 3° – Causal interactions
+In an oceanic climatic context, the general exposure of the geographical area towards the rising sun, facing the Saône plain, induces mesoclimatic conditions favourable to the production of great wines, with early morning warming and a situation away from the morning mists that are frequent in the plain.
+Making the most of these favourable conditions, the parcels precisely delimited for the harvesting of the grapes form a very compact group around the commune of Givry. They occupy the hillsides facing east and south, on the various Jurassic substrata in which limestones and marls alternate. The calcareous nature of the substrata and their covering of stony debris, combined with the relief, ensure optimal drainage conditions that offset the regularity of the rainfall. These situations are to be related to the characters of elegance, finesse and suppleness traditionally attributed to the red wines of “Givry”. The parcels delimited for the harvesting of the grapes intended for wines benefiting from the term “premier cru”, in mid-slope situations with south and east exposures, enjoy mesoclimates favourable to obtaining wines that are both ample and elegant.
+The soils, the wealth of the vineyard, receive particular attention from producers, reflected in their practices. Producers have always been committed to preserving the integrity of the vineyard soils, bearing witness to the importance attached to their specificity. In order to best reveal in the wines the quality potential of the soils, producers favour, in the vineyard, limiting the number of eyes at pruning, disbudding, removal of suckers, soil cultivation and a predominantly manual harvest. In the cellar, practices are rooted in local usages.
+From 1776 the renown of the wines of “Givry” was affirmed, as reported by the Abbé COURTÉPÉE, a Burgundian historian, who compared it to that of “Volnay” (a cru of the “Côte de Beaune” known for its finesse and elegance). He cited the “climats” producing the most esteemed wines: the “Clos Jus”, the “Clos Saint Pierre”, the “Clos Saint Paul”, the “Clos Salomon”, the “Cellier aux Moines” and the “Bois Chevaux” for red wines, and the “Champ Pourot” for white wines. Almost all of them still benefit from the term “premier cru”.
+On several occasions in the literature, the supple and silky character of the wines of “Givry” is recalled. These are the characteristics still found and regularly noted by tasters. The present-day renown of all the wines of the controlled designation of origin “Givry” rests on that of the wines from the “climats” classified as “premier cru”. Indeed, some of these “climats” have been known and recognised for centuries.
+## XI. – Transitional measures
+No particular provision.
+## XII. – Rules of presentation and labelling
+### 1° – General provisions
+Wines for which, under the terms of the present specification, the controlled designation of origin “Givry” is claimed and which are presented under the said appellation may not be declared after the harvest, offered to the public, dispatched, put up for sale or sold unless, in the harvest declaration, in advertisements, on leaflets, labels, invoices and any containers whatsoever, the aforesaid controlled designation of origin is entered.
+### 2° – Particular provisions
+a) – The name of a climat that may be associated with the term “premier cru” is placed immediately after the name of the controlled designation of origin and printed in characters whose dimensions, both in height and in width, are not larger than those of the characters making up the name of the controlled designation of origin.
+b) – The labelling of wines benefiting from the controlled designation of origin may specify the name of a smaller geographical unit, provided that:
+- it is the name of a registered lieu-dit (cadastral locality);
+- it appears on the harvest declaration.
+The name of the registered lieu-dit is printed in characters whose dimensions, both in height and in width, are not larger than half those of the characters making up the name of the controlled designation of origin.
+c) – The labelling of wines benefiting from the controlled designation of origin may specify the larger geographical unit “Vin de Bourgogne” or “Grand Vin de Bourgogne”.
+d) – Where the grape variety is indicated on the labelling, this indication does not appear in the same field of vision as the compulsory particulars and is printed in characters whose dimensions do not exceed 2 millimetres.
+# CHAPTER II
+## I. – Declaration obligations
+#### 1. Claim declaration
+The claim declaration is sent to the defence and management body at least fifteen days before circulation between authorised warehousekeepers and at the latest on 10 December of the year of harvest.
+It indicates in particular:
+- the designation claimed;
+- the volume of the wine;
+- the EVV or SIRET number;
+- the name and address of the applicant;
+- the place of storage of the wine.
+It is accompanied in particular by a copy of the harvest declaration and, as the case may be, a copy of the production declaration or an extract of the stock accounts for buyers of grapes and musts.
+#### 2. Declaration prior to transaction and collections
+Every operator wishing to sell in bulk a wine benefiting from the controlled designation of origin makes a transaction declaration for the lot concerned to the approved control body within time limits set in the control plan of between six and fifteen working days before any collection.
+This declaration, accompanied where applicable by a copy of the purchase contract, specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the identification of the containers;
+- the identity of the buyer.
+If collections are made for volumes smaller than those set out in the transaction declaration, the operator informs the approved control body in writing.
+#### 3. Declaration of release for consumption
+Every operator declares to the approved control body each lot of wine intended to be released for consumption within the meaning of Article D. 645-18-I of the Rural and Maritime Fishing Code.
+This declaration may also be drawn up for lots already packaged. It is made within time limits set in the control plan of between six and fifteen working days before release for consumption or before the lots concerned are dispatched from the operator’s cellars.
+It specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the lot number for wines already packaged;
+- the identification of the containers for non-packaged wines.
+However, making available to the approved control body the register referred to in Article D. 645-18 II of the Rural and Maritime Fishing Code serves as the declaration of release for consumption, under the conditions set out in the control plan.
+#### 4. Declaration relating to the dispatch outside the national territory of a non-packaged wine
+Every operator wishing to dispatch outside the national territory a non-packaged wine benefiting from the controlled designation of origin declares it to the approved control body within time limits set in the control plan of between six and fifteen working days before any dispatch.
+#### 5. Fallback declaration
+Every operator carrying out a fallback of a wine benefiting from the controlled designation of origin into a more general controlled designation of origin sends the defence and management body and the approved control body a monthly declaration at the latest on the 1st working day following the tenth day of each month.
+This declaration indicates in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the more general controlled designation of origin of the fallback;
+- the volume concerned by the fallback;
+- the vintage;
+- the state of the lot concerned (bulk, bottle, hermetically sealed vacuum containers…).
+The approved control body transmits without delay a copy of the monthly declaration to the approved control body for the more general controlled designation of origin concerned.
+The defence and management body transmits without delay to the defence and management body of the more general controlled designation of origin concerned the list of operators who have made a monthly fallback declaration, together with a summary statement indicating:
+- the more general controlled designation of origin of the fallback;
+- the volume concerned by the fallback;
+- the vintage(s);
+- the state of the lot(s) concerned (bulk, bottle, hermetically sealed vacuum containers…).
+#### 6. Downgrading declaration
+Every operator carrying out a downgrading of wines benefiting from the controlled designation of origin sends the defence and management body and the approved control body a monthly declaration within time limits set in the control plan. This declaration indicates in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the volume downgraded;
+- the vintage;
+- the date of the downgrading.
+#### 7. Declaration of equipment for TSE
+Every operator holding a concentration apparatus declares it upon purchase to the defence and management body, specifying its specifications. The defence and management body keeps an up-to-date list of operators holding such equipment and sends it each year to the services of the National Institute of Origin and Quality at the latest on 1 September.
+Every operator using a service provider declares it to the defence and management body, which draws up the list of these operators and sends it each year to the services of the National Institute of Origin and Quality at the latest on 1 September.
+#### 8. Reworking of parcels
+Before any development or any works liable to modify the morphology, the subsoil, the arable layer (including any addition of exogenous soil) or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin, with the exception of classic deep-ploughing works, the operator sends a declaration to the defence and management body at least four weeks before the planned start date of the works.
+The defence and management body transmits, without delay, a copy of this declaration to the services of the National Institute of Origin and Quality.
+## II. – Keeping of registers
+#### 1. General plan of the storage and vinification places
+Every vinifying operator keeps up to date and available for the approved control body a general plan of the storage and vinification places, allowing in particular the number, designation and capacity of the containers to be identified.
+#### 2. TSE register
+Every operator carrying out partial concentration of musts keeps an up-to-date TSE register including in particular:
+- the identification of the initial lot (volume and potential alcoholic strength);
+- the volume of water evaporated;
+- the identification of the lot after concentration (volume and potential alcoholic strength).
+@include bg_ch3_2011_tse

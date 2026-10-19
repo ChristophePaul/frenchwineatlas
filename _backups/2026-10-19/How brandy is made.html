@@ -1,0 +1,592 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Brandy Is Made — Cognac, Armagnac & Eau-de-Vie</title>
+<style>
+  :root{
+    --parch:#f4ecd8; --parch2:#efe4c8; --ink:#2b2018; --ink-soft:#5c4a38;
+    --red:#7a1220; --red-lt:#a83247; --red-bg:#f6e2e2;
+    --white:#6f8b1e; --white-lt:#9bb43f; --white-bg:#eef2dd;
+    --sweet:#b8860b; --sweet-lt:#d4a72c; --sweet-bg:#f7eccf;
+    --rose:#c25b6e; --rose-lt:#dd8595; --rose-bg:#fbe6ea;
+    --gold:#b8892b; --line:#c9b98f; --card:#fbf6e9;
+    --co:#a5581f; --co-lt:#c67f42; --ar:#7c3f16; --ar-lt:#a4652f;
+    --mc:#5f6b74; --mc-lt:#889098;
+    --shadow:0 2px 6px rgba(60,40,20,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    color:var(--ink); background:var(--parch);
+    background-image:radial-gradient(circle at 20% 10%,rgba(255,255,255,.35),transparent 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,.10),transparent 55%);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  header.top{
+    text-align:center; padding:26px 16px 10px;
+    border-bottom:3px double var(--gold);
+    background:linear-gradient(#fbf6e9,#f4ecd8);
+  }
+  .titlerow{display:flex; align-items:center; justify-content:center; gap:20px}
+  .tdeco{flex:0 0 auto; width:48px; height:56px; color:var(--gold); opacity:.9}
+  .tdeco.flip{transform:scaleX(-1)}
+  .tdeco svg{width:100%; height:100%; display:block}
+  @media(max-width:560px){ .tdeco{display:none} }
+  header.top h1{
+    margin:0; font-size:clamp(28px,5vw,46px); font-style:italic; letter-spacing:.5px;
+    font-variant:small-caps; color:var(--ink);
+  }
+  header.top p{margin:6px auto 0; max-width:640px; color:var(--ink-soft); font-size:15px}
+  .wrap{max-width:1180px; margin:0 auto; padding:16px}
+
+  /* toggle bar */
+  .tabs{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:18px 0 6px}
+  .tab{
+    cursor:pointer; border:1px solid var(--line); background:var(--card);
+    padding:9px 18px; border-radius:24px; font-size:15px; font-variant:small-caps;
+    letter-spacing:.4px; color:var(--ink-soft); transition:.15s; user-select:none;
+    font-weight:600;
+  }
+  .tab:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+  .tab[data-k="red"].on{background:var(--red); color:#fff; border-color:var(--red)}
+  .tab[data-k="white"].on{background:var(--white); color:#fff; border-color:var(--white)}
+  .tab[data-k="sweet"].on{background:var(--sweet); color:#fff; border-color:var(--sweet)}
+  .tab[data-k="rose"].on{background:var(--rose); color:#fff; border-color:var(--rose)}
+  .tab[data-k="cognac"].on{background:var(--co); color:#fff; border-color:var(--co)}
+  .tab[data-k="armagnac"].on{background:var(--ar); color:#fff; border-color:var(--ar)}
+  .tab[data-k="marc"].on{background:var(--mc); color:#fff; border-color:var(--mc)}
+  .hint{text-align:center; font-size:13px; color:var(--ink-soft); font-style:italic; margin:2px 0 14px}
+
+  /* layout: flows + detail panel */
+  .stage{display:grid; grid-template-columns:1fr 380px; gap:22px; align-items:start}
+  @media(max-width:900px){ .stage{grid-template-columns:1fr} }
+
+  .flows{display:flex; gap:26px; justify-content:center; flex-wrap:wrap}
+  .flow{flex:1 1 300px; min-width:270px; max-width:440px}
+  .flow h2{
+    text-align:center; font-variant:small-caps; letter-spacing:1px; margin:0 0 14px;
+    font-size:22px; padding:8px; border-radius:8px; color:#fff;
+  }
+  .flow.red h2{background:linear-gradient(var(--red-lt),var(--red))}
+  .flow.white h2{background:linear-gradient(var(--white-lt),var(--white))}
+  .flow.sweet h2{background:linear-gradient(var(--sweet-lt),var(--sweet))}
+  .flow.rose h2{background:linear-gradient(var(--rose-lt),var(--rose))}
+  .flow.cognac h2{background:linear-gradient(var(--co-lt),var(--co))}
+  .flow.armagnac h2{background:linear-gradient(var(--ar-lt),var(--ar))}
+  .flow.marc h2{background:linear-gradient(var(--mc-lt),var(--mc))}
+
+  .node{
+    position:relative; background:var(--card); border:1.5px solid var(--line);
+    border-left:6px solid var(--nc,#999); border-radius:10px; padding:10px 14px;
+    margin:0 auto; cursor:pointer; box-shadow:var(--shadow); transition:.15s; max-width:360px;
+    display:flex; align-items:center; gap:13px; text-align:left;
+  }
+  .node:hover{transform:translateX(3px); border-color:var(--nc)}
+  .node:hover .icon{transform:scale(1.08) rotate(-3deg)}
+  .node.active{outline:3px solid var(--nc); outline-offset:2px}
+  .node .icon{flex:0 0 46px; width:46px; height:46px; color:var(--nc); transition:.15s}
+  .node .icon svg{width:100%; height:100%; display:block}
+  .node .n-body{flex:1 1 auto; min-width:0}
+  .node .n-title{font-weight:700; font-size:16px; display:flex; align-items:center; gap:8px}
+  .node .n-fr{font-style:italic; color:var(--ink-soft); font-size:13px; margin-top:1px}
+  .node .n-sub{font-size:12.5px; color:var(--ink-soft); margin-top:4px}
+  .badge{
+    font-size:10px; font-variant:small-caps; letter-spacing:.5px; font-weight:700;
+    padding:1px 7px; border-radius:10px; background:var(--parch2); color:var(--ink-soft);
+    border:1px solid var(--line); white-space:nowrap;
+  }
+  .arrow{display:flex; justify-content:center; color:var(--nc,#bbb); font-size:22px; line-height:1; margin:2px 0}
+  .flow.red{--nc:var(--red)} .flow.white{--nc:var(--white)}
+  .flow.sweet{--nc:var(--sweet)} .flow.rose{--nc:var(--rose)}
+  .flow.cognac{--nc:var(--co)} .flow.armagnac{--nc:var(--ar)} .flow.marc{--nc:var(--mc)}
+
+  /* detail panel */
+  .side{position:sticky; top:14px}
+  .panel{
+    background:var(--card); border:1.5px solid var(--line);
+    border-top:5px solid var(--gold); border-radius:12px; padding:20px; box-shadow:var(--shadow);
+    min-height:220px;
+  }
+  @media(max-width:900px){ .side{position:static} }
+  .panel .d-head{display:flex; gap:15px; align-items:center; margin-bottom:8px}
+  .panel .hero{flex:0 0 62px; width:62px; height:62px}
+  .panel .hero svg{width:100%; height:100%; display:block}
+  .panel .ph{font-variant:small-caps; letter-spacing:.5px; color:var(--gold); font-size:13px; font-weight:700}
+  .panel h3{margin:2px 0 2px; font-size:24px}
+  .panel .fr{font-style:italic; color:var(--ink-soft); margin:0 0 12px; font-size:15px}
+  .panel p{margin:0 0 11px; font-size:15px}
+  .panel .why{background:var(--parch2); border-radius:8px; padding:10px 12px; font-size:14px; margin:0 0 11px}
+  .panel .why b{color:var(--red)}
+  .panel .meta{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px}
+  .panel .empty{color:var(--ink-soft); font-style:italic; text-align:center; padding:40px 10px}
+  .g,.gdemo{color:var(--red); border-bottom:1px dotted var(--red); cursor:help; font-weight:600}
+  .gdemo{cursor:default}
+
+  /* hover preview picture (below the detail panel) */
+  #hoverpic{
+    margin:14px 0 0; display:none; text-align:center;
+    background:var(--card); border:1.5px solid var(--line);
+    border-top:5px solid var(--co); border-radius:12px; padding:12px;
+    box-shadow:var(--shadow);
+  }
+  #hoverpic img{max-width:100%; height:auto; border-radius:8px; display:block; margin:0 auto; cursor:zoom-in}
+  #hoverpic figcaption{
+    margin-top:8px; font-variant:small-caps; letter-spacing:.5px;
+    font-size:13px; color:var(--ink-soft);
+  }
+
+  /* enlarged picture (lightbox) */
+  #bigpic{
+    position:fixed; inset:0; z-index:100; display:none;
+    align-items:center; justify-content:center; padding:24px;
+    background:rgba(20,12,6,.72);
+  }
+  #bigpic.show{display:flex}
+  .bigpic-inner{position:relative; max-width:92vw; max-height:92vh}
+  .bigpic-inner img{
+    max-width:92vw; max-height:92vh; width:auto; height:auto; display:block;
+    border-radius:10px; border:3px solid var(--card); box-shadow:0 10px 40px rgba(0,0,0,.5);
+  }
+  #bigpic-close{
+    position:absolute; top:-16px; right:-16px; width:40px; height:40px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:2px solid var(--card); background:var(--co); color:#fff;
+    font-size:24px; line-height:1; cursor:pointer; box-shadow:var(--shadow);
+  }
+  #bigpic-close:hover{background:var(--co-lt)}
+
+  /* prose + glossary */
+  section.prose{margin-top:40px; border-top:3px double var(--gold); padding-top:20px}
+  section.prose h2{font-variant:small-caps; letter-spacing:.5px; text-align:center; font-size:26px; margin:0 0 6px}
+  details.acc{background:var(--card); border:1px solid var(--line); border-radius:9px; margin:8px 0; overflow:hidden}
+  details.acc>summary{cursor:pointer; padding:12px 16px; font-weight:700; font-size:17px; list-style:none; display:flex; justify-content:space-between; align-items:center}
+  details.acc>summary::-webkit-details-marker{display:none}
+  details.acc>summary::after{content:"+"; color:var(--gold); font-size:22px; font-weight:400}
+  details.acc[open]>summary::after{content:"–"}
+  details.acc .body{padding:0 16px 14px; font-size:15px; color:var(--ink)}
+  details.acc.red>summary{border-left:6px solid var(--red)}
+  details.acc.white>summary{border-left:6px solid var(--white)}
+  details.acc.sweet>summary{border-left:6px solid var(--sweet)}
+  details.acc.cognac>summary{border-left:6px solid var(--co)}
+  details.acc.armagnac>summary{border-left:6px solid var(--ar)}
+  details.acc.marc>summary{border-left:6px solid var(--mc)}
+
+  .glist{columns:2; column-gap:26px}
+  @media(max-width:640px){ .glist{columns:1} }
+  .glitem{break-inside:avoid; margin:0 0 12px; padding:0 0 0 2px}
+  .glitem dt{font-weight:700; color:var(--red)}
+  .glitem dd{margin:1px 0 0; font-size:14px; color:var(--ink)}
+  .glitem dd .en{color:var(--ink-soft); font-style:italic}
+
+  footer{text-align:center; color:var(--ink-soft); font-size:13px; padding:26px 16px 40px}
+
+  /* tooltip */
+  #tip{position:fixed; z-index:50; max-width:260px; background:#2b2018; color:#f4ecd8;
+    font-size:13px; padding:8px 11px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.35);
+    pointer-events:none; opacity:0; transition:opacity .12s; line-height:1.4}
+  #tip b{color:var(--sweet-lt)}
+</style>
+
+<header class="top">
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+  <div class="titlerow">
+    <span class="tdeco" id="deco1"></span>
+    <h1>How Brandy Is Made</h1>
+    <span class="tdeco flip" id="deco2"></span>
+  </div>
+  <p>From wine — and pomace, and ripe fruit — to spirit: how France distils its great brandies.
+     Tap any step to open the details, hover the <span class="gdemo">underlined terms</span> for a quick definition.</p>
+</header>
+
+<div class="wrap">
+    <div class="tabs" id="tabs">
+    <div class="tab" data-k="cognac">Cognac</div>
+    <div class="tab" data-k="armagnac">Armagnac</div>
+    <div class="tab" data-k="marc">Marc &amp; Eau-de-Vie</div>
+  </div>
+  <div class="hint">Showing <b>Cognac</b> and <b>Armagnac</b> side-by-side &mdash; the two great grape brandies. Switch on <b>Marc &amp; Eau-de-Vie</b> to see the pomace and fruit spirits.</div>
+
+  <div class="stage">
+    <div class="flows" id="flows"></div>
+    <div class="side">
+      <aside class="panel" id="panel">
+        <div class="empty" id="empty">Select a step in the flow to read what happens, why it matters,<br>and its French name.</div>
+        <div id="detail" style="display:none"></div>
+      </aside>
+      <figure id="hoverpic">
+        <img src="Images/Brandy/First Distillation.png" alt="">
+        <figcaption></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- PROSE -->
+    <section class="prose">
+    <h2>The great French brandies</h2>
+    <details class="acc cognac"><summary>Cognac &mdash; twice-distilled finesse</summary>
+      <div class="body">
+        <p>Cognac is <b>twice-distilled</b> in a copper <span class="g">alambic charentais</span>. Thin <span class="g">ugni blanc</span> wine becomes the cloudy <span class="g">brouillis</span>, then the <span class="g">bonne chauffe</span> yields the pure <span class="g">c&#339;ur</span>. Years in Limousin oak &mdash; losing an <span class="g">angels' share</span> each year &mdash; and a final <span class="g">assemblage</span> and <span class="g">reduction</span> make the smooth amber spirit, graded VS to XO.</p>
+      </div>
+    </details>
+    <details class="acc armagnac"><summary>Armagnac &mdash; France's oldest brandy</summary>
+      <div class="body">
+        <p>Armagnac is usually distilled <b>once</b>, in a continuous <span class="g">alambic armagna&ccedil;ais</span>. Lower-strength distillation keeps more flavour, so Armagnac is richer and more rustic than Cognac. Aged in Gascon black oak, it is proudly sold as single vintages &mdash; and as clear, unaged <span class="g">blanche armagnac</span>.</p>
+      </div>
+    </details>
+    <details class="acc marc"><summary>Marc &amp; Eau-de-Vie &mdash; from pomace and fruit</summary>
+      <div class="body">
+        <p><span class="g">Marc</span> distils the pomace left after pressing (Italy's grappa is the same idea), while a fruit <span class="g">eau-de-vie</span> distils fermented fruit &mdash; pear, cherry (kirsch), plum. Grape marcs are often oak-aged; fruit spirits usually stay crystal-clear to keep their orchard freshness.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="prose">
+    <h2>Glossary</h2>
+    <dl class="glist" id="glossary"></dl>
+  </section>
+
+  <footer>
+    Interactive guide to French brandy &amp; eau-de-vie &middot; A Quick Glance at French Wine &middot; Chris Paul.<br>
+    Works fully offline &mdash; a single self-contained file.
+  </footer>
+</div>
+
+<div id="bigpic" role="dialog" aria-modal="true" aria-label="Brandy step">
+  <div class="bigpic-inner">
+    <button type="button" id="bigpic-close" aria-label="Close">&times;</button>
+    <img src="Images/Brandy/First Distillation.png" alt="">
+  </div>
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ---------- GLOSSARY DATA ---------- */
+const GLOSS = {
+ "eau-de-vie":["Eau-de-vie","Literally ‘water of life’ — a clear spirit distilled from fermented fruit or wine. Cognac, Armagnac, marc and fruit brandies are all eaux-de-vie."],
+ "alambic charentais":["Alambic charentais — Charentais pot still","The copper pot still of Cognac, worked in batches. Its shape and the <b>double distillation</b> it performs give Cognac its finesse."],
+ "alambic armagnaçais":["Alambic armagnaçais — Armagnac still","A small continuous <b>column still</b>: the wine trickles down through heated plates in a single pass, giving a lower-strength, more aromatic and rustic spirit than Cognac."],
+ "brouillis":["Brouillis","The cloudy ‘first spirit’ (about 28–32% alc.) off Cognac's first distillation; it is distilled a second time to make the final spirit."],
+ "première chauffe":["Première chauffe — first heating","Cognac's first distillation, which turns the base wine into the low-strength brouillis."],
+ "bonne chauffe":["Bonne chauffe — the good heating","Cognac's crucial second distillation, where the distiller makes the cut and keeps only the heart."],
+ "the cut":["The cut — <i>la coupe</i>","Separating the run into heads (<i>têtes</i>), heart (<i>cœur</i>) and tails (<i>queues</i>). Only the clean heart is kept for ageing."],
+ "cœur":["Cœur — the heart","The pure central fraction of the distillation — around 70% alcohol — that becomes the brandy. Heads and tails are discarded or re-distilled."],
+ "angels' share":["Angels' share — <i>part des anges</i>","The wine and spirit that evaporate through the oak each year during ageing — a real, measurable loss (and the name of the dark cellar fungus that feeds on the vapours)."],
+ "reduction":["Reduction — <i>réduction</i>","Gradually lowering a cask-strength spirit to bottling strength (about 40%) by adding distilled water or weak ‘petites eaux’."],
+ "assemblage":["Assemblage — blending","Marrying eaux-de-vie of different ages, crus and casks to build a house style — the art of the cellar master."],
+ "grande champagne":["Grande Champagne","The most prized of Cognac's six crus (chalky soils), giving the finest, longest-ageing spirits. Petite Champagne, Borderies and the Bois crus follow."],
+ "ugni blanc":["Ugni Blanc","The tart, high-acid, low-alcohol white grape (Trebbiano) behind most Cognac and Armagnac — a poor table wine but an ideal base for distillation."],
+ "vsop":["Age classifications","Grape brandies are graded by the youngest spirit in the blend: <b>VS</b> (≥2 yrs), <b>VSOP</b> (≥4 yrs), <b>Napoléon</b>, <b>XO</b> (≥10 yrs), <b>Hors d'Âge</b>."],
+ "blanche armagnac":["Blanche d'Armagnac","Unaged, water-clear Armagnac, rested only in glass or steel — the pure fruit of the spirit before any oak."],
+ "marc":["Marc — pomace brandy","A spirit distilled from the <i>marc</i>: the skins, pips and stalks left after pressing. Marc de Bourgogne and Marc de Champagne are famous; Italy's grappa is the same idea."]
+};
+
+/* ---------- ICONS (inline SVG, monochrome, adopt flow colour) ---------- */
+const ICONS = {
+grape:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M33 26V12c0-4 3-7 8-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M41 6c5-3 10-1 10-1-2 4-6 6-10 4z" opacity=".5"/><circle cx="26" cy="26" r="6"/><circle cx="38" cy="26" r="6"/><circle cx="20" cy="35" r="6"/><circle cx="32" cy="35" r="6"/><circle cx="44" cy="35" r="6"/><circle cx="26" cy="45" r="6"/><circle cx="38" cy="45" r="6"/><circle cx="32" cy="55" r="6"/></svg>',
+ferment:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M17 13h30v33a9 9 0 0 1-9 9H26a9 9 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="3"/><g opacity=".7"><circle cx="26" cy="45" r="2.6"/><circle cx="36" cy="41" r="2.1"/><circle cx="30" cy="35" r="1.8"/><circle cx="38" cy="30" r="1.5"/><circle cx="24" cy="33" r="1.4"/></g></svg>',
+barrel:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M22 9c6-2.5 14-2.5 20 0 3.5 8 3.5 38 0 46-6 2.5-14 2.5-20 0-3.5-8-3.5-38 0-46z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 21c9 3 19 3 28 0M18 43c9 3 19 3 28 0" fill="none" stroke="currentColor" stroke-width="3" opacity=".65"/><line x1="32" y1="7" x2="32" y2="57" stroke="currentColor" stroke-width="2" opacity=".45"/><line x1="24" y1="8.5" x2="24" y2="55.5" stroke="currentColor" stroke-width="1.6" opacity=".3"/><line x1="40" y1="8.5" x2="40" y2="55.5" stroke="currentColor" stroke-width="1.6" opacity=".3"/></svg>',
+blend:'<svg viewBox="0 0 64 64" fill="currentColor"><circle cx="18" cy="12" r="5" opacity=".55"/><circle cx="46" cy="12" r="5" opacity=".55"/><path d="M18 17c0 6 4 8 10 9M46 17c0 6-4 8-10 9" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M18 26h28v20a8 8 0 0 1-8 8H26a8 8 0 0 1-8-8z" fill="none" stroke="currentColor" stroke-width="3"/><rect x="18" y="35" width="28" height="6" opacity=".45"/></svg>',
+potstill:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M9 40a13 12 0 0 1 26 0v2a4 4 0 0 1-4 4H13a4 4 0 0 1-4-4z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M15 30c0-8 14-8 14 0" fill="none" stroke="currentColor" stroke-width="3"/><path d="M22 30V20c0-4 5-5 8-1 4 5 3 10 9 12l2 1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="43" y="32" width="9" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><path d="M45 50v4M50 50v4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><g opacity=".5"><path d="M17 52c-1.5-2 0-4 1.2-4.8-.5 2.6 1.8 2.6 1.8 4.8a1.5 1.5 0 0 1-3 0z"/><path d="M24 52c-1.2-1.6 0-3.2 1-3.8-.4 2 1.4 2 1.4 3.8a1.2 1.2 0 0 1-2.4 0z"/></g></svg>',
+columnstill:'<svg viewBox="0 0 64 64" fill="currentColor"><rect x="24" y="6" width="16" height="46" rx="3" fill="none" stroke="currentColor" stroke-width="3"/><g stroke="currentColor" stroke-width="2.4" opacity=".6"><line x1="24" y1="16" x2="40" y2="16"/><line x1="24" y1="24" x2="40" y2="24"/><line x1="24" y1="32" x2="40" y2="32"/><line x1="24" y1="40" x2="40" y2="40"/></g><path d="M40 20h10v6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M24 44H12v6" fill="none" stroke="currentColor" stroke-width="3"/><path d="M9 50h6l-3 5z"/></svg>',
+pomace:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M8 46c6-16 42-16 48 0" fill="none" stroke="currentColor" stroke-width="3"/><g opacity=".6"><circle cx="20" cy="42" r="3.5"/><circle cx="30" cy="38" r="3.5"/><circle cx="40" cy="42" r="3.5"/><circle cx="25" cy="45" r="3"/><circle cx="35" cy="45" r="3"/></g><line x1="6" y1="50" x2="58" y2="50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+spiritglass:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M20 14h24c0 13-5 21-12 21S20 27 20 14z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M20 24a12 5 0 0 0 24 0" fill="currentColor" opacity=".3" stroke="none"/><line x1="32" y1="35" x2="32" y2="48" stroke="currentColor" stroke-width="3"/><line x1="22" y1="52" x2="42" y2="52" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>'
+};
+
+function stepIcon(st){ return ICONS[st.ic] || ICONS.grape; }
+function iconFor(t){ return ICONS.grape; }
+
+/* ---------- STEP DATA ---------- */
+const S = {
+ cognac:{ label:"Cognac", cls:"cognac", steps:[
+  {t:"Harvest", fr:"Vendange", sub:"Ugni Blanc, picked for acidity", ph:"Step 1", ic:"grape",
+   html:"<p>Cognac begins with tart, thin white wine — almost always from <span class='g'>ugni blanc</span>, picked while acidity is high and sugar low. The best come from the chalky crus around <span class='g'>grande champagne</span>.</p>",
+   why:"<b>Why it matters:</b> a sharp, low-alcohol wine is a poor drink but the ideal raw spirit — clean and neutral enough to reward distillation."},
+  {t:"Fermentation", fr:"Fermentation", sub:"A thin base wine — no sulphur", ph:"Step 2", ic:"ferment",
+   html:"<p>The juice is fermented into a base wine of about 9% alcohol. <b>No sulphur</b> is added — it would carry through to the spirit — and the wine is distilled soon after, often still on its lees.</p>",
+   why:"<b>Why it matters:</b> anything in the wine ends up concentrated in the still, so purity here is everything."},
+  {t:"First Distillation", fr:"Première chauffe", sub:"→ the cloudy brouillis", ph:"Step 3", ic:"potstill",
+   html:"<p>In the copper <span class='g'>alambic charentais</span>, the wine is heated in a first pass — the <span class='g'>première chauffe</span> — giving a cloudy low-strength spirit called the <span class='g'>brouillis</span> (about 28–32%).</p>",
+   why:"<b>Why it matters:</b> Cognac's signature is that it is distilled <b>twice</b> — this is the first of the two passes."},
+  {t:"Second Distillation", fr:"Bonne chauffe", sub:"The cut → the heart", ph:"Step 4", ic:"potstill",
+   html:"<p>The brouillis is distilled again — the <span class='g'>bonne chauffe</span>. Now the distiller makes <span class='g'>the cut</span>, discarding the harsh heads and tails and keeping only the clean <span class='g'>cœur</span> (heart), at around 70% alcohol.</p>",
+   why:"<b>Why it matters:</b> the skill of the cut decides the quality of the whole spirit — keep too much and it turns coarse."},
+  {t:"Oak Ageing", fr:"Vieillissement", sub:"Limousin & Tronçais oak", ph:"Step 5", ic:"barrel",
+   html:"<p>The clear spirit is aged in French oak (Limousin, Tronçais), which gives it colour, spice and roundness. Each year a little evaporates — the <span class='g'>angels' share</span>. Age drives the classifications from <span class='g'>vsop</span> up to XO.</p>",
+   why:"<b>Why it matters:</b> a colourless, fiery spirit becomes amber, mellow Cognac only through years in wood."},
+  {t:"Blending & Reduction", fr:"Assemblage & réduction", sub:"To house style, ~40%", ph:"Step 6", ic:"blend",
+   html:"<p>The cellar master marries many eaux-de-vie of different ages and crus — the <span class='g'>assemblage</span> — then brings the strength down to about 40% by <span class='g'>reduction</span>.</p>",
+   why:"<b>Why it matters:</b> almost all Cognac is a blend; consistency and complexity are built at this table."},
+  {t:"Bottling", fr:"Mise en bouteille", sub:"Ready to pour", ph:"Step 7", ic:"spiritglass",
+   html:"<p>The finished Cognac is bottled — it does not age further once out of the barrel and into glass.</p>",
+   why:"<b>Why it matters:</b> unlike wine, a spirit's age is fixed the day it leaves the cask."}
+ ]},
+ armagnac:{ label:"Armagnac", cls:"armagnac", steps:[
+  {t:"Harvest", fr:"Vendange", sub:"Four white grapes of Gascony", ph:"Step 1", ic:"grape",
+   html:"<p>France's oldest brandy, from Gascony. The wine is made from <span class='g'>ugni blanc</span> with Baco, Folle Blanche and Colombard — a more aromatic mix than Cognac's.</p>",
+   why:"<b>Why it matters:</b> the grape mix, especially Baco, gives Armagnac its rustic, fuller-flavoured character."},
+  {t:"Fermentation", fr:"Fermentation", sub:"A base wine, no sulphur", ph:"Step 2", ic:"ferment",
+   html:"<p>As for Cognac, a low-alcohol base wine is fermented without sulphur, ready for the still.</p>",
+   why:"<b>Why it matters:</b> a clean base wine keeps the spirit true to its fruit."},
+  {t:"Continuous Distillation", fr:"Distillation continue", sub:"A single pass — column still", ph:"Step 3", ic:"columnstill",
+   html:"<p>Here is the great difference from Cognac: Armagnac is usually distilled <b>once</b>, in a continuous <span class='g'>alambic armagnaçais</span> column still. It comes off at a lower strength (52–60%), keeping more flavour and body.</p>",
+   why:"<b>Why it matters:</b> single, low-strength distillation is why Armagnac tastes richer and more rustic than the doubly-distilled Cognac."},
+  {t:"Oak Ageing", fr:"Vieillissement", sub:"Gascon black oak — vintages common", ph:"Step 4", ic:"barrel",
+   html:"<p>Aged in local black oak, Armagnac evolves with its own <span class='g'>angels' share</span>. Single-vintage bottlings are a proud tradition — while clear, unaged <span class='g'>blanche armagnac</span> is bottled young.</p>",
+   why:"<b>Why it matters:</b> Armagnac's love of vintages lets you drink a spirit from the exact year of a birthday or anniversary."},
+  {t:"Blending or Vintage, & Reduction", fr:"Assemblage / millésime", sub:"Or a single year", ph:"Step 5", ic:"blend",
+   html:"<p>The spirit is either blended (<span class='g'>assemblage</span>) to a house style and age class, or kept as a single vintage — then reduced towards bottling strength.</p>",
+   why:"<b>Why it matters:</b> whether blend or vintage, this sets the final character and age statement."},
+  {t:"Bottling", fr:"Mise en bouteille", sub:"Ready to pour", ph:"Step 6", ic:"spiritglass",
+   html:"<p>Bottled and ready — from crystal-clear Blanche to deep, old Hors d'Âge.</p>",
+   why:"<b>Why it matters:</b> Armagnac offers an unusually wide range, from raw-fruit white to decades-old amber."}
+ ]},
+ marc:{ label:"Marc & Eau-de-Vie", cls:"marc", steps:[
+  {t:"The Raw Material", fr:"Marc ou fruit", sub:"Pomace, or whole fruit", ph:"Step 1", ic:"pomace",
+   html:"<p>Two thrifty spirits share one idea — distil what's left, or what's ripe. <span class='g'>Marc</span> is made from the <b>pomace</b> (skins, pips and stalks) left after pressing grapes. A fruit <span class='g'>eau-de-vie</span> instead starts from whole ripe fruit — pear (poire), cherry (kirsch), plum (mirabelle, quetsche) or raspberry (framboise).</p>",
+   why:"<b>Why it matters:</b> marc turns a winemaking by-product into something precious; fruit eaux-de-vie capture a whole orchard in a glass."},
+  {t:"Fermentation", fr:"Fermentation", sub:"Pomace or mashed fruit", ph:"Step 2", ic:"ferment",
+   html:"<p>The pomace (with its residual sugars) or the crushed fruit is fermented into an alcoholic mash — the material the still will concentrate.</p>",
+   why:"<b>Why it matters:</b> only sugar that has fermented into alcohol can be distilled — ripe, sound fruit is essential."},
+  {t:"Distillation", fr:"Distillation", sub:"Pot or column still", ph:"Step 3", ic:"potstill",
+   html:"<p>The mash is distilled — in a pot or column still — and the distiller makes <span class='g'>the cut</span>, keeping only the clean heart of the run.</p>",
+   why:"<b>Why it matters:</b> fruit spirits especially demand a careful cut to stay pure and aromatic."},
+  {t:"Ageing", fr:"Vieillissement", sub:"Optional", ph:"Step 4", opt:true, ic:"barrel",
+   html:"<p>Grape <span class='g'>marc</span> is often oak-aged (Marc de Bourgogne, de Champagne, de Gewurztraminer), turning amber and mellow. Most <b>fruit</b> eaux-de-vie are <b>not</b> aged in wood — they rest in glass or steel to stay crystal-clear and keep their fresh fruit.</p>",
+   why:"<b>Why it matters:</b> wood would mask the delicate fruit of a kirsch or poire — so those stay clear on purpose."},
+  {t:"Bottling", fr:"Mise en bouteille", sub:"Clear or amber", ph:"Step 5", ic:"spiritglass",
+   html:"<p>Bottled at around 40–45% — the clear fruit eaux-de-vie served ice-cold, the aged marcs sipped slowly like a brandy.</p>",
+   why:"<b>Why it matters:</b> serving temperature and glass bring out the best in each style."}
+ ]}
+};
+
+/* ---------- STEP PICTURES ---------- */
+/* one picture per step, keyed by flow (index matches S[key].steps).
+   "" = no picture for that step (e.g. Harvest / Fermentation — none in the Brandy folder). */
+const PICS = {
+  cognac: { dir:"Images/Brandy/", files:[
+    "Harvesting.png",            // 0 Harvest
+    "Maceration : Fermentation.png", // 1 Fermentation
+    "First Distillation.png",    // 2 First Distillation
+    "Second Distillation.png",   // 3 Second Distillation
+    "Ageing.png",                // 4 Oak Ageing
+    "Blending.png",              // 5 Blending & Reduction
+    "Bottling.png"               // 6 Bottling
+  ]},
+  armagnac: { dir:"Images/Brandy/", files:[
+    "Harvesting.png",                      // 0 Harvest
+    "Maceration : Fermentation.png",       // 1 Fermentation
+    "Amagnac Continuous Distillation.png", // 2 Continuous Distillation
+    "Ageing.png",                          // 3 Oak Ageing
+    "Blending.png",                        // 4 Blending or Vintage & Reduction
+    "Bottling.png"                         // 5 Bottling
+  ]},
+  marc: { dir:"Images/Brandy/", files:[
+    "Eau de Vie Marc : Fruit.png",   // 0 The Raw Material
+    "Fermentation Eau de Vie.png",   // 1 Fermentation
+    "Eau de Vie Distillation.png", // 2 Distillation
+    "Ageing.png",                  // 3 Ageing
+    "Eau de Vie Bottling.png"      // 4 Bottling
+  ]}
+};
+
+function wireHoverPic(){
+  const pic=document.getElementById('hoverpic');
+  const thumb=pic&&pic.querySelector('img');
+  const cap=pic&&pic.querySelector('figcaption');
+  if(!pic||!thumb) return;
+  pic.style.display='none';
+  document.querySelectorAll('.flow .node').forEach(node=>{
+    const key=node.dataset.key, i=+node.dataset.idx;
+    const set=PICS[key]; if(!set) return;
+    const name=set.files[i]; if(!name) return;
+    node.addEventListener('mouseenter',()=>{
+      const st=S[key].steps[i];
+      thumb.src=set.dir+name;          // browser encodes spaces/colons
+      thumb.alt=st.t;
+      if(cap) cap.innerHTML=st.t+' — <i>'+st.fr+'</i>';
+      pic.style.display='block';
+    });
+  });
+}
+
+function wireBigPic(){
+  const thumb=document.querySelector('#hoverpic img');
+  const big=document.getElementById('bigpic');
+  const bigImg=big&&big.querySelector('img');
+  const closeBtn=document.getElementById('bigpic-close');
+  if(!thumb||!big||!bigImg) return;
+  const hide=()=>big.classList.remove('show');
+  thumb.addEventListener('mouseenter',()=>{
+    bigImg.src=thumb.src;
+    bigImg.alt=thumb.alt;
+    big.setAttribute('aria-label',thumb.alt||'Brandy step');
+    big.classList.add('show');
+  });
+  if(closeBtn) closeBtn.addEventListener('click',hide);
+  big.addEventListener('click',e=>{ if(e.target===big) hide(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') hide(); });
+}
+
+/* ---------- RENDER ---------- */
+const flowsEl = document.getElementById('flows');
+const detailEl = document.getElementById('detail');
+const emptyEl = document.getElementById('empty');
+let selected = null; // {key, idx}
+
+function buildFlow(key){
+  const d = S[key];
+  const f = document.createElement('div');
+  f.className = 'flow '+d.cls;
+  f.innerHTML = '<h2>'+d.label+'</h2>';
+  d.steps.forEach((st,i)=>{
+    if(i>0){ const a=document.createElement('div'); a.className='arrow'; a.textContent='▼'; f.appendChild(a); }
+    const n=document.createElement('div');
+    n.className='node'; n.dataset.key=key; n.dataset.idx=i;
+    n.innerHTML='<div class="icon">'+stepIcon(st)+'</div>'+
+                '<div class="n-body">'+
+                  '<div class="n-title">'+st.t+(st.opt?' <span class="badge">optional</span>':'')+'</div>'+
+                  '<div class="n-fr">'+st.fr+'</div>'+
+                  (st.sub?'<div class="n-sub">'+st.sub+'</div>':'')+
+                '</div>';
+    n.addEventListener('click',()=>select(key,i));
+    f.appendChild(n);
+  });
+  return f;
+}
+
+function select(key,i){
+  document.querySelectorAll('.node.active').forEach(n=>n.classList.remove('active'));
+  const node=document.querySelector('.node[data-key="'+key+'"][data-idx="'+i+'"]');
+  if(node) node.classList.add('active');
+  const st=S[key].steps[i];
+  emptyEl.style.display='none'; detailEl.style.display='block';
+  const col={cognac:'var(--co)',armagnac:'var(--ar)',marc:'var(--mc)'}[key]||'var(--co)';
+  detailEl.innerHTML =
+    '<div class="d-head">'+
+      '<div class="hero" style="color:'+col+'">'+stepIcon(st)+'</div>'+
+      '<div><div class="ph">'+S[key].label+' · '+st.ph+(st.opt?' · optional':'')+'</div>'+
+      '<h3>'+st.t+'</h3><p class="fr">'+st.fr+'</p></div>'+
+    '</div>'+
+    st.html+
+    '<div class="why">'+st.why+'</div>';
+  wireGloss(detailEl);
+  if(window.innerWidth<=900 && node) document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* tabs */
+const shown = new Set(['cognac','armagnac']);
+function renderTabs(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',shown.has(t.dataset.k)));
+}
+function renderFlows(){
+  flowsEl.innerHTML='';
+  ['cognac','armagnac','marc'].forEach(k=>{ if(shown.has(k)) flowsEl.appendChild(buildFlow(k)); });
+  wireGloss(flowsEl);
+  wireHoverPic();
+  // keep selection valid
+  if(selected && shown.has(selected.key)) select(selected.key,selected.idx);
+  else { detailEl.style.display='none'; emptyEl.style.display='block'; }
+}
+document.getElementById('tabs').addEventListener('click',e=>{
+  const t=e.target.closest('.tab'); if(!t) return;
+  const k=t.dataset.k;
+  if(shown.has(k)){ if(shown.size>1) shown.delete(k); }
+  else shown.add(k);
+  renderTabs(); renderFlows();
+});
+// track selection
+const _select=select;
+select=function(key,i){ selected={key,idx:i}; _select(key,i); };
+
+/* ---------- GLOSSARY LIST ---------- */
+const gEl=document.getElementById('glossary');
+Object.keys(GLOSS).sort((a,b)=>GLOSS[a][0].localeCompare(GLOSS[b][0])).forEach(k=>{
+  // avoid duplicate display entries (malolactique/malolactic map to same idea)
+  if(k==='malolactique') return;
+  const d=document.createElement('div'); d.className='glitem';
+  d.innerHTML='<dt>'+GLOSS[k][0]+'</dt><dd>'+GLOSS[k][1]+'</dd>';
+  gEl.appendChild(d);
+});
+
+/* ---------- TOOLTIPS on .g terms ---------- */
+const tip=document.getElementById('tip');
+function lookup(text){
+  const key=text.toLowerCase().trim().replace(/[.,;:]$/,'');
+  if(GLOSS[key]) return GLOSS[key];
+  for(const k in GLOSS){ if(k.toLowerCase()===key) return GLOSS[k]; }
+  // partials
+  if(key.includes('malolactic')) return GLOSS['malolactic fermentation'];
+  if(key.includes('botrytis')) return GLOSS['Botrytis cinerea'];
+  if(key.includes('foudre')) return GLOSS['foudres'];
+  if(key.includes('macerat')) return GLOSS['macerated'];
+  if(key.includes('grand vin')) return GLOSS['grand vin'];
+  return null;
+}
+function wireGloss(scope){
+  scope.querySelectorAll('.g').forEach(el=>{
+    if(el.dataset.wired) return; el.dataset.wired='1';
+    el.addEventListener('mouseenter',ev=>{
+      const g=lookup(el.textContent); if(!g) return;
+      tip.innerHTML='<b>'+g[0]+'</b><br>'+g[1];
+      tip.style.opacity='1'; moveTip(ev);
+    });
+    el.addEventListener('mousemove',moveTip);
+    el.addEventListener('mouseleave',()=>{tip.style.opacity='0';});
+    el.addEventListener('click',()=>{ // jump to glossary on tap (mobile)
+      document.getElementById('glossary').scrollIntoView({behavior:'smooth'});
+    });
+  });
+}
+function moveTip(ev){
+  let x=ev.clientX+14, y=ev.clientY+16;
+  if(x+270>window.innerWidth) x=window.innerWidth-274;
+  if(y+120>window.innerHeight) y=ev.clientY-120;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+
+/* init */
+document.getElementById('deco1').innerHTML=ICONS.grape;
+document.getElementById('deco2').innerHTML=ICONS.grape;
+wireBigPic();
+renderTabs(); renderFlows();
+</script><!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="dark"] body{color:#ccb4a3;background:#280a11;background-image:radial-gradient(circle at 20% 10%,rgba(58,17,27,0.35),rgba(0,0,0,0) 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,0.10),rgba(0,0,0,0) 55%)}
+html[data-theme="dark"] header.top{background:linear-gradient(#3a111b,#280a11)}
+html[data-theme="dark"] .tdeco{color:#e4c68b}
+html[data-theme="dark"] header.top h1{color:#ccb4a3}
+html[data-theme="dark"] header.top p{color:#f1e8d8}
+html[data-theme="dark"] .tab{border:1px solid rgba(217,179,107,0.40);background:#3a111b;color:#f1e8d8}
+html[data-theme="dark"] .tab:hover{box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .hint{color:#f1e8d8}
+html[data-theme="dark"] .node{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .node .icon{color:#f1e8d8}
+html[data-theme="dark"] .node .n-fr{color:#f1e8d8}
+html[data-theme="dark"] .node .n-sub{color:#f1e8d8}
+html[data-theme="dark"] .badge{background:#280a11;color:#f1e8d8;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] .arrow{color:#f1e8d8}
+html[data-theme="dark"] .panel{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .panel .ph{color:#e4c68b}
+html[data-theme="dark"] .panel .fr{color:#f1e8d8}
+html[data-theme="dark"] .panel .why{background:#280a11}
+html[data-theme="dark"] .panel .why b{color:#ed8391}
+html[data-theme="dark"] .panel .empty{color:#f1e8d8}
+html[data-theme="dark"] .g,html[data-theme="dark"] .gdemo{color:#ed8391}
+html[data-theme="dark"] #hoverpic{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] #hoverpic figcaption{color:#f1e8d8}
+html[data-theme="dark"] .bigpic-inner img{border:3px solid rgba(217,179,107,0.40);box-shadow:0 10px 40px rgba(0,0,0,0.70)}
+html[data-theme="dark"] #bigpic-close{border:2px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] details.acc{background:#3a111b;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] details.acc>summary::after{color:#e4c68b}
+html[data-theme="dark"] details.acc .body{color:#ccb4a3}
+html[data-theme="dark"] .glitem dt{color:#ed8391}
+html[data-theme="dark"] .glitem dd{color:#ccb4a3}
+html[data-theme="dark"] .glitem dd .en{color:#f1e8d8}
+html[data-theme="dark"] footer{color:#f1e8d8}
+html[data-theme="dark"] #tip{box-shadow:0 4px 14px rgba(0,0,0,0.56)}
+html[data-theme="dark"] #tip b{color:#e7ce88}
+
+</style><!--fw-theme:end-->
+

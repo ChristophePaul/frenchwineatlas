@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les ennemis de la vigne</title>
+<meta name="description" content="Maladies, ravageurs et accidents climatiques de la vigne : mildiou, oïdium, black rot, botrytis, esca, flavescence dorée, cicadelles, phylloxéra.">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  /* calendar */
+  .cal{padding:clamp(14px,2.4vw,26px);overflow-x:auto;}
+  .cal-inner{min-width:640px;}
+  .cal-row{display:grid;grid-template-columns:minmax(150px,1.5fr) repeat(12,minmax(0,1fr));gap:3px;align-items:center;margin-bottom:3px;}
+  .cal-lbl{font-size:13px;display:flex;align-items:center;gap:8px;padding-right:8px;}
+  @media (max-width:700px){.cal-inner{min-width:560px;}.cal-row{grid-template-columns:118px repeat(12,minmax(0,1fr));}
+    .cal{padding-left:0;}.cal-key{padding-left:12px;}
+    .cal-lbl{position:sticky;left:0;z-index:1;background:var(--solid);font-size:12px;align-self:stretch;padding-left:12px;}}
+  .cal-lbl i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none;}
+  .cal-lbl a{text-decoration:none;border-bottom:1px dotted var(--faint);}
+  .cal-lbl a:hover{color:var(--gold-soft);}
+  .cal-head .cal-m{text-align:center;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.08em;}
+  .cal-stages{margin:4px 0 10px;}
+  .cal-stages .cal-lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);grid-column:1;}
+  .stage{grid-row:1;font-size:10.5px;text-align:center;padding:5px 2px;border-radius:6px;background:var(--track);color:var(--muted);
+    border:1px dashed var(--hair);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cell{height:20px;border-radius:5px;background:var(--track);}
+  .cell.v1{background:color-mix(in srgb,var(--c) 38%,transparent);}
+  .cell.v2{background:var(--c);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.22) 0 3px,transparent 3px 7px);}
+  .cal-key{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--muted);}
+  .cal-key span{display:inline-flex;align-items:center;gap:7px;}
+  .cal-key .sw{width:26px;height:12px;border-radius:4px;--c:#9a6a1f;}
+
+  /* others */
+  .others{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+  .other{padding:16px 18px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:3px solid var(--c);}
+  .other h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:10px 0 6px;}
+  .other p{margin:0 0 8px;font-size:14px;line-height:1.6;}
+  .other .how{font-size:13px;color:var(--muted);margin:0;}
+  .other .how b{color:var(--gold);font-weight:600;}
+
+  /* timeline */
+  .tl{list-style:none;margin:0;padding:clamp(18px,3vw,30px);display:grid;grid-template-columns:repeat(5,1fr);gap:22px 16px;position:relative;}
+  .tl li{position:relative;padding-top:18px;border-top:2px solid var(--c);}
+  .tl li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--glass-hi);}
+  .tl .yr{display:block;font-family:var(--serif);font-size:24px;color:var(--title);margin-bottom:4px;}
+  .tl .ev{font-size:13px;line-height:1.5;color:var(--muted);}
+
+  @media (max-width:900px){.tl{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.tl{grid-template-columns:1fr;}}
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"]:not([data-theme="cream"]) .chip{color:color-mix(in srgb,#9a6a1f 55%,#2e1419)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"]:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,#9a6a1f 55%,#2e1419)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] details.pro{border:1px solid color-mix(in srgb,#9a6a1f 40%,rgba(90,30,40,0.18))}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .cal-lbl a{border-bottom:1px dotted rgba(90,30,40,0.18)}
+html[data-theme="cream"] .stage{background:rgba(255,253,248,0.60);border:1px dashed rgba(90,30,40,0.18)}
+html[data-theme="cream"] .cell{background:rgba(255,253,248,0.60)}
+html[data-theme="cream"] .cell.v2{background-image:repeating-linear-gradient(135deg,rgba(90,30,40,0.12) 0 3px,rgba(0,0,0,0) 3px 7px)}
+html[data-theme="cream"] .other{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tl li::before{box-shadow:0 0 0 3px rgba(255,255,255,0.80)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 7" data-en="The vine &amp; the vineyard · Chapter 7">La vigne &amp; le vignoble · Chapitre 7</p>
+    <h1 data-fr="Les ennemis <em>de la vigne</em>" data-en="Threats <em>to the vine</em>">Les ennemis <em>de la vigne</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Maladies, insectes et caprices du ciel : neuf planches botaniques pour apprendre à les reconnaître, comprendre comment ils attaquent et comment les vignerons s’en protègent."
+       data-en="Diseases, insects and the whims of the weather: nine botanical plates to learn how to recognise them, how they attack and how growers protect their vines.">Maladies, insectes et caprices du ciel : neuf planches botaniques pour apprendre à les reconnaître, comprendre comment ils attaquent et comment les vignerons s’en protègent.</p>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">La vigne est l’une des cultures les plus exposées. Presque tous ses grands fléaux sont arrivés d’Amérique au XIX<sup>e</sup> siècle, dans le sillage des échanges de plants : l’oïdium, le phylloxéra, le mildiou, le black rot. Chacun a profondément transformé la viticulture : c’est à eux que l’on doit le soufrage, la bouillie bordelaise et le greffage de presque toutes les vignes françaises.</p>
+      <p class="L en">The vine is one of the most vulnerable crops. Nearly all of its great plagues arrived from America in the 19th century, carried by the trade in vine cuttings: powdery mildew, phylloxera, downy mildew, black rot. Each one reshaped winegrowing: they are the reason for sulphur dusting, Bordeaux mixture and the grafting of almost every French vine.</p>
+      <p class="L fr">Aujourd’hui, la protection du vignoble est un équilibre délicat entre la santé de la récolte, l’environnement et le coût : la vigne occupe environ 3 % de la surface agricole française, mais reçoit une part bien plus grande des produits phytosanitaires, surtout des fongicides.</p>
+      <p class="L en">Today, protecting the vineyard is a careful balance between crop health, the environment and cost: vines cover around 3 % of French farmland but receive a much larger share of crop-protection products, mostly fungicides.</p>
+      <p class="note L fr">Les planches portent leurs légendes en anglais et en français. Cliquez sur une planche pour l’agrandir.</p>
+      <p class="note L en">Plates are labelled in English and French. Click any plate to enlarge it.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Symptômes, période à risque, protection : de quoi reconnaître chaque ennemi au vignoble." data-en="Symptoms, risk period, protection: enough to recognise each threat in the vineyard.">Symptômes, période à risque, protection : de quoi reconnaître chaque ennemi au vignoble.</span></div></div>
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="À déplier : agent pathogène, cycle biologique, seuils, méthodes de lutte et réglementation." data-en="Fold-out panel: pathogen, life cycle, thresholds, control methods and regulation.">À déplier : agent pathogène, cycle biologique, seuils, méthodes de lutte et réglementation.</span></div></div>
+      </div>
+      <div class="legend"><span class="chip" style="--c:#2f7d8c"><span data-fr="Oomycète" data-en="Oomycete">Oomycète</span></span><span class="chip" style="--c:#6f8b1e"><span data-fr="Champignon" data-en="Fungus">Champignon</span></span><span class="chip" style="--c:#c08a1a"><span data-fr="Champignon bénéfique" data-en="Beneficial fungus">Champignon bénéfique</span></span><span class="chip" style="--c:#8a5a2b"><span data-fr="Maladie du bois" data-en="Trunk disease">Maladie du bois</span></span><span class="chip" style="--c:#b0702a"><span data-fr="Phytoplasme" data-en="Phytoplasma">Phytoplasme</span></span><span class="chip" style="--c:#a0283c"><span data-fr="Insecte ravageur" data-en="Insect pest">Insecte ravageur</span></span><span class="chip" style="--c:#4f6a96"><span data-fr="Climat" data-en="Weather">Climat</span></span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="planches">
+    <div class="sec-head">
+      <h2 data-fr="Les neuf <em>planches</em>" data-en="The nine <em>plates</em>">Les neuf <em>planches</em></h2>
+      <p data-fr="Cinq maladies du feuillage et des grappes, une maladie du bois, une maladie à phytoplasme et deux insectes ravageurs." data-en="Five diseases of leaves and bunches, one trunk disease, one phytoplasma disease and two insect pests.">Cinq maladies du feuillage et des grappes, une maladie du bois, une maladie à phytoplasme et deux insectes ravageurs.</p>
+    </div>
+    <nav class="index"><a class="idx" href="#mildiou" style="--c:#2f7d8c"><span class="idx-img"><img src="img/threats/downy_mildew_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">01</span><b data-fr="Le mildiou" data-en="Downy mildew">Le mildiou</b><small><span data-fr="Oomycète" data-en="Oomycete">Oomycète</span></small></a><a class="idx" href="#oidium" style="--c:#6f8b1e"><span class="idx-img"><img src="img/threats/powdery_mildew_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">02</span><b data-fr="L’oïdium" data-en="Powdery mildew">L’oïdium</b><small><span data-fr="Champignon" data-en="Fungus">Champignon</span></small></a><a class="idx" href="#black-rot" style="--c:#6f8b1e"><span class="idx-img"><img src="img/threats/black_rot_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">03</span><b data-fr="Le black rot" data-en="Black rot">Le black rot</b><small><span data-fr="Champignon" data-en="Fungus">Champignon</span></small></a><a class="idx" href="#pourriture-grise" style="--c:#6f8b1e"><span class="idx-img"><img src="img/threats/gray_rot_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">04</span><b data-fr="La pourriture grise" data-en="Grey rot">La pourriture grise</b><small><span data-fr="Champignon" data-en="Fungus">Champignon</span></small></a><a class="idx" href="#pourriture-noble" style="--c:#c08a1a"><span class="idx-img"><img src="img/threats/noble_rot_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">05</span><b data-fr="La pourriture noble" data-en="Noble rot">La pourriture noble</b><small><span data-fr="Champignon bénéfique" data-en="Beneficial fungus">Champignon bénéfique</span></small></a><a class="idx" href="#esca" style="--c:#8a5a2b"><span class="idx-img"><img src="img/threats/esca_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">06</span><b data-fr="L’esca" data-en="Esca">L’esca</b><small><span data-fr="Maladie du bois" data-en="Trunk disease">Maladie du bois</span></small></a><a class="idx" href="#flavescence-doree" style="--c:#b0702a"><span class="idx-img"><img src="img/threats/flavescence_doree_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">07</span><b data-fr="La flavescence dorée" data-en="Flavescence dorée">La flavescence dorée</b><small><span data-fr="Phytoplasme" data-en="Phytoplasma">Phytoplasme</span></small></a><a class="idx" href="#cicadelles" style="--c:#a0283c"><span class="idx-img"><img src="img/threats/leafhoppers_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">08</span><b data-fr="Les cicadelles vertes" data-en="Green leafhoppers">Les cicadelles vertes</b><small><span data-fr="Insecte ravageur" data-en="Insect pest">Insecte ravageur</span></small></a><a class="idx" href="#phylloxera" style="--c:#a0283c"><span class="idx-img"><img src="img/threats/phylloxera_s.webp" alt="" loading="lazy" decoding="async"></span><span class="idx-n">09</span><b data-fr="Le phylloxéra" data-en="Phylloxera">Le phylloxéra</b><small><span data-fr="Insecte ravageur" data-en="Insect pest">Insecte ravageur</span></small></a></nav>
+  </section>
+
+  <section class="sec" id="calendrier">
+    <div class="sec-head">
+      <h2 data-fr="Le calendrier <em>des risques</em>" data-en="The risk <em>calendar</em>">Le calendrier <em>des risques</em></h2>
+      <p data-fr="Périodes indicatives pour un vignoble de la moitié nord de la France ; tout se décale de deux à trois semaines plus tôt dans le Midi." data-en="Indicative periods for a vineyard in northern France; everything comes two to three weeks earlier in the South.">Périodes indicatives pour un vignoble de la moitié nord de la France ; tout se décale de deux à trois semaines plus tôt dans le Midi.</p>
+    </div>
+    <div class="panel cal"><div class="cal-inner"><div class="cal-row cal-head"><div class="cal-lbl"></div><div class="cal-m" title="janvier"><span data-fr="J" data-en="J">J</span></div><div class="cal-m" title="février"><span data-fr="F" data-en="F">F</span></div><div class="cal-m" title="mars"><span data-fr="M" data-en="M">M</span></div><div class="cal-m" title="avril"><span data-fr="A" data-en="A">A</span></div><div class="cal-m" title="mai"><span data-fr="M" data-en="M">M</span></div><div class="cal-m" title="juin"><span data-fr="J" data-en="J">J</span></div><div class="cal-m" title="juillet"><span data-fr="J" data-en="J">J</span></div><div class="cal-m" title="août"><span data-fr="A" data-en="A">A</span></div><div class="cal-m" title="septembre"><span data-fr="S" data-en="S">S</span></div><div class="cal-m" title="octobre"><span data-fr="O" data-en="O">O</span></div><div class="cal-m" title="novembre"><span data-fr="N" data-en="N">N</span></div><div class="cal-m" title="décembre"><span data-fr="D" data-en="D">D</span></div></div><div class="cal-row cal-stages"><div class="cal-lbl"><span data-fr="Stade de la vigne" data-en="Vine stage">Stade de la vigne</span></div><div class="stage" style="grid-column:2/5"><span data-fr="Dormance" data-en="Dormancy">Dormance</span></div><div class="stage" style="grid-column:5/6"><span data-fr="Débourrement" data-en="Budburst">Débourrement</span></div><div class="stage" style="grid-column:6/7"><span data-fr="Pousse" data-en="Shoot growth">Pousse</span></div><div class="stage" style="grid-column:7/8"><span data-fr="Floraison" data-en="Flowering">Floraison</span></div><div class="stage" style="grid-column:8/9"><span data-fr="Nouaison" data-en="Fruit set">Nouaison</span></div><div class="stage" style="grid-column:9/10"><span data-fr="Véraison" data-en="Véraison">Véraison</span></div><div class="stage" style="grid-column:10/12"><span data-fr="Vendanges" data-en="Harvest">Vendanges</span></div><div class="stage" style="grid-column:12/14"><span data-fr="Chute des feuilles" data-en="Leaf fall">Chute des feuilles</span></div></div><div class="cal-row" style="--c:#2f7d8c"><div class="cal-lbl"><i></i><a href="#mildiou"><span data-fr="Mildiou" data-en="Downy mildew">Mildiou</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#6f8b1e"><div class="cal-lbl"><i></i><a href="#oidium"><span data-fr="Oïdium" data-en="Powdery mildew">Oïdium</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#6f8b1e"><div class="cal-lbl"><i></i><a href="#black-rot"><span data-fr="Black rot" data-en="Black rot">Black rot</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#6f8b1e"><div class="cal-lbl"><i></i><a href="#pourriture-grise"><span data-fr="Pourriture grise" data-en="Grey rot">Pourriture grise</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#c08a1a"><div class="cal-lbl"><i></i><a href="#pourriture-noble"><span data-fr="Pourriture noble" data-en="Noble rot">Pourriture noble</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#8a5a2b"><div class="cal-lbl"><i></i><a href="#esca"><span data-fr="Esca" data-en="Esca">Esca</span></a></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div></div><div class="cal-row" style="--c:#b0702a"><div class="cal-lbl"><i></i><a href="#flavescence-doree"><span data-fr="Flavescence dorée" data-en="Flavescence dorée">Flavescence dorée</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#a0283c"><div class="cal-lbl"><i></i><a href="#cicadelles"><span data-fr="Cicadelles" data-en="Leafhoppers">Cicadelles</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#a0283c"><div class="cal-lbl"><i></i><a href="#phylloxera"><span data-fr="Phylloxéra" data-en="Phylloxera">Phylloxéra</span></a></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#a0283c"><div class="cal-lbl"><i></i><span data-fr="Vers de la grappe" data-en="Grape moths">Vers de la grappe</span></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#4f6a96"><div class="cal-lbl"><i></i><span data-fr="Gel de printemps" data-en="Spring frost">Gel de printemps</span></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#4f6a96"><div class="cal-lbl"><i></i><span data-fr="Grêle" data-en="Hail">Grêle</span></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div><div class="cal-row" style="--c:#4f6a96"><div class="cal-lbl"><i></i><span data-fr="Canicule" data-en="Heatwave">Canicule</span></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v1"></div><div class="cell v2"></div><div class="cell v2"></div><div class="cell v1"></div><div class="cell v0"></div><div class="cell v0"></div><div class="cell v0"></div></div></div>
+      <div class="cal-key">
+        <span><i class="sw" style="background:color-mix(in srgb,var(--c) 38%,transparent)"></i><span data-fr="Période de risque" data-en="Risk period">Période de risque</span></span>
+        <span><i class="sw" style="background:var(--c);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.22) 0 3px,transparent 3px 7px)"></i><span data-fr="Pic de risque ou de symptômes" data-en="Peak risk or symptoms">Pic de risque ou de symptômes</span></span>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="threat " id="mildiou" style="--c:#2f7d8c">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/downy_mildew.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/downy_mildew.webp" alt="Downy mildew" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#2f7d8c"><span data-fr="Oomycète" data-en="Oomycete">Oomycète</span></span><span class="num">01</span></div>
+      <h2><span data-fr="Le mildiou" data-en="Downy mildew">Le mildiou</span></h2>
+      <p class="latin">Plasmopara viticola</p>
+      <p class="lead L fr">Arrivé d’Amérique en 1878, c’est la grande maladie des années humides : il peut détruire une récolte en quelques semaines.</p><p class="lead L en">Arrived from America in 1878, it is the great disease of wet years: it can wipe out a crop within a few weeks.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Taches jaunâtres « d’huile » sur le dessus des feuilles, duvet blanc au revers. Les jeunes grappes se courbent en crosse, les baies grisent puis brunissent et se rident (« rot brun »).</p><p class="L en">Yellowish “oil spots” on the upper leaf, white down on the underside. Young bunches curl into a hook; berries turn grey, then brown and shrivelled (“brown rot”).</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">De mai à août, après des pluies chaudes. La floraison est la période la plus critique.</p><p class="L en">From May to August, after warm rain. Flowering is the most critical period.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Cuivre (la célèbre bouillie bordelaise) ou fongicides de synthèse appliqués avant les pluies ; feuillage aéré ; cépages résistants.</p><p class="L en">Copper (the famous Bordeaux mixture) or synthetic fungicides applied before rain; an open canopy; resistant grape varieties.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Agent" data-en="Pathogen">Agent</span></dt><dd><div class="L fr"><i>Plasmopara viticola</i>, un oomycète (organisme proche des algues, pas un vrai champignon), originaire d’Amérique du Nord.</div><div class="L en"><i>Plasmopara viticola</i>, an oomycete (closer to algae than to true fungi), native to North America.</div></dd></div><div class="pro-item"><dt><span data-fr="Cycle" data-en="Life cycle">Cycle</span></dt><dd><div class="L fr">Les oospores hivernent dans les feuilles mortes. Contaminations primaires au printemps selon la « règle des 3 × 10 » : rameaux d’environ 10 cm, au moins 10 mm de pluie en 24–48 h, plus de 10 °C. Puis cycles secondaires (sporanges, zoospores) tant que le feuillage reste mouillé ; incubation de 5 à 18 jours selon la température.</div><div class="L en">Oospores overwinter in fallen leaves. Primary infections in spring follow the “3 × 10 rule”: shoots about 10 cm long, at least 10 mm of rain in 24–48 h, above 10 °C. Then secondary cycles (sporangia, zoospores) as long as foliage stays wet; incubation 5–18 days depending on temperature.</div></dd></div><div class="pro-item"><dt><span data-fr="Sensibilité" data-en="Susceptibility">Sensibilité</span></dt><dd><div class="L fr">Les inflorescences et jeunes baies sont très sensibles jusqu’à la fermeture de la grappe ; ensuite l’infection passe par le pédicelle (rot brun).</div><div class="L en">Flower clusters and young berries are highly susceptible until bunch closure; afterwards infection enters through the pedicel (brown rot).</div></dd></div><div class="pro-item"><dt><span data-fr="Lutte" data-en="Control">Lutte</span></dt><dd><div class="L fr">Cuivre (bouillie bordelaise mise au point par Millardet dans le Médoc, 1885) : en bio, plafond de 28 kg/ha sur 7 ans, soit 4 kg/ha/an en moyenne (règl. UE 2018/1981). Fongicides pénétrants et systémiques : alterner les familles contre les résistances. Positionnement guidé par les modèles de prévision et le Bulletin de santé du végétal (BSV).</div><div class="L en">Copper (Bordeaux mixture, developed by Millardet in the Médoc, 1885): in organic farming capped at 28 kg/ha over 7 years, i.e. 4 kg/ha/year on average (EU Reg. 2018/1981). Penetrant and systemic fungicides: rotate chemical families to avoid resistance. Timing guided by forecasting models and the regional plant-health bulletin (BSV).</div></dd></div><div class="pro-item"><dt><span data-fr="Variétés résistantes" data-en="Resistant varieties">Variétés résistantes</span></dt><dd><div class="L fr">Programme INRAE ResDur : Artaban, Vidoc, Floreal et Voltis, inscrits en 2018, portent des gènes de résistance au mildiou et à l’oïdium.</div><div class="L en">INRAE’s ResDur programme: Artaban, Vidoc, Floreal and Voltis, registered in 2018, carry resistance genes to both downy and powdery mildew.</div></dd></div><div class="pro-item"><dt><span data-fr="Années noires" data-en="Disaster years">Années noires</span></dt><dd><div class="L fr">1915, puis plus récemment 2023 (Bordeaux, Sud-Ouest) et 2024 (moitié nord de la France).</div><div class="L en">1915, and more recently 2023 (Bordeaux, South-West) and 2024 (northern half of France).</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat rev" id="oidium" style="--c:#6f8b1e">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/powdery_mildew.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/powdery_mildew.webp" alt="Powdery mildew" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#6f8b1e"><span data-fr="Champignon" data-en="Fungus">Champignon</span></span><span class="num">02</span></div>
+      <h2><span data-fr="L’oïdium" data-en="Powdery mildew">L’oïdium</span></h2>
+      <p class="latin">Erysiphe necator</p>
+      <p class="lead L fr">Le premier fléau venu d’Amérique (1847). Il n’a pas besoin de pluie : un temps chaud, lourd et ombragé lui suffit.</p><p class="lead L en">The first plague to arrive from America (1847). It needs no rain: warm, muggy, shaded conditions are enough.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Poussière blanc-gris sur les feuilles, les rameaux et les grappes, odeur de moisi. Les baies durcissent et éclatent ; les sarments portent des taches brun-noir.</p><p class="L en">Whitish-grey dust on leaves, shoots and bunches, with a musty smell. Berries harden and split; canes show brown-black blotches.</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">Surtout de mai à juillet, de la floraison à la fermeture de la grappe.</p><p class="L en">Mainly May to July, from flowering to bunch closure.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Le soufre, en poudre ou mouillable, utilisé depuis les années 1850 ; un feuillage aéré et bien exposé.</p><p class="L en">Sulphur, dusted or wettable, used since the 1850s; an open, well-exposed canopy.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Agent" data-en="Pathogen">Agent</span></dt><dd><div class="L fr"><i>Erysiphe necator</i> (anciennement <i>Uncinula necator</i>), ascomycète biotrophe nord-américain : signalé en Angleterre en 1845, en France en 1847.</div><div class="L en"><i>Erysiphe necator</i> (formerly <i>Uncinula necator</i>), a biotrophic North American ascomycete: reported in England in 1845, France in 1847.</div></dd></div><div class="pro-item"><dt><span data-fr="Conservation" data-en="Overwintering">Conservation</span></dt><dd><div class="L fr">Mycélium dans les bourgeons (pousses « drapeaux » couvertes de poudre au débourrement) et chasmothèces sur les écorces.</div><div class="L en">Mycelium inside buds (powder-covered “flag shoots” at budburst) and chasmothecia on the bark.</div></dd></div><div class="pro-item"><dt><span data-fr="Conditions" data-en="Conditions">Conditions</span></dt><dd><div class="L fr">Optimum 25–28 °C, forte humidité, ombrage ; pas besoin d’eau libre. Les fortes chaleurs (au-delà de ~35 °C) et les pluies battantes le freinent.</div><div class="L en">Optimum 25–28 °C, high humidity, shade; no free water needed. Intense heat (above ~35 °C) and driving rain slow it down.</div></dd></div><div class="pro-item"><dt><span data-fr="Sensibilité" data-en="Susceptibility">Sensibilité</span></dt><dd><div class="L fr">Baies très sensibles de la nouaison à la fermeture de la grappe ; elles acquièrent une résistance ontogénique 3 à 4 semaines après la floraison. Carignan et Chardonnay sont parmi les plus sensibles.</div><div class="L en">Berries are highly susceptible from fruit set to bunch closure, gaining ontogenic resistance 3–4 weeks after flowering. Carignan and Chardonnay are among the most susceptible.</div></dd></div><div class="pro-item"><dt><span data-fr="Lutte" data-en="Control">Lutte</span></dt><dd><div class="L fr">Soufre (action de contact et de vapeur ; risque de brûlures au-delà de 30–32 °C) ; IBS, SDHI et QoI de synthèse, avec un fort risque de résistances ; biocontrôle (bicarbonate de potassium, huile essentielle d’orange douce). Prophylaxie : ébourgeonnage, effeuillage.</div><div class="L en">Sulphur (contact and vapour action; scorch risk above 30–32 °C); synthetic DMIs, SDHIs and QoIs, with high resistance risk; biocontrol (potassium bicarbonate, sweet-orange oil). Prevention: shoot thinning, leaf removal.</div></dd></div><div class="pro-item"><dt><span data-fr="Conséquences" data-en="Consequences">Conséquences</span></dt><dd><div class="L fr">Les baies éclatées ouvrent la porte au botrytis et aux pourritures acides ; goûts de moisi dans le vin.</div><div class="L en">Split berries open the door to botrytis and sour rot; mouldy taints in the wine.</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat " id="black-rot" style="--c:#6f8b1e">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/black_rot.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/black_rot.webp" alt="Black rot" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#6f8b1e"><span data-fr="Champignon" data-en="Fungus">Champignon</span></span><span class="num">03</span></div>
+      <h2><span data-fr="Le black rot" data-en="Black rot">Le black rot</span></h2>
+      <p class="latin">Guignardia bidwellii</p>
+      <p class="lead L fr">Arrivé dans l’Hérault en 1885, longtemps discret, il revient dans les vignes peu traitées et près des parcelles abandonnées.</p><p class="lead L en">Arrived in the Hérault in 1885 and long kept in check, it is returning in lightly sprayed vineyards and near abandoned plots.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Taches rondes brun clair, bordées de sombre, ponctuées de minuscules points noirs (pycnides). Les baies brunissent puis sèchent en momies noires et dures.</p><p class="L en">Round light-brown spots with a dark border, dotted with tiny black specks (pycnidia). Berries turn brown, then dry into hard black mummies.</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">Printemps et début d’été chauds et pluvieux, de la pousse jusqu’à quelques semaines après la floraison.</p><p class="L en">Warm, rainy spring and early summer, from shoot growth until a few weeks after flowering.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Retirer les momies et les bois atteints à la taille, arracher les vignes abandonnées voisines ; plusieurs anti-mildiou le contrôlent aussi.</p><p class="L en">Remove mummies and infected wood at pruning, pull out nearby abandoned vines; several downy-mildew sprays also control it.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Agent" data-en="Pathogen">Agent</span></dt><dd><div class="L fr"><i>Guignardia bidwellii</i> (forme asexuée <i>Phyllosticta ampelicida</i>), ascomycète nord-américain.</div><div class="L en"><i>Guignardia bidwellii</i> (asexual form <i>Phyllosticta ampelicida</i>), a North American ascomycete.</div></dd></div><div class="pro-item"><dt><span data-fr="Cycle" data-en="Life cycle">Cycle</span></dt><dd><div class="L fr">Hiverne dans les momies (au sol et accrochées au cep) et les chancres des rameaux. Les ascospores sont projetées par la pluie au printemps ; quelques heures d’humectation suffisent par temps chaud.</div><div class="L en">Overwinters in mummies (on the ground and hanging on the vine) and cane lesions. Ascospores are released by spring rain; a few hours of leaf wetness are enough in warm weather.</div></dd></div><div class="pro-item"><dt><span data-fr="Piège" data-en="The catch">Piège</span></dt><dd><div class="L fr">Incubation longue (2 à 3 semaines) : les symptômes apparaissent bien après la contamination. Les baies deviennent résistantes 4 à 5 semaines après la floraison.</div><div class="L en">Long incubation (2–3 weeks): symptoms appear well after infection. Berries become resistant 4–5 weeks after flowering.</div></dd></div><div class="pro-item"><dt><span data-fr="Contexte" data-en="Context">Contexte</span></dt><dd><div class="L fr">Les friches et vignes abandonnées servent de réservoirs. Le cuivre l’arrête mal, d’où sa progression en bio et avec la réduction des traitements.</div><div class="L en">Fallow land and abandoned vineyards act as reservoirs. Copper controls it poorly, hence its spread in organic vineyards and with reduced spraying.</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat rev" id="pourriture-grise" style="--c:#6f8b1e">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/gray_rot.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/gray_rot.webp" alt="Grey rot" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#6f8b1e"><span data-fr="Champignon" data-en="Fungus">Champignon</span></span><span class="num">04</span></div>
+      <h2><span data-fr="La pourriture grise" data-en="Grey rot">La pourriture grise</span></h2>
+      <p class="latin">Botrytis cinerea</p>
+      <p class="lead L fr">Le même champignon que la pourriture noble, mais au mauvais moment : sur un raisin abîmé et par temps humide, il gâche la vendange.</p><p class="lead L en">The same fungus as noble rot, but at the wrong time: on damaged grapes in wet weather, it ruins the harvest.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Feutrage gris de moisissure sur les grappes ; baies brunes qui se fendent et s’affaissent. Dans les cas graves, toute la grappe pourrit.</p><p class="L en">Grey felt of mould on the bunches; brown berries that split and collapse. In severe cases the whole bunch rots.</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">De la véraison aux vendanges, quand il pleut sur un raisin mûr. Les grappes compactes et blessées sont touchées en premier.</p><p class="L en">From véraison to harvest, when rain falls on ripe grapes. Compact and damaged bunches are hit first.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Aérer les grappes (effeuillage), modérer la vigueur, éviter les blessures (vers de la grappe, grêle, oïdium), vendanger vite et trier.</p><p class="L en">Open up the bunch zone (leaf removal), moderate vigour, prevent wounds (grape moths, hail, powdery mildew), pick quickly and sort.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Agent" data-en="Pathogen">Agent</span></dt><dd><div class="L fr"><i>Botrytis cinerea</i> (forme sexuée <i>Botryotinia fuckeliana</i>), champignon nécrotrophe polyphage.</div><div class="L en"><i>Botrytis cinerea</i> (sexual form <i>Botryotinia fuckeliana</i>), a necrotrophic fungus with a very wide host range.</div></dd></div><div class="pro-item"><dt><span data-fr="Infection" data-en="Infection">Infection</span></dt><dd><div class="L fr">Peut s’installer dès la floraison dans les débris floraux (infection latente) et se réveiller à la véraison. Les plaies sont ses portes d’entrée.</div><div class="L en">Can establish at flowering in floral debris (latent infection) and reactivate at véraison. Wounds are its entry points.</div></dd></div><div class="pro-item"><dt><span data-fr="Au chai" data-en="In the winery">Au chai</span></dt><dd><div class="L fr">La laccase, enzyme oxydative du champignon, provoque la casse oxydasique et la perte de couleur des rouges ; goûts de moisi ; les glucanes colmatent les filtres. Les rouges en souffrent davantage que les blancs.</div><div class="L en">Laccase, the fungus’s oxidative enzyme, causes oxidasic casse and colour loss in reds; mouldy taints; glucans clog filters. Reds suffer more than whites.</div></dd></div><div class="pro-item"><dt><span data-fr="Lutte" data-en="Control">Lutte</span></dt><dd><div class="L fr">Prophylaxie d’abord : effeuillage de la zone des grappes, fertilisation azotée modérée, enherbement, lutte contre les vers de la grappe. Anti-botrytis positionnés aux stades classiques (fin floraison, fermeture, véraison) ; biocontrôle (<i>Bacillus</i>, <i>Aureobasidium pullulans</i>).</div><div class="L en">Prevention first: leaf removal in the fruit zone, moderate nitrogen, cover crops, grape-moth control. Anti-botrytis sprays at the classic stages (end of flowering, bunch closure, véraison); biocontrol (<i>Bacillus</i>, <i>Aureobasidium pullulans</i>).</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat " id="pourriture-noble" style="--c:#c08a1a">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/noble_rot.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/noble_rot.webp" alt="Noble rot" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#c08a1a"><span data-fr="Champignon bénéfique" data-en="Beneficial fungus">Champignon bénéfique</span></span><span class="num">05</span></div>
+      <h2><span data-fr="La pourriture noble" data-en="Noble rot">La pourriture noble</span></h2>
+      <p class="latin">Botrytis cinerea</p>
+      <p class="lead L fr">Le seul « ennemi » qu’on espère : sur des raisins blancs bien mûrs, avec les brumes d’automne, <i>Botrytis cinerea</i> donne les grands liquoreux.</p><p class="lead L en">The one “enemy” growers hope for: on fully ripe white grapes, with autumn mists, <i>Botrytis cinerea</i> makes the great sweet wines.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Ce qui se passe" data-en="What happens">Ce qui se passe</span></h4><p class="L fr">Les baies passent du doré au brun violacé (« pourri plein »), puis se flétrissent et se confisent (« rôti »). La peau devient poreuse, l’eau s’évapore, les sucres se concentrent.</p><p class="L en">Berries turn from golden to purplish-brown (“pourri plein”), then shrivel and candy (“rôti”). The skin becomes porous, water evaporates, sugars concentrate.</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">De septembre à novembre, avec des matinées brumeuses suivies d’après-midi ensoleillés et secs.</p><p class="L en">September to November, with misty mornings followed by dry, sunny afternoons.</p></div><div class="ess"><h4><span data-fr="La récolte" data-en="Harvesting">La récolte</span></h4><p class="L fr">À la main, par tries successives : les vendangeurs repassent plusieurs fois et ne cueillent que les baies parfaitement « rôties ».</p><p class="L en">By hand, in successive pickings (“tries”): pickers go through the vines several times, taking only perfectly shrivelled berries.</p></div></div>
+      <div class="where"><h4><span data-fr="Où la trouver" data-en="Where to find it">Où la trouver</span></h4><div class="aoc-links"><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Sauternes.html">Sauternes</a><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Barsac.html">Barsac</a><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Cerons.html">Cérons</a><a href="../../Plan%20Cadastraux/Bordeaux_CotesDeBordeaux/Loupiac.html">Loupiac</a><a href="../../Plan%20Cadastraux/Bordeaux_CotesDeBordeaux/Sainte-Croix-du-Mont.html">Sainte-Croix-du-Mont</a><a href="../../Plan%20Cadastraux/Bordeaux_CotesDeBordeaux/Cadillac.html">Cadillac</a><a href="../../Plan%20Cadastraux/Sud_Ouest_Bergerac_Garonne/Monbazillac.html">Monbazillac</a><a href="../../Plan%20Cadastraux/Loire_Anjou_Touraine/Coteaux-du-Layon.html">Coteaux du Layon</a><a href="../../Plan%20Cadastraux/Loire_Anjou_Touraine/Quarts-de-Chaume.html">Quarts de Chaume</a><a href="../../Plan%20Cadastraux/Loire_Anjou_Touraine/Bonnezeaux.html">Bonnezeaux</a><a href="../../Plan%20Cadastraux/Loire_Anjou_Touraine/Vouvray.html">Vouvray</a></div><p class="hint"><span data-fr="Chaque nom ouvre le plan cadastral de l’appellation." data-en="Each name opens the appellation’s cadastral plan.">Chaque nom ouvre le plan cadastral de l’appellation.</span></p></div>
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Conditions" data-en="Conditions">Conditions</span></dt><dd><div class="L fr">L’alternance humidité / sécheresse est indispensable : à Sauternes, les eaux fraîches du Ciron rencontrent la Garonne plus chaude et créent les brouillards matinaux. Si la pluie s’installe, la pourriture devient grise.</div><div class="L en">Alternating humidity and dryness is essential: at Sauternes, the cool Ciron meets the warmer Garonne and creates morning fog. If rain sets in, the rot turns grey.</div></dd></div><div class="pro-item"><dt><span data-fr="Chimie" data-en="Chemistry">Chimie</span></dt><dd><div class="L fr">Le champignon consomme une partie des sucres et surtout de l’acide tartrique ; il produit glycérol, acide gluconique et botryticine, qui ralentit la fermentation. Arômes d’abricot, de miel, de safran, d’orange confite. Besoins accrus en SO<sub>2</sub>.</div><div class="L en">The fungus consumes some sugar and especially tartaric acid; it produces glycerol, gluconic acid and botryticine, which slows fermentation. Aromas of apricot, honey, saffron, candied orange. Higher SO<sub>2</sub> needs.</div></dd></div><div class="pro-item"><dt><span data-fr="Règles (Sauternes)" data-en="Rules (Sauternes)">Règles (Sauternes)</span></dt><dd><div class="L fr">Cahier des charges : raisins à surmaturité avec pourriture noble, vendange manuelle par tries successives, au moins 221 g/L de sucre dans le moût, 15 % vol. de titre naturel, rendement de 25 hL/ha, au moins 45 g/L de sucres résiduels.</div><div class="L en">Specification: overripe grapes with noble rot, hand-harvested in successive tries, at least 221 g/L sugar in the must, 15 % natural potential alcohol, 25 hL/ha yield, at least 45 g/L residual sugar.</div></dd></div><div class="pro-item"><dt><span data-fr="Cépages" data-en="Grapes">Cépages</span></dt><dd><div class="L fr">Sémillon (peau fine, très réceptif), Sauvignon, Muscadelle dans le Bordelais ; Chenin en Loire ; Riesling, Gewurztraminer, Pinot gris et Muscat pour les Sélections de Grains Nobles d’Alsace.</div><div class="L en">Sémillon (thin-skinned, very receptive), Sauvignon and Muscadelle in Bordeaux; Chenin in the Loire; Riesling, Gewurztraminer, Pinot Gris and Muscat for Alsace Sélection de Grains Nobles.</div></dd></div><div class="pro-item"><dt><span data-fr="À ne pas confondre" data-en="Not to be confused with">À ne pas confondre</span></dt><dd><div class="L fr">Le passerillage (raisins flétris sur souche sans botrytis : Jurançon, Pacherenc) et le vin de paille (raisins séchés après la récolte : Jura).</div><div class="L en">Passerillage (grapes shrivelled on the vine without botrytis: Jurançon, Pacherenc) and vin de paille (grapes dried after picking: Jura).</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat rev" id="esca" style="--c:#8a5a2b">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/esca.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/esca.webp" alt="Esca" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#8a5a2b"><span data-fr="Maladie du bois" data-en="Trunk disease">Maladie du bois</span></span><span class="num">06</span></div>
+      <h2><span data-fr="L’esca" data-en="Esca">L’esca</span></h2>
+      <p class="latin">Phaeomoniella, Phaeoacremonium, Fomitiporia</p>
+      <p class="lead L fr">La plus redoutée des maladies du bois : lente et incurable, elle tue chaque année des milliers de ceps et vieillit prématurément les vignobles.</p><p class="lead L en">The most feared trunk disease: slow and incurable, it kills thousands of vines every year and ages vineyards prematurely.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Feuilles « tigrées » : bandes jaunes ou rouges entre les nervures, qui se dessèchent. En plein été, un cep peut sécher en quelques jours (apoplexie). À la coupe, le bois est brun, nécrosé ou spongieux (amadou).</p><p class="L en">“Tiger-striped” leaves: yellow or red bands between the veins that dry out. In midsummer a vine can collapse within days (apoplexy). Cut open, the wood is brown, necrotic or spongy (“touchwood”).</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">Symptômes de juin à septembre ; les contaminations se font surtout par les plaies de taille en hiver.</p><p class="L en">Symptoms June to September; infection happens mainly through pruning wounds in winter.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Taille respectueuse des flux de sève, petites plaies, curetage du bois malade, recépage et remplacement des ceps morts.</p><p class="L en">Pruning that respects sap flow, small cuts, surgical removal of diseased wood, retraining from a new shoot and replacing dead vines.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Agents" data-en="Pathogens">Agents</span></dt><dd><div class="L fr">Un complexe de champignons : <i>Phaeomoniella chlamydospora</i> et <i>Phaeoacremonium minimum</i> (nécroses brunes), <i>Fomitiporia mediterranea</i> (pourriture blanche, amadou). Maladies du bois voisines : eutypiose (<i>Eutypa lata</i>) et Black Dead Arm (Botryosphaeriacées).</div><div class="L en">A fungal complex: <i>Phaeomoniella chlamydospora</i> and <i>Phaeoacremonium minimum</i> (brown necrosis), <i>Fomitiporia mediterranea</i> (white rot, touchwood). Related trunk diseases: Eutypa dieback (<i>Eutypa lata</i>) and Botryosphaeria dieback (“Black Dead Arm”).</div></dd></div><div class="pro-item"><dt><span data-fr="Un tournant : 2001" data-en="A turning point: 2001">Un tournant : 2001</span></dt><dd><div class="L fr">L’arsénite de sodium, seul traitement efficace mais très toxique, est interdit en 2001 ; l’esca progresse depuis. Le dépérissement du vignoble, maladies du bois en tête, rendrait environ un cep sur dix improductif ; un Plan national dépérissement du vignoble est engagé par la filière depuis 2016.</div><div class="L en">Sodium arsenite, the only effective but highly toxic treatment, was banned in 2001; esca has been spreading ever since. Vineyard decline, led by trunk diseases, is thought to leave about one vine in ten unproductive; the industry has run a national vineyard-decline plan since 2016.</div></dd></div><div class="pro-item"><dt><span data-fr="Cépages" data-en="Varieties">Cépages</span></dt><dd><div class="L fr">Très sensibles : Sauvignon blanc, Cabernet Sauvignon, Ugni blanc, Trousseau. Plus tolérant : Merlot.</div><div class="L en">Very susceptible: Sauvignon Blanc, Cabernet Sauvignon, Ugni Blanc, Trousseau. More tolerant: Merlot.</div></dd></div><div class="pro-item"><dt><span data-fr="Techniques" data-en="Techniques">Techniques</span></dt><dd><div class="L fr">Taille Guyot-Poussard : préserver un bois de sève continu, éviter les grosses plaies sur le dessus des bras, laisser des chicots (cônes de dessèchement). Curetage : retirer à la tronçonneuse l’amadou du tronc, méthode relancée par François Dal (Sicavac, Sancerre). Protection des plaies, taille tardive.</div><div class="L en">Guyot-Poussard pruning: keep continuous sap-carrying wood, avoid large cuts on top of the arms, leave stubs (desiccation cones). Trunk surgery (“curetage”): cutting the touchwood out of the trunk with a small chainsaw, a method revived by François Dal (Sicavac, Sancerre). Wound protection, late pruning.</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat " id="flavescence-doree" style="--c:#b0702a">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/flavescence_doree.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/flavescence_doree.webp" alt="Flavescence dorée" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#b0702a"><span data-fr="Phytoplasme" data-en="Phytoplasma">Phytoplasme</span></span><span class="num">07</span></div>
+      <h2><span data-fr="La flavescence dorée" data-en="Flavescence dorée">La flavescence dorée</span></h2>
+      <p class="latin">Phytoplasme / phytoplasma 16SrV</p>
+      <p class="lead L fr">Maladie de quarantaine, transmise par une petite cicadelle venue d’Amérique. Sans lutte collective, elle se répand comme une épidémie.</p><p class="lead L en">A quarantine disease spread by a small leafhopper from America. Without collective control it spreads like an epidemic.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Feuilles enroulées vers le bas, épaisses et cassantes, qui jaunissent (blancs) ou rougissent (rouges) par secteurs ; rameaux qui ne s’aoûtent pas et retombent, mous comme du caoutchouc ; grappes qui se dessèchent.</p><p class="L en">Leaves rolled downwards, thick and brittle, turning yellow (white varieties) or red (red varieties) in sectors; shoots that fail to harden and droop, rubbery; bunches that wither.</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">Symptômes de juillet aux vendanges ; l’insecte vecteur éclôt en mai et transmet la maladie en été.</p><p class="L en">Symptoms from July to harvest; the insect vector hatches in May and spreads the disease in summer.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Lutte obligatoire : insecticides dans les zones délimitées, prospection de toutes les parcelles, arrachage des ceps malades, plants de pépinière traités à l’eau chaude.</p><p class="L en">Compulsory control: insecticides in designated zones, inspection of every plot, removal of infected vines, hot-water treatment of nursery plants.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Agent" data-en="Pathogen">Agent</span></dt><dd><div class="L fr">Un phytoplasme (bactérie sans paroi vivant dans le phloème), groupe 16SrV. Vecteur : <i>Scaphoideus titanus</i>, cicadelle nord-américaine qui acquiert le phytoplasme en piquant un cep malade, puis, après environ un mois de latence, le transmet toute sa vie.</div><div class="L en">A phytoplasma (a wall-less bacterium living in the phloem), group 16SrV. Vector: <i>Scaphoideus titanus</i>, a North American leafhopper that picks it up feeding on an infected vine and, after about a month’s latency, transmits it for life.</div></dd></div><div class="pro-item"><dt><span data-fr="Histoire" data-en="History">Histoire</span></dt><dd><div class="L fr">Décrite en Armagnac au début des années 1950 ; présente aujourd’hui dans la plupart des régions viticoles françaises.</div><div class="L en">Described in Armagnac in the early 1950s; now present in most French wine regions.</div></dd></div><div class="pro-item"><dt><span data-fr="Réglementation" data-en="Regulation">Réglementation</span></dt><dd><div class="L fr">Organisme de quarantaine de l’Union. En France, lutte obligatoire par arrêté ministériel et arrêtés préfectoraux : 1 à 3 traitements selon la zone (pyréthrines naturelles en bio), arrachage de toute la parcelle au-delà de 20 % de ceps atteints, prospections collectives.</div><div class="L en">EU quarantine pest. In France, control is compulsory by ministerial and prefectoral orders: 1 to 3 sprays depending on the zone (natural pyrethrins in organic farming), whole plot uprooted above 20 % infected vines, collective field surveys.</div></dd></div><div class="pro-item"><dt><span data-fr="Pépinières" data-en="Nurseries">Pépinières</span></dt><dd><div class="L fr">Traitement des plants et greffons à l’eau chaude : 50 °C pendant 45 minutes.</div><div class="L en">Hot-water treatment of plants and scions: 50 °C for 45 minutes.</div></dd></div><div class="pro-item"><dt><span data-fr="Diagnostic" data-en="Diagnosis">Diagnostic</span></dt><dd><div class="L fr">Symptômes identiques au bois noir (phytoplasme du stolbur, vecteur <i>Hyalesthes obsoletus</i>, lié aux orties et liserons), qui n’est pas épidémique : seule une analyse PCR permet de trancher. Chardonnay et Cabernet Sauvignon sont très sensibles.</div><div class="L en">Symptoms identical to bois noir (stolbur phytoplasma, vector <i>Hyalesthes obsoletus</i>, linked to nettles and bindweed), which is not epidemic: only a PCR test tells them apart. Chardonnay and Cabernet Sauvignon are very susceptible.</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat rev" id="cicadelles" style="--c:#a0283c">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/leafhoppers.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/leafhoppers.webp" alt="Green leafhoppers" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#a0283c"><span data-fr="Insecte ravageur" data-en="Insect pest">Insecte ravageur</span></span><span class="num">08</span></div>
+      <h2><span data-fr="Les cicadelles vertes" data-en="Green leafhoppers">Les cicadelles vertes</span></h2>
+      <p class="latin">Empoasca vitis</p>
+      <p class="lead L fr">Minuscules insectes piqueurs-suceurs, ils « grillent » les feuilles en été et ralentissent la maturité.</p><p class="lead L en">Tiny sap-sucking insects that “scorch” leaves in summer and slow ripening.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Petites piqûres claires sur les feuilles (ponctuations), puis jaunissement (blancs) ou rougissement (rouges) entre les nervures ; bords qui se dessèchent, les « grillures ».</p><p class="L en">Small pale feeding marks (stippling), then yellowing (white varieties) or reddening (red varieties) between the veins; drying leaf margins, known as “hopper burn”.</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">De juin à septembre ; les dégâts sont plus forts lors des étés chauds et secs.</p><p class="L en">June to September; damage is worse in hot, dry summers.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Compter les larves au revers des feuilles ; argile blanche (kaolin) ; ennemis naturels ; insecticide seulement au-dessus du seuil.</p><p class="L en">Count nymphs on the leaf undersides; white clay (kaolin); natural enemies; insecticide only above the threshold.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Espèces" data-en="Species">Espèces</span></dt><dd><div class="L fr"><i>Empoasca vitis</i>, cicadelle verte ou « des grillures », dans la majeure partie de la France ; <i>Jacobiasca lybica</i> progresse sur le pourtour méditerranéen.</div><div class="L en"><i>Empoasca vitis</i>, the green leafhopper, across most of France; <i>Jacobiasca lybica</i> is spreading around the Mediterranean.</div></dd></div><div class="pro-item"><dt><span data-fr="Dégâts" data-en="Damage">Dégâts</span></dt><dd><div class="L fr">Les piqûres dans les nervures bloquent la sève élaborée : moins de photosynthèse, maturation retardée, degré plus faible.</div><div class="L en">Feeding in the veins blocks phloem flow: less photosynthesis, delayed ripening, lower sugar.</div></dd></div><div class="pro-item"><dt><span data-fr="Seuils" data-en="Thresholds">Seuils</span></dt><dd><div class="L fr">Indicatif : de l’ordre de 100 larves pour 100 feuilles en été, à adapter selon la région et le stade (voir le BSV).</div><div class="L en">Guideline: around 100 nymphs per 100 leaves in summer, adjusted by region and growth stage (see the regional BSV).</div></dd></div><div class="pro-item"><dt><span data-fr="Auxiliaires" data-en="Natural enemies">Auxiliaires</span></dt><dd><div class="L fr"><i>Anagrus atomus</i>, micro-guêpe parasite des œufs, araignées, chrysopes ; haies et enherbement les favorisent.</div><div class="L en"><i>Anagrus atomus</i>, a tiny wasp that parasitises the eggs, spiders, lacewings; hedges and cover crops help them.</div></dd></div><div class="pro-item"><dt><span data-fr="À ne pas confondre" data-en="Not to be confused with">À ne pas confondre</span></dt><dd><div class="L fr"><i>Scaphoideus titanus</i>, vecteur de la flavescence dorée, et la cicadelle pruineuse (<i>Metcalfa pruinosa</i>).</div><div class="L en"><i>Scaphoideus titanus</i>, vector of flavescence dorée, and the citrus flatid planthopper (<i>Metcalfa pruinosa</i>).</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+  <section class="threat " id="phylloxera" style="--c:#a0283c">
+    <figure class="plate">
+      <button type="button" class="zoom" data-full="img/threats/phylloxera.webp" aria-label="Agrandir / Enlarge">
+        <img src="img/threats/phylloxera.webp" alt="Phylloxera" loading="lazy" decoding="async" width="900" height="1140">
+        <span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span>
+      </button>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#a0283c"><span data-fr="Insecte ravageur" data-en="Insect pest">Insecte ravageur</span></span><span class="num">09</span></div>
+      <h2><span data-fr="Le phylloxéra" data-en="Phylloxera">Le phylloxéra</span></h2>
+      <p class="latin">Daktulosphaira vitifoliae</p>
+      <p class="lead L fr">Un insecte d’un millimètre qui a ravagé presque tout le vignoble européen à la fin du XIX<sup>e</sup> siècle et a changé pour toujours la façon de planter la vigne.</p><p class="lead L en">A one-millimetre insect that devastated almost every European vineyard in the late 19th century and changed forever the way vines are planted.</p>
+      <div class="ess-grid"><div class="ess"><h4><span data-fr="Symptômes" data-en="Symptoms">Symptômes</span></h4><p class="L fr">Sur les racines de la vigne européenne : renflements (galles) qui pourrissent ; le cep dépérit et meurt en deux ou trois ans. Sur les feuilles des vignes américaines : petites galles en forme de verrues.</p><p class="L en">On the roots of European vines: swellings (galls) that rot; the vine declines and dies within two or three years. On American vine leaves: small wart-like galls.</p></div><div class="ess"><h4><span data-fr="Quand" data-en="When">Quand</span></h4><p class="L fr">Toute l’année dans le sol. Les premiers dégâts en France apparaissent en 1863, dans le Gard.</p><p class="L en">All year round in the soil. The first damage in France appeared in 1863, in the Gard.</p></div><div class="ess"><h4><span data-fr="Protection" data-en="Protection">Protection</span></h4><p class="L fr">Aucun traitement : on greffe la vigne européenne sur des porte-greffes américains résistants. La quasi-totalité des vignes françaises est greffée.</p><p class="L en">No cure: European vines are grafted onto resistant American rootstocks. Almost every French vine is grafted.</p></div></div>
+      
+      <details class="pro">
+        <summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary>
+        <dl><div class="pro-item"><dt><span data-fr="Insecte" data-en="The insect">Insecte</span></dt><dd><div class="L fr"><i>Daktulosphaira vitifoliae</i> (anciennement <i>Phylloxera vastatrix</i>), hémiptère proche des pucerons, nord-américain. Cycle complexe : formes radicicole, gallicole et ailée ; multiplication rapide par parthénogenèse.</div><div class="L en"><i>Daktulosphaira vitifoliae</i> (formerly <i>Phylloxera vastatrix</i>), an aphid-like North American bug. Complex life cycle: root, leaf-gall and winged forms; rapid parthenogenetic reproduction.</div></dd></div><div class="pro-item"><dt><span data-fr="Histoire" data-en="History">Histoire</span></dt><dd><div class="L fr">Dépérissements à Pujaut (Gard) en 1863 ; insecte identifié en 1868 par Jules-Émile Planchon, Gaston Bazille et Félix Sahut. En une trentaine d’années, il gagne toute la France ; le vignoble ne retrouvera jamais sa surface d’avant la crise.</div><div class="L en">Vines dying at Pujaut (Gard) in 1863; the insect identified in 1868 by Jules-Émile Planchon, Gaston Bazille and Félix Sahut. Within some thirty years it reached all of France; the vineyard area never recovered its pre-crisis size.</div></dd></div><div class="pro-item"><dt><span data-fr="Remèdes essayés" data-en="Remedies tried">Remèdes essayés</span></dt><dd><div class="L fr">Submersion hivernale des vignes, sulfure de carbone, plantation dans les sables, où l’insecte ne survit pas (Sables de Camargue). Hybrides producteurs directs (Noah, Clinton, Isabelle, Jacquez, Herbemont, Othello), interdits à la plantation par la loi de 1934.</div><div class="L en">Winter flooding of vineyards, carbon disulphide, planting in sand where the insect cannot survive (Sables de Camargue). Direct-producer hybrids (Noah, Clinton, Isabelle, Jacquez, Herbemont, Othello), banned from planting by the 1934 law.</div></dd></div><div class="pro-item"><dt><span data-fr="La solution" data-en="The solution">La solution</span></dt><dd><div class="L fr">Le greffage sur des porte-greffes issus de <i>Vitis riparia</i>, <i>V. rupestris</i> et <i>V. berlandieri</i> (tolérante au calcaire, rapportée par la mission de Pierre Viala aux États-Unis en 1887, avec l’aide du Texan T. V. Munson).</div><div class="L en">Grafting onto rootstocks derived from <i>Vitis riparia</i>, <i>V. rupestris</i> and <i>V. berlandieri</i> (lime-tolerant, brought back by Pierre Viala’s 1887 mission to the United States, with help from Texan T. V. Munson).</div></dd></div><div class="pro-item"><dt><span data-fr="Vignes franches de pied" data-en="Ungrafted vines">Vignes franches de pied</span></dt><dd><div class="L fr">Rares survivantes : vignes des sables, et quelques parcelles comme les « Vieilles Vignes Françaises » de Bollinger à Aÿ.</div><div class="L en">Rare survivors: vines on sand, and a few plots such as Bollinger’s “Vieilles Vignes Françaises” at Aÿ.</div></dd></div></dl>
+      </details>
+    </div>
+  </section>
+
+  <section class="sec" id="autres">
+    <div class="sec-head">
+      <h2 data-fr="Autres <em>menaces</em>" data-en="Other <em>threats</em>">Autres <em>menaces</em></h2>
+      <p data-fr="D’autres ravageurs et les accidents climatiques, de plus en plus fréquents avec le réchauffement." data-en="Other pests, and weather hazards that are becoming more frequent as the climate warms.">D’autres ravageurs et les accidents climatiques, de plus en plus fréquents avec le réchauffement.</p>
+    </div>
+    <div class="others"><article class="other" style="--c:#a0283c"><span class="chip" style="--c:#a0283c"><span data-fr="Insecte ravageur" data-en="Insect pest">Insecte ravageur</span></span><h3><span data-fr="Vers de la grappe" data-en="Grape moths">Vers de la grappe</span></h3><p class="L fr">Chenilles de petits papillons, l’eudémis (<i>Lobesia botrana</i>) et la cochylis (<i>Eupoecilia ambiguella</i>), en 2 à 3 générations par an. Leurs morsures ouvrent la porte au botrytis.</p><p class="L en">Caterpillars of small moths, the European grapevine moth (<i>Lobesia botrana</i>) and the vine moth (<i>Eupoecilia ambiguella</i>), with 2–3 generations a year. Their feeding lets botrytis in.</p><p class="how"><b><span data-fr="Parades : " data-en="Defences: ">Parades : </span></b><span data-fr="Confusion sexuelle (diffuseurs de phéromones), <i>Bacillus thuringiensis</i>." data-en="Mating disruption (pheromone dispensers), <i>Bacillus thuringiensis</i>.">Confusion sexuelle (diffuseurs de phéromones), <i>Bacillus thuringiensis</i>.</span></p></article><article class="other" style="--c:#a0283c"><span class="chip" style="--c:#a0283c"><span data-fr="Insecte ravageur" data-en="Insect pest">Insecte ravageur</span></span><h3><span data-fr="Drosophila suzukii" data-en="Drosophila suzukii">Drosophila suzukii</span></h3><p class="L fr">Mouche asiatique arrivée en France en 2010, qui pond dans les baies mûres et favorise la pourriture acide.</p><p class="L en">An Asian fruit fly that reached France in 2010; it lays eggs in ripe berries and encourages sour rot.</p><p class="how"><b><span data-fr="Parades : " data-en="Defences: ">Parades : </span></b><span data-fr="Surveillance par pièges, vendange rapide, tri." data-en="Trap monitoring, prompt harvest, sorting.">Surveillance par pièges, vendange rapide, tri.</span></p></article><article class="other" style="--c:#4f6a96"><span class="chip" style="--c:#4f6a96"><span data-fr="Climat" data-en="Weather">Climat</span></span><h3><span data-fr="Gel de printemps" data-en="Spring frost">Gel de printemps</span></h3><p class="L fr">Après le débourrement (avril–mai), −1 à −2 °C suffisent à griller les jeunes pousses. Avril 2021 reste un épisode historique.</p><p class="L en">After budburst (April–May), −1 to −2 °C is enough to kill young shoots. April 2021 remains a historic event.</p><p class="how"><b><span data-fr="Parades : " data-en="Defences: ">Parades : </span></b><span data-fr="Bougies, tours antigel, aspersion, câbles chauffants, taille tardive." data-en="Frost candles, wind machines, sprinklers, heating cables, late pruning.">Bougies, tours antigel, aspersion, câbles chauffants, taille tardive.</span></p></article><article class="other" style="--c:#4f6a96"><span class="chip" style="--c:#4f6a96"><span data-fr="Climat" data-en="Weather">Climat</span></span><h3><span data-fr="Grêle" data-en="Hail">Grêle</span></h3><p class="L fr">Orages de mai à août : feuilles hachées, baies blessées, bois meurtri pour l’année suivante.</p><p class="L en">Storms from May to August: shredded leaves, damaged berries, bruised wood that affects the next year.</p><p class="how"><b><span data-fr="Parades : " data-en="Defences: ">Parades : </span></b><span data-fr="Filets paragrêle, assurance récolte." data-en="Anti-hail nets, crop insurance.">Filets paragrêle, assurance récolte.</span></p></article><article class="other" style="--c:#4f6a96"><span class="chip" style="--c:#4f6a96"><span data-fr="Climat" data-en="Weather">Climat</span></span><h3><span data-fr="Sécheresse &amp; canicule" data-en="Drought &amp; heatwaves">Sécheresse & canicule</span></h3><p class="L fr">Stress hydrique, blocage de maturité, baies échaudées. Le 28 juin 2019, 46 °C dans l’Hérault ont grillé des vignes en quelques heures.</p><p class="L en">Water stress, stalled ripening, sunburnt berries. On 28 June 2019, 46 °C in the Hérault scorched vines within hours.</p><p class="how"><b><span data-fr="Parades : " data-en="Defences: ">Parades : </span></b><span data-fr="Porte-greffes résistants, enherbement maîtrisé, conduite du feuillage protectrice, cépages adaptés." data-en="Drought-tolerant rootstocks, managed cover crops, shading canopy management, adapted varieties.">Porte-greffes résistants, enherbement maîtrisé, conduite du feuillage protectrice, cépages adaptés.</span></p></article><article class="other" style="--c:#4f6a96"><span class="chip" style="--c:#4f6a96"><span data-fr="Climat" data-en="Weather">Climat</span></span><h3><span data-fr="Faune sauvage" data-en="Wildlife">Faune sauvage</span></h3><p class="L fr">Chevreuils sur les bourgeons, sangliers et oiseaux sur les raisins mûrs.</p><p class="L en">Deer browsing buds, wild boar and birds eating ripe grapes.</p><p class="how"><b><span data-fr="Parades : " data-en="Defences: ">Parades : </span></b><span data-fr="Clôtures électriques, filets, effaroucheurs." data-en="Electric fences, nets, bird scarers.">Clôtures électriques, filets, effaroucheurs.</span></p></article></div>
+  </section>
+
+  <section class="sec" id="histoire">
+    <div class="sec-head">
+      <h2 data-fr="Repères <em>historiques</em>" data-en="Historical <em>milestones</em>">Repères <em>historiques</em></h2>
+    </div>
+    <ol class="panel tl"><li style="--c:#6f8b1e"><span class="yr">1847</span><span class="ev" data-fr="L’oïdium atteint la France (Angleterre, 1845)." data-en="Powdery mildew reaches France (England, 1845).">L’oïdium atteint la France (Angleterre, 1845).</span></li><li style="--c:#6f8b1e"><span class="yr">1850s</span><span class="ev" data-fr="Le soufrage devient la parade." data-en="Sulphur dusting becomes the cure.">Le soufrage devient la parade.</span></li><li style="--c:#a0283c"><span class="yr">1863</span><span class="ev" data-fr="Premiers dégâts du phylloxéra, à Pujaut (Gard)." data-en="First phylloxera damage, at Pujaut (Gard).">Premiers dégâts du phylloxéra, à Pujaut (Gard).</span></li><li style="--c:#2f7d8c"><span class="yr">1878</span><span class="ev" data-fr="Le mildiou arrive en France." data-en="Downy mildew arrives in France.">Le mildiou arrive en France.</span></li><li style="--c:#6f8b1e"><span class="yr">1885</span><span class="ev" data-fr="Bouillie bordelaise (Millardet) ; le black rot apparaît dans l’Hérault." data-en="Bordeaux mixture (Millardet); black rot appears in the Hérault.">Bouillie bordelaise (Millardet) ; le black rot apparaît dans l’Hérault.</span></li><li style="--c:#a0283c"><span class="yr">1887</span><span class="ev" data-fr="Mission Viala aux États-Unis : les porte-greffes calcicoles." data-en="Viala’s US mission: lime-tolerant rootstocks.">Mission Viala aux États-Unis : les porte-greffes calcicoles.</span></li><li style="--c:#a0283c"><span class="yr">1934</span><span class="ev" data-fr="Loi interdisant six hybrides producteurs directs." data-en="Law banning six direct-producer hybrids.">Loi interdisant six hybrides producteurs directs.</span></li><li style="--c:#b0702a"><span class="yr">1950s</span><span class="ev" data-fr="Flavescence dorée décrite en Armagnac." data-en="Flavescence dorée described in Armagnac.">Flavescence dorée décrite en Armagnac.</span></li><li style="--c:#8a5a2b"><span class="yr">2001</span><span class="ev" data-fr="Interdiction de l’arsénite de sodium : l’esca progresse." data-en="Sodium arsenite banned: esca spreads.">Interdiction de l’arsénite de sodium : l’esca progresse.</span></li><li style="--c:#2f7d8c"><span class="yr">2018</span><span class="ev" data-fr="Premiers cépages résistants ResDur ; plafond cuivre bio." data-en="First ResDur resistant varieties; organic copper cap.">Premiers cépages résistants ResDur ; plafond cuivre bio.</span></li></ol>
+  </section>
+
+  <nav class="chapters" aria-label="Chapitres"><h3 data-fr="La vigne &amp;amp; le vignoble · les chapitres" data-en="The vine &amp;amp; the vineyard · chapters">La vigne &amp; le vignoble · les chapitres</h3><div class="ch-grid"><a class="ch" href="Vine_Plant.html"><span class="ch-n">01</span><span class="ch-t" data-fr="La plante vigne" data-en="The vine plant">La plante vigne</span></a><a class="ch" href="Vine_Cycle.html"><span class="ch-n">02</span><span class="ch-t" data-fr="Le cycle de la vigne" data-en="The vine’s year">Le cycle de la vigne</span></a><a class="ch" href="Vine_Terroir.html"><span class="ch-n">03</span><span class="ch-t" data-fr="Terroir &amp; site" data-en="Terroir &amp; site">Terroir & site</span></a><a class="ch" href="Vine_Planting.html"><span class="ch-n">04</span><span class="ch-t" data-fr="Plantation &amp; vie du vignoble" data-en="Planting &amp; the life of a vineyard">Plantation & vie du vignoble</span></a><a class="ch" href="Vine_Pruning.html"><span class="ch-n">05</span><span class="ch-t" data-fr="Taille &amp; modes de conduite" data-en="Training &amp; pruning">Taille & modes de conduite</span></a><a class="ch" href="Vine_Canopy.html"><span class="ch-n">06</span><span class="ch-t" data-fr="Travaux en vert &amp; du sol" data-en="Canopy &amp; soil work">Travaux en vert & du sol</span></a><span class="ch cur" aria-current="page"><span class="ch-n">07</span><span class="ch-t" data-fr="Les ennemis de la vigne" data-en="Threats to the vine">Les ennemis de la vigne</span></span><a class="ch" href="Vine_Farming.html"><span class="ch-n">08</span><span class="ch-t" data-fr="Philosophies culturales" data-en="Farming philosophies">Philosophies culturales</span></a><a class="ch" href="Vine_Harvest.html"><span class="ch-n">09</span><span class="ch-t" data-fr="Les vendanges" data-en="Harvest">Les vendanges</span></a><a class="ch" href="Vine_Glossary.html"><span class="ch-n">10</span><span class="ch-t" data-fr="Glossaire" data-en="Glossary">Glossaire</span></a></div></nav>
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources"><li><span data-fr="IFV, Institut français de la vigne et du vin : fiches maladies et ravageurs." data-en="IFV (French Wine &amp; Vine Institute): disease and pest factsheets.">IFV, Institut français de la vigne et du vin : fiches maladies et ravageurs.</span></li><li><span data-fr="INRAE, Ephytia : identification des maladies de la vigne." data-en="INRAE, Ephytia: grapevine disease identification.">INRAE, Ephytia : identification des maladies de la vigne.</span></li><li><span data-fr="Règlement (UE) 2018/1981 (cuivre) ; arrêtés ministériels de lutte contre la flavescence dorée." data-en="Regulation (EU) 2018/1981 (copper); French ministerial orders on flavescence dorée control.">Règlement (UE) 2018/1981 (cuivre) ; arrêtés ministériels de lutte contre la flavescence dorée.</span></li><li><span data-fr="INAO, cahier des charges de l’AOC Sauternes." data-en="INAO, Sauternes AOC specification.">INAO, cahier des charges de l’AOC Sauternes.</span></li><li><span data-fr="Plan national dépérissement du vignoble (CNIV, BNIC)." data-en="National vineyard-decline plan (CNIV, BNIC).">Plan national dépérissement du vignoble (CNIV, BNIC).</span></li></ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Les ennemis de la vigne' : 'Threats to the vine';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

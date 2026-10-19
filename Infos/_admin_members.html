@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Inscrits — démo</title>
+<style>
+  :root{--gold:#d9b36b;--ink:#f5efe3;--muted:rgba(245,239,227,.7);--hair:rgba(217,179,107,.18);--panel:rgba(24,5,11,.5);--btn:#9b2235;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;--sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;}
+  html[data-theme="cream"]{--gold:#9a6a1f;--ink:#2e1419;--muted:rgba(46,20,25,.7);--hair:rgba(142,31,51,.16);--panel:#fffdf8;--btn:#7b1e2b;}
+  body{margin:0;font-family:var(--sans);color:var(--ink);background:#3a0a14;min-height:100vh;}
+  html[data-theme="cream"] body{background:#f5eee0;}
+  .wrap{max-width:1200px;margin:0 auto;padding:32px 20px 60px;}
+  a{color:var(--gold);}
+  h1{font-family:var(--serif);font-weight:500;font-size:34px;margin:18px 0 6px;}
+  p{color:var(--muted);margin:0 0 14px;font-size:14px;}
+  .acts{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0 18px;}
+  .btn{cursor:pointer;border-radius:999px;padding:10px 16px;font:700 11px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;border:1px solid var(--btn);background:var(--btn);color:#fff;}
+  .btn.ghost{background:transparent;color:var(--gold);border-color:var(--hair);}
+  .box{background:var(--panel);border:1px solid var(--hair);border-radius:14px;overflow:auto;}
+  table{width:100%;border-collapse:collapse;font-size:13px;min-width:900px;}
+  th,td{padding:9px 10px;border-bottom:1px solid var(--hair);text-align:left;white-space:nowrap;}
+  th{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+  .st{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid var(--hair);}
+  .empty{padding:30px;text-align:center;color:var(--muted);}
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:#fbf6ec}
+html[data-theme="cream"] .btn.ghost{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .box{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] th,html[data-theme="cream"] td{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .st{border:1px solid rgba(90,30,40,0.18)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+  <a href="Confidentialite.html">← Confidentialité &amp; mon compte</a>
+  <h1>Inscrits — démo</h1>
+  <p>Aperçu de ce que vous verriez une fois le site en ligne (tableau de bord du service d’authentification). En démo, la liste ne contient que les inscriptions faites dans <b>ce navigateur</b>. Page non listée dans le menu.</p>
+  <div class="acts">
+    <button class="btn" id="csv">Exporter en CSV</button>
+    <button class="btn ghost" id="clear">Vider la liste de démo</button>
+  </div>
+  <div class="box" id="list"></div>
+</div>
+<script>
+(function(){
+  var COLS = [['first','Prénom'],['middle','2e prénom'],['last','Nom'],['email','E-mail'],['phone','Téléphone'],['city','Ville'],['country','Pays'],
+              ['status','Statut'],['createdAt','Inscription'],['verifiedAt','Activé'],['consent','Consentement'],['page','Page d’origine']];
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function val(r,k){
+    if(k==='consent') return r.consent ? loc(r.consent.at)+' · v'+r.consent.policy+' · '+r.consent.lang : '';
+    if(k==='createdAt'||k==='verifiedAt') return loc(r[k]);
+    return r[k]||'';
+  }
+  function loc(iso){ if(!iso) return ''; var d=new Date(iso), z=function(n){return (n<10?'0':'')+n;}; return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())+' '+z(d.getHours())+':'+z(d.getMinutes()); }
+  function db(){ return window.FWAccess ? window.FWAccess.db() : []; }
+  function render(){
+    var rows = db();
+    if(!rows.length){ document.getElementById('list').innerHTML = '<div class="empty">Aucune inscription pour l’instant.</div>'; return; }
+    var h = '<table><thead><tr>'+COLS.map(function(c){return '<th>'+c[1]+'</th>';}).join('')+'</tr></thead><tbody>';
+    rows.slice().reverse().forEach(function(r){
+      h += '<tr>'+COLS.map(function(c){ var v = val(r,c[0]); return '<td>'+(c[0]==='status'?'<span class="st">'+(v==='member'?'membre':'en attente')+'</span>':esc(v))+'</td>'; }).join('')+'</tr>';
+    });
+    document.getElementById('list').innerHTML = h+'</tbody></table>';
+  }
+  document.getElementById('csv').addEventListener('click', function(){
+    var q = function(s){ return '"'+String(s).replace(/"/g,'""')+'"'; };
+    var lines = [COLS.map(function(c){return q(c[1]);}).join(';')].concat(db().map(function(r){ return COLS.map(function(c){ return q(val(r,c[0])); }).join(';'); }));
+    var blob = new Blob(['﻿'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
+    var u = URL.createObjectURL(blob), a = document.createElement('a'); a.href = u; a.download = 'inscrits-demo.csv'; document.body.appendChild(a); a.click(); a.remove();
+  });
+  document.getElementById('clear').addEventListener('click', function(){
+    if(confirm('Vider la liste de démo ?')){ window.FWAccess && window.FWAccess.clearDb(); render(); }
+  });
+  var n=0; (function w(){ if(window.FWAccess||n++>50) render(); else setTimeout(w,100); })();
+})();
+</script>
+</body>
+</html>

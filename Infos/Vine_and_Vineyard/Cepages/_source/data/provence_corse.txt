@@ -1,0 +1,53 @@
+= Les Baux-de-Provence | Provence | CDC Les-Baux-de-Provence
+Rouge: grenache N/P; mourvèdre N/P; syrah N/P; cabernet-sauvignon N/A ≤20 %; carignan N/A ≤30 %; cinsaut N/A ≤30 %; counoise N/A ≤30 %
+Rosé: cinsaut N/P; grenache N/P; syrah N/P; cabernet-sauvignon N/A ≤20 %; carignan N/A ≤30 %; counoise N/A ≤30 %; mourvèdre N/A ≤30 %
+Blanc: clairette B/P; grenache blanc B/P; vermentino B/P; roussanne B/C 10–30 %; bourboulenc B/A; marsanne B/A; ugni blanc B/A
+! Rouges et rosés : au moins 2 cépages, principaux ≥50 % de l'assemblage. Blancs : principaux ≥60 %, chacun ≤70 %.
+
+= Ajaccio | Corse | CDC Ajaccio
+Rouge, Rosé: sciaccarello N/P ≥40 %; barbaroux Rs/P; nielluccio N/P; vermentino B/P; aléatico N/A; carcajolo N/A; carignan N/A ≤15 %; cinsaut N/A; grenache N/A; morrastel N/A
+Blanc: vermentino B/P ≥80 %; biancu gentile B/A; codivarta B/A; genovèse B/A; ugni blanc B/A
+! Principaux ≥60 % (rouges, rosés).
+
+= Bandol | Provence | CDC Bandol
+Rouge: mourvèdre N/P 50–95 %; cinsaut N/P; grenache N/P; carignan N/A ≤10 %; syrah N/A ≤10 %; mourvaison N/A (variété d'adaptation); counoise N/A (variété d'adaptation); xinomavro N/A (variété d'adaptation); calabrese N/A (variété d'adaptation); agiorgitiko N/A (variété d'adaptation)
+Rosé: mourvèdre N/P 20–95 %; cinsaut N/P; grenache N/P; bourboulenc B/A; carignan N/A; clairette B/A; syrah N/A; ugni blanc B/A; mourvaison N/A (variété d'adaptation); counoise N/A (variété d'adaptation); xinomavro N/A (variété d'adaptation); calabrese N/A (variété d'adaptation); agiorgitiko N/A (variété d'adaptation)
+Blanc: clairette B/P 30–95 %; bourboulenc B/P; ugni blanc B/P; marsanne B/A ≤10 %; sauvignon B/A ≤10 %; sémillon B/A ≤10 %; vermentino B/A ≤20 %; grenache blanc B/A (variété d'adaptation); carignan blanc B/A (variété d'adaptation); terret blanc B/A (variété d'adaptation); assyrtiko B/A (variété d'adaptation)
+! Variétés d'intérêt à fin d'adaptation ≤5 % du vignoble, sous convention INAO.
+
+= Bellet | Provence | CDC Bellet
+Rouge: braquet N/P; fuella nera N/P; cinsaut N/A ≤15 %; grenache N/A
+Rosé: braquet N/P; fuella nera N/P; cinsaut N/A ≤15 %; grenache N/A; bourboulenc B/A; blanqueiron B/A; clairette B/A; mayorquin B/A; ugni blanc B/A; vermentino B/A
+Blanc: vermentino B/P ≥60 %; blanqueiron B/A; bourboulenc B/A; chardonnay B/A; clairette B/A; mayorquin B/A; muscat à petits grains B/A; ugni blanc B/A
+! Principaux ≥60 % du vignoble pour chaque couleur.
+
+= Cassis | Provence | CDC Cassis
+Blanc: marsanne B/P 20–80 %; clairette B/P; bourboulenc B/A; pascal B/A; sauvignon B/A; terret blanc B/A ≤5 %; ugni blanc B/A
+Rosé: cinsaut N/P; grenache N/P; mourvèdre N/P; barbaroux Rs/A; bourboulenc B/A; carignan N/A; clairette B/A; marsanne B/A; pascal B/A; sauvignon B/A; terret noir N/A ≤5 %; ugni blanc B/A
+Rouge: cinsaut N/P; grenache N/P; mourvèdre N/P; barbaroux Rs/A; carignan N/A; terret noir N/A ≤5 %
+! Blancs : principaux ≥60 % ; rouges et rosés : principaux ≥70 % du vignoble.
+
+= Coteaux d'Aix-en-Provence | Provence | CDC Coteaux Aix En Provence
+Rouge, Rosé: cinsaut N/P; counoise N/P; grenache N/P ≥20 % (vignoble); mourvèdre N/P; syrah N/P; cabernet-sauvignon N/A; carignan N/A
+Blanc: vermentino B/P ≥50 % (vignoble); clairette B/C; grenache blanc B/C; sauvignon B/C; ugni blanc B/C; bourboulenc B/A; sémillon B/A
+! Au moins 2 cépages ; principaux ≥50 % de l'assemblage. Rosés : cépages blancs ≤20 % du vignoble.
+
+= Coteaux Varois en Provence | Provence | CDC Coteaux Varois En Provence
+Rouge, Rosé: cinsaut N/P; grenache N/P; mourvèdre N/P; syrah N/P; cabernet-sauvignon N/A; carignan N/A; tibouren N/A
+Blanc: vermentino B ≥30 %; clairette B; grenache blanc B; sémillon B ≤30 %; ugni blanc B ≤25 %
+! Rouges et rosés : au moins 2 cépages, principaux ≥50 % de l'assemblage. Rosés : cépages blancs ≤20 % du vignoble.
+
+= Palette | Provence | CDC Palette
+Blanc: picardan B/P; bourboulenc B/P; clairette B/P; clairette rose Rs/P; aragnan B/A; colombaud B/A; furmint B/A; grenache blanc B/A; muscat à petits grains B/A; panse muscade B/A; pascal B/A; piquepoul blanc B/A; terret gris G/A ≤20 %; ugni blanc B/A; ugni rosé Rs/A
+Rouge, Rosé: cinsaut N/P; grenache N/P; mourvèdre N/P ≥10 %; brun fourca N/A; cabernet-sauvignon N/A; carignan N/A; castets N/A; durif N/A; muscat à petits grains Rg/A; muscat de Hambourg N/A; petit brun N/A; syrah N/A; téoulier N/A; terret gris G/A; tibouren N/A
+! Blancs : principaux ≥55 % ; rouges et rosés : principaux ≥50 %, chacun ≤80 %.
+
+= Patrimonio | Corse | CDC Patrimonio
+Blanc: vermentino B
+Rouge: nielluccio N/P ≥90 %; grenache N/A; sciaccarello N/A; vermentino B/A
+Rosé: nielluccio N/P ≥75 %; grenache N/A; sciaccarello N/A; vermentino B/A
+
+= Vin de Corse | Corse | CDC Vin de Corse
+Blanc: vermentino B/P ≥75 %; ugni blanc B/A ≤25 %; biancu gentile B/A; codivarta B/A; genovèse B/A
+Rouge, Rosé: grenache N/P; nielluccio N/P; sciaccarello N/P; aléatico N/A; barbaroux Rs/A; carcajolo N/A; carignan N/A ≤20 %; cinsaut N/A; morrastel N/A; mourvèdre N/A; syrah N/A; vermentino B/A ≤20 %
+! Rouges et rosés : principaux ≥50 %, nielluccio + sciaccarello ≥⅓. Dénominations Calvi, Figari, Porto-Vecchio, Sartène, Coteaux du Cap Corse (Cap Corse : vermentino ≥80 %).

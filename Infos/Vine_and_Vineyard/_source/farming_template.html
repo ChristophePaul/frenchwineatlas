@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philosophies culturales</title>
+<meta name="description" content="Conventionnel, raisonné, HVE, Terra Vitis, bio, biodynamie, vin nature : ce que recouvre chaque façon de cultiver la vigne et ce que garantissent les mentions de l’étiquette.">
+<style>
+@@BASE_CSS@@
+  /* chapter 8 */
+  .aps{display:grid;gap:12px;margin-top:16px;}
+  .ap{display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;padding:16px 18px;border-radius:18px;background:var(--glass);border:1px solid var(--hair);border-left:5px solid var(--c);}
+  .ap-n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--serif);font-size:22px;}
+  .ap h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.6vw,26px);color:var(--title);margin:4px 0 6px;}
+  .ap p{margin:0;font-size:14.2px;line-height:1.62;}
+  .pm{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+  .pm p{padding:9px 12px;border-radius:12px;background:var(--glass-hi);border:1px solid var(--hair);font-size:13.2px;line-height:1.5;}
+  .pm b{font-size:16px;margin-right:4px;}
+  .pm .plus b{color:#4f8a3a;} .pm .minus b{color:#a0283c;}
+
+  .cmp-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .cmp{width:100%;border-collapse:collapse;font-size:14px;min-width:620px;}
+  .cmp th{font-size:11.5px;font-weight:600;color:var(--title);padding:8px 6px;border-bottom:1px solid var(--hair-hi);text-align:center;vertical-align:bottom;line-height:1.3;}
+  .cmp th .n{display:block;margin:0 auto 4px;width:24px;height:24px;border-radius:50%;background:var(--c);color:#fff;font-family:var(--serif);font-size:14px;line-height:24px;}
+  .cmp td{padding:8px 6px;border-bottom:1px solid var(--hair);text-align:center;font-size:17px;}
+  .cmp td:first-child{text-align:left;font-size:14px;}
+  .cmp td.ok{color:#4f8a3a;} .cmp td.no{color:#a0283c;} .cmp td.lim{color:#c08a1a;} .cmp td.na{color:var(--faint);}
+  .cmp-key{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:8px;}
+
+  .twocol{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:11px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14px;line-height:1.55;}
+  .fact b{color:var(--title);}
+
+  .labs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;}
+  .lab{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;align-items:start;padding:14px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);}
+  .badge{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:.04em;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35);}
+  .lab b{display:block;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);margin-bottom:3px;}
+  .lab p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);}
+
+  @media (max-width:900px){ .twocol{grid-template-columns:minmax(0,1fr);} }
+  @media (max-width:620px){ .pm{grid-template-columns:minmax(0,1fr);} .ap{grid-template-columns:minmax(0,1fr);} .diagram-card.scroll{overflow-x:auto;} .diagram-card.scroll .diagram{min-width:560px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 8" data-en="The vine &amp; the vineyard · Chapter 8">La vigne &amp; le vignoble · Chapitre 8</p>
+    <h1 data-fr="Philosophies <em>culturales</em>" data-en="Farming <em>philosophies</em>">Philosophies <em>culturales</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Raisonné, HVE, bio, biodynamie, nature : derrière ces mots se cachent des façons très différentes de soigner la vigne, et des garanties plus ou moins solides pour le consommateur."
+       data-en="Integrated, HVE, organic, biodynamic, natural: behind these words lie very different ways of caring for the vine, and guarantees of varying strength for the consumer.">Raisonné, HVE, bio, biodynamie, nature : derrière ces mots se cachent des façons très différentes de soigner la vigne, et des garanties plus ou moins solides pour le consommateur.</p>
+    <nav class="toc">
+      <a href="#approches" data-fr="Les cinq approches" data-en="The five approaches">Les cinq approches</a>
+      <a href="#comparer" data-fr="Comparer" data-en="Comparison">Comparer</a>
+      <a href="#biodynamie" data-fr="La biodynamie" data-en="Biodynamics">La biodynamie</a>
+      <a href="#etiquette" data-fr="Lire l’étiquette" data-en="Reading the label">Lire l’étiquette</a>
+      <a href="#avenir" data-fr="Et demain ?" data-en="What next?">Et demain ?</a>
+    </nav>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">La vigne est l’une des cultures les plus traitées : sensible au mildiou, à l’oïdium et à la pourriture, elle reçoit souvent plus de dix traitements par an. Chaque vigneron arbitre entre la sécurité de sa récolte, son coût, la santé de ceux qui travaillent dans les vignes et l’environnement.</p>
+      <p class="L en">The vine is one of the most heavily treated crops: vulnerable to downy mildew, powdery mildew and rot, it often receives more than ten sprays a year. Every grower balances the safety of the crop, its cost, the health of vineyard workers and the environment.</p>
+      <p class="L fr">De là une gamme d’approches, de la plus libre à la plus encadrée. Seules certaines donnent lieu à une <b>certification</b> contrôlée par un organisme indépendant et à une mention sur l’étiquette.</p>
+      <p class="L en">Hence a range of approaches, from the least to the most regulated. Only some lead to a <b>certification</b> audited by an independent body and to a mention on the label.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Ce que recouvre chaque approche, ses atouts et ses limites." data-en="What each approach covers, its strengths and limits.">Ce que recouvre chaque approche, ses atouts et ses limites.</span></div></div>
+        <div class="lvl"><span class="ico">@@PRO_ICON@@</span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Règlements, plafonds de cuivre et de sulfites, préparations biodynamiques, cépages résistants." data-en="Regulations, copper and sulphite limits, biodynamic preparations, resistant varieties.">Règlements, plafonds de cuivre et de sulfites, préparations biodynamiques, cépages résistants.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="approches">
+    <div class="sec-head">
+      <h2 data-fr="Les cinq <em>approches</em>" data-en="The five <em>approaches</em>">Les cinq <em>approches</em></h2>
+      <p data-fr="Classées de la moins à la plus exigeante sur les intrants. Cliquez sur un numéro pour lire la fiche." data-en="Ranked from least to most demanding on inputs. Click a number to read the card.">Classées de la moins à la plus exigeante sur les intrants. Cliquez sur un numéro pour lire la fiche.</p>
+    </div>
+    <div class="diagram-card scroll">@@SPECTRUM@@</div>
+    <div class="aps">@@CARDS@@</div>
+  </section>
+
+  <section class="sec" id="comparer">
+    <div class="sec-head">
+      <h2 data-fr="Comparer <em>d’un coup d’œil</em>" data-en="Compare <em>at a glance</em>">Comparer <em>d’un coup d’œil</em></h2>
+      <p data-fr="Simplifié : chaque cahier des charges a ses nuances." data-en="Simplified: each standard has its own nuances.">Simplifié : chaque cahier des charges a ses nuances.</p>
+    </div>
+    <div class="panel cmp-wrap"><table class="cmp">@@COMPARE@@</table>
+      <div class="cmp-key"><span><b style="color:#4f8a3a">✓</b> <span data-fr="autorisé, oui" data-en="allowed, yes">autorisé, oui</span></span><span><b style="color:#c08a1a">◐</b> <span data-fr="limité, encadré" data-en="limited, restricted">limité, encadré</span></span><span><b style="color:#a0283c">✕</b> <span data-fr="interdit, non" data-en="forbidden, no">interdit, non</span></span></div>
+    </div>
+    @@PRO_BIO@@
+  </section>
+
+  <section class="sec" id="biodynamie">
+    <div class="sec-head">
+      <h2 data-fr="La <em>biodynamie</em>" data-en="<em>Biodynamics</em>">La <em>biodynamie</em></h2>
+      <p data-fr="Huit préparations, utilisées à très faibles doses, sont au cœur de la méthode." data-en="Eight preparations, used in very small doses, are at the heart of the method.">Huit préparations, utilisées à très faibles doses, sont au cœur de la méthode.</p>
+    </div>
+    <div class="twocol">
+      <div class="diagram-card scroll">@@PREPS@@</div>
+      <div class="facts">
+        <div class="fact L fr"><b>500 et 501</b> sont pulvérisées après avoir été « dynamisées » : brassées longuement dans l’eau tiède, en changeant de sens.</div>
+        <div class="fact L en"><b>500 and 501</b> are sprayed after being “dynamised”: stirred for a long time in warm water, changing direction.</div>
+        <div class="fact L fr"><b>502 à 507</b>, à base de plantes, sont incorporées au compost en quantités infimes.</div>
+        <div class="fact L en"><b>502 to 507</b>, made from plants, are added to compost in tiny quantities.</div>
+        <div class="fact L fr"><b>Tisanes et décoctions</b> (prêle, ortie, osier) complètent la protection, avec le cuivre et le soufre autorisés en bio.</div>
+        <div class="fact L en"><b>Herbal teas and decoctions</b> (horsetail, nettle, willow) round out protection, alongside the copper and sulphur allowed in organic farming.</div>
+        <div class="fact L fr"><b>Pionniers en France :</b> Nicolas Joly à la Coulée de Serrant (années 1980), le domaine Leroy en Bourgogne (1988).</div>
+        <div class="fact L en"><b>Pioneers in France:</b> Nicolas Joly at Coulée de Serrant (1980s), Domaine Leroy in Burgundy (1988).</div>
+      </div>
+    </div>
+    @@PRO_BD@@
+  </section>
+
+  <section class="sec" id="etiquette">
+    <div class="sec-head">
+      <h2 data-fr="Lire <em>l’étiquette</em>" data-en="Reading <em>the label</em>">Lire <em>l’étiquette</em></h2>
+      <p data-fr="Ce que garantit chaque mention. Les pastilles ci-dessous sont des repères, pas les logos officiels." data-en="What each mention guarantees. The badges below are markers, not the official logos.">Ce que garantit chaque mention. Les pastilles ci-dessous sont des repères, pas les logos officiels.</p>
+    </div>
+    <div class="labs">@@LABELS@@</div>
+    <p class="hint" data-fr="Des mentions comme « vigneron engagé », « nature », « sans sulfites ajoutés » ou « vieilles vignes » ne garantissent rien en elles-mêmes si elles ne s’appuient pas sur une certification." data-en="Wording such as “committed grower”, “natural”, “no added sulphites” or “old vines” guarantees nothing by itself unless backed by a certification.">Des mentions comme « vigneron engagé », « nature », « sans sulfites ajoutés » ou « vieilles vignes » ne garantissent rien en elles-mêmes si elles ne s’appuient pas sur une certification.</p>
+  </section>
+
+  <section class="sec" id="avenir">
+    <div class="sec-head">
+      <h2 data-fr="Et <em>demain ?</em>" data-en="What <em>next?</em>">Et <em>demain ?</em></h2>
+      <p data-fr="Réduire les traitements sans perdre la récolte : cépages résistants, biocontrôle et biodiversité ouvrent de nouvelles voies." data-en="Cutting sprays without losing the crop: resistant varieties, biocontrol and biodiversity open new paths.">Réduire les traitements sans perdre la récolte : cépages résistants, biocontrôle et biodiversité ouvrent de nouvelles voies.</p>
+    </div>
+    <div class="labs">
+      <div class="lab" style="--c:#5f9a3a"><span class="badge">1</span><div><b data-fr="Cépages résistants" data-en="Resistant varieties">Cépages résistants</b><p class="L fr">Croisés pour résister naturellement au mildiou et à l’oïdium, ils demandent beaucoup moins de traitements.</p><p class="L en">Bred to resist downy and powdery mildew naturally, they need far fewer sprays.</p></div></div>
+      <div class="lab" style="--c:#2f7d8c"><span class="badge">2</span><div><b data-fr="Biocontrôle" data-en="Biocontrol">Biocontrôle</b><p class="L fr">Phéromones, micro-organismes, extraits de plantes, insectes auxiliaires : protéger la vigne avec des mécanismes naturels.</p><p class="L en">Pheromones, micro-organisms, plant extracts, beneficial insects: protecting the vine with natural mechanisms.</p></div></div>
+      <div class="lab" style="--c:#8a5a2b"><span class="badge">3</span><div><b data-fr="Biodiversité" data-en="Biodiversity">Biodiversité</b><p class="L fr">Haies, arbres, couverts fleuris, oiseaux et chauves-souris : un vignoble vivant se défend mieux.</p><p class="L en">Hedges, trees, flowering cover crops, birds and bats: a living vineyard defends itself better.</p></div></div>
+    </div>
+    @@PRO_FUTURE@@
+  </section>
+
+  @@CHAPTERS@@
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources">@@SOURCES@@</ul>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Philosophies culturales' : 'Farming philosophies';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+})();
+</script>
+</body>
+</html>

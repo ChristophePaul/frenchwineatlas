@@ -1,0 +1,141 @@
+@include bourgogne_common
+@h1 Specification of the controlled designation of origin “Bouzeron”
+@h2 approved by decree no. 2011-1496 of 9 November 2011, JORF of 11 November 2011
+@title Specification of the controlled designation of origin “BOUZERON”
+@center approved by decree no. 2011-1496 of 9 November 2011, JORF of 11 November 2011
+# CHAPTER I
+## I. – Name of the designation
+Only wines meeting the specific provisions set out below may claim the controlled designation of origin “Bouzeron”, initially recognised by the decree of 17 February 1998.
+## II. – Geographical denominations and complementary terms
+No particular provision.
+## III. – Colour and types of product
+The controlled designation of origin “Bouzeron” is reserved for still white wines.
+## IV. – Areas and zones in which the various operations are carried out
+### 1° – Geographical area
+The harvesting of the grapes, the vinification, the elaboration and the ageing of the wines are carried out within the territory of the following communes of the Saône-et-Loire department: Bouzeron and Chassey-le-Camp.
+### 2° – Delimited parcel area
+The wines come exclusively from vines situated within the delimited parcel production area as approved by the National Institute of Origin and Quality at the session of the competent national committee of 10 September 1997. The National Institute of Origin and Quality lodges with the town halls of the communes referred to in 1° the graphic documents establishing the parcel boundaries of the production area thus approved.
+### 3° – Immediate proximity area
+The immediate proximity area, defined by derogation for the vinification, the elaboration and the ageing of the wines, is made up of the territory of the following communes:
+@listop BG_PROX_CO | +Gevrey-Chambertin
+@@BG_PROX_RH
+@listop BG_PROX_SL | -Bouzeron | -Chassey-le-Camp
+@@BG_PROX_YO
+## V. – Grape varieties
+The wines come solely from the aligoté B variety.
+## VI. – Management of the vineyard
+### 1° – Training methods
+a) – Planting density
+The vines have a minimum planting density of 8,000 plants per hectare, with a spacing between rows less than or equal to 1.40 metres and a spacing between plants within the same row greater than or equal to 0.80 metre.
+b) – Pruning rules
+The wines come from vines pruned according to the following provisions:
+| TRAINING OF THE VINE, PRUNING METHOD | PRUNING RULES |
+| **GENERAL PROVISIONS** | < |
+| Vines trained as Royat cordon | – The vines are pruned with a maximum of 10 free eyes per plant; – Each plant bears a maximum of 5 spurs, each pruned to a maximum of 2 free eyes. |
+| Vines trained in gobelet or fan | – The vines are pruned with a maximum of 8 free eyes per plant; – Each plant bears at most 3 spurs, 1 spur bearing a maximum of 2 free eyes and the other 2 spurs bearing a maximum of 2 or 3 free eyes. |
+| Vines pruned in single Guyot | The vines are pruned with a maximum of 10 free eyes per plant; each plant bears: – either a single cane bearing a maximum of 6 free eyes and 2 spurs each pruned to a maximum of 2 free eyes; – or a single cane bearing a maximum of 8 free eyes and a single spur pruned to a maximum of 2 free eyes. |
+| **PARTICULAR PROVISIONS** | < |
+| When cordons are rejuvenated, the vines are pruned with a maximum of 10 free eyes per plant. Single Guyot pruning may be adapted with a 2nd spur allowing the position of the cane to be alternated from one year to the next. Whatever the pruning method, the vines may be pruned with additional free eyes provided that, at the phenological stage corresponding to 11 or 12 leaves, the number of fruit-bearing shoots of the year per plant is less than or equal to the number of free eyes defined in the pruning rules. | < |
+c) – Trellising and foliage height rules
+- When the vines are not trained in gobelet, they must be trellised and the trellising is maintained;
+- The height of trellised foliage is at least equal to 0.6 times the spacing between rows, the height of trellised foliage being measured between the lower limit of the foliage, set at least 0.30 metre above the ground, and the upper trimming limit.
+d) – Average maximum load per parcel
+The average maximum load per parcel is set at 11,000 kilograms per hectare.
+e) – Threshold of missing vines
+The percentage of dead or missing vine plants referred to in Article D. 645-4 of the Rural and Maritime Fishing Code is set at 20 %.
+f) – Cultivation condition of the vine
+The parcels are managed so as to ensure a good overall cultivation condition of the vine, in particular its sanitary condition and the upkeep of its soil.
+### 2° – Other cultivation practices
+a) – In order to preserve the characteristics of the physical and biological environment, which constitutes a fundamental element of the terroir:
+- Permanent grass cover of the headlands is compulsory;
+- Any substantial modification of the morphology, the subsoil, the arable layer or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin is prohibited, with the exception of classic deep-ploughing works.
+b) – Vine plantings and replacements are carried out with healthy plant material that has undergone hot-water treatment or any other method making it possible to combat flavescence dorée.
+### 3° – Irrigation
+Irrigation is prohibited.
+## VII. – Harvest, transport and ripeness of the grapes
+### 1° – Harvest
+a) – The wines come from grapes harvested at good ripeness.
+b) – Particular harvesting provisions
+Harvesting equipment is clean and regularly maintained.
+c) – Particular provisions for transport of the harvest
+- Transport equipment is clean and regularly maintained;
+- The harvest is protected from rain during its transport and on its reception.
+### 2° – Ripeness of the grapes
+The sugar content of the grapes and the natural alcoholic strength by volume meet the following characteristics:
+| MINIMUM SUGAR CONTENT OF THE GRAPES (grams per litre of must) | MINIMUM NATURAL ALCOHOLIC STRENGTH BY VOLUME |
+| 161 | 10 % |
+## VIII. – Yields – Entry into production
+### 1° – Yield and limit yield
+The yield and limit yield referred to in Article D. 645-7 of the Rural and Maritime Fishing Code are set at:
+| YIELD (hectolitres per hectare) | LIMIT YIELD (hectolitres per hectare) |
+| 65 | 69 |
+### 2° – Entry into production of young vines
+The benefit of the controlled designation of origin may only be granted to wines coming from:
+- parcels of young vines only from the 2nd year following that in the course of which planting was carried out in place before 31 July;
+- parcels of young vines only from the 1st year following that in the course of which grafting in place was carried out before 31 July;
+- parcels of vines that have been top-grafted, at the earliest in the 1st year following that in the course of which the top-grafting was carried out before 31 July, and once the parcels no longer contain any variety other than that permitted for the appellation. By derogation, in the year following that in the course of which the top-grafting was carried out before 31 July, the varieties permitted for the appellation may represent only 80 % of the planting of each parcel concerned.
+## IX. – Processing, elaboration, ageing, packaging, storage
+### 1° – General provisions
+The wines are vinified in accordance with local, fair and constant usages.
+a) – Analytical standards
+Finished wines, ready to be released for consumption within the meaning of Article D. 645-18-I of the Rural and Maritime Fishing Code, have a maximum fermentable sugar content (glucose + fructose) of:
+- 3 grams per litre;
+- or 4 grams per litre if the total acidity is greater than or equal to 55.10 milliequivalents per litre, i.e. 4.13 grams per litre expressed as tartaric acid (or 2.7 grams per litre expressed as H2SO4).
+b) – Oenological practices and physical treatments
+- The use of pieces of wood is prohibited;
+- After enrichment, the wines do not exceed a total alcoholic strength by volume of 12.5 %.
+c) – Prohibited equipment
+Continuous presses are prohibited.
+d) – Vat capacity
+Every operator has an overall vat capacity (vinification and storage) equivalent to at least the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration.
+e) – Upkeep of the cellar and equipment
+The cellar and the vinification equipment are well maintained; this is reflected in particular by:
+- general hygiene of the elaboration premises, with general cleanliness, well-maintained floors, adequate drainage and a surface avoiding stagnation;
+- harmlessness of the equipment and products coming into contact with the wine;
+- separation and specificity of the premises: premises without the same functions must be separated, such as storage areas for plant-protection products, cleaning products or hydrocarbons, from the premises for vinification, ageing and storage of dry goods (corks, cartons);
+- management of wine effluents: effluents must be removed as quickly as possible from foodstuff premises and deposited in well-maintained containers that are easy to clean and can be closed; waste storage areas must be kept clean; waste must be disposed of hygienically and in an environmentally friendly manner; a waste storage and removal area must be provided;
+- absence of hazardous or odorous substances in the vinification, ageing and storage premises (odour).
+f) – Ageing
+- The wines are aged at least until 15 January of the year following that of the harvest;
+- The temperature of the containers during the ageing phase is controlled and less than or equal to 25 °C.
+### 2° – Provisions relating to packaging
+For every packaged lot, the operator keeps available for the approved control body:
+- the information appearing in the register of handling operations referred to in Article D. 645-18 of the Rural and Maritime Fishing Code;
+- the reports of analyses carried out before or after packaging.
+These analysis reports are kept for a period of 6 months from the date of packaging.
+### 3° – Provisions relating to storage
+The operator provides evidence of a protected storage place for wines packaged in unlabelled bottles, with a temperature of between 5 °C and 22 °C.
+### 4° – Provisions relating to the circulation of products and placing on the market for the consumer
+At the end of the ageing period, the wines are placed on the market for the consumer from 1 February of the year following that of the harvest.
+## X. – Link with the geographical area
+### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+The geographical area extends over the northern end of the “Côte chalonnaise”, in Burgundy. It is situated about ten kilometres north-west of Chalon-sur-Saône, in the Saône-et-Loire department.
+The “Côte chalonnaise” is a limestone relief stretching in a north–south direction, generally facing east. It forms the boundary between the limestone foothills of the granite massif of Mont-Saint-Vincent to the west and the Saône plain to the east. The geographical area thus extends over the territory of the communes of Bouzeron and Chassey-le-Camp.
+The territory forms a topographically and geologically well-defined entity. It is a small dry valley opening to the north-east. The flanks of the hillsides thus face east and west, at altitudes of between 250 metres and 350 metres. The substrata are mainly Oxfordian (Upper Jurassic) marls and, locally at the foot of the slopes, Middle Jurassic limestones, more or less covered by limestone scree from the ridges of hard Oxfordian limestone. The soils are generally very calcareous, shallow and very stony.
+The parcels delimited for the harvesting of the grapes occupy both slopes of the valley, mainly on the marl substrata and the stony colluvium at the foot of the slopes. They never reach the limestone ridges, where the soils are skeletal.
+The climate is a modified oceanic climate subject to southern and continental influences. Southern mildness penetrates through the Saône valley, attenuating oceanic influences and providing very sunny summer months and average annual rainfall of less than 800 millimetres. Rainfall is evenly distributed over the year, with no summer drought. The general opening to the north-east, by accentuating continental influences, generates a cool mesoclimate very specific to this sector of the “Côte chalonnaise”.
+b) – Description of the human factors contributing to the link
+The wine-growing history of “Bouzeron” is linked to that of the “Côte chalonnaise” and to that of Chagny, the neighbouring town and local economic centre. It seems that the white wines of “Bouzeron” enjoyed a flattering reputation from the 18th century. COURTÉPÉE cited them in his “Description générale et particulière du Duché de Bourgogne” in 1775. However, it was not until the end of the 19th century that the existence of the aligoté B variety in “Bouzeron” was explicitly mentioned. In the 20th century, “Bouzeron” asserted its specificity and the aligoté B variety became the essential variety of the white wines on which its reputation rests.
+Among the various origins put forward for this variety, that of MERLET in 1667, speaking of the “Beaunié” as a “grape tending towards Gouais blanc, but better and bearing heavily, very common and esteemed in Beaune”, seems to confirm that it is probably of Burgundian origin. Traditionally in Burgundy, the aligoté B variety was planted on many hillsides. It is well suited to local conditions and makes the most of relatively cool situations, and winegrowers learned to control its vigour by planting it on hillsides. The soil and climate context of the geographical area of “Bouzeron” thus proved particularly suitable for this variety, for the production of dry white wines.
+From 1936, this production benefited from the controlled designation of origin “Bourgogne aligoté”. By the decree of 7 March 1979, the producers, grouped in a defence syndicate since 7 January 1907, obtained the possibility of adding the complementary geographical denomination “Bouzeron” to the name of the controlled designation of origin, for wines from the aligoté B variety produced in this commune. The specificity of the geographical area was thus recognised.
+From 1979, the production of wines benefiting from the controlled designation of origin “Bourgogne aligoté” supplemented by the complementary geographical denomination “Bouzeron” developed. The area in production doubled between that date and the 1990s. As the renown of their product grew, the producers obtained recognition of the controlled designation of origin “Bouzeron” by the decree of 17 February 1998.
+In 2010, the area in production covered 43 hectares, for an average harvest of 2,600 hectolitres. The vines are worked by some fifteen producers, whose holdings vary greatly in size.
+### 2° – Information on the quality and characteristics of the product
+The wine has a pale gold robe, slightly water-green, which may range to light straw. Its nose frequently evokes acacia, white flowers and hazelnut. Most often, mineral aromas (flint) complete its classic bouquet, together with lemon, sometimes with a touch of honey or warm croissant. On the palate, its persistent roundness and lively, mouth-watering character reveal the originality of the natural environment. This wine keeps for several years, during which its finesse and complexity increase.
+### 3° – Causal interactions
+Among the wines of Burgundy, the wines benefiting from the controlled designation of origin “Bouzeron” occupy a particular place. The only “communal” controlled designation of origin produced from the aligoté B variety, it results from a particularly successful match between the characteristics of this variety and the particular natural conditions of the site. The hillside situations of the geographical area, which are not very productive, give wines that are more structured and aromatic than those of the piedmonts, and the aligoté B variety makes better use than any other variety of the cool mesoclimate generated by the northward orientation of the valley in which the geographical area nestles. The classic characters of wines from the aligoté B variety in Burgundy, lively and floral, are generally complemented in the wines of “Bouzeron” by a specific character, marked by aromatic notes of dried fruit combined with a pronounced minerality, due to the vines being planted on marly subsoils. With good ageing potential, the wines acquire over time aromas and a roundness that bring them close to the great Burgundian white wines made from the chardonnay B variety. JULLIEN, in 1816, bears witness to this, citing “Bouzeron” for its white wines and stating that “they have a distinguished taste that brings them close to those of the third cuvées of Meursault”.
+All these characteristics are enhanced by the know-how of the producers, in keeping with ancestral usages, in particular the control of yields. Through appropriate pruning, soil cultivation which has become the majority practice, and vinification that respects the raw material, producers help to reveal the original character of the wines, expressed by the nature of the soils. A large proportion of the wines benefiting from the controlled designation of origin “Bouzeron” are sold in bottle by the producers.
+## XI. – Transitional measures
+No particular provision.
+## XII. – Rules of presentation and labelling
+### 1° – General provisions
+Wines for which, under the terms of the present specification, the controlled designation of origin “Bouzeron” is claimed and which are presented under the said designation of origin may not be declared after the harvest, offered to the public, dispatched, put up for sale or sold unless, in the harvest declaration, in advertisements, on leaflets, labels, invoices and any containers whatsoever, the aforesaid appellation is entered.
+### 2° – Particular provisions
+a) – The labelling of wines benefiting from the controlled designation of origin may specify the name of a smaller geographical unit, provided that:
+- it is the name of a registered lieu-dit (cadastral locality);
+- it appears on the harvest declaration.
+The name of the registered lieu-dit is printed in characters whose dimensions, both in height and in width, are not larger than half those of the characters making up the name of the controlled designation of origin.
+b) – Where the grape variety is indicated on the labelling, this indication does not appear in the same field of vision as the compulsory particulars and is printed in characters whose dimensions do not exceed 2 millimetres.
+@include bg_ch2_nontse
+@include bg_ch3_2011_nontse

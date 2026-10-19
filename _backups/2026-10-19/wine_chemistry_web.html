@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title data-en="Wine Chemistry: Compounds Through Winemaking" data-fr="Chimie du vin : les composés au fil de la vinification">Chimie du vin : les composés au fil de la vinification</title><style>
+:root{--wine:#7d2638;--wine-dark:#4d1723;--ink:#242124;--muted:#666;--paper:#fff;--soft:#f7f3f4;--line:#d8cdd0;--accent:#176b55;--violet:#50439a;--blue:#2369a8;--gold:#a8680c;--red:#9b2027}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f4f2f1;color:var(--ink);font:16px/1.58 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:#075f9b;text-underline-offset:.15em}a:hover{color:#7d2638}.site-header{background:linear-gradient(135deg,var(--wine-dark),var(--wine));color:#fff;padding:3.2rem 1.25rem 2.5rem}.site-header .wrap,.page{max-width:1120px;margin:auto}.site-header h1{font-family:Georgia,serif;font-size:clamp(2rem,5vw,3.5rem);line-height:1.08;margin:0}.site-header p{max-width:800px;font-size:1.1rem;opacity:.92}.page{background:var(--paper);padding:2rem clamp(1rem,4vw,3.5rem) 4rem;box-shadow:0 0 30px #0001}.toc{background:var(--soft);border:1px solid var(--line);border-radius:.75rem;padding:1rem 1.25rem;margin:0 0 2rem}.toc h2{margin:.1rem 0 .5rem;font-size:1.05rem}.toc ol{columns:2;column-gap:2rem;margin:.5rem 0;padding-left:1.25rem}.toc li{break-inside:avoid;margin:.25rem 0}h2,h3,h4{font-family:Georgia,serif;line-height:1.22;scroll-margin-top:1rem}h2{color:var(--wine);font-size:1.9rem;border-bottom:2px solid var(--wine);padding-bottom:.3rem;margin-top:2.4rem}h3{color:#315f7d;font-size:1.45rem;margin-top:2rem}h4{font-size:1.1rem;color:var(--wine-dark)}p{max-width:85ch}blockquote{margin:1.25rem 0;padding:.9rem 1.2rem;border-left:5px solid var(--wine);background:var(--soft);font-size:1.05rem}ul,ol{max-width:82ch}.table-wrap{overflow-x:auto;margin:1.2rem 0 2rem;border:1px solid var(--line);border-radius:.55rem;background:#fff}table{width:100%;border-collapse:collapse;font-size:.93rem;min-width:720px}caption{text-align:left;padding:.8rem 1rem;font-weight:700;color:var(--wine)}th,td{padding:.56rem .65rem;border-bottom:1px solid #ddd;border-right:1px solid #e3e3e3;vertical-align:top}th{background:var(--wine);color:white;text-align:left;position:sticky;top:0}tbody tr:nth-child(even){background:#faf8f8}td:nth-child(4){font-weight:700;white-space:nowrap}.section-card{margin:2rem 0}.section-card>.section-intro{padding:1rem 1.15rem;color:#fff;border-radius:.55rem .55rem 0 0}.section-card.grape>.section-intro{background:var(--violet)}.section-card.alcoholic>.section-intro{background:var(--accent)}.section-card.malolactic>.section-intro{background:var(--gold)}.section-card.aging>.section-intro{background:var(--blue)}.section-card.spoilage>.section-intro{background:var(--red)}.section-intro h2{color:#fff;border:0;margin:0;font:700 1.35rem/1.2 system-ui}.section-intro p{margin:.25rem 0 0}.hero-note{font-size:1.15rem}.figure{margin:1.5rem auto;text-align:center}.figure img{max-width:100%;height:auto;border:1px solid var(--line);border-radius:.4rem}.figure figcaption{font-size:.88rem;color:var(--muted);margin-top:.35rem}.key{display:inline-flex;gap:.6rem;flex-wrap:wrap;padding:.6rem .9rem;background:#f0ecea;border-radius:.45rem;font-size:.9rem}.references{font-size:.94rem}.references li{margin:.7rem 0}.source-note{color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);padding-top:1rem;margin-top:2.5rem}.skip-link{position:absolute;left:-9999px}.skip-link:focus{left:1rem;top:1rem;background:white;color:black;padding:.5rem;z-index:99}@media(max-width:720px){.toc ol{columns:1}.page{padding:1.25rem 1rem 3rem}table{font-size:.84rem}.site-header{padding-top:2.2rem}}
+@media print{body{background:#fff}.page{box-shadow:none;max-width:none}.toc{display:none}.table-wrap{overflow:visible}a{color:inherit;text-decoration:none}.site-header{background:#fff;color:#000;padding:0}.site-header p{color:#333}}
+</style><!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="dark"] body{background:#3a111b;color:#f1e8d8}
+html[data-theme="dark"] a{color:#82c2ed}
+html[data-theme="dark"] a:hover{color:#de91a1}
+html[data-theme="dark"] .page{background:#3a111b;box-shadow:0 0 30px rgba(0,0,0,0.11)}
+html[data-theme="dark"] .toc{background:#3a111b;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] h2{color:#de91a1}
+html[data-theme="dark"] h3{color:#98bed7}
+html[data-theme="dark"] h4{color:#de91a2}
+html[data-theme="dark"] blockquote{background:#3a111b}
+html[data-theme="dark"] .table-wrap{border:1px solid rgba(217,179,107,0.40);background:#3a111b}
+html[data-theme="dark"] caption{color:#de91a1}
+html[data-theme="dark"] th,html[data-theme="dark"] td{border-bottom:1px solid rgba(217,179,107,0.40);border-right:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] tbody tr:nth-child(even){background:#3a111b}
+html[data-theme="dark"] .figure img{border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] .figure figcaption{color:#f1e8d8}
+html[data-theme="dark"] .key{background:#280a11}
+html[data-theme="dark"] .source-note{color:#f1e8d8;border-top:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] .skip-link:focus{background:#3a111b;color:#f1e8d8}
+@media print{html[data-theme="dark"] body{background:#3a111b}html[data-theme="dark"] .site-header{background:#3a111b;color:#f1e8d8}html[data-theme="dark"] .site-header p{color:#f1e8d8}}
+
+</style><!--fw-theme:end-->
+</head><body><a class="skip-link" data-en="Skip to main content" data-fr="Aller au contenu principal" href="#main-content">Aller au contenu principal</a><header class="site-header"><div class="wrap"><h1 data-en="Wine Chemistry: Compounds Through Winemaking" data-fr="Chimie du vin : les composés au fil de la vinification">Chimie du vin : les composés au fil de la vinification</h1><p data-en="A responsive, accessible reference organized by grape composition, fermentation, aging, and spoilage." data-fr="Un tableau de référence organisé selon la composition du raisin, les fermentations, l’élevage et les altérations.">Un tableau de référence organisé selon la composition du raisin, les fermentations, l’élevage et les altérations.</p></div></header><main class="page" id="main-content"><nav aria-label="Sommaire / Table of contents" class="toc"><h2 data-en="Contents" data-fr="Sommaire">Sommaire</h2><ol><li data-en='&lt;a href="#grape-varietal"&gt;GRAPE / VARIETAL&lt;/a&gt;' data-fr='&lt;a href="#grape-varietal"&gt;RAISIN / CÉPAGE&lt;/a&gt;'><a href="#grape-varietal">RAISIN / CÉPAGE</a></li><li data-en='&lt;a href="#alcoholic-fermentation"&gt;ALCOHOLIC FERMENTATION&lt;/a&gt;' data-fr='&lt;a href="#alcoholic-fermentation"&gt;FERMENTATION ALCOOLIQUE&lt;/a&gt;'><a href="#alcoholic-fermentation">FERMENTATION ALCOOLIQUE</a></li><li data-en='&lt;a href="#malolactic-fermentation"&gt;MALOLACTIC FERMENTATION&lt;/a&gt;' data-fr='&lt;a href="#malolactic-fermentation"&gt;FERMENTATION MALOLACTIQUE&lt;/a&gt;'><a href="#malolactic-fermentation">FERMENTATION MALOLACTIQUE</a></li><li data-en='&lt;a href="#aging-barrel-bottle-lees"&gt;AGING (Barrel / Bottle / Lees)&lt;/a&gt;' data-fr='&lt;a href="#aging-barrel-bottle-lees"&gt;ÉLEVAGE (fût / bouteille / lies)&lt;/a&gt;'><a href="#aging-barrel-bottle-lees">ÉLEVAGE (fût / bouteille / lies)</a></li><li data-en='&lt;a href="#microbial-spoilage"&gt;MICROBIAL / SPOILAGE&lt;/a&gt;' data-fr='&lt;a href="#microbial-spoilage"&gt;MICROBIOLOGIE / ALTÉRATIONS&lt;/a&gt;'><a href="#microbial-spoilage">MICROBIOLOGIE / ALTÉRATIONS</a></li></ol></nav><p class="key" data-en="Concentration key: % ppm (mg/L) ppb (μg/L)* variable/trace" data-fr="Unités de concentration : % ppm (mg/L) ppb (μg/L)* variable/traces">Unités de concentration : % ppm (mg/L) ppb (μg/L)* variable/traces</p><section class="section-card grape"><div class="section-intro"><h2 data-en="GRAPE / VARIETAL" data-fr="RAISIN / CÉPAGE" id="grape-varietal">RAISIN / CÉPAGE</h2><p data-en="Compounds present in the berry before fermentation. Skin, pulp,
+seeds, juice. These vary by variety, terroir, and ripeness of the
+grape." data-fr="Composés présents dans la baie avant la fermentation : pellicule, pulpe, pépins, jus. Ils varient selon le cépage, le terroir et la maturité du raisin.">Composés présents dans la baie avant la fermentation : pellicule, pulpe, pépins, jus. Ils varient selon le cépage, le terroir et la maturité du raisin.</p></div><div aria-label="Tableau défilant / Scrollable data table" class="table-wrap" role="region" tabindex="0"><table class="compound-table"><thead><tr><th data-en="Compound" data-fr="Composé" scope="col">Composé</th><th data-en="Formula" data-fr="Formule" scope="col">Formule</th><th data-en="Aroma" data-fr="Arôme" scope="col">Arôme</th><th data-en="Conc." data-fr="Conc." scope="col">Conc.</th><th data-en="Description" data-fr="Description" scope="col">Description</th></tr></thead><tbody><tr class="odd">
+<td data-en="&lt;strong&gt;Glucose / Fructose&lt;/strong&gt;" data-fr="&lt;strong&gt;Glucose / fructose&lt;/strong&gt;"><strong>Glucose / fructose</strong></td>
+<td>C₆H₁₂O₆</td>
+<td data-en="Sweet" data-fr="Sucré">Sucré</td>
+<td><strong>15–25%</strong></td>
+<td data-en="Primary fermentable sugars (150–250 g/L). Converted to ethanol +
+CO₂." data-fr="Principaux sucres fermentescibles (150–250 g/L). Transformés en éthanol + CO₂.">Principaux sucres fermentescibles (150–250 g/L). Transformés en éthanol + CO₂.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Tartaric acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide tartrique&lt;/strong&gt;"><strong>Acide tartrique</strong></td>
+<td>C₄H₆O₆</td>
+<td data-en="Tart, sharp" data-fr="Acide, vif">Acide, vif</td>
+<td><strong>2–8 g/L</strong></td>
+<td data-en="Dominant stable acid (2000–8000 ppm). Persists through
+fermentation." data-fr="Acide stable dominant (2000–8000 ppm). Persiste tout au long de la fermentation.">Acide stable dominant (2000–8000 ppm). Persiste tout au long de la fermentation.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Malic acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide malique&lt;/strong&gt;"><strong>Acide malique</strong></td>
+<td>C₄H₆O₅</td>
+<td data-en="Green apple" data-fr="Pomme verte">Pomme verte</td>
+<td><strong>1–6 g/L</strong></td>
+<td data-en="Sharp acid decreases with ripeness. Converted to lactic acid during
+MLF." data-fr="Acide mordant qui diminue avec la maturité. Transformé en acide lactique pendant la FML.">Acide mordant qui diminue avec la maturité. Transformé en acide lactique pendant la FML.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Linalool&lt;/strong&gt;" data-fr="&lt;strong&gt;Linalol&lt;/strong&gt;"><strong>Linalol</strong></td>
+<td>C₁₀H₁₈O</td>
+<td data-en="Lavender, floral" data-fr="Lavande, floral">Lavande, floral</td>
+<td><strong>10–2000 ppb</strong></td>
+<td data-en="Key terpene in Muscat/Riesling. Threshold ~15 ppb. Bound forms
+released in aging." data-fr="Terpène clé du muscat et du riesling. Seuil ~15 ppb. Les formes liées se libèrent pendant l’élevage.">Terpène clé du muscat et du riesling. Seuil ~15 ppb. Les formes liées se libèrent pendant l’élevage.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;β-Damascenone&lt;/strong&gt;" data-fr="&lt;strong&gt;β-Damascénone&lt;/strong&gt;"><strong>β-Damascénone</strong></td>
+<td>C₁₃H₁₈O</td>
+<td data-en="Rose, cooked apple" data-fr="Rose, pomme cuite">Rose, pomme cuite</td>
+<td data-en="&lt;strong&gt;0.05–10 ppb&lt;/strong&gt;" data-fr="&lt;strong&gt;,5–10 ppb&lt;/strong&gt;"><strong>,5–10 ppb</strong></td>
+<td data-en="Norisoprenoid; threshold ~0.05 ppb. Potentiates all other fruit
+aromas." data-fr="Norisoprénoïde ; seuil ~0,05 ppb. Renforce tous les autres arômes fruités.">Norisoprénoïde ; seuil ~0,05 ppb. Renforce tous les autres arômes fruités.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;β-Ionone&lt;/strong&gt;" data-fr="&lt;strong&gt;β-Ionone&lt;/strong&gt;"><strong>β-Ionone</strong></td>
+<td>C₁₃H₂₀O</td>
+<td data-en="Violet, raspberry" data-fr="Violette, framboise">Violette, framboise</td>
+<td data-en="&lt;strong&gt;0.01–1 ppb&lt;/strong&gt;" data-fr="&lt;strong&gt;,1–1 ppb&lt;/strong&gt;"><strong>,1–1 ppb</strong></td>
+<td data-en="From β-carotene. Threshold ~0.007 ppb. Hallmark of Cabernet
+Sauvignon." data-fr="Issue du β-carotène. Seuil ~0,007 ppb. Signature du cabernet-sauvignon.">Issue du β-carotène. Seuil ~0,007 ppb. Signature du cabernet-sauvignon.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;IBMP (methoxypyrazine)&lt;/strong&gt;" data-fr="&lt;strong&gt;IBMP (méthoxypyrazine)&lt;/strong&gt;"><strong>IBMP (méthoxypyrazine)</strong></td>
+<td>C₉H₁₄N₂O</td>
+<td data-en="Green pepper, grass" data-fr="Poivron vert, herbe">Poivron vert, herbe</td>
+<td><strong>1–40 ppb</strong></td>
+<td data-en="Threshold ~2 ppb. Cool-climate marker. Destroyed by UV light and
+sunlight." data-fr="Seuil ~2 ppb. Marqueur des climats frais. Détruite par les UV et la lumière du soleil.">Seuil ~2 ppb. Marqueur des climats frais. Détruite par les UV et la lumière du soleil.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Anthocyanins&lt;/strong&gt;" data-fr="&lt;strong&gt;Anthocyanes&lt;/strong&gt;"><strong>Anthocyanes</strong></td>
+<td data-en="C₁₅H₁₁O⁺·glycoside" data-fr="C₁₅H₁₁O⁺·glycoside">C₁₅H₁₁O⁺·glycoside</td>
+<td data-en="(color)" data-fr="(couleur)">(couleur)</td>
+<td><strong>50–5000 ppm</strong></td>
+<td data-en="Red pigments in skins (50 mg/L Pinot → 5 g/L Tannat). Stabilize
+during aging." data-fr="Pigments rouges des pellicules (50 mg/L pinot → 5 g/L tannat). Se stabilisent pendant l’élevage.">Pigments rouges des pellicules (50 mg/L pinot → 5 g/L tannat). Se stabilisent pendant l’élevage.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Condensed tannins&lt;/strong&gt;" data-fr="&lt;strong&gt;Tanins condensés&lt;/strong&gt;"><strong>Tanins condensés</strong></td>
+<td data-en="Polymer (catechins)" data-fr="Polymère (catéchines)">Polymère (catéchines)</td>
+<td data-en="Astringent" data-fr="Astringent">Astringent</td>
+<td><strong>500–4000 ppm</strong></td>
+<td data-en="Main astringency source (0.5–4 g/L red wine). Polymerize and soften
+with age." data-fr="Principale source d’astringence (0,5–4 g/L dans un vin rouge). Se polymérisent et s’assouplissent avec l’âge.">Principale source d’astringence (0,5–4 g/L dans un vin rouge). Se polymérisent et s’assouplissent avec l’âge.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Cys-3MH / GSH-3MH (precursors)&lt;/strong&gt;" data-fr="&lt;strong&gt;Cys-3MH / GSH-3MH (précurseurs)&lt;/strong&gt;"><strong>Cys-3MH / GSH-3MH (précurseurs)</strong></td>
+<td data-en="Cys / GSH conjugates" data-fr="Conjugués Cys / GSH">Conjugués Cys / GSH</td>
+<td data-en="Odorless" data-fr="Inodore">Inodore</td>
+<td><strong>1–20 µg/L</strong></td>
+<td data-en="Odorless precursors to potent thiols (3MH, 4MMP). Released by yeast
+enzymes." data-fr="Précurseurs inodores de thiols très puissants (3MH, 4MMP). Libérés par les enzymes des levures.">Précurseurs inodores de thiols très puissants (3MH, 4MMP). Libérés par les enzymes des levures.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Glutathione&lt;/strong&gt;" data-fr="&lt;strong&gt;Glutathion&lt;/strong&gt;"><strong>Glutathion</strong></td>
+<td>C₁₀H₁₇N₃O₆S</td>
+<td>—</td>
+<td><strong>10–200 ppm</strong></td>
+<td data-en="Antioxidant tripeptide protecting varietal thiols from oxidative
+browning." data-fr="Tripeptide antioxydant qui protège les thiols variétaux du brunissement oxydatif.">Tripeptide antioxydant qui protège les thiols variétaux du brunissement oxydatif.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Citric acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide citrique&lt;/strong&gt;"><strong>Acide citrique</strong></td>
+<td>C₆H₈O₇</td>
+<td data-en="Citrus" data-fr="Agrumes">Agrumes</td>
+<td><strong>100–500 ppm</strong></td>
+<td data-en="Minor acid; consumed by LAB during MLF, generating diacetyl + acetic
+acid." data-fr="Acide mineur ; consommé par les BL pendant la FML, en produisant diacétyle + acide acétique.">Acide mineur ; consommé par les BL pendant la FML, en produisant diacétyle + acide acétique.</td>
+</tr><tr class="odd">
+<td colspan="5"></td>
+</tr></tbody></table></div></section><section class="section-card alcoholic"><div class="section-intro"><h2 data-en="ALCOHOLIC FERMENTATION" data-fr="FERMENTATION ALCOOLIQUE" id="alcoholic-fermentation">FERMENTATION ALCOOLIQUE</h2><p data-en="Saccharomyces cerevisiae: Converts sugars to ethanol + CO₂ while
+generating hundreds of secondary metabolites that define the wine’s aromatic backbone" data-fr="Saccharomyces cerevisiae : transforme les sucres en éthanol + CO₂ tout en produisant des centaines de métabolites secondaires qui forment la colonne vertébrale aromatique du vin">Saccharomyces cerevisiae : transforme les sucres en éthanol + CO₂ tout en produisant des centaines de métabolites secondaires qui forment la colonne vertébrale aromatique du vin</p></div><div aria-label="Tableau défilant / Scrollable data table" class="table-wrap" role="region" tabindex="0"><table class="compound-table"><thead><tr><th data-en="Compound" data-fr="Composé" scope="col">Composé</th><th data-en="Formula" data-fr="Formule" scope="col">Formule</th><th data-en="Aroma" data-fr="Arôme" scope="col">Arôme</th><th data-en="Conc." data-fr="Conc." scope="col">Conc.</th><th data-en="Description" data-fr="Description" scope="col">Description</th></tr></thead><tbody><tr class="even">
+<td data-en="&lt;strong&gt;Ethanol&lt;/strong&gt;" data-fr="&lt;strong&gt;Éthanol&lt;/strong&gt;"><strong>Éthanol</strong></td>
+<td>C₂H₅OH</td>
+<td data-en="Warming, solvent" data-fr="Chaleureux, solvant">Chaleureux, solvant</td>
+<td><strong>8–16%</strong></td>
+<td data-en="Primary product (80,000–160,000 ppm). Solvent, preservative, and
+aroma carrier." data-fr="Produit principal (80 000–160 000 ppm). Solvant, conservateur et vecteur des arômes.">Produit principal (80 000–160 000 ppm). Solvant, conservateur et vecteur des arômes.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Glycerol&lt;/strong&gt;" data-fr="&lt;strong&gt;Glycérol&lt;/strong&gt;"><strong>Glycérol</strong></td>
+<td>C₃H₈O₃</td>
+<td data-en="Sweet, viscous" data-fr="Sucré, visqueux">Sucré, visqueux</td>
+<td><strong>5–15 g/L</strong></td>
+<td data-en="3rd most abundant after water and ethanol. Contributes body and
+mouthfeel." data-fr="3ᵉ composé le plus abondant après l’eau et l’éthanol. Apporte corps et rondeur en bouche.">3ᵉ composé le plus abondant après l’eau et l’éthanol. Apporte corps et rondeur en bouche.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Isoamyl acetate&lt;/strong&gt;" data-fr="&lt;strong&gt;Acétate d’isoamyle&lt;/strong&gt;"><strong>Acétate d’isoamyle</strong></td>
+<td>C₇H₁₄O₂</td>
+<td data-en="Banana, pear drops" data-fr="Banane, bonbon anglais">Banane, bonbon anglais</td>
+<td data-en="&lt;strong&gt;0.5–5 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,–5 ppm&lt;/strong&gt;"><strong>,–5 ppm</strong></td>
+<td data-en="Key acetate ester. Threshold ~0.03 mg/L. Higher at cool fermentation
+temps." data-fr="Ester d’acétate clé. Seuil ~0,03 mg/L. Plus abondant quand la fermentation est fraîche.">Ester d’acétate clé. Seuil ~0,03 mg/L. Plus abondant quand la fermentation est fraîche.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Ethyl acetate&lt;/strong&gt;" data-fr="&lt;strong&gt;Acétate d’éthyle&lt;/strong&gt;"><strong>Acétate d’éthyle</strong></td>
+<td>C₄H₈O₂</td>
+<td data-en="Solvent / nail polish" data-fr="Solvant / vernis à ongles">Solvant / vernis à ongles</td>
+<td><strong>30–200 ppm</strong></td>
+<td data-en="Most abundant ester. Fault above ~120 mg/L. Produced by yeast and
+bacteria." data-fr="L’ester le plus abondant. Défaut au-delà de ~120 mg/L. Produit par les levures et les bactéries.">L’ester le plus abondant. Défaut au-delà de ~120 mg/L. Produit par les levures et les bactéries.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Ethyl hexanoate / butyrate&lt;/strong&gt;" data-fr="&lt;strong&gt;Hexanoate / butyrate d’éthyle&lt;/strong&gt;"><strong>Hexanoate / butyrate d’éthyle</strong></td>
+<td data-en="C₈–C₆ ethyl esters" data-fr="Esters éthyliques C₈–C₆">Esters éthyliques C₈–C₆</td>
+<td data-en="Apple, pineapple" data-fr="Pomme, ananas">Pomme, ananas</td>
+<td data-en="&lt;strong&gt;0.01–0.5 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,1–, ppm&lt;/strong&gt;"><strong>,1–, ppm</strong></td>
+<td data-en="Fruity ethyl esters; threshold ~0.005–0.02 mg/L. Decrease with
+bottle age." data-fr="Esters éthyliques fruités ; seuil ~0,005–0,02 mg/L. Diminuent avec le vieillissement en bouteille.">Esters éthyliques fruités ; seuil ~0,005–0,02 mg/L. Diminuent avec le vieillissement en bouteille.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Isoamyl alcohol&lt;/strong&gt;" data-fr="&lt;strong&gt;Alcool isoamylique&lt;/strong&gt;"><strong>Alcool isoamylique</strong></td>
+<td>C₅H₁₂O</td>
+<td data-en="Fusel, banana" data-fr="Fusel, banane">Fusel, banane</td>
+<td><strong>50–400 ppm</strong></td>
+<td data-en="Most abundant fusel alcohol. Harsh above 300–400 mg/L. From leucine
+catabolism." data-fr="L’alcool supérieur (fusel) le plus abondant. Dur au-delà de 300–400 mg/L. Issu du catabolisme de la leucine.">L’alcool supérieur (fusel) le plus abondant. Dur au-delà de 300–400 mg/L. Issu du catabolisme de la leucine.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;2-Phenylethanol&lt;/strong&gt;" data-fr="&lt;strong&gt;2-Phényléthanol&lt;/strong&gt;"><strong>2-Phényléthanol</strong></td>
+<td>C₈H₁₀O</td>
+<td data-en="Rose water, floral" data-fr="Eau de rose, floral">Eau de rose, floral</td>
+<td><strong>10–80 ppm</strong></td>
+<td data-en="Pleasant fusel alcohol from phenylalanine. Threshold ~10 mg/L." data-fr="Alcool supérieur agréable issu de la phénylalanine. Seuil ~10 mg/L.">Alcool supérieur agréable issu de la phénylalanine. Seuil ~10 mg/L.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Acetaldehyde&lt;/strong&gt;" data-fr="&lt;strong&gt;Acétaldéhyde&lt;/strong&gt;"><strong>Acétaldéhyde</strong></td>
+<td>C₂H₄O</td>
+<td data-en="Green apple, bruised" data-fr="Pomme verte, pomme blette">Pomme verte, pomme blette</td>
+<td><strong>10–75 ppm</strong></td>
+<td data-en="Main aldehyde. Binds SO₂. High levels signal oxidation. Up to 500
+ppm in Sherry." data-fr="Principal aldéhyde. Combine le SO₂. Un taux élevé signale une oxydation. Jusqu’à 500 ppm dans le xérès.">Principal aldéhyde. Combine le SO₂. Un taux élevé signale une oxydation. Jusqu’à 500 ppm dans le xérès.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Diacetyl&lt;/strong&gt;" data-fr="&lt;strong&gt;Diacétyle&lt;/strong&gt;"><strong>Diacétyle</strong></td>
+<td>C₄H₆O₂</td>
+<td data-en="Butter, cream" data-fr="Beurre, crème">Beurre, crème</td>
+<td data-en="&lt;strong&gt;0.2–4 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,–4 ppm&lt;/strong&gt;"><strong>,–4 ppm</strong></td>
+<td data-en="Butter aroma. Threshold 0.2 mg/L (white), 1 mg/L (red). Produced by
+yeast + LAB." data-fr="Arôme beurré. Seuil 0,2 mg/L (blanc), 1 mg/L (rouge). Produit par les levures + les BL.">Arôme beurré. Seuil 0,2 mg/L (blanc), 1 mg/L (rouge). Produit par les levures + les BL.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Succinic acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide succinique&lt;/strong&gt;"><strong>Acide succinique</strong></td>
+<td>C₄H₆O₄</td>
+<td data-en="Sour, salty-bitter" data-fr="Acide, salé-amer">Acide, salé-amer</td>
+<td><strong>0.5–1.5 g/L</strong></td>
+<td data-en="Main non-volatile yeast acid (500–1500 ppm). Unique
+salty-bitter-sour taste." data-fr="Principal acide fixe produit par la levure (500–1500 ppm). Goût unique, à la fois salé, amer et acide.">Principal acide fixe produit par la levure (500–1500 ppm). Goût unique, à la fois salé, amer et acide.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Acetic acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide acétique&lt;/strong&gt;"><strong>Acide acétique</strong></td>
+<td>C₂H₄O₂</td>
+<td data-en="Vinegar" data-fr="Vinaigre">Vinaigre</td>
+<td><strong>0.2–0.6 g/L</strong></td>
+<td data-en="Volatile acidity. Fault above 0.9 g/L (white) / 1.2 g/L (red)." data-fr="Acidité volatile. Défaut au-delà de 0,9 g/L (blanc) / 1,2 g/L (rouge).">Acidité volatile. Défaut au-delà de 0,9 g/L (blanc) / 1,2 g/L (rouge).</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;3MH / 3MHA / 4MMP (thiols)&lt;/strong&gt;" data-fr="&lt;strong&gt;3MH / 3MHA / 4MMP (thiols)&lt;/strong&gt;"><strong>3MH / 3MHA / 4MMP (thiols)</strong></td>
+<td>C₆H₁₄OS / C₆H₁₂OS</td>
+<td data-en="Passionfruit, boxwood" data-fr="Fruit de la passion, buis">Fruit de la passion, buis</td>
+<td><strong>1–4000 ppb</strong></td>
+<td data-en="Potent varietal thiols released by yeast. 4MMP threshold ~1 ppb; 3MH
+~60 ppb." data-fr="Thiols variétaux très puissants libérés par la levure. Seuil du 4MMP ~1 ppb ; du 3MH ~60 ppb.">Thiols variétaux très puissants libérés par la levure. Seuil du 4MMP ~1 ppb ; du 3MH ~60 ppb.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;H₂S / Methanethiol&lt;/strong&gt;" data-fr="&lt;strong&gt;H₂S / méthanethiol&lt;/strong&gt;"><strong>H₂S / méthanethiol</strong></td>
+<td>H₂S / CH₃SH</td>
+<td data-en="Rotten egg / cabbage" data-fr="Œuf pourri / chou">Œuf pourri / chou</td>
+<td><strong>1–80 ppb</strong></td>
+<td data-en="Reductive faults from N-deficient fermentation. Removed by aeration
+or Cu treatment." data-fr="Défauts de réduction dus à une fermentation carencée en azote. Éliminés par aération ou traitement au cuivre.">Défauts de réduction dus à une fermentation carencée en azote. Éliminés par aération ou traitement au cuivre.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Mannoproteins / β-Glucans&lt;/strong&gt;" data-fr="&lt;strong&gt;Mannoprotéines / β-glucanes&lt;/strong&gt;"><strong>Mannoprotéines / β-glucanes</strong></td>
+<td data-en="Glycoprotein / Polysaccharide" data-fr="Glycoprotéine / polysaccharide">Glycoprotéine / polysaccharide</td>
+<td>—</td>
+<td><strong>100–600 ppm</strong></td>
+<td data-en="Yeast cell wall polysaccharides. Improve mouthfeel and tartrate/foam
+stability." data-fr="Polysaccharides de la paroi des levures. Améliorent la rondeur en bouche et la stabilité tartrique et de la mousse.">Polysaccharides de la paroi des levures. Améliorent la rondeur en bouche et la stabilité tartrique et de la mousse.</td>
+</tr><tr class="even">
+<td colspan="5"></td>
+</tr></tbody></table></div></section><section class="section-card malolactic"><div class="section-intro"><h2 data-en="MALOLACTIC FERMENTATION" data-fr="FERMENTATION MALOLACTIQUE" id="malolactic-fermentation">FERMENTATION MALOLACTIQUE</h2><p data-en="Oenococcus oeni: converts malic acid → lactic acid + CO₂. Transforms
+acidity, texture and aromatic complexity." data-fr="Oenococcus oeni : transforme l’acide malique → acide lactique + CO₂. Modifie l’acidité, la texture et la complexité aromatique.">Oenococcus oeni : transforme l’acide malique → acide lactique + CO₂. Modifie l’acidité, la texture et la complexité aromatique.</p></div><div aria-label="Tableau défilant / Scrollable data table" class="table-wrap" role="region" tabindex="0"><table class="compound-table"><thead><tr><th data-en="Compound" data-fr="Composé" scope="col">Composé</th><th data-en="Formula" data-fr="Formule" scope="col">Formule</th><th data-en="Aroma" data-fr="Arôme" scope="col">Arôme</th><th data-en="Conc." data-fr="Conc." scope="col">Conc.</th><th data-en="Description" data-fr="Description" scope="col">Description</th></tr></thead><tbody><tr class="odd">
+<td data-en="&lt;strong&gt;L-Malic → L-Lactic acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide L-malique → L-lactique&lt;/strong&gt;"><strong>Acide L-malique → L-lactique</strong></td>
+<td>C₄H₆O₅ → C₃H₆O₃</td>
+<td data-en="Sharp → soft, creamy" data-fr="Mordant → souple, crémeux">Mordant → souple, crémeux</td>
+<td><strong>1–4 g/L</strong></td>
+<td data-en="Core MLF reaction. Raises pH by 0.1–0.3 units. Softens overall acid
+profile." data-fr="Réaction centrale de la FML. Fait monter le pH de 0,1–0,3 unité. Assouplit l’ensemble de l’acidité.">Réaction centrale de la FML. Fait monter le pH de 0,1–0,3 unité. Assouplit l’ensemble de l’acidité.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Diacetyl (MLF)&lt;/strong&gt;" data-fr="&lt;strong&gt;Diacétyle (FML)&lt;/strong&gt;"><strong>Diacétyle (FML)</strong></td>
+<td>C₄H₆O₂</td>
+<td data-en="Butter, cream" data-fr="Beurre, crème">Beurre, crème</td>
+<td data-en="&lt;strong&gt;0.2–5 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,–5 ppm&lt;/strong&gt;"><strong>,–5 ppm</strong></td>
+<td data-en="Key MLF aroma compound. Can spike to 5+ mg/L during MLF. From citric
+acid + pyruvate." data-fr="Composé aromatique clé de la FML. Peut monter à plus de 5 mg/L pendant la FML. Issu de l’acide citrique + du pyruvate.">Composé aromatique clé de la FML. Peut monter à plus de 5 mg/L pendant la FML. Issu de l’acide citrique + du pyruvate.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Acetoin&lt;/strong&gt;" data-fr="&lt;strong&gt;Acétoïne&lt;/strong&gt;"><strong>Acétoïne</strong></td>
+<td>C₄H₈O₂</td>
+<td data-en="Yogurt, creamy" data-fr="Yaourt, crémeux">Yaourt, crémeux</td>
+<td><strong>1–20 ppm</strong></td>
+<td data-en="Diacetyl reduction product. Threshold ~150 mg/L — usually
+sub-threshold." data-fr="Produit de réduction du diacétyle. Seuil ~150 mg/L — généralement sous le seuil.">Produit de réduction du diacétyle. Seuil ~150 mg/L — généralement sous le seuil.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;2,3-Butanediol&lt;/strong&gt;" data-fr="&lt;strong&gt;2,3-Butanediol&lt;/strong&gt;"><strong>2,3-Butanediol</strong></td>
+<td>C₄H₁₀O₂</td>
+<td data-en="Faint sweetness" data-fr="Légère douceur">Légère douceur</td>
+<td><strong>200–900 ppm</strong></td>
+<td data-en="Further acetoin reduction. Non-aromatic; contributes marginally to
+body." data-fr="Réduction supplémentaire de l’acétoïne. Non aromatique ; contribue un peu au corps.">Réduction supplémentaire de l’acétoïne. Non aromatique ; contribue un peu au corps.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Ethyl lactate&lt;/strong&gt;" data-fr="&lt;strong&gt;Lactate d’éthyle&lt;/strong&gt;"><strong>Lactate d’éthyle</strong></td>
+<td>C₅H₁₀O₃</td>
+<td data-en="Creamy, milky" data-fr="Crémeux, lacté">Crémeux, lacté</td>
+<td><strong>10–100 ppm</strong></td>
+<td data-en="Lactic acid + ethanol. Accumulates slowly post-MLF. Adds textural
+softness." data-fr="Acide lactique + éthanol. S’accumule lentement après la FML. Apporte de la souplesse à la texture.">Acide lactique + éthanol. S’accumule lentement après la FML. Apporte de la souplesse à la texture.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Acetic acid (MLF contribution)&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide acétique (apport de la FML)&lt;/strong&gt;"><strong>Acide acétique (apport de la FML)</strong></td>
+<td>C₂H₄O₂</td>
+<td data-en="Vinegar risk" data-fr="Risque de piqûre acétique">Risque de piqûre acétique</td>
+<td><strong>+50–200 ppm</strong></td>
+<td data-en="From citric acid catabolism by LAB. Higher risk with elevated citric
+acid in must." data-fr="Issu du catabolisme de l’acide citrique par les BL. Risque plus élevé quand le moût est riche en acide citrique.">Issu du catabolisme de l’acide citrique par les BL. Risque plus élevé quand le moût est riche en acide citrique.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Biogenic amines (histamine, tyramine)&lt;/strong&gt;" data-fr="&lt;strong&gt;Amines biogènes (histamine, tyramine)&lt;/strong&gt;"><strong>Amines biogènes (histamine, tyramine)</strong></td>
+<td data-en="N-heterocycles" data-fr="Hétérocycles azotés">Hétérocycles azotés</td>
+<td>—</td>
+<td><strong>0–30 ppm</strong></td>
+<td data-en="Decarboxylation of amino acids by LAB. EU guideline &amp;lt;10 mg/L for
+histamine." data-fr="Décarboxylation des acides aminés par les BL. Recommandation UE &amp;lt;10 mg/L pour l’histamine.">Décarboxylation des acides aminés par les BL. Recommandation UE &lt;10 mg/L pour l’histamine.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;pH shift&lt;/strong&gt;" data-fr="&lt;strong&gt;Hausse du pH&lt;/strong&gt;"><strong>Hausse du pH</strong></td>
+<td>—</td>
+<td>—</td>
+<td data-en="&lt;strong&gt;+0.1–0.3 pH&lt;/strong&gt;" data-fr="&lt;strong&gt;+,–, pH&lt;/strong&gt;"><strong>+,–, pH</strong></td>
+<td data-en="Raises pH 0.1–0.3 units. Affects SO₂ efficacy, color, and microbial
+stability." data-fr="Fait monter le pH de 0,1–0,3 unité. Influe sur l’efficacité du SO₂, la couleur et la stabilité microbienne.">Fait monter le pH de 0,1–0,3 unité. Influe sur l’efficacité du SO₂, la couleur et la stabilité microbienne.</td>
+</tr><tr class="odd">
+<td colspan="5"></td>
+</tr></tbody></table></div></section><section class="section-card aging"><div class="section-intro"><h2 data-en="AGING (Barrel / Bottle / Lees)" data-fr="ÉLEVAGE (fût / bouteille / lies)" id="aging-barrel-bottle-lees">ÉLEVAGE (fût / bouteille / lies)</h2><p data-en="Oak extraction, oxidation, tannin evolution, and slow reductive
+chemistry over months to decades in barrel and bottle." data-fr="Extraction du bois, oxydation, évolution des tanins et lente chimie de réduction, de quelques mois à plusieurs décennies en fût et en bouteille.">Extraction du bois, oxydation, évolution des tanins et lente chimie de réduction, de quelques mois à plusieurs décennies en fût et en bouteille.</p></div><div aria-label="Tableau défilant / Scrollable data table" class="table-wrap" role="region" tabindex="0"><table class="compound-table"><thead><tr><th data-en="Compound" data-fr="Composé" scope="col">Composé</th><th data-en="Formula" data-fr="Formule" scope="col">Formule</th><th data-en="Aroma" data-fr="Arôme" scope="col">Arôme</th><th data-en="Conc." data-fr="Conc." scope="col">Conc.</th><th data-en="Description" data-fr="Description" scope="col">Description</th></tr></thead><tbody><tr class="even">
+<td data-en="&lt;strong&gt;Vanillin&lt;/strong&gt;" data-fr="&lt;strong&gt;Vanilline&lt;/strong&gt;"><strong>Vanilline</strong></td>
+<td>C₈H₈O₃</td>
+<td data-en="Vanilla, sweet" data-fr="Vanille, sucré">Vanille, sucré</td>
+<td><strong>1–20 ppm</strong></td>
+<td data-en="Oak lignin breakdown. Threshold ~0.1 mg/L. American &amp;gt; French oak.
+Decreases with reuse." data-fr="Dégradation de la lignine du chêne. Seuil ~0,1 mg/L. Chêne américain &amp;gt; chêne français. Diminue quand le fût est réutilisé.">Dégradation de la lignine du chêne. Seuil ~0,1 mg/L. Chêne américain &gt; chêne français. Diminue quand le fût est réutilisé.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Eugenol&lt;/strong&gt;" data-fr="&lt;strong&gt;Eugénol&lt;/strong&gt;"><strong>Eugénol</strong></td>
+<td>C₁₀H₁₂O₂</td>
+<td data-en="Clove, spice" data-fr="Clou de girofle, épices">Clou de girofle, épices</td>
+<td data-en="&lt;strong&gt;0.05–1 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,5–1 ppm&lt;/strong&gt;"><strong>,5–1 ppm</strong></td>
+<td data-en="Oak phenylpropanoid. Threshold ~0.5 mg/L. Higher in American oak
+barrels." data-fr="Phénylpropanoïde du chêne. Seuil ~0,5 mg/L. Plus abondant dans les fûts de chêne américain.">Phénylpropanoïde du chêne. Seuil ~0,5 mg/L. Plus abondant dans les fûts de chêne américain.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Guaiacol / 4-methylguaiacol&lt;/strong&gt;" data-fr="&lt;strong&gt;Gaïacol / 4-méthylgaïacol&lt;/strong&gt;"><strong>Gaïacol / 4-méthylgaïacol</strong></td>
+<td>C₇H₈O₂ / C₈H₁₀O₂</td>
+<td data-en="Smoke, toast, bacon" data-fr="Fumée, pain grillé, lard">Fumée, pain grillé, lard</td>
+<td data-en="&lt;strong&gt;0.01–0.5 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,1–, ppm&lt;/strong&gt;"><strong>,1–, ppm</strong></td>
+<td data-en="From toasted oak lignin. Threshold ~0.065–0.095 mg/L. Heavier toast
+= more." data-fr="Issu de la lignine du chêne chauffé (bousinage). Seuil ~0,065–0,095 mg/L. Plus la chauffe est forte, plus il y en a.">Issu de la lignine du chêne chauffé (bousinage). Seuil ~0,065–0,095 mg/L. Plus la chauffe est forte, plus il y en a.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Whisky lactone&lt;/strong&gt;" data-fr="&lt;strong&gt;Whisky-lactone&lt;/strong&gt;"><strong>Whisky-lactone</strong></td>
+<td>C₉H₁₆O₂</td>
+<td data-en="Coconut, cedar" data-fr="Noix de coco, cèdre">Noix de coco, cèdre</td>
+<td data-en="&lt;strong&gt;0.05–2 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,5–2 ppm&lt;/strong&gt;"><strong>,5–2 ppm</strong></td>
+<td data-en="Hallmark of American oak. cis-isomer threshold ~0.067 mg/L. French
+oak: trace only." data-fr="Signature du chêne américain. Seuil de l’isomère cis ~0,067 mg/L. Chêne français : traces seulement.">Signature du chêne américain. Seuil de l’isomère cis ~0,067 mg/L. Chêne français : traces seulement.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Furfural&lt;/strong&gt;" data-fr="&lt;strong&gt;Furfural&lt;/strong&gt;"><strong>Furfural</strong></td>
+<td>C₅H₄O₂</td>
+<td data-en="Caramel, almond" data-fr="Caramel, amande">Caramel, amande</td>
+<td data-en="&lt;strong&gt;0.5–10 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,–10 ppm&lt;/strong&gt;"><strong>,–10 ppm</strong></td>
+<td data-en="Hemicellulose degradation during toasting. Usually below sensory
+threshold (~14 mg/L)." data-fr="Dégradation de l’hémicellulose pendant la chauffe. Généralement sous le seuil de perception (~14 mg/L).">Dégradation de l’hémicellulose pendant la chauffe. Généralement sous le seuil de perception (~14 mg/L).</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Ellagitannins&lt;/strong&gt;" data-fr="&lt;strong&gt;Ellagitanins&lt;/strong&gt;"><strong>Ellagitanins</strong></td>
+<td data-en="Polyphenol (oak)" data-fr="Polyphénol (chêne)">Polyphénol (chêne)</td>
+<td>—</td>
+<td><strong>10–200 ppm</strong></td>
+<td data-en="Water-soluble oak tannins. Enable micro-oxygenation and modulate
+astringency." data-fr="Tanins hydrosolubles du chêne. Permettent la micro-oxygénation et modulent l’astringence.">Tanins hydrosolubles du chêne. Permettent la micro-oxygénation et modulent l’astringence.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Sotolon&lt;/strong&gt;" data-fr="&lt;strong&gt;Sotolon&lt;/strong&gt;"><strong>Sotolon</strong></td>
+<td>C₆H₈O₃</td>
+<td data-en="Curry, fenugreek, walnut" data-fr="Curry, fenugrec, noix">Curry, fenugrec, noix</td>
+<td><strong>1–400 ppb</strong></td>
+<td data-en="Oxidative aging marker. Threshold ~7 ppb. Defines Sherry, Vin Jaune,
+Madeira character." data-fr="Marqueur du vieillissement oxydatif. Seuil ~7 ppb. Définit le caractère du xérès, du vin jaune et du madère.">Marqueur du vieillissement oxydatif. Seuil ~7 ppb. Définit le caractère du xérès, du vin jaune et du madère.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;TDN (petrol note)&lt;/strong&gt;" data-fr="&lt;strong&gt;TDN (note pétrolée)&lt;/strong&gt;"><strong>TDN (note pétrolée)</strong></td>
+<td>C₁₃H₁₆</td>
+<td data-en="Petrol, kerosene" data-fr="Pétrole, kérosène">Pétrole, kérosène</td>
+<td><strong>1–150 ppb</strong></td>
+<td data-en="Develops in Riesling over 10–30 years. Threshold ~20 ppb. Prized by
+collectors." data-fr="Apparaît dans le riesling en 10–30 ans. Seuil ~20 ppb. Recherché par les collectionneurs.">Apparaît dans le riesling en 10–30 ans. Seuil ~20 ppb. Recherché par les collectionneurs.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Pyranoanthocyanins (vitisin A/B)&lt;/strong&gt;" data-fr="&lt;strong&gt;Pyranoanthocyanes (vitisines A/B)&lt;/strong&gt;"><strong>Pyranoanthocyanes (vitisines A/B)</strong></td>
+<td data-en="Pigmented adducts" data-fr="Adduits pigmentés">Adduits pigmentés</td>
+<td data-en="(color)" data-fr="(couleur)">(couleur)</td>
+<td><strong>10–200 ppm</strong></td>
+<td data-en="Stable pigments from anthocyanins + pyruvate/acetaldehyde. Brick-red
+hues in aged reds." data-fr="Pigments stables issus des anthocyanes + pyruvate/acétaldéhyde. Teintes rouge brique des rouges âgés.">Pigments stables issus des anthocyanes + pyruvate/acétaldéhyde. Teintes rouge brique des rouges âgés.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Tannin polymers / T-A adducts&lt;/strong&gt;" data-fr="&lt;strong&gt;Polymères de tanins / adduits T-A&lt;/strong&gt;"><strong>Polymères de tanins / adduits T-A</strong></td>
+<td data-en="Polymer" data-fr="Polymère">Polymère</td>
+<td data-en="Softer astringency" data-fr="Astringence plus souple">Astringence plus souple</td>
+<td data-en="&lt;strong&gt;variable&lt;/strong&gt;" data-fr="&lt;strong&gt;variable&lt;/strong&gt;"><strong>variable</strong></td>
+<td data-en="Tannin-anthocyanin coupling via oxidation or acetaldehyde bridging.
+Stabilize color." data-fr="Liaison tanins-anthocyanes par oxydation ou par pont acétaldéhyde. Stabilise la couleur.">Liaison tanins-anthocyanes par oxydation ou par pont acétaldéhyde. Stabilise la couleur.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;DMS (bottle aging)&lt;/strong&gt;" data-fr="&lt;strong&gt;DMS (vieillissement en bouteille)&lt;/strong&gt;"><strong>DMS (vieillissement en bouteille)</strong></td>
+<td>C₂H₆S</td>
+<td data-en="Truffle, black olive" data-fr="Truffe, olive noire">Truffe, olive noire</td>
+<td><strong>10–100 ppb</strong></td>
+<td data-en="Increases slowly in bottle from SMM hydrolysis. Adds umami below ~25
+ppb threshold." data-fr="Augmente lentement en bouteille par hydrolyse de la SMM. Apporte de l’umami sous le seuil d’environ 25 ppb.">Augmente lentement en bouteille par hydrolyse de la SMM. Apporte de l’umami sous le seuil d’environ 25 ppb.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Mannoproteins (autolytic)&lt;/strong&gt;" data-fr="&lt;strong&gt;Mannoprotéines (autolyse)&lt;/strong&gt;"><strong>Mannoprotéines (autolyse)</strong></td>
+<td data-en="Glycoprotein" data-fr="Glycoprotéine">Glycoprotéine</td>
+<td>—</td>
+<td><strong>100–800 ppm</strong></td>
+<td data-en="Released during yeast autolysis on lees. Key to Champagne foam
+stability and mouthfeel." data-fr="Libérées pendant l’autolyse des levures sur lies. Essentielles à la tenue de la mousse et à la texture du champagne.">Libérées pendant l’autolyse des levures sur lies. Essentielles à la tenue de la mousse et à la texture du champagne.</td>
+</tr><tr class="even">
+<td colspan="5"></td>
+</tr></tbody></table></div></section><section class="section-card spoilage"><div class="section-intro"><h2 data-en="MICROBIAL / SPOILAGE" data-fr="MICROBIOLOGIE / ALTÉRATIONS" id="microbial-spoilage">MICROBIOLOGIE / ALTÉRATIONS</h2><p data-en="Unwanted organisms produce characteristic fault compounds
+Brettanomyces, acetic acid bacteria, aberrant LAB, and chemical
+faults" data-fr="Des micro-organismes indésirables produisent des composés de défaut caractéristiques : Brettanomyces, bactéries acétiques, BL déviantes et défauts chimiques">Des micro-organismes indésirables produisent des composés de défaut caractéristiques : Brettanomyces, bactéries acétiques, BL déviantes et défauts chimiques</p></div><div aria-label="Tableau défilant / Scrollable data table" class="table-wrap" role="region" tabindex="0"><table class="compound-table"><thead><tr><th data-en="Compound" data-fr="Composé" scope="col">Composé</th><th data-en="Formula" data-fr="Formule" scope="col">Formule</th><th data-en="Aroma" data-fr="Arôme" scope="col">Arôme</th><th data-en="Conc." data-fr="Conc." scope="col">Conc.</th><th data-en="Description" data-fr="Description" scope="col">Description</th></tr></thead><thead><tr><th data-en="Compound" data-fr="Composé" scope="col">Composé</th><th data-en="Formula" data-fr="Formule" scope="col">Formule</th><th data-en="Aroma" data-fr="Arôme" scope="col">Arôme</th><th data-en="Conc." data-fr="Conc." scope="col">Conc.</th><th data-en="Description" data-fr="Description" scope="col">Description</th></tr></thead><tbody><tr class="even">
+<td data-en="&lt;strong&gt;Brettanomyces Metabolites&lt;/strong&gt;" data-fr="&lt;strong&gt;Métabolites de Brettanomyces&lt;/strong&gt;"><strong>Métabolites de Brettanomyces</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;4-Ethylphenol (4-EP)&lt;/strong&gt;" data-fr="&lt;strong&gt;4-Éthylphénol (4-EP)&lt;/strong&gt;"><strong>4-Éthylphénol (4-EP)</strong></td>
+<td>C₈H₁₀O</td>
+<td data-en="Barnyard, leather, band-aid" data-fr="Écurie, cuir, pansement">Écurie, cuir, pansement</td>
+<td><strong>100–4000 ppb</strong></td>
+<td data-en="Primary Brett compound. Threshold 140–440 ppb. From p-coumaric acid.
+Very persistent." data-fr="Principal composé des Brett. Seuil 140–440 ppb. Issu de l’acide p-coumarique. Très persistant.">Principal composé des Brett. Seuil 140–440 ppb. Issu de l’acide p-coumarique. Très persistant.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;4-Ethylguaiacol (4-EG)&lt;/strong&gt;" data-fr="&lt;strong&gt;4-Éthylgaïacol (4-EG)&lt;/strong&gt;"><strong>4-Éthylgaïacol (4-EG)</strong></td>
+<td>C₉H₁₂O₂</td>
+<td data-en="Smoke, spice, bacon" data-fr="Fumée, épices, lard">Fumée, épices, lard</td>
+<td><strong>10–400 ppb</strong></td>
+<td data-en="Co-occurs with 4-EP (~10:1 ratio). Threshold ~33 ppb. From ferulic
+acid via Brett." data-fr="Accompagne le 4-EP (rapport ~10:1). Seuil ~33 ppb. Issu de l’acide férulique, via les Brett.">Accompagne le 4-EP (rapport ~10:1). Seuil ~33 ppb. Issu de l’acide férulique, via les Brett.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Isovaleric acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide isovalérique&lt;/strong&gt;"><strong>Acide isovalérique</strong></td>
+<td>C₅H₁₀O₂</td>
+<td data-en="Rancid cheese, sweaty" data-fr="Fromage rance, sueur">Fromage rance, sueur</td>
+<td data-en="&lt;strong&gt;0.2–2 ppm&lt;/strong&gt;" data-fr="&lt;strong&gt;,–2 ppm&lt;/strong&gt;"><strong>,–2 ppm</strong></td>
+<td data-en="Brett and LAB product. Threshold ~0.4–1 mg/L. Persistent; very
+difficult to mask." data-fr="Produit par les Brett et les BL. Seuil ~0,4–1 mg/L. Persistant ; très difficile à masquer.">Produit par les Brett et les BL. Seuil ~0,4–1 mg/L. Persistant ; très difficile à masquer.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Acetic Acid Bacteria&lt;/strong&gt;" data-fr="&lt;strong&gt;Bactéries acétiques&lt;/strong&gt;"><strong>Bactéries acétiques</strong></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Acetic acid (bacterial)&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide acétique (bactérien)&lt;/strong&gt;"><strong>Acide acétique (bactérien)</strong></td>
+<td>C₂H₄O₂</td>
+<td data-en="Vinegar (fault)" data-fr="Vinaigre (défaut)">Vinaigre (défaut)</td>
+<td><strong>0.6–3 g/L</strong></td>
+<td data-en="Acetobacter oxidizes ethanol. Fault above 0.9 g/L (white) / 1.2 g/L
+(red). Legal limits apply." data-fr="Acetobacter oxyde l’éthanol. Défaut au-delà de 0,9 g/L (blanc) / 1,2 g/L (rouge). Des limites légales s’appliquent.">Acetobacter oxyde l’éthanol. Défaut au-delà de 0,9 g/L (blanc) / 1,2 g/L (rouge). Des limites légales s’appliquent.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Ethyl acetate (bacterial)&lt;/strong&gt;" data-fr="&lt;strong&gt;Acétate d’éthyle (bactérien)&lt;/strong&gt;"><strong>Acétate d’éthyle (bactérien)</strong></td>
+<td>C₄H₈O₂</td>
+<td data-en="Nail polish (fault)" data-fr="Vernis à ongles (défaut)">Vernis à ongles (défaut)</td>
+<td><strong>120–500 ppm</strong></td>
+<td data-en="Accompanies high VA. Fault threshold ~120 mg/L. Legal limit
+typically 150 mg/L." data-fr="Accompagne une AV élevée. Seuil de défaut ~120 mg/L. Limite légale généralement de 150 mg/L.">Accompagne une AV élevée. Seuil de défaut ~120 mg/L. Limite légale généralement de 150 mg/L.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;TCA (cork taint)&lt;/strong&gt;" data-fr="&lt;strong&gt;TCA (goût de bouchon)&lt;/strong&gt;"><strong>TCA (goût de bouchon)</strong></td>
+<td>C₇H₅Cl₃O</td>
+<td data-en="Musty, wet cardboard" data-fr="Moisi, carton mouillé">Moisi, carton mouillé</td>
+<td><strong>1–100 ppb</strong></td>
+<td data-en="Threshold ~1.4 ppb. Sub-threshold levels suppress aroma perception.
+Most common wine fault." data-fr="Seuil ~1,4 ppb. Même sous le seuil, il étouffe la perception des arômes. Le défaut du vin le plus courant.">Seuil ~1,4 ppb. Même sous le seuil, il étouffe la perception des arômes. Le défaut du vin le plus courant.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Mousy taint (ATHP, ETPY)&lt;/strong&gt;" data-fr="&lt;strong&gt;Goût de souris (ATHP, ETPY)&lt;/strong&gt;"><strong>Goût de souris (ATHP, ETPY)</strong></td>
+<td data-en="N-heterocycles" data-fr="Hétérocycles azotés">Hétérocycles azotés</td>
+<td data-en="Mouse cage, popcorn" data-fr="Cage à souris, pop-corn">Cage à souris, pop-corn</td>
+<td><strong>5–200 ppb</strong></td>
+<td data-en="Only perceived after saliva raises pH. Common in low-sulfite natural
+wines." data-fr="Perçu seulement quand la salive a fait monter le pH. Fréquent dans les vins nature peu sulfités.">Perçu seulement quand la salive a fait monter le pH. Fréquent dans les vins nature peu sulfités.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Mannitol&lt;/strong&gt;" data-fr="&lt;strong&gt;Mannitol&lt;/strong&gt;"><strong>Mannitol</strong></td>
+<td>C₆H₁₄O₆</td>
+<td data-en="Sweet, viscous (fault)" data-fr="Sucré, visqueux (défaut)">Sucré, visqueux (défaut)</td>
+<td><strong>0.2–3 g/L</strong></td>
+<td data-en="LAB fructose reduction in stuck/high-sugar musts. Fault in dry wines
+— syrupy sweetness." data-fr="Réduction du fructose par les BL dans les moûts en arrêt de fermentation ou très sucrés. Défaut dans les vins secs — douceur sirupeuse.">Réduction du fructose par les BL dans les moûts en arrêt de fermentation ou très sucrés. Défaut dans les vins secs — douceur sirupeuse.</td>
+</tr><tr class="even">
+<td data-en="&lt;strong&gt;Geranium taint&lt;/strong&gt;" data-fr="&lt;strong&gt;Goût de géranium&lt;/strong&gt;"><strong>Goût de géranium</strong></td>
+<td>C₈H₁₄O</td>
+<td data-en="Geranium leaf, metallic" data-fr="Feuille de géranium, métallique">Feuille de géranium, métallique</td>
+<td data-en="&lt;strong&gt;0.1–5 ppb&lt;/strong&gt;" data-fr="&lt;strong&gt;,–5 ppb&lt;/strong&gt;"><strong>,–5 ppb</strong></td>
+<td data-en="Sorbic acid metabolized by LAB → 2-ethoxyhexa-3,5-diene. Threshold
+~0.1 mg/L." data-fr="Acide sorbique métabolisé par les BL → 2-éthoxyhexa-3,5-diène. Seuil ~0,1 mg/L.">Acide sorbique métabolisé par les BL → 2-éthoxyhexa-3,5-diène. Seuil ~0,1 mg/L.</td>
+</tr><tr class="odd">
+<td data-en="&lt;strong&gt;Gluconic acid&lt;/strong&gt;" data-fr="&lt;strong&gt;Acide gluconique&lt;/strong&gt;"><strong>Acide gluconique</strong></td>
+<td>C₆H₁₂O₇</td>
+<td>—</td>
+<td><strong>0.1–5 g/L</strong></td>
+<td data-en="Gluconobacter product in damaged/botrytised fruit. Strong SO₂
+binder. Signals compromised fruit." data-fr="Produit par Gluconobacter dans les raisins abîmés ou botrytisés. Combine fortement le SO₂. Signe d’une vendange altérée.">Produit par Gluconobacter dans les raisins abîmés ou botrytisés. Combine fortement le SO₂. Signe d’une vendange altérée.</td>
+</tr></tbody></table></div></section><section class="references"><h2 data-en="Selected references and links" data-fr="Références choisies et liens">Références choisies et liens</h2><p data-en="The companion reference document contains 30 sources in seven categories. The links below are the directly linked sources supplied in that document." data-fr="Le document de référence associé recense 30 sources réparties en sept catégories. Les liens ci-dessous sont ceux des sources directement liées dans ce document.">Le document de référence associé recense 30 sources réparties en sept catégories. Les liens ci-dessous sont ceux des sources directement liées dans ce document.</p><ul><li data-en='&lt;a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118730720" rel="noopener noreferrer" target="_blank"&gt;Waterhouse, Sacks &amp;amp; Jeffery (2016), Understanding Wine Chemistry&lt;/a&gt;' data-fr='&lt;a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118730720" rel="noopener noreferrer" target="_blank"&gt;Waterhouse, Sacks &amp;amp; Jeffery (2016), Understanding Wine Chemistry&lt;/a&gt;'><a href="https://onlinelibrary.wiley.com/doi/book/10.1002/9781118730720" rel="noopener noreferrer" target="_blank">Waterhouse, Sacks &amp; Jeffery (2016), Understanding Wine Chemistry</a></li><li data-en='&lt;a href="https://doi.org/10.1002/(SICI)1099-1026(199805/06)13:3%3C159::AID-FFJ709%3E3.0.CO;2-7" rel="noopener noreferrer" target="_blank"&gt;Tominaga et al. (1998), volatile thiols in Sauvignon blanc&lt;/a&gt;' data-fr='&lt;a href="https://doi.org/10.1002/(SICI)1099-1026(199805/06)13:3%3C159::AID-FFJ709%3E3.0.CO;2-7" rel="noopener noreferrer" target="_blank"&gt;Tominaga et al. (1998), les thiols volatils du sauvignon blanc&lt;/a&gt;'><a href="https://doi.org/10.1002/(SICI)1099-1026(199805/06)13:3%3C159::AID-FFJ709%3E3.0.CO;2-7" rel="noopener noreferrer" target="_blank">Tominaga et al. (1998), les thiols volatils du sauvignon blanc</a></li><li data-en='&lt;a href="https://doi.org/10.1016/j.ijfoodmicro.2004.05.020" rel="noopener noreferrer" target="_blank"&gt;Bartowsky &amp;amp; Henschke (2004), diacetyl and the buttery attribute&lt;/a&gt;' data-fr='&lt;a href="https://doi.org/10.1016/j.ijfoodmicro.2004.05.020" rel="noopener noreferrer" target="_blank"&gt;Bartowsky &amp;amp; Henschke (2004), le diacétyle et le caractère beurré&lt;/a&gt;'><a href="https://doi.org/10.1016/j.ijfoodmicro.2004.05.020" rel="noopener noreferrer" target="_blank">Bartowsky &amp; Henschke (2004), le diacétyle et le caractère beurré</a></li><li data-en='&lt;a href="https://doi.org/10.1016/j.foodchem.2022.134910" rel="noopener noreferrer" target="_blank"&gt;He et al. (2022), wine aroma components: a critical review&lt;/a&gt;' data-fr='&lt;a href="https://doi.org/10.1016/j.foodchem.2022.134910" rel="noopener noreferrer" target="_blank"&gt;He et al. (2022), les composés de l’arôme du vin : revue critique&lt;/a&gt;'><a href="https://doi.org/10.1016/j.foodchem.2022.134910" rel="noopener noreferrer" target="_blank">He et al. (2022), les composés de l’arôme du vin : revue critique</a></li><li data-en='&lt;a href="https://doi.org/10.1111/j.1755-0238.2005.tb00283.x" rel="noopener noreferrer" target="_blank"&gt;Francis &amp;amp; Newton (2005), determining wine aroma from compositional data&lt;/a&gt;' data-fr='&lt;a href="https://doi.org/10.1111/j.1755-0238.2005.tb00283.x" rel="noopener noreferrer" target="_blank"&gt;Francis &amp;amp; Newton (2005), déterminer l’arôme du vin à partir de sa composition&lt;/a&gt;'><a href="https://doi.org/10.1111/j.1755-0238.2005.tb00283.x" rel="noopener noreferrer" target="_blank">Francis &amp; Newton (2005), déterminer l’arôme du vin à partir de sa composition</a></li><li data-en='&lt;a href="https://doi.org/10.1007/s10295-011-1018-4" rel="noopener noreferrer" target="_blank"&gt;Styger, Prior &amp;amp; Bauer (2011), wine flavor and aroma&lt;/a&gt;' data-fr='&lt;a href="https://doi.org/10.1007/s10295-011-1018-4" rel="noopener noreferrer" target="_blank"&gt;Styger, Prior &amp;amp; Bauer (2011), la flaveur et l’arôme du vin&lt;/a&gt;'><a href="https://doi.org/10.1007/s10295-011-1018-4" rel="noopener noreferrer" target="_blank">Styger, Prior &amp; Bauer (2011), la flaveur et l’arôme du vin</a></li></ul></section><p class="source-note" data-en="Web edition prepared from the supplied Word documents. Concentration ranges are typical values and vary by grape variety, terroir, vintage, yeast strain, and winemaking technique." data-fr="Édition web établie à partir des documents Word fournis. Les plages de concentration sont des valeurs typiques ; elles varient selon le cépage, le terroir, le millésime, la souche de levure et la technique de vinification.">Édition web établie à partir des documents Word fournis. Les plages de concentration sont des valeurs typiques ; elles varient selon le cépage, le terroir, le millésime, la souche de levure et la technique de vinification.</p></main></body></html>

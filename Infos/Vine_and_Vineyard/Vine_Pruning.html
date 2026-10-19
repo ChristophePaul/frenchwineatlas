@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taille &amp; modes de conduite</title>
+<meta name="description" content="La taille de la vigne : pourquoi et comment tailler, Guyot, gobelet, cordon de Royat, taille Chablis, Vallée de la Marne, médocaine ; règles des AOC et calcul de la charge.">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  /* chapter 5 */
+  .why{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;}
+  .why div{padding:13px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .why b{display:block;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);margin-bottom:3px;}
+
+  .intro2{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .intro2 .plate{position:sticky;top:20px;}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:12px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14.2px;line-height:1.6;}
+  .fact b{color:var(--title);}
+  .fact.short{border-left:4px solid #6f8b1e;} .fact.long{border-left:4px solid #a0283c;}
+
+  .systems{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:16px;}
+  .sys{border-radius:16px;overflow:hidden;background:var(--glass);border:1px solid var(--hair);display:flex;flex-direction:column;}
+  .sys-fig{background:linear-gradient(to top,#cdb48a 0 16px,var(--paper) 16px);border-bottom:3px solid var(--c);padding:10px 14px 15px;}
+  .mini{display:block;width:100%;height:118px;}
+  .sys-b{padding:12px 15px 14px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sys h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:2px 0 0;}
+  .sys p{margin:0;font-size:13.5px;line-height:1.55;}
+  .sys .chip{align-self:flex-start;}
+  .sys-w{color:var(--gold-soft);font-size:12.5px !important;font-weight:600;}
+  .sys-r{margin-top:auto !important;padding-top:6px;border-top:1px dashed var(--hair);font-size:12.5px !important;color:var(--muted);}
+  .sys-r b{color:var(--gold);font-weight:600;}
+
+  .calc{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(16px,3vw,30px);padding:clamp(16px,2.6vw,28px);align-items:center;}
+  .calc label{display:grid;grid-template-columns:1fr 92px;gap:10px;align-items:center;font-size:13.5px;padding:7px 0;border-bottom:1px solid var(--hair);}
+  .calc label small{display:block;color:var(--faint);font-size:11.5px;}
+  .calc input{font:600 15px var(--sans);width:100%;padding:6px 8px;border-radius:8px;border:1px solid var(--hair-hi);background:var(--glass-hi);color:var(--parchment);text-align:right;}
+  .calc input:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .res{display:grid;gap:10px;}
+  .res div{padding:14px 16px;border-radius:14px;background:var(--glass-hi);border:1px solid var(--hair);}
+  .res b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,38px);color:var(--title);line-height:1.1;}
+  .res span{font-size:12.5px;color:var(--muted);}
+  .res .formula{font-size:12.5px;color:var(--faint);line-height:1.5;background:transparent;border-style:dashed;}
+  .calc-err{color:#c0392b;font-size:12.5px;min-height:1em;}
+
+  .rules-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .rules{width:100%;border-collapse:collapse;font-size:14px;}
+  .rules th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .rules td{padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5;}
+  .rules td:first-child a{font-family:var(--serif);font-size:16px;color:var(--title);text-decoration:none;border-bottom:1px dotted var(--faint);white-space:nowrap;}
+  .rules td.mx{font-weight:600;color:var(--gold-soft);white-space:nowrap;}
+
+  .words{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .word{padding:12px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:13px;line-height:1.5;color:var(--muted);}
+  .word b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:2px;}
+
+  @media (max-width:1000px){ .why,.words{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:900px){ .intro2,.calc{grid-template-columns:minmax(0,1fr);} .intro2 .plate{position:static;max-width:460px;margin:0 auto;width:100%;} }
+  @media (max-width:620px){ .why,.words{grid-template-columns:minmax(0,1fr);} .diagram-card.scroll{overflow-x:auto;} .diagram-card.scroll .diagram{min-width:560px;} .rules td.mx{white-space:normal;}
+    .rules thead{display:none;} .rules tr{display:block;padding:10px 4px;border-bottom:1px solid var(--hair);} .rules td{display:block;border:none;padding:2px 0;} }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .why div{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .fact{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .fact.long{border-left:4px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .sys{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .sys-r{border-top:1px dashed rgba(90,30,40,0.18)}
+html[data-theme="cream"] .calc label{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .calc input{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .res div{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .rules th{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .rules td{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .rules td:first-child a{border-bottom:1px dotted rgba(90,30,40,0.18)}
+html[data-theme="cream"] .word{border:1px solid rgba(90,30,40,0.18)}
+@media (max-width:620px){html[data-theme="cream"] .rules tr{border-bottom:1px solid rgba(90,30,40,0.18)}}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 5" data-en="The vine &amp; the vineyard · Chapter 5">La vigne &amp; le vignoble · Chapitre 5</p>
+    <h1 data-fr="Taille <em>&amp; modes de conduite</em>" data-en="Training <em>&amp; pruning</em>">Taille <em>&amp; modes de conduite</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Chaque hiver, le vigneron passe devant chacun de ses ceps, sécateur en main, et décide combien de bourgeons garder. C’est le geste qui fixe la récolte à venir et la forme de la vigne pour des décennies."
+       data-en="Every winter the grower walks past each vine, shears in hand, and decides how many buds to keep. It is the act that sets the coming crop and shapes the vine for decades.">Chaque hiver, le vigneron passe devant chacun de ses ceps, sécateur en main, et décide combien de bourgeons garder. C’est le geste qui fixe la récolte à venir et la forme de la vigne pour des décennies.</p>
+    <nav class="toc">
+      <a href="#principe" data-fr="Le principe" data-en="The principle">Le principe</a>
+      <a href="#modes" data-fr="Les modes de conduite" data-en="Training systems">Les modes de conduite</a>
+      <a href="#seve" data-fr="Respecter la sève" data-en="Respecting sap flow">Respecter la sève</a>
+      <a href="#charge" data-fr="Calculer la charge" data-en="Calculating crop load">Calculer la charge</a>
+      <a href="#regles" data-fr="Les règles des AOC" data-en="AOC rules">Les règles des AOC</a>
+      <a href="#mots" data-fr="Les mots de la taille" data-en="Pruning vocabulary">Les mots de la taille</a>
+    </nav>
+  </header>
+
+  <section class="panel intro" id="principe">
+    <div>
+      <p class="L fr">La vigne ne porte ses raisins que sur les rameaux de l’année, nés de bourgeons situés sur le <b>bois d’un an</b> (les sarments). Le vieux bois ne donne presque rien. Tailler, c’est donc choisir, parmi les sarments de l’an dernier, ceux qui porteront la récolte, et les raccourcir au bon nombre d’yeux.</p>
+      <p class="L en">The vine only bears grapes on the current season’s shoots, which grow from buds on <b>one-year-old wood</b> (the canes). Old wood yields almost nothing. Pruning therefore means choosing, among last year’s canes, those that will carry the crop, and cutting them back to the right number of buds.</p>
+      <p class="L fr">Un cep non taillé porterait des dizaines de sarments et des centaines de bourgeons ; après la taille, il n’en garde souvent que 8 à 12.</p>
+      <p class="L en">An unpruned vine would carry dozens of canes and hundreds of buds; after pruning it often keeps only 8 to 12.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Le principe de la taille et les grands modes de conduite, en schémas." data-en="The principle of pruning and the main training systems, in diagrams.">Le principe de la taille et les grands modes de conduite, en schémas.</span></div></div>
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Règles de taille des cahiers des charges, calcul de charge, taille respectueuse des flux de sève." data-en="Specification pruning rules, crop-load calculation, sap-flow pruning.">Règles de taille des cahiers des charges, calcul de charge, taille respectueuse des flux de sève.</span></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="why">
+    <div style="--c:#7aa23c"><b data-fr="Régler la récolte" data-en="Set the crop">Régler la récolte</b><span data-fr="Le nombre d’yeux laissés fixe le nombre de grappes." data-en="The number of buds left sets the number of bunches.">Le nombre d’yeux laissés fixe le nombre de grappes.</span></div>
+    <div style="--c:#c08a1a"><b data-fr="Équilibrer la vigne" data-en="Balance the vine">Équilibrer la vigne</b><span data-fr="Assez de feuilles pour mûrir, pas trop de raisins." data-en="Enough leaves to ripen, not too many grapes.">Assez de feuilles pour mûrir, pas trop de raisins.</span></div>
+    <div style="--c:#8a5a2b"><b data-fr="Donner sa forme" data-en="Shape the vine">Donner sa forme</b><span data-fr="Garder le cep bas, compact, adapté au palissage." data-en="Keep the vine low, compact, suited to the trellis.">Garder le cep bas, compact, adapté au palissage.</span></div>
+    <div style="--c:#a0283c"><b data-fr="Préserver sa santé" data-en="Protect its health">Préserver sa santé</b><span data-fr="Des plaies bien placées limitent les maladies du bois." data-en="Well-placed cuts limit trunk diseases.">Des plaies bien placées limitent les maladies du bois.</span></div>
+  </div>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2 data-fr="Avant <em>&amp; après</em>" data-en="Before <em>&amp; after</em>">Avant <em>&amp; après</em></h2>
+      <p data-fr="Un cep conduit en Guyot simple, la taille la plus répandue en Bourgogne, en Loire et en Alsace." data-en="A vine trained in single Guyot, the most widespread system in Burgundy, the Loire and Alsace.">Un cep conduit en Guyot simple, la taille la plus répandue en Bourgogne, en Loire et en Alsace.</p>
+    </div>
+    <div class="diagram-card scroll"><svg class="diagram" viewBox="0 0 680 330" role="img" aria-label="Un cep avant et après la taille Guyot simple / A vine before and after single-Guyot pruning"><rect x="8" y="8" width="324" height="314" rx="12" fill="#f7f0e0" stroke="#e2d4b4"/><text x="170" y="34" text-anchor="middle" font-size="16" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Avant la taille (janvier)" data-en="Before pruning (January)">Avant la taille (janvier)</text><rect x="8" y="276" width="324" height="46" rx="0" fill="#cdb48a"/><line x1="20" y1="200" x2="320" y2="200" stroke="#8a8a8a" stroke-width="1.6"/><path d="M120 276 C116 250 126 225 120 205" stroke="#5f4b37" stroke-width="11" fill="none" stroke-linecap="round"/><rect x="348" y="8" width="324" height="314" rx="12" fill="#f7f0e0" stroke="#e2d4b4"/><text x="510" y="34" text-anchor="middle" font-size="16" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Après la taille" data-en="After pruning">Après la taille</text><rect x="348" y="276" width="324" height="46" rx="0" fill="#cdb48a"/><line x1="360" y1="200" x2="660" y2="200" stroke="#8a8a8a" stroke-width="1.6"/><path d="M460 276 C456 250 466 225 460 205" stroke="#5f4b37" stroke-width="11" fill="none" stroke-linecap="round"/><path d="M120 204 L300 200" stroke="#5f4b37" stroke-width="6" stroke-linecap="round"/><path d="M130 198 C134 148 144 100 150 60" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M150 198 C154 148 174 110 180 70" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M176 199 C180 149 209 120 215 80" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M204 200 C208 150 244 110 250 70" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M232 200 C236 150 274 130 280 90" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M262 200 C266 150 299 150 305 110" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M114 200 C118 150 86 110 92 70" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M126 196 C130 146 110 96 116 56" stroke="#a0703a" stroke-width="3.6" fill="none" stroke-linecap="round"/><path d="M460 204 L640 200" stroke="#cdbfa6" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 5"/><path d="M516 199 C520 149 549 120 555 80" stroke="#cdbfa6" stroke-width="3" fill="none" stroke-dasharray="2 5"/><path d="M544 200 C548 150 584 110 590 70" stroke="#cdbfa6" stroke-width="3" fill="none" stroke-dasharray="2 5"/><path d="M572 200 C576 150 614 130 620 90" stroke="#cdbfa6" stroke-width="3" fill="none" stroke-dasharray="2 5"/><path d="M602 200 C606 150 639 150 645 110" stroke="#cdbfa6" stroke-width="3" fill="none" stroke-dasharray="2 5"/><path d="M462 204 C470 175 490 196 505 198 L640 198" stroke="#a0703a" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="490.0" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="508.5" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="527.0" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="545.5" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="564.0" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="582.5" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="601.0" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="619.5" cy="192.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M456 206 L444 182" stroke="#a0703a" stroke-width="5" stroke-linecap="round"/><circle cx="450.0" cy="194.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="445.0" cy="184.0" r="3.2" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M444 182 l-5 -4 l9 0 Z" fill="#a0703a"/><text x="570" y="228" text-anchor="middle" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Baguette : 8 yeux" data-en="Cane: 8 buds">Baguette : 8 yeux</text><text x="570" y="246" text-anchor="middle" font-size="12.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="les rameaux de l’année en naîtront" data-en="this year’s shoots will grow from them">les rameaux de l’année en naîtront</text><text x="420" y="158" text-anchor="middle" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Courson : 2 yeux" data-en="Spur: 2 buds">Courson : 2 yeux</text><text x="420" y="174" text-anchor="middle" font-size="12.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="la baguette de l’an prochain" data-en="next year’s cane">la baguette de l’an prochain</text><text x="590" y="120" text-anchor="middle" font-size="12.5" font-weight="400" fill="#9a8a6e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" font-style="italic" data-fr="bois retiré (pointillés)" data-en="wood removed (dotted)">bois retiré (pointillés)</text><text x="225" y="228" text-anchor="middle" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Sarments de l’an dernier" data-en="Last year’s canes">Sarments de l’an dernier</text><text x="225" y="246" text-anchor="middle" font-size="12.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="il faut choisir lesquels garder" data-en="the grower must choose which to keep">il faut choisir lesquels garder</text></svg></div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Équilibre" data-en="Balance">Équilibre</span></dt><dd><div class="L fr">La taille règle le rapport entre la vigueur (le bois et les feuilles) et la charge (les grappes). Trop d’yeux : une récolte abondante qui mûrit mal et épuise le cep. Trop peu : une vigne trop vigoureuse, des rameaux exubérants et des raisins à l’ombre.</div><div class="L en">Pruning sets the ratio between vigour (wood and leaves) and crop (bunches). Too many buds: a large crop that ripens poorly and exhausts the vine. Too few: an over-vigorous vine, rampant shoots and shaded grapes.</div></dd></div><div class="pro-item"><dt><span data-fr="Taille courte ou longue ?" data-en="Short or long pruning?">Taille courte ou longue ?</span></dt><dd><div class="L fr">Les cépages dont les yeux de la base sont peu fertiles (Sauvignon, Cabernet Sauvignon dans certains terroirs) se taillent plutôt long ; ceux dont la base est fertile (Grenache, Gamay, Syrah) acceptent la taille courte, plus simple et plus pérenne.</div><div class="L en">Varieties with poorly fruitful basal buds (Sauvignon, Cabernet Sauvignon in some sites) tend to be cane-pruned; those with fruitful basal buds (Grenache, Gamay, Syrah) accept spur pruning, which is simpler and longer-lasting.</div></dd></div><div class="pro-item"><dt><span data-fr="Date de la taille" data-en="Pruning date">Date de la taille</span></dt><dd><div class="L fr">De la chute des feuilles à la fin de l’hiver. Une taille tardive retarde un peu le débourrement, ce qui peut aider à éviter les gelées de printemps. Les cahiers des charges fixent souvent une date ou un stade limite (Pauillac : stade « feuilles étalées » ; Champagne : 4 feuilles étalées ; Morgon : 15 mai).</div><div class="L en">From leaf fall to the end of winter. Late pruning delays budburst slightly, which can help avoid spring frost. Specifications often set a deadline date or stage (Pauillac: “leaves unfolded”; Champagne: 4 leaves unfolded; Morgon: 15 May).</div></dd></div><div class="pro-item"><dt><span data-fr="Yeux supplémentaires" data-en="Extra buds">Yeux supplémentaires</span></dt><dd><div class="L fr">Plusieurs AOC (Chambertin, Chablis) autorisent à laisser plus d’yeux à la taille, par sécurité contre le gel, à condition qu’au stade 11–12 feuilles le nombre de rameaux fructifères ne dépasse pas la limite.</div><div class="L en">Several AOCs (Chambertin, Chablis) allow extra buds at pruning as frost insurance, provided that at the 11–12 leaf stage the number of fruiting shoots does not exceed the limit.</div></dd></div></dl></details>
+  </section>
+
+  <!-- ===== systems ===== -->
+  <section class="sec" id="modes">
+    <div class="sec-head">
+      <h2 data-fr="Les modes <em>de conduite</em>" data-en="Training <em>systems</em>">Les modes <em>de conduite</em></h2>
+      <p data-fr="Deux grandes familles, selon la longueur du bois laissé à la taille." data-en="Two broad families, depending on the length of wood left at pruning.">Deux grandes familles, selon la longueur du bois laissé à la taille.</p>
+    </div>
+    <div class="intro2">
+      <figure class="plate wide"><button type="button" class="zoom" data-full="img/botany/training_systems.webp" aria-label="Agrandir / Enlarge"><img src="img/botany/training_systems.webp" alt="Modes de conduite de la vigne / Vine training systems" loading="lazy" decoding="async" width="1122" height="1402"><span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span></button></figure>
+      <div class="facts">
+        <div class="fact short L fr"><b>Taille courte.</b> Le cep porte seulement des coursons de 1 à 3 yeux, sur des bras permanents (gobelet, cordon de Royat, éventail). Simple, rapide, elle convient aux cépages dont les yeux de la base sont fertiles.</div>
+        <div class="fact short L en"><b>Short (spur) pruning.</b> The vine carries only 1–3-bud spurs on permanent arms (gobelet, Royat cordon, fan). Simple and quick, it suits varieties whose basal buds are fruitful.</div>
+        <div class="fact long L fr"><b>Taille longue.</b> On garde une ou deux baguettes de 6 à 12 yeux, renouvelées chaque année à partir d’un courson (Guyot, taille Chablis, médocaine). Elle demande plus de savoir-faire mais convient à presque tous les cépages.</div>
+        <div class="fact long L en"><b>Long (cane) pruning.</b> One or two canes of 6–12 buds are kept, renewed every year from a spur (Guyot, Chablis pruning, Médoc pruning). It needs more skill but suits almost every variety.</div>
+        <div class="fact L fr"><b>La planche</b> montre six modes répandus ; les cartes ci-dessous détaillent neuf systèmes français, avec un exemple de règle tiré des cahiers des charges.</div>
+        <div class="fact L en"><b>The plate</b> shows six common systems; the cards below detail nine French systems, each with an example rule from the appellation specifications.</div>
+      </div>
+    </div>
+    <div class="systems"><article class="sys" style="--c:#6f8b1e"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><path d="M80 92 L80 62" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M80 62 L46 40" stroke="#5f4b37" stroke-width="5" stroke-linecap="round"/><path d="M46 40 L40.9 28" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="44.0" cy="35.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="41.9" cy="30.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 62 L68 40" stroke="#5f4b37" stroke-width="5" stroke-linecap="round"/><path d="M68 40 L66.2 28" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="67.3" cy="35.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="66.6" cy="30.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 62 L92 40" stroke="#5f4b37" stroke-width="5" stroke-linecap="round"/><path d="M92 40 L93.8 28" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="92.7" cy="35.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="93.4" cy="30.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 62 L114 40" stroke="#5f4b37" stroke-width="5" stroke-linecap="round"/><path d="M114 40 L119.1 28" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="116.0" cy="35.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="118.1" cy="30.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#6f8b1e"><span data-fr="Taille courte" data-en="Short pruning">Taille courte</span></span><h3><span data-fr="Gobelet" data-en="Bush vine (gobelet)">Gobelet</span></h3><p class="L fr">Sans fil ni piquet : 3 à 6 bras courts en couronne, chacun portant un courson. Le cep se tient seul, compact, bien adapté au vent et à la chaleur.</p><p class="L en">No wires or posts: 3–6 short arms in a crown, each carrying a spur. The vine stands on its own, compact, well suited to wind and heat.</p><p class="sys-w"><span data-fr="Beaujolais, Rhône méridional, Languedoc, Roussillon, Provence" data-en="Beaujolais, southern Rhône, Languedoc, Roussillon, Provence">Beaujolais, Rhône méridional, Languedoc, Roussillon, Provence</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Châteauneuf-du-Pape : obligatoire pour Grenache et Mourvèdre, coursons à 2 yeux." data-en="Châteauneuf-du-Pape: compulsory for Grenache and Mourvèdre, 2-bud spurs.">Châteauneuf-du-Pape : obligatoire pour Grenache et Mourvèdre, coursons à 2 yeux.</span></p></div></article><article class="sys" style="--c:#a0283c"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><line x1="6" y1="50" x2="154" y2="50" stroke="#8a8a8a" stroke-width="1.2"/><path d="M70 92 L70 54" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M70 50 L146 50" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="76.7" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="86.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="95.7" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="105.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="114.7" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="124.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="133.7" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="143.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M66 54 L60 42" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="63.6" cy="49.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="61.2" cy="44.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#a0283c"><span data-fr="Taille longue" data-en="Long pruning">Taille longue</span></span><h3><span data-fr="Guyot simple" data-en="Single Guyot">Guyot simple</span></h3><p class="L fr">Une baguette de 6 à 10 yeux couchée sur le fil, et un courson de rappel à 2 yeux qui fournira la baguette de l’an prochain. Inventé par Jules Guyot au XIX<sup>e</sup> siècle.</p><p class="L en">One cane of 6–10 buds laid along the wire, plus a 2-bud renewal spur that provides next year’s cane. Devised by Jules Guyot in the 19th century.</p><p class="sys-w"><span data-fr="Bourgogne, Loire, Alsace, Jura, Savoie" data-en="Burgundy, Loire, Alsace, Jura, Savoie">Bourgogne, Loire, Alsace, Jura, Savoie</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Sancerre : au plus 8 yeux sur le long bois, 10 par pied." data-en="Sancerre: at most 8 buds on the cane, 10 per vine.">Sancerre : au plus 8 yeux sur le long bois, 10 par pied.</span></p></div></article><article class="sys" style="--c:#a0283c"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><line x1="6" y1="50" x2="154" y2="50" stroke="#8a8a8a" stroke-width="1.2"/><path d="M80 92 L80 54" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M80 50 L150 50" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><path d="M80 50 L10 50" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="88.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="99.8" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="111.5" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="123.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="134.8" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="146.5" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="71.8" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="60.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="48.5" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="36.8" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="25.2" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="13.5" cy="46.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M74 54 L69 42" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="72.0" cy="49.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="70.0" cy="44.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M86 54 L91 42" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="88.0" cy="49.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="90.0" cy="44.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#a0283c"><span data-fr="Taille longue" data-en="Long pruning">Taille longue</span></span><h3><span data-fr="Guyot double" data-en="Double Guyot">Guyot double</span></h3><p class="L fr">Deux baguettes opposées, chacune avec son courson : plus de charge par pied, pour les vignes plus espacées.</p><p class="L en">Two opposite canes, each with its spur: more crop per vine, for wider-spaced vines.</p><p class="sys-w"><span data-fr="Bordelais, Sud-Ouest, Loire, Alsace" data-en="Bordeaux, South-West, Loire, Alsace">Bordelais, Sud-Ouest, Loire, Alsace</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Sancerre : deux baguettes de 4 yeux au plus, 12 yeux par pied." data-en="Sancerre: two canes of at most 4 buds, 12 buds per vine.">Sancerre : deux baguettes de 4 yeux au plus, 12 yeux par pied.</span></p></div></article><article class="sys" style="--c:#6f8b1e"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><line x1="6" y1="50" x2="154" y2="50" stroke="#8a8a8a" stroke-width="1.2"/><path d="M30 92 L30 52" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M30 52 L150 52" stroke="#5f4b37" stroke-width="6" stroke-linecap="round"/><path d="M50 50 L52 38" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="50.8" cy="45.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="51.6" cy="40.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M78 50 L80 38" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="78.8" cy="45.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="79.6" cy="40.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M106 50 L108 38" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="106.8" cy="45.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="107.6" cy="40.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M134 50 L136 38" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="134.8" cy="45.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="135.6" cy="40.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#6f8b1e"><span data-fr="Taille courte" data-en="Short pruning">Taille courte</span></span><h3><span data-fr="Cordon de Royat" data-en="Royat cordon">Cordon de Royat</span></h3><p class="L fr">Un bras permanent couché le long du fil, garni de coursons courts régulièrement espacés. Végétation bien répartie, taille rapide.</p><p class="L en">A permanent arm laid along the wire, set with short, evenly spaced spurs. Well-spread foliage, quick pruning.</p><p class="sys-w"><span data-fr="Bourgogne, Champagne, Languedoc" data-en="Burgundy, Champagne, Languedoc">Bourgogne, Champagne, Languedoc</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Champagne : coursons à 3 yeux au plus, espacés d’au moins 15 cm." data-en="Champagne: spurs of at most 3 buds, at least 15 cm apart.">Champagne : coursons à 3 yeux au plus, espacés d’au moins 15 cm.</span></p></div></article><article class="sys" style="--c:#a0283c"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><path d="M80 92 L80 78" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M80 78 L30 50" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M30 50 L12.5 30" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="26.9" cy="42.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="22.6" cy="37.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="18.2" cy="32.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="13.8" cy="27.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 78 L60 44" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M60 44 L53.0 24" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="58.8" cy="36.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="57.0" cy="31.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="55.3" cy="26.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="53.5" cy="21.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 78 L100 44" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M100 44 L107.0 24" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="101.2" cy="36.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="103.0" cy="31.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="104.7" cy="26.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="106.5" cy="21.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 78 L130 50" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M130 50 L147.5 30" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="133.1" cy="42.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="137.4" cy="37.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="141.8" cy="32.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="146.2" cy="27.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M82 80 L85 68" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="83.2" cy="75.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="84.4" cy="70.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#a0283c"><span data-fr="Taille longue" data-en="Long pruning">Taille longue</span></span><h3><span data-fr="Taille Chablis" data-en="Chablis pruning">Taille Chablis</span></h3><p class="L fr">Plusieurs charpentes en éventail, chacune terminée par un « prolongement » de quelques yeux, et un courson de rajeunissement (« rachet ») à la base.</p><p class="L en">Several fan-shaped arms, each ending in a short fruiting “extension”, plus a renewal spur (“rachet”) at the base.</p><p class="sys-w"><span data-fr="Chablis, Champagne (Côte des Blancs)" data-en="Chablis, Champagne (Côte des Blancs)">Chablis, Champagne (Côte des Blancs)</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Champagne : prolongements à 5 yeux au plus, une charpente par 30 cm." data-en="Champagne: extensions of at most 5 buds, one arm per 30 cm.">Champagne : prolongements à 5 yeux au plus, une charpente par 30 cm.</span></p></div></article><article class="sys" style="--c:#a0283c"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><line x1="6" y1="50" x2="154" y2="50" stroke="#8a8a8a" stroke-width="1.2"/><path d="M40 92 L40 54" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M40 52 L110 52" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M110 52 L152 50" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="115.9" cy="47.7" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="124.3" cy="47.3" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="132.7" cy="46.9" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="141.1" cy="46.5" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="149.5" cy="46.1" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M46 54 L92 34" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="51.4" cy="47.7" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="59.0" cy="44.3" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="66.7" cy="41.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="74.4" cy="37.7" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="82.0" cy="34.3" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="89.7" cy="31.0" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M38 56 L33 44" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="36.6" cy="52.6" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="35.1" cy="49.1" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="33.7" cy="45.7" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#a0283c"><span data-fr="Taille longue" data-en="Long pruning">Taille longue</span></span><h3><span data-fr="Vallée de la Marne" data-en="Vallée de la Marne">Vallée de la Marne</span></h3><p class="L fr">Propre à la Champagne et surtout au Meunier : un courson, une baguette lancée sur le courson de l’an passé et un prolongement au bout de l’ancienne baguette.</p><p class="L en">Specific to Champagne and mainly Meunier: a spur, a cane grown from last year’s spur, and an extension at the end of the old cane.</p><p class="sys-w"><span data-fr="Champagne (vallée de la Marne)" data-en="Champagne (Marne valley)">Champagne (vallée de la Marne)</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Champagne : courson 3 yeux, baguette 9 yeux, prolongement 6 yeux au plus." data-en="Champagne: spur 3, cane 9, extension 6 buds at most.">Champagne : courson 3 yeux, baguette 9 yeux, prolongement 6 yeux au plus.</span></p></div></article><article class="sys" style="--c:#a0283c"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><line x1="6" y1="56" x2="154" y2="56" stroke="#8a8a8a" stroke-width="1.2"/><path d="M80 92 L80 70" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M80 70 L50 60" stroke="#5f4b37" stroke-width="5" stroke-linecap="round"/><path d="M80 70 L110 60" stroke="#5f4b37" stroke-width="5" stroke-linecap="round"/><path d="M50 58 L12 56" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="43.4" cy="53.6" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="33.9" cy="53.1" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="24.3" cy="52.6" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="14.9" cy="52.1" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M110 58 L148 56" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="116.7" cy="53.6" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="126.2" cy="53.1" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="135.7" cy="52.6" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="145.2" cy="52.1" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M56 60 L54 48" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="55.2" cy="55.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="54.4" cy="50.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M104 60 L106 48" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="104.8" cy="55.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="105.6" cy="50.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#a0283c"><span data-fr="Taille longue" data-en="Long pruning">Taille longue</span></span><h3><span data-fr="Médocaine à astes" data-en="Médoc pruning (astes)">Médocaine à astes</span></h3><p class="L fr">Variante bordelaise du Guyot double : deux bras courts portent chacun une « aste » (baguette courte) et un « cot » (courson) de retour.</p><p class="L en">Bordeaux variant of double Guyot: two short arms each carry an “aste” (short cane) and a return “cot” (spur).</p><p class="sys-w"><span data-fr="Médoc, Graves" data-en="Médoc, Graves">Médoc, Graves</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Pauillac : astes à 4 yeux au plus, cots à 2 yeux, 12 yeux par pied." data-en="Pauillac: astes of at most 4 buds, 2-bud cots, 12 buds per vine.">Pauillac : astes à 4 yeux au plus, cots à 2 yeux, 12 yeux par pied.</span></p></div></article><article class="sys" style="--c:#6f8b1e"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><line x1="6" y1="40" x2="154" y2="40" stroke="#8a8a8a" stroke-width="1.2"/><path d="M80 92 L80 80" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M80 80 L22 46" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M22 46 L16.2 34" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="19.7" cy="41.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="17.4" cy="36.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 80 L56 36" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M56 36 L53.6 24" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="55.0" cy="31.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="54.1" cy="26.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 80 L104 36" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M104 36 L106.4 24" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="105.0" cy="31.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="105.9" cy="26.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M80 80 L138 46" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M138 46 L143.8 34" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="140.3" cy="41.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="142.6" cy="36.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/></svg></div><div class="sys-b"><span class="chip" style="--c:#6f8b1e"><span data-fr="Taille courte" data-en="Short pruning">Taille courte</span></span><h3><span data-fr="Éventail" data-en="Fan">Éventail</span></h3><p class="L fr">Les bras s’étalent dans le plan du rang comme un éventail, chacun portant des coursons.</p><p class="L en">The arms spread along the row like a fan, each carrying spurs.</p><p class="sys-w"><span data-fr="Bourgogne, Beaujolais, Bordelais" data-en="Burgundy, Beaujolais, Bordeaux">Bourgogne, Beaujolais, Bordelais</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Pauillac : éventail à quatre bras autorisé." data-en="Pauillac: four-armed fan permitted.">Pauillac : éventail à quatre bras autorisé.</span></p></div></article><article class="sys" style="--c:#6f8b1e"><div class="sys-fig"><svg class="mini" viewBox="0 0 160 93" aria-hidden="true"><rect x="96" y="6" width="4" height="98" fill="#c9b07a"/><path d="M84 92 L84 60" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><path d="M84 60 L70 44" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M70 44 L67.2 32" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="68.9" cy="39.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="67.8" cy="34.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M84 60 L84 44" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M84 44 L84.0 32" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="84.0" cy="39.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="84.0" cy="34.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M84 60 L98 44" stroke="#5f4b37" stroke-width="4" stroke-linecap="round"/><path d="M98 44 L100.8 32" stroke="#a0703a" stroke-width="3.4" stroke-linecap="round"/><circle cx="99.1" cy="39.2" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><circle cx="100.2" cy="34.4" r="2.6" fill="#6f8f34" stroke="#3f5f1a" stroke-width=".8"/><path d="M86 30 l12 0 M86 70 l12 0" stroke="#9aa04a" stroke-width="2.4"/></svg></div><div class="sys-b"><span class="chip" style="--c:#6f8b1e"><span data-fr="Taille courte" data-en="Short pruning">Taille courte</span></span><h3><span data-fr="Sur échalas" data-en="On stakes">Sur échalas</span></h3><p class="L fr">Chaque cep est attaché à un ou deux piquets de bois (échalas), sans fil : la seule solution sur les terrasses les plus raides.</p><p class="L en">Each vine is tied to one or two wooden stakes, without wires: the only option on the steepest terraces.</p><p class="sys-w"><span data-fr="Côte-Rôtie, Condrieu, Hermitage, Moselle" data-en="Côte-Rôtie, Condrieu, Hermitage, Moselle">Côte-Rôtie, Condrieu, Hermitage, Moselle</span></p><p class="sys-r"><b><span data-fr="Règle AOC : " data-en="AOC rule: ">Règle AOC : </span></b><span data-fr="Côte-Rôtie : sur échalas ou palissage relevé, 10 yeux par pied au plus." data-en="Côte-Rôtie: on stakes or raised trellis, at most 10 buds per vine.">Côte-Rôtie : sur échalas ou palissage relevé, 10 yeux par pied au plus.</span></p></div></article></div>
+  </section>
+
+  <!-- ===== sap flow ===== -->
+  <section class="sec" id="seve">
+    <div class="sec-head">
+      <h2 data-fr="Respecter <em>la sève</em>" data-en="Respecting <em>sap flow</em>">Respecter <em>la sève</em></h2>
+      <p data-fr="Depuis l’interdiction de l’arsénite de sodium en 2001, la façon de couper est redevenue une arme majeure contre les maladies du bois." data-en="Since sodium arsenite was banned in 2001, the way cuts are made has again become a major weapon against trunk diseases.">Depuis l’interdiction de l’arsénite de sodium en 2001, la façon de couper est redevenue une arme majeure contre les maladies du bois.</p>
+    </div>
+    <div class="diagram-card scroll"><svg class="diagram" viewBox="0 0 680 280" role="img" aria-label="Taille respectueuse des flux de sève / Pruning that respects sap flow"><defs><marker id="sf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#3f7fae" stroke-width="1.8"/></marker></defs><rect x="8" y="8" width="324" height="264" rx="12" fill="#f7f0e0" stroke="#a0283c" stroke-width="1.5"/><text x="170" y="34" text-anchor="middle" font-size="16" font-weight="600" fill="#a0283c" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="À éviter" data-en="Avoid">À éviter</text><path d="M60 192 C57 175 63 162 60 150 L300 150" stroke="#5f4b37" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round"/><ellipse cx="120" cy="140" rx="10" ry="5" fill="#e9d9b8" stroke="#8a6a44"/><path d="M110 141 L120 166 L130 141 Z" fill="#c9a87a" opacity=".9"/><ellipse cx="190" cy="140" rx="10" ry="5" fill="#e9d9b8" stroke="#8a6a44"/><path d="M180 141 L190 166 L200 141 Z" fill="#c9a87a" opacity=".9"/><ellipse cx="260" cy="140" rx="10" ry="5" fill="#e9d9b8" stroke="#8a6a44"/><path d="M250 141 L260 166 L270 141 Z" fill="#c9a87a" opacity=".9"/><ellipse cx="155" cy="160" rx="10" ry="5" fill="#e9d9b8" stroke="#8a6a44"/><path d="M145 159 L155 134 L165 159 Z" fill="#c9a87a" opacity=".9"/><ellipse cx="225" cy="160" rx="10" ry="5" fill="#e9d9b8" stroke="#8a6a44"/><path d="M215 159 L225 134 L235 159 Z" fill="#c9a87a" opacity=".9"/><path d="M70 150 L108 150" stroke="#3f7fae" stroke-width="3" marker-end="url(#sf)"/><path d="M112 150 l6 -3 M112 150 l6 3" stroke="#a0283c" stroke-width="2.4"/><text x="170" y="214" text-anchor="middle" font-size="13.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Grosses plaies rases, des deux côtés :" data-en="Large flush cuts on both sides:">Grosses plaies rases, des deux côtés :</text><text x="170" y="232" text-anchor="middle" font-size="13.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="les cônes de bois mort coupent la sève" data-en="dead-wood cones cut off the sap">les cônes de bois mort coupent la sève</text><text x="170" y="250" text-anchor="middle" font-size="13.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="et ouvrent la porte à l’esca." data-en="and let esca in.">et ouvrent la porte à l’esca.</text><rect x="348" y="8" width="324" height="264" rx="12" fill="#f7f0e0" stroke="#2f7d4a" stroke-width="1.5"/><text x="510" y="34" text-anchor="middle" font-size="16" font-weight="600" fill="#2f7d4a" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="À privilégier" data-en="Prefer">À privilégier</text><path d="M400 192 C397 175 403 162 400 150 L640 150" stroke="#5f4b37" stroke-width="22" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M470 140 L470 116" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><ellipse cx="470" cy="115" rx="4" ry="2" fill="#e9d9b8" stroke="#8a6a44"/><path d="M467 117 L470 130 L473 117 Z" fill="#c9a87a"/><path d="M540 140 L540 116" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><ellipse cx="540" cy="115" rx="4" ry="2" fill="#e9d9b8" stroke="#8a6a44"/><path d="M537 117 L540 130 L543 117 Z" fill="#c9a87a"/><path d="M610 140 L610 116" stroke="#5f4b37" stroke-width="7" stroke-linecap="round"/><ellipse cx="610" cy="115" rx="4" ry="2" fill="#e9d9b8" stroke="#8a6a44"/><path d="M607 117 L610 130 L613 117 Z" fill="#c9a87a"/><path d="M410 156 L630 156" stroke="#3f7fae" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#sf)"/><text x="510" y="214" text-anchor="middle" font-size="13.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Petites plaies sur le dessus du bras," data-en="Small cuts on top of the arm,">Petites plaies sur le dessus du bras,</text><text x="510" y="232" text-anchor="middle" font-size="13.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="on laisse un chicot qui sèche seul :" data-en="leaving a stub that dries out on its own:">on laisse un chicot qui sèche seul :</text><text x="510" y="250" text-anchor="middle" font-size="13.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="la sève circule sans obstacle." data-en="sap flows without obstacles.">la sève circule sans obstacle.</text></svg></div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="La méthode" data-en="The method">La méthode</span></dt><dd><div class="L fr">Popularisée en France par François Dal (Sicavac, Sancerre) et, en Italie, par Marco Simonit et Pierpaolo Sirch, d’après les travaux de Lafon (années 1920). Principes : garder une continuité du bois vivant entre les racines et les rameaux, regrouper les plaies sur une même face, éviter les grosses coupes sur le vieux bois, laisser des chicots.</div><div class="L en">Popularised in France by François Dal (Sicavac, Sancerre) and in Italy by Marco Simonit and Pierpaolo Sirch, building on Lafon’s work (1920s). Principles: keep living wood continuous between roots and shoots, group wounds on the same side, avoid large cuts in old wood, leave stubs.</div></dd></div><div class="pro-item"><dt><span data-fr="Pourquoi" data-en="Why">Pourquoi</span></dt><dd><div class="L fr">Chaque coupe provoque un « cône de dessèchement » de bois mort sous la plaie. Placées n’importe où, ces zones mortes finissent par isoler des parties du cep et favorisent l’installation des champignons de l’esca (chapitre 7).</div><div class="L en">Every cut causes a “desiccation cone” of dead wood beneath the wound. Placed randomly, these dead zones end up isolating parts of the vine and help the esca fungi take hold (chapter 7).</div></dd></div></dl></details>
+  </section>
+
+  <!-- ===== calculator ===== -->
+  <section class="sec" id="charge">
+    <div class="sec-head">
+      <h2 data-fr="Calculer <em>la charge</em>" data-en="Calculating <em>crop load</em>">Calculer <em>la charge</em></h2>
+      <p data-fr="Le rendement se prépare dès la taille. Modifiez les valeurs pour voir l’effet de chaque paramètre : c’est le calcul que font les vignerons pour respecter le rendement de leur appellation." data-en="Yield is set at pruning time. Change the values to see the effect of each parameter: this is the calculation growers make to stay within their appellation’s yield.">Le rendement se prépare dès la taille. Modifiez les valeurs pour voir l’effet de chaque paramètre : c’est le calcul que font les vignerons pour respecter le rendement de leur appellation.</p>
+    </div>
+    <div class="panel calc">
+      <form id="calc" novalidate>
+        <label><span data-fr="Densité (pieds/ha)" data-en="Density (vines/ha)">Densité (pieds/ha)</span><input type="number" id="c-dens" value="8000" min="1000" max="15000" step="100"></label>
+        <label><span><span data-fr="Yeux laissés par pied" data-en="Buds left per vine">Yeux laissés par pied</span><small data-fr="après la taille" data-en="after pruning">après la taille</small></span><input type="number" id="c-eyes" value="8" min="1" max="40" step="1"></label>
+        <label><span><span data-fr="Taux de débourrement (%)" data-en="Budburst rate (%)">Taux de débourrement (%)</span><small data-fr="part des yeux qui donnent un rameau" data-en="share of buds that grow a shoot">part des yeux qui donnent un rameau</small></span><input type="number" id="c-burst" value="90" min="10" max="100" step="1"></label>
+        <label><span><span data-fr="Grappes par rameau" data-en="Bunches per shoot">Grappes par rameau</span><small data-fr="fertilité, souvent 1 à 2" data-en="fruitfulness, often 1–2">fertilité, souvent 1 à 2</small></span><input type="number" id="c-fert" value="1.6" min="0.1" max="4" step="0.1"></label>
+        <label><span><span data-fr="Poids d’une grappe (g)" data-en="Bunch weight (g)">Poids d’une grappe (g)</span><small data-fr="Pinot ≈ 100 g, Grenache ≈ 250 g" data-en="Pinot ≈ 100 g, Grenache ≈ 250 g">Pinot ≈ 100 g, Grenache ≈ 250 g</small></span><input type="number" id="c-bw" value="110" min="20" max="600" step="5"></label>
+        <label><span><span data-fr="Kilos de raisin pour 1 hL de vin" data-en="Kilos of grapes per hL of wine">Kilos de raisin pour 1 hL de vin</span><small data-fr="environ 130 à 160 selon le pressurage" data-en="about 130–160 depending on pressing">environ 130 à 160 selon le pressurage</small></span><input type="number" id="c-kghl" value="135" min="100" max="200" step="1"></label>
+        <p class="calc-err" id="c-err" aria-live="polite"></p>
+      </form>
+      <div class="res">
+        <div><b id="r-kg">—</b><span data-fr="kilos de raisin par hectare" data-en="kilos of grapes per hectare">kilos de raisin par hectare</span></div>
+        <div><b id="r-hl">—</b><span data-fr="hectolitres de vin par hectare" data-en="hectolitres of wine per hectare">hectolitres de vin par hectare</span></div>
+        <div><b id="r-vine">—</b><span data-fr="kilos de raisin par pied" data-en="kilos of grapes per vine">kilos de raisin par pied</span></div>
+        <div class="formula" data-fr="Raisin/ha = densité × yeux × débourrement × grappes par rameau × poids de grappe. Repères : rendement de base de 40 à 60 hL/ha en Bourgogne, 25 hL/ha à Sauternes ; en Champagne, la charge maximale est de 19 700 kg/ha." data-en="Grapes/ha = density × buds × budburst × bunches per shoot × bunch weight. Benchmarks: base yields of 40–60 hL/ha in Burgundy, 25 hL/ha in Sauternes; in Champagne the maximum crop load is 19,700 kg/ha.">Raisin/ha = densité × yeux × débourrement × grappes par rameau × poids de grappe. Repères : rendement de base de 40 à 60 hL/ha en Bourgogne, 25 hL/ha à Sauternes ; en Champagne, la charge maximale est de 19 700 kg/ha.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AOC rules ===== -->
+  <section class="sec" id="regles">
+    <div class="sec-head">
+      <h2 data-fr="Les règles <em>des AOC</em>" data-en="AOC <em>rules</em>">Les règles <em>des AOC</em></h2>
+      <p data-fr="Chaque cahier des charges précise les modes de taille autorisés et le nombre maximal d’« yeux francs ». Extraits de dix appellations." data-en="Each specification lists the permitted pruning systems and the maximum number of “count buds”. Extracts from ten appellations.">Chaque cahier des charges précise les modes de taille autorisés et le nombre maximal d’« yeux francs ». Extraits de dix appellations.</p>
+    </div>
+    <div class="panel rules-wrap"><table class="rules"><thead><tr><th>AOC</th><th data-fr="Modes de taille autorisés" data-en="Permitted pruning systems">Modes de taille autorisés</th><th data-fr="Maximum" data-en="Maximum">Maximum</th></tr></thead><tbody><tr><td><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Gevrey-Chambertin%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Chambertin</a></td><td><span data-fr="Taille courte (cordon de Royat, cordon bilatéral, gobelet, éventail) ou Guyot simple" data-en="Short pruning (Royat cordon, bilateral cordon, gobelet, fan) or single Guyot">Taille courte (cordon de Royat, cordon bilatéral, gobelet, éventail) ou Guyot simple</span></td><td class="mx"><span data-fr="8 yeux / pied" data-en="8 buds / vine">8 yeux / pied</span></td></tr><tr><td><a href="../../Bourgogne%20Regions/Chablis_et_de_l_Auxerrois.html">Chablis</a></td><td><span data-fr="Cordon de Royat, Guyot simple ou double, taille Chablis" data-en="Royat cordon, single or double Guyot, Chablis pruning">Cordon de Royat, Guyot simple ou double, taille Chablis</span></td><td class="mx"><span data-fr="14 yeux / pied et 10 / m²" data-en="14 buds / vine and 10 / m²">14 yeux / pied et 10 / m²</span></td></tr><tr><td><a href="../../Champagne.html">Champagne</a></td><td><span data-fr="Chablis, cordon de Royat, Vallée de la Marne, Guyot simple ou double" data-en="Chablis, Royat cordon, Vallée de la Marne, single or double Guyot">Chablis, cordon de Royat, Vallée de la Marne, Guyot simple ou double</span></td><td class="mx"><span data-fr="18 yeux / m²" data-en="18 buds / m²">18 yeux / m²</span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Pauillac.html">Pauillac</a></td><td><span data-fr="Médocaine à astes, cots et astes, cordon à deux bras, éventail à quatre bras" data-en="Médoc pruning with astes, cots and astes, two-armed cordon, four-armed fan">Médocaine à astes, cots et astes, cordon à deux bras, éventail à quatre bras</span></td><td class="mx"><span data-fr="12 yeux / pied" data-en="12 buds / vine">12 yeux / pied</span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Loire_Centre/Sancerre.html">Sancerre</a></td><td><span data-fr="Guyot simple (10), Guyot double (12), cordon de Royat (14)" data-en="Single Guyot (10), double Guyot (12), Royat cordon (14)">Guyot simple (10), Guyot double (12), cordon de Royat (14)</span></td><td class="mx"><span data-fr="10 à 14 yeux / pied" data-en="10–14 buds / vine">10 à 14 yeux / pied</span></td></tr><tr><td><a href="../../Bourgogne%20Regions/Beaujolais.html">Morgon</a></td><td><span data-fr="Taille courte : gobelet, éventail, cordon de Royat ; 3 à 5 coursons à 2 yeux ; taille achevée le 15 mai" data-en="Short pruning: gobelet, fan, Royat cordon; 3–5 two-bud spurs; pruning finished by 15 May">Taille courte : gobelet, éventail, cordon de Royat ; 3 à 5 coursons à 2 yeux ; taille achevée le 15 mai</span></td><td class="mx"><span data-fr="10 yeux / pied" data-en="10 buds / vine">10 yeux / pied</span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Cotes_du_Rhone/Cote-Rotie.html">Côte-Rôtie</a></td><td><span data-fr="Gobelet (5 coursons au plus), cordon de Royat, Guyot simple ; sur échalas ou palissage" data-en="Gobelet (5 spurs at most), Royat cordon, single Guyot; on stakes or trellis">Gobelet (5 coursons au plus), cordon de Royat, Guyot simple ; sur échalas ou palissage</span></td><td class="mx"><span data-fr="10 yeux / pied" data-en="10 buds / vine">10 yeux / pied</span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Cotes_du_Rhone/Condrieu.html">Condrieu</a></td><td><span data-fr="Taille courte à coursons de 3 yeux au plus (gobelet, cordon de Royat) ou Guyot simple (8 yeux au plus sur le long bois)" data-en="Spur pruning with spurs of at most 3 buds (gobelet, Royat cordon) or single Guyot (at most 8 buds on the cane)">Taille courte à coursons de 3 yeux au plus (gobelet, cordon de Royat) ou Guyot simple (8 yeux au plus sur le long bois)</span></td><td class="mx"><span data-fr="10 yeux / pied" data-en="10 buds / vine">10 yeux / pied</span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Cotes_du_Rhone_Sud/Chateauneuf-du-Pape.html">Châteauneuf-du-Pape</a></td><td><span data-fr="Gobelet obligatoire pour Grenache et Mourvèdre ; cordon de Royat ou Guyot simple possibles pour d’autres cépages" data-en="Gobelet compulsory for Grenache and Mourvèdre; Royat cordon or single Guyot possible for other varieties">Gobelet obligatoire pour Grenache et Mourvèdre ; cordon de Royat ou Guyot simple possibles pour d’autres cépages</span></td><td class="mx"><span data-fr="12 yeux / pied (15 après 40 ans)" data-en="12 buds / vine (15 after 40 years)">12 yeux / pied (15 après 40 ans)</span></td></tr><tr><td><a href="../../Alsace.html">Alsace</a></td><td><span data-fr="Guyot simple ou double" data-en="Single or double Guyot">Guyot simple ou double</span></td><td class="mx"><span data-fr="24 yeux / pied (20 pour VT et SGN)" data-en="24 buds / vine (20 for VT and SGN)">24 yeux / pied (20 pour VT et SGN)</span></td></tr></tbody></table></div>
+  </section>
+
+  <section class="sec" id="mots">
+    <div class="sec-head">
+      <h2 data-fr="Les mots <em>de la taille</em>" data-en="Pruning <em>vocabulary</em>">Les mots <em>de la taille</em></h2>
+    </div>
+    <div class="words"><div class="word"><b><span data-fr="Œil franc" data-en="Count bud">Œil franc</span></b><span data-fr="Bourgeon bien formé sur le sarment, hors de la couronne de base : c’est lui qu’on compte." data-en="A well-formed bud on the cane, away from the basal crown: the one that is counted.">Bourgeon bien formé sur le sarment, hors de la couronne de base : c’est lui qu’on compte.</span></div><div class="word"><b><span data-fr="Courson (cot)" data-en="Spur">Courson (cot)</span></b><span data-fr="Sarment taillé court, à 1–3 yeux." data-en="A cane cut short, to 1–3 buds.">Sarment taillé court, à 1–3 yeux.</span></div><div class="word"><b><span data-fr="Baguette (long bois, aste)" data-en="Cane">Baguette (long bois, aste)</span></b><span data-fr="Sarment gardé long, couché sur le fil." data-en="A cane kept long and laid along the wire.">Sarment gardé long, couché sur le fil.</span></div><div class="word"><b><span data-fr="Charpente, bras" data-en="Arm">Charpente, bras</span></b><span data-fr="Bois permanent qui porte coursons ou baguettes." data-en="Permanent wood carrying spurs or canes.">Bois permanent qui porte coursons ou baguettes.</span></div><div class="word"><b><span data-fr="Rachet, rappel" data-en="Renewal spur">Rachet, rappel</span></b><span data-fr="Courson laissé bas pour rajeunir le cep." data-en="A low spur kept to rejuvenate the vine.">Courson laissé bas pour rajeunir le cep.</span></div><div class="word"><b><span data-fr="Chicot" data-en="Stub">Chicot</span></b><span data-fr="Bout de bois laissé au-dessus de la coupe pour protéger le bois vivant." data-en="A piece of wood left above the cut to protect living wood.">Bout de bois laissé au-dessus de la coupe pour protéger le bois vivant.</span></div><div class="word"><b><span data-fr="Prétaille" data-en="Pre-pruning">Prétaille</span></b><span data-fr="Passage d’une machine qui raccourcit les sarments avant la taille fine." data-en="A machine pass that shortens canes before fine pruning.">Passage d’une machine qui raccourcit les sarments avant la taille fine.</span></div><div class="word"><b><span data-fr="Tirage des bois" data-en="Brush pulling">Tirage des bois</span></b><span data-fr="Arracher du fil les sarments coupés." data-en="Pulling the cut canes out of the wires.">Arracher du fil les sarments coupés.</span></div></div>
+  </section>
+
+  <nav class="chapters" aria-label="Chapitres"><h3 data-fr="La vigne &amp;amp; le vignoble · les chapitres" data-en="The vine &amp;amp; the vineyard · chapters">La vigne &amp; le vignoble · les chapitres</h3><div class="ch-grid"><a class="ch" href="Vine_Plant.html"><span class="ch-n">01</span><span class="ch-t" data-fr="La plante vigne" data-en="The vine plant">La plante vigne</span></a><a class="ch" href="Vine_Cycle.html"><span class="ch-n">02</span><span class="ch-t" data-fr="Le cycle de la vigne" data-en="The vine’s year">Le cycle de la vigne</span></a><a class="ch" href="Vine_Terroir.html"><span class="ch-n">03</span><span class="ch-t" data-fr="Terroir &amp; site" data-en="Terroir &amp; site">Terroir & site</span></a><a class="ch" href="Vine_Planting.html"><span class="ch-n">04</span><span class="ch-t" data-fr="Plantation &amp; vie du vignoble" data-en="Planting &amp; the life of a vineyard">Plantation & vie du vignoble</span></a><span class="ch cur" aria-current="page"><span class="ch-n">05</span><span class="ch-t" data-fr="Taille &amp; modes de conduite" data-en="Training &amp; pruning">Taille & modes de conduite</span></span><a class="ch" href="Vine_Canopy.html"><span class="ch-n">06</span><span class="ch-t" data-fr="Travaux en vert &amp; du sol" data-en="Canopy &amp; soil work">Travaux en vert & du sol</span></a><a class="ch" href="Vine_Threats.html"><span class="ch-n">07</span><span class="ch-t" data-fr="Les ennemis de la vigne" data-en="Threats to the vine">Les ennemis de la vigne</span></a><a class="ch" href="Vine_Farming.html"><span class="ch-n">08</span><span class="ch-t" data-fr="Philosophies culturales" data-en="Farming philosophies">Philosophies culturales</span></a><a class="ch" href="Vine_Harvest.html"><span class="ch-n">09</span><span class="ch-t" data-fr="Les vendanges" data-en="Harvest">Les vendanges</span></a><a class="ch" href="Vine_Glossary.html"><span class="ch-n">10</span><span class="ch-t" data-fr="Glossaire" data-en="Glossary">Glossaire</span></a></div></nav>
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources"><li><span data-fr="INAO, cahiers des charges des AOC Chambertin, Chablis, Champagne, Pauillac, Sancerre, Morgon, Côte-Rôtie, Condrieu, Châteauneuf-du-Pape, Alsace." data-en="INAO, specifications of the Chambertin, Chablis, Champagne, Pauillac, Sancerre, Morgon, Côte-Rôtie, Condrieu, Châteauneuf-du-Pape and Alsace AOCs.">INAO, cahiers des charges des AOC Chambertin, Chablis, Champagne, Pauillac, Sancerre, Morgon, Côte-Rôtie, Condrieu, Châteauneuf-du-Pape, Alsace.</span></li><li><span data-fr="Guyot J., <i>Culture de la vigne et vinification</i>, 1860." data-en="Guyot J., <i>Culture de la vigne et vinification</i>, 1860.">Guyot J., <i>Culture de la vigne et vinification</i>, 1860.</span></li><li><span data-fr="Simonit M., <i>Guide de la taille Guyot</i> ; Lafon R., <i>Modifications à apporter à la taille de la vigne…</i>, 1921." data-en="Simonit M., <i>Guyot pruning manual</i>; Lafon R., <i>Modifications à apporter à la taille de la vigne…</i>, 1921.">Simonit M., <i>Guide de la taille Guyot</i> ; Lafon R., <i>Modifications à apporter à la taille de la vigne…</i>, 1921.</span></li><li><span data-fr="IFV et Plan national dépérissement du vignoble : fiches taille et maladies du bois." data-en="IFV and the national vineyard-decline plan: pruning and trunk-disease sheets.">IFV et Plan national dépérissement du vignoble : fiches taille et maladies du bois.</span></li></ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Taille & modes de conduite' : 'Training & pruning';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    calc();
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+
+  /* crop-load calculator */
+  var F = ['c-dens','c-eyes','c-burst','c-fert','c-bw','c-kghl'];
+  function fmt(n, d){ return n.toLocaleString(LANG==='fr' ? 'fr-FR' : 'en-GB', {maximumFractionDigits:d, minimumFractionDigits:d}); }
+  function calc(){
+    var v = {}, bad = null;
+    F.forEach(function(id){ var el = $(id), x = parseFloat(el.value);
+      var ok = isFinite(x) && x >= parseFloat(el.min) && x <= parseFloat(el.max);
+      el.setAttribute('aria-invalid', ok ? 'false' : 'true'); if(!ok && !bad) bad = el; v[id] = x; });
+    if(bad){
+      $('c-err').textContent = (LANG==='fr' ? 'Valeur hors limites : entre ' : 'Value out of range: between ') + bad.min + (LANG==='fr' ? ' et ' : ' and ') + bad.max + '.';
+      ['r-kg','r-hl','r-vine'].forEach(function(id){ $(id).textContent = '—'; }); return;
+    }
+    $('c-err').textContent = '';
+    var perVine = v['c-eyes'] * v['c-burst'] / 100 * v['c-fert'] * v['c-bw'] / 1000;
+    var kg = perVine * v['c-dens'];
+    $('r-vine').textContent = fmt(perVine, 2);
+    $('r-kg').textContent = fmt(Math.round(kg / 10) * 10, 0);
+    $('r-hl').textContent = fmt(kg / v['c-kghl'], 1);
+  }
+  F.forEach(function(id){ $(id).addEventListener('input', calc); });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,452 @@
+[
+ {
+  "appellation": "Pauillac",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_pnocdcpauillac.pdf",
+  "en": "decrees/bordeaux_bordeaux_pnocdcpauillac_en.pdf",
+  "slug": "bordeaux_bordeaux_pnocdcpauillac",
+  "done": true
+ },
+ {
+  "appellation": "Margaux",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_margaux.pdf",
+  "en": "decrees/bordeaux_bordeaux_margaux_en.pdf",
+  "slug": "bordeaux_bordeaux_margaux",
+  "done": true
+ },
+ {
+  "appellation": "Saint-Julien",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_pnocdcsaint_julien.pdf",
+  "en": "decrees/bordeaux_bordeaux_pnocdcsaint_julien_en.pdf",
+  "slug": "bordeaux_bordeaux_pnocdcsaint_julien",
+  "done": true
+ },
+ {
+  "appellation": "Saint-Estèphe",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_pnocdcsaint_estephe.pdf",
+  "en": "decrees/bordeaux_bordeaux_pnocdcsaint_estephe_en.pdf",
+  "slug": "bordeaux_bordeaux_pnocdcsaint_estephe",
+  "done": true
+ },
+ {
+  "appellation": "Saint-Emilion",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_saint_emilion.pdf",
+  "en": "decrees/bordeaux_bordeaux_saint_emilion_en.pdf",
+  "slug": "bordeaux_bordeaux_saint_emilion",
+  "done": true
+ },
+ {
+  "appellation": "Pomerol",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_pomerol_pno.pdf",
+  "en": "decrees/bordeaux_bordeaux_pomerol_pno_en.pdf",
+  "slug": "bordeaux_bordeaux_pomerol_pno",
+  "done": true
+ },
+ {
+  "appellation": "Sauternes",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_sauternes_pno.pdf",
+  "en": "decrees/bordeaux_bordeaux_sauternes_pno_en.pdf",
+  "slug": "bordeaux_bordeaux_sauternes_pno",
+  "done": true
+ },
+ {
+  "appellation": "Pessac-Léognan",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_pessac_leognan.pdf",
+  "en": "decrees/bordeaux_bordeaux_pessac_leognan_en.pdf",
+  "slug": "bordeaux_bordeaux_pessac_leognan",
+  "done": true
+ },
+ {
+  "appellation": "Graves (variante)",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_graves_variante.pdf",
+  "en": "decrees/bordeaux_bordeaux_graves_variante_en.pdf",
+  "slug": "bordeaux_bordeaux_graves_variante",
+  "done": true
+ },
+ {
+  "appellation": "Fronsac",
+  "region": "Bordeaux",
+  "sub": "",
+  "fr": "decrees/bordeaux_bordeaux_fronsac.pdf",
+  "en": "decrees/bordeaux_bordeaux_fronsac_en.pdf",
+  "slug": "bordeaux_bordeaux_fronsac",
+  "done": true
+ },
+ {
+  "appellation": "Chablis (et 1er Cru)",
+  "region": "Bourgogne",
+  "sub": "Chablis",
+  "fr": "decrees/bourgogne_chablis_chablis_et_1er_cru.pdf",
+  "en": "decrees/bourgogne_chablis_chablis_et_1er_cru_en.pdf",
+  "slug": "bourgogne_chablis_chablis_et_1er_cru",
+  "done": true
+ },
+ {
+  "appellation": "Meursault",
+  "region": "Bourgogne",
+  "sub": "Côte de Beaune",
+  "fr": "decrees/bourgogne_cote_de_beaune_meursault.pdf",
+  "en": "decrees/bourgogne_cote_de_beaune_meursault_en.pdf",
+  "slug": "bourgogne_cote_de_beaune_meursault",
+  "done": true
+ },
+ {
+  "appellation": "Puligny-Montrachet",
+  "region": "Bourgogne",
+  "sub": "Côte de Beaune",
+  "fr": "decrees/bourgogne_cote_de_beaune_puligny_montrachet.pdf",
+  "en": "decrees/bourgogne_cote_de_beaune_puligny_montrachet_en.pdf",
+  "slug": "bourgogne_cote_de_beaune_puligny_montrachet",
+  "done": true
+ },
+ {
+  "appellation": "Chassagne-Montrachet",
+  "region": "Bourgogne",
+  "sub": "Côte de Beaune",
+  "fr": "decrees/bourgogne_cote_de_beaune_chassagne_montrachet.pdf",
+  "en": "decrees/bourgogne_cote_de_beaune_chassagne_montrachet_en.pdf",
+  "slug": "bourgogne_cote_de_beaune_chassagne_montrachet",
+  "done": true
+ },
+ {
+  "appellation": "Pommard",
+  "region": "Bourgogne",
+  "sub": "Côte de Beaune",
+  "fr": "decrees/bourgogne_cote_de_beaune_pommard.pdf",
+  "en": "decrees/bourgogne_cote_de_beaune_pommard_en.pdf",
+  "slug": "bourgogne_cote_de_beaune_pommard",
+  "done": true
+ },
+ {
+  "appellation": "Gevrey-Chambertin",
+  "region": "Bourgogne",
+  "sub": "Côte de Nuits",
+  "fr": "decrees/bourgogne_cote_de_nuits_gevrey_chambertin.pdf",
+  "en": "decrees/bourgogne_cote_de_nuits_gevrey_chambertin_en.pdf",
+  "slug": "bourgogne_cote_de_nuits_gevrey_chambertin",
+  "done": true
+ },
+ {
+  "appellation": "Nuits-Saint-Georges",
+  "region": "Bourgogne",
+  "sub": "Côte de Nuits",
+  "fr": "decrees/bourgogne_cote_de_nuits_nuits_saint_georges.pdf",
+  "en": "decrees/bourgogne_cote_de_nuits_nuits_saint_georges_en.pdf",
+  "slug": "bourgogne_cote_de_nuits_nuits_saint_georges",
+  "done": true
+ },
+ {
+  "appellation": "Vosne-Romanee",
+  "region": "Bourgogne",
+  "sub": "Côte de Nuits",
+  "fr": "decrees/bourgogne_cote_de_nuits_vosne_romanee.pdf",
+  "en": "decrees/bourgogne_cote_de_nuits_vosne_romanee_en.pdf",
+  "slug": "bourgogne_cote_de_nuits_vosne_romanee",
+  "done": true
+ },
+ {
+  "appellation": "Chambolle-Musigny",
+  "region": "Bourgogne",
+  "sub": "Côte de Nuits",
+  "fr": "decrees/bourgogne_cote_de_nuits_chambolle_musigny.pdf",
+  "en": "decrees/bourgogne_cote_de_nuits_chambolle_musigny_en.pdf",
+  "slug": "bourgogne_cote_de_nuits_chambolle_musigny",
+  "done": true
+ },
+ {
+  "appellation": "Pouilly-Fuissé (et 1er Cru)",
+  "region": "Bourgogne",
+  "sub": "Mâconnais",
+  "fr": "decrees/bourgogne_maconnais_pouilly_fuisse_et_1er_cru.pdf",
+  "en": "decrees/bourgogne_maconnais_pouilly_fuisse_et_1er_cru_en.pdf",
+  "slug": "bourgogne_maconnais_pouilly_fuisse_et_1er_cru",
+  "done": true
+ },
+ {
+  "appellation": "Beaujolais",
+  "region": "Bourgogne",
+  "sub": "Beaujolais",
+  "fr": "decrees/bourgogne_beaujolais_beaujolais.pdf",
+  "en": "decrees/bourgogne_beaujolais_beaujolais_en.pdf",
+  "slug": "bourgogne_beaujolais_beaujolais",
+  "done": true
+ },
+ {
+  "appellation": "Morgon",
+  "region": "Bourgogne",
+  "sub": "Beaujolais",
+  "fr": "decrees/bourgogne_beaujolais_morgon.pdf",
+  "en": "decrees/bourgogne_beaujolais_morgon_en.pdf",
+  "slug": "bourgogne_beaujolais_morgon",
+  "done": true
+ },
+ {
+  "appellation": "Châteauneuf-du-Pape",
+  "region": "Rhône",
+  "sub": "Méridional (Sud)",
+  "fr": "decrees/rhone_meridional_sud_chateauneuf_du_pape.pdf",
+  "en": "decrees/rhone_meridional_sud_chateauneuf_du_pape_en.pdf",
+  "slug": "rhone_meridional_sud_chateauneuf_du_pape",
+  "done": true
+ },
+ {
+  "appellation": "Hermitage",
+  "region": "Rhône",
+  "sub": "Septentrional (Nord)",
+  "fr": "decrees/rhone_septentrional_nord_hermitage.pdf",
+  "en": "decrees/rhone_septentrional_nord_hermitage_en.pdf",
+  "slug": "rhone_septentrional_nord_hermitage",
+  "done": true
+ },
+ {
+  "appellation": "Condrieu",
+  "region": "Rhône",
+  "sub": "Septentrional (Nord)",
+  "fr": "decrees/rhone_septentrional_nord_condrieu.pdf",
+  "en": "decrees/rhone_septentrional_nord_condrieu_en.pdf",
+  "slug": "rhone_septentrional_nord_condrieu",
+  "done": true
+ },
+ {
+  "appellation": "Gigondas",
+  "region": "Rhône",
+  "sub": "Méridional (Sud)",
+  "fr": "decrees/rhone_meridional_sud_gigondas.pdf",
+  "en": "decrees/rhone_meridional_sud_gigondas_en.pdf",
+  "slug": "rhone_meridional_sud_gigondas",
+  "done": true
+ },
+ {
+  "appellation": "Crozes-Hermitage",
+  "region": "Rhône",
+  "sub": "Septentrional (Nord)",
+  "fr": "decrees/rhone_septentrional_nord_crozes_hermitage.pdf",
+  "en": "decrees/rhone_septentrional_nord_crozes_hermitage_en.pdf",
+  "slug": "rhone_septentrional_nord_crozes_hermitage",
+  "done": true
+ },
+ {
+  "appellation": "Cornas",
+  "region": "Rhône",
+  "sub": "Septentrional (Nord)",
+  "fr": "decrees/rhone_septentrional_nord_cornas.pdf",
+  "en": "decrees/rhone_septentrional_nord_cornas_en.pdf",
+  "slug": "rhone_septentrional_nord_cornas",
+  "done": true
+ },
+ {
+  "appellation": "Vacqueyras",
+  "region": "Rhône",
+  "sub": "Méridional (Sud)",
+  "fr": "decrees/rhone_meridional_sud_vacqueyras.pdf",
+  "en": "decrees/rhone_meridional_sud_vacqueyras_en.pdf",
+  "slug": "rhone_meridional_sud_vacqueyras",
+  "done": true
+ },
+ {
+  "appellation": "TAVEL",
+  "region": "Rhône",
+  "sub": "Méridional (Sud)",
+  "fr": "decrees/rhone_meridional_sud_tavel.pdf",
+  "en": "decrees/rhone_meridional_sud_tavel_en.pdf",
+  "slug": "rhone_meridional_sud_tavel",
+  "done": true
+ },
+ {
+  "appellation": "Sancerre",
+  "region": "Loire",
+  "sub": "Centre-Loire",
+  "fr": "decrees/loire_centre_loire_sancerre.pdf",
+  "en": "decrees/loire_centre_loire_sancerre_en.pdf",
+  "slug": "loire_centre_loire_sancerre",
+  "done": true
+ },
+ {
+  "appellation": "Pouilly-Fumé : sur Loire",
+  "region": "Loire",
+  "sub": "Centre-Loire",
+  "fr": "decrees/loire_centre_loire_pouilly_fume_sur_loire.pdf",
+  "en": "decrees/loire_centre_loire_pouilly_fume_sur_loire_en.pdf",
+  "slug": "loire_centre_loire_pouilly_fume_sur_loire",
+  "done": true
+ },
+ {
+  "appellation": "Vouvray",
+  "region": "Loire",
+  "sub": "Anjou-Touraine",
+  "fr": "decrees/loire_anjou_touraine_vouvray.pdf",
+  "en": "decrees/loire_anjou_touraine_vouvray_en.pdf",
+  "slug": "loire_anjou_touraine_vouvray",
+  "done": true
+ },
+ {
+  "appellation": "Chinon",
+  "region": "Loire",
+  "sub": "Anjou-Touraine",
+  "fr": "decrees/loire_anjou_touraine_chinon.pdf",
+  "en": "decrees/loire_anjou_touraine_chinon_en.pdf",
+  "slug": "loire_anjou_touraine_chinon",
+  "done": true
+ },
+ {
+  "appellation": "Bourgueil",
+  "region": "Loire",
+  "sub": "Anjou-Touraine",
+  "fr": "decrees/loire_anjou_touraine_bourgueil.pdf",
+  "en": "decrees/loire_anjou_touraine_bourgueil_en.pdf",
+  "slug": "loire_anjou_touraine_bourgueil",
+  "done": true
+ },
+ {
+  "appellation": "Muscadet",
+  "region": "Loire",
+  "sub": "Pays Nantais (Muscadet)",
+  "fr": "decrees/loire_pays_nantais_muscadet_muscadet.pdf",
+  "en": "decrees/loire_pays_nantais_muscadet_muscadet_en.pdf",
+  "slug": "loire_pays_nantais_muscadet_muscadet",
+  "done": true
+ },
+ {
+  "appellation": "Saumur",
+  "region": "Loire",
+  "sub": "Anjou-Touraine",
+  "fr": "decrees/loire_anjou_touraine_saumur.pdf",
+  "en": "decrees/loire_anjou_touraine_saumur_en.pdf",
+  "slug": "loire_anjou_touraine_saumur",
+  "done": true
+ },
+ {
+  "appellation": "Savennières",
+  "region": "Loire",
+  "sub": "Anjou-Touraine",
+  "fr": "decrees/loire_anjou_touraine_savennieres.pdf",
+  "en": "decrees/loire_anjou_touraine_savennieres_en.pdf",
+  "slug": "loire_anjou_touraine_savennieres",
+  "done": true
+ },
+ {
+  "appellation": "Bandol",
+  "region": "Provence & Corse",
+  "sub": "Provence",
+  "fr": "decrees/provence_corse_provence_bandol.pdf",
+  "en": "decrees/provence_corse_provence_bandol_en.pdf",
+  "slug": "provence_corse_provence_bandol",
+  "done": true
+ },
+ {
+  "appellation": "Cassis",
+  "region": "Provence & Corse",
+  "sub": "Provence",
+  "fr": "decrees/provence_corse_provence_cassis.pdf",
+  "en": "decrees/provence_corse_provence_cassis_en.pdf",
+  "slug": "provence_corse_provence_cassis",
+  "done": true
+ },
+ {
+  "appellation": "Palette",
+  "region": "Provence & Corse",
+  "sub": "Provence",
+  "fr": "decrees/provence_corse_provence_palette.pdf",
+  "en": "decrees/provence_corse_provence_palette_en.pdf",
+  "slug": "provence_corse_provence_palette",
+  "done": true
+ },
+ {
+  "appellation": "Patrimonio",
+  "region": "Provence & Corse",
+  "sub": "Corse",
+  "fr": "decrees/provence_corse_corse_patrimonio.pdf",
+  "en": "decrees/provence_corse_corse_patrimonio_en.pdf",
+  "slug": "provence_corse_corse_patrimonio",
+  "done": true
+ },
+ {
+  "appellation": "Ajaccio",
+  "region": "Provence & Corse",
+  "sub": "Corse",
+  "fr": "decrees/provence_corse_corse_ajaccio.pdf",
+  "en": "decrees/provence_corse_corse_ajaccio_en.pdf",
+  "slug": "provence_corse_corse_ajaccio",
+  "done": true
+ },
+ {
+  "appellation": "Corbieres",
+  "region": "Languedoc",
+  "sub": "",
+  "fr": "decrees/languedoc_languedoc_corbieres.pdf",
+  "en": "decrees/languedoc_languedoc_corbieres_en.pdf",
+  "slug": "languedoc_languedoc_corbieres",
+  "done": true
+ },
+ {
+  "appellation": "Minervois",
+  "region": "Languedoc",
+  "sub": "",
+  "fr": "decrees/languedoc_languedoc_minervois.pdf",
+  "en": "decrees/languedoc_languedoc_minervois_en.pdf",
+  "slug": "languedoc_languedoc_minervois",
+  "done": true
+ },
+ {
+  "appellation": "Collioure",
+  "region": "Roussillon",
+  "sub": "",
+  "fr": "decrees/roussillon_roussillon_collioure.pdf",
+  "en": "decrees/roussillon_roussillon_collioure_en.pdf",
+  "slug": "roussillon_roussillon_collioure",
+  "done": true
+ },
+ {
+  "appellation": "Banyuls",
+  "region": "Roussillon",
+  "sub": "",
+  "fr": "decrees/roussillon_roussillon_banyuls.pdf",
+  "en": "decrees/roussillon_roussillon_banyuls_en.pdf",
+  "slug": "roussillon_roussillon_banyuls",
+  "done": true
+ },
+ {
+  "appellation": "Cahors",
+  "region": "Sud-Ouest",
+  "sub": "",
+  "fr": "decrees/sud_ouest_sud_ouest_cahors.pdf",
+  "en": "decrees/sud_ouest_sud_ouest_cahors_en.pdf",
+  "slug": "sud_ouest_sud_ouest_cahors",
+  "done": true
+ },
+ {
+  "appellation": "Madiran",
+  "region": "Sud-Ouest",
+  "sub": "",
+  "fr": "decrees/sud_ouest_sud_ouest_madiran.pdf",
+  "en": "decrees/sud_ouest_sud_ouest_madiran_en.pdf",
+  "slug": "sud_ouest_sud_ouest_madiran",
+  "done": true
+ },
+ {
+  "appellation": "Jurancon",
+  "region": "Sud-Ouest",
+  "sub": "",
+  "fr": "decrees/sud_ouest_sud_ouest_jurancon.pdf",
+  "en": "decrees/sud_ouest_sud_ouest_jurancon_en.pdf",
+  "slug": "sud_ouest_sud_ouest_jurancon",
+  "done": true
+ }
+]

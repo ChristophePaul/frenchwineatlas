@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Déguster le vin</title>
+<meta name="description" content="La vue, l’odorat, le goût et l’équilibre : comment déguster un vin, avec un schéma interactif de l’équilibre et des sources scientifiques.">
+<style>
+@@BASE_CSS@@
+  /* tasting page */
+  sup.ref{font-size:.68em;line-height:0;margin-left:1px;}
+  sup.ref a{color:var(--gold);text-decoration:none;font-weight:700;}
+  sup.ref a:hover{text-decoration:underline;}
+  .lede{padding:clamp(20px,3vw,32px);}
+  .lede p{margin:0 0 12px;font-size:15.5px;line-height:1.72;}
+  .lede .sub-q{font-family:var(--serif);font-style:italic;font-size:20px;color:var(--gold-soft);margin:0 0 10px;}
+
+  .steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:22px;}
+  .step{display:flex;flex-direction:column;gap:3px;padding:14px 16px;border-radius:16px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;transition:border-color .2s,transform .2s;}
+  .step:hover{border-color:var(--hair-hi);transform:translateY(-2px);}
+  .step .sn{font-family:var(--serif);font-size:26px;color:var(--gold);line-height:1;}
+  .step b{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .step small{font-size:12.5px;color:var(--muted);line-height:1.45;}
+
+  .sec-head .kick{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 8px;}
+  .fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:16px;}
+  .fcard{padding:16px 18px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);}
+  .fcard h4{margin:0 0 6px;font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);}
+  .fcard p{margin:0;font-size:14.2px;line-height:1.62;}
+  .fcard b{color:var(--title);font-weight:600;}
+  .fcard.sm h4{font-size:17px;}
+  .fcard.sm p{font-size:13.6px;}
+
+  /* colour chart */
+  .chart{padding:clamp(16px,2.6vw,26px);margin-top:16px;}
+  .chart h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:0 0 12px;}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;}
+  .tab{all:unset;cursor:pointer;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:7px 15px;border-radius:999px;border:1px solid var(--hair);color:var(--gold);background:var(--glass);}
+  .tab.on{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+  .tab:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .age-axis{display:flex;align-items:center;gap:10px;margin:16px 4px 6px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);}
+  .age-axis i{flex:1;height:1px;background:linear-gradient(90deg,var(--hair-hi),var(--hair));position:relative;}
+  .age-axis i::after{content:"";position:absolute;right:-1px;top:-4px;border:4.5px solid transparent;border-left:7px solid var(--hair-hi);}
+  .pal{display:none;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;}
+  .pal.on{display:grid;}
+  .sw{margin:0;padding:8px 6px 10px;border-radius:14px;background:var(--paper);border:1px solid var(--paper-edge);text-align:center;}
+  .sw .swatch{display:block;width:100%;height:auto;}
+  /* blow-up on hover / focus / tap, to read the nuances */
+  .sw{position:relative;cursor:zoom-in;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s;transform-origin:50% 60%;}
+  .sw:hover,.sw:focus-visible,.sw.big{transform:scale(1.85);z-index:5;box-shadow:0 18px 44px rgba(20,4,8,.45);outline:none;}
+  .sw:hover figcaption,.sw:focus-visible figcaption,.sw.big figcaption{font-size:9.5px;}
+  .sw:hover .ex,.sw:focus-visible .ex,.sw.big .ex{font-size:8.5px;}
+  @media (prefers-reduced-motion:reduce){.sw{transition:none;}}
+  .sw figcaption{font-size:12px;line-height:1.3;color:#3a2a1e;margin-top:4px;}
+  .sw figcaption b{display:block;font-weight:600;}
+  .sw figcaption .ex{display:block;margin-top:3px;font-family:var(--serif);font-style:italic;font-size:11px;line-height:1.3;color:#6b5a48;}
+  .cap{font-size:12.5px;color:var(--faint);margin:12px 0 0;line-height:1.55;}
+
+  .twocol{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(18px,3vw,36px);align-items:start;margin-top:18px;}
+  .twocol.rev{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+  /* smelling glass */
+  .glass-wrap{display:grid;grid-template-columns:minmax(140px,200px) minmax(0,1fr) minmax(220px,320px);max-width:1180px;margin-left:auto;margin-right:auto;gap:18px;align-items:center;}
+  .plate.glass{position:static;}
+  .plate.glass .zoom{padding:14px 18px;}
+  .zones{display:grid;gap:12px;}
+  .inao{margin:0;display:flex;flex-direction:column;gap:10px;}
+  .plate.inao-plate{position:static;}
+  .plate.inao-plate .zoom{padding:12px;background:#fff;}
+  .inao figcaption{font-size:13px;line-height:1.55;color:var(--muted);}
+  .inao figcaption b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:3px;}
+  .credit-img{display:block;margin-top:6px;font-size:11px;color:var(--faint);}
+  .credit-img a{color:inherit;}
+  @media (max-width:1000px){ .glass-wrap{grid-template-columns:minmax(140px,200px) minmax(0,1fr);} .inao{grid-column:1 / -1;flex-direction:row;align-items:center;} .inao .plate{flex:0 0 280px;} }
+  @media (max-width:560px){ .inao{flex-direction:column;} .inao .plate{flex:none;width:100%;max-width:340px;margin:0 auto;} }
+  .zone{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-left:4px solid var(--c);}
+  .zone h4{margin:0 0 4px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .zone p{margin:0;font-size:14px;line-height:1.6;}
+  .zone .ex{font-family:var(--serif);font-style:italic;color:var(--muted);margin-top:4px;}
+  .tip{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:13px 16px;border-radius:14px;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);font-size:14px;line-height:1.6;}
+  .tip .bang{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#c08a1a;color:#fff;font-weight:800;font-family:var(--serif);}
+  .tip p{margin:0;}
+  .noses{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px;}
+  .nose{display:flex;gap:12px;padding:15px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);}
+  .nn{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold);font-family:var(--serif);font-size:18px;}
+  .nose h4{margin:2px 0 4px;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);}
+  .nose p{margin:0;font-size:13.6px;line-height:1.58;}
+  .aromas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;}
+  .aroma{padding:15px 17px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);}
+  .aroma h4{margin:0 0 6px;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);}
+  .aroma p{margin:0;font-size:13.8px;line-height:1.6;}
+  .aroma i{font-family:var(--serif);color:var(--muted);}
+
+  /* tongue */
+  .tongue-card{max-width:440px;margin:0 auto;width:100%;}
+  .papillae{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+  .papillae li{display:flex;gap:12px;padding:12px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);}
+  .pn{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#2b2018;color:#f4ecd8;font-weight:700;font-size:13px;}
+  html:not([data-theme="cream"]) .pn{background:var(--gold);color:#2a0a12;}
+  .papillae b{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);}
+  .papillae p{margin:3px 0 0;font-size:13.6px;line-height:1.55;}
+  .myth{margin-top:12px;padding:14px 16px;border-radius:14px;border:1px solid color-mix(in srgb,#a0283c 55%,transparent);background:color-mix(in srgb,#a0283c 10%,transparent);font-size:14px;line-height:1.6;}
+  .myth h4{margin:0 0 4px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#d9667a;font-weight:700;}
+  html[data-theme="cream"] .myth h4{color:#a0283c;}
+  .myth p{margin:0;}
+  .tastes{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:16px;}
+  .taste{padding:14px 15px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);position:relative;}
+  .tdot{display:block;width:30px;height:30px;border-radius:50%;background:var(--c);margin-bottom:8px;box-shadow:inset 0 -4px 0 rgba(0,0,0,.15);}
+  .taste h4{margin:0 0 5px;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .taste p{margin:0;font-size:13.2px;line-height:1.55;}
+  .taste b{color:var(--title);font-weight:600;}
+
+  /* balance */
+  .bal{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;margin-top:18px;}
+  .balance .w{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:700;text-anchor:middle;paint-order:stroke;stroke-linejoin:round;transition:fill .2s,font-size .2s;}
+  .balance .w.in{font-size:19px;fill:#2b2018;stroke:#f1d6d6;stroke-width:5px;}
+  .balance .w.out{font-size:19px;fill:#b3122e;stroke:#f4ecd8;stroke-width:5px;}
+  .balance .w.ctr{font-size:29px;fill:#2b2018;stroke:#fbf1ec;stroke-width:5px;}
+  .balance .w.hit{fill:#fff;stroke:#8e1f33;stroke-width:9px;font-size:22px;}
+  .balance .w.ctr.hit{font-size:31px;}
+  .balance .ax{font:700 26px var(--sans);fill:#2b2018;}
+  .balance .axs{font:italic 15px var(--serif);fill:#6b5a48;}
+  .balance .def{font:italic 15px var(--serif);fill:#6b5a48;}
+  #dot{transition:transform .45s cubic-bezier(.2,.8,.2,1);}
+  .ctl{padding:clamp(16px,2.4vw,24px);}
+  .ctl h4{margin:0 0 8px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ctl .tabs{margin-bottom:16px;}
+  .sl{display:grid;grid-template-columns:minmax(0,1fr) 32px;gap:4px 10px;align-items:center;margin-bottom:12px;}
+  .sl label{font-size:14px;font-weight:600;color:var(--title);}
+  .sl label small{font-weight:400;color:var(--faint);font-size:12px;margin-left:6px;}
+  .sl output{grid-row:span 2;font-family:var(--serif);font-size:22px;color:var(--gold-soft);text-align:right;}
+  .sl input{width:100%;accent-color:#9b2235;}
+  .presets{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 4px;}
+  .presets button{all:unset;cursor:pointer;font-size:12.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);}
+  .presets button:hover,.presets button:focus-visible{border-color:var(--hair-hi);}
+  .readout{margin-top:16px;padding:16px 18px;border-radius:16px;background:var(--glass-hi);border:1px solid var(--hair-hi);}
+  .readout .rw{font-family:var(--serif);font-size:30px;color:var(--title);line-height:1.1;}
+  .readout .rw.bad{color:#d9667a;}
+  html[data-theme="cream"] .readout .rw.bad{color:#b3122e;}
+  .readout .rz{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px;}
+  .readout p{margin:6px 0 0;font-size:14px;line-height:1.55;}
+  .readout .body{color:var(--muted);font-size:13px;}
+  .mode-note{font-size:13px;line-height:1.55;color:var(--muted);margin:12px 0 0;}
+  .hint2{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+
+  .sources-list{margin:0;padding-left:26px;font-size:13px;line-height:1.6;color:var(--muted);columns:2;column-gap:34px;}
+  .sources-list li{break-inside:avoid;margin-bottom:6px;}
+  .sources-list li:target{color:var(--title);background:color-mix(in srgb,var(--gold) 14%,transparent);border-radius:6px;}
+  .sources-list a{color:var(--gold);}
+  .credit{font-size:12px;color:var(--faint);margin-top:16px;line-height:1.6;}
+
+  @media (max-width:1000px){
+    .tastes{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .pal{grid-template-columns:repeat(4,minmax(0,1fr));}
+  }
+  @media (max-width:900px){
+    .twocol,.twocol.rev,.bal{grid-template-columns:minmax(0,1fr);}
+    .steps{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .noses,.aromas{grid-template-columns:minmax(0,1fr);}
+    .sources-list{columns:1;}
+  }
+  @media (max-width:560px){
+    .tastes{grid-template-columns:repeat(2,minmax(0,1fr));}
+    .pal{grid-template-columns:repeat(3,minmax(0,1fr));}
+    .glass-wrap{grid-template-columns:minmax(0,1fr);}
+    .plate.glass{max-width:200px;margin:0 auto;}
+    .fgrid{grid-template-columns:minmax(0,1fr);}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="L’analyse sensorielle" data-en="Sensory analysis">L’analyse sensorielle</p>
+    <h1 data-fr="Déguster <em>le vin</em>" data-en="Tasting <em>wine</em>">Déguster <em>le vin</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Regarder, sentir, goûter, puis juger l’équilibre. Une méthode simple pour l’amateur, détaillée pour le professionnel : chaque partie s’ouvre sur l’essentiel, les volets « Pour les professionnels » vont plus loin, et chaque affirmation renvoie à ses sources."
+       data-en="Look, smell, taste, then judge the balance. A simple method for the wine lover, detailed for the professional: each part opens with the essentials, the “For professionals” panels go further, and every claim links to its sources.">Regarder, sentir, goûter, puis juger l’équilibre. Une méthode simple pour l’amateur, détaillée pour le professionnel : chaque partie s’ouvre sur l’essentiel, les volets « Pour les professionnels » vont plus loin, et chaque affirmation renvoie à ses sources.</p>
+    <nav class="steps">@@STEPS@@</nav>
+  </header>
+
+  <!-- ===================== 1 · SIGHT ===================== -->
+  <section class="sec" id="vue">
+    <div class="sec-head">
+      <p class="kick" data-fr="01 · La vue" data-en="01 · Sight">01 · La vue</p>
+      <h2 data-fr="La vue : <em>aussi loin que porte le regard</em>" data-en="Sight: <em>as far as the eyes can tell</em>">La vue : <em>aussi loin que porte le regard</em></h2>
+    </div>
+    <div class="panel lede">
+      <p class="sub-q" data-fr="Alors, que dois-je regarder&nbsp;?" data-en="So, what am I looking for?">Alors, que dois-je regarder&nbsp;?</p>
+      @@SIGHT_INTRO@@
+    </div>
+    <div class="fgrid">@@SIGHT_CARDS@@</div>
+    <div class="panel chart" id="nuancier">
+      <h3 data-fr="Le nuancier" data-en="The colour chart">Le nuancier</h3>
+      @@COLOURS@@
+    </div>
+    @@PRO_SIGHT@@
+  </section>
+
+  <!-- ===================== 2 · SMELL ===================== -->
+  <section class="sec" id="odorat">
+    <div class="sec-head">
+      <p class="kick" data-fr="02 · L’odorat" data-en="02 · Smell">02 · L’odorat</p>
+      <h2 data-fr="L’odorat : <em>il y a pibale sous caillou</em>" data-en="Smell: <em>something’s fishy</em>">L’odorat : <em>il y a pibale sous caillou</em></h2>
+    </div>
+    <div class="panel lede">
+      <p class="sub-q" data-fr="Comment ça, « le second nez »&nbsp;?" data-en="What do you mean, “the second nose”?">Comment ça, « le second nez »&nbsp;?</p>
+      @@SMELL_INTRO@@
+    </div>
+    <div class="noses">@@NOSES@@</div>
+
+    <div class="glass-wrap" style="margin-top:18px">
+        @@GLASS@@
+        <div class="zones">
+          <div class="zone" style="--c:#c99a2e">
+            <h4 data-fr="① Deux à trois centimètres au-dessus du verre" data-en="① About an inch above the glass">① Deux à trois centimètres au-dessus du verre</h4>
+            <p class="L fr">C’est là que les arômes les plus discrets et délicats sont les plus perceptibles, moins écrasés par les arômes plus intenses.</p>
+            <p class="L en">This is where the most discreet and delicate aromas will be the most perceptible, and less overpowered by more intense ones.</p>
+            <p class="ex L fr">Fleurs blanches, pétales de rose, notes légères d’agrumes…</p>
+            <p class="ex L en">White flowers, rose petals, light citrus notes…</p>
+          </div>
+          <div class="zone" style="--c:#8e1f33">
+            <h4 data-fr="② Le nez dans le verre" data-en="② Nose inside the glass">② Le nez dans le verre</h4>
+            <p class="L fr">Plus profondément, le bord du verre touchant la base du nez, ressortent les arômes plus intenses et plus puissants.</p>
+            <p class="L en">Deeper in the glass, the rim touching the base of the nose, the more intense, full-bodied aromas come out.</p>
+            <p class="ex L fr">Goudron, chocolat, cuir, réglisse, fruits noirs, fruits confits…</p>
+            <p class="ex L en">Tar, chocolate, leather, liquorice, black fruit, candied fruit…</p>
+          </div>
+        </div>
+        <figure class="inao">
+          @@INAO@@
+          <figcaption>
+            <b data-fr="Le verre INAO (norme ISO 3591)" data-en="The INAO glass (ISO 3591 standard)">Le verre INAO (norme ISO 3591)</b>
+            <span class="L fr">Le verre de référence des dégustateurs : coupe en œuf allongé, ouverture plus étroite que la panse pour concentrer les arômes. Remplissez-le jusqu’au plus large de la coupe (environ 50 à 60 mL) pour pouvoir le faire tourner.</span>
+            <span class="L en">The tasters’ reference glass: an elongated-egg bowl whose opening is narrower than its widest part, to concentrate the aromas. Fill it to the widest point of the bowl (about 50–60 mL) so it can be swirled.</span>
+            <small class="credit-img">Dessin / drawing : Olivier Lemoine, <a href="https://commons.wikimedia.org/wiki/File:Verre_Inao.svg" target="_blank" rel="noopener">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a></small>
+          </figcaption>
+        </figure>
+      </div>
+      <div>
+        <h3 class="sub" data-fr="Les trois familles d’arômes" data-en="The three aroma families">Les trois familles d’arômes</h3>
+        <p class="L fr" style="margin:0 0 4px;font-size:14.5px;line-height:1.6">En matière de vin, on répartit les arômes en trois catégories distinctes :@@PEYNAUD@@</p>
+        <p class="L en" style="margin:0 0 4px;font-size:14.5px;line-height:1.6">When it comes to wine, we divide the aromas into three distinct categories:@@PEYNAUD@@</p>
+        <div class="aromas">@@AROMAS@@</div>
+      </div>
+    <div class="tip"><span class="bang">!</span>
+      <p class="L fr">Pour faire tourner le verre, un mouvement circulaire doux et continu libère le mieux les arômes. Un geste trop brusque ou trop rapide « bouscule » le vin et ne fait que le projeter hors du verre.</p>
+      <p class="L en">When swirling the glass, a soft, continuous circular motion is best to release all the aromas. A hard or too-fast motion “shakes” the wine and only splashes it out of the glass.</p>
+    </div>
+    @@PRO_SMELL@@
+  </section>
+
+  <!-- ===================== 3 · TASTE ===================== -->
+  <section class="sec" id="gout">
+    <div class="sec-head">
+      <p class="kick" data-fr="03 · Le goût" data-en="03 · Taste">03 · Le goût</p>
+      <h2 data-fr="Le goût : <em>à mon goût</em>" data-en="Taste: <em>fine by me</em>">Le goût : <em>à mon goût</em></h2>
+    </div>
+    <div class="panel lede">
+      <p class="sub-q" data-fr="Puis-je me fier à mon palais&nbsp;?" data-en="Think I should trust my palate?">Puis-je me fier à mon palais&nbsp;?</p>
+      @@TASTE_INTRO@@
+    </div>
+
+    <div class="twocol">
+      <div class="diagram-card tongue-card">@@TONGUE@@</div>
+      <div>
+        <h3 class="sub" style="margin-top:0" data-fr="L’organe principal du goût : la langue" data-en="The primary organ of taste: the tongue">L’organe principal du goût : la langue</h3>
+        <ol class="papillae">@@PAPILLAE@@</ol>
+        <div class="myth">
+          <h4 data-fr="La « carte de la langue » est un mythe" data-en="The “tongue map” is a myth">La « carte de la langue » est un mythe</h4>
+          <p class="L fr">Contrairement à une idée reçue, tous les bourgeons du goût peuvent détecter les différentes saveurs ; certaines zones sont seulement un peu plus sensibles que d’autres. Le célèbre schéma (sucré sur la pointe, amer au fond…) vient d’une mauvaise lecture, en 1942, d’une thèse allemande de 1901.@@MYTH_REF@@</p>
+          <p class="L en">Contrary to popular belief, all taste buds can detect the various tastes; some areas are merely slightly more sensitive than others. The famous diagram (sweet on the tip, bitter at the back…) comes from a 1942 misreading of a German thesis from 1901.@@MYTH_REF@@</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="sub" data-fr="Les cinq saveurs élémentaires" data-en="The five basic tastes">Les cinq saveurs élémentaires</h3>
+    <div class="tastes">@@TASTES@@</div>
+
+    <h3 class="sub" data-fr="Ce ne sont pas des saveurs, mais on les sent : le toucher en bouche" data-en="Not tastes, yet you feel them: mouthfeel">Ce ne sont pas des saveurs, mais on les sent : le toucher en bouche</h3>
+    <div class="fgrid">@@MOUTHFEEL@@</div>
+    @@PRO_TASTE@@
+  </section>
+
+  <!-- ===================== 4 · BALANCE ===================== -->
+  <section class="sec" id="equilibre">
+    <div class="sec-head">
+      <p class="kick" data-fr="04 · L’équilibre" data-en="04 · Balance">04 · L’équilibre</p>
+      <h2 data-fr="La vision d’ensemble : <em>en quête du vin parfait</em>" data-en="The global picture: <em>in search of the perfect wine</em>">La vision d’ensemble : <em>en quête du vin parfait</em></h2>
+    </div>
+    <div class="panel lede">
+      <p class="L fr">Les analyses visuelle, olfactive et gustative sont la base de l’étude d’un vin : ce sont les outils nécessaires pour bien en évaluer la qualité. Le réflexe naturel, quand on déguste ou simplement quand on boit un vin, est de chercher à en identifier les arômes et les saveurs. Pourtant, l’essence véritable du vin réside dans ses caractères fondamentaux, qui attestent de son <b>équilibre</b>.</p>
+      <p class="L en">The visual, olfactory and gustatory analyses are the basis of wine analysis and of any proper study of a wine: they are the tools required to make a good evaluation of its quality. Most people’s natural inclination when tasting or simply drinking wine is to try to identify the various aromas and flavours. However, the true essence of the wine resides in its fundamental character, which attests to the wine’s <b>equilibrium</b>.</p>
+      <p class="L fr">Le schéma ci-dessous aide à analyser un vin pour en évaluer l’acidité, le moelleux et les tanins (ou l’amertume). Un vin harmonieux trouvera un équilibre parfait, ou presque, entre ces caractères fondamentaux. L’analyse organoleptique doit permettre au dégustateur de juger jusqu’à quel point le vigneron a atteint cet équilibre en élaborant son vin.@@PEYNAUD@@</p>
+      <p class="L en">The diagram below can help analyse a wine in order to assess its acidity, softness and tannin (or bitterness). A harmonious wine will find a perfect or near-perfect equilibrium between these basic characteristics. An organoleptic analysis should help the taster decide how much of that equilibrium the winemaker has achieved in making his or her wine.@@PEYNAUD@@</p>
+    </div>
+
+    <div class="bal">
+      <div class="diagram-card">@@BALANCE_SVG@@</div>
+      <div class="panel ctl">
+        <h4 data-fr="Type de vin" data-en="Wine style">Type de vin</h4>
+        <div class="tabs" id="modes">
+          <button type="button" class="tab on" data-mode="red" data-fr="Rouge" data-en="Red">Rouge</button>
+          <button type="button" class="tab" data-mode="white" data-fr="Blanc &amp; rosé secs" data-en="Dry white &amp; rosé">Blanc &amp; rosé secs</button>
+          <button type="button" class="tab" data-mode="sweet" data-fr="Moelleux &amp; liquoreux" data-en="Sweet wines">Moelleux &amp; liquoreux</button>
+        </div>
+        <h4 data-fr="Votre dégustation" data-en="Your tasting">Votre dégustation</h4>
+        <div class="sl"><label for="sA"><span id="lA"></span><small data-fr="faible → forte" data-en="low → high">faible → forte</small></label><output id="oA">5</output><input type="range" id="sA" min="0" max="10" step="1" value="5"></div>
+        <div class="sl"><label for="sS"><span id="lS"></span><small id="lSs"></small></label><output id="oS">5</output><input type="range" id="sS" min="0" max="10" step="1" value="5"></div>
+        <div class="sl"><label for="sT"><span id="lT"></span><small id="lTs"></small></label><output id="oT">5</output><input type="range" id="sT" min="0" max="10" step="1" value="5"></div>
+        <h4 style="margin-top:6px" data-fr="Exemples indicatifs" data-en="Indicative examples">Exemples indicatifs</h4>
+        <div class="presets" id="presets"></div>
+        <p class="hint2" data-fr="Profils typiques d’un vin bien fait de l’appellation, pour l’exercice ; chaque cuvée est différente." data-en="Typical profile of a well-made wine from the appellation, for practice; every cuvée is different.">Profils typiques d’un vin bien fait de l’appellation, pour l’exercice ; chaque cuvée est différente.</p>
+        <div class="readout" aria-live="polite">
+          <div class="rz" id="rz"></div>
+          <div class="rw" id="rw"></div>
+          <p id="rd"></p>
+          <p class="body" id="rb"></p>
+        </div>
+        <p class="mode-note" id="mnote"></p>
+      </div>
+    </div>
+    @@PRO_BAL@@
+  </section>
+
+  <footer id="sources">
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ol class="sources-list">@@SOURCES@@</ol>
+    <p class="credit" data-fr="Texte d’origine, verre aromatique et schéma de l’équilibre : document d’origine « Équilibre du vin » de l’auteur du site, revus et mis à jour en 2026. Nuancier, langue et version interactive du schéma redessinés pour le site."
+       data-en="Original text, aroma glass and balance diagram: the site author’s original “Équilibre du vin” document, revised and updated in 2026. Colour chart, tongue and interactive version of the diagram redrawn for the site.">Texte d’origine, verre aromatique et schéma de l’équilibre : document d’origine « Équilibre du vin » de l’auteur du site, revus et mis à jour en 2026. Nuancier, langue et version interactive du schéma redessinés pour le site.</p>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  var L = function(p){ return LANG==='fr' ? p[0] : p[1]; };
+  var D = @@BAL_DATA@@;
+
+  /* ---------- balance ---------- */
+  var mode = 'red', K = 34;
+  var sA = $('sA'), sS = $('sS'), sT = $('sT');
+  var NOTES = {
+    red: ['Dans un rouge, l’acidité et les tanins s’additionnent : plus un vin est tannique, plus il a besoin de moelleux (alcool, gras) pour rester harmonieux.',
+          'In a red, acidity and tannin add up: the more tannic a wine, the more softness (alcohol, richness) it needs to stay harmonious.'],
+    white: ['Un blanc ou un rosé sec n’a presque pas de tanins : l’équilibre se joue entre acidité et moelleux, l’amertume devant rester discrète (une pointe d’amertume en finale peut toutefois apporter de la fraîcheur).',
+            'A dry white or rosé has almost no tannin: balance is struck between acidity and softness, and bitterness should stay discreet (a hint of bitterness on the finish can, however, add freshness).'],
+    sweet: ['Dans un vin doux, le sucre s’ajoute à l’alcool : sans une acidité vive pour lui répondre, le vin devient lourd et pâteux. Les grands liquoreux sont d’abord de grands vins acides.',
+            'In a sweet wine, sugar adds to alcohol: without lively acidity to answer it, the wine becomes heavy and cloying. Great sweet wines are first of all wines with great acidity.']
+  };
+  function u(a){ a = a*Math.PI/180; return [Math.cos(a), -Math.sin(a)]; }
+  function setMode(m){
+    mode = m;
+    var ax = D.modes[m].axes;
+    [0,1,2].forEach(function(k){
+      $('ax'+k).textContent = L(ax[k].slice(0,2));
+      var sub = ax[k][2] ? ax[k][2].split('|') : ['',''];
+      $('axs'+k).textContent = sub[LANG==='fr'?0:1] ? '(' + sub[LANG==='fr'?0:1] + ')' : '';
+    });
+    $('lA').textContent = L(ax[1].slice(0,2));
+    $('lS').textContent = L(ax[2].slice(0,2));
+    $('lT').textContent = L(ax[0].slice(0,2));
+    var sS_ = ax[2][2] ? ax[2][2].split('|') : ['',''];
+    $('lSs').textContent = sS_[LANG==='fr'?0:1];
+    $('lTs').textContent = mode==='red' ? (LANG==='fr' ? 'et amertume' : 'and bitterness') : '';
+    $('def270').textContent = mode==='red' ? (LANG==='fr' ? 'manque de tanins' : 'lacking tannin') : (LANG==='fr' ? 'manque d’amertume' : 'lacking bitterness');
+    var pb = $('presets'); pb.innerHTML = '';
+    D.modes[m].presets.forEach(function(p){
+      var b = document.createElement('button'); b.type = 'button'; b.textContent = LANG==='fr' ? p[0] : p[1];
+      b.addEventListener('click', function(){ sA.value = p[2]; sS.value = p[3]; sT.value = p[4]; update(); });
+      pb.appendChild(b);
+    });
+    $('mnote').textContent = L(NOTES[m]);
+    var tabs = document.querySelectorAll('#modes .tab');
+    for(var i=0;i<tabs.length;i++) tabs[i].classList.toggle('on', tabs[i].getAttribute('data-mode')===m);
+    update();
+  }
+  function update(){
+    var a = +sA.value, s = +sS.value, t = +sT.value, m = (a+s+t)/3;
+    $('oA').textContent = a; $('oS').textContent = s; $('oT').textContent = t;
+    var ua = u(210), us = u(330), ut = u(90);
+    var x = ((a-m)*ua[0] + (s-m)*us[0] + (t-m)*ut[0]) * K;
+    var y = ((a-m)*ua[1] + (s-m)*us[1] + (t-m)*ut[1]) * K;
+    var r = Math.sqrt(x*x+y*y);
+    if(r > 300){ x *= 300/r; y *= 300/r; r = 300; }
+    $('dot').style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
+    var hits = document.querySelectorAll('#bal .w.hit');
+    for(var i=0;i<hits.length;i++) hits[i].classList.remove('hit');
+    var word, desc, zone, bad = false, el;
+    if(r < 46){
+      word = D.centre[0]; desc = D.centre[1]; zone = LANG==='fr' ? 'Zone d’équilibre' : 'Balance zone';
+      el = document.querySelector('#bal .w.ctr');
+    } else {
+      var ang = Math.atan2(-y, x)*180/Math.PI; if(ang < 0) ang += 360;
+      var idx = 0, best = 999;
+      D.words.forEach(function(w, i){ var d = Math.abs(((ang - w.a + 540) % 360) - 180); if(d < best){ best = d; idx = i; } });
+      var w = D.words[idx];
+      if(r < 200){ word = w.i; desc = w.di; zone = LANG==='fr' ? 'Équilibré, avec une nuance' : 'Balanced, with a leaning'; el = document.querySelector('#bal .w.in[data-i="'+idx+'"]'); }
+      else { word = w.o; desc = w['do']; zone = LANG==='fr' ? 'Déséquilibre' : 'Imbalance'; bad = true; el = document.querySelector('#bal .w.out[data-o="'+idx+'"]'); }
+    }
+    if(el) el.classList.add('hit');
+    $('rz').textContent = zone;
+    $('rw').textContent = L(word);
+    $('rw').classList.toggle('bad', bad);
+    $('rd').textContent = L(desc);
+    var body = m >= 7 ? ['Matière : concentrée, corsée.', 'Concentration: high, full-bodied.']
+             : m <= 3.5 ? ['Matière : légère, fluide.', 'Concentration: light, fluid.']
+             : ['Matière : moyenne.', 'Concentration: medium.'];
+    $('rb').textContent = L(body);
+  }
+  [sA, sS, sT].forEach(function(e){ e.addEventListener('input', update); });
+  var mt = document.querySelectorAll('#modes .tab');
+  for(var i=0;i<mt.length;i++) mt[i].addEventListener('click', function(){ setMode(this.getAttribute('data-mode')); });
+
+  /* ---------- colour chart tabs ---------- */
+  var ptabs = document.querySelectorAll('.chart .tab');
+  for(var j=0;j<ptabs.length;j++) ptabs[j].addEventListener('click', function(){
+    var k = this.getAttribute('data-pal');
+    var all = document.querySelectorAll('.chart [data-pal]');
+    for(var n=0;n<all.length;n++) all[n].classList.toggle('on', all[n].getAttribute('data-pal')===k);
+  });
+
+  /* ---------- colour chart: tap to blow up (touch screens) ---------- */
+  var sws = document.querySelectorAll('.sw');
+  for(var q=0;q<sws.length;q++){
+    sws[q].tabIndex = 0;
+    var anchor = function(){   /* grow inwards: left-edge cards from their left, right-edge cards from their right */
+      var pr = this.parentNode.getBoundingClientRect(), r = this.getBoundingClientRect();
+      var x = r.left - pr.left < 8 ? '0' : (pr.right - r.right < 8 ? '100%' : '50%');
+      this.style.transformOrigin = x + ' 60%';
+    };
+    sws[q].addEventListener('pointerenter', anchor);
+    sws[q].addEventListener('focus', anchor);
+    sws[q].addEventListener('click', function(){
+      var on = !this.classList.contains('big');
+      var b = document.querySelectorAll('.sw.big'); for(var n=0;n<b.length;n++) b[n].classList.remove('big');
+      if(on){ anchor.call(this); this.classList.add('big'); }
+    });
+  }
+  /* ---------- lightbox ---------- */
+  var lb = $('lb');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest && e.target.closest('.zoom');
+    if(z && lb.showModal){ $('lbimg').src = z.getAttribute('data-full'); lb.showModal(); }
+  });
+  $('lbx').addEventListener('click', function(){ lb.close(); });
+  lb.addEventListener('click', function(e){ if(e.target===lb) lb.close(); });
+
+  /* ---------- language ---------- */
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Déguster le vin' : 'Tasting wine';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    setMode(mode);
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+  if(location.hash){
+    var tgt = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:'start'}); }, 0);
+  }
+})();
+</script>
+</body>
+</html>

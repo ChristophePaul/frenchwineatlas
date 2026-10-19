@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philosophies culturales</title>
+<meta name="description" content="Conventionnel, raisonné, HVE, Terra Vitis, bio, biodynamie, vin nature : ce que recouvre chaque façon de cultiver la vigne et ce que garantissent les mentions de l’étiquette.">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  /* chapter 8 */
+  .aps{display:grid;gap:12px;margin-top:16px;}
+  .ap{display:grid;grid-template-columns:54px minmax(0,1fr);gap:14px;padding:16px 18px;border-radius:18px;background:var(--glass);border:1px solid var(--hair);border-left:5px solid var(--c);}
+  .ap-n{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--serif);font-size:22px;}
+  .ap h3{font-family:var(--serif);font-weight:500;font-size:clamp(21px,2.6vw,26px);color:var(--title);margin:4px 0 6px;}
+  .ap p{margin:0;font-size:14.2px;line-height:1.62;}
+  .pm{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+  .pm p{padding:9px 12px;border-radius:12px;background:var(--glass-hi);border:1px solid var(--hair);font-size:13.2px;line-height:1.5;}
+  .pm b{font-size:16px;margin-right:4px;}
+  .pm .plus b{color:#4f8a3a;} .pm .minus b{color:#a0283c;}
+
+  .cmp-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .cmp{width:100%;border-collapse:collapse;font-size:14px;min-width:620px;}
+  .cmp th{font-size:11.5px;font-weight:600;color:var(--title);padding:8px 6px;border-bottom:1px solid var(--hair-hi);text-align:center;vertical-align:bottom;line-height:1.3;}
+  .cmp th .n{display:block;margin:0 auto 4px;width:24px;height:24px;border-radius:50%;background:var(--c);color:#fff;font-family:var(--serif);font-size:14px;line-height:24px;}
+  .cmp td{padding:8px 6px;border-bottom:1px solid var(--hair);text-align:center;font-size:17px;}
+  .cmp td:first-child{text-align:left;font-size:14px;}
+  .cmp td.ok{color:#4f8a3a;} .cmp td.no{color:#a0283c;} .cmp td.lim{color:#c08a1a;} .cmp td.na{color:var(--faint);}
+  .cmp-key{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:8px;}
+
+  .twocol{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:11px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14px;line-height:1.55;}
+  .fact b{color:var(--title);}
+
+  .labs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;}
+  .lab{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;align-items:start;padding:14px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);}
+  .badge{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:.04em;box-shadow:inset 0 0 0 3px rgba(255,255,255,.35);}
+  .lab b{display:block;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);margin-bottom:3px;}
+  .lab p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);}
+
+  @media (max-width:900px){ .twocol{grid-template-columns:minmax(0,1fr);} }
+  @media (max-width:620px){ .pm{grid-template-columns:minmax(0,1fr);} .ap{grid-template-columns:minmax(0,1fr);} .diagram-card.scroll{overflow-x:auto;} .diagram-card.scroll .diagram{min-width:560px;} }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .ap{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ap-n{color:#2e1419}
+html[data-theme="cream"] .pm p{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .cmp th{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .cmp th .n{color:#2e1419}
+html[data-theme="cream"] .cmp td{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .fact{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lab{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .badge{color:#2e1419;box-shadow:inset 0 0 0 3px rgba(255,255,255,0.80)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 8" data-en="The vine &amp; the vineyard · Chapter 8">La vigne &amp; le vignoble · Chapitre 8</p>
+    <h1 data-fr="Philosophies <em>culturales</em>" data-en="Farming <em>philosophies</em>">Philosophies <em>culturales</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Raisonné, HVE, bio, biodynamie, nature : derrière ces mots se cachent des façons très différentes de soigner la vigne, et des garanties plus ou moins solides pour le consommateur."
+       data-en="Integrated, HVE, organic, biodynamic, natural: behind these words lie very different ways of caring for the vine, and guarantees of varying strength for the consumer.">Raisonné, HVE, bio, biodynamie, nature : derrière ces mots se cachent des façons très différentes de soigner la vigne, et des garanties plus ou moins solides pour le consommateur.</p>
+    <nav class="toc">
+      <a href="#approches" data-fr="Les cinq approches" data-en="The five approaches">Les cinq approches</a>
+      <a href="#comparer" data-fr="Comparer" data-en="Comparison">Comparer</a>
+      <a href="#biodynamie" data-fr="La biodynamie" data-en="Biodynamics">La biodynamie</a>
+      <a href="#etiquette" data-fr="Lire l’étiquette" data-en="Reading the label">Lire l’étiquette</a>
+      <a href="#avenir" data-fr="Et demain ?" data-en="What next?">Et demain ?</a>
+    </nav>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">La vigne est l’une des cultures les plus traitées : sensible au mildiou, à l’oïdium et à la pourriture, elle reçoit souvent plus de dix traitements par an. Chaque vigneron arbitre entre la sécurité de sa récolte, son coût, la santé de ceux qui travaillent dans les vignes et l’environnement.</p>
+      <p class="L en">The vine is one of the most heavily treated crops: vulnerable to downy mildew, powdery mildew and rot, it often receives more than ten sprays a year. Every grower balances the safety of the crop, its cost, the health of vineyard workers and the environment.</p>
+      <p class="L fr">De là une gamme d’approches, de la plus libre à la plus encadrée. Seules certaines donnent lieu à une <b>certification</b> contrôlée par un organisme indépendant et à une mention sur l’étiquette.</p>
+      <p class="L en">Hence a range of approaches, from the least to the most regulated. Only some lead to a <b>certification</b> audited by an independent body and to a mention on the label.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Ce que recouvre chaque approche, ses atouts et ses limites." data-en="What each approach covers, its strengths and limits.">Ce que recouvre chaque approche, ses atouts et ses limites.</span></div></div>
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Règlements, plafonds de cuivre et de sulfites, préparations biodynamiques, cépages résistants." data-en="Regulations, copper and sulphite limits, biodynamic preparations, resistant varieties.">Règlements, plafonds de cuivre et de sulfites, préparations biodynamiques, cépages résistants.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="approches">
+    <div class="sec-head">
+      <h2 data-fr="Les cinq <em>approches</em>" data-en="The five <em>approaches</em>">Les cinq <em>approches</em></h2>
+      <p data-fr="Classées de la moins à la plus exigeante sur les intrants. Cliquez sur un numéro pour lire la fiche." data-en="Ranked from least to most demanding on inputs. Click a number to read the card.">Classées de la moins à la plus exigeante sur les intrants. Cliquez sur un numéro pour lire la fiche.</p>
+    </div>
+    <div class="diagram-card scroll"><svg class="diagram" viewBox="0 0 680 200" role="img" aria-label="Du conventionnel à la biodynamie / From conventional to biodynamic"><defs><linearGradient id="sp" x1="0" x2="1"><stop offset="0" stop-color="#b9b9be"/><stop offset=".5" stop-color="#7fb0a0"/><stop offset="1" stop-color="#9a7ab8"/></linearGradient><marker id="spa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#6b5a48" stroke-width="1.8"/></marker></defs><rect x="40" y="76" width="600" height="14" rx="7" fill="url(#sp)"/><path d="M40 112 L640 112" stroke="#6b5a48" stroke-width="1.4" marker-end="url(#spa)"/><text x="40.0" y="132.0" text-anchor="start" font-size="12.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="moins de contraintes" data-en="fewer constraints">moins de contraintes</text><text x="640.0" y="132.0" text-anchor="end" font-size="12.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="plus d’exigences sur les intrants" data-en="stricter limits on inputs">plus d’exigences sur les intrants</text><a href="#conv"><circle cx="70" cy="83" r="17" fill="#7a7a80" stroke="#fbf6ea" stroke-width="3"/><text x="70" y="89" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif">1</text></a><text x="70.0" y="40.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Conventionnelle" data-en="Conventional">Conventionnelle</text><text x="70.0" y="58.0" text-anchor="middle" font-size="11.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="synthèse, préventif" data-en="synthetic, preventive">synthèse, préventif</text><a href="#raison"><circle cx="205" cy="83" r="17" fill="#4f7fae" stroke="#fbf6ea" stroke-width="3"/><text x="205" y="89" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif">2</text></a><text x="205.0" y="40.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Raisonnée" data-en="Integrated (IPM)">Raisonnée</text><text x="205.0" y="58.0" text-anchor="middle" font-size="11.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="traiter si besoin" data-en="spray if needed">traiter si besoin</text><a href="#hve"><circle cx="340" cy="83" r="17" fill="#2f7d8c" stroke="#fbf6ea" stroke-width="3"/><text x="340" y="89" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif">3</text></a><text x="340.0" y="40.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="HVE · Terra Vitis" data-en="HVE · Terra Vitis">HVE · Terra Vitis</text><text x="340.0" y="58.0" text-anchor="middle" font-size="11.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="certifications" data-en="certifications">certifications</text><a href="#bio"><circle cx="475" cy="83" r="17" fill="#5f9a3a" stroke="#fbf6ea" stroke-width="3"/><text x="475" y="89" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif">4</text></a><text x="475.0" y="40.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Biologique" data-en="Organic">Biologique</text><text x="475.0" y="58.0" text-anchor="middle" font-size="11.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="sans synthèse" data-en="no synthetics">sans synthèse</text><a href="#bd"><circle cx="610" cy="83" r="17" fill="#8a5aa0" stroke="#fbf6ea" stroke-width="3"/><text x="610" y="89" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif">5</text></a><text x="610.0" y="40.0" text-anchor="middle" font-size="14.5" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Biodynamique" data-en="Biodynamic">Biodynamique</text><text x="610.0" y="58.0" text-anchor="middle" font-size="11.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="bio + préparations" data-en="organic + preparations">bio + préparations</text><text x="340.0" y="178.0" text-anchor="middle" font-size="12.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" font-style="italic" data-fr="Le « vin nature » relève surtout de la vinification : raisins bio, intrants minimum au chai." data-en="“Natural wine” is mainly a winemaking matter: organic grapes, minimal cellar inputs.">Le « vin nature » relève surtout de la vinification : raisins bio, intrants minimum au chai.</text></svg></div>
+    <div class="aps"><article class="ap" id="conv" style="--c:#7a7a80">
+      <div class="ap-n">1</div>
+      <div class="ap-b"><h3><span data-fr="Viticulture conventionnelle" data-en="Conventional viticulture">Viticulture conventionnelle</span></h3><p class="L fr">Elle utilise les produits phytosanitaires et engrais de synthèse autorisés, souvent selon un calendrier préventif. Les plans Écophyto successifs, depuis 2008, visent à en réduire l’usage.</p><p class="L en">It uses approved synthetic crop-protection products and fertilisers, often on a preventive schedule. Successive Écophyto plans, since 2008, aim to reduce their use.</p>
+        <div class="pm"><p class="plus"><b>+</b> <span data-fr="Protection efficace et régulière, coûts maîtrisés." data-en="Effective, reliable protection, controlled costs.">Protection efficace et régulière, coûts maîtrisés.</span></p><p class="minus"><b>–</b> <span data-fr="Résidus, impact sur la biodiversité et l’eau, image auprès des consommateurs." data-en="Residues, impact on biodiversity and water, consumer image.">Résidus, impact sur la biodiversité et l’eau, image auprès des consommateurs.</span></p></div></div></article><article class="ap" id="raison" style="--c:#4f7fae">
+      <div class="ap-n">2</div>
+      <div class="ap-b"><h3><span data-fr="Viticulture raisonnée, lutte intégrée" data-en="Integrated pest management">Viticulture raisonnée, lutte intégrée</span></h3><p class="L fr">On observe la vigne, on suit les modèles de prévision et les bulletins de santé du végétal, et l’on ne traite qu’au-delà d’un seuil de risque. On privilégie les auxiliaires, la confusion sexuelle, l’enherbement.</p><p class="L en">Growers monitor the vines, follow forecasting models and plant-health bulletins, and spray only above a risk threshold. Beneficial insects, mating disruption and cover crops are favoured.</p>
+        <div class="pm"><p class="plus"><b>+</b> <span data-fr="Moins de traitements sans renoncer aux produits de synthèse." data-en="Fewer sprays without giving up synthetic products.">Moins de traitements sans renoncer aux produits de synthèse.</span></p><p class="minus"><b>–</b> <span data-fr="Démarche peu encadrée en elle-même : c’est le rôle des certifications." data-en="Loosely defined on its own: that is what certifications are for.">Démarche peu encadrée en elle-même : c’est le rôle des certifications.</span></p></div></div></article><article class="ap" id="hve" style="--c:#2f7d8c">
+      <div class="ap-n">3</div>
+      <div class="ap-b"><h3><span data-fr="HVE, Terra Vitis, Vignerons Engagés" data-en="HVE, Terra Vitis, Vignerons Engagés">HVE, Terra Vitis, Vignerons Engagés</span></h3><p class="L fr">La <b>Haute Valeur Environnementale</b> est une certification de l’État (créée en 2012) qui évalue toute l’exploitation sur quatre thèmes : biodiversité, stratégie phytosanitaire, fertilisation et irrigation. <b>Terra Vitis</b> (depuis 1998) et <b>Vignerons Engagés</b> sont des démarches de la filière, plus larges (social, économie, environnement).</p><p class="L en"><b>High Environmental Value</b> (HVE) is a state certification (created in 2012) that assesses the whole farm on four themes: biodiversity, crop-protection strategy, fertilisation and irrigation. <b>Terra Vitis</b> (since 1998) and <b>Vignerons Engagés</b> are industry schemes with a broader scope (social, economic, environmental).</p>
+        <div class="pm"><p class="plus"><b>+</b> <span data-fr="Contrôles par un organisme tiers ; la viticulture est de loin la première filière certifiée HVE." data-en="Third-party audits; viticulture is by far the leading HVE-certified sector.">Contrôles par un organisme tiers ; la viticulture est de loin la première filière certifiée HVE.</span></p><p class="minus"><b>–</b> <span data-fr="Produits de synthèse autorisés ; exigences jugées trop faibles par certains, d’où un référentiel renforcé en 2023." data-en="Synthetic products allowed; some consider the requirements too weak, hence a tougher standard in 2023.">Produits de synthèse autorisés ; exigences jugées trop faibles par certains, d’où un référentiel renforcé en 2023.</span></p></div></div></article><article class="ap" id="bio" style="--c:#5f9a3a">
+      <div class="ap-n">4</div>
+      <div class="ap-b"><h3><span data-fr="Agriculture biologique" data-en="Organic farming">Agriculture biologique</span></h3><p class="L fr">Aucun pesticide, herbicide ni engrais de synthèse ; protection par le cuivre, le soufre et des produits naturels ; travail du sol ou enherbement. Trois ans de conversion avant la certification. Le vin bio suit aussi des règles de vinification (depuis 2012), avec moins de sulfites autorisés.</p><p class="L en">No synthetic pesticides, herbicides or fertilisers; protection with copper, sulphur and natural products; tillage or cover crops. Three years of conversion before certification. Organic wine also follows winemaking rules (since 2012), with lower permitted sulphites.</p>
+        <div class="pm"><p class="plus"><b>+</b> <span data-fr="Cadre européen précis et contrôlé ; environ un cinquième du vignoble français, conversion comprise." data-en="Precise, audited EU framework; about one fifth of French vineyard area, including conversion.">Cadre européen précis et contrôlé ; environ un cinquième du vignoble français, conversion comprise.</span></p><p class="minus"><b>–</b> <span data-fr="Plus de passages dans les années humides, accumulation de cuivre dans les sols, rendements parfois plus faibles." data-en="More passes in wet years, copper build-up in soils, sometimes lower yields.">Plus de passages dans les années humides, accumulation de cuivre dans les sols, rendements parfois plus faibles.</span></p></div></div></article><article class="ap" id="bd" style="--c:#8a5aa0">
+      <div class="ap-n">5</div>
+      <div class="ap-b"><h3><span data-fr="Biodynamie" data-en="Biodynamics">Biodynamie</span></h3><p class="L fr">Issue des conférences de Rudolf Steiner (1924), elle ajoute au bio des préparations à base de bouse, de silice et de plantes, utilisées à doses infimes, et un calendrier tenant compte des rythmes lunaires et planétaires. Le domaine est pensé comme un organisme vivant.</p><p class="L en">Born of Rudolf Steiner’s 1924 lectures, it adds to organic farming preparations made from manure, silica and plants, used in tiny doses, and a calendar based on lunar and planetary rhythms. The estate is seen as a living organism.</p>
+        <div class="pm"><p class="plus"><b>+</b> <span data-fr="Grande attention à la vigne et au sol ; adoptée par de grands domaines (Leroy, Coulée de Serrant…)." data-en="Close attention to vines and soil; adopted by leading estates (Leroy, Coulée de Serrant…).">Grande attention à la vigne et au sol ; adoptée par de grands domaines (Leroy, Coulée de Serrant…).</span></p><p class="minus"><b>–</b> <span data-fr="Les effets propres des préparations ne font pas consensus scientifique." data-en="The specific effects of the preparations lack scientific consensus.">Les effets propres des préparations ne font pas consensus scientifique.</span></p></div></div></article></div>
+  </section>
+
+  <section class="sec" id="comparer">
+    <div class="sec-head">
+      <h2 data-fr="Comparer <em>d’un coup d’œil</em>" data-en="Compare <em>at a glance</em>">Comparer <em>d’un coup d’œil</em></h2>
+      <p data-fr="Simplifié : chaque cahier des charges a ses nuances." data-en="Simplified: each standard has its own nuances.">Simplifié : chaque cahier des charges a ses nuances.</p>
+    </div>
+    <div class="panel cmp-wrap"><table class="cmp"><thead><tr><th></th><th style="--c:#7a7a80"><span class="n">1</span><span data-fr="Conventionnelle" data-en="Conventional">Conventionnelle</span></th><th style="--c:#4f7fae"><span class="n">2</span><span data-fr="Raisonnée" data-en="Integrated (IPM)">Raisonnée</span></th><th style="--c:#2f7d8c"><span class="n">3</span><span data-fr="HVE · Terra Vitis" data-en="HVE · Terra Vitis">HVE · Terra Vitis</span></th><th style="--c:#5f9a3a"><span class="n">4</span><span data-fr="Biologique" data-en="Organic">Biologique</span></th><th style="--c:#8a5aa0"><span class="n">5</span><span data-fr="Biodynamique" data-en="Biodynamic">Biodynamique</span></th></tr></thead><tbody><tr><td><span data-fr="Pesticides de synthèse" data-en="Synthetic pesticides">Pesticides de synthèse</span></td><td class="ok" title="autorisé">✓</td><td class="ok" title="autorisé">✓</td><td class="lim" title="limité">◐</td><td class="no" title="interdit / non">✕</td><td class="no" title="interdit / non">✕</td></tr><tr><td><span data-fr="Herbicides chimiques" data-en="Chemical herbicides">Herbicides chimiques</span></td><td class="ok" title="autorisé">✓</td><td class="lim" title="limité">◐</td><td class="lim" title="limité">◐</td><td class="no" title="interdit / non">✕</td><td class="no" title="interdit / non">✕</td></tr><tr><td><span data-fr="Engrais de synthèse" data-en="Synthetic fertilisers">Engrais de synthèse</span></td><td class="ok" title="autorisé">✓</td><td class="ok" title="autorisé">✓</td><td class="lim" title="limité">◐</td><td class="no" title="interdit / non">✕</td><td class="no" title="interdit / non">✕</td></tr><tr><td><span data-fr="Cuivre et soufre" data-en="Copper and sulphur">Cuivre et soufre</span></td><td class="ok" title="autorisé">✓</td><td class="ok" title="autorisé">✓</td><td class="ok" title="autorisé">✓</td><td class="lim" title="limité">◐</td><td class="lim" title="limité">◐</td></tr><tr><td><span data-fr="Préparations biodynamiques" data-en="Biodynamic preparations">Préparations biodynamiques</span></td><td class="na" title="sans objet">—</td><td class="na" title="sans objet">—</td><td class="na" title="sans objet">—</td><td class="na" title="sans objet">—</td><td class="ok" title="autorisé">✓</td></tr><tr><td><span data-fr="Certification et contrôle" data-en="Certification and audits">Certification et contrôle</span></td><td class="no" title="interdit / non">✕</td><td class="no" title="interdit / non">✕</td><td class="ok" title="autorisé">✓</td><td class="ok" title="autorisé">✓</td><td class="ok" title="autorisé">✓</td></tr><tr><td><span data-fr="Règles de vinification propres" data-en="Own winemaking rules">Règles de vinification propres</span></td><td class="no" title="interdit / non">✕</td><td class="no" title="interdit / non">✕</td><td class="no" title="interdit / non">✕</td><td class="ok" title="autorisé">✓</td><td class="ok" title="autorisé">✓</td></tr></tbody></table>
+      <div class="cmp-key"><span><b style="color:#4f8a3a">✓</b> <span data-fr="autorisé, oui" data-en="allowed, yes">autorisé, oui</span></span><span><b style="color:#c08a1a">◐</b> <span data-fr="limité, encadré" data-en="limited, restricted">limité, encadré</span></span><span><b style="color:#a0283c">✕</b> <span data-fr="interdit, non" data-en="forbidden, no">interdit, non</span></span></div>
+    </div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Le règlement" data-en="The regulation">Le règlement</span></dt><dd><div class="L fr">Règlement (UE) 2018/848, en vigueur depuis 2022 (il remplace le 834/2007) ; règles de vinification bio depuis 2012. Contrôle annuel par un organisme certificateur agréé (Ecocert, Certipaq, Bureau Veritas…).</div><div class="L en">Regulation (EU) 2018/848, in force since 2022 (replacing 834/2007); organic winemaking rules since 2012. Annual audit by an accredited certification body (Ecocert, Certipaq, Bureau Veritas…).</div></dd></div><div class="pro-item"><dt><span data-fr="Le cuivre" data-en="Copper">Le cuivre</span></dt><dd><div class="L fr">Plafonné à 28 kg/ha sur 7 ans, soit 4 kg/ha/an en moyenne, lissable d’une année sur l’autre. Indispensable contre le mildiou en bio, il s’accumule dans les sols ; d’où la recherche de biocontrôle et de cépages résistants.</div><div class="L en">Capped at 28 kg/ha over 7 years, i.e. 4 kg/ha/year on average, which can be averaged across years. Essential against downy mildew in organic farming, it builds up in soils; hence research into biocontrol and resistant varieties.</div></dd></div><div class="pro-item"><dt><span data-fr="Les sulfites" data-en="Sulphites">Les sulfites</span></dt><dd><div class="L fr">Teneurs maximales en SO<sub>2</sub> total des vins secs : 100 mg/L pour un rouge bio contre 150 en conventionnel, 150 mg/L pour un blanc ou rosé bio contre 200. Certains additifs et techniques sont interdits (désalcoolisation partielle, électrodialyse…).</div><div class="L en">Maximum total SO<sub>2</sub> in dry wines: 100 mg/L for an organic red versus 150 conventional, 150 mg/L for an organic white or rosé versus 200. Some additives and techniques are banned (partial dealcoholisation, electrodialysis…).</div></dd></div></dl></details>
+  </section>
+
+  <section class="sec" id="biodynamie">
+    <div class="sec-head">
+      <h2 data-fr="La <em>biodynamie</em>" data-en="<em>Biodynamics</em>">La <em>biodynamie</em></h2>
+      <p data-fr="Huit préparations, utilisées à très faibles doses, sont au cœur de la méthode." data-en="Eight preparations, used in very small doses, are at the heart of the method.">Huit préparations, utilisées à très faibles doses, sont au cœur de la méthode.</p>
+    </div>
+    <div class="twocol">
+      <div class="diagram-card scroll"><svg class="diagram" viewBox="0 0 680 420" role="img" aria-label="Les préparations biodynamiques / Biodynamic preparations"><circle cx="340" cy="210" r="160" fill="#f3ead6" stroke="#d9c9a3"/><line x1="340.0" y1="156.0" x2="340.0" y2="126.0" stroke="#c9b48a" stroke-width="1.4"/><circle cx="340.0" cy="98.0" r="31" fill="#8a5a2b" stroke="#fbf6ea" stroke-width="3"/><text x="340.0" y="104.0" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">500</text><text x="340.0" y="26.0" text-anchor="middle" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Bouse de corne" data-en="Horn manure">Bouse de corne</text><text x="340.0" y="42.0" text-anchor="middle" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="sol, racines" data-en="soil, roots">sol, racines</text><line x1="378.2" y1="171.8" x2="399.4" y2="150.6" stroke="#c9b48a" stroke-width="1.4"/><circle cx="419.2" cy="130.8" r="31" fill="#c9b84a" stroke="#fbf6ea" stroke-width="3"/><text x="419.2" y="136.8" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">501</text><text x="465.9" y="78.1" text-anchor="start" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Silice de corne" data-en="Horn silica">Silice de corne</text><text x="465.9" y="94.1" text-anchor="start" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="lumière, feuillage" data-en="light, foliage">lumière, feuillage</text><line x1="394.0" y1="210.0" x2="424.0" y2="210.0" stroke="#c9b48a" stroke-width="1.4"/><circle cx="452.0" cy="210.0" r="31" fill="#e8d9a0" stroke="#fbf6ea" stroke-width="3"/><text x="452.0" y="216.0" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">502</text><text x="518.0" y="210.0" text-anchor="start" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Achillée" data-en="Yarrow">Achillée</text><text x="518.0" y="226.0" text-anchor="start" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="compost" data-en="compost">compost</text><line x1="378.2" y1="248.2" x2="399.4" y2="269.4" stroke="#c9b48a" stroke-width="1.4"/><circle cx="419.2" cy="289.2" r="31" fill="#f2e28a" stroke="#fbf6ea" stroke-width="3"/><text x="419.2" y="295.2" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">503</text><text x="465.9" y="345.9" text-anchor="start" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Camomille" data-en="Chamomile">Camomille</text><text x="465.9" y="361.9" text-anchor="start" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="compost" data-en="compost">compost</text><line x1="340.0" y1="264.0" x2="340.0" y2="294.0" stroke="#c9b48a" stroke-width="1.4"/><circle cx="340.0" cy="322.0" r="31" fill="#6f9a3a" stroke="#fbf6ea" stroke-width="3"/><text x="340.0" y="328.0" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">504</text><text x="340.0" y="398.0" text-anchor="middle" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Ortie" data-en="Nettle">Ortie</text><text x="340.0" y="414.0" text-anchor="middle" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="compost" data-en="compost">compost</text><line x1="301.8" y1="248.2" x2="280.6" y2="269.4" stroke="#c9b48a" stroke-width="1.4"/><circle cx="260.8" cy="289.2" r="31" fill="#9b7b52" stroke="#fbf6ea" stroke-width="3"/><text x="260.8" y="295.2" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">505</text><text x="214.1" y="345.9" text-anchor="end" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Écorce de chêne" data-en="Oak bark">Écorce de chêne</text><text x="214.1" y="361.9" text-anchor="end" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="compost" data-en="compost">compost</text><line x1="286.0" y1="210.0" x2="256.0" y2="210.0" stroke="#c9b48a" stroke-width="1.4"/><circle cx="228.0" cy="210.0" r="31" fill="#e8b83a" stroke="#fbf6ea" stroke-width="3"/><text x="228.0" y="216.0" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">506</text><text x="162.0" y="210.0" text-anchor="end" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Pissenlit" data-en="Dandelion">Pissenlit</text><text x="162.0" y="226.0" text-anchor="end" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="compost" data-en="compost">compost</text><line x1="301.8" y1="171.8" x2="280.6" y2="150.6" stroke="#c9b48a" stroke-width="1.4"/><circle cx="260.8" cy="130.8" r="31" fill="#c9a0c0" stroke="#fbf6ea" stroke-width="3"/><text x="260.8" y="136.8" text-anchor="middle" font-size="17" font-weight="700" fill="#2b2018" font-family="Iowan Old Style,Palatino,Georgia,serif">507</text><text x="214.1" y="78.1" text-anchor="end" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Valériane" data-en="Valerian">Valériane</text><text x="214.1" y="94.1" text-anchor="end" font-size="12" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="compost" data-en="compost">compost</text><circle cx="340" cy="210" r="52" fill="#fbf6ea" stroke="#d9c9a3"/><text x="340.0" y="206.0" text-anchor="middle" font-size="16" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Les 8" data-en="The 8">Les 8</text><text x="340.0" y="226.0" text-anchor="middle" font-size="13" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="préparations" data-en="preparations">préparations</text></svg></div>
+      <div class="facts">
+        <div class="fact L fr"><b>500 et 501</b> sont pulvérisées après avoir été « dynamisées » : brassées longuement dans l’eau tiède, en changeant de sens.</div>
+        <div class="fact L en"><b>500 and 501</b> are sprayed after being “dynamised”: stirred for a long time in warm water, changing direction.</div>
+        <div class="fact L fr"><b>502 à 507</b>, à base de plantes, sont incorporées au compost en quantités infimes.</div>
+        <div class="fact L en"><b>502 to 507</b>, made from plants, are added to compost in tiny quantities.</div>
+        <div class="fact L fr"><b>Tisanes et décoctions</b> (prêle, ortie, osier) complètent la protection, avec le cuivre et le soufre autorisés en bio.</div>
+        <div class="fact L en"><b>Herbal teas and decoctions</b> (horsetail, nettle, willow) round out protection, alongside the copper and sulphur allowed in organic farming.</div>
+        <div class="fact L fr"><b>Pionniers en France :</b> Nicolas Joly à la Coulée de Serrant (années 1980), le domaine Leroy en Bourgogne (1988).</div>
+        <div class="fact L en"><b>Pioneers in France:</b> Nicolas Joly at Coulée de Serrant (1980s), Domaine Leroy in Burgundy (1988).</div>
+      </div>
+    </div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Les préparations" data-en="The preparations">Les préparations</span></dt><dd><div class="L fr">La 500 (bouse de vache fermentée l’hiver dans une corne enterrée) est pulvérisée sur le sol au printemps et à l’automne ; la 501 (quartz broyé, enterré l’été) sur le feuillage, tôt le matin. Les 502 à 507 sont ajoutées au compost. Doses de quelques grammes à quelques centaines de grammes par hectare, « dynamisées » dans l’eau.</div><div class="L en">Preparation 500 (cow manure fermented over winter in a buried horn) is sprayed on the soil in spring and autumn; 501 (ground quartz, buried over summer) on the foliage, early in the morning. Preparations 502–507 are added to compost. Doses from a few grams to a few hundred grams per hectare, “dynamised” in water.</div></dd></div><div class="pro-item"><dt><span data-fr="Le calendrier" data-en="The calendar">Le calendrier</span></dt><dd><div class="L fr">Les calendriers (Maria Thun et ses successeurs) classent les jours en jours fruit, fleur, feuille ou racine selon la position de la Lune devant les constellations ; les vignerons y calent traitements, taille ou mise en bouteille.</div><div class="L en">The calendars (Maria Thun and her successors) classify days as fruit, flower, leaf or root days according to the Moon’s position against the constellations; growers time spraying, pruning or bottling by them.</div></dd></div><div class="pro-item"><dt><span data-fr="Ce que dit la science" data-en="What science says">Ce que dit la science</span></dt><dd><div class="L fr">Les comparaisons montrent surtout les effets des pratiques bio qui sous-tendent la biodynamie (vie du sol, vigueur modérée) ; un effet spécifique des préparations n’est pas établi. Le soin accru porté aux vignes reste, pour beaucoup, l’explication la plus simple de la réputation des domaines biodynamiques.</div><div class="L en">Comparisons mostly show the effects of the organic practices underlying biodynamics (soil life, moderate vigour); a specific effect of the preparations has not been established. The extra care given to the vines remains, for many, the simplest explanation of biodynamic estates’ reputation.</div></dd></div></dl></details>
+  </section>
+
+  <section class="sec" id="etiquette">
+    <div class="sec-head">
+      <h2 data-fr="Lire <em>l’étiquette</em>" data-en="Reading <em>the label</em>">Lire <em>l’étiquette</em></h2>
+      <p data-fr="Ce que garantit chaque mention. Les pastilles ci-dessous sont des repères, pas les logos officiels." data-en="What each mention guarantees. The badges below are markers, not the official logos.">Ce que garantit chaque mention. Les pastilles ci-dessous sont des repères, pas les logos officiels.</p>
+    </div>
+    <div class="labs"><div class="lab" style="--c:#2f7d8c"><span class="badge">HVE</span><div><b><span data-fr="Haute Valeur Environnementale" data-en="High Environmental Value">Haute Valeur Environnementale</span></b><p class="L fr">Exploitation certifiée niveau 3 par un organisme agréé. Mention possible sur l’étiquette : « issu d’une exploitation de Haute Valeur Environnementale ».</p><p class="L en">Farm certified at level 3 by an accredited body. Label wording: “from a High Environmental Value farm”.</p></div></div><div class="lab" style="--c:#5f9a3a"><span class="badge">BIO</span><div><b><span data-fr="Agriculture biologique (AB et logo européen)" data-en="Organic (AB and EU logo)">Agriculture biologique (AB et logo européen)</span></b><p class="L fr">Raisins et vinification conformes au règlement européen ; « en conversion » pendant les trois premières années.</p><p class="L en">Grapes and winemaking comply with the EU regulation; “in conversion” for the first three years.</p></div></div><div class="lab" style="--c:#8a5aa0"><span class="badge">BD</span><div><b><span data-fr="Demeter, Biodyvin" data-en="Demeter, Biodyvin">Demeter, Biodyvin</span></b><p class="L fr">Marques privées de biodynamie, qui exigent d’abord la certification bio. Biodyvin est propre au vin.</p><p class="L en">Private biodynamic brands, which first require organic certification. Biodyvin is specific to wine.</p></div></div><div class="lab" style="--c:#4f7fae"><span class="badge">TV</span><div><b><span data-fr="Terra Vitis" data-en="Terra Vitis">Terra Vitis</span></b><p class="L fr">Cahier des charges de viticulture durable porté par la filière, contrôlé par un organisme indépendant.</p><p class="L en">Industry-led sustainable-viticulture standard, audited by an independent body.</p></div></div><div class="lab" style="--c:#a0283c"><span class="badge">VMN</span><div><b><span data-fr="Vin méthode nature" data-en="Vin méthode nature">Vin méthode nature</span></b><p class="L fr">Charte reconnue en 2020 : raisins bio vendangés à la main, levures indigènes, aucun intrant ; sulfites ajoutés au plus 30 mg/L, avec un logo distinct.</p><p class="L en">Charter recognised in 2020: organic, hand-picked grapes, native yeasts, no additives; at most 30 mg/L added sulphites, with a distinct logo.</p></div></div></div>
+    <p class="hint" data-fr="Des mentions comme « vigneron engagé », « nature », « sans sulfites ajoutés » ou « vieilles vignes » ne garantissent rien en elles-mêmes si elles ne s’appuient pas sur une certification." data-en="Wording such as “committed grower”, “natural”, “no added sulphites” or “old vines” guarantees nothing by itself unless backed by a certification.">Des mentions comme « vigneron engagé », « nature », « sans sulfites ajoutés » ou « vieilles vignes » ne garantissent rien en elles-mêmes si elles ne s’appuient pas sur une certification.</p>
+  </section>
+
+  <section class="sec" id="avenir">
+    <div class="sec-head">
+      <h2 data-fr="Et <em>demain ?</em>" data-en="What <em>next?</em>">Et <em>demain ?</em></h2>
+      <p data-fr="Réduire les traitements sans perdre la récolte : cépages résistants, biocontrôle et biodiversité ouvrent de nouvelles voies." data-en="Cutting sprays without losing the crop: resistant varieties, biocontrol and biodiversity open new paths.">Réduire les traitements sans perdre la récolte : cépages résistants, biocontrôle et biodiversité ouvrent de nouvelles voies.</p>
+    </div>
+    <div class="labs">
+      <div class="lab" style="--c:#5f9a3a"><span class="badge">1</span><div><b data-fr="Cépages résistants" data-en="Resistant varieties">Cépages résistants</b><p class="L fr">Croisés pour résister naturellement au mildiou et à l’oïdium, ils demandent beaucoup moins de traitements.</p><p class="L en">Bred to resist downy and powdery mildew naturally, they need far fewer sprays.</p></div></div>
+      <div class="lab" style="--c:#2f7d8c"><span class="badge">2</span><div><b data-fr="Biocontrôle" data-en="Biocontrol">Biocontrôle</b><p class="L fr">Phéromones, micro-organismes, extraits de plantes, insectes auxiliaires : protéger la vigne avec des mécanismes naturels.</p><p class="L en">Pheromones, micro-organisms, plant extracts, beneficial insects: protecting the vine with natural mechanisms.</p></div></div>
+      <div class="lab" style="--c:#8a5a2b"><span class="badge">3</span><div><b data-fr="Biodiversité" data-en="Biodiversity">Biodiversité</b><p class="L fr">Haies, arbres, couverts fleuris, oiseaux et chauves-souris : un vignoble vivant se défend mieux.</p><p class="L en">Hedges, trees, flowering cover crops, birds and bats: a living vineyard defends itself better.</p></div></div>
+    </div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Cépages résistants" data-en="Resistant varieties">Cépages résistants</span></dt><dd><div class="L fr">Les variétés résistantes au mildiou et à l’oïdium (programme ResDur de l’INRAE : Artaban, Vidoc, Floreal, Voltis…) permettent de réduire fortement les traitements fongicides, de l’ordre de 80 à 90 %. Leur entrée dans les AOC reste limitée, souvent sous le statut de « variétés d’intérêt à fin d’adaptation ».</div><div class="L en">Varieties resistant to downy and powdery mildew (INRAE’s ResDur programme: Artaban, Vidoc, Floreal, Voltis…) can cut fungicide sprays sharply, by around 80–90 %. Their entry into AOCs is still limited, often under the status of “varieties of interest for adaptation”.</div></dd></div><div class="pro-item"><dt><span data-fr="Agroécologie" data-en="Agroecology">Agroécologie</span></dt><dd><div class="L fr">Haies, arbres dans les vignes (agroforesterie), moutons en hiver pour tondre l’herbe, nichoirs à mésanges et chauves-souris contre les vers de la grappe : la biodiversité devient un outil de protection.</div><div class="L en">Hedges, trees among the vines (agroforestry), sheep in winter to graze the grass, nest boxes for tits and bats against grape moths: biodiversity becomes a protection tool.</div></dd></div></dl></details>
+  </section>
+
+  <nav class="chapters" aria-label="Chapitres"><h3 data-fr="La vigne &amp;amp; le vignoble · les chapitres" data-en="The vine &amp;amp; the vineyard · chapters">La vigne &amp; le vignoble · les chapitres</h3><div class="ch-grid"><a class="ch" href="Vine_Plant.html"><span class="ch-n">01</span><span class="ch-t" data-fr="La plante vigne" data-en="The vine plant">La plante vigne</span></a><a class="ch" href="Vine_Cycle.html"><span class="ch-n">02</span><span class="ch-t" data-fr="Le cycle de la vigne" data-en="The vine’s year">Le cycle de la vigne</span></a><a class="ch" href="Vine_Terroir.html"><span class="ch-n">03</span><span class="ch-t" data-fr="Terroir &amp; site" data-en="Terroir &amp; site">Terroir & site</span></a><a class="ch" href="Vine_Planting.html"><span class="ch-n">04</span><span class="ch-t" data-fr="Plantation &amp; vie du vignoble" data-en="Planting &amp; the life of a vineyard">Plantation & vie du vignoble</span></a><a class="ch" href="Vine_Pruning.html"><span class="ch-n">05</span><span class="ch-t" data-fr="Taille &amp; modes de conduite" data-en="Training &amp; pruning">Taille & modes de conduite</span></a><a class="ch" href="Vine_Canopy.html"><span class="ch-n">06</span><span class="ch-t" data-fr="Travaux en vert &amp; du sol" data-en="Canopy &amp; soil work">Travaux en vert & du sol</span></a><a class="ch" href="Vine_Threats.html"><span class="ch-n">07</span><span class="ch-t" data-fr="Les ennemis de la vigne" data-en="Threats to the vine">Les ennemis de la vigne</span></a><span class="ch cur" aria-current="page"><span class="ch-n">08</span><span class="ch-t" data-fr="Philosophies culturales" data-en="Farming philosophies">Philosophies culturales</span></span><a class="ch" href="Vine_Harvest.html"><span class="ch-n">09</span><span class="ch-t" data-fr="Les vendanges" data-en="Harvest">Les vendanges</span></a><a class="ch" href="Vine_Glossary.html"><span class="ch-n">10</span><span class="ch-t" data-fr="Glossaire" data-en="Glossary">Glossaire</span></a></div></nav>
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources"><li><span data-fr="Règlement (UE) 2018/848 relatif à la production biologique ; règlement d’exécution (UE) 203/2012 (vin biologique)." data-en="Regulation (EU) 2018/848 on organic production; Implementing Regulation (EU) 203/2012 (organic wine).">Règlement (UE) 2018/848 relatif à la production biologique ; règlement d’exécution (UE) 203/2012 (vin biologique).</span></li><li><span data-fr="Ministère de l’Agriculture, référentiel de la certification environnementale (HVE), version 2023." data-en="French Ministry of Agriculture, environmental certification (HVE) standard, 2023 version.">Ministère de l’Agriculture, référentiel de la certification environnementale (HVE), version 2023.</span></li><li><span data-fr="Agence Bio, chiffres de la viticulture biologique." data-en="Agence Bio, organic viticulture figures.">Agence Bio, chiffres de la viticulture biologique.</span></li><li><span data-fr="Steiner R., <i>Cours aux agriculteurs</i>, 1924 ; Demeter, Biodyvin (SIVCBD), cahiers des charges." data-en="Steiner R., <i>Agriculture Course</i>, 1924; Demeter, Biodyvin (SIVCBD), standards.">Steiner R., <i>Cours aux agriculteurs</i>, 1924 ; Demeter, Biodyvin (SIVCBD), cahiers des charges.</span></li><li><span data-fr="Syndicat de défense des vins nature’l, charte « Vin méthode nature », 2020 ; INRAE, programme ResDur." data-en="Syndicat de défense des vins nature’l, “Vin méthode nature” charter, 2020; INRAE, ResDur programme.">Syndicat de défense des vins nature’l, charte « Vin méthode nature », 2020 ; INRAE, programme ResDur.</span></li></ul>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Philosophies culturales' : 'Farming philosophies';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La plante vigne</title>
+<meta name="description" content="Anatomie de la vigne : espèces, cep, bourgeon, feuille, fleur, grappe et baie, avec planches botaniques et compléments pour les professionnels.">
+<style>
+@@BASE_CSS@@
+  /* chapter 1 */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px;}
+  .stat{padding:16px 18px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,36px);color:var(--title);line-height:1.05;}
+  .stat span{font-size:12.5px;color:var(--muted);line-height:1.45;display:block;margin-top:4px;}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+
+  .tree{padding:clamp(16px,2.6vw,28px);}
+  .tree-top{display:flex;flex-direction:column;align-items:center;gap:0;}
+  .node{border-radius:12px;padding:9px 14px;text-align:center;font-size:13px;line-height:1.4;border:1px solid var(--hair);background:var(--glass-hi);}
+  .node b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);}
+  .node i{font-family:var(--serif);}
+  .stem{width:1px;height:18px;background:var(--hair-hi);}
+  .branches{display:grid;grid-template-columns:1fr 2.6fr;gap:14px;width:100%;}
+  .branch{border:1px dashed var(--hair-hi);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:10px;}
+  .branch>.node{background:transparent;border:none;padding:0 0 4px;}
+  .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .grp{border-radius:12px;padding:10px 12px;border-top:3px solid var(--c);background:color-mix(in srgb,var(--c) 9%,var(--glass));font-size:13px;line-height:1.5;}
+  .grp h4{margin:0 0 4px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--c);}
+  html:not([data-theme="cream"]) .grp h4{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .grp i{font-family:var(--serif);font-size:1.05em;}
+  .hybrids{margin-top:12px;padding:10px 14px;border-radius:12px;border:1px solid var(--hair);font-size:13px;line-height:1.55;color:var(--muted);}
+  .hybrids b{color:var(--parchment);}
+
+  .parts{list-style:none;margin:0;padding:0;display:grid;gap:8px;counter-reset:p;}
+  .parts li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;font-size:14px;line-height:1.55;padding:10px 12px;border-radius:12px;background:var(--glass);border:1px solid var(--hair);}
+  .parts li::before{counter-increment:p;content:counter(p);width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:700;color:#fff;background:var(--c);}
+  .parts b{color:var(--title);font-weight:600;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  .wood{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:6px;}
+  .w-step{position:relative;padding:14px 14px 14px 16px;background:var(--glass);border:1px solid var(--hair);border-left:none;font-size:13px;line-height:1.5;}
+  .w-step:first-child{border-left:1px solid var(--hair);border-radius:14px 0 0 14px;}
+  .w-step:last-child{border-radius:0 14px 14px 0;}
+  .w-step::before{content:"";display:block;width:100%;height:6px;border-radius:3px;background:var(--c);margin-bottom:10px;}
+  .w-step b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:2px;}
+  .w-step small{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:700;}
+
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  .flip{display:flex;gap:6px;justify-content:center;margin:12px 0 0;}
+  .flip button{font:600 11px var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:8px 14px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--hair);background:var(--glass);color:var(--gold);}
+  .flip button[aria-pressed="true"]{background:var(--gold);color:var(--glass-hi);border-color:var(--gold);}
+  html:not([data-theme="cream"]) .flip button[aria-pressed="true"]{color:#2a0a12;}
+  .leafbox{position:relative;}
+  .leafbox .plate+.plate{position:absolute;inset:0;}
+  .leafbox .plate{transition:opacity .45s;}
+  .leafbox[data-face="upper"] .face-under,.leafbox[data-face="under"] .face-upper{opacity:0;pointer-events:none;}
+
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2.4vw,28px);margin-top:16px;}
+  .two figcaption{font-size:12.5px;color:var(--muted);text-align:center;margin-top:8px;}
+
+  .compo{margin-top:6px;}
+  .bar{display:flex;height:44px;border-radius:12px;overflow:hidden;border:1px solid var(--hair);}
+  .bar>div{display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;letter-spacing:.04em;}
+  .bar .sk{background:#4f1c47;flex:10;}.bar .pu{background:#c9d98f;color:#3d4a12;flex:85;}.bar .se{background:#b8863b;flex:5;}
+  .tissues{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px;}
+  .tissue{padding:12px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);font-size:13.5px;line-height:1.55;}
+  .tissue h4{margin:0 0 6px;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .tissue ul{margin:0;padding-left:18px;}
+  .tissue small{display:block;color:var(--faint);font-size:11.5px;margin-top:6px;}
+
+  .systems{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .sys{padding:11px 13px;border-radius:12px;background:var(--glass);border:1px solid var(--hair);font-size:13px;line-height:1.5;}
+  .sys b{display:block;font-family:var(--serif);font-weight:500;font-size:16px;color:var(--title);}
+  .sys small{color:var(--gold);font-size:11px;font-weight:600;}
+
+  .gloss{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .gloss th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .gloss td{padding:7px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.45;}
+  .gloss td:first-child{font-family:var(--serif);font-size:15px;color:var(--title);white-space:nowrap;}
+  .gloss td:nth-child(2){font-family:var(--serif);font-style:italic;font-size:15px;white-space:nowrap;}
+  .gloss td:last-child{color:var(--muted);}
+  .gloss-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+
+  @media (max-width:900px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .branches{grid-template-columns:1fr;}
+    .wood{grid-template-columns:1fr;}
+    .w-step,.w-step:first-child,.w-step:last-child{border:1px solid var(--hair);border-radius:12px;margin-bottom:6px;}
+    .two,.tissues{grid-template-columns:minmax(0,1fr);}
+    .systems{grid-template-columns:repeat(2,1fr);}
+  }
+  @media (max-width:620px){ .diagram-card{overflow-x:auto;} .diagram{min-width:540px;} .groups{grid-template-columns:1fr;} .systems{grid-template-columns:1fr;} .gloss td:first-child,.gloss td:nth-child(2){white-space:normal;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 1" data-en="The vine &amp; the vineyard · Chapter 1">La vigne &amp; le vignoble · Chapitre 1</p>
+    <h1 data-fr="La plante <em>vigne</em>" data-en="The vine <em>plant</em>">La plante <em>vigne</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Avant d’être un vignoble, la vigne est une liane. Des racines à la baie, voici comment elle est faite et comment chacune de ses parties prépare le vin."
+       data-en="Before it is a vineyard, the vine is a climbing plant. From roots to berry, here is how it is built and how each of its parts prepares the wine.">Avant d’être un vignoble, la vigne est une liane. Des racines à la baie, voici comment elle est faite et comment chacune de ses parties prépare le vin.</p>
+    <nav class="toc">
+      <a href="#famille" data-fr="Une famille" data-en="The family">Une famille</a>
+      <a href="#cep" data-fr="Le cep" data-en="The vine">Le cep</a>
+      <a href="#bourgeon" data-fr="Le bourgeon" data-en="The bud">Le bourgeon</a>
+      <a href="#feuille" data-fr="La feuille" data-en="The leaf">La feuille</a>
+      <a href="#fleur" data-fr="Fleur &amp; grappe" data-en="Flower &amp; bunch">Fleur &amp; grappe</a>
+      <a href="#baie" data-fr="La baie" data-en="The berry">La baie</a>
+      <a href="#conduite" data-fr="Une liane domptée" data-en="A tamed climber">Une liane domptée</a>
+      <a href="#lexique" data-fr="Lexique" data-en="Vocabulary">Lexique</a>
+    </nav>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">La vigne cultivée, <i>Vitis vinifera</i>, est une plante grimpante. À l’état sauvage, elle s’accroche aux arbres par ses vrilles et peut monter à plus de vingt mètres pour chercher la lumière. Toute la viticulture consiste à dompter cette vigueur : tailler, palisser, limiter les feuilles et les grappes pour que la plante concentre son énergie dans quelques raisins de qualité.</p>
+      <p class="L en">The cultivated grapevine, <i>Vitis vinifera</i>, is a climbing plant. In the wild it clings to trees with its tendrils and can climb more than twenty metres towards the light. All of winegrowing is about taming that vigour: pruning, training, limiting leaves and bunches so the plant puts its energy into a few high-quality grapes.</p>
+      <p class="L fr">Comprendre la plante, c’est comprendre le vin : la couleur vient de la peau, le sucre et l’acidité de la pulpe, une partie des tanins des pépins et de la rafle, et la récolte de l’an prochain se prépare déjà, cet été, à l’intérieur des bourgeons.</p>
+      <p class="L en">Understanding the plant means understanding the wine: colour comes from the skin, sugar and acidity from the pulp, some of the tannin from the seeds and stems, and next year’s crop is already forming this summer inside the buds.</p>
+      <p class="note L fr">Les planches sont légendées en anglais et en français. Cliquez sur une planche pour l’agrandir.</p>
+      <p class="note L en">Plates are labelled in English and French. Click any plate to enlarge it.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Les planches, les schémas et le texte principal : de quoi reconnaître chaque partie de la vigne." data-en="Plates, diagrams and the main text: enough to recognise every part of the vine.">Les planches, les schémas et le texte principal : de quoi reconnaître chaque partie de la vigne.</span></div></div>
+        <div class="lvl"><span class="ico">@@PRO_ICON@@</span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="À déplier : physiologie, chiffres, ampélographie et vocabulaire technique." data-en="Fold-out panels: physiology, figures, ampelography and technical vocabulary.">À déplier : physiologie, chiffres, ampélographie et vocabulaire technique.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="stat"><b data-fr="≈ 11 000 ans" data-en="≈ 11,000 yrs">≈ 11 000 ans</b><span data-fr="de domestication, entre Caucase et Proche-Orient" data-en="of domestication, between the Caucasus and the Near East">de domestication, entre Caucase et Proche-Orient</span></div>
+    <div class="stat"><b>1 368</b><span data-fr="variétés produisant du vin dans le commerce (<i>Wine Grapes</i>, 2012)" data-en="varieties used in commercial wine (<i>Wine Grapes</i>, 2012)">variétés produisant du vin dans le commerce (<i>Wine Grapes</i>, 2012)</span></div>
+    <div class="stat"><b data-fr="1 à 2 g" data-en="1–2 g">1 à 2 g</b><span data-fr="le poids d’une baie de raisin de cuve" data-en="the weight of a wine-grape berry">le poids d’une baie de raisin de cuve</span></div>
+    <div class="stat"><b data-fr="≈ 100 jours" data-en="≈ 100 days">≈ 100 jours</b><span data-fr="de la floraison aux vendanges, selon la règle des vignerons" data-en="from flowering to harvest, by the growers’ rule of thumb">de la floraison aux vendanges, selon la règle des vignerons</span></div>
+  </div>
+
+  <!-- ===== 1. family ===== -->
+  <section class="sec" id="famille">
+    <div class="sec-head">
+      <h2 data-fr="Une grande <em>famille</em>" data-en="A large <em>family</em>">Une grande <em>famille</em></h2>
+      <p data-fr="La vigne appartient à la famille des Vitacées. Le genre <i>Vitis</i> compte une soixantaine d’espèces, mais presque tout le vin du monde vient d’une seule : <i>Vitis vinifera</i>."
+         data-en="The vine belongs to the Vitaceae family. The genus <i>Vitis</i> has about sixty species, but almost all the world’s wine comes from just one: <i>Vitis vinifera</i>.">La vigne appartient à la famille des Vitacées. Le genre <i>Vitis</i> compte une soixantaine d’espèces, mais presque tout le vin du monde vient d’une seule : <i>Vitis vinifera</i>.</p>
+    </div>
+    <div class="panel tree">
+      <div class="tree-top">
+        <div class="node"><b data-fr="Famille des Vitacées" data-en="Vitaceae family">Famille des Vitacées</b><span data-fr="vignes, vigne vierge…" data-en="grapevines, Virginia creeper…">vignes, vigne vierge…</span></div>
+        <div class="stem"></div>
+        <div class="node"><b data-fr="Genre <i>Vitis</i>" data-en="Genus <i>Vitis</i>">Genre <i>Vitis</i></b></div>
+        <div class="stem"></div>
+        <div class="branches">
+          <div class="branch">
+            <div class="node"><b data-fr="Sous-genre <i>Muscadinia</i>" data-en="Subgenus <i>Muscadinia</i>">Sous-genre <i>Muscadinia</i></b><span>2n = 40</span></div>
+            <div class="grp" style="--c:#6b7f99"><h4 data-fr="Sud-est des États-Unis" data-en="South-eastern USA">Sud-est des États-Unis</h4><i>V. rotundifolia</i> <span data-fr="(muscadine) : très résistante aux maladies, source de gènes de résistance." data-en="(muscadine): highly disease-resistant, a source of resistance genes.">(muscadine) : très résistante aux maladies, source de gènes de résistance.</span></div>
+          </div>
+          <div class="branch">
+            <div class="node"><b data-fr="Sous-genre <i>Vitis</i>" data-en="Subgenus <i>Vitis</i>">Sous-genre <i>Vitis</i></b><span>2n = 38</span></div>
+            <div class="groups">
+              <div class="grp" style="--c:#7a1f4a"><h4 data-fr="Eurasie" data-en="Eurasia">Eurasie</h4><i>V. vinifera</i> <span data-fr="subsp. <i>sativa</i>, la vigne cultivée : tous les grands cépages. Sa forme sauvage, subsp. <i>sylvestris</i>, survit dans quelques forêts alluviales, en France notamment le long du Rhin." data-en="subsp. <i>sativa</i>, the cultivated vine: every classic grape variety. Its wild form, subsp. <i>sylvestris</i>, survives in a few floodplain forests, in France notably along the Rhine.">subsp. <i>sativa</i>, la vigne cultivée : tous les grands cépages. Sa forme sauvage, subsp. <i>sylvestris</i>, survit dans quelques forêts alluviales, en France notamment le long du Rhin.</span></div>
+              <div class="grp" style="--c:#2f7d8c"><h4 data-fr="Amérique du Nord" data-en="North America">Amérique du Nord</h4><i>V. riparia</i>, <i>V. rupestris</i>, <i>V. berlandieri</i> <span data-fr="résistent au phylloxéra : ce sont les parents des porte-greffes. <i>V. labrusca</i> donne des raisins au goût « foxé » (Concord)." data-en="resist phylloxera: they are the parents of rootstocks. <i>V. labrusca</i> gives grapes with a “foxy” taste (Concord).">résistent au phylloxéra : ce sont les parents des porte-greffes. <i>V. labrusca</i> donne des raisins au goût « foxé » (Concord).</span></div>
+              <div class="grp" style="--c:#6f8b1e"><h4 data-fr="Asie" data-en="Asia">Asie</h4><i>V. amurensis</i> <span data-fr="supporte des hivers très froids ; utilisée en sélection pour la résistance au froid et aux maladies." data-en="tolerates very cold winters; used in breeding for cold and disease resistance.">supporte des hivers très froids ; utilisée en sélection pour la résistance au froid et aux maladies.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hybrids L fr"><b>Hybrides interspécifiques.</b> Croisements entre espèces : les « producteurs directs » du XIX<sup>e</sup> siècle (Noah, Clinton…, interdits en 1934), la plupart des porte-greffes (SO4 = <i>berlandieri</i> × <i>riparia</i> ; 110 R = <i>berlandieri</i> × <i>rupestris</i>) et les nouveaux cépages résistants aux maladies (Artaban, Voltis…).</div>
+      <div class="hybrids L en"><b>Interspecific hybrids.</b> Crosses between species: the 19th-century “direct producers” (Noah, Clinton…, banned in 1934), most rootstocks (SO4 = <i>berlandieri</i> × <i>riparia</i>; 110 R = <i>berlandieri</i> × <i>rupestris</i>) and the new disease-resistant varieties (Artaban, Voltis…).</div>
+    </div>
+    @@PRO_FAMILY@@
+  </section>
+
+  <!-- ===== 2. the vine ===== -->
+  <section class="threat" id="cep" style="--c:#8a5a2b">
+    @@PLATE_VINE@@
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#8a5a2b" data-fr="Anatomie" data-en="Anatomy">Anatomie</span><span class="num">01</span></div>
+      <h2 data-fr="Le cep" data-en="The vine">Le cep</h2>
+      <p class="latin" data-fr="taillé en Guyot simple" data-en="single-Guyot pruned">taillé en Guyot simple</p>
+      <p class="lead L fr">Le « cep » désigne le pied de vigne entier. Il associe des organes <b>permanents</b> (racines, tronc, bras), qui vivent des décennies et stockent les réserves, et des organes <b>annuels</b> (rameaux, feuilles, vrilles, grappes), qui naissent au printemps et disparaissent ou sont taillés chaque hiver.</p>
+      <p class="lead L en">The “vine” here means the whole plant. It combines <b>permanent</b> organs (roots, trunk, arms), which live for decades and store reserves, and <b>annual</b> organs (shoots, leaves, tendrils, bunches), which appear in spring and die back or are pruned off every winter.</p>
+      <ol class="parts">
+        <li class="L fr"><span><b>Racines.</b> Elles ancrent la plante, puisent l’eau et les minéraux et stockent l’amidon. La plupart restent dans le premier mètre, mais certaines descendent à plusieurs mètres dans les sols profonds.</span></li>
+        <li class="L en"><span><b>Roots.</b> They anchor the plant, draw up water and minerals and store starch. Most stay in the top metre, but some reach several metres down in deep soils.</span></li>
+        <li class="L fr"><span><b>Point de greffe.</b> Depuis le phylloxéra, presque toute vigne française est un greffon de <i>vinifera</i> posé sur un porte-greffe américain (voir chapitre 7).</span></li>
+        <li class="L en"><span><b>Graft union.</b> Since phylloxera, almost every French vine is a <i>vinifera</i> scion grafted onto an American rootstock (see chapter 7).</span></li>
+        <li class="L fr"><span><b>Tronc (pied).</b> Le bois vivace qui porte la vigne ; il s’épaissit et se tord avec l’âge.</span></li>
+        <li class="L en"><span><b>Trunk.</b> The perennial wood that carries the vine; it thickens and twists with age.</span></li>
+        <li class="L fr"><span><b>Bras (ou tête).</b> Ramifications permanentes au sommet du tronc ; la planche les appelle « branches ».</span></li>
+        <li class="L en"><span><b>Arms (or head).</b> Permanent branches at the top of the trunk; the plate calls them “branches”.</span></li>
+        <li class="L fr"><span><b>Baguette fructifère.</b> Le sarment de l’an dernier, gardé long (6 à 10 yeux) et attaché horizontalement sur le fil : ses bourgeons donneront les rameaux et les grappes de l’année.</span></li>
+        <li class="L en"><span><b>Fruiting cane.</b> Last year’s cane, left long (6 to 10 buds) and tied horizontally along the wire: its buds will produce this year’s shoots and bunches.</span></li>
+        <li class="L fr"><span><b>Courson de renouvellement.</b> Un sarment taillé court (1 à 2 yeux) près du tronc : il fournira la baguette de l’an prochain.</span></li>
+        <li class="L en"><span><b>Renewal spur.</b> A cane cut short (1 to 2 buds) near the trunk: it will provide next year’s fruiting cane.</span></li>
+        <li class="L fr"><span><b>Rameaux, feuilles, vrilles et grappes.</b> La végétation de l’année, qui pousse à partir des bourgeons.</span></li>
+        <li class="L en"><span><b>Shoots, leaves, tendrils and bunches.</b> The season’s growth, which comes from the buds.</span></li>
+      </ol>
+      <div class="warn L fr"><b>À propos de la planche.</b> Pour la lisibilité, elle montre un vieux cep au tronc très haut, presque un arbre. En taille Guyot, le tronc mesure le plus souvent 30 à 80 cm et la baguette court juste au-dessus, le long du premier fil.</div>
+      <div class="warn L en"><b>About the plate.</b> For clarity it shows an old vine with a very tall, almost tree-like trunk. In Guyot pruning the trunk is usually 30–80 cm high, with the cane running just above it along the first wire.</div>
+      @@PRO_VINE@@
+    </div>
+  </section>
+
+  <section class="sec" id="bois">
+    <div class="sec-head">
+      <h2 data-fr="Du bourgeon <em>au vieux bois</em>" data-en="From bud <em>to old wood</em>">Du bourgeon <em>au vieux bois</em></h2>
+      <p data-fr="Le même organe change de nom au fil des saisons. C’est la clé pour comprendre la taille." data-en="The same organ changes name as the seasons pass. This is the key to understanding pruning.">Le même organe change de nom au fil des saisons. C’est la clé pour comprendre la taille.</p>
+    </div>
+    <div class="wood">
+      <div class="w-step" style="--c:#8a5a2b"><small data-fr="Hiver" data-en="Winter">Hiver</small><b data-fr="L’œil" data-en="The bud">L’œil</b><span data-fr="Un bourgeon dormant, posé à chaque nœud du sarment." data-en="A dormant bud sitting at each node of the cane.">Un bourgeon dormant, posé à chaque nœud du sarment.</span></div>
+      <div class="w-step" style="--c:#7aa23c"><small data-fr="Printemps – été" data-en="Spring – summer">Printemps – été</small><b data-fr="Le rameau" data-en="The shoot">Le rameau</b><span data-fr="Pousse verte et tendre qui porte feuilles, vrilles et grappes." data-en="A soft green shoot bearing leaves, tendrils and bunches.">Pousse verte et tendre qui porte feuilles, vrilles et grappes.</span></div>
+      <div class="w-step" style="--c:#b38a3a"><small data-fr="Août" data-en="August">Août</small><b data-fr="L’aoûtement" data-en="Lignification">L’aoûtement</b><span data-fr="Le rameau brunit, durcit et se charge de réserves : il devient du bois." data-en="The shoot turns brown, hardens and fills with reserves: it becomes wood.">Le rameau brunit, durcit et se charge de réserves : il devient du bois.</span></div>
+      <div class="w-step" style="--c:#a0283c"><small data-fr="Hiver suivant" data-en="Next winter">Hiver suivant</small><b data-fr="Le sarment" data-en="The cane">Le sarment</b><span data-fr="Le bois d’un an : le vigneron le taille en baguette ou en courson, ou l’élimine." data-en="One-year-old wood: the grower prunes it to a cane or a spur, or removes it.">Le bois d’un an : le vigneron le taille en baguette ou en courson, ou l’élimine.</span></div>
+      <div class="w-step" style="--c:#5a3a1a"><small data-fr="Années suivantes" data-en="Later years">Années suivantes</small><b data-fr="Le vieux bois" data-en="Old wood">Le vieux bois</b><span data-fr="Bras et tronc : bois de deux ans et plus, qui ne porte plus directement de fruits." data-en="Arms and trunk: wood two years old or more, which no longer bears fruit directly.">Bras et tronc : bois de deux ans et plus, qui ne porte plus directement de fruits.</span></div>
+    </div>
+  </section>
+
+  <!-- ===== 3. bud ===== -->
+  <section class="threat rev" id="bourgeon" style="--c:#7aa23c">
+    @@PLATE_BUD@@
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#6f8b1e" data-fr="Anatomie" data-en="Anatomy">Anatomie</span><span class="num">02</span></div>
+      <h2 data-fr="Le bourgeon" data-en="The bud">Le bourgeon</h2>
+      <p class="latin" data-fr="l’œil, ou bourgeon latent" data-en="the compound (latent) bud">l’œil, ou bourgeon latent</p>
+      <p class="lead L fr">Ce que le vigneron appelle un « œil » est en réalité un bourgeon composé : trois bourgeons serrés sous des écailles et un duvet protecteur, qui passent l’hiver en dormance.</p>
+      <p class="lead L en">What growers call a “bud” is in fact a compound bud: three buds packed together under scales and protective wool, spending the winter dormant.</p>
+      <div class="ess-grid">
+        <div class="ess"><h4 data-fr="Le bourgeon principal" data-en="The primary bud">Le bourgeon principal</h4><p class="L fr">Le plus gros, au centre : c’est lui qui débourre au printemps. Il contient déjà, en miniature, le futur rameau, ses feuilles et ses grappes.</p><p class="L en">The largest, in the centre: it is the one that bursts in spring. It already holds, in miniature, the future shoot, its leaves and its bunches.</p></div>
+        <div class="ess"><h4 data-fr="Les bourgeons de secours" data-en="The back-up buds">Les bourgeons de secours</h4><p class="L fr">Les bourgeons secondaire et tertiaire restent en réserve. Si le principal gèle, ils prennent le relais, mais avec peu ou pas de grappes.</p><p class="L en">The secondary and tertiary buds stay in reserve. If the primary freezes they take over, but with few or no bunches.</p></div>
+        <div class="ess"><h4 data-fr="Récolte préparée un an à l’avance" data-en="A crop prepared a year ahead">Récolte préparée un an à l’avance</h4><p class="L fr">Les ébauches de grappes se forment dans le bourgeon l’été précédent : un été chaud et lumineux annonce souvent une belle sortie de grappes l’année suivante.</p><p class="L en">Bunch primordia form inside the bud the summer before: a warm, bright summer often means plenty of bunches the following year.</p></div>
+      </div>
+      @@PRO_BUD@@
+    </div>
+  </section>
+
+  <!-- ===== 4. leaf ===== -->
+  <section class="threat" id="feuille" style="--c:#4f7a2a">
+    <figure class="plate">
+      <div class="leafbox" id="leafbox" data-face="upper">
+        @@PLATE_LEAF_UPPER@@
+        @@PLATE_LEAF_UNDER@@
+      </div>
+      <div class="flip" role="group" aria-label="Face">
+        <button type="button" data-face="upper" aria-pressed="true" data-fr="Face supérieure" data-en="Upper side">Face supérieure</button>
+        <button type="button" data-face="under" aria-pressed="false" data-fr="Face inférieure" data-en="Underside">Face inférieure</button>
+      </div>
+    </figure>
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#4f7a2a" data-fr="Anatomie" data-en="Anatomy">Anatomie</span><span class="num">03</span></div>
+      <h2 data-fr="La feuille" data-en="The leaf">La feuille</h2>
+      <p class="latin" data-fr="l’usine à sucre et la carte d’identité du cépage" data-en="the sugar factory and the variety’s ID card">l’usine à sucre et la carte d’identité du cépage</p>
+      <p class="lead L fr">Grâce à la photosynthèse, la feuille transforme la lumière, l’eau et le gaz carbonique en sucres, qui iront nourrir la plante puis s’accumuler dans les baies. Tournez la feuille avec les boutons sous la planche.</p>
+      <p class="lead L en">Through photosynthesis the leaf turns light, water and carbon dioxide into sugars, which feed the plant and then build up in the berries. Turn the leaf over with the buttons under the plate.</p>
+      <div class="ess-grid">
+        <div class="ess"><h4 data-fr="Ses parties" data-en="Its parts">Ses parties</h4><p class="L fr">Le <b>limbe</b> (la surface), découpé en cinq <b>lobes</b> séparés par des <b>sinus</b> ; cinq <b>nervures principales</b> qui partent du point d’attache ; un <b>bord</b> denté ; le <b>pétiole</b> (la queue) et le <b>sinus pétiolaire</b>, l’échancrure où il s’attache.</p><p class="L en">The <b>blade</b> (the surface), cut into five <b>lobes</b> separated by <b>sinuses</b>; five <b>main veins</b> running from the attachment point; a toothed <b>margin</b>; the <b>petiole</b> (leaf stalk) and the <b>petiolar sinus</b>, the notch where it joins.</p></div>
+        <div class="ess"><h4 data-fr="Deux faces différentes" data-en="Two different sides">Deux faces différentes</h4><p class="L fr">Le dessus, vert foncé et lisse, capte la lumière. Le dessous, plus pâle et souvent duveteux, porte les stomates, les pores par lesquels la feuille respire et transpire. C’est aussi par là qu’entre le mildiou.</p><p class="L en">The upper side, dark green and smooth, catches the light. The underside, paler and often downy, carries the stomata, the pores through which the leaf breathes and transpires. It is also where downy mildew gets in.</p></div>
+        <div class="ess"><h4 data-fr="Reconnaître un cépage" data-en="Identifying a variety">Reconnaître un cépage</h4><p class="L fr">Forme, profondeur des sinus, dents, duvet : chaque cépage a sa feuille. Le Meunier doit son nom à ses jeunes feuilles blanches et cotonneuses, comme saupoudrées de farine. À l’automne, les cépages rouges ont souvent des feuilles qui rougissent, les blancs des feuilles qui jaunissent.</p><p class="L en">Shape, depth of the sinuses, teeth, hairs: every variety has its own leaf. Pinot Meunier (“miller”) is named after its white, cottony young leaves, as if dusted with flour. In autumn, red varieties’ leaves often turn red, white varieties’ leaves yellow.</p></div>
+      </div>
+      @@PRO_LEAF@@
+    </div>
+  </section>
+
+  <!-- ===== 5. flower & bunch ===== -->
+  <section class="sec" id="fleur">
+    <div class="sec-head">
+      <h2 data-fr="De la fleur <em>à la grappe</em>" data-en="From flower <em>to bunch</em>">De la fleur <em>à la grappe</em></h2>
+      <p data-fr="Chaque grappe est d’abord une inflorescence de cent à plusieurs centaines de minuscules fleurs vertes, sans pétales visibles. Elles fleurissent en juin, pendant une dizaine de jours."
+         data-en="Every bunch starts as an inflorescence of one hundred to several hundred tiny green flowers with no visible petals. They bloom in June, over about ten days.">Chaque grappe est d’abord une inflorescence de cent à plusieurs centaines de minuscules fleurs vertes, sans pétales visibles. Elles fleurissent en juin, pendant une dizaine de jours.</p>
+    </div>
+    <div class="two">
+      <figure style="margin:0">@@PLATE_FLOWER@@<figcaption data-fr="Du bouton à la pollinisation : le capuchon (pétales soudés) se détache, les étamines se déploient et le pollen féconde le pistil, le plus souvent de la même fleur." data-en="From bud to pollination: the cap (fused petals) comes off, the stamens spread out and pollen fertilises the pistil, usually of the same flower.">Du bouton à la pollinisation : le capuchon (pétales soudés) se détache, les étamines se déploient et le pollen féconde le pistil, le plus souvent de la même fleur.</figcaption></figure>
+      <figure style="margin:0">@@PLATE_BUNCH@@<figcaption data-fr="Une grappe : la rafle ramifiée porte les baies, chacune au bout de son pédicelle." data-en="A bunch: the branched stalk carries the berries, each at the end of its pedicel.">Une grappe : la rafle ramifiée porte les baies, chacune au bout de son pédicelle.</figcaption></figure>
+    </div>
+    <div class="ess-grid" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));margin-top:14px;--c:#7d3f78">
+      <div class="ess"><h4 data-fr="La floraison" data-en="Flowering">La floraison</h4><p class="L fr">Chaque fleur perd son capuchon (ses pétales soudés), libère son pollen et se féconde elle-même dans la plupart des cas. Le vent et les insectes ne jouent qu’un petit rôle.</p><p class="L en">Each flower sheds its cap (its fused petals), releases its pollen and in most cases fertilises itself. Wind and insects play only a small part.</p></div>
+      <div class="ess"><h4 data-fr="La nouaison" data-en="Fruit set">La nouaison</h4><p class="L fr">Seules une partie des fleurs deviennent des baies, souvent entre 20 et 50 %. Par temps froid ou pluvieux, la grappe peut perdre ses fleurs (<b>coulure</b>) ou mêler grosses et petites baies (<b>millerandage</b>).</p><p class="L en">Only some of the flowers become berries, often between 20 and 50 %. In cold or rainy weather the bunch may drop its flowers (<b>coulure</b>) or mix large and small berries (<b>millerandage</b>, “hens and chicks”).</p></div>
+      <div class="ess"><h4 data-fr="La grappe" data-en="The bunch">La grappe</h4><p class="L fr">Sa forme (cylindrique, conique, ailée) et sa compacité dépendent du cépage. Une grappe serrée comme celle du Pinot noir craint la pourriture ; une grappe lâche sèche plus vite après la pluie.</p><p class="L en">Its shape (cylindrical, conical, winged) and compactness depend on the variety. A tight bunch like Pinot Noir’s is prone to rot; a loose bunch dries faster after rain.</p></div>
+    </div>
+    @@PRO_FLOWER@@
+  </section>
+
+  <!-- ===== 6. berry ===== -->
+  <section class="threat rev" id="baie" style="--c:#4f1c47">
+    @@PLATE_BERRY@@
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#7d3f78" data-fr="Anatomie" data-en="Anatomy">Anatomie</span><span class="num">04</span></div>
+      <h2 data-fr="La baie" data-en="The berry">La baie</h2>
+      <p class="latin" data-fr="trois tissus, trois rôles dans le vin" data-en="three tissues, three roles in the wine">trois tissus, trois rôles dans le vin</p>
+      <p class="lead L fr">Le grain de raisin est une baie : une peau, une pulpe juteuse et de zéro à quatre pépins. Presque tout ce qui fera le goût du vin s’y trouve déjà.</p>
+      <p class="lead L en">A grape is botanically a berry: a skin, juicy pulp and zero to four seeds. Almost everything that will make the wine’s flavour is already inside it.</p>
+      <div class="compo">
+        <div class="bar" aria-label="Pellicule 10 %, pulpe 85 %, pépins 5 %">
+          <div class="sk" data-fr="Peau" data-en="Skin">Peau</div><div class="pu" data-fr="Pulpe ≈ 85 %" data-en="Pulp ≈ 85 %">Pulpe ≈ 85 %</div><div class="se"></div>
+        </div>
+        <p class="hint" data-fr="Part approximative de chaque tissu dans le poids de la baie : peau ≈ 10 %, pulpe ≈ 85 %, pépins ≈ 5 % (variable selon le cépage et la taille des baies)." data-en="Approximate share of each tissue in berry weight: skin ≈ 10 %, pulp ≈ 85 %, seeds ≈ 5 % (varies with variety and berry size).">Part approximative de chaque tissu dans le poids de la baie : peau ≈ 10 %, pulpe ≈ 85 %, pépins ≈ 5 % (variable selon le cépage et la taille des baies).</p>
+      </div>
+      <div class="tissues">
+        <div class="tissue" style="--c:#4f1c47"><h4 data-fr="La pellicule" data-en="The skin">La pellicule</h4>
+          <ul class="L fr"><li>la <b>couleur</b> (anthocyanes) des vins rouges</li><li>des tanins fins</li><li>l’essentiel des <b>arômes</b> et de leurs précurseurs</li><li>la <b>pruine</b>, cire poudreuse qui héberge des levures</li></ul>
+          <ul class="L en"><li>the <b>colour</b> (anthocyanins) of red wines</li><li>fine tannins</li><li>most of the <b>aromas</b> and their precursors</li><li>the <b>bloom</b>, a powdery wax that carries yeasts</li></ul></div>
+        <div class="tissue" style="--c:#8fa83f"><h4 data-fr="La pulpe" data-en="The pulp">La pulpe</h4>
+          <ul class="L fr"><li>de l’<b>eau</b>, surtout</li><li>les <b>sucres</b> (glucose, fructose), futur alcool</li><li>les <b>acides</b> tartrique et malique</li><li>du potassium et des précurseurs d’arômes</li></ul>
+          <ul class="L en"><li>mostly <b>water</b></li><li>the <b>sugars</b> (glucose, fructose), the future alcohol</li><li>tartaric and malic <b>acids</b></li><li>potassium and aroma precursors</li></ul>
+          <small data-fr="Le jus est incolore, même chez les raisins noirs, sauf chez les rares cépages « teinturiers »." data-en="The juice is colourless even in black grapes, except in the rare “teinturier” varieties.">Le jus est incolore, même chez les raisins noirs, sauf chez les rares cépages « teinturiers ».</small></div>
+        <div class="tissue" style="--c:#b8863b"><h4 data-fr="Les pépins" data-en="The seeds">Les pépins</h4>
+          <ul class="L fr"><li>des <b>tanins</b> plus durs et plus astringents</li><li>de l’huile</li><li>de 0 à 4 par baie</li></ul>
+          <ul class="L en"><li>harder, more astringent <b>tannins</b></li><li>oil</li><li>0 to 4 per berry</li></ul>
+          <small data-fr="Leur brunissement est l’un des signes de maturité observés par les vignerons." data-en="Their browning is one of the ripeness signs growers look for.">Leur brunissement est l’un des signes de maturité observés par les vignerons.</small></div>
+      </div>
+      <div class="warn L fr"><b>À propos de la planche.</b> La légende « cavité centrale » est trompeuse : la baie est pleine. Au centre, on voit le faisceau vasculaire central (le « pinceau », qui reste accroché au pédicelle quand on cueille un grain) entouré d’une pulpe plus translucide.</div>
+      <div class="warn L en"><b>About the plate.</b> The “central cavity” label is misleading: the berry is solid. At its centre is the central vascular bundle (the “brush” that stays attached to the pedicel when you pick a grape), surrounded by more translucent pulp.</div>
+      @@PRO_BERRY@@
+    </div>
+  </section>
+
+  <!-- ===== 7. training ===== -->
+  <section class="threat" id="conduite" style="--c:#9b2235">
+    @@PLATE_TRAINING@@
+    <div class="body">
+      <div class="kicker"><span class="chip" style="--c:#a0283c" data-fr="Conduite" data-en="Training">Conduite</span><span class="num">05</span></div>
+      <h2 data-fr="Une liane domptée" data-en="A tamed climber">Une liane domptée</h2>
+      <p class="latin" data-fr="les principaux modes de conduite" data-en="the main training systems">les principaux modes de conduite</p>
+      <p class="lead L fr">Laissée libre, la vigne produirait beaucoup de bois et de feuilles, et des raisins nombreux mais petits et peu mûrs. La taille et le palissage règlent l’équilibre entre végétation et récolte, exposent les grappes et facilitent le travail.</p>
+      <p class="lead L en">Left to itself, the vine would produce masses of wood and leaves, and many small, under-ripe grapes. Pruning and trellising set the balance between foliage and crop, expose the bunches and make the work easier.</p>
+      <div class="systems">
+        <div class="sys"><b data-fr="Gobelet" data-en="Bush vine (gobelet)">Gobelet</b><span data-fr="Sans fil ni piquet, 3 à 6 bras courts en couronne." data-en="No wires or posts, 3–6 short arms in a crown.">Sans fil ni piquet, 3 à 6 bras courts en couronne.</span><br><small data-fr="Beaujolais, vallée du Rhône méridionale, Languedoc" data-en="Beaujolais, southern Rhône, Languedoc">Beaujolais, vallée du Rhône méridionale, Languedoc</small></div>
+        <div class="sys"><b data-fr="Guyot simple" data-en="Single Guyot">Guyot simple</b><span data-fr="Une baguette et un courson, renouvelés chaque année." data-en="One cane and one spur, renewed every year.">Une baguette et un courson, renouvelés chaque année.</span><br><small data-fr="Bourgogne, Loire, Alsace" data-en="Burgundy, Loire, Alsace">Bourgogne, Loire, Alsace</small></div>
+        <div class="sys"><b data-fr="Guyot double" data-en="Double Guyot">Guyot double</b><span data-fr="Deux baguettes opposées, deux coursons." data-en="Two opposite canes, two spurs.">Deux baguettes opposées, deux coursons.</span><br><small data-fr="Bordelais, Sud-Ouest" data-en="Bordeaux, South-West">Bordelais, Sud-Ouest</small></div>
+        <div class="sys"><b data-fr="Cordon de Royat" data-en="Royat cordon">Cordon de Royat</b><span data-fr="Un bras permanent le long du fil, portant des coursons courts." data-en="A permanent arm along the wire, carrying short spurs.">Un bras permanent le long du fil, portant des coursons courts.</span><br><small data-fr="Bourgogne, Champagne, Languedoc" data-en="Burgundy, Champagne, Languedoc">Bourgogne, Champagne, Languedoc</small></div>
+        <div class="sys"><b data-fr="Palissage vertical" data-en="Vertical shoot positioning">Palissage vertical</b><span data-fr="Les rameaux sont relevés entre des fils releveurs pour former un mur de feuilles." data-en="Shoots are lifted between catch wires to form a wall of leaves.">Les rameaux sont relevés entre des fils releveurs pour former un mur de feuilles.</span><br><small data-fr="la plupart des vignobles palissés" data-en="most trellised vineyards">la plupart des vignobles palissés</small></div>
+        <div class="sys"><b data-fr="Lyre" data-en="Lyre">Lyre</b><span data-fr="Végétation divisée en deux plans inclinés, pour plus de lumière." data-en="Canopy split into two sloping walls, for more light.">Végétation divisée en deux plans inclinés, pour plus de lumière.</span><br><small data-fr="rare en France, essais en Bordelais et Bourgogne" data-en="rare in France, trials in Bordeaux and Burgundy">rare en France, essais en Bordelais et Bourgogne</small></div>
+      </div>
+      <p class="hint" data-fr="Les règles de taille de chaque appellation et les autres modes de conduite (échalas, éventail, taille Chablis…) seront détaillés au chapitre 5." data-en="Each appellation’s pruning rules and other systems (stakes, fan, Chablis pruning…) will be covered in chapter 5.">Les règles de taille de chaque appellation et les autres modes de conduite (échalas, éventail, taille Chablis…) seront détaillés au chapitre 5.</p>
+    </div>
+  </section>
+
+  <!-- ===== 8. glossary ===== -->
+  <section class="sec" id="lexique">
+    <div class="sec-head">
+      <h2 data-fr="Petit <em>lexique</em>" data-en="Short <em>vocabulary</em>">Petit <em>lexique</em></h2>
+      <p data-fr="Les mots du vigneron, en français et en anglais." data-en="The grower’s words, in French and English.">Les mots du vigneron, en français et en anglais.</p>
+    </div>
+    <div class="panel gloss-wrap"><table class="gloss"><thead><tr><th>Français</th><th>English</th><th data-fr="Définition" data-en="Definition">Définition</th></tr></thead><tbody>@@GLOSSARY@@</tbody></table></div>
+  </section>
+
+  @@CHAPTERS@@
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources">@@SOURCES@@</ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'La plante vigne' : 'The vine plant';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+
+  var box = $('leafbox');
+  document.querySelectorAll('.flip button').forEach(function(b){
+    b.addEventListener('click', function(){
+      box.setAttribute('data-face', b.getAttribute('data-face'));
+      document.querySelectorAll('.flip button').forEach(function(o){ o.setAttribute('aria-pressed', o===b ? 'true' : 'false'); });
+    });
+  });
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

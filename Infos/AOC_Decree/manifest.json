@@ -1,0 +1,2618 @@
+[
+{
+"region": "Alsace & Lorraine",
+"sub": "Alsace",
+"appellation": "Alsace communal (lieux-dits)",
+"file": "decrees/alsace_lorraine_alsace_alsace_communal_lieux_dits.pdf",
+"sizeKB": 655,
+"en": ""
+},
+{
+"region": "Alsace & Lorraine",
+"sub": "Alsace",
+"appellation": "Alsace",
+"file": "decrees/alsace_lorraine_alsace_alsace.pdf",
+"sizeKB": 511,
+"en": ""
+},
+{
+"region": "Alsace & Lorraine",
+"sub": "Lorraine",
+"appellation": "Moselle",
+"file": "decrees/alsace_lorraine_lorraine_moselle.pdf",
+"sizeKB": 257,
+"en": ""
+},
+{
+"region": "Alsace & Lorraine",
+"sub": "Alsace",
+"appellation": "Alsace (version consolidée)",
+"file": "decrees/alsace_lorraine_alsace_alsace_version_consolidee.pdf",
+"sizeKB": 624,
+"en": "decrees/alsace_lorraine_alsace_alsace_version_consolidee_en.pdf"
+},
+{
+"region": "Alsace & Lorraine",
+"sub": "Lorraine",
+"appellation": "Moselle (version consolidée)",
+"file": "decrees/alsace_lorraine_lorraine_moselle_version_consolidee.pdf",
+"sizeKB": 337,
+"en": "decrees/alsace_lorraine_lorraine_moselle_version_consolidee_en.pdf"
+},
+{
+"region": "Alsace & Lorraine",
+"sub": "Lorraine",
+"appellation": "Côtes de Toul",
+"file": "decrees/alsace_lorraine_lorraine_cotes_de_toul.pdf",
+"sizeKB": 363,
+"en": "decrees/alsace_lorraine_lorraine_cotes_de_toul_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Premières Côtes de Bordeaux",
+"file": "decrees/bordeaux_bordeaux_premieres_cotes_de_bordeaux.pdf",
+"sizeKB": 597,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Bourg Cotes de Bourg Bourgeais",
+"file": "decrees/bordeaux_bordeaux_bourg_cotes_de_bourg_bourgeais.pdf",
+"sizeKB": 619,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Cadillac",
+"file": "decrees/bordeaux_bordeaux_cadillac.pdf",
+"sizeKB": 397,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Canon Fronsac",
+"file": "decrees/bordeaux_bordeaux_canon_fronsac.pdf",
+"sizeKB": 272,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Côtes de Bordeaux",
+"file": "decrees/bordeaux_bordeaux_cotes_de_bordeaux.pdf",
+"sizeKB": 433,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Entre-deux-Mers (variante)",
+"file": "decrees/bordeaux_bordeaux_entre_deux_mers_variante.pdf",
+"sizeKB": 317,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Entre-deux-Mers",
+"file": "decrees/bordeaux_bordeaux_entre_deux_mers.pdf",
+"sizeKB": 317,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Fronsac",
+"file": "decrees/bordeaux_bordeaux_fronsac.pdf",
+"sizeKB": 278,
+"en": "decrees/bordeaux_bordeaux_fronsac_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Graves (variante)",
+"file": "decrees/bordeaux_bordeaux_graves_variante.pdf",
+"sizeKB": 375,
+"en": "decrees/bordeaux_bordeaux_graves_variante_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Graves de vayres",
+"file": "decrees/bordeaux_bordeaux_graves_de_vayres.pdf",
+"sizeKB": 314,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Lalande-De-Pomerol",
+"file": "decrees/bordeaux_bordeaux_lalande_de_pomerol.pdf",
+"sizeKB": 147,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Listrac Medoc",
+"file": "decrees/bordeaux_bordeaux_listrac_medoc.pdf",
+"sizeKB": 157,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Loupiac",
+"file": "decrees/bordeaux_bordeaux_loupiac.pdf",
+"sizeKB": 261,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Lussac Saint-Emilion",
+"file": "decrees/bordeaux_bordeaux_lussac_saint_emilion.pdf",
+"sizeKB": 446,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Margaux",
+"file": "decrees/bordeaux_bordeaux_margaux.pdf",
+"sizeKB": 669,
+"en": "decrees/bordeaux_bordeaux_margaux_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Pomerol",
+"file": "decrees/bordeaux_bordeaux_pomerol.pdf",
+"sizeKB": 771,
+"en": "decrees/bordeaux_bordeaux_pomerol_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Puisseguin Saint Emilion (variante)",
+"file": "decrees/bordeaux_bordeaux_puisseguin_saint_emilion_variante.pdf",
+"sizeKB": 456,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Puisseguin Saint Emilion",
+"file": "decrees/bordeaux_bordeaux_puisseguin_saint_emilion.pdf",
+"sizeKB": 456,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Saint-Emilion grand cru",
+"file": "decrees/bordeaux_bordeaux_saint_emilion_grand_cru.pdf",
+"sizeKB": 448,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Saint-Emilion",
+"file": "decrees/bordeaux_bordeaux_saint_emilion.pdf",
+"sizeKB": 621,
+"en": "decrees/bordeaux_bordeaux_saint_emilion_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Sainte-Croix-du-Mont",
+"file": "decrees/bordeaux_bordeaux_sainte_croix_du_mont.pdf",
+"sizeKB": 257,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Bordeaux (version 2025)",
+"file": "decrees/bordeaux_bordeaux_bordeaux_version_2025.pdf",
+"sizeKB": 659,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Cerons",
+"file": "decrees/bordeaux_bordeaux_cerons.pdf",
+"sizeKB": 414,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Cremant-de-Bordeaux",
+"file": "decrees/bordeaux_bordeaux_cremant_de_bordeaux.pdf",
+"sizeKB": 3428,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Entre-deux-Mers",
+"file": "decrees/bordeaux_bordeaux_entre_deux_mers_2.pdf",
+"sizeKB": 670,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Montagne-St-Emilion-vdef",
+"file": "decrees/bordeaux_bordeaux_montagne_st_emilion_vdef.pdf",
+"sizeKB": 316,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Pomerol",
+"file": "decrees/bordeaux_bordeaux_pomerol_pno.pdf",
+"sizeKB": 259,
+"en": "decrees/bordeaux_bordeaux_pomerol_pno_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Sauternes",
+"file": "decrees/bordeaux_bordeaux_sauternes_pno.pdf",
+"sizeKB": 144,
+"en": "decrees/bordeaux_bordeaux_sauternes_pno_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Bordeaux Supérieur",
+"file": "decrees/bordeaux_bordeaux_bordeaux_superieur.pdf",
+"sizeKB": 2224,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Barsac",
+"file": "decrees/bordeaux_bordeaux_barsac.pdf",
+"sizeKB": 305,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "CB-Saint-Macaire",
+"file": "decrees/bordeaux_bordeaux_cb_saint_macaire.pdf",
+"sizeKB": 628,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Cotes de Bordeaux",
+"file": "decrees/bordeaux_bordeaux_cotes_de_bordeaux_2.pdf",
+"sizeKB": 803,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Haut-Médoc",
+"file": "decrees/bordeaux_bordeaux_haut_medoc.pdf",
+"sizeKB": 376,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Listrac-Medoc",
+"file": "decrees/bordeaux_bordeaux_listrac_medoc_2.pdf",
+"sizeKB": 316,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Medoc -",
+"file": "decrees/bordeaux_bordeaux_medoc.pdf",
+"sizeKB": 486,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Moulis (variante)",
+"file": "decrees/bordeaux_bordeaux_moulis_variante.pdf",
+"sizeKB": 748,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Pessac-Léognan",
+"file": "decrees/bordeaux_bordeaux_pessac_leognan.pdf",
+"sizeKB": 227,
+"en": "decrees/bordeaux_bordeaux_pessac_leognan_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Pauillac (variante)",
+"file": "decrees/bordeaux_bordeaux_pnocdcpauillac_variante.pdf",
+"sizeKB": 145,
+"en": ""
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Pauillac",
+"file": "decrees/bordeaux_bordeaux_pnocdcpauillac.pdf",
+"sizeKB": 145,
+"en": "decrees/bordeaux_bordeaux_pnocdcpauillac_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Saint-Estèphe",
+"file": "decrees/bordeaux_bordeaux_pnocdcsaint_estephe.pdf",
+"sizeKB": 129,
+"en": "decrees/bordeaux_bordeaux_pnocdcsaint_estephe_en.pdf"
+},
+{
+"region": "Bordeaux",
+"sub": "",
+"appellation": "Saint-Julien",
+"file": "decrees/bordeaux_bordeaux_pnocdcsaint_julien.pdf",
+"sizeKB": 142,
+"en": "decrees/bordeaux_bordeaux_pnocdcsaint_julien_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Beaujolais",
+"file": "decrees/bourgogne_beaujolais_beaujolais.pdf",
+"sizeKB": 156,
+"en": "decrees/bourgogne_beaujolais_beaujolais_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Beaujolais:Villages",
+"file": "decrees/bourgogne_beaujolais_beaujolais_villages.pdf",
+"sizeKB": 766,
+"en": "decrees/bourgogne_beaujolais_beaujolais_villages_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Chenas",
+"file": "decrees/bourgogne_beaujolais_chenas.pdf",
+"sizeKB": 92,
+"en": "decrees/bourgogne_beaujolais_chenas_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Chiroubles",
+"file": "decrees/bourgogne_beaujolais_chiroubles.pdf",
+"sizeKB": 92,
+"en": "decrees/bourgogne_beaujolais_chiroubles_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Cote de Brouilly",
+"file": "decrees/bourgogne_beaujolais_cote_de_brouilly.pdf",
+"sizeKB": 95,
+"en": "decrees/bourgogne_beaujolais_cote_de_brouilly_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Fleurie",
+"file": "decrees/bourgogne_beaujolais_fleurie.pdf",
+"sizeKB": 102,
+"en": "decrees/bourgogne_beaujolais_fleurie_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Julienas",
+"file": "decrees/bourgogne_beaujolais_julienas.pdf",
+"sizeKB": 93,
+"en": "decrees/bourgogne_beaujolais_julienas_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Morgon",
+"file": "decrees/bourgogne_beaujolais_morgon.pdf",
+"sizeKB": 92,
+"en": "decrees/bourgogne_beaujolais_morgon_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Moulin a Vent",
+"file": "decrees/bourgogne_beaujolais_moulin_a_vent.pdf",
+"sizeKB": 95,
+"en": "decrees/bourgogne_beaujolais_moulin_a_vent_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Régnié",
+"file": "decrees/bourgogne_beaujolais_regnie.pdf",
+"sizeKB": 156,
+"en": "decrees/bourgogne_beaujolais_regnie_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Saint Amour",
+"file": "decrees/bourgogne_beaujolais_saint_amour.pdf",
+"sizeKB": 93,
+"en": "decrees/bourgogne_beaujolais_saint_amour_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Beaujolais",
+"appellation": "Brouilly",
+"file": "decrees/bourgogne_beaujolais_brouilly.pdf",
+"sizeKB": 648,
+"en": "decrees/bourgogne_beaujolais_brouilly_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Aloxe-Corton",
+"file": "decrees/bourgogne_cote_de_beaune_aloxe_corton.pdf",
+"sizeKB": 425,
+"en": "decrees/bourgogne_cote_de_beaune_aloxe_corton_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Bienvenues-Batard-Montrachet",
+"file": "decrees/bourgogne_cote_de_beaune_bienvenues_batard_montrachet.pdf",
+"sizeKB": 384,
+"en": "decrees/bourgogne_cote_de_beaune_bienvenues_batard_montrachet_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Blagny",
+"file": "decrees/bourgogne_cote_de_beaune_blagny.pdf",
+"sizeKB": 411,
+"en": "decrees/bourgogne_cote_de_beaune_blagny_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Bourgogne(Hautes Cotes de Beaune)",
+"file": "decrees/bourgogne_cote_de_beaune_bourgogne_hautes_cotes_de_beaune.pdf",
+"sizeKB": 357,
+"en": "decrees/bourgogne_regionales_bourgogne_regionale_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Chassagne-Montrachet",
+"file": "decrees/bourgogne_cote_de_beaune_chassagne_montrachet.pdf",
+"sizeKB": 489,
+"en": "decrees/bourgogne_cote_de_beaune_chassagne_montrachet_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Chevalier-Montrachet",
+"file": "decrees/bourgogne_cote_de_beaune_chevalier_montrachet.pdf",
+"sizeKB": 176,
+"en": "decrees/bourgogne_cote_de_beaune_chevalier_montrachet_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Chorey-les-Beaune",
+"file": "decrees/bourgogne_cote_de_beaune_chorey_les_beaune.pdf",
+"sizeKB": 403,
+"en": "decrees/bourgogne_cote_de_beaune_chorey_les_beaune_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Corton-Charlemagne",
+"file": "decrees/bourgogne_cote_de_beaune_corton_charlemagne.pdf",
+"sizeKB": 391,
+"en": "decrees/bourgogne_cote_de_beaune_corton_charlemagne_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Cote De Beaune-Villages",
+"file": "decrees/bourgogne_cote_de_beaune_cote_de_beaune_villages.pdf",
+"sizeKB": 393,
+"en": "decrees/bourgogne_cote_de_beaune_cote_de_beaune_villages_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Cote De Beaune",
+"file": "decrees/bourgogne_cote_de_beaune_cote_de_beaune.pdf",
+"sizeKB": 406,
+"en": "decrees/bourgogne_cote_de_beaune_cote_de_beaune_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Criots-Batard-Montrachet",
+"file": "decrees/bourgogne_cote_de_beaune_criots_batard_montrachet.pdf",
+"sizeKB": 383,
+"en": "decrees/bourgogne_cote_de_beaune_criots_batard_montrachet_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Ladoix",
+"file": "decrees/bourgogne_cote_de_beaune_ladoix.pdf",
+"sizeKB": 432,
+"en": "decrees/bourgogne_cote_de_beaune_ladoix_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Maranges",
+"file": "decrees/bourgogne_cote_de_beaune_maranges.pdf",
+"sizeKB": 425,
+"en": "decrees/bourgogne_cote_de_beaune_maranges_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Meursault",
+"file": "decrees/bourgogne_cote_de_beaune_meursault.pdf",
+"sizeKB": 443,
+"en": "decrees/bourgogne_cote_de_beaune_meursault_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Monthelie",
+"file": "decrees/bourgogne_cote_de_beaune_monthelie.pdf",
+"sizeKB": 427,
+"en": "decrees/bourgogne_cote_de_beaune_monthelie_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Montrachet",
+"file": "decrees/bourgogne_cote_de_beaune_montrachet.pdf",
+"sizeKB": 383,
+"en": "decrees/bourgogne_cote_de_beaune_montrachet_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Pernand-Vergelesses",
+"file": "decrees/bourgogne_cote_de_beaune_pernand_vergelesses.pdf",
+"sizeKB": 434,
+"en": "decrees/bourgogne_cote_de_beaune_pernand_vergelesses_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Pommard",
+"file": "decrees/bourgogne_cote_de_beaune_pommard.pdf",
+"sizeKB": 138,
+"en": "decrees/bourgogne_cote_de_beaune_pommard_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Puligny-Montrachet",
+"file": "decrees/bourgogne_cote_de_beaune_puligny_montrachet.pdf",
+"sizeKB": 440,
+"en": "decrees/bourgogne_cote_de_beaune_puligny_montrachet_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Saint-Aubin",
+"file": "decrees/bourgogne_cote_de_beaune_saint_aubin.pdf",
+"sizeKB": 448,
+"en": "decrees/bourgogne_cote_de_beaune_saint_aubin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Saint-Romain",
+"file": "decrees/bourgogne_cote_de_beaune_saint_romain.pdf",
+"sizeKB": 402,
+"en": "decrees/bourgogne_cote_de_beaune_saint_romain_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Santenay",
+"file": "decrees/bourgogne_cote_de_beaune_santenay.pdf",
+"sizeKB": 430,
+"en": "decrees/bourgogne_cote_de_beaune_santenay_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Savigny-les-Beaune",
+"file": "decrees/bourgogne_cote_de_beaune_savigny_les_beaune.pdf",
+"sizeKB": 434,
+"en": "decrees/bourgogne_cote_de_beaune_savigny_les_beaune_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Auxey-Duresses",
+"file": "decrees/bourgogne_cote_de_beaune_auxey_duresses.pdf",
+"sizeKB": 432,
+"en": "decrees/bourgogne_cote_de_beaune_auxey_duresses_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Batard-Montrachet",
+"file": "decrees/bourgogne_cote_de_beaune_batard_montrachet.pdf",
+"sizeKB": 123,
+"en": "decrees/bourgogne_cote_de_beaune_batard_montrachet_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Beaune",
+"file": "decrees/bourgogne_cote_de_beaune_beaune.pdf",
+"sizeKB": 448,
+"en": "decrees/bourgogne_cote_de_beaune_beaune_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Corton",
+"file": "decrees/bourgogne_cote_de_beaune_corton.pdf",
+"sizeKB": 142,
+"en": "decrees/bourgogne_cote_de_beaune_corton_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Chablis",
+"appellation": "Chablis (et 1er Cru)",
+"file": "decrees/bourgogne_chablis_chablis_et_1er_cru.pdf",
+"sizeKB": 651,
+"en": "decrees/bourgogne_chablis_chablis_et_1er_cru_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Chablis",
+"appellation": "Chablis Grand Cru",
+"file": "decrees/bourgogne_chablis_chablis_grand_cru.pdf",
+"sizeKB": 298,
+"en": "decrees/bourgogne_chablis_chablis_grand_cru_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Chablis",
+"appellation": "Irancy",
+"file": "decrees/bourgogne_chablis_irancy.pdf",
+"sizeKB": 393,
+"en": "decrees/bourgogne_chablis_irancy_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Chablis",
+"appellation": "Petit Chablis",
+"file": "decrees/bourgogne_chablis_petit_chablis.pdf",
+"sizeKB": 622,
+"en": "decrees/bourgogne_chablis_petit_chablis_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Chablis",
+"appellation": "Saint-Bris",
+"file": "decrees/bourgogne_chablis_saint_bris.pdf",
+"sizeKB": 412,
+"en": "decrees/bourgogne_chablis_saint_bris_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte Chalonnaise",
+"appellation": "Bouzeron",
+"file": "decrees/bourgogne_cote_chalonnaise_bouzeron.pdf",
+"sizeKB": 174,
+"en": "decrees/bourgogne_cote_chalonnaise_bouzeron_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte Chalonnaise",
+"appellation": "Givry",
+"file": "decrees/bourgogne_cote_chalonnaise_givry.pdf",
+"sizeKB": 193,
+"en": "decrees/bourgogne_cote_chalonnaise_givry_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte Chalonnaise",
+"appellation": "Mercurey",
+"file": "decrees/bourgogne_cote_chalonnaise_mercurey.pdf",
+"sizeKB": 405,
+"en": "decrees/bourgogne_cote_chalonnaise_mercurey_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte Chalonnaise",
+"appellation": "Montagny",
+"file": "decrees/bourgogne_cote_chalonnaise_montagny.pdf",
+"sizeKB": 401,
+"en": "decrees/bourgogne_cote_chalonnaise_montagny_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte Chalonnaise",
+"appellation": "Rully",
+"file": "decrees/bourgogne_cote_chalonnaise_rully.pdf",
+"sizeKB": 398,
+"en": "decrees/bourgogne_cote_chalonnaise_rully_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Mâconnais",
+"appellation": "Macon (Villages : Primeur)",
+"file": "decrees/bourgogne_maconnais_macon_villages_primeur.pdf",
+"sizeKB": 480,
+"en": "decrees/bourgogne_maconnais_macon_villages_primeur_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Mâconnais",
+"appellation": "Pouilly-Fuissé (et 1er Cru)",
+"file": "decrees/bourgogne_maconnais_pouilly_fuisse_et_1er_cru.pdf",
+"sizeKB": 673,
+"en": "decrees/bourgogne_maconnais_pouilly_fuisse_et_1er_cru_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Mâconnais",
+"appellation": "Pouilly-Loche",
+"file": "decrees/bourgogne_maconnais_pouilly_loche.pdf",
+"sizeKB": 153,
+"en": "decrees/bourgogne_maconnais_pouilly_loche_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Mâconnais",
+"appellation": "Pouilly-Vinzelles",
+"file": "decrees/bourgogne_maconnais_pouilly_vinzelles.pdf",
+"sizeKB": 169,
+"en": "decrees/bourgogne_maconnais_pouilly_vinzelles_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Mâconnais",
+"appellation": "Saint-Véran",
+"file": "decrees/bourgogne_maconnais_saint_veran.pdf",
+"sizeKB": 378,
+"en": "decrees/bourgogne_maconnais_saint_veran_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Mâconnais",
+"appellation": "Viré-Clessé",
+"file": "decrees/bourgogne_maconnais_vire_clesse.pdf",
+"sizeKB": 197,
+"en": "decrees/bourgogne_maconnais_vire_clesse_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Bonnes-Mares",
+"file": "decrees/bourgogne_cote_de_nuits_bonnes_mares.pdf",
+"sizeKB": 390,
+"en": "decrees/bourgogne_cote_de_nuits_bonnes_mares_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Bourgogne(Hautes Cotes de Nuits)",
+"file": "decrees/bourgogne_cote_de_nuits_bourgogne_hautes_cotes_de_nuits.pdf",
+"sizeKB": 380,
+"en": "decrees/bourgogne_regionales_bourgogne_regionale_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Chambertin Clos de Beze",
+"file": "decrees/bourgogne_cote_de_nuits_chambertin_clos_de_beze.pdf",
+"sizeKB": 184,
+"en": "decrees/bourgogne_cote_de_nuits_chambertin_clos_de_beze_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_chambertin.pdf",
+"sizeKB": 389,
+"en": "decrees/bourgogne_cote_de_nuits_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Chambolle-Musigny",
+"file": "decrees/bourgogne_cote_de_nuits_chambolle_musigny.pdf",
+"sizeKB": 442,
+"en": "decrees/bourgogne_cote_de_nuits_chambolle_musigny_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Chapelle-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_chapelle_chambertin.pdf",
+"sizeKB": 390,
+"en": "decrees/bourgogne_cote_de_nuits_chapelle_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Charmes-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_charmes_chambertin.pdf",
+"sizeKB": 391,
+"en": "decrees/bourgogne_cote_de_nuits_charmes_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Clos Saint-Denis",
+"file": "decrees/bourgogne_cote_de_nuits_clos_saint_denis.pdf",
+"sizeKB": 667,
+"en": "decrees/bourgogne_cote_de_nuits_clos_saint_denis_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Clos de Vougeot",
+"file": "decrees/bourgogne_cote_de_nuits_clos_de_vougeot.pdf",
+"sizeKB": 394,
+"en": "decrees/bourgogne_cote_de_nuits_clos_de_vougeot_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Clos-de-Tart",
+"file": "decrees/bourgogne_cote_de_nuits_clos_de_tart.pdf",
+"sizeKB": 390,
+"en": "decrees/bourgogne_cote_de_nuits_clos_de_tart_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Clos-de-la-Roche",
+"file": "decrees/bourgogne_cote_de_nuits_clos_de_la_roche.pdf",
+"sizeKB": 390,
+"en": "decrees/bourgogne_cote_de_nuits_clos_de_la_roche_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Clos-des-Lambrays",
+"file": "decrees/bourgogne_cote_de_nuits_clos_des_lambrays.pdf",
+"sizeKB": 126,
+"en": "decrees/bourgogne_cote_de_nuits_clos_des_lambrays_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Cote De Nuits-Villages",
+"file": "decrees/bourgogne_cote_de_nuits_cote_de_nuits_villages.pdf",
+"sizeKB": 402,
+"en": "decrees/bourgogne_cote_de_nuits_cote_de_nuits_villages_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Echezeaux",
+"file": "decrees/bourgogne_cote_de_nuits_echezeaux.pdf",
+"sizeKB": 128,
+"en": "decrees/bourgogne_cote_de_nuits_echezeaux_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Fixin",
+"file": "decrees/bourgogne_cote_de_nuits_fixin.pdf",
+"sizeKB": 426,
+"en": "decrees/bourgogne_cote_de_nuits_fixin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Gevrey-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_gevrey_chambertin.pdf",
+"sizeKB": 442,
+"en": "decrees/bourgogne_cote_de_nuits_gevrey_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Grands-Echezeaux",
+"file": "decrees/bourgogne_cote_de_nuits_grands_echezeaux.pdf",
+"sizeKB": 392,
+"en": "decrees/bourgogne_cote_de_nuits_grands_echezeaux_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Griotte-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_griotte_chambertin.pdf",
+"sizeKB": 391,
+"en": "decrees/bourgogne_cote_de_nuits_griotte_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "La Grande Rue",
+"file": "decrees/bourgogne_cote_de_nuits_la_grande_rue.pdf",
+"sizeKB": 373,
+"en": "decrees/bourgogne_cote_de_nuits_la_grande_rue_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "La Romanee",
+"file": "decrees/bourgogne_cote_de_nuits_la_romanee.pdf",
+"sizeKB": 390,
+"en": "decrees/bourgogne_cote_de_nuits_la_romanee_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "La Tache",
+"file": "decrees/bourgogne_cote_de_nuits_la_tache.pdf",
+"sizeKB": 391,
+"en": "decrees/bourgogne_cote_de_nuits_la_tache_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Marsannay",
+"file": "decrees/bourgogne_cote_de_nuits_marsannay.pdf",
+"sizeKB": 409,
+"en": "decrees/bourgogne_cote_de_nuits_marsannay_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Mazis-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_mazis_chambertin.pdf",
+"sizeKB": 391,
+"en": "decrees/bourgogne_cote_de_nuits_mazis_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Mazoyeres-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_mazoyeres_chambertin.pdf",
+"sizeKB": 391,
+"en": "decrees/bourgogne_cote_de_nuits_mazoyeres_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Morey-Saint-Denis",
+"file": "decrees/bourgogne_cote_de_nuits_morey_saint_denis.pdf",
+"sizeKB": 430,
+"en": "decrees/bourgogne_cote_de_nuits_morey_saint_denis_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Musigny",
+"file": "decrees/bourgogne_cote_de_nuits_musigny.pdf",
+"sizeKB": 395,
+"en": "decrees/bourgogne_cote_de_nuits_musigny_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Nuits-Saint-Georges",
+"file": "decrees/bourgogne_cote_de_nuits_nuits_saint_georges.pdf",
+"sizeKB": 440,
+"en": "decrees/bourgogne_cote_de_nuits_nuits_saint_georges_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Richebourg",
+"file": "decrees/bourgogne_cote_de_nuits_richebourg.pdf",
+"sizeKB": 406,
+"en": "decrees/bourgogne_cote_de_nuits_richebourg_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Romanee-Conti",
+"file": "decrees/bourgogne_cote_de_nuits_romanee_conti.pdf",
+"sizeKB": 130,
+"en": "decrees/bourgogne_cote_de_nuits_romanee_conti_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Romanee-Saint-Vivant",
+"file": "decrees/bourgogne_cote_de_nuits_romanee_saint_vivant.pdf",
+"sizeKB": 128,
+"en": "decrees/bourgogne_cote_de_nuits_romanee_saint_vivant_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Ruchottes-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_ruchottes_chambertin.pdf",
+"sizeKB": 391,
+"en": "decrees/bourgogne_cote_de_nuits_ruchottes_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Vosne-Romanee",
+"file": "decrees/bourgogne_cote_de_nuits_vosne_romanee.pdf",
+"sizeKB": 419,
+"en": "decrees/bourgogne_cote_de_nuits_vosne_romanee_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Ruchottes-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_ruchottes_chambertin_2.pdf",
+"sizeKB": 124,
+"en": "decrees/bourgogne_cote_de_nuits_ruchottes_chambertin_2_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Régionales",
+"appellation": "Bourgogne Mousseux",
+"file": "decrees/bourgogne_regionales_bourgogne_mousseux.pdf",
+"sizeKB": 221,
+"en": "decrees/bourgogne_regionales_bourgogne_mousseux_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Régionales",
+"appellation": "Bourgogne Passe Tout Grains",
+"file": "decrees/bourgogne_regionales_bourgogne_passe_tout_grains.pdf",
+"sizeKB": 235,
+"en": "decrees/bourgogne_regionales_bourgogne_passe_tout_grains_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Régionales",
+"appellation": "Bourgogne aligoté",
+"file": "decrees/bourgogne_regionales_bourgogne_aligote.pdf",
+"sizeKB": 707,
+"en": "decrees/bourgogne_regionales_bourgogne_aligote_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Régionales",
+"appellation": "Coteaux Bourguignons",
+"file": "decrees/bourgogne_regionales_coteaux_bourguignons.pdf",
+"sizeKB": 782,
+"en": "decrees/bourgogne_regionales_coteaux_bourguignons_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Régionales",
+"appellation": "Cremant De Bourgogne",
+"file": "decrees/bourgogne_regionales_cremant_de_bourgogne.pdf",
+"sizeKB": 307,
+"en": "decrees/bourgogne_regionales_cremant_de_bourgogne_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Régionales",
+"appellation": "Bourgogne (régionale)",
+"file": "decrees/bourgogne_regionales_bourgogne_regionale.pdf",
+"sizeKB": 981,
+"en": "decrees/bourgogne_regionales_bourgogne_regionale_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Régionales",
+"appellation": "Marc de Bourgogne",
+"file": "decrees/bourgogne_regionales_marc_de_bourgogne.pdf",
+"sizeKB": 149,
+"en": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_de_bourgogne_en.pdf"
+},
+{
+"region": "Champagne",
+"sub": "",
+"appellation": "Champagne",
+"file": "decrees/champagne_champagne_champagne.pdf",
+"sizeKB": 597,
+"en": "decrees/champagne_champagne_champagne_en.pdf"
+},
+{
+"region": "Champagne",
+"sub": "",
+"appellation": "Coteauxchampenoix",
+"file": "decrees/champagne_champagne_coteauxchampenoix.pdf",
+"sizeKB": 398,
+"en": "decrees/champagne_champagne_coteauxchampenoix_en.pdf"
+},
+{
+"region": "Champagne",
+"sub": "",
+"appellation": "Rosé des Riceys",
+"file": "decrees/champagne_champagne_rose_des_riceys.pdf",
+"sizeKB": 351,
+"en": "decrees/champagne_champagne_rose_des_riceys_en.pdf"
+},
+{
+"region": "Charente",
+"sub": "Cognac",
+"appellation": "Cognac",
+"file": "decrees/charente_cognac_cognac.pdf",
+"sizeKB": 615,
+"en": ""
+},
+{
+"region": "Charente",
+"sub": "Cognac",
+"appellation": "Cognac (version consolidée)",
+"file": "decrees/charente_cognac_cognac_version_consolidee.pdf",
+"sizeKB": 461,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc d'Alsace Gewurztraminer",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_d_alsace_gewurztraminer.pdf",
+"sizeKB": 699,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc d'Auvergne",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_d_auvergne.pdf",
+"sizeKB": 228,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc de Bourgogne",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_de_bourgogne.pdf",
+"sizeKB": 319,
+"en": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_de_bourgogne_en.pdf"
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc de Champagne",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_de_champagne.pdf",
+"sizeKB": 642,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc de Provence",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_de_provence.pdf",
+"sizeKB": 232,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc de Savoie",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_de_savoie.pdf",
+"sizeKB": 653,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc des Cotes du Rhone",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_des_cotes_du_rhone.pdf",
+"sizeKB": 252,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc du Bugey",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_du_bugey.pdf",
+"sizeKB": 121,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc du Jura",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_du_jura.pdf",
+"sizeKB": 417,
+"en": ""
+},
+{
+"region": "Eaux-de-vie & Marcs",
+"sub": "",
+"appellation": "Marc du Languedoc",
+"file": "decrees/eaux_de_vie_marcs_eaux_de_vie_marcs_marc_du_languedoc.pdf",
+"sizeKB": 204,
+"en": ""
+},
+{
+"region": "Jura",
+"sub": "",
+"appellation": "Arbois",
+"file": "decrees/jura_jura_arbois.pdf",
+"sizeKB": 346,
+"en": ""
+},
+{
+"region": "Jura",
+"sub": "",
+"appellation": "Chateau-Chalon",
+"file": "decrees/jura_jura_chateau_chalon.pdf",
+"sizeKB": 392,
+"en": ""
+},
+{
+"region": "Jura",
+"sub": "",
+"appellation": "Cotes du Jura",
+"file": "decrees/jura_jura_cotes_du_jura.pdf",
+"sizeKB": 340,
+"en": ""
+},
+{
+"region": "Jura",
+"sub": "",
+"appellation": "Cremant Du Jura",
+"file": "decrees/jura_jura_cremant_du_jura.pdf",
+"sizeKB": 80,
+"en": ""
+},
+{
+"region": "Jura",
+"sub": "",
+"appellation": "L'Etoile",
+"file": "decrees/jura_jura_l_etoile.pdf",
+"sizeKB": 152,
+"en": ""
+},
+{
+"region": "Jura",
+"sub": "",
+"appellation": "Macvin Du Jura",
+"file": "decrees/jura_jura_macvin_du_jura.pdf",
+"sizeKB": 250,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Boutenac",
+"file": "decrees/languedoc_languedoc_boutenac.pdf",
+"sizeKB": 626,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Cabardes",
+"file": "decrees/languedoc_languedoc_cabardes.pdf",
+"sizeKB": 138,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Clairette de Bellegarde",
+"file": "decrees/languedoc_languedoc_clairette_de_bellegarde.pdf",
+"sizeKB": 146,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Clairette du Langudoc",
+"file": "decrees/languedoc_languedoc_clairette_du_langudoc.pdf",
+"sizeKB": 129,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Corbieres",
+"file": "decrees/languedoc_languedoc_corbieres.pdf",
+"sizeKB": 448,
+"en": "decrees/languedoc_languedoc_corbieres_en.pdf"
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Cremant de Limoux",
+"file": "decrees/languedoc_languedoc_cremant_de_limoux.pdf",
+"sizeKB": 173,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Faugeres",
+"file": "decrees/languedoc_languedoc_faugeres.pdf",
+"sizeKB": 91,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Fitou",
+"file": "decrees/languedoc_languedoc_fitou.pdf",
+"sizeKB": 306,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "La Livinière",
+"file": "decrees/languedoc_languedoc_la_liviniere.pdf",
+"sizeKB": 591,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Languedoc",
+"file": "decrees/languedoc_languedoc_languedoc.pdf",
+"sizeKB": 437,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Limoux",
+"file": "decrees/languedoc_languedoc_limoux.pdf",
+"sizeKB": 247,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Malepère",
+"file": "decrees/languedoc_languedoc_malepere.pdf",
+"sizeKB": 634,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Minervois",
+"file": "decrees/languedoc_languedoc_minervois.pdf",
+"sizeKB": 621,
+"en": "decrees/languedoc_languedoc_minervois_en.pdf"
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Muscat de Frontignan",
+"file": "decrees/languedoc_languedoc_muscat_de_frontignan.pdf",
+"sizeKB": 959,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Muscat de Lunel",
+"file": "decrees/languedoc_languedoc_muscat_de_lunel.pdf",
+"sizeKB": 151,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Muscat de Mireval",
+"file": "decrees/languedoc_languedoc_muscat_de_mireval.pdf",
+"sizeKB": 235,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Muscat-de-St-Jean-de-Minervois",
+"file": "decrees/languedoc_languedoc_muscat_de_st_jean_de_minervois.pdf",
+"sizeKB": 45,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Pic St Loup",
+"file": "decrees/languedoc_languedoc_pic_st_loup.pdf",
+"sizeKB": 101,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Picpoul de Pinet",
+"file": "decrees/languedoc_languedoc_picpoul_de_pinet.pdf",
+"sizeKB": 65,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Sable de Camargue",
+"file": "decrees/languedoc_languedoc_sable_de_camargue.pdf",
+"sizeKB": 585,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Saint-Chinian",
+"file": "decrees/languedoc_languedoc_saintchinian.pdf",
+"sizeKB": 1219,
+"en": ""
+},
+{
+"region": "Languedoc",
+"sub": "",
+"appellation": "Terrasses du Larzac",
+"file": "decrees/languedoc_languedoc_terrasses_du_larzac.pdf",
+"sizeKB": 141,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Anjou : Cabernet d'Anjou",
+"file": "decrees/loire_anjou_touraine_anjou_cabernet_d_anjou.pdf",
+"sizeKB": 496,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Bonnezeaux",
+"file": "decrees/loire_anjou_touraine_bonnezeaux.pdf",
+"sizeKB": 427,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Bourgueil",
+"file": "decrees/loire_anjou_touraine_bourgueil.pdf",
+"sizeKB": 262,
+"en": "decrees/loire_anjou_touraine_bourgueil_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Cheverny",
+"file": "decrees/loire_anjou_touraine_cheverny.pdf",
+"sizeKB": 76,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Chinon",
+"file": "decrees/loire_anjou_touraine_chinon.pdf",
+"sizeKB": 563,
+"en": "decrees/loire_anjou_touraine_chinon_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Coteaux du Loir",
+"file": "decrees/loire_anjou_touraine_coteaux_du_loir.pdf",
+"sizeKB": 439,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Coteaux du Vendomois",
+"file": "decrees/loire_anjou_touraine_coteaux_du_vendomois.pdf",
+"sizeKB": 1135,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Coteaux-de-Saumur",
+"file": "decrees/loire_anjou_touraine_coteaux_de_saumur.pdf",
+"sizeKB": 131,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Coteaux-de-l-Aubance",
+"file": "decrees/loire_anjou_touraine_coteaux_de_l_aubance.pdf",
+"sizeKB": 317,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Coteaux-du-Layon",
+"file": "decrees/loire_anjou_touraine_coteaux_du_layon.pdf",
+"sizeKB": 436,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Cour-Cheverny",
+"file": "decrees/loire_anjou_touraine_cour_cheverny.pdf",
+"sizeKB": 67,
+"en": "CDC Cour-Cheverny (English translation).pdf"
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Crémant-de-Loire",
+"file": "decrees/loire_anjou_touraine_cremant_de_loire.pdf",
+"sizeKB": 328,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Jasnières",
+"file": "decrees/loire_anjou_touraine_jasnieres.pdf",
+"sizeKB": 406,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Montlouis sur Loire",
+"file": "decrees/loire_anjou_touraine_montlouis_sur_loire.pdf",
+"sizeKB": 300,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Quarts-de-Chaume",
+"file": "decrees/loire_anjou_touraine_quarts_de_chaume.pdf",
+"sizeKB": 314,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Rosé-de-Loire",
+"file": "decrees/loire_anjou_touraine_rose_de_loire.pdf",
+"sizeKB": 298,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Saint-Nicolas de Bourgueil",
+"file": "decrees/loire_anjou_touraine_saint_nicolas_de_bourgueil.pdf",
+"sizeKB": 399,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Saumur Champigny",
+"file": "decrees/loire_anjou_touraine_saumur_champigny.pdf",
+"sizeKB": 77,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Saumur",
+"file": "decrees/loire_anjou_touraine_saumur.pdf",
+"sizeKB": 500,
+"en": "decrees/loire_anjou_touraine_saumur_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Savennières",
+"file": "decrees/loire_anjou_touraine_savennieres.pdf",
+"sizeKB": 316,
+"en": "decrees/loire_anjou_touraine_savennieres_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Touraine",
+"file": "decrees/loire_anjou_touraine_touraine.pdf",
+"sizeKB": 491,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Valençay",
+"file": "decrees/loire_anjou_touraine_valencay.pdf",
+"sizeKB": 74,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Anjou-Touraine",
+"appellation": "Vouvray",
+"file": "decrees/loire_anjou_touraine_vouvray.pdf",
+"sizeKB": 133,
+"en": "decrees/loire_anjou_touraine_vouvray_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Coteaux Giennois",
+"file": "decrees/loire_centre_loire_coteaux_giennois.pdf",
+"sizeKB": 420,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Menetou Salon",
+"file": "decrees/loire_centre_loire_menetou_salon.pdf",
+"sizeKB": 151,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Orleans Clery",
+"file": "decrees/loire_centre_loire_orleans_clery.pdf",
+"sizeKB": 124,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Orleans",
+"file": "decrees/loire_centre_loire_orleans.pdf",
+"sizeKB": 144,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Orleans Clery",
+"file": "decrees/loire_centre_loire_orleans_clery_2.pdf",
+"sizeKB": 815,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Pouilly-Fumé : sur Loire",
+"file": "decrees/loire_centre_loire_pouilly_fume_sur_loire.pdf",
+"sizeKB": 113,
+"en": "decrees/loire_centre_loire_pouilly_fume_sur_loire_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Quincy",
+"file": "decrees/loire_centre_loire_quincy.pdf",
+"sizeKB": 145,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Reuilly",
+"file": "decrees/loire_centre_loire_reuilly.pdf",
+"sizeKB": 119,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Centre-Loire",
+"appellation": "Sancerre",
+"file": "decrees/loire_centre_loire_sancerre.pdf",
+"sizeKB": 73,
+"en": "decrees/loire_centre_loire_sancerre_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Pays Nantais (Muscadet)",
+"appellation": "Coteaux-d Ancenis",
+"file": "decrees/loire_pays_nantais_muscadet_coteaux_d_ancenis.pdf",
+"sizeKB": 641,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Pays Nantais (Muscadet)",
+"appellation": "Fiefs-Vendeens",
+"file": "decrees/loire_pays_nantais_muscadet_fiefs_vendeens.pdf",
+"sizeKB": 776,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Pays Nantais (Muscadet)",
+"appellation": "Gros-Plant-du-Pays-Nantais",
+"file": "decrees/loire_pays_nantais_muscadet_gros_plant_du_pays_nantais.pdf",
+"sizeKB": 105,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Pays Nantais (Muscadet)",
+"appellation": "Haut-Poitou",
+"file": "decrees/loire_pays_nantais_muscadet_haut_poitou.pdf",
+"sizeKB": 428,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Pays Nantais (Muscadet)",
+"appellation": "Muscadet Côtes de Grandlieu",
+"file": "decrees/loire_pays_nantais_muscadet_muscadet_cotes_de_grandlieu.pdf",
+"sizeKB": 147,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Pays Nantais (Muscadet)",
+"appellation": "Muscadet Sèvre et Maine",
+"file": "decrees/loire_pays_nantais_muscadet_muscadet_sevre_et_maine.pdf",
+"sizeKB": 173,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Pays Nantais (Muscadet)",
+"appellation": "Muscadet",
+"file": "decrees/loire_pays_nantais_muscadet_muscadet.pdf",
+"sizeKB": 364,
+"en": "decrees/loire_pays_nantais_muscadet_muscadet_en.pdf"
+},
+{
+"region": "Loire",
+"sub": "Haute-Loire & Auvergne",
+"appellation": "Chateaumeillant",
+"file": "decrees/loire_haute_loire_auvergne_chateaumeillant.pdf",
+"sizeKB": 136,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Haute-Loire & Auvergne",
+"appellation": "Coteaux du Lyonnais",
+"file": "decrees/loire_haute_loire_auvergne_coteaux_du_lyonnais.pdf",
+"sizeKB": 177,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Haute-Loire & Auvergne",
+"appellation": "Cotes Roannaises",
+"file": "decrees/loire_haute_loire_auvergne_cotes_roannaises.pdf",
+"sizeKB": 117,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Haute-Loire & Auvergne",
+"appellation": "Cotes d'Auvergne",
+"file": "decrees/loire_haute_loire_auvergne_cotes_d_auvergne.pdf",
+"sizeKB": 585,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Haute-Loire & Auvergne",
+"appellation": "Cotes du Forez",
+"file": "decrees/loire_haute_loire_auvergne_cotes_du_forez.pdf",
+"sizeKB": 171,
+"en": ""
+},
+{
+"region": "Loire",
+"sub": "Haute-Loire & Auvergne",
+"appellation": "Saint Pourçain",
+"file": "decrees/loire_haute_loire_auvergne_saint_pourcain.pdf",
+"sizeKB": 422,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Les-Baux-de-Provence",
+"file": "decrees/provence_corse_provence_les_baux_de_provence.pdf",
+"sizeKB": 108,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Corse",
+"appellation": "Ajaccio",
+"file": "decrees/provence_corse_corse_ajaccio.pdf",
+"sizeKB": 120,
+"en": "decrees/provence_corse_corse_ajaccio_en.pdf"
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Bandol",
+"file": "decrees/provence_corse_provence_bandol.pdf",
+"sizeKB": 378,
+"en": "decrees/provence_corse_provence_bandol_en.pdf"
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Bellet",
+"file": "decrees/provence_corse_provence_bellet.pdf",
+"sizeKB": 162,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Cassis",
+"file": "decrees/provence_corse_provence_cassis.pdf",
+"sizeKB": 833,
+"en": "decrees/provence_corse_provence_cassis_en.pdf"
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Coteaux Aix En Provence",
+"file": "decrees/provence_corse_provence_coteaux_aix_en_provence.pdf",
+"sizeKB": 83,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Coteaux Varois En Provence",
+"file": "decrees/provence_corse_provence_coteaux_varois_en_provence.pdf",
+"sizeKB": 411,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Palette",
+"file": "decrees/provence_corse_provence_palette.pdf",
+"sizeKB": 54,
+"en": "decrees/provence_corse_provence_palette_en.pdf"
+},
+{
+"region": "Provence & Corse",
+"sub": "Corse",
+"appellation": "Patrimonio",
+"file": "decrees/provence_corse_corse_patrimonio.pdf",
+"sizeKB": 381,
+"en": "decrees/provence_corse_corse_patrimonio_en.pdf"
+},
+{
+"region": "Provence & Corse",
+"sub": "Provence",
+"appellation": "Pierrevert",
+"file": "decrees/provence_corse_provence_pierrevert.pdf",
+"sizeKB": 3731,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Corse",
+"appellation": "Vin de Corse",
+"file": "decrees/provence_corse_corse_vin_de_corse.pdf",
+"sizeKB": 172,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Corse",
+"appellation": "Vin de Corse (version consolidée)",
+"file": "decrees/provence_corse_corse_vin_de_corse_version_consolidee.pdf",
+"sizeKB": 35,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Corse",
+"appellation": "Muscat du Cap Corse (variante)",
+"file": "decrees/provence_corse_corse_muscat_du_cap_corse_variante.pdf",
+"sizeKB": 25,
+"en": ""
+},
+{
+"region": "Provence & Corse",
+"sub": "Corse",
+"appellation": "Muscat du Cap Corse",
+"file": "decrees/provence_corse_corse_muscat_du_cap_corse.pdf",
+"sizeKB": 25,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Chateau Grillet",
+"file": "decrees/rhone_septentrional_nord_chateau_grillet.pdf",
+"sizeKB": 457,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Chatillon En Diois",
+"file": "decrees/rhone_septentrional_nord_chatillon_en_diois.pdf",
+"sizeKB": 321,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Clairette de Die",
+"file": "decrees/rhone_septentrional_nord_clairette_de_die.pdf",
+"sizeKB": 461,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Condrieu",
+"file": "decrees/rhone_septentrional_nord_condrieu.pdf",
+"sizeKB": 160,
+"en": "decrees/rhone_septentrional_nord_condrieu_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Cornas",
+"file": "decrees/rhone_septentrional_nord_cornas.pdf",
+"sizeKB": 470,
+"en": "decrees/rhone_septentrional_nord_cornas_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Coteaux de Die",
+"file": "decrees/rhone_septentrional_nord_coteaux_de_die.pdf",
+"sizeKB": 1046,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Côte Rôtie",
+"file": "decrees/rhone_septentrional_nord_cote_rotie.pdf",
+"sizeKB": 469,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Côtes du Rhône",
+"file": "decrees/rhone_septentrional_nord_cotes_du_rhone.pdf",
+"sizeKB": 175,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Crémant de Die",
+"file": "decrees/rhone_septentrional_nord_cremant_de_die.pdf",
+"sizeKB": 493,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Crozes-Hermitage",
+"file": "decrees/rhone_septentrional_nord_crozes_hermitage.pdf",
+"sizeKB": 421,
+"en": "decrees/rhone_septentrional_nord_crozes_hermitage_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Hermitage",
+"file": "decrees/rhone_septentrional_nord_hermitage.pdf",
+"sizeKB": 351,
+"en": "decrees/rhone_septentrional_nord_hermitage_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Saint Joseph",
+"file": "decrees/rhone_septentrional_nord_saint_joseph.pdf",
+"sizeKB": 484,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Septentrional (Nord)",
+"appellation": "Saint Peray",
+"file": "decrees/rhone_septentrional_nord_saint_peray.pdf",
+"sizeKB": 338,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Beaumes de Venise",
+"file": "decrees/rhone_meridional_sud_beaumes_de_venise.pdf",
+"sizeKB": 573,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Cairanne",
+"file": "decrees/rhone_meridional_sud_cairanne.pdf",
+"sizeKB": 365,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Châteauneuf-du-Pape",
+"file": "decrees/rhone_meridional_sud_chateauneuf_du_pape.pdf",
+"sizeKB": 127,
+"en": "decrees/rhone_meridional_sud_chateauneuf_du_pape_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Cotes du Vivarais",
+"file": "decrees/rhone_meridional_sud_cotes_du_vivarais.pdf",
+"sizeKB": 52,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Cotes-du-Rhone-Villages",
+"file": "decrees/rhone_meridional_sud_cotes_du_rhone_villages.pdf",
+"sizeKB": 118,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Côtes du Rhône",
+"file": "decrees/rhone_meridional_sud_cotes_du_rhone.pdf",
+"sizeKB": 175,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Gigondas",
+"file": "decrees/rhone_meridional_sud_gigondas.pdf",
+"sizeKB": 340,
+"en": "decrees/rhone_meridional_sud_gigondas_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Grignan-les-Adhémar",
+"file": "decrees/rhone_meridional_sud_grignan_les_adhemar.pdf",
+"sizeKB": 56,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Lirac",
+"file": "decrees/rhone_meridional_sud_lirac.pdf",
+"sizeKB": 451,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Luberon",
+"file": "decrees/rhone_meridional_sud_luberon.pdf",
+"sizeKB": 152,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Muscat Beaume de Venise",
+"file": "decrees/rhone_meridional_sud_muscat_beaume_de_venise.pdf",
+"sizeKB": 376,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Pierrevert",
+"file": "decrees/rhone_meridional_sud_pierrevert.pdf",
+"sizeKB": 3731,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Rasteau VDN",
+"file": "decrees/rhone_meridional_sud_rasteau_vdn.pdf",
+"sizeKB": 107,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Rasteau",
+"file": "decrees/rhone_meridional_sud_rasteau.pdf",
+"sizeKB": 418,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "TAVEL",
+"file": "decrees/rhone_meridional_sud_tavel.pdf",
+"sizeKB": 149,
+"en": "decrees/rhone_meridional_sud_tavel_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Vacqueyras",
+"file": "decrees/rhone_meridional_sud_vacqueyras.pdf",
+"sizeKB": 96,
+"en": "decrees/rhone_meridional_sud_vacqueyras_en.pdf"
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Ventoux",
+"file": "decrees/rhone_meridional_sud_ventoux.pdf",
+"sizeKB": 430,
+"en": ""
+},
+{
+"region": "Rhône",
+"sub": "Méridional (Sud)",
+"appellation": "Vinsobres",
+"file": "decrees/rhone_meridional_sud_vinsobres.pdf",
+"sizeKB": 331,
+"en": ""
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Banyuls",
+"file": "decrees/roussillon_roussillon_banyuls.pdf",
+"sizeKB": 102,
+"en": "decrees/roussillon_roussillon_banyuls_en.pdf"
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Collioure",
+"file": "decrees/roussillon_roussillon_collioure.pdf",
+"sizeKB": 196,
+"en": "decrees/roussillon_roussillon_collioure_en.pdf"
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Côtes du Roussillon Villages",
+"file": "decrees/roussillon_roussillon_cotes_du_roussillon_villages.pdf",
+"sizeKB": 192,
+"en": ""
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Côtes du Roussillon",
+"file": "decrees/roussillon_roussillon_cotes_du_roussillon.pdf",
+"sizeKB": 165,
+"en": ""
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Grand-Roussillon",
+"file": "decrees/roussillon_roussillon_grand_roussillon.pdf",
+"sizeKB": 51,
+"en": ""
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Maury",
+"file": "decrees/roussillon_roussillon_maury.pdf",
+"sizeKB": 65,
+"en": ""
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Muscat de Rivesaltes",
+"file": "decrees/roussillon_roussillon_muscat_de_rivesaltes.pdf",
+"sizeKB": 132,
+"en": ""
+},
+{
+"region": "Roussillon",
+"sub": "",
+"appellation": "Rivesaltes",
+"file": "decrees/roussillon_roussillon_rivesaltes.pdf",
+"sizeKB": 843,
+"en": ""
+},
+{
+"region": "Savoie & Bugey",
+"sub": "",
+"appellation": "Bugey",
+"file": "decrees/savoie_bugey_savoie_bugey_bugey.pdf",
+"sizeKB": 156,
+"en": ""
+},
+{
+"region": "Savoie & Bugey",
+"sub": "",
+"appellation": "Roussette de Savoie",
+"file": "decrees/savoie_bugey_savoie_bugey_roussette_de_savoie.pdf",
+"sizeKB": 445,
+"en": ""
+},
+{
+"region": "Savoie & Bugey",
+"sub": "",
+"appellation": "Roussette du Bugey",
+"file": "decrees/savoie_bugey_savoie_bugey_roussette_du_bugey.pdf",
+"sizeKB": 286,
+"en": ""
+},
+{
+"region": "Savoie & Bugey",
+"sub": "",
+"appellation": "Seyssel",
+"file": "decrees/savoie_bugey_savoie_bugey_seyssel.pdf",
+"sizeKB": 100,
+"en": ""
+},
+{
+"region": "Savoie & Bugey",
+"sub": "",
+"appellation": "Vin de Savoie",
+"file": "decrees/savoie_bugey_savoie_bugey_vin_de_savoie.pdf",
+"sizeKB": 206,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Corrèze",
+"file": "decrees/sud_ouest_sud_ouest_correze.pdf",
+"sizeKB": 167,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Corrèze (variante)",
+"file": "decrees/sud_ouest_sud_ouest_correze_variante.pdf",
+"sizeKB": 449,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Bearn",
+"file": "decrees/sud_ouest_sud_ouest_bearn.pdf",
+"sizeKB": 355,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Bergerac",
+"file": "decrees/sud_ouest_sud_ouest_bergerac.pdf",
+"sizeKB": 64,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Brulhois",
+"file": "decrees/sud_ouest_sud_ouest_brulhois.pdf",
+"sizeKB": 593,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Buzet",
+"file": "decrees/sud_ouest_sud_ouest_buzet.pdf",
+"sizeKB": 746,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Cahors",
+"file": "decrees/sud_ouest_sud_ouest_cahors.pdf",
+"sizeKB": 138,
+"en": "decrees/sud_ouest_sud_ouest_cahors_en.pdf"
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Coteaux-du-Quercy",
+"file": "decrees/sud_ouest_sud_ouest_coteaux_du_quercy.pdf",
+"sizeKB": 799,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Cotes de Millau",
+"file": "decrees/sud_ouest_sud_ouest_cotes_de_millau.pdf",
+"sizeKB": 174,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Cotes de Montravel",
+"file": "decrees/sud_ouest_sud_ouest_cotes_de_montravel.pdf",
+"sizeKB": 140,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Côtes-de-Duras",
+"file": "decrees/sud_ouest_sud_ouest_cotes_de_duras.pdf",
+"sizeKB": 573,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Côtes-du-Marmandais",
+"file": "decrees/sud_ouest_sud_ouest_cotes_du_marmandais.pdf",
+"sizeKB": 705,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Entraygues-et-Le-Fel",
+"file": "decrees/sud_ouest_sud_ouest_entraygues_et_le_fel.pdf",
+"sizeKB": 351,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Estaing",
+"file": "decrees/sud_ouest_sud_ouest_estaing.pdf",
+"sizeKB": 331,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Floc de Gascogne",
+"file": "decrees/sud_ouest_sud_ouest_floc_de_gascogne.pdf",
+"sizeKB": 165,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Fronton",
+"file": "decrees/sud_ouest_sud_ouest_fronton.pdf",
+"sizeKB": 300,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Gaillac",
+"file": "decrees/sud_ouest_sud_ouest_gaillac.pdf",
+"sizeKB": 463,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Haut-Montravel",
+"file": "decrees/sud_ouest_sud_ouest_haut_montravel.pdf",
+"sizeKB": 49,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Irouléguy",
+"file": "decrees/sud_ouest_sud_ouest_irouleguy.pdf",
+"sizeKB": 700,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Jurancon",
+"file": "decrees/sud_ouest_sud_ouest_jurancon.pdf",
+"sizeKB": 168,
+"en": "decrees/sud_ouest_sud_ouest_jurancon_en.pdf"
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Madiran",
+"file": "decrees/sud_ouest_sud_ouest_madiran.pdf",
+"sizeKB": 585,
+"en": "decrees/sud_ouest_sud_ouest_madiran_en.pdf"
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Marcillac",
+"file": "decrees/sud_ouest_sud_ouest_marcillac.pdf",
+"sizeKB": 156,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Monbazillac",
+"file": "decrees/sud_ouest_sud_ouest_monbazillac.pdf",
+"sizeKB": 144,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Montravel",
+"file": "decrees/sud_ouest_sud_ouest_montravel.pdf",
+"sizeKB": 346,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Pacherenc-du-Vic-Bilh",
+"file": "decrees/sud_ouest_sud_ouest_pacherenc_du_vic_bilh.pdf",
+"sizeKB": 677,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Pecharmant",
+"file": "decrees/sud_ouest_sud_ouest_pecharmant.pdf",
+"sizeKB": 135,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Rosette",
+"file": "decrees/sud_ouest_sud_ouest_rosette.pdf",
+"sizeKB": 130,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Saint-Mont",
+"file": "decrees/sud_ouest_sud_ouest_saint_mont.pdf",
+"sizeKB": 795,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Saint-Sardos",
+"file": "decrees/sud_ouest_sud_ouest_saint_sardos.pdf",
+"sizeKB": 133,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Saussignac",
+"file": "decrees/sud_ouest_sud_ouest_saussignac.pdf",
+"sizeKB": 134,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "Tursan",
+"file": "decrees/sud_ouest_sud_ouest_tursan.pdf",
+"sizeKB": 426,
+"en": ""
+},
+{
+"region": "Sud-Ouest",
+"sub": "",
+"appellation": "AOP Gaillac",
+"file": "decrees/sud_ouest_sud_ouest_aop_gaillac.pdf",
+"sizeKB": 463,
+"en": ""
+},
+{
+"region": "Alsace & Lorraine",
+"sub": "Alsace",
+"appellation": "Alsace Grand Cru (51 AOCs)",
+"file": "decrees/alsace_lorraine_alsace_alsace_grand_cru.pdf",
+"sizeKB": 787,
+"en": "decrees/alsace_lorraine_alsace_alsace_grand_cru_en.pdf"
+},
+{
+"region": "Alsace & Lorraine",
+"sub": "Alsace",
+"appellation": "Crémant d'Alsace",
+"file": "decrees/alsace_lorraine_alsace_cremant_d_alsace.pdf",
+"sizeKB": 486,
+"en": "decrees/alsace_lorraine_alsace_cremant_d_alsace_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Latricières-Chambertin",
+"file": "decrees/bourgogne_cote_de_nuits_latricieres_chambertin.pdf",
+"sizeKB": 838,
+"en": "decrees/bourgogne_cote_de_nuits_latricieres_chambertin_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Nuits",
+"appellation": "Vougeot",
+"file": "decrees/bourgogne_cote_de_nuits_vougeot.pdf",
+"sizeKB": 419,
+"en": "decrees/bourgogne_cote_de_nuits_vougeot_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Charlemagne",
+"file": "decrees/bourgogne_cote_de_beaune_charlemagne.pdf",
+"sizeKB": 390,
+"en": "decrees/bourgogne_cote_de_beaune_charlemagne_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Côte de Beaune",
+"appellation": "Volnay",
+"file": "decrees/bourgogne_cote_de_beaune_volnay.pdf",
+"sizeKB": 423,
+"en": "decrees/bourgogne_cote_de_beaune_volnay_en.pdf"
+},
+{
+"region": "Bourgogne",
+"sub": "Chablis",
+"appellation": "Vézelay",
+"file": "decrees/bourgogne_chablis_vezelay.pdf",
+"sizeKB": 285,
+"en": "decrees/bourgogne_chablis_vezelay_en.pdf"
+}
+]

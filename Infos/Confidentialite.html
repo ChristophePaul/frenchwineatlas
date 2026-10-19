@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Confidentialité & mon compte" data-en="Privacy & my account">Confidentialité &amp; mon compte</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;--muted:rgba(245,239,227,.72);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.60);--hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --title:#fff;--chip:rgba(10,1,4,.45);--btn:#9b2235;--warn:#ff9b8f;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#7b1e2b;--parchment:#2e1419;--muted:rgba(46,20,25,.78);--faint:rgba(46,20,25,.52);
+    --glass:rgba(255,253,248,.88);--glass-hi:#fffdf8;--hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--chip:#fff;--btn:#7b1e2b;--warn:#b3261e;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;} html,body{margin:0;min-height:100%;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      url("../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  .wrap{max-width:980px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+  section[id]{scroll-margin-top:20px;}
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;padding:8px 16px;
+    background:var(--glass);font-family:var(--sans);}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);}
+  .lang{color:var(--gold-soft);} .lang svg{width:15px;height:15px;}
+  header{text-align:center;margin:clamp(26px,4vw,44px) 0 26px;}
+  .eyebrow{text-transform:uppercase;letter-spacing:.5em;font-size:11px;font-weight:600;color:var(--gold);margin:0 0 16px;padding-left:.5em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(34px,6vw,62px);line-height:1.02;margin:0;color:var(--title);}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:22px auto 16px;}
+  .tagline{font-size:15px;line-height:1.65;color:var(--muted);max-width:660px;margin:0 auto;}
+  .draft{max-width:660px;margin:18px auto 0;padding:10px 14px;border-radius:12px;border:1px dashed var(--hair-hi);font-size:12.5px;color:var(--muted);}
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border:1px solid var(--hair);border-radius:18px;
+    box-shadow:0 18px 50px rgba(10,1,4,.45);padding:clamp(18px,3vw,30px);margin-top:22px;}
+  html[data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,30,40,.10);-webkit-backdrop-filter:none;backdrop-filter:none;}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(23px,3vw,30px);color:var(--title);margin:0 0 12px;}
+  h3{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--gold-soft);margin:22px 0 6px;}
+  p,li{font-size:15px;line-height:1.7;} p{margin:0 0 10px;}
+  ul{margin:0 0 10px;padding-left:1.2em;} li::marker{color:var(--gold);}
+  a{color:var(--gold);}
+  .L{display:none;} html[lang="fr"] .L.fr,html[lang="en"] .L.en{display:block;}
+  table.data{width:100%;border-collapse:collapse;font-size:14px;margin:6px 0 12px;}
+  table.data th,table.data td{padding:8px 10px;border-bottom:1px solid var(--hair);text-align:left;vertical-align:top;}
+  table.data th{width:34%;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  table.data input{width:100%;font:500 14px var(--sans);color:var(--parchment);background:var(--chip);border:1px solid var(--hair-hi);border-radius:8px;padding:7px 9px;}
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:999px;border:1px solid var(--hair-hi);color:var(--gold);}
+  .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+  .btn{cursor:pointer;border-radius:999px;padding:11px 18px;font:700 11.5px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;
+    border:1px solid var(--btn);background:var(--btn);color:#fff;text-decoration:none;display:inline-flex;align-items:center;}
+  .btn.ghost{background:transparent;color:var(--gold);border-color:var(--hair-hi);}
+  .btn.danger{background:transparent;color:var(--warn);border-color:var(--warn);}
+  .muted{color:var(--muted);} .small{font-size:12.5px;color:var(--faint);}
+  .demo{margin-top:16px;padding:12px 14px;border-radius:12px;border:1px dashed var(--hair-hi);font-size:13px;color:var(--muted);}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px;}
+  .toc a{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--gold);border:1px solid var(--hair);border-radius:999px;padding:7px 13px;background:var(--chip);}
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .draft{border:1px dashed rgba(90,30,40,0.18)}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 18px 50px rgba(90,40,30,0.14)}
+html[data-theme="cream"][data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] table.data th,html[data-theme="cream"] table.data td{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] table.data input{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tag{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .btn.ghost{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .btn.danger{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .demo{border:1px dashed rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Données personnelles" data-en="Personal data">Données personnelles</p>
+    <h1 data-fr="Confidentialité <em>&amp; mon compte</em>" data-en="Privacy <em>&amp; my account</em>">Confidentialité <em>&amp; mon compte</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Ce que nous collectons lors de l’inscription gratuite, pourquoi, combien de temps, et comment exercer vos droits." data-en="What we collect when you sign up for free access, why, for how long, and how to exercise your rights.">Ce que nous collectons lors de l’inscription gratuite, pourquoi, combien de temps, et comment exercer vos droits.</p>
+    <p class="draft" data-fr="<b>Projet de politique</b> — à compléter (adresse de contact, prestataires) et à faire relire avant la mise en ligne du site." data-en="<b>Draft policy</b> — to be completed (contact address, service providers) and reviewed before the site goes online."><b>Projet de politique</b> — à compléter (adresse de contact, prestataires) et à faire relire avant la mise en ligne du site.</p>
+    <nav class="toc">
+      <a href="#compte" data-fr="Mon compte" data-en="My account">Mon compte</a>
+      <a href="#politique" data-fr="Politique de confidentialité" data-en="Privacy policy">Politique de confidentialité</a>
+      <a href="#droits" data-fr="Vos droits" data-en="Your rights">Vos droits</a>
+    </nav>
+  </header>
+
+  <!-- ================= MY ACCOUNT (filled by script) ================= -->
+  <section class="panel" id="compte">
+    <h2 data-fr="Mon compte" data-en="My account">Mon compte</h2>
+    <div id="acct"></div>
+    <div class="demo">
+      <span data-fr="<b>Démo</b> — le site n’est pas encore en ligne : les inscriptions sont simulées et restent dans ce navigateur." data-en="<b>Demo</b> — the site isn’t online yet: sign-ups are simulated and stay in this browser."><b>Démo</b> — le site n’est pas encore en ligne : les inscriptions sont simulées et restent dans ce navigateur.</span>
+      <div class="acts">
+        <button class="btn ghost" type="button" id="resetDemo" data-fr="Réinitialiser la démo (revoir le popup)" data-en="Reset the demo (see the popup again)">Réinitialiser la démo (revoir le popup)</button>
+        <a class="btn ghost" href="_admin_members.html" data-fr="Liste des inscrits (démo)" data-en="Sign-up list (demo)">Liste des inscrits (démo)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= POLICY ================= -->
+  <section class="panel" id="politique">
+    <div class="L fr" lang="fr">
+      <h2>Politique de confidentialité</h2>
+      <p class="small">Version du 7 octobre 2026.</p>
+      <h3>Qui est responsable de vos données ?</h3>
+      <p>Le site <i>Vins de France</i> est édité par Christophe PAUL, responsable du traitement. Contact : <b>[adresse e-mail de contact à préciser]</b>.</p>
+      <h3>Quelles données ?</h3>
+      <ul>
+        <li><b>Obligatoires :</b> prénom, nom, adresse e-mail, ville et pays.</li>
+        <li><b>Facultatives :</b> second prénom, numéro de téléphone.</li>
+        <li><b>Techniques :</b> date de l’inscription et du consentement, version de la politique acceptée, langue, date de dernière connexion.</li>
+      </ul>
+      <p>Nous ne demandons que ce qui est utile ; laisser les champs facultatifs vides ne change rien à votre accès.</p>
+      <h3>Pourquoi ?</h3>
+      <ul>
+        <li>Créer et gérer votre accès membre (plans cadastraux, carte des IGP, calculateurs, millésimes).</li>
+        <li>Vous envoyer les liens de connexion par e-mail (pas de mot de passe).</li>
+        <li>Connaître, de façon globale, la provenance des lecteurs (ville et pays) pour améliorer le site.</li>
+      </ul>
+      <p>Vos données ne sont <b>jamais vendues, louées ni utilisées à des fins publicitaires</b>. Aucune lettre d’information ne vous sera envoyée sans un consentement séparé.</p>
+      <h3>Sur quelle base légale ?</h3>
+      <p>Votre <b>consentement</b> (article 6.1.a du RGPD), donné en cochant la case du formulaire. Vous pouvez le retirer à tout moment ; cela met fin à l’accès membre.</p>
+      <h3>Combien de temps ?</h3>
+      <p>Tant que votre compte est actif, puis <b>3 ans après votre dernière connexion</b> ; les données sont ensuite supprimées. Si vous demandez la suppression, elle est effectuée sans délai (au plus tard sous un mois).</p>
+      <h3>Qui y a accès ?</h3>
+      <p>Uniquement l’éditeur du site, ainsi que les prestataires techniques strictement nécessaires (hébergement du site, service d’authentification et d’envoi des e-mails — <b>à préciser</b>, de préférence hébergés dans l’Union européenne). Si un transfert hors de l’UE devait avoir lieu, il serait encadré par les garanties prévues par le RGPD et mentionné ici.</p>
+      <h3>Stockage dans votre navigateur</h3>
+      <p>Le site enregistre dans votre navigateur (« stockage local ») vos préférences (thème, langue) et votre session de connexion. Ces éléments sont strictement nécessaires au fonctionnement du site et ne servent à aucun suivi ; le site n’utilise <b>aucun cookie publicitaire ni outil de pistage</b>.</p>
+      <h3>Sécurité</h3>
+      <p>Connexion par lien à usage unique et durée limitée, échanges chiffrés (HTTPS), accès aux données restreint à l’éditeur.</p>
+    </div>
+    <div class="L en" lang="en">
+      <h2>Privacy policy</h2>
+      <p class="small">Version of 7 October 2026.</p>
+      <h3>Who is responsible for your data?</h3>
+      <p>The <i>French Wine</i> site is published by Christophe PAUL, the data controller. Contact: <b>[contact e-mail address to be added]</b>.</p>
+      <h3>What data?</h3>
+      <ul>
+        <li><b>Required:</b> first name, last name, e-mail address, city and country.</li>
+        <li><b>Optional:</b> middle name, phone number.</li>
+        <li><b>Technical:</b> date of sign-up and consent, policy version accepted, language, date of last sign-in.</li>
+      </ul>
+      <p>We only ask for what is useful; leaving the optional fields empty makes no difference to your access.</p>
+      <h3>Why?</h3>
+      <ul>
+        <li>To create and manage your member access (cadastral plans, IGP map, calculators, vintages).</li>
+        <li>To send you sign-in links by e-mail (no password).</li>
+        <li>To know, in aggregate, where readers come from (city and country) to improve the site.</li>
+      </ul>
+      <p>Your data is <b>never sold, rented or used for advertising</b>. No newsletter will be sent without a separate consent.</p>
+      <h3>On what legal basis?</h3>
+      <p>Your <b>consent</b> (GDPR Article 6(1)(a)), given by ticking the box on the form. You can withdraw it at any time; this ends the member access.</p>
+      <h3>For how long?</h3>
+      <p>While your account is active, then <b>3 years after your last sign-in</b>, after which the data is deleted. If you ask for deletion, it is done without delay (within one month at the latest).</p>
+      <h3>Who can see it?</h3>
+      <p>Only the site’s publisher, plus the strictly necessary technical providers (site hosting, sign-in and e-mail service — <b>to be specified</b>, preferably hosted in the European Union). Any transfer outside the EU would be covered by the safeguards required by the GDPR and listed here.</p>
+      <h3>Storage in your browser</h3>
+      <p>The site stores your preferences (theme, language) and your sign-in session in your browser (“local storage”). These are strictly necessary for the site to work and are not used for tracking; the site uses <b>no advertising cookies or tracking tools</b>.</p>
+      <h3>Security</h3>
+      <p>Sign-in by single-use, time-limited link, encrypted connections (HTTPS), data access restricted to the publisher.</p>
+    </div>
+  </section>
+
+  <section class="panel" id="droits">
+    <div class="L fr" lang="fr">
+      <h2>Vos droits</h2>
+      <p>Conformément au RGPD et à la loi « Informatique et Libertés », vous disposez des droits suivants :</p>
+      <ul>
+        <li><b>accès</b> et <b>portabilité</b> : consulter et télécharger vos données (bouton « Télécharger mes données » ci-dessus) ;</li>
+        <li><b>rectification</b> : corriger vos informations (bouton « Modifier ») ;</li>
+        <li><b>effacement</b> : supprimer votre compte et vos données (bouton « Supprimer mes données ») ;</li>
+        <li><b>retrait du consentement</b>, <b>limitation</b> et <b>opposition</b> : par simple e-mail à l’adresse de contact.</li>
+      </ul>
+      <p>Nous répondons dans un délai d’un mois. Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
+    </div>
+    <div class="L en" lang="en">
+      <h2>Your rights</h2>
+      <p>Under the GDPR and the French Data Protection Act you have the following rights:</p>
+      <ul>
+        <li><b>access</b> and <b>portability</b>: view and download your data (“Download my data” button above);</li>
+        <li><b>rectification</b>: correct your details (“Edit” button);</li>
+        <li><b>erasure</b>: delete your account and data (“Delete my data” button);</li>
+        <li><b>withdrawal of consent</b>, <b>restriction</b> and <b>objection</b>: simply e-mail the contact address.</li>
+      </ul>
+      <p>We reply within one month. If you believe your rights are not respected, you can lodge a complaint with the French data protection authority, the <a href="https://www.cnil.fr/fr/plaintes" target="_blank" rel="noopener">CNIL</a>.</p>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  function T(fr,en){ return LANG==='en'?en:fr; }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+  var FIELDS = [['first','Prénom','First name'],['middle','Second prénom','Middle name'],['last','Nom','Last name'],
+    ['email','E-mail','E-mail'],['phone','Téléphone','Phone'],['city','Ville','City'],['country','Pays','Country']];
+  var editing = false;
+
+  function fmtDate(iso){ if(!iso) return '—'; try{ return new Date(iso).toLocaleString(LANG==='en'?'en-GB':'fr-FR',{dateStyle:'long',timeStyle:'short'}); }catch(e){ return iso; } }
+
+  function renderAcct(){
+    var box = document.getElementById('acct');
+    var A = window.FWAccess;
+    if(!A){ box.innerHTML = '<p class="muted">…</p>'; return; }
+    var m = A.member(), p = A.pending();
+    if(m){
+      var rows = FIELDS.map(function(f){
+        var v = m[f[0]]||'';
+        return '<tr><th>'+T(f[1],f[2])+'</th><td>'+(editing && f[0]!=='email' ? '<input data-k="'+f[0]+'" value="'+esc(v)+'">' : (esc(v)||'<span class="small">—</span>'))+'</td></tr>';
+      }).join('');
+      rows += '<tr><th>'+T('Consentement','Consent')+'</th><td>'+fmtDate(m.consent&&m.consent.at)+' · '+T('politique du ','policy of ')+esc(m.consent&&m.consent.policy)+'</td></tr>';
+      rows += '<tr><th>'+T('Accès activé','Access activated')+'</th><td>'+fmtDate(m.verifiedAt)+'</td></tr>';
+      box.innerHTML = '<p><span class="tag">'+T('Membre','Member')+'</span> '+T('Votre accès complet est actif.','Your full access is active.')+'</p>'+
+        '<table class="data">'+rows+'</table>'+
+        '<div class="acts">'+
+          (editing ? '<button class="btn" data-a="save">'+T('Enregistrer','Save')+'</button><button class="btn ghost" data-a="cancel">'+T('Annuler','Cancel')+'</button>'
+                   : '<button class="btn ghost" data-a="edit">'+T('Modifier','Edit')+'</button>')+
+          '<button class="btn ghost" data-a="export">'+T('Télécharger mes données','Download my data')+'</button>'+
+          '<button class="btn ghost" data-a="signout">'+T('Se déconnecter','Sign out')+'</button>'+
+          '<button class="btn danger" data-a="delete">'+T('Supprimer mes données','Delete my data')+'</button>'+
+        '</div><p class="small">'+T('L’adresse e-mail sert d’identifiant : pour la changer, supprimez le compte et réinscrivez-vous.','The e-mail address is your login: to change it, delete the account and sign up again.')+'</p>';
+    } else if(p){
+      box.innerHTML = '<p><span class="tag">'+T('En attente','Pending')+'</span> '+T('Un lien de connexion a été envoyé à ','A sign-in link was sent to ')+'<b>'+esc(p.email)+'</b>.</p>'+
+        '<div class="acts"><button class="btn" data-a="open">'+T('Continuer l’inscription','Continue signing up')+'</button><button class="btn danger" data-a="delete">'+T('Annuler et supprimer','Cancel and delete')+'</button></div>';
+    } else {
+      box.innerHTML = '<p>'+T('Vous naviguez en <b>visiteur</b>. L’inscription gratuite débloque les plans cadastraux, la carte des IGP détaillée, tous les calculateurs et le tableau complet des millésimes.',
+        'You are browsing as a <b>visitor</b>. Free sign-up unlocks the cadastral plans, the detailed IGP map, all calculators and the complete vintage chart.')+'</p>'+
+        '<div class="acts"><button class="btn" data-a="open">'+T('Créer mon accès gratuit','Get free access')+'</button></div>';
+    }
+  }
+  document.getElementById('acct').addEventListener('click', function(e){
+    var b = e.target.closest('[data-a]'); if(!b) return;
+    var a = b.getAttribute('data-a'), A = window.FWAccess;
+    if(a==='edit'){ editing = true; renderAcct(); }
+    else if(a==='cancel'){ editing = false; renderAcct(); }
+    else if(a==='save'){
+      var patch = {}; document.querySelectorAll('#acct input[data-k]').forEach(function(i){ patch[i.getAttribute('data-k')] = i.value.trim(); });
+      if(!patch.first||!patch.last||!patch.city||!patch.country){ alert(T('Prénom, nom, ville et pays sont obligatoires.','First name, last name, city and country are required.')); return; }
+      A.update(patch); editing = false; renderAcct();
+    }
+    else if(a==='export'){
+      var blob = new Blob([JSON.stringify(A.member(),null,2)],{type:'application/json'});
+      var u = URL.createObjectURL(blob), l = document.createElement('a'); l.href = u; l.download = 'mes-donnees-vins-de-france.json'; document.body.appendChild(l); l.click(); l.remove();
+      setTimeout(function(){ URL.revokeObjectURL(u); }, 1000);
+    }
+    else if(a==='signout'){ A.signOut().then(renderAcct); }
+    else if(a==='delete'){ if(confirm(T('Supprimer définitivement votre compte et vos données ?','Permanently delete your account and data?'))) A.deleteMe().then(renderAcct); }
+    else if(a==='open'){ A.open(); }
+  });
+  document.getElementById('resetDemo').addEventListener('click', function(){
+    if(window.FWAccess){ window.FWAccess.resetDemo(); renderAcct(); }
+  });
+
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = T('Confidentialité & mon compte','Privacy & my account');
+    document.querySelectorAll('[data-fr]').forEach(function(n){ var v = n.getAttribute('data-'+LANG); if(v!==null) n.innerHTML = v; });
+    document.getElementById('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    renderAcct();
+  }
+  document.getElementById('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr'?'en':'fr'; try{ localStorage.setItem('fw_lang', LANG); }catch(e){} applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  // refresh when the sign-up popup changes the state (it lives in assets/access.js)
+  new MutationObserver(renderAcct).observe(document.documentElement, {attributes:true, attributeFilter:['class']});
+  window.addEventListener('storage', renderAcct);
+  applyLang();
+  var tries = 0; (function wait(){ if(window.FWAccess || tries++>50){ renderAcct(); } else setTimeout(wait, 100); })();
+})();
+</script>
+</body>
+</html>

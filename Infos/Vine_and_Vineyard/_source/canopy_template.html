@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travaux en vert &amp; du sol</title>
+<meta name="description" content="Les travaux de la vigne au printemps et en été : ébourgeonnage, palissage, rognage, effeuillage, vendange verte ; entretien du sol : travail, enherbement, couverts végétaux.">
+<style>
+@@BASE_CSS@@
+  /* chapter 6 */
+  .goals{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;}
+  .goals div{padding:13px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .goals b{display:block;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);margin-bottom:3px;}
+
+  .ops{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+  .op{border-radius:16px;overflow:hidden;background:var(--glass);border:1px solid var(--hair);display:flex;flex-direction:column;}
+  .op-fig{background:linear-gradient(to top,#cdb48a 0 10px,var(--paper) 10px);padding:10px 14px 0;border-bottom:3px solid #7aa23c;}
+  .mini{display:block;width:100%;height:110px;}
+  .op-b{padding:12px 15px 14px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .op-w{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .op h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:0;}
+  .op p{margin:0;font-size:13.6px;line-height:1.55;}
+  .op-y{margin-top:auto !important;padding-top:6px;border-top:1px dashed var(--hair);color:var(--muted);font-size:13px !important;}
+  .op-y b{color:var(--gold);font-weight:600;}
+
+  .cal{padding:clamp(14px,2.4vw,24px);overflow-x:auto;}
+  .cal-inner{min-width:620px;}
+  .cal-row{display:grid;grid-template-columns:minmax(170px,1.6fr) repeat(12,minmax(0,1fr));gap:3px;align-items:center;margin-bottom:3px;}
+  .cal-lbl{font-size:13px;display:flex;align-items:center;gap:8px;padding-right:8px;}
+  .cal-lbl i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none;}
+  .cal-head .cal-m{text-align:center;font-size:11px;font-weight:700;color:var(--gold);}
+  .cell{height:18px;border-radius:5px;background:var(--track);}
+  .cell.v1{background:color-mix(in srgb,var(--c) 40%,transparent);}
+  .cell.v2{background:var(--c);}
+  .cal-sep{height:1px;background:var(--hair-hi);margin:8px 0;}
+
+  .twocol{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:11px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14px;line-height:1.55;}
+  .fact b{color:var(--title);}
+
+  .st-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;margin-top:14px;}
+  .st{width:100%;border-collapse:collapse;font-size:14px;}
+  .st th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .st td{padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5;}
+  .st td:first-child{font-family:var(--serif);font-size:16px;color:var(--title);white-space:nowrap;}
+  .st td.pro::before{content:"+ ";color:#4f8a3a;font-weight:700;}
+  .st td.con::before{content:"– ";color:#a0283c;font-weight:700;}
+
+  @media (max-width:1000px){ .ops{grid-template-columns:repeat(2,1fr);} .goals{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:900px){ .twocol{grid-template-columns:minmax(0,1fr);} }
+  @media (max-width:620px){
+    .ops,.goals{grid-template-columns:minmax(0,1fr);}
+    .diagram-card.scroll{overflow-x:auto;} .diagram-card.scroll .diagram{min-width:560px;}
+    .cal-row{grid-template-columns:122px repeat(12,minmax(0,1fr));} .cal{padding-left:0;}
+    .cal-lbl{position:sticky;left:0;z-index:1;background:var(--glass-hi);font-size:12px;align-self:stretch;padding-left:12px;}
+    .st thead{display:none;} .st tr{display:block;padding:10px 4px;border-bottom:1px solid var(--hair);} .st td{display:block;border:none;padding:2px 0;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 6" data-en="The vine &amp; the vineyard · Chapter 6">La vigne &amp; le vignoble · Chapitre 6</p>
+    <h1 data-fr="Travaux en vert <em>&amp; du sol</em>" data-en="Canopy <em>&amp; soil work</em>">Travaux en vert <em>&amp; du sol</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Du débourrement à la véraison, le vigneron passe et repasse dans ses rangs : il dirige la végétation, dégage les grappes et entretient le sol. Ces « travaux en vert » font souvent la différence entre une vendange saine et une vendange malade."
+       data-en="From budburst to véraison, the grower goes up and down the rows again and again: steering growth, exposing the bunches and tending the soil. This “green work” often makes the difference between a healthy harvest and a diseased one.">Du débourrement à la véraison, le vigneron passe et repasse dans ses rangs : il dirige la végétation, dégage les grappes et entretient le sol. Ces « travaux en vert » font souvent la différence entre une vendange saine et une vendange malade.</p>
+    <nav class="toc">
+      <a href="#mur" data-fr="Le mur de feuilles" data-en="The leaf wall">Le mur de feuilles</a>
+      <a href="#operations" data-fr="Les six opérations" data-en="The six operations">Les six opérations</a>
+      <a href="#calendrier" data-fr="Le calendrier" data-en="The calendar">Le calendrier</a>
+      <a href="#sol" data-fr="Entretenir le sol" data-en="Managing the soil">Entretenir le sol</a>
+    </nav>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">Au printemps, chaque bourgeon laissé à la taille donne un rameau qui peut dépasser deux mètres en quelques semaines. Laissée à elle-même, la végétation s’entasse, les grappes restent à l’ombre et à l’humidité, les maladies s’installent.</p>
+      <p class="L en">In spring, every bud left at pruning grows a shoot that can pass two metres within weeks. Left alone, the foliage piles up, the bunches stay shaded and damp, and diseases take hold.</p>
+      <p class="L fr">Les travaux en vert organisent ce feuillage en un « mur » régulier ; l’entretien du sol, lui, règle la concurrence pour l’eau et l’azote et protège la terre de l’érosion.</p>
+      <p class="L en">Green work organises this foliage into an even “wall”; soil management, for its part, controls competition for water and nitrogen and protects the land from erosion.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Chaque opération en schéma, son moment et son but." data-en="Each operation in a diagram, with its timing and purpose.">Chaque opération en schéma, son moment et son but.</span></div></div>
+        <div class="lvl"><span class="ico">@@PRO_ICON@@</span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Surface foliaire exposée, règles des cahiers des charges, herbicides, couverts, irrigation." data-en="Exposed leaf area, specification rules, herbicides, cover crops, irrigation.">Surface foliaire exposée, règles des cahiers des charges, herbicides, couverts, irrigation.</span></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="goals">
+    <div style="--c:#c08a1a"><b data-fr="La lumière" data-en="Light">La lumière</b><span data-fr="Des feuilles bien exposées pour mûrir les raisins." data-en="Well-exposed leaves to ripen the grapes.">Des feuilles bien exposées pour mûrir les raisins.</span></div>
+    <div style="--c:#4f7fae"><b data-fr="L’air" data-en="Air">L’air</b><span data-fr="Des grappes aérées qui sèchent vite après la pluie." data-en="Airy bunches that dry fast after rain.">Des grappes aérées qui sèchent vite après la pluie.</span></div>
+    <div style="--c:#7aa23c"><b data-fr="L’équilibre" data-en="Balance">L’équilibre</b><span data-fr="Assez de feuilles, pas trop de grappes." data-en="Enough leaves, not too many bunches.">Assez de feuilles, pas trop de grappes.</span></div>
+    <div style="--c:#8a5a2b"><b data-fr="Le sol vivant" data-en="Living soil">Le sol vivant</b><span data-fr="Ni érosion, ni tassement, ni concurrence excessive." data-en="No erosion, no compaction, no excess competition.">Ni érosion, ni tassement, ni concurrence excessive.</span></div>
+  </div>
+
+  <!-- ===== canopy wall ===== -->
+  <section class="sec" id="mur">
+    <div class="sec-head">
+      <h2 data-fr="Le mur <em>de feuilles</em>" data-en="The leaf <em>wall</em>">Le mur <em>de feuilles</em></h2>
+      <p data-fr="Vue de bout de rang : un feuillage haut, mince et vertical capte le maximum de soleil sans ombrager le rang voisin." data-en="Seen from the end of the rows: a tall, thin, vertical canopy catches as much sun as possible without shading the next row.">Vue de bout de rang : un feuillage haut, mince et vertical capte le maximum de soleil sans ombrager le rang voisin.</p>
+    </div>
+    <div class="twocol">
+      <div class="diagram-card scroll">@@CANOPY@@</div>
+      <div class="facts">
+        <div class="fact L fr"><b>Assez haut.</b> Plusieurs cahiers des charges (Chambertin, Champagne…) imposent une hauteur de feuillage palissé d’au moins 0,6 fois l’écartement entre les rangs.</div>
+        <div class="fact L en"><b>Tall enough.</b> Several specifications (Chambertin, Champagne…) require a trellised canopy height of at least 0.6 times the row spacing.</div>
+        <div class="fact L fr"><b>Pas trop épais.</b> Au-delà de deux ou trois couches de feuilles, celles du centre ne reçoivent plus de lumière et entretiennent l’humidité.</div>
+        <div class="fact L en"><b>Not too thick.</b> Beyond two or three layers of leaves, the inner ones get no light and keep the canopy damp.</div>
+        <div class="fact L fr"><b>Grappes dégagées.</b> La zone des grappes, juste au-dessus du fil porteur, est aérée par l’effeuillage, surtout côté soleil levant.</div>
+        <div class="fact L en"><b>Bunches exposed.</b> The bunch zone, just above the fruiting wire, is opened up by leaf removal, especially on the morning-sun side.</div>
+      </div>
+    </div>
+    @@PRO_CANOPY@@
+  </section>
+
+  <!-- ===== operations ===== -->
+  <section class="sec" id="operations">
+    <div class="sec-head">
+      <h2 data-fr="Les six <em>opérations</em>" data-en="The six <em>operations</em>">Les six <em>opérations</em></h2>
+      <p data-fr="Dans l’ordre de la saison. Sur les schémas, le rouge marque ce que l’on enlève." data-en="In seasonal order. In the diagrams, red marks what is removed.">Dans l’ordre de la saison. Sur les schémas, le rouge marque ce que l’on enlève.</p>
+    </div>
+    <div class="ops">@@OPS@@</div>
+  </section>
+
+  <!-- ===== calendar ===== -->
+  <section class="sec" id="calendrier">
+    <div class="sec-head">
+      <h2 data-fr="Le calendrier <em>des travaux</em>" data-en="The work <em>calendar</em>">Le calendrier <em>des travaux</em></h2>
+      <p data-fr="Périodes indicatives pour un vignoble du nord de la France : travaux en vert en haut, travaux du sol en bas." data-en="Indicative periods for a northern French vineyard: canopy work above, soil work below.">Périodes indicatives pour un vignoble du nord de la France : travaux en vert en haut, travaux du sol en bas.</p>
+    </div>
+    <div class="panel cal"><div class="cal-inner">@@CALENDAR@@</div></div>
+  </section>
+
+  <!-- ===== soil ===== -->
+  <section class="sec" id="sol">
+    <div class="sec-head">
+      <h2 data-fr="Entretenir <em>le sol</em>" data-en="Managing <em>the soil</em>">Entretenir <em>le sol</em></h2>
+      <p data-fr="Entre les rangs et sous les ceps, il faut maîtriser l’herbe. Trois grandes méthodes, souvent combinées sur une même parcelle." data-en="Between the rows and under the vines, weeds must be kept in check. Three main methods, often combined in the same plot.">Entre les rangs et sous les ceps, il faut maîtriser l’herbe. Trois grandes méthodes, souvent combinées sur une même parcelle.</p>
+    </div>
+    <div class="diagram-card scroll">@@SOILS@@</div>
+    <div class="panel st-wrap"><table class="st"><thead><tr><th data-fr="Méthode" data-en="Method">Méthode</th><th data-fr="Avantages" data-en="Advantages">Avantages</th><th data-fr="Inconvénients" data-en="Drawbacks">Inconvénients</th></tr></thead><tbody>@@SOIL_TABLE@@</tbody></table></div>
+    <div class="facts" style="margin-top:14px">
+      <div class="fact L fr"><b>Buttage et débuttage.</b> À l’automne, on remonte la terre contre le pied des ceps pour les protéger du froid ; au printemps, on la retire (débuttage) avec une charrue décavaillonneuse ou des « interceps » qui travaillent entre les pieds.</div>
+      <div class="fact L en"><b>Hilling and unhilling.</b> In autumn, soil is banked against the base of the vines to protect them from cold; in spring it is pulled back (unhilling) with a special plough or “intercep” tools that work between the vines.</div>
+      <div class="fact L fr"><b>Le cheval revient.</b> Dans les vignes étroites et les grands crus, le labour au cheval évite de tasser le sol.</div>
+      <div class="fact L en"><b>The horse returns.</b> In narrow vineyards and grands crus, ploughing with a horse avoids compacting the soil.</div>
+      <div class="fact L fr"><b>Contre l’érosion.</b> Sur les pentes, enherbement, terrasses, murets et rigoles d’évacuation retiennent la terre ; à Banyuls, les rigoles en « pieds de coq » canalisent les orages.</div>
+      <div class="fact L en"><b>Against erosion.</b> On slopes, grass cover, terraces, dry-stone walls and drainage channels hold the soil; at Banyuls, “crow’s-foot” channels carry away storm water.</div>
+    </div>
+    @@PRO_SOIL@@
+  </section>
+
+  @@CHAPTERS@@
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources">@@SOURCES@@</ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Travaux en vert & du sol' : 'Canopy & soil work';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+})();
+</script>
+</body>
+</html>

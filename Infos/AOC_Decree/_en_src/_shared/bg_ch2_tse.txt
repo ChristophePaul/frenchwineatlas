@@ -1,0 +1,70 @@
+# CHAPTER II
+## I. – Declaration obligations
+#### 1. Claim declaration
+The claim declaration is sent to the defence and management body at least fifteen days before circulation between authorised warehousekeepers and at the latest on 10 December of the year of harvest.
+It indicates in particular:
+- the designation claimed;
+- the volume of the wine;
+- the EVV or SIRET number;
+- the name and address of the applicant;
+- the place of storage of the wine.
+It is accompanied in particular by a copy of the harvest declaration and, as the case may be, a copy of the production declaration or an extract of the stock accounts for buyers of grapes and musts.
+#### 2. Declaration prior to transaction and collections
+Every operator wishing to sell in bulk a wine benefiting from the controlled designation of origin makes a transaction declaration for the lot concerned to the approved control body within time limits set in the control plan of between six and fifteen working days before any collection.
+This declaration, accompanied where applicable by a copy of the purchase contract, specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the identification of the containers;
+- the identity of the buyer.
+If collections are made for volumes smaller than those set out in the transaction declaration, the operator informs the approved control body in writing.
+#### 3. Declaration of release for consumption
+Every operator declares to the approved control body each lot of wine intended to be released for consumption within the meaning of Article D. 645-18-I of the Rural and Maritime Fishing Code.
+This declaration may also be drawn up for lots already packaged. It is made within time limits set in the control plan of between six and fifteen working days before release for consumption or before the lots concerned are dispatched from the operator’s cellars.
+It specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the lot number for wines already packaged;
+- the identification of the containers for non-packaged wines.
+However, making available to the approved control body the register referred to in Article D. 645-18 II of the Rural and Maritime Fishing Code serves as the declaration of release for consumption, under the conditions set out in the control plan.
+#### 4. Declaration relating to the dispatch outside the national territory of a non-packaged wine
+Every operator wishing to dispatch outside the national territory a non-packaged wine benefiting from the controlled designation of origin declares it to the approved control body within time limits set in the control plan of between six and fifteen working days before any dispatch.
+#### 5. Fallback declaration
+Every operator carrying out a fallback of a wine benefiting from the controlled designation of origin into a more general controlled designation of origin sends the defence and management body and the approved control body a monthly declaration at the latest on the 1st working day following the tenth day of each month.
+This declaration indicates in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the more general controlled designation of origin of the fallback;
+- the volume concerned by the fallback;
+- the vintage;
+- the state of the lot concerned (bulk, bottle, hermetically sealed vacuum containers…).
+The approved control body transmits without delay a copy of the monthly declaration to the approved control body for the more general controlled designation of origin concerned.
+The defence and management body transmits without delay to the defence and management body of the more general controlled designation of origin concerned the list of operators who have made a monthly fallback declaration, together with a summary statement indicating:
+- the more general controlled designation of origin of the fallback;
+- the volume concerned by the fallback;
+- the vintage(s);
+- the state of the lot(s) concerned (bulk, bottle, hermetically sealed vacuum containers…).
+#### 6. Downgrading declaration
+Every operator carrying out a downgrading of wines benefiting from the controlled designation of origin sends the defence and management body and the approved control body a monthly declaration within time limits set in the control plan. This declaration indicates in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the volume downgraded;
+- the vintage;
+- the date of the downgrading.
+#### 7. Declaration of equipment for TSE
+Every operator holding a concentration apparatus declares it upon purchase to the defence and management body, specifying its specifications. The defence and management body keeps an up-to-date list of operators holding such equipment and sends it each year to the services of the National Institute of Origin and Quality at the latest on 1 September.
+Every operator using a service provider declares it to the defence and management body, which draws up the list of these operators and sends it each year to the services of the National Institute of Origin and Quality at the latest on 1 September.
+#### 8. Reworking of parcels
+Before any development or any works liable to modify the morphology, the subsoil, the arable layer (including any addition of exogenous soil) or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin, with the exception of classic deep-ploughing works, the operator sends a declaration to the defence and management body at least four weeks before the planned start date of the works.
+The defence and management body transmits, without delay, a copy of this declaration to the services of the National Institute of Origin and Quality.
+## II. – Keeping of registers
+#### 1. General plan of the storage and vinification places
+Every vinifying operator keeps up to date and available for the approved control body a general plan of the storage and vinification places, allowing in particular the number, designation and capacity of the containers to be identified.
+#### 2. TSE register
+Every operator carrying out partial concentration of musts keeps an up-to-date TSE register including in particular:
+- the initial volume;
+- the volume of water evaporated;
+- the identification of the lot after concentration (volume and potential alcoholic strength).

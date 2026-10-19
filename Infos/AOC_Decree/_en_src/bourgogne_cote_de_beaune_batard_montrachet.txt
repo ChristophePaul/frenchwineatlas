@@ -1,0 +1,244 @@
+@include bourgogne_common
+@h1 Specification of the controlled designation of origin “Bâtard-Montrachet”
+@h2 approved by decree no. 2011-1724 of 30 November 2011, JORF of 3 December 2011
+@title Specification of the controlled designation of origin “BÂTARD-MONTRACHET”
+@center approved by decree no. 2011-1724 of 30 November 2011, JORF of 3 December 2011
+# CHAPTER I
+## I. – Name of the designation
+Only wines meeting the specific provisions set out below may claim the controlled designation of origin “Bâtard-Montrachet”, initially recognised by the decree of 31 July 1937.
+## II. – Geographical denominations and complementary terms
+The name of the controlled designation of origin may be followed by the term “grand cru”.
+## III. – Colour and types of product
+The controlled designation of origin “Bâtard-Montrachet” is reserved for still white wines.
+## IV. – Areas and zones in which the various operations are carried out
+### 1° – Geographical area
+The harvesting of the grapes, the vinification, the elaboration and the ageing of the wines are carried out within the territory of the following communes of the Côte-d’Or department: Chassagne-Montrachet and Puligny-Montrachet.
+### 2° – Delimited parcel area
+The wines come exclusively from vines situated within the delimited parcel production area as approved by the National Institute of Origin and Quality at the sessions of the competent national committee of 14 and 15 June 1988 for the commune of Chassagne-Montrachet and of 13 and 14 September 1989 for the commune of Puligny-Montrachet.
+The National Institute of Origin and Quality lodges with the town halls of the communes referred to in 1° the graphic documents establishing the parcel boundaries of the production area thus approved.
+### 3° – Immediate proximity area
+The immediate proximity area, defined by derogation for the vinification, the elaboration and the ageing of the wines, is made up of the territory of the following communes:
+@listop BG_PROX_CO | -Chassagne-Montrachet | -Puligny-Montrachet | +Gevrey-Chambertin
+@@BG_PROX_RH
+@@BG_PROX_SL
+@@BG_PROX_YO
+## V. – Grape varieties
+The wines come exclusively from the chardonnay B variety.
+## VI. – Management of the vineyard
+### 1° – Training methods
+a) – Planting density
+- The vines have a minimum planting density of 9,000 plants per hectare, with a spacing between rows less than or equal to 1.25 metres and a spacing between plants within the same row greater than or equal to 0.50 metre;
+- The vines may be planted “en foule” (randomly, without rows), provided that the minimum planting density is respected and the spacing between plants is greater than 0.50 metre.
+b) – Pruning rules
+The wines come from vines pruned according to the following provisions:
+| GENERAL PROVISIONS |
+| The vines are pruned with a maximum of 8 free eyes per plant: – either short pruning (vines trained as Royat cordon, bilateral cordon); – or single Guyot long pruning. |
+| **PARTICULAR PROVISIONS** |
+| Single Guyot pruning may be adapted: – with a 2nd spur allowing the position of the cane to be alternated from one year to the next; – with a cane shortened to a maximum of 3 free eyes and a spur limited to 2 free eyes. Whatever the pruning method, the vines may be pruned with additional free eyes provided that, at the phenological stage corresponding to 11 or 12 leaves, the number of fruit-bearing shoots of the year per plant is less than or equal to the number of free eyes defined in the pruning rules. |
+c) – Trellising and foliage height rules
+- The height of trellised foliage is at least equal to 0.6 times the spacing between rows, the height of trellised foliage being measured between the lower limit of the foliage, set at least 0.30 metre above the ground, and the upper trimming limit;
+- The vines must be raised on a stake or trellised; the trellising is maintained;
+- When the vines are planted “en foule”, they are trained on stakes.
+d) – Average maximum load per parcel
+The average maximum load per parcel is set at 9,000 kilograms per hectare.
+e) – Threshold of missing vines
+The percentage of dead or missing vine plants referred to in Article D. 645-4 of the Rural and Maritime Fishing Code is set at 20 %.
+f) – Cultivation condition of the vine
+The parcels are managed so as to ensure a good overall cultivation condition of the vine, in particular its sanitary condition and the upkeep of its soil.
+### 2° – Other cultivation practices
+a) – In order to preserve the characteristics of the physical and biological environment, which constitutes a fundamental element of the terroir, any substantial modification of the morphology, the subsoil, the arable layer or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin is prohibited, with the exception of classic deep-ploughing works.
+b) – Vine plantings and replacements are carried out with healthy plant material that has undergone hot-water treatment or any other method making it possible to combat flavescence dorée.
+### 3° – Irrigation
+Irrigation is prohibited.
+## VII. – Harvest, transport and ripeness of the grapes
+### 1° – Harvest
+a) – The wines come from grapes harvested at good ripeness.
+b) – Particular provisions for transport of the harvest
+The harvest is protected from rain during its transport and on its reception.
+### 2° – Ripeness of the grapes
+a) – Sugar content of the grapes
+Grapes with a sugar content of less than 187 grams per litre of must may not be considered to be at good ripeness.
+b) – Minimum natural alcoholic strength by volume
+The wines have a minimum natural alcoholic strength by volume of 11.5 %.
+## VIII. – Yields – Entry into production
+### 1° – Yield
+The yield referred to in Article D. 645-7 of the Rural and Maritime Fishing Code is set at 48 hectolitres per hectare.
+### 2° – Limit yield
+The limit yield referred to in Article D. 645-7 of the Rural and Maritime Fishing Code is set at 54 hectolitres per hectare.
+### 3° – Entry into production of young vines
+The benefit of the controlled designation of origin may only be granted to wines coming from:
+- parcels of young vines only from the 2nd year following that in the course of which planting was carried out in place before 31 July;
+- parcels of young vines only from the 1st year following that in the course of which grafting in place was carried out before 31 July;
+- parcels of vines that have been top-grafted, at the earliest in the 1st year following that in the course of which the top-grafting was carried out before 31 July, and once the parcels no longer contain any variety other than that permitted for the appellation. By derogation, in the year following that in the course of which the top-grafting was carried out before 31 July, the variety permitted for the appellation may represent only 80 % of the planting of each parcel concerned.
+## IX. – Processing, elaboration, ageing, packaging, storage
+### 1° – General provisions
+The wines are vinified in accordance with local, fair and constant usages.
+a) – Analytical standards
+Finished wines, ready to be released for consumption within the meaning of D. 645-18-I of the Rural and Maritime Fishing Code, have a maximum fermentable sugar content (glucose + fructose) of:
+- 3 grams per litre;
+- or 4 grams per litre if the total acidity is greater than or equal to 55.10 milliequivalents per litre, i.e. 4.13 grams per litre expressed as tartaric acid (or 2.7 grams per litre expressed as H2SO4).
+b) – Oenological practices and physical treatments
+- The use of pieces of wood is prohibited;
+- After enrichment, the wines do not exceed a total alcoholic strength by volume of 14.5 %.
+c) – Prohibited equipment
+Continuous presses are prohibited.
+d) – Vat capacity
+Every operator has an overall vat capacity (vinification and storage) equivalent to at least the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration.
+e) – Upkeep of the cellar and equipment
+The cellar and the equipment are well maintained; this is reflected in particular by:
+- general hygiene of the elaboration premises, with general cleanliness, well-maintained floors, adequate drainage and a surface avoiding stagnation;
+- harmlessness of the equipment and products coming into contact with the wine;
+- separation and specificity of the premises: premises without the same functions must be separated, such as storage areas for plant-protection products, cleaning products or hydrocarbons, from the premises for vinification, ageing and storage of dry goods (corks, cartons);
+- management of wine effluents: effluents must be removed as quickly as possible from foodstuff premises and deposited in well-maintained containers that are easy to clean and can be closed; waste storage areas must be kept clean; waste must be disposed of hygienically and in an environmentally friendly manner; a waste storage and removal area must be provided;
+- absence of hazardous or odorous substances in the vinification, ageing and storage premises (odour).
+f) – Ageing
+- The wines are aged at least until 15 June of the year following that of the harvest;
+- The temperature of the containers during the ageing phase is controlled and less than or equal to 25 °C.
+### 2° – Provisions relating to packaging
+For every packaged lot, the operator keeps available for the approved control body:
+- the information appearing in the register of handling operations referred to in Article D. 645-18 of the Rural and Maritime Fishing Code;
+- the reports of analyses carried out before or after packaging.
+These reports are kept for a period of 6 months from the date of packaging.
+### 3° – Provisions relating to storage
+The operator provides evidence of a protected storage place for wines packaged in unlabelled bottles, with a temperature of between 5 °C and 22 °C.
+### 4° – Provisions relating to the circulation of products and placing on the market for the consumer
+At the end of the ageing period, the wines are placed on the market for the consumer from 30 June of the year following that of the harvest.
+## X. – Link with the geographical area
+### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+The geographical area is situated in the “Côte de Beaune” vineyard, a linear relief of tectonic origin stretching in a general north-east/south-west direction. This relief separates the limestone plateaux of the “Hautes Côtes” to the west, at an altitude of between 400 metres and 500 metres, from the Bresse plain to the east, a Tertiary rift valley whose altitude, level with the “côte”, is close to 200 metres.
+The landscape of “the Côte” is fairly complex. The relief is split into two parts by a strong limestone cornice occupied by sparse fallow land. The lower part exposes Middle Jurassic formations, whereas above the cornice a large slope develops, established mainly on Upper Jurassic marls.
+The geographical area thus extends over the territory of the communes of Chassagne-Montrachet and Puligny-Montrachet, south-west of the town of Beaune, in the Côte-d’Or department, in Burgundy.
+The parcels delimited for the harvesting of the grapes are situated on the lower part of the east/south-east-facing slope, at an altitude of about 250 metres. The substratum is mainly composed of Middle Jurassic (Callovian) platy limestones. It is however masked by an irregular accumulation of colluvium of clayey nature, fairly poor in limestone stones. The “murgers” (heaps of cleared stones) found here and there bear witness to the thinness of the clay layer.
+The climate is dominated by a cool oceanic tendency, attenuated by continental or southern influences channelled along the Rhône–Saône axis. The oceanic character shows in a moderate and regular rainfall regime (about 750 millimetres per year), with no marked summer drought. Temperatures show a certain coolness, with an annual average of 10.5 °C. The “Côte”, east of the Morvan massif and the Burgundian plateaux, benefits from climatic shelter resulting in a thermal advantage as well as a rainfall deficit that is notable for the region and conducive to quality viticulture.
+b) – Description of the human factors contributing to the link
+The “Côte de Beaune” seems to have borne a renowned vineyard from the first centuries of our era. At the beginning of the 4th century, EUMENIUS, rhetor of Autun, revealed in his “Speech to Constantine” the existence of an ancient and renowned vineyard on the reliefs of the “Pagus arebrignus” near Beaune.
+The “Montrachet” appeared in the family of the “crus” of the “Côte” from the 13th century, as shown by the vines cited in the lieu-dit “Mont Rachaz”, but without any real established renown. COURTÉPÉE, in 1775, spoke of the “Mont-Rachet” and stated: “it was not in repute at the beginning of the last century”.
+In the 18th century, the wines of “Montrachet” truly took off. However, while “Montrachet” already seems to have been precisely delimited at that time, it is almost certain that the wines from the “climat” (customary name, most often the name of a lieu-dit) “Bâtard” were often treated as part of it. COURTÉPÉE indicated that “a distinction is made between true Morachet, Chevalier M. and bâtard”. In 1787, during a journey through Burgundy, Thomas JEFFERSON, future author of the Declaration of Independence of the United States, future President and great wine lover, placed “Montrachet” on the same level as “Chambertin”, already recognised for several centuries.
+As a sign of a well-established image of excellence, the communes of Puligny and Chassagne, in 1878, added to their names that of their most prestigious “cru”, thus becoming Puligny-Montrachet and Chassagne-Montrachet.
+Within the Burgundy vineyard, exceptional “climats” such as “Bâtard-Montrachet” have emerged over the generations. Identified and named for centuries, they extend over privileged situations where the soil and climate conditions are optimal. Producers take the greatest care both in the vineyard and in the vat house. Year after year these “climats” give rise to the most perfect wines, which have for several centuries been placed at the top of the classification of the great wines of Burgundy. The term “grand cru” associated with them appeared at the beginning of the 20th century, and its indication on the label is a well-established usage.
+A judgment of 1921 definitively fixed the hierarchy of the wines of Chassagne-Montrachet and Puligny-Montrachet benefiting from the term “grand cru”. The name “Montrachet” was reserved solely for the wines from the lieu-dit, whose supremacy was affirmed, and the wines from “Bâtard”, in recognition of a well-established usage, could be designated under the name “Bâtard-Montrachet”. This judgment made official what was unanimously accepted as to the merit of the wines. Quite logically, the controlled designation of origin was recognised in 1937, but the delimited parcel area only became effective in 1939.
+The vines are trained according to the usages in force throughout the “Côte de Beaune”, with planting densities above 9,000 plants per hectare and a planting based on the chardonnay B variety. Aware of the value of the heritage that the soils constitute, producers take particular care to preserve their integrity. It is customary to age the wines to give them a great aptitude for keeping, according to the characteristics of the vintage.
+In 2008 the vineyard covered an area of about 11 hectares, for an average annual production of 475 hectolitres.
+### 2° – Information on the quality and characteristics of the products
+The wines, with a fine golden-yellow colour, combine finesse and roundness in perfect balance. The rich and complex aromas, enveloped by a delicate unctuousness, very often recall hazelnut and honey, mingled with floral notes. They have particularly long aromatic persistence.
+These wines are distinguished by a notable ageing capacity and evolve favourably over many years.
+### 3° – Causal interactions
+Situated at the foot of the hillside and enjoying an ideal exposure, on a substratum of platy limestone ensuring effective drainage, and endowed with clayey soils contributing to the roundness of the wines, “Bâtard-Montrachet” lies in an environmental context ensuring excellent regulation of water and thermal conditions, resulting in a quality of the wines produced there that is remarkably consistent from vintage to vintage.
+Producers have revealed the complex combination of these factors through the choice of the chardonnay B variety, an indigenous Burgundian variety with high aromatic potential. This variety finds in “Bâtard-Montrachet” one of its favourite sites and expresses in the wines, in this cool climate, its full potential of finesse and elegance. According to usage, the ageing of the wines ensures them a remarkable aptitude for keeping in bottle.
+Aware of having an exceptional natural environment, producers maintain this heritage with the greatest care. They have thus preserved and developed, over the generations, a production of fine renown around wines with an international reputation.
+In 1728, the Abbé ARNOUX, author of a work on the wines of Burgundy published in London, spoke of “Montrachet” as “the most curious and most delicate wine in France”. The wines of “Montrachet” on the one hand, and “Chevalier-Montrachet” or “Bâtard-Montrachet” on the other, were not yet precisely distinguished, the three often merging in excellence.
+Individualised only in the 19th century in the pantheon of the wines of Burgundy, the wines of “Bâtard-Montrachet” have found their place among the great white wines of the world. In 1816, JULLIEN ranked “Bâtard-Mont-Rachet” in the first class alongside the “Mont-Rachet aîné”, as it was often called at the time, stating: “the Bâtard Mont-Rachet follows the chevalier very closely and shares with it the praise of connoisseurs”.
+The few thousand bottles produced each year, which are exported throughout the world, still bear witness to this.
+## XI. – Transitional measures
+No particular provision.
+## XII. – Rules of presentation and labelling
+### 1° – General provisions
+Wines for which, under the terms of the present specification, the controlled designation of origin “Bâtard-Montrachet” is claimed and which are presented under the said appellation may not be declared after the harvest, offered to the public, dispatched, put up for sale or sold unless, in the harvest declaration, in advertisements, on leaflets, labels, invoices and any containers whatsoever, the aforesaid controlled designation of origin is entered.
+### 2° – Particular provisions
+a) – The labelling of wines benefiting from the controlled designation of origin may specify the larger geographical unit “Vin de Bourgogne” or “Grand Vin de Bourgogne”.
+b) – The indication of the grape variety is prohibited on the labelling of wines benefiting from the controlled designation of origin.
+# CHAPTER II
+## I. – Declaration obligations
+#### 1. Claim declaration
+The claim declaration is sent to the defence and management body at least fifteen days before circulation between authorised warehousekeepers and at the latest on 10 December of the year of harvest.
+It indicates in particular:
+- the designation claimed;
+- the volume of the wine;
+- the EVV or SIRET number;
+- the name and address of the applicant;
+- the place of storage of the wine.
+It is accompanied in particular by a copy of the harvest declaration and, as the case may be, a copy of the production declaration or an extract of the stock accounts for buyers of grapes and musts.
+#### 2. Declaration prior to transaction and collections
+Every operator wishing to sell in bulk a wine benefiting from the controlled designation of origin makes a transaction declaration for the lot concerned to the approved control body within time limits set in the control plan of between six and fifteen working days before any collection.
+This declaration, accompanied where applicable by a copy of the purchase contract, specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the identification of the containers;
+- the identity of the buyer.
+If collections are made for volumes smaller than those set out in the transaction declaration, the operator informs the approved control body in writing.
+#### 3. Declaration of release for consumption
+Every operator declares to the approved control body each lot of wine intended to be released for consumption within the meaning of Article D. 645-18-I of the Rural and Maritime Fishing Code.
+This declaration may also be drawn up for lots already packaged. It is made within time limits set in the control plan of between six and fifteen working days before release for consumption or before the lots concerned are dispatched from the operator’s cellars.
+It specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the lot number for wines already packaged;
+- the identification of the containers for non-packaged wines.
+However, making available to the approved control body the register referred to in Article D. 645-18 II of the Rural and Maritime Fishing Code serves as the declaration of release for consumption, under the conditions set out in the control plan.
+#### 4. Declaration relating to the dispatch outside the national territory of a non-packaged wine
+Every operator wishing to dispatch outside the national territory a non-packaged wine benefiting from the controlled designation of origin declares it to the approved control body within time limits set in the control plan of between six and fifteen working days before any dispatch.
+#### 5. Fallback declaration
+Every operator carrying out a fallback of a wine benefiting from the controlled designation of origin into a more general controlled designation of origin sends the defence and management body and the approved control body a monthly declaration at the latest on the 1st working day following the tenth day of each month.
+This declaration indicates in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the more general controlled designation of origin of the fallback;
+- the volume concerned by the fallback;
+- the vintage;
+- the state of the lot concerned (bulk, bottle, hermetically sealed vacuum containers…);
+- the date of the fallback.
+The approved control body transmits without delay a copy of the monthly declaration to the approved control body for the more general controlled designation of origin concerned.
+The defence and management body transmits without delay to the defence and management body of the more general controlled designation of origin concerned the list of operators who have made a monthly fallback declaration, together with a summary statement indicating:
+- the more general controlled designation of origin of the fallback;
+- the volume concerned by the fallback;
+- the vintage(s);
+- the state of the lot(s) concerned (bulk, bottle, hermetically sealed vacuum containers…).
+#### 6. Downgrading declaration
+Every operator carrying out a downgrading of wines benefiting from the controlled designation of origin sends the defence and management body and the approved control body a monthly declaration within time limits set in the control plan. This declaration indicates in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the volume downgraded;
+- the vintage;
+- the date of the downgrading.
+#### 7. Reworking of parcels
+Before any development or any works liable to modify the morphology, the subsoil, the arable layer (including any addition of exogenous soil) or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin, with the exception of classic deep-ploughing works, the operator sends a declaration to the defence and management body at least four weeks before the planned start date of the works.
+The defence and management body transmits, without delay, a copy of this declaration to the services of the National Institute of Origin and Quality.
+## II. – Keeping of registers
+#### General plan of the storage and vinification places
+Every vinifying operator keeps up to date and available for the approved control body a general plan of the storage and vinification places, allowing in particular the number, designation and capacity of the containers to be identified.
+# CHAPTER III
+## I. – Main points to be checked and evaluation methods
+| MAIN POINTS TO BE CHECKED | EVALUATION METHODS |
+| **A – STRUCTURAL RULES** | < |
+| A1 – Location of operators within the immediate proximity area | Documentary check |
+| A2 – Belonging of the planted parcels to the delimited area | – Documentary check: up-to-date CVI parcel record; – Check in the field |
+| A3 – Claimable production potential (grape varieties and proportion rules, planting density, plant material) | – Documentary check; – Check in the field |
+| A4 – Processing, ageing, packaging and storage facilities | < |
+| Vat capacity | – Documentary check: general plan of the storage places; – On-site check |
+| Ageing (temperature control and length of ageing) | – Documentary check: declaration of release for consumption or bottling register; – On-site check |
+| State of upkeep of the cellar and equipment (hygiene) | On-site check |
+| Protected storage place and storage conditions (T °C) | On-site check |
+| **B – RULES LINKED TO THE PRODUCTION CYCLE** | < |
+| B1 – Management of the vineyard | < |
+| Pruning | Check in the field |
+| Average maximum load per parcel | Check in the field |
+| Cultivation and sanitary condition of the vine (sanitary condition of foliage and berries, upkeep of the soil, upkeep of the trellising) | Check in the field |
+| B2 – Harvest, transport and ripeness of the grapes | < |
+| Ripeness of the grapes | – Documentary check: records of ripeness monitoring; – Check in the field |
+| B3 – Processing, elaboration, ageing, packaging, storage | < |
+| Oenological practices or treatments (enrichment, prohibited practices…) | – Documentary check: enrichment, acidification and de-acidification register; – On-site check |
+| Stock accounts, analytical traceability | Documentary check: keeping of registers, analysis reports |
+| B4 – Harvest declaration and claim declaration | < |
+| Missing vines | – Documentary check (keeping the list up to date); – Check in the field |
+| Authorised yield | Documentary check: check of declarations, monitoring of authorisations granted by the INAO services after their investigation of the operator’s individual request |
+| VSI, volumes harvested in excess of the authorised yield | Documentary check: monitoring of destruction certificates |
+| Claim declaration | – Documentary and on-site check: compliance with procedures and time limits, consistency with the harvest and production declarations; – Check of the release of products into circulation |
+| **C – CHECKS ON THE PRODUCTS** | < |
+| Non-packaged wines (at transaction or collection) | Analytical and organoleptic examination |
+| Packaged wines (before or after preparation for release for consumption) | Analytical and organoleptic examination |
+| Non-packaged wines intended for dispatch outside the national territory | Analytical and organoleptic examination of all lots |
+| **D – PRESENTATION OF THE PRODUCTS** | < |
+| Labelling | On-site check |
+## II. – References concerning the control structure
+S.A.S. ICONE Bourgogne
+132/134 route de Dijon, BP 266, 21207 BEAUNE CEDEX
+Tel.: (33) (0)3 80 25 09 50 – Fax: (33) (0)3 80 24 63 23 – Email: beaune@icone-sas.com
+This control body is accredited in accordance with standard 45011.
+Compliance with the present specification is checked by a third-party body offering guarantees of competence, impartiality and independence, on behalf of the INAO, on the basis of an approved control plan.
+The control plan recalls the self-checks carried out by operators on their own activity and the internal checks carried out under the responsibility of the defence and management body. It indicates the external checks carried out by the third-party body as well as the analytical and organoleptic examinations.
+All checks are carried out by sampling. Non-packaged wines intended for dispatch outside the national territory are subject to systematic analytical and organoleptic checks.

@@ -1,0 +1,20 @@
+/* « Anatomie d'un décret AOC » — vineyard-in-fog watermark (2026-10-18, user trial).
+   Linked file, so assets/theme_apply.py (which only reads <style> blocks) leaves it alone.
+   Layers made by _wm_src/make_watermark.py. To remove: delete the <link> to this file in AOC_Decree.html. */
+
+/* dark (burgundy) theme: the vines as a faint gold drawing over the wall of AOC names */
+html:root:not([data-theme="cream"]) body{
+  background:
+    linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+    radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+    url("img/wm_vineyard_dark.webp?v=3") center / cover fixed no-repeat,
+    url("../../Web_Page_Background.png") center top / cover fixed no-repeat,
+    #4d0d18 !important;}
+
+/* cream theme: the vines as a light brown ink drawing on the cream page */
+html:root[data-theme="cream"][data-theme="cream"] body{
+  background:
+    radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+    url("img/wm_vineyard_cream.webp?v=1") center / cover fixed no-repeat,
+    linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,
+    #f5eee0 !important;}

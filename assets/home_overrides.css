@@ -1,0 +1,7 @@
+/* Home-page overrides that assets/theme_apply.py must not rewrite (it only reads <style> blocks, not linked files).
+   Selectors are deliberately heavy so they beat the generated html[data-theme="cream"][data-theme="cream"] … rules. */
+
+/* 2026-10-18 (user): cream-theme card frame — first « decrease the fade » (.18 → .4), then
+   « decrease the fade to 0 % and make the width 2px », then 5 px: fully opaque, 5 px (originally 10 px) */
+html:root[data-theme="cream"][data-theme="cream"] .card,
+html:root[data-theme="cream"][data-theme="cream"] .card:focus-within{outline-color:rgb(90,30,40) !important;outline-width:5px !important;}

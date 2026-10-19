@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Les catégories des vins français" data-en="The Categories of French Wines">Les catégories des vins français</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.72);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.60);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --title:#fff;--line:rgba(217,179,107,.62);--chip:rgba(10,1,4,.45);
+    --l0:#9b2235;--l1:#b45a46;--l2:#c9a35a;--l0t:#fff;--l1t:#fff;--l2t:#2a0b10;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.78);--faint:rgba(46,20,25,.52);
+    --glass:rgba(255,253,248,.88);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--line:rgba(142,31,51,.55);--chip:#fff;
+    --l0:#7b1e2b;--l1:#a8533f;--l2:#e2c27f;--l2t:#3a1219;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  html[data-theme="cream"] body{
+    background:
+      radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+  section[id]{scroll-margin-top:20px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(18px,3vw,28px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.5em;font-size:clamp(9px,1.3vw,11px);font-weight:600;
+    color:var(--gold);margin:0 0 18px;padding-left:.5em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,7vw,78px);line-height:1;margin:0;color:var(--title);
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:24px auto 18px;}
+  .tagline{font-family:var(--serif);font-style:italic;font-size:clamp(15px,2vw,19px);color:var(--muted);margin:0;}
+  .intro{max-width:820px;margin:22px auto 0;font-size:clamp(14px,1.6vw,16px);line-height:1.75;color:var(--muted);text-align:center;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:26px 0 0;}
+  .chip{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;padding:7px 14px;background:var(--chip);transition:border-color .2s;}
+  .chip:hover{border-color:var(--hair-hi);}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);}
+  html[data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,30,40,.10),inset 0 1px 0 #fff;-webkit-backdrop-filter:none;backdrop-filter:none;}
+
+  /* ---------- sections ---------- */
+  .sec{margin-top:clamp(36px,5.5vw,64px);}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--hair);}
+  .sec-ic{flex:0 0 auto;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    border:1px solid var(--hair-hi);color:var(--gold);background:var(--chip);}
+  .sec-ic svg{width:22px;height:22px;}
+  .kick{margin:0 0 3px;font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(25px,3.4vw,36px);color:var(--title);margin:0;line-height:1.1;}
+
+  /* ---------- the 3-column newspaper body ---------- */
+  .L{display:none;}
+  html[lang="fr"] .L.fr, html[lang="en"] .L.en{display:block;}
+  .cols{column-count:3;column-gap:40px;column-rule:1px solid var(--hair);
+    font-family:var(--serif);font-size:15.5px;line-height:1.68;color:var(--parchment);hyphens:auto;-webkit-hyphens:auto;}
+  .cols.c2{column-count:2;}
+  .cols p{margin:0 0 .85em;text-align:justify;orphans:3;widows:3;}
+  .cols h3{font-family:var(--serif);font-weight:600;font-size:18.5px;line-height:1.25;color:var(--gold-soft);
+    margin:.2em 0 .45em;break-after:avoid;-webkit-column-break-after:avoid;}
+  .cols h3:not(:first-child){margin-top:1.05em;}
+  .cols p.dp::first-letter{float:left;font-size:3.35em;line-height:.86;padding:.06em .09em 0 0;color:var(--gold);font-weight:500;}
+  .cols ul,.cols ol{margin:0 0 .9em;padding-left:1.25em;}
+  .cols li{margin:0 0 .45em;text-align:left;break-inside:avoid;}
+  .cols li::marker{color:var(--gold);}
+  .cols strong{font-weight:650;color:var(--title);}
+  html[data-theme="cream"] .cols strong{color:#5b1522;}
+  .cols em{font-style:italic;}
+  blockquote{margin:.2em 0 1em;padding:12px 16px;border-left:3px solid var(--gold);background:var(--chip);border-radius:0 10px 10px 0;
+    font-style:italic;font-size:15px;line-height:1.6;break-inside:avoid;}
+  sup.ref{font-family:var(--sans);font-size:.62em;line-height:0;vertical-align:super;}
+  sup.ref a{color:var(--gold);text-decoration:none;padding:0 1px;}
+  sup.ref a::before{content:"[";} sup.ref a::after{content:"]";}
+  sup.ref a:hover{text-decoration:underline;}
+  .orn{text-align:center;font-size:28px;color:var(--gold);margin:0 0 18px;}
+  .sig{text-align:right;font-family:var(--serif);font-weight:600;letter-spacing:.06em;color:var(--gold-soft);margin:14px 0 0;}
+
+  /* ---------- pyramid ---------- */
+  .pyr-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:28px;row-gap:6px;
+    padding:clamp(18px,3vw,30px);margin:0 0 26px;}
+  .pyr,.notes{display:contents;}
+  .lvl{grid-column:1;min-height:128px;display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:12px 18%;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25));}
+  .lvl0{grid-row:1;background:var(--l0);color:var(--l0t);clip-path:polygon(39% 0,61% 0,74% 100%,26% 100%);padding-top:34px;}
+  .lvl1{grid-row:2;background:var(--l1);color:var(--l1t);clip-path:polygon(26% 0,74% 0,87% 100%,13% 100%);}
+  .lvl2{grid-row:3;background:var(--l2);color:var(--l2t);clip-path:polygon(13% 0,87% 0,100% 100%,0 100%);}
+  .lvl-in b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(17px,2.3vw,24px);line-height:1.1;}
+  .lvl-sub{display:block;font-size:clamp(10px,1.2vw,12px);line-height:1.3;opacity:.9;margin-top:4px;font-style:italic;}
+  .lvl0 .lvl-sub{max-width:150px;margin-left:auto;margin-right:auto;}
+  .note{grid-column:2;align-self:center;padding:10px 0 10px 16px;border-left:3px solid var(--l0);}
+  .note:nth-child(1){grid-row:1;} .note:nth-child(2){grid-row:2;border-color:var(--l1);} .note:nth-child(3){grid-row:3;border-color:var(--l2);}
+  .note-h{display:flex;align-items:baseline;gap:10px;}
+  .note-h b{font-family:var(--serif);font-size:18px;color:var(--title);font-weight:600;}
+  .cnt{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+  .note p{margin:4px 0 8px;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .bars{display:grid;gap:4px;}
+  .bar{display:grid;grid-template-columns:62px 1fr 44px;align-items:center;gap:8px;font-size:11.5px;color:var(--faint);}
+  .bt{height:7px;border-radius:9px;background:var(--hair);overflow:hidden;}
+  .bt i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));}
+  .bv{text-align:right;color:var(--parchment);font-weight:600;}
+  .stats-h{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--gold-soft);margin:0 0 10px;}
+  .stats{overflow-x:auto;margin:0 0 30px;}
+  .stats table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px;}
+  .stats th,.stats td{padding:9px 12px;border-bottom:1px solid var(--hair);text-align:right;}
+  .stats thead th{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .stats th:first-child{text-align:left;font-family:var(--serif);font-size:15px;color:var(--title);}
+  .stats thead th:first-child{font-family:var(--sans);font-size:10.5px;color:var(--gold);}
+  .stats .foot{font-size:12px;line-height:1.55;color:var(--faint);margin:10px 0 0;font-style:italic;}
+
+  /* ---------- hierarchy chart (arrows point upward) ---------- */
+  .tree-wrap{padding:clamp(18px,3vw,32px) clamp(10px,2vw,24px);overflow-x:auto;}
+  .tree{min-width:860px;}
+  .tree ul{display:flex;justify-content:center;margin:0;padding:30px 0 0;position:relative;list-style:none;}
+  .tree > ul{padding-top:0;}
+  .tree li{position:relative;padding:30px 7px 0;flex:1 1 0;display:flex;flex-direction:column;align-items:center;}
+  .tree > ul > li{padding-top:0;}
+  .tree li > ul{align-self:stretch;}
+  .tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:30px;border-top:1.5px solid var(--line);}
+  .tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line);}
+  .tree li:only-child::before{display:none;}
+  .tree li:only-child::after{border-top:0;}
+  .tree li:first-child::before,.tree li:last-child::after{border:0;}
+  .tree li:last-child::before{border-right:1.5px solid var(--line);border-radius:0 8px 0 0;}
+  .tree li:first-child::after{border-radius:8px 0 0 0;}
+  .tree > ul > li::before,.tree > ul > li::after{display:none;}
+  .tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:30px;border-left:1.5px solid var(--line);}
+  .tree ul ul::after{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+    border:6px solid transparent;border-top:0;border-bottom:9px solid var(--line);}
+  .node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+    width:100%;max-width:250px;padding:13px 14px 14px;border-radius:14px;background:var(--chip);border:1px solid var(--hair-hi);}
+  .node.top{max-width:300px;}
+  .node .logo{display:grid;place-items:center;height:52px;min-width:52px;padding:6px 8px;border-radius:10px;background:#fff;}
+  .node .logo img{max-height:40px;max-width:96px;display:block;}
+  .node .logo.wide{height:62px;} .node .logo.wide img{max-width:140px;max-height:50px;}
+  .node .logo.seal{background:transparent;padding:0;height:66px;}
+  .node .logo.seal img{max-height:66px;max-width:66px;border-radius:50%;}
+  .node b{display:block;font-family:var(--serif);font-size:16.5px;font-weight:600;color:var(--title);line-height:1.2;}
+  .node .nt span{display:block;font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:3px;}
+  .node.leaf{max-width:170px;padding:10px 10px 12px;}
+  .node.vdf b{font-size:19px;color:var(--gold-soft);font-style:italic;}
+  .node.vdf{justify-content:center;min-height:118px;}
+  .node.plain{border-style:dashed;}
+  .base{display:flex;flex-direction:column;align-items:center;margin-top:10px;width:33.333%;padding:0 7px;}
+  .base-arrow{display:block;width:0;height:34px;border-left:1.5px dashed var(--line);position:relative;margin-bottom:4px;}
+  .base-arrow::before{content:"";position:absolute;top:-2px;left:-7px;border:6px solid transparent;border-top:0;border-bottom:9px solid var(--line);}
+  .node.ground{max-width:none;background:linear-gradient(180deg,var(--chip),transparent);border-style:solid;}
+  .tree-cap{max-width:720px;margin:18px auto 0;text-align:center;font-size:13px;line-height:1.6;color:var(--faint);font-style:italic;}
+
+  /* ---------- sources ---------- */
+  .src-note{color:var(--faint);font-size:13px;margin:0 0 12px;font-style:italic;}
+  .srcs{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;}
+  .srcs li{break-inside:avoid;display:grid;grid-template-columns:30px 1fr;gap:2px 8px;padding:7px 0;border-bottom:1px solid var(--hair);font-size:13px;line-height:1.5;}
+  .srcs li:target{background:var(--chip);outline:1px solid var(--hair-hi);border-radius:8px;}
+  .srcs .n{grid-row:span 2;font-weight:700;color:var(--gold);text-align:right;}
+  .srcs a{grid-column:2;color:var(--gold);font-size:11.5px;text-decoration:none;word-break:break-all;}
+  .srcs a:hover{text-decoration:underline;}
+  footer{margin-top:48px;text-align:center;font-size:12px;color:var(--faint);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1020px){ .cols{column-count:2;} }
+  @media (max-width:760px){
+    .pyr-wrap{grid-template-columns:1fr;}
+    .lvl{grid-column:1;min-height:104px;} .lvl0{grid-row:1;} .lvl1{grid-row:2;} .lvl2{grid-row:3;}
+    .note{grid-column:1;grid-row:auto !important;margin-top:10px;}
+    .srcs{columns:1;}
+  }
+  @media (max-width:680px){
+    .cols,.cols.c2{column-count:1;}
+    .cols{font-size:15px;}
+    .cols p{text-align:left;}
+    /* the hierarchy becomes a vertical list, arrows still pointing up */
+    .tree{min-width:0;}
+    .tree ul{display:block;padding:0 0 0 22px;margin-left:12px;border-left:1.5px solid var(--line);}
+    .tree > ul{border-left:0;padding-left:0;margin-left:0;}
+    .tree li{display:block;padding:14px 0 0;}
+    .tree li::before,.tree li::after,.tree ul ul::before{display:none;}
+    .base{width:100%;padding:0;}
+    .tree ul ul::after{left:-1px;top:-2px;}
+    .node,.node.top,.node.leaf{max-width:none;flex-direction:row;text-align:left;align-items:center;min-height:0;}
+    .node .logo{flex:0 0 auto;}
+    .node.vdf{min-height:0;}
+  }
+  @media print{ body{background:#fff;color:#000;} .topbar,.toc{display:none;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Le système des appellations" data-en="How appellations work">Le système des appellations</p>
+    <h1 data-fr="Les catégories <em>des vins français</em>" data-en="The Categories <em>of French Wines</em>">Les catégories <em>des vins français</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="De l’Appellation d’Origine Contrôlée au Vin de France" data-en="From the Appellation d’Origine Contrôlée to Vin de France">De l’Appellation d’Origine Contrôlée au Vin de France</p>
+    <p class="intro L fr" lang="fr">{{INTRO_FR}}</p>
+    <p class="intro L en" lang="en">{{INTRO_EN}}</p>
+    <nav class="toc">{{TOC}}</nav>
+  </header>
+
+{{BODY}}
+
+  <footer>Christophe PAUL · <span data-fr="Vins de France" data-en="French Wine">Vins de France</span></footer>
+</div>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var TITLE = {fr:'Les catégories des vins français', en:'The Categories of French Wines'};
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = TITLE[LANG];
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){
+      var v = nodes[i].getAttribute('data-'+LANG);
+      if(v!==null) nodes[i].innerHTML = v;
+    }
+    document.getElementById('langlbl').textContent = (LANG==='fr') ? 'English' : 'Français';
+  }
+  document.getElementById('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+})();
+</script>
+</body>
+</html>

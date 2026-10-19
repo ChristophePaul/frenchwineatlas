@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Anatomie d'un Décret AOC — Cour-Cheverny" data-en="Anatomy of an AOC Decree — Cour-Cheverny">Anatomie d'un Décret AOC — Cour-Cheverny</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.62);--faint:rgba(245,239,227,.42);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.34);--glass-hi:rgba(38,10,18,.5);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(30px,5vw,64px) clamp(16px,4vw,44px) 60px;}
+
+  /* ---- back link ---- */
+  .back{display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+    font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:9px 16px;background:var(--glass);transition:border-color .2s,background .2s,transform .2s;}
+  .back:hover{border-color:var(--hair-hi);background:var(--glass-hi);transform:translateX(-3px);}
+
+  /* ---- hero ---- */
+  header{text-align:center;margin:clamp(26px,5vw,54px) 0 clamp(30px,4vw,44px);}
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.5em;
+    font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);
+    margin:0 0 20px;padding-left:.5em;opacity:.9;}
+  h1{font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px,7vw,80px);line-height:.98;margin:0;color:#fff;
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:26px auto 22px;}
+  .tagline{font-size:clamp(13px,1.7vw,16.5px);line-height:1.7;font-weight:300;
+    color:rgba(245,239,227,.85);max-width:680px;margin:0 auto;
+    text-shadow:0 1px 10px rgba(0,0,0,.5);}
+  .tagline b{color:var(--gold-soft);font-weight:600;}
+
+  /* ---- explainer panel ---- */
+  .panel{background:var(--glass);border:1px solid var(--hair);border-radius:16px;
+    padding:clamp(22px,3vw,32px);margin:0 auto clamp(30px,4vw,44px);max-width:900px;
+    box-shadow:0 18px 50px rgba(10,1,4,.42),inset 0 1px 0 rgba(255,255,255,.05);}
+  .panel h2{font-family:var(--sans);text-transform:uppercase;letter-spacing:.28em;
+    font-size:11px;font-weight:600;color:var(--gold);margin:0 0 16px;}
+  .panel p{font-size:14px;line-height:1.72;color:rgba(245,239,227,.82);margin:0 0 13px;font-weight:300;}
+  .panel p:last-child{margin-bottom:0;}
+  .panel strong{color:var(--gold-soft);font-weight:600;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;}
+  .chip{font-size:11px;letter-spacing:.06em;color:var(--parchment);
+    border:1px solid var(--hair);border-radius:999px;padding:6px 13px;
+    background:rgba(217,179,107,.07);}
+  .chip b{color:var(--gold-soft);font-weight:600;}
+
+  /* ---- download row ---- */
+  .dl{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:900px;margin:0 auto clamp(30px,4vw,44px);}
+  .dl a{position:relative;display:flex;align-items:center;gap:16px;text-decoration:none;
+    background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:20px 22px;
+    color:var(--parchment);overflow:hidden;
+    box-shadow:0 16px 40px rgba(10,1,4,.44),inset 0 1px 0 rgba(255,255,255,.05);
+    transition:transform .2s,border-color .2s,background .2s;}
+  .dl a::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;
+    background:linear-gradient(180deg,var(--gold),rgba(217,179,107,0));
+    transform:scaleY(0);transform-origin:top;transition:transform .26s ease;}
+  .dl a:hover{transform:translateY(-4px);border-color:var(--hair-hi);background:var(--glass-hi);}
+  .dl a:hover::before{transform:scaleY(1);}
+  .dl .ic-wrap{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(217,179,107,.12);border:1px solid rgba(217,179,107,.22);}
+  .dl .ic{width:24px;height:24px;color:var(--gold-soft);}
+  .dl .flag{font-size:19px;line-height:1;}
+  .dl .meta{flex:1;}
+  .dl .meta .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin:0 0 5px;opacity:.9;}
+  .dl .meta h3{font-family:var(--serif);font-weight:500;font-size:19px;color:#fff;margin:0 0 3px;}
+  .dl .meta p{font-size:11.5px;color:var(--muted);margin:0;font-weight:300;}
+  .dl .arrow{flex:none;color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.1em;
+    display:inline-flex;align-items:center;gap:6px;text-transform:uppercase;}
+
+  /* ---- comparison viewers ---- */
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:0 4px 18px;max-width:100%;}
+  .sec-head h2{font-family:var(--sans);text-transform:uppercase;letter-spacing:.3em;
+    font-size:11px;font-weight:600;color:var(--gold);margin:0;}
+  .sec-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--hair),transparent);}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .doc{background:var(--glass);border:1px solid var(--hair);border-radius:16px;overflow:hidden;
+    box-shadow:0 18px 50px rgba(10,1,4,.42);display:flex;flex-direction:column;}
+  .doc .hd{display:flex;align-items:center;gap:10px;padding:14px 18px;
+    border-bottom:1px solid var(--hair);background:rgba(16,3,7,.4);}
+  .doc .hd .flag{font-size:17px;}
+  .doc .hd .lbl{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;
+    font-size:10.5px;font-weight:600;color:var(--gold-soft);}
+  .doc .hd .sub{margin-left:auto;}
+  .doc .hd .open{margin-left:auto;font-size:10px;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--gold);text-decoration:none;
+    border:1px solid var(--hair);border-radius:999px;padding:5px 11px;
+    transition:border-color .2s,background .2s;}
+  .doc .hd .open:hover{border-color:var(--hair-hi);background:rgba(217,179,107,.1);}
+  /* zoom toolbar */
+  .zoombar{display:flex;align-items:center;gap:6px;padding:8px 12px;
+    border-bottom:1px solid var(--hair);background:rgba(16,3,7,.32);}
+  .zoombar button{width:28px;height:28px;display:grid;place-items:center;
+    font-size:15px;font-weight:600;line-height:1;color:var(--gold-soft);
+    background:rgba(217,179,107,.08);border:1px solid var(--hair);border-radius:8px;
+    cursor:pointer;transition:border-color .18s,background .18s,transform .1s;font-family:var(--sans);}
+  .zoombar button:hover{border-color:var(--hair-hi);background:rgba(217,179,107,.18);}
+  .zoombar button:active{transform:scale(.92);}
+  .zoombar button.fit{width:auto;padding:0 12px;font-size:10px;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;}
+  .zoombar .pct{min-width:48px;text-align:center;font-family:var(--sans);
+    font-size:11px;font-weight:600;color:var(--parchment);letter-spacing:.03em;}
+  .zoombar .hint{margin-left:auto;font-size:9.5px;color:var(--faint);letter-spacing:.04em;}
+  /* scrollable page-image viewer (no live PDF, so nothing auto-opens) */
+  .viewer{height:74vh;min-height:500px;overflow:auto;
+    background:#3a3d40;padding:16px;scroll-behavior:smooth;}
+  .viewer.zoomed{scroll-behavior:auto;cursor:zoom-out;}
+  .viewer:not(.zoomed) img{cursor:zoom-in;}
+  .viewer img{display:block;width:calc(100% * var(--z,1));max-width:none;height:auto;
+    margin:0 auto 16px;background:#fff;border-radius:2px;box-shadow:0 6px 18px rgba(0,0,0,.45);}
+  .viewer::-webkit-scrollbar{width:11px;}
+  .viewer::-webkit-scrollbar-track{background:rgba(0,0,0,.25);}
+  .viewer::-webkit-scrollbar-thumb{background:rgba(217,179,107,.35);border-radius:6px;
+    border:2px solid #3a3d40;}
+  .viewer::-webkit-scrollbar-thumb:hover{background:rgba(217,179,107,.55);}
+
+  .note{max-width:900px;margin:26px auto 0;font-size:12px;line-height:1.7;
+    color:var(--faint);text-align:center;font-weight:300;}
+  .note b{color:rgba(231,207,156,.8);font-weight:600;}
+
+  footer{margin-top:56px;padding-top:24px;text-align:center;font-family:var(--sans);
+    font-size:11px;line-height:1.8;color:var(--faint);border-top:1px solid var(--hair);}
+  footer b{color:rgba(231,207,156,.85);font-weight:600;letter-spacing:.04em;}
+  .libcta{display:flex;align-items:center;gap:16px;max-width:900px;margin:0 auto clamp(30px,4vw,44px);
+    text-decoration:none;color:var(--parchment);padding:20px 24px;border-radius:16px;
+    background:linear-gradient(90deg,rgba(155,34,53,.28),rgba(24,5,11,.4));
+    border:1px solid var(--hair);box-shadow:0 16px 40px rgba(10,1,4,.44);
+    transition:transform .2s,border-color .2s,background .2s;}
+  .libcta:hover{transform:translateY(-4px);border-color:var(--hair-hi);
+    background:linear-gradient(90deg,rgba(155,34,53,.38),rgba(38,10,18,.5));}
+  .libcta .lic{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(217,179,107,.12);border:1px solid rgba(217,179,107,.22);}
+  .libcta .lic svg{width:24px;height:24px;color:var(--gold-soft);}
+  .libcta .lt{flex:1;}
+  .libcta .lt .k{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);
+    font-weight:600;margin:0 0 4px;opacity:.9;}
+  .libcta .lt h3{font-family:var(--serif);font-weight:500;font-size:20px;color:#fff;margin:0 0 3px;}
+  .libcta .lt p{font-size:12px;color:var(--muted);margin:0;font-weight:300;}
+  .libcta .lgo{flex:none;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--gold-soft);border:1px solid var(--hair-hi);border-radius:999px;padding:9px 15px;
+    background:rgba(217,179,107,.1);}
+
+  @media (max-width:860px){
+    .dl,.compare{grid-template-columns:1fr;}
+    .viewer{height:70vh;}
+  }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{color:#2e1419;background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back{color:#8a5d17;border:1px solid rgba(154,106,31,0.23);background:rgba(255,253,248,0.89)}
+html[data-theme="cream"] .back:hover{border-color:rgba(154,106,31,0.66);background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] .eyebrow{color:#8a5d17}
+html[data-theme="cream"] h1{color:#2e1419;text-shadow:none}
+html[data-theme="cream"] h1 em{color:#8a5d17}
+html[data-theme="cream"] .tagline{color:rgba(46,20,25,0.85);text-shadow:none}
+html[data-theme="cream"] .tagline b{color:#8a5d17}
+html[data-theme="cream"] .panel{background:rgba(255,253,248,0.89);border:1px solid rgba(154,106,31,0.23);box-shadow:0 18px 50px rgba(90,40,30,0.13),inset 0 1px 0 rgba(255,255,255,0.30)}
+html[data-theme="cream"] .panel h2{color:#8a5d17}
+html[data-theme="cream"] .panel p{color:rgba(46,20,25,0.82)}
+html[data-theme="cream"] .panel strong{color:#8a5d17}
+html[data-theme="cream"] .chip{color:#2e1419;border:1px solid rgba(154,106,31,0.23);background:rgba(154,106,31,0.07)}
+html[data-theme="cream"] .chip b{color:#8a5d17}
+html[data-theme="cream"] .dl a{background:rgba(255,253,248,0.89);border:1px solid rgba(154,106,31,0.23);color:#2e1419;box-shadow:0 16px 40px rgba(90,40,30,0.13),inset 0 1px 0 rgba(255,255,255,0.30)}
+html[data-theme="cream"] .dl a:hover{border-color:rgba(154,106,31,0.66);background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] .dl .ic-wrap{background:rgba(154,106,31,0.12);border:1px solid rgba(154,106,31,0.29)}
+html[data-theme="cream"] .dl .ic{color:#8a5d17}
+html[data-theme="cream"] .dl .meta .k{color:#8a5d17}
+html[data-theme="cream"] .dl .meta h3{color:#2e1419}
+html[data-theme="cream"] .dl .meta p{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .dl .arrow{color:#8a5d17}
+html[data-theme="cream"] .sec-head h2{color:#8a5d17}
+html[data-theme="cream"] .sec-head::after{background:linear-gradient(90deg,rgba(154,106,31,0.16),rgba(0,0,0,0))}
+html[data-theme="cream"] .doc{background:rgba(255,253,248,0.89);border:1px solid rgba(154,106,31,0.23);box-shadow:0 18px 50px rgba(90,40,30,0.13)}
+html[data-theme="cream"] .doc .hd{border-bottom:1px solid rgba(154,106,31,0.23);background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] .doc .hd .lbl{color:#8a5d17}
+html[data-theme="cream"] .doc .hd .open{color:#8a5d17;border:1px solid rgba(154,106,31,0.23)}
+html[data-theme="cream"] .doc .hd .open:hover{border-color:rgba(154,106,31,0.66);background:rgba(154,106,31,0.10)}
+html[data-theme="cream"] .zoombar{border-bottom:1px solid rgba(154,106,31,0.23);background:rgba(255,253,248,0.87)}
+html[data-theme="cream"] .zoombar button{color:#8a5d17;background:rgba(154,106,31,0.08);border:1px solid rgba(154,106,31,0.23)}
+html[data-theme="cream"] .zoombar button:hover{border-color:rgba(154,106,31,0.66);background:rgba(154,106,31,0.18)}
+html[data-theme="cream"] .zoombar .pct{color:#2e1419}
+html[data-theme="cream"] .zoombar .hint{color:rgba(46,20,25,0.50)}
+html[data-theme="cream"] .viewer{background:#fbf6ec}
+html[data-theme="cream"] .viewer img{box-shadow:0 6px 18px rgba(90,40,30,0.14)}
+html[data-theme="cream"] .viewer::-webkit-scrollbar-track{background:rgba(255,253,248,0.80)}
+html[data-theme="cream"] .viewer::-webkit-scrollbar-thumb{background:rgba(154,106,31,0.35);border:2px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .viewer::-webkit-scrollbar-thumb:hover{background:rgba(154,106,31,0.55)}
+html[data-theme="cream"] .note{color:rgba(46,20,25,0.50)}
+html[data-theme="cream"] .note b{color:rgba(138,93,23,0.80)}
+html[data-theme="cream"] footer{color:rgba(46,20,25,0.50);border-top:1px solid rgba(154,106,31,0.23)}
+html[data-theme="cream"] footer b{color:rgba(138,93,23,0.85)}
+html[data-theme="cream"] .libcta{color:#2e1419;background:linear-gradient(90deg,rgba(155,34,53,0.10),rgba(255,253,248,0.92));border:1px solid rgba(154,106,31,0.23);box-shadow:0 16px 40px rgba(90,40,30,0.13)}
+html[data-theme="cream"] .libcta:hover{border-color:rgba(154,106,31,0.66);background:linear-gradient(90deg,rgba(155,34,53,0.13),rgba(255,253,248,0.92))}
+html[data-theme="cream"] .libcta .lic{background:rgba(154,106,31,0.12);border:1px solid rgba(154,106,31,0.29)}
+html[data-theme="cream"] .libcta .lic svg{color:#8a5d17}
+html[data-theme="cream"] .libcta .lt .k{color:#8a5d17}
+html[data-theme="cream"] .libcta .lt h3{color:#2e1419}
+html[data-theme="cream"] .libcta .lt p{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .libcta .lgo{color:#8a5d17;border:1px solid rgba(154,106,31,0.66);background:rgba(154,106,31,0.10)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../../index.html" data-fr="<span>←</span> Retour" data-en="<span>←</span> Back"><span>←</span> Retour</a>
+
+  <header>
+    <p class="eyebrow" data-fr="Le Système des Appellations · l'INAO" data-en="The Appellation System · the INAO">Le Système des Appellations · l'INAO</p>
+    <h1 data-fr="Anatomie d'un <em>Décret&amp;nbsp;AOC</em>" data-en="Anatomy of an <em>AOC&amp;nbsp;Decree</em>">Anatomie d'un <em>Décret&nbsp;AOC</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Derrière chaque bouteille d'appellation se cache un document juridique : le
+      <b>cahier des charges</b>. Voici celui de l'AOC <b>Cour-Cheverny</b> — l'original français
+      et sa traduction anglaise, mis en page à l'identique." data-en="Behind every appellation bottle lies a legal document: the <b>cahier des charges</b> (product specification). Here is the one for the <b>Cour-Cheverny</b> AOC — the French original and its English translation, laid out identically.">Derrière chaque bouteille d'appellation se cache un document juridique : le
+      <b>cahier des charges</b>. Voici celui de l'AOC <b>Cour-Cheverny</b> — l'original français
+      et sa traduction anglaise, mis en page à l'identique.</p>
+  </header>
+
+  <!-- explainer -->
+  <div class="panel">
+    <h2 data-fr="Qu'est-ce qu'un cahier des charges&amp;nbsp;?" data-en="What is a cahier des charges?">Qu'est-ce qu'un cahier des charges&nbsp;?</h2>
+    <p data-fr="Une appellation d'origine contrôlée n'est pas un label commercial : c'est une <strong>norme
+      juridique</strong>. Pour chaque AOC, l'<strong>INAO</strong> (Institut national de l'origine et
+      de la qualité) publie un <strong>cahier des charges</strong> — le texte officiel, homologué par
+      décret, qui définit précisément ce qui a le droit de porter le nom." data-en="An appellation d'origine contrôlée is not a marketing label: it is a <strong>legal standard</strong>. For each AOC, the <strong>INAO</strong> (French National Institute of Origin and Quality) publishes a <strong>cahier des charges</strong> — the official text, approved by decree, that defines exactly what is entitled to bear the name.">Une appellation d'origine contrôlée n'est pas un label commercial : c'est une <strong>norme
+      juridique</strong>. Pour chaque AOC, l'<strong>INAO</strong> (Institut national de l'origine et
+      de la qualité) publie un <strong>cahier des charges</strong> — le texte officiel, homologué par
+      décret, qui définit précisément ce qui a le droit de porter le nom.</p>
+    <p data-fr="On y trouve tout : les communes autorisées, les cépages permis, la densité de plantation, les
+      règles de taille, les rendements maximaux, le degré d'alcool minimum, les dates de mise en
+      marché, le lien au terroir, et jusqu'aux méthodes de contrôle. Rien n'est laissé au hasard." data-en="Everything is in it: the authorised communes, the permitted grape varieties, planting density, pruning rules, maximum yields, minimum alcohol, release dates, the link to the terroir, and even the inspection methods. Nothing is left to chance.">On y trouve tout : les communes autorisées, les cépages permis, la densité de plantation, les
+      règles de taille, les rendements maximaux, le degré d'alcool minimum, les dates de mise en
+      marché, le lien au terroir, et jusqu'aux méthodes de contrôle. Rien n'est laissé au hasard.</p>
+    <p data-fr="Le document ci-dessous est le cahier des charges réel de l'AOC <strong>Cour-Cheverny</strong>
+      (Val de Loire, cépage romorantin B). La <strong>traduction anglaise</strong> reproduit la mise
+      en page, la typographie, les en-têtes, la pagination et la structure à l'identique — pour que
+      l'on voie exactement à quoi ressemble un décret d'appellation." data-en="The document below is the actual cahier des charges of the <strong>Cour-Cheverny</strong> AOC (Loire Valley, Romorantin B grape). The <strong>English translation</strong> reproduces the layout, typography, headers, pagination and structure identically — so you can see exactly what an appellation decree looks like.">Le document ci-dessous est le cahier des charges réel de l'AOC <strong>Cour-Cheverny</strong>
+      (Val de Loire, cépage romorantin B). La <strong>traduction anglaise</strong> reproduit la mise
+      en page, la typographie, les en-têtes, la pagination et la structure à l'identique — pour que
+      l'on voie exactement à quoi ressemble un décret d'appellation.</p>
+    <div class="chips">
+      <span class="chip" data-fr="<b>AOC</b> Cour-Cheverny" data-en="<b>AOC</b> Cour-Cheverny"><b>AOC</b> Cour-Cheverny</span>
+      <span class="chip" data-fr="<b>Région</b> Val de Loire" data-en="<b>Region</b> Loire Valley"><b>Région</b> Val de Loire</span>
+      <span class="chip" data-fr="<b>Cépage</b> Romorantin&amp;nbsp;B" data-en="<b>Grape</b> Romorantin&amp;nbsp;B"><b>Cépage</b> Romorantin&nbsp;B</span>
+      <span class="chip" data-fr="<b>Reconnue</b> 1993" data-en="<b>Recognised</b> 1993"><b>Reconnue</b> 1993</span>
+      <span class="chip" data-fr="<b>10</b> pages · 3 chapitres" data-en="<b>10</b> pages · 3 chapters"><b>10</b> pages · 3 chapitres</span>
+    </div>
+  </div>
+
+  <!-- library CTA -->
+  <a class="libcta" href="AOC_Library.html">
+    <span class="lic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2Z"/><path d="M20 5a2 2 0 0 0-2-2h-5v18h5a2 2 0 0 0 2-2Z"/><path d="M7 7h1M7 10h1M16 7h1M16 10h1"/></svg></span>
+    <div class="lt">
+      <p class="k" data-fr="Bibliothèque complète" data-en="Complete library">Bibliothèque complète</p>
+      <h3 data-fr="Parcourir les 320 décrets AOC" data-en="Browse the 320 AOC decrees">Parcourir les 320 décrets AOC</h3>
+      <p data-fr="Choisissez une région, une sous-région et une appellation, puis téléchargez son cahier des charges." data-en="Choose a region, a sub-region and an appellation, then download its cahier des charges.">Choisissez une région, une sous-région et une appellation, puis téléchargez son cahier des charges.</p>
+    </div>
+    <span class="lgo" data-fr="Ouvrir →" data-en="Open →">Ouvrir →</span>
+  </a>
+
+  <!-- downloads -->
+  <div class="dl">
+    <a href="CDC%20Cour-Cheverny%20(French%20-%20original).pdf" download>
+      <span class="ic-wrap"><span class="flag">🇫🇷</span></span>
+      <div class="meta">
+        <p class="k" data-fr="Version originale" data-en="Original version">Version originale</p>
+        <h3 data-fr="Cahier des charges — Français" data-en="Specification — French">Cahier des charges — Français</h3>
+        <p data-fr="Le décret officiel de l'INAO · PDF, 10 pages" data-en="The official INAO decree · PDF, 10 pages">Le décret officiel de l'INAO · PDF, 10 pages</p>
+      </div>
+      <span class="arrow" data-fr="Télécharger ↓" data-en="Download ↓">Télécharger ↓</span>
+    </a>
+    <a href="CDC%20Cour-Cheverny%20(English%20translation).pdf" download>
+      <span class="ic-wrap"><span class="flag">🇬🇧</span></span>
+      <div class="meta">
+        <p class="k" data-fr="Version anglaise" data-en="English version">Version anglaise</p>
+        <h3 data-fr="Cahier des charges — Anglais" data-en="Specification — English">Cahier des charges — Anglais</h3>
+        <p data-fr="Traduction fac-similé fidèle · PDF, 10 pages" data-en="Faithful facsimile translation · PDF, 10 pages">Traduction fac-similé fidèle · PDF, 10 pages</p>
+      </div>
+      <span class="arrow" data-fr="Télécharger ↓" data-en="Download ↓">Télécharger ↓</span>
+    </a>
+  </div>
+
+  <!-- side-by-side viewers -->
+  <div class="sec-head"><h2 data-fr="Le document, côte à côte" data-en="The document, side by side">Le document, côte à côte</h2></div>
+  <div class="compare">
+    <div class="doc">
+      <div class="hd"><span class="flag">🇫🇷</span><span class="lbl" data-fr="Original — Français" data-en="Original — French">Original — Français</span>
+        <a class="open" href="CDC%20Cour-Cheverny%20(French%20-%20original).pdf" target="_blank" rel="noopener" data-fr="Ouvrir le PDF ↗" data-en="Open the PDF ↗">Ouvrir le PDF ↗</a></div>
+      <div class="viewer" aria-label="Cahier des charges Cour-Cheverny — français, 10 pages">
+        <img src="pages/fr_01.jpg" alt="Cour-Cheverny — page 1" loading="lazy">
+        <img src="pages/fr_02.jpg" alt="Cour-Cheverny — page 2" loading="lazy">
+        <img src="pages/fr_03.jpg" alt="Cour-Cheverny — page 3" loading="lazy">
+        <img src="pages/fr_04.jpg" alt="Cour-Cheverny — page 4" loading="lazy">
+        <img src="pages/fr_05.jpg" alt="Cour-Cheverny — page 5" loading="lazy">
+        <img src="pages/fr_06.jpg" alt="Cour-Cheverny — page 6" loading="lazy">
+        <img src="pages/fr_07.jpg" alt="Cour-Cheverny — page 7" loading="lazy">
+        <img src="pages/fr_08.jpg" alt="Cour-Cheverny — page 8" loading="lazy">
+        <img src="pages/fr_09.jpg" alt="Cour-Cheverny — page 9" loading="lazy">
+        <img src="pages/fr_10.jpg" alt="Cour-Cheverny — page 10" loading="lazy">
+      </div>
+    </div>
+    <div class="doc">
+      <div class="hd"><span class="flag">🇬🇧</span><span class="lbl" data-fr="Traduction — Anglais" data-en="Translation — English">Traduction — Anglais</span>
+        <a class="open" href="CDC%20Cour-Cheverny%20(English%20translation).pdf" target="_blank" rel="noopener" data-fr="Ouvrir le PDF ↗" data-en="Open the PDF ↗">Ouvrir le PDF ↗</a></div>
+      <div class="viewer" aria-label="Cour-Cheverny specification — English, 10 pages">
+        <img src="pages/en_01.jpg" alt="Cour-Cheverny — page 1 (English)" loading="lazy">
+        <img src="pages/en_02.jpg" alt="Cour-Cheverny — page 2 (English)" loading="lazy">
+        <img src="pages/en_03.jpg" alt="Cour-Cheverny — page 3 (English)" loading="lazy">
+        <img src="pages/en_04.jpg" alt="Cour-Cheverny — page 4 (English)" loading="lazy">
+        <img src="pages/en_05.jpg" alt="Cour-Cheverny — page 5 (English)" loading="lazy">
+        <img src="pages/en_06.jpg" alt="Cour-Cheverny — page 6 (English)" loading="lazy">
+        <img src="pages/en_07.jpg" alt="Cour-Cheverny — page 7 (English)" loading="lazy">
+        <img src="pages/en_08.jpg" alt="Cour-Cheverny — page 8 (English)" loading="lazy">
+        <img src="pages/en_09.jpg" alt="Cour-Cheverny — page 9 (English)" loading="lazy">
+        <img src="pages/en_10.jpg" alt="Cour-Cheverny — page 10 (English)" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <p class="note" data-fr="Les deux documents partagent la même pagination : chaque page anglaise correspond à
+    la page française de même numéro. <b>Astuce :</b> faites défiler les deux cadres en parallèle pour
+    comparer article par article, ou utilisez les boutons de téléchargement ci-dessus pour obtenir
+    les fichiers PDF." data-en="Both documents share the same pagination: each English page matches the French page with the same number. <b>Tip:</b> scroll the two frames side by side to compare article by article, or use the download buttons above to get the PDF files.">Les deux documents partagent la même pagination : chaque page anglaise correspond à
+    la page française de même numéro. <b>Astuce :</b> faites défiler les deux cadres en parallèle pour
+    comparer article par article, ou utilisez les boutons de téléchargement ci-dessus pour obtenir
+    les fichiers PDF.</p>
+
+  <footer data-fr="
+    <b>A Quick Glance at French Wine</b> · Cahier des charges de l'AOC Cour-Cheverny —
+    document public INAO (version 2 du 2 décembre 2010).<br>
+    Traduction anglaise réalisée à titre pédagogique&amp;nbsp;; seul le texte français original fait foi.
+  " data-en="
+    <b>A Quick Glance at French Wine</b> · Cahier des charges of the Cour-Cheverny AOC —
+    public INAO document (version 2 of 2 December 2010).<br>
+    English translation provided for educational purposes; only the original French text is legally binding.
+  ">
+    <b>A Quick Glance at French Wine</b> · Cahier des charges de l'AOC Cour-Cheverny —
+    document public INAO (version 2 du 2 décembre 2010).<br>
+    Traduction anglaise réalisée à titre pédagogique&nbsp;; seul le texte français original fait foi.
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var STEPS=[1,1.25,1.5,1.75,2,2.5,3];   // 100% … 300%
+  document.querySelectorAll('.doc .viewer').forEach(function(v){
+    var i=0;                              // index into STEPS
+    // build the toolbar and insert it just above the viewer
+    var bar=document.createElement('div');
+    bar.className='zoombar';
+    bar.innerHTML='<button type="button" data-a="out" title="Dézoomer" aria-label="Dézoomer">−</button>'
+      +'<span class="pct">100%</span>'
+      +'<button type="button" data-a="in" title="Zoomer" aria-label="Zoomer">+</button>'
+      +'<button type="button" class="fit" data-a="fit" title="Ajuster à la largeur">Ajuster</button>'
+      +'<span class="hint">double-clic ou ⌘/Ctrl + molette</span>';
+    v.parentNode.insertBefore(bar,v);
+    var pct=bar.querySelector('.pct');
+
+    function apply(keep){
+      var z=STEPS[i];
+      // keep the point under the cursor/centre roughly stable
+      var cx=(keep&&keep.x!=null)?keep.x:v.clientWidth/2;
+      var cy=(keep&&keep.y!=null)?keep.y:v.clientHeight/2;
+      var rx=(v.scrollLeft+cx)/(v.scrollWidth||1);
+      var ry=(v.scrollTop+cy)/(v.scrollHeight||1);
+      v.style.setProperty('--z',z);
+      v.classList.toggle('zoomed',z>1);
+      pct.textContent=Math.round(z*100)+'%';
+      // re-anchor after layout updates
+      requestAnimationFrame(function(){
+        v.scrollLeft=rx*v.scrollWidth-cx;
+        v.scrollTop=ry*v.scrollHeight-cy;
+      });
+    }
+    function setIndex(n,keep){ i=Math.max(0,Math.min(STEPS.length-1,n)); apply(keep); }
+
+    bar.addEventListener('click',function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      var a=b.dataset.a;
+      if(a==='in')  setIndex(i+1);
+      else if(a==='out') setIndex(i-1);
+      else if(a==='fit') setIndex(0);
+    });
+    // double-click toggles zoom, anchored where you clicked
+    v.addEventListener('dblclick',function(e){
+      var r=v.getBoundingClientRect(), keep={x:e.clientX-r.left,y:e.clientY-r.top};
+      setIndex(i>0?0:3,keep);            // toggle fit ⇆ 200%
+    });
+    // ⌘/Ctrl + wheel to zoom
+    v.addEventListener('wheel',function(e){
+      if(!(e.ctrlKey||e.metaKey)) return;
+      e.preventDefault();
+      var r=v.getBoundingClientRect(), keep={x:e.clientX-r.left,y:e.clientY-r.top};
+      setIndex(i+(e.deltaY<0?1:-1),keep);
+    },{passive:false});
+  });
+})();
+</script>
+</body>
+</html>

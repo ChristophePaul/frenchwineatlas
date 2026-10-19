@@ -1,0 +1,690 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Sparkling Wine Is Made — Illustrated</title>
+<style>
+  :root{
+    --parch:#f4ecd8; --parch2:#efe4c8; --ink:#2b2018; --ink-soft:#5c4a38;
+    --red:#7a1220; --red-lt:#a83247; --red-bg:#f6e2e2;
+    --white:#6f8b1e; --white-lt:#9bb43f; --white-bg:#eef2dd;
+    --sweet:#b8860b; --sweet-lt:#d4a72c; --sweet-bg:#f7eccf;
+    --rose:#c25b6e; --rose-lt:#dd8595; --rose-bg:#fbe6ea;
+    --gold:#b8892b; --line:#c9b98f; --card:#fbf6e9;
+    --cg:#bd9a2a; --cg-lt:#e3c766; --cm:#4f7d5e; --cm-lt:#7faa8c;
+    --an:#c26a3c; --an-lt:#df9469; --ch:#b24a86; --ch-lt:#d27fae;
+    --shadow:0 2px 6px rgba(60,40,20,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    color:var(--ink); background:var(--parch);
+    background-image:radial-gradient(circle at 20% 10%,rgba(255,255,255,.35),transparent 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,.10),transparent 55%);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  header.top{
+    text-align:center; padding:26px 16px 10px;
+    border-bottom:3px double var(--gold);
+    background:linear-gradient(#fbf6e9,#f4ecd8);
+  }
+  .titlerow{display:flex; align-items:center; justify-content:center; gap:20px}
+  .tdeco{flex:0 0 auto; width:48px; height:56px; color:var(--gold); opacity:.9}
+  .tdeco.flip{transform:scaleX(-1)}
+  .tdeco svg{width:100%; height:100%; display:block}
+  @media(max-width:560px){ .tdeco{display:none} }
+  header.top h1{
+    margin:0; font-size:clamp(28px,5vw,46px); font-style:italic; letter-spacing:.5px;
+    font-variant:small-caps; color:var(--ink);
+  }
+  header.top p{margin:6px auto 0; max-width:640px; color:var(--ink-soft); font-size:15px}
+  .wrap{max-width:1180px; margin:0 auto; padding:16px}
+
+  /* toggle bar */
+  .tabs{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:18px 0 6px}
+  .tab{
+    cursor:pointer; border:1px solid var(--line); background:var(--card);
+    padding:9px 18px; border-radius:24px; font-size:15px; font-variant:small-caps;
+    letter-spacing:.4px; color:var(--ink-soft); transition:.15s; user-select:none;
+    font-weight:600;
+  }
+  .tab:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+  .tab[data-k="red"].on{background:var(--red); color:#fff; border-color:var(--red)}
+  .tab[data-k="white"].on{background:var(--white); color:#fff; border-color:var(--white)}
+  .tab[data-k="sweet"].on{background:var(--sweet); color:#fff; border-color:var(--sweet)}
+  .tab[data-k="rose"].on{background:var(--rose); color:#fff; border-color:var(--rose)}
+  .tab[data-k="champagne"].on{background:var(--cg); color:#fff; border-color:var(--cg)}
+  .tab[data-k="cremant"].on{background:var(--cm); color:#fff; border-color:var(--cm)}
+  .tab[data-k="ancestrale"].on{background:var(--an); color:#fff; border-color:var(--an)}
+  .tab[data-k="charmat"].on{background:var(--ch); color:#fff; border-color:var(--ch)}
+  .hint{text-align:center; font-size:13px; color:var(--ink-soft); font-style:italic; margin:2px 0 14px}
+
+  /* layout: flows + detail panel */
+  .stage{display:grid; grid-template-columns:1fr 380px; gap:22px; align-items:start}
+  @media(max-width:900px){ .stage{grid-template-columns:1fr} }
+
+  .flows{display:flex; gap:26px; justify-content:center; flex-wrap:wrap}
+  .flow{flex:1 1 300px; min-width:270px; max-width:440px}
+  .flow h2{
+    text-align:center; font-variant:small-caps; letter-spacing:1px; margin:0 0 14px;
+    font-size:22px; padding:8px; border-radius:8px; color:#fff;
+  }
+  .flow.red h2{background:linear-gradient(var(--red-lt),var(--red))}
+  .flow.white h2{background:linear-gradient(var(--white-lt),var(--white))}
+  .flow.sweet h2{background:linear-gradient(var(--sweet-lt),var(--sweet))}
+  .flow.rose h2{background:linear-gradient(var(--rose-lt),var(--rose))}
+  .flow.champagne h2{background:linear-gradient(var(--cg-lt),var(--cg))}
+  .flow.cremant h2{background:linear-gradient(var(--cm-lt),var(--cm))}
+  .flow.ancestrale h2{background:linear-gradient(var(--an-lt),var(--an))}
+  .flow.charmat h2{background:linear-gradient(var(--ch-lt),var(--ch))}
+
+  .node{
+    position:relative; background:var(--card); border:1.5px solid var(--line);
+    border-left:6px solid var(--nc,#999); border-radius:10px; padding:10px 14px;
+    margin:0 auto; cursor:pointer; box-shadow:var(--shadow); transition:.15s; max-width:360px;
+    display:flex; align-items:center; gap:13px; text-align:left;
+  }
+  .node:hover{transform:translateX(3px); border-color:var(--nc)}
+  .node:hover .icon{transform:scale(1.08) rotate(-3deg)}
+  .node.active{outline:3px solid var(--nc); outline-offset:2px}
+  .node .icon{flex:0 0 46px; width:46px; height:46px; color:var(--nc); transition:.15s}
+  .node .icon svg{width:100%; height:100%; display:block}
+  .node .n-body{flex:1 1 auto; min-width:0}
+  .node .n-title{font-weight:700; font-size:16px; display:flex; align-items:center; gap:8px}
+  .node .n-fr{font-style:italic; color:var(--ink-soft); font-size:13px; margin-top:1px}
+  .node .n-sub{font-size:12.5px; color:var(--ink-soft); margin-top:4px}
+  .badge{
+    font-size:10px; font-variant:small-caps; letter-spacing:.5px; font-weight:700;
+    padding:1px 7px; border-radius:10px; background:var(--parch2); color:var(--ink-soft);
+    border:1px solid var(--line); white-space:nowrap;
+  }
+  .arrow{display:flex; justify-content:center; color:var(--nc,#bbb); font-size:22px; line-height:1; margin:2px 0}
+  .flow.red{--nc:var(--red)} .flow.white{--nc:var(--white)}
+  .flow.sweet{--nc:var(--sweet)} .flow.rose{--nc:var(--rose)}
+  .flow.champagne{--nc:var(--cg)} .flow.cremant{--nc:var(--cm)}
+  .flow.ancestrale{--nc:var(--an)} .flow.charmat{--nc:var(--ch)}
+
+  /* detail panel */
+  .side{position:sticky; top:14px}
+  .panel{
+    background:var(--card); border:1.5px solid var(--line);
+    border-top:5px solid var(--gold); border-radius:12px; padding:20px; box-shadow:var(--shadow);
+    min-height:220px;
+  }
+  @media(max-width:900px){ .side{position:static} }
+  .panel .d-head{display:flex; gap:15px; align-items:center; margin-bottom:8px}
+  .panel .hero{flex:0 0 62px; width:62px; height:62px}
+  .panel .hero svg{width:100%; height:100%; display:block}
+  .panel .ph{font-variant:small-caps; letter-spacing:.5px; color:var(--gold); font-size:13px; font-weight:700}
+  .panel h3{margin:2px 0 2px; font-size:24px}
+  .panel .fr{font-style:italic; color:var(--ink-soft); margin:0 0 12px; font-size:15px}
+  .panel p{margin:0 0 11px; font-size:15px}
+  .panel .why{background:var(--parch2); border-radius:8px; padding:10px 12px; font-size:14px; margin:0 0 11px}
+  .panel .why b{color:var(--red)}
+  .panel .meta{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px}
+  .panel .empty{color:var(--ink-soft); font-style:italic; text-align:center; padding:40px 10px}
+  .g,.gdemo{color:var(--red); border-bottom:1px dotted var(--red); cursor:help; font-weight:600}
+  .gdemo{cursor:default}
+
+  /* hover preview picture (below the detail panel) */
+  #hoverpic{
+    margin:14px 0 0; display:none; text-align:center;
+    background:var(--card); border:1.5px solid var(--line);
+    border-top:5px solid var(--cg); border-radius:12px; padding:12px;
+    box-shadow:var(--shadow);
+  }
+  #hoverpic img{max-width:100%; height:auto; border-radius:8px; display:block; margin:0 auto; cursor:zoom-in}
+  #hoverpic figcaption{
+    margin-top:8px; font-variant:small-caps; letter-spacing:.5px;
+    font-size:13px; color:var(--ink-soft);
+  }
+
+  /* enlarged picture (lightbox) */
+  #bigpic{
+    position:fixed; inset:0; z-index:100; display:none;
+    align-items:center; justify-content:center; padding:24px;
+    background:rgba(20,12,6,.72);
+  }
+  #bigpic.show{display:flex}
+  .bigpic-inner{position:relative; max-width:92vw; max-height:92vh}
+  .bigpic-inner img{
+    max-width:92vw; max-height:92vh; width:auto; height:auto; display:block;
+    border-radius:10px; border:3px solid var(--card); box-shadow:0 10px 40px rgba(0,0,0,.5);
+  }
+  #bigpic-close{
+    position:absolute; top:-16px; right:-16px; width:40px; height:40px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:2px solid var(--card); background:var(--cg); color:#fff;
+    font-size:24px; line-height:1; cursor:pointer; box-shadow:var(--shadow);
+  }
+  #bigpic-close:hover{background:var(--cg-lt)}
+
+  /* prose + glossary */
+  section.prose{margin-top:40px; border-top:3px double var(--gold); padding-top:20px}
+  section.prose h2{font-variant:small-caps; letter-spacing:.5px; text-align:center; font-size:26px; margin:0 0 6px}
+  details.acc{background:var(--card); border:1px solid var(--line); border-radius:9px; margin:8px 0; overflow:hidden}
+  details.acc>summary{cursor:pointer; padding:12px 16px; font-weight:700; font-size:17px; list-style:none; display:flex; justify-content:space-between; align-items:center}
+  details.acc>summary::-webkit-details-marker{display:none}
+  details.acc>summary::after{content:"+"; color:var(--gold); font-size:22px; font-weight:400}
+  details.acc[open]>summary::after{content:"–"}
+  details.acc .body{padding:0 16px 14px; font-size:15px; color:var(--ink)}
+  details.acc.red>summary{border-left:6px solid var(--red)}
+  details.acc.white>summary{border-left:6px solid var(--white)}
+  details.acc.sweet>summary{border-left:6px solid var(--sweet)}
+  details.acc.champagne>summary{border-left:6px solid var(--cg)}
+  details.acc.cremant>summary{border-left:6px solid var(--cm)}
+  details.acc.ancestrale>summary{border-left:6px solid var(--an)}
+  details.acc.charmat>summary{border-left:6px solid var(--ch)}
+
+  .glist{columns:2; column-gap:26px}
+  @media(max-width:640px){ .glist{columns:1} }
+  .glitem{break-inside:avoid; margin:0 0 12px; padding:0 0 0 2px}
+  .glitem dt{font-weight:700; color:var(--red)}
+  .glitem dd{margin:1px 0 0; font-size:14px; color:var(--ink)}
+  .glitem dd .en{color:var(--ink-soft); font-style:italic}
+
+  footer{text-align:center; color:var(--ink-soft); font-size:13px; padding:26px 16px 40px}
+
+  /* tooltip */
+  #tip{position:fixed; z-index:50; max-width:260px; background:#2b2018; color:#f4ecd8;
+    font-size:13px; padding:8px 11px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.35);
+    pointer-events:none; opacity:0; transition:opacity .12s; line-height:1.4}
+  #tip b{color:var(--sweet-lt)}
+</style>
+
+<header class="top">
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+  <div class="titlerow">
+    <span class="tdeco" id="deco1"></span>
+    <h1>How Sparkling Wine Is Made</h1>
+    <span class="tdeco flip" id="deco2"></span>
+  </div>
+  <p>How the bubbles get into the bottle — the four French roads to sparkling wine.
+     Tap any step to open the details, hover the <span class="gdemo">underlined terms</span> for a quick definition.</p>
+</header>
+
+<div class="wrap">
+    <div class="tabs" id="tabs">
+    <div class="tab" data-k="champagne">Champagne</div>
+    <div class="tab" data-k="cremant">Cr&eacute;mant</div>
+    <div class="tab" data-k="ancestrale">M&eacute;thode Ancestrale</div>
+    <div class="tab" data-k="charmat">M&eacute;thode Charmat</div>
+  </div>
+  <div class="hint">Showing <b>Champagne</b> and <b>Cr&eacute;mant</b> side-by-side &mdash; both the M&eacute;thode Traditionnelle. Switch on <b>Ancestrale</b> (p&eacute;t-nat) or <b>Charmat</b> (tank method) to compare.</div>
+
+  <div class="stage">
+    <div class="flows" id="flows"></div>
+    <div class="side">
+      <aside class="panel" id="panel">
+        <div class="empty" id="empty">Select a step in the flow to read what happens, why it matters,<br>and its French name.</div>
+        <div id="detail" style="display:none"></div>
+      </aside>
+      <figure id="hoverpic">
+        <img src="Images/Champagne/Harvesting.png" alt="">
+        <figcaption></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- PROSE -->
+    <section class="prose">
+    <h2>The four roads to bubbles</h2>
+    <details class="acc champagne"><summary>Champagne &mdash; M&eacute;thode Traditionnelle</summary>
+      <div class="body">
+        <p>Champagne is the benchmark for the <span class="g">m&eacute;thode traditionnelle</span>: a still <span class="g">base wine</span> is blended (<span class="g">assemblage</span>), bottled with a <span class="g">liqueur de tirage</span>, and fermented a <b>second time inside the bottle</b> (<span class="g">prise de mousse</span>). Long ageing <span class="g">sur lie</span>, then <span class="g">remuage</span>, <span class="g">d&eacute;gorgement</span> and <span class="g">dosage</span> finish the wine. Only grapes grown and hand-harvested in the Champagne region may carry the name.</p>
+      </div>
+    </details>
+    <details class="acc cremant"><summary>Cr&eacute;mant &mdash; the method beyond Champagne</summary>
+      <div class="body">
+        <p>Cr&eacute;mant is the very same method used <b>outside</b> Champagne &mdash; Alsace, Loire, Bourgogne, Limoux, Bordeaux, Die, Jura, Savoie. Hand-harvest and whole-bunch pressing are required; the main difference is a shorter minimum ageing <span class="g">sur lie</span> (9 months). Often excellent value for a true bottle-fermented sparkler.</p>
+      </div>
+    </details>
+    <details class="acc ancestrale"><summary>M&eacute;thode Ancestrale &mdash; the original ‘p&eacute;t-nat’</summary>
+      <div class="body">
+        <p>The <span class="g">m&eacute;thode ancestrale</span> is older than Champagne and far simpler: a <b>single</b> fermentation is bottled before it finishes, trapping natural CO&#8322; with no added yeast or sugar and no <span class="g">dosage</span>. Today's <span class="g">p&eacute;tillant naturel</span> revives it &mdash; lightly fizzy, often cloudy. Classics: Blanquette de Limoux ancestrale, Bugey-Cerdon, Clairette de Die, Gaillac.</p>
+      </div>
+    </details>
+    <details class="acc charmat"><summary>M&eacute;thode Charmat &mdash; the tank method</summary>
+      <div class="body">
+        <p>The <span class="g">m&eacute;thode charmat</span> (tank method / <i>cuve close</i>) runs the second fermentation in a big <b>pressurised tank</b> instead of the bottle, then bottles under pressure. Fast and fruit-forward, it is ideal for aromatic grapes &mdash; the method behind Prosecco and Asti.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="prose">
+    <h2>Glossary</h2>
+    <dl class="glist" id="glossary"></dl>
+  </section>
+
+  <footer>
+    Interactive guide to French sparkling wine &middot; A Quick Glance at French Wine &middot; Chris Paul.<br>
+    Works fully offline &mdash; a single self-contained file.
+  </footer>
+</div>
+
+<div id="bigpic" role="dialog" aria-modal="true" aria-label="Sparkling wine step">
+  <div class="bigpic-inner">
+    <button type="button" id="bigpic-close" aria-label="Close">&times;</button>
+    <img src="Images/Champagne/Harvesting.png" alt="">
+  </div>
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ---------- GLOSSARY DATA ---------- */
+const GLOSS = {
+ "base wine":["Base wine — <i>vin de base / vin clair</i>","A dry, tart, low-alcohol still wine — the raw material for every sparkling wine before the bubbles are added."],
+ "méthode traditionnelle":["Méthode Traditionnelle — <i>Champenoise</i>","The classic method where the bubbles come from a <b>second fermentation inside the bottle</b>. Used for Champagne, Crémant, Cava and more."],
+ "assemblage":["Assemblage — blending","Blending different grapes, villages and vintages — often with older reserve wines — to build a consistent house style before bottling."],
+ "reserve wines":["Reserve wines — <i>vins de réserve</i>","Still wines held back from earlier harvests and blended in to keep a non-vintage cuvée tasting the same year after year."],
+ "tirage":["Tirage","Bottling the blended base wine with the liqueur de tirage and a crown cap, to trigger the second fermentation."],
+ "liqueur de tirage":["Liqueur de tirage","A dose of wine, sugar and yeast added at bottling — the fuel for the second fermentation that makes the bubbles."],
+ "prise de mousse":["Prise de mousse","‘Capturing the sparkle’ — the second fermentation in the sealed bottle, whose CO₂ cannot escape and dissolves into the wine as fine bubbles."],
+ "sur lie":["Sur lie — on the lees","Ageing the wine in contact with the dead yeast cells; the source of Champagne's toast, brioche and biscuit character."],
+ "lees":["Lees — <i>lie</i>","The spent yeast cells left after fermentation. Long contact with them (autolysis) adds creamy, bready complexity."],
+ "autolysis":["Autolysis","The slow breakdown of dead yeast cells during lees ageing, releasing the toasty, brioche flavours prized in traditional-method sparkling wine."],
+ "remuage":["Remuage — riddling","Gradually tilting and twisting each bottle neck-down so the lees slide into the neck. Done by hand on <i>pupitres</i> or by machine (gyropalette)."],
+ "gyropalette":["Gyropalette","A computer-controlled cage that riddles hundreds of bottles at once — days of work where hand-remuage took weeks."],
+ "dégorgement":["Dégorgement — disgorgement","Removing the plug of lees: the neck is frozen, the cap flicked off, and the frozen pellet shoots out under the bottle's own pressure."],
+ "dosage":["Dosage","The final touch of wine and sugar added after disgorgement, which sets the wine's sweetness."],
+ "liqueur d'expédition":["Liqueur d'expédition","The wine-and-sugar mixture used for dosage; how much sugar it carries decides whether the wine is Brut, Extra Brut, and so on."],
+ "brut":["Brut & the sweetness scale","Dosage sets the style: <b>Brut Nature</b> (0–3 g/L, nothing added), <b>Extra Brut</b>, <b>Brut</b> (&lt;12 g/L), <b>Extra Dry</b>, <b>Sec</b>, <b>Demi-Sec</b>, <b>Doux</b> (sweetest)."],
+ "muselet":["Muselet","The wire cage holding the mushroom cork against the bottle's pressure — about 6 bar, three times a car tyre."],
+ "méthode ancestrale":["Méthode Ancestrale","The oldest way to make sparkling wine: a <b>single</b> fermentation, bottled before it finishes so the last of the CO₂ is trapped. No added yeast or sugar."],
+ "pétillant naturel":["Pétillant Naturel — ‘pét-nat’","The modern name for méthode ancestrale wines: lightly fizzy, often cloudy and off-dry, sealed under a crown cap."],
+ "méthode charmat":["Méthode Charmat — <i>cuve close</i>","The tank method: the second fermentation happens in a large <b>pressurised tank</b>, not the bottle. Fast and fruit-forward — how Prosecco and Asti are made."],
+ "coquard":["Coquard press","The wide, shallow traditional Champagne press that gently squeezes whole bunches, keeping the juice pale even from black grapes."]
+};
+
+/* ---------- ICONS (inline SVG, monochrome, adopt flow colour) ---------- */
+const ICONS = {
+grape:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M33 26V12c0-4 3-7 8-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M41 6c5-3 10-1 10-1-2 4-6 6-10 4z" opacity=".5"/><circle cx="26" cy="26" r="6"/><circle cx="38" cy="26" r="6"/><circle cx="20" cy="35" r="6"/><circle cx="32" cy="35" r="6"/><circle cx="44" cy="35" r="6"/><circle cx="26" cy="45" r="6"/><circle cx="38" cy="45" r="6"/><circle cx="32" cy="55" r="6"/></svg>',
+press:'<svg viewBox="0 0 64 64" fill="currentColor"><line x1="32" y1="5" x2="32" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="26" y="4" width="12" height="4" rx="2"/><rect x="16" y="14" width="32" height="6" rx="3"/><rect x="13" y="24" width="38" height="31" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><g stroke="currentColor" stroke-width="2.6"><line x1="22" y1="27" x2="22" y2="52"/><line x1="30" y1="27" x2="30" y2="52"/><line x1="38" y1="27" x2="38" y2="52"/><line x1="46" y1="27" x2="46" y2="52" opacity=".6"/></g></svg>',
+ferment:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M17 13h30v33a9 9 0 0 1-9 9H26a9 9 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="3"/><g opacity=".7"><circle cx="26" cy="45" r="2.6"/><circle cx="36" cy="41" r="2.1"/><circle cx="30" cy="35" r="1.8"/><circle cx="38" cy="30" r="1.5"/><circle cx="24" cy="33" r="1.4"/></g></svg>',
+clarify:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M17 11h30v35a9 9 0 0 1-9 9H26a9 9 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M17 41h30v5a9 9 0 0 1-9 9H26a9 9 0 0 1-9-9z" opacity=".55"/><path d="M17 18h30" stroke="currentColor" stroke-width="2" opacity=".45"/><circle cx="27" cy="47" r="1.8" opacity=".8"/><circle cx="36" cy="49" r="1.6" opacity=".8"/></svg>',
+blend:'<svg viewBox="0 0 64 64" fill="currentColor"><circle cx="18" cy="12" r="5" opacity=".55"/><circle cx="46" cy="12" r="5" opacity=".55"/><path d="M18 17c0 6 4 8 10 9M46 17c0 6-4 8-10 9" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M18 26h28v20a8 8 0 0 1-8 8H26a8 8 0 0 1-8-8z" fill="none" stroke="currentColor" stroke-width="3"/><rect x="18" y="35" width="28" height="6" opacity=".45"/></svg>',
+tirage:'<svg viewBox="0 0 64 64" fill="currentColor"><rect x="27" y="4" width="10" height="5" rx="1.5"/><path d="M28 9h8v9c0 3 6 6 6 14v20a5 5 0 0 1-5 5H27a5 5 0 0 1-5-5V32c0-8 6-11 6-14z" fill="none" stroke="currentColor" stroke-width="3"/><g opacity=".7"><circle cx="30" cy="42" r="1.7"/><circle cx="35" cy="46" r="1.7"/><circle cx="32" cy="50" r="1.7"/></g></svg>',
+mousse:'<svg viewBox="0 0 64 64" fill="currentColor"><rect x="8" y="24" width="40" height="16" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><path d="M48 27h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6z" fill="none" stroke="currentColor" stroke-width="3"/><rect x="55" y="29" width="4" height="6" rx="1"/><g opacity=".7"><circle cx="18" cy="32" r="2"/><circle cx="26" cy="30" r="1.6"/><circle cx="24" cy="36" r="1.5"/><circle cx="33" cy="32" r="1.8"/></g></svg>',
+lees:'<svg viewBox="0 0 64 64" fill="currentColor"><g fill="none" stroke="currentColor" stroke-width="3"><rect x="8" y="15" width="40" height="10" rx="5"/><rect x="8" y="29" width="40" height="10" rx="5"/><rect x="8" y="43" width="40" height="10" rx="5"/></g><g opacity=".7"><circle cx="14" cy="20" r="1.8"/><circle cx="14" cy="34" r="1.8"/><circle cx="14" cy="48" r="1.8"/></g><g stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="48" y1="20" x2="54" y2="20"/><line x1="48" y1="34" x2="54" y2="34"/><line x1="48" y1="48" x2="54" y2="48"/></g></svg>',
+remuage:'<svg viewBox="0 0 64 64" fill="currentColor"><g transform="rotate(150 32 32)"><rect x="28" y="8" width="8" height="5" rx="1.5"/><path d="M28 13h8v9c0 3 5 5 5 12v18a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4V34c0-7 5-9 5-12z" fill="none" stroke="currentColor" stroke-width="3"/></g><path d="M45 41a9 9 0 0 0 4-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M47 31l3 4-5 1z"/></svg>',
+disgorge:'<svg viewBox="0 0 64 64" fill="currentColor"><g transform="rotate(-35 30 34)"><path d="M12 28h24c8 0 8 12 0 12H12z" fill="none" stroke="currentColor" stroke-width="3"/><rect x="36" y="29" width="8" height="10" rx="2"/></g><circle cx="52" cy="15" r="3.5"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="57" y1="11" x2="60" y2="9"/><line x1="56" y1="17" x2="60" y2="18"/><line x1="49" y1="9" x2="51" y2="6"/></g></svg>',
+dosage:'<svg viewBox="0 0 64 64" fill="currentColor"><rect x="30" y="6" width="6" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 26h6l-3 5z"/><rect x="29" y="2" width="8" height="5" rx="2" opacity=".7"/><path d="M33 34c2 3 2 6 0 6s-2-3 0-6z" opacity=".8"/><path d="M22 44h22l-2 12a4 4 0 0 1-4 3.5H28a4 4 0 0 1-4-3.5z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M23 50h20" stroke="currentColor" stroke-width="2" opacity=".45"/></svg>',
+autoclave:'<svg viewBox="0 0 64 64" fill="currentColor"><rect x="16" y="12" width="28" height="40" rx="8" fill="none" stroke="currentColor" stroke-width="3"/><g opacity=".7"><circle cx="26" cy="42" r="2.2"/><circle cx="34" cy="38" r="1.8"/><circle cx="30" cy="32" r="1.6"/><circle cx="36" cy="46" r="1.5"/></g><circle cx="50" cy="20" r="7" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M50 20l4-2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><line x1="44" y1="26" x2="44" y2="30" stroke="currentColor" stroke-width="2.6"/></svg>',
+sparkbottle:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M27 18h10v6c0 3 7 8 7 18v13a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4V42c0-10 7-15 7-18z" fill="none" stroke="currentColor" stroke-width="3"/><rect x="26" y="12" width="12" height="7" rx="1.5"/><ellipse cx="32" cy="6" rx="4" ry="3.5"/><g opacity=".7"><circle cx="44" cy="8" r="2"/><circle cx="50" cy="14" r="1.6"/><circle cx="47" cy="4" r="1.4"/></g></svg>'
+};
+
+function stepIcon(st){ return ICONS[st.ic] || ICONS.grape; }
+function iconFor(t){ return ICONS.grape; }
+
+/* ---------- STEP DATA ---------- */
+const S = {
+ champagne:{ label:"Champagne", cls:"champagne", steps:[
+  {t:"Harvest", fr:"Vendange", sub:"Hand-picked, whole bunches", ph:"Step 1", ic:"grape",
+   html:"<p>Champagne is <b>hand-harvested</b> by law, in whole bunches, from Chardonnay, Pinot Noir and Meunier. Grapes are picked <b>early</b>, while acidity is high and sugar modest — exactly what a sparkling base wine needs.</p>",
+   why:"<b>Why it matters:</b> high acidity and low alcohol are the backbone of a wine that must survive a second fermentation and long ageing."},
+  {t:"Whole-bunch Pressing", fr:"Pressurage", sub:"Gentle — pale juice from black grapes", ph:"Step 2", ic:"press",
+   html:"<p>Whole bunches are pressed gently in a wide <span class='g'>coquard</span> press. Even the black Pinots give nearly colourless juice; yields are strictly capped, and only the finest early fraction (the <i>cuvée</i>) goes into the top wines.</p>",
+   why:"<b>Why it matters:</b> gentle pressing keeps the juice white and free of harsh tannin — essential for an elegant sparkling wine."},
+  {t:"First Fermentation", fr:"Fermentation alcoolique", sub:"Makes the still base wine", ph:"Step 3", ic:"ferment",
+   html:"<p>The juice ferments into a dry, sharp, still <span class='g'>base wine</span> (<i>vin clair</i>) of only 10–11% alcohol. Each grape, village and plot is usually kept separate for now.</p>",
+   why:"<b>Why it matters:</b> this austere still wine is the blank canvas the whole method is built on."},
+  {t:"Assemblage", fr:"Assemblage", sub:"Blending the cuvée", ph:"Step 4", ic:"blend",
+   html:"<p>The cellar master blends dozens of base wines — grapes, villages, and often older <span class='g'>reserve wines</span> — into the final <span class='g'>assemblage</span>. This is where a house's signature is created, and how non-vintage Champagne tastes consistent every year.</p>",
+   why:"<b>Why it matters:</b> blending, not a single vineyard, is the art at the heart of Champagne."},
+  {t:"Tirage", fr:"Mise en tirage", sub:"Bottled with yeast + sugar", ph:"Step 5", ic:"tirage",
+   html:"<p>The blend is bottled with a <span class='g'>liqueur de tirage</span> (wine, sugar and yeast) and sealed under a crown cap. This is the <span class='g'>tirage</span> — the trigger for the magic to come.</p>",
+   why:"<b>Why it matters:</b> from here the bubbles are made <i>inside this very bottle</i> — the defining idea of the method."},
+  {t:"Second Fermentation in Bottle", fr:"Prise de mousse", sub:"The bubbles are born", ph:"Step 6", ic:"mousse",
+   html:"<p>Laid on their sides, the bottles undergo a slow second fermentation — the <span class='g'>prise de mousse</span>. The CO₂ cannot escape the sealed bottle, so it dissolves into the wine as fine bubbles, building around 6 bar of pressure.</p>",
+   why:"<b>Why it matters:</b> this in-bottle fermentation is what separates <span class='g'>méthode traditionnelle</span> from every quicker method."},
+  {t:"Ageing on the Lees", fr:"Élevage sur lie", sub:"Min. 15 months — often far more", ph:"Step 7", ic:"lees",
+   html:"<p>The wine then rests <span class='g'>sur lie</span> — on the dead yeast <span class='g'>lees</span>. Slow <span class='g'>autolysis</span> gives Champagne its toast, brioche and biscuit. The legal minimum is 15 months (3 years for vintage); great houses age far longer.</p>",
+   why:"<b>Why it matters:</b> lees ageing is where fizzy wine becomes <i>Champagne</i> — complex, creamy and deep."},
+  {t:"Riddling", fr:"Remuage", sub:"Working the lees into the neck", ph:"Step 8", ic:"remuage",
+   html:"<p>Each bottle is slowly tilted neck-down and twisted — <span class='g'>remuage</span> — until all the <span class='g'>lees</span> collect against the cap. Once done by hand on wooden <i>pupitres</i>, now usually by a <span class='g'>gyropalette</span>.</p>",
+   why:"<b>Why it matters:</b> gathering the lees in the neck makes it possible to remove them cleanly next."},
+  {t:"Disgorgement", fr:"Dégorgement", sub:"Ejecting the lees", ph:"Step 9", ic:"disgorge",
+   html:"<p>The neck is dipped in freezing brine to trap the lees in a little ice plug; the cap is removed and the bottle's own pressure fires the frozen pellet out — <span class='g'>dégorgement</span> — leaving perfectly clear wine.</p>",
+   why:"<b>Why it matters:</b> it removes the sediment without losing the precious bubbles."},
+  {t:"Dosage & Corking", fr:"Dosage", sub:"Sets the sweetness", ph:"Step 10", ic:"dosage",
+   html:"<p>The tiny gap is topped up with the <span class='g'>liqueur d'expédition</span> — the <span class='g'>dosage</span> — which fixes the style from bone-dry <span class='g'>brut</span> Nature to sweet Doux. Then the mushroom cork, wire <span class='g'>muselet</span> and foil go on.</p>",
+   why:"<b>Why it matters:</b> a few grams of sugar here decide whether the wine tastes racy or rounded."},
+  {t:"Ageing & Release", fr:"Repos & expédition", sub:"A final rest, then to market", ph:"Step 11", ic:"sparkbottle",
+   html:"<p>The finished bottles rest a few more months for the dosage to marry in, then they are labelled and released — ready to open with a soft ‘sigh’ (never a violent pop, which wastes the mousse).</p>",
+   why:"<b>Why it matters:</b> a short final rest lets everything integrate so the first sip sings."}
+ ]},
+ cremant:{ label:"Crémant", cls:"cremant", steps:[
+  {t:"Harvest", fr:"Vendange", sub:"Hand-picked, whole bunches", ph:"Step 1", ic:"grape",
+   html:"<p>Crémant is made by the <span class='g'>méthode traditionnelle</span> <b>outside</b> Champagne — in Alsace, the Loire, Burgundy, Limoux, Bordeaux, Die, Jura and Savoie. Like Champagne it must be <b>hand-harvested in whole bunches</b>, from each region's own grapes (Chenin, Chardonnay, Pinot, Riesling, Mauzac…).</p>",
+   why:"<b>Why it matters:</b> the hand-harvest and whole-bunch rule lets Crémant claim the same quality method as Champagne."},
+  {t:"Whole-bunch Pressing", fr:"Pressurage", sub:"Gentle, capped yields", ph:"Step 2", ic:"press",
+   html:"<p>As in Champagne, whole bunches are pressed gently, with limited juice yields, to give clean, pale base juice.</p>",
+   why:"<b>Why it matters:</b> the same gentle pressing keeps Crémant fresh and fine rather than coarse."},
+  {t:"First Fermentation", fr:"Fermentation alcoolique", sub:"The still base wine", ph:"Step 3", ic:"ferment",
+   html:"<p>The juice ferments into a dry, high-acid <span class='g'>base wine</span>, just as for Champagne.</p>",
+   why:"<b>Why it matters:</b> a crisp base wine is the foundation for lively bubbles."},
+  {t:"Assemblage", fr:"Assemblage", sub:"Blending the cuvée", ph:"Step 4", ic:"blend",
+   html:"<p>Base wines are blended into the cuvée — often expressing one region's grapes rather than the many-village blends of Champagne.</p>",
+   why:"<b>Why it matters:</b> blending balances the wine and sets each producer's style."},
+  {t:"Tirage", fr:"Mise en tirage", sub:"Yeast + sugar, then sealed", ph:"Step 5", ic:"tirage",
+   html:"<p>Bottled with the <span class='g'>liqueur de tirage</span> and crown-capped to start the second fermentation — identical to Champagne's <span class='g'>tirage</span>.</p>",
+   why:"<b>Why it matters:</b> the in-bottle fermentation is exactly what makes it a ‘traditional method’ wine."},
+  {t:"Second Fermentation in Bottle", fr:"Prise de mousse", sub:"Bubbles made in the bottle", ph:"Step 6", ic:"mousse",
+   html:"<p>The <span class='g'>prise de mousse</span> takes place in each sealed bottle, trapping the CO₂ as fine bubbles.</p>",
+   why:"<b>Why it matters:</b> same physics as Champagne — real, fine, long-lasting mousse."},
+  {t:"Ageing on the Lees", fr:"Élevage sur lie", sub:"Min. 9 months", ph:"Step 7", ic:"lees",
+   html:"<p>Crémant must rest <span class='g'>sur lie</span> for at least <b>9 months</b> (versus 15 for Champagne) — one of the few real differences. Many producers age well beyond that for extra <span class='g'>autolysis</span> character.</p>",
+   why:"<b>Why it matters:</b> the shorter minimum is part of why good Crémant offers the Champagne method at a friendlier price."},
+  {t:"Riddling", fr:"Remuage", sub:"Lees to the neck", ph:"Step 8", ic:"remuage",
+   html:"<p>Bottles are riddled — <span class='g'>remuage</span> — by hand or <span class='g'>gyropalette</span> to gather the lees in the neck.</p>",
+   why:"<b>Why it matters:</b> the same clarity-preparation step as Champagne."},
+  {t:"Disgorgement", fr:"Dégorgement", sub:"Lees ejected", ph:"Step 9", ic:"disgorge",
+   html:"<p>The frozen lees plug is disgorged — <span class='g'>dégorgement</span> — under pressure, leaving clear wine.</p>",
+   why:"<b>Why it matters:</b> removes sediment while keeping the sparkle."},
+  {t:"Dosage & Corking", fr:"Dosage", sub:"Sweetness set, then corked", ph:"Step 10", ic:"dosage",
+   html:"<p>A <span class='g'>dosage</span> sets the style, then the cork, <span class='g'>muselet</span> and foil are fitted.</p>",
+   why:"<b>Why it matters:</b> the finishing touch that balances the wine."},
+  {t:"Release", fr:"Expédition", sub:"Ready to enjoy", ph:"Step 11", ic:"sparkbottle",
+   html:"<p>After a short rest the Crémant is labelled and released — often superb value for a genuine bottle-fermented sparkler.</p>",
+   why:"<b>Why it matters:</b> proof that the Champagne method travels well across France."}
+ ]},
+ ancestrale:{ label:"Méthode Ancestrale", cls:"ancestrale", steps:[
+  {t:"Harvest", fr:"Vendange", sub:"Ripe, healthy fruit", ph:"Step 1", ic:"grape",
+   html:"<p>The oldest sparkling method of all — older than Champagne. Grapes such as Mauzac (Limoux), Gamay (Bugey-Cerdon) or Muscat are picked with enough natural sugar to carry a single, unfinished fermentation.</p>",
+   why:"<b>Why it matters:</b> everything depends on the grape's own sugar — nothing is added later."},
+  {t:"Pressing", fr:"Pressurage", sub:"Juice to tank", ph:"Step 2", ic:"press",
+   html:"<p>The grapes are pressed and the juice run to tank to begin a single fermentation.</p>",
+   why:"<b>Why it matters:</b> a clean start to the one and only fermentation this wine will get."},
+  {t:"Single Fermentation begins", fr:"Fermentation unique", sub:"Started — but not finished", ph:"Step 3", ic:"ferment",
+   html:"<p>Fermentation starts in tank, often cool and slow. Crucially it is <b>not allowed to finish</b> — the winemaker watches the sugar fall to just the right point.</p>",
+   why:"<b>Why it matters:</b> timing is everything: too soon and the wine is sweet and gassy, too late and it is flat."},
+  {t:"Early Bottling", fr:"Mise en bouteille", sub:"Bottled mid-ferment — no additions", ph:"Step 4", ic:"tirage",
+   html:"<p>While it is still fermenting, the wine is bottled and sealed — usually under a crown cap. <b>No yeast and no sugar are added</b>; the remaining natural sugar is all it needs.</p>",
+   why:"<b>Why it matters:</b> this single, uninterrupted fermentation is what defines <span class='g'>méthode ancestrale</span>."},
+  {t:"Fermentation Finishes in Bottle", fr:"Prise de mousse", sub:"Gentle, natural fizz", ph:"Step 5", ic:"mousse",
+   html:"<p>The last of the fermentation happens in the sealed bottle, trapping CO₂ as a soft, natural sparkle. Pressure is usually lower than Champagne's, and the wine is often cloudy and gently sweet.</p>",
+   why:"<b>Why it matters:</b> the charm of a <span class='g'>pétillant naturel</span> is exactly this rustic, lightly-fizzy freshness."},
+  {t:"Disgorge or Leave Cloudy", fr:"Dégorgement (facultatif)", sub:"Optional — no dosage", ph:"Step 6", opt:true, ic:"disgorge",
+   html:"<p>Some producers disgorge the lees for a clearer wine; many leave them in for a hazy, characterful ‘pét-nat’. Either way there is <b>no dosage</b> — the wine is bottled as nature left it.</p>",
+   why:"<b>Why it matters:</b> it is a stylistic choice, not a rule — clarity versus rustic authenticity."},
+  {t:"Release", fr:"Expédition", sub:"Drink young and fresh", ph:"Step 7", ic:"sparkbottle",
+   html:"<p>Ancestral-method wines — Limoux's Blanquette ancestrale, Bugey-Cerdon, Gaillac, Clairette de Die — are best enjoyed young, lightly chilled.</p>",
+   why:"<b>Why it matters:</b> freshness and immediacy, not long ageing, are the point."}
+ ]},
+ charmat:{ label:"Méthode Charmat", cls:"charmat", steps:[
+  {t:"Harvest", fr:"Vendange", sub:"Aromatic grapes", ph:"Step 1", ic:"grape",
+   html:"<p>The tank method suits <b>aromatic</b> grapes whose fresh, floral scent you want to keep — Glera (for Prosecco), Muscat (for Asti) and many fruity styles.</p>",
+   why:"<b>Why it matters:</b> the whole method is designed to preserve primary fruit and flower aromas."},
+  {t:"Base Wine", fr:"Vin de base", sub:"Pressed & first-fermented", ph:"Step 2", ic:"ferment",
+   html:"<p>The grapes are pressed and fermented into a fresh, fruity still <span class='g'>base wine</span>, as usual.</p>",
+   why:"<b>Why it matters:</b> a clean, aromatic base is what the tank method aims to keep intact."},
+  {t:"Second Fermentation in Tank", fr:"Cuve close", sub:"Bubbles made in a pressurised tank", ph:"Step 3", ic:"autoclave",
+   html:"<p>Here is the big difference: the second fermentation happens in a large sealed, pressurised steel tank (<i>autoclave</i>) — the <span class='g'>méthode charmat</span> (or <i>cuve close</i>). The whole batch bubbles together, in weeks rather than years.</p>",
+   why:"<b>Why it matters:</b> fast, cool tank fermentation locks in fresh grapey aromas that long lees-ageing would mask."},
+  {t:"Brief Lees Contact", fr:"Sur lie (court)", sub:"Optional — usually short", ph:"Step 4", opt:true, ic:"lees",
+   html:"<p>Most Charmat wines get little or no <span class='g'>lees</span> ageing, to stay bright and fruity — though a ‘Charmat lungo’ style rests longer for a touch more complexity.</p>",
+   why:"<b>Why it matters:</b> keeping lees contact short is deliberate — it preserves the fresh, primary character."},
+  {t:"Filter under Pressure", fr:"Filtration isobare", sub:"Chilled & clarified", ph:"Step 5", ic:"clarify",
+   html:"<p>The sparkling wine is chilled and filtered <b>under pressure</b> so it stays clear and keeps its fizz.</p>",
+   why:"<b>Why it matters:</b> filtering under pressure removes the yeast without letting the bubbles escape."},
+  {t:"Bottling & Dosage", fr:"Tirage isobare", sub:"Bottled under pressure", ph:"Step 6", ic:"dosage",
+   html:"<p>Using a counter-pressure filler, the wine is bottled under pressure and given its <span class='g'>dosage</span> to set the sweetness (Prosecco is often Extra Dry; Asti sweeter).</p>",
+   why:"<b>Why it matters:</b> isobaric bottling is the trick that gets the fizz safely from tank to bottle."},
+  {t:"Release", fr:"Expédition", sub:"Drink fresh & young", ph:"Step 7", ic:"sparkbottle",
+   html:"<p>Charmat sparklers are made to be drunk young, when their fresh fruit and flowers are at their most vivid.</p>",
+   why:"<b>Why it matters:</b> these wines are about immediate, joyful freshness — not cellar age."}
+ ]}
+};
+
+/* ---------- STEP PICTURES ---------- */
+/* one picture per step, keyed by flow (index matches S[key].steps).
+   "" = no picture for that step (Assemblage / Tirage / Ancestrale early-bottling have none). */
+const PICS = {
+  champagne: { dir:"Images/Champagne/", files:[
+    "Harvesting.png",                     // 0 Harvest
+    "Pressing White.png",                 // 1 Whole-bunch Pressing
+    "Maceration :. Fermentation White.png", // 2 First Fermentation
+    "Assemblage.png",                     // 3 Assemblage
+    "Tirage.png",                         // 4 Tirage
+    "Second Fermentation in Bottle.png",  // 5 Second Fermentation in Bottle
+    "Ageing on lees.png",                 // 6 Ageing on the Lees
+    "Riddling.png",                       // 7 Riddling
+    "Disgorgement.png",                   // 8 Disgorgement
+    "Dosage : Corking.png",               // 9 Dosage & Corking
+    "Ageing and Release.png"              // 10 Ageing & Release
+  ]},
+  cremant: { dir:"Images/Champagne/", files:[
+    "Harvesting.png",                     // 0 Harvest
+    "Pressing White.png",                 // 1 Whole-bunch Pressing
+    "Maceration :. Fermentation White.png", // 2 First Fermentation
+    "Assemblage.png",                     // 3 Assemblage
+    "Tirage.png",                         // 4 Tirage
+    "Second Fermentation in Bottle.png",  // 5 Second Fermentation in Bottle
+    "Ageing on lees.png",                 // 6 Ageing on the Lees
+    "Riddling.png",                       // 7 Riddling
+    "Disgorgement.png",                   // 8 Disgorgement
+    "Dosage : Corking.png",               // 9 Dosage & Corking
+    "Ageing and Release.png"              // 10 Release
+  ]},
+  ancestrale: { dir:"Images/Champagne/", files:[
+    "Harvesting.png",                          // 0 Harvest
+    "Pressing White.png",                      // 1 Pressing
+    "Maceration :. Fermentation White.png",    // 2 Single Fermentation begins
+    "Early Bottling.png",                      // 3 Early Bottling
+    "Methode Ancestrale : Prise de Mousse.png",// 4 Fermentation Finishes in Bottle
+    "Disgorgement.png",                        // 5 Disgorge or Leave Cloudy
+    "Ageing and Release.png"                   // 6 Release
+  ]},
+  charmat: { dir:"Images/Champagne/", files:[
+    "Harvesting.png",                       // 0 Harvest
+    "Maceration :. Fermentation White.png", // 1 Base Wine
+    "Methode Charmat.png",                  // 2 Second Fermentation in Tank
+    "Ageing on lees.png",                   // 3 Brief Lees Contact
+    "Fining : Filtering White.png",         // 4 Filter under Pressure
+    "Dosage : Corking.png",                 // 5 Bottling & Dosage
+    "Ageing and Release.png"                // 6 Release
+  ]}
+};
+
+function wireHoverPic(){
+  const pic=document.getElementById('hoverpic');
+  const thumb=pic&&pic.querySelector('img');
+  const cap=pic&&pic.querySelector('figcaption');
+  if(!pic||!thumb) return;
+  pic.style.display='none';
+  document.querySelectorAll('.flow .node').forEach(node=>{
+    const key=node.dataset.key, i=+node.dataset.idx;
+    const set=PICS[key]; if(!set) return;
+    const name=set.files[i]; if(!name) return;
+    node.addEventListener('mouseenter',()=>{
+      const st=S[key].steps[i];
+      thumb.src=set.dir+name;          // browser encodes spaces/colons
+      thumb.alt=st.t;
+      if(cap) cap.innerHTML=st.t+' — <i>'+st.fr+'</i>';
+      pic.style.display='block';
+    });
+  });
+}
+
+function wireBigPic(){
+  const thumb=document.querySelector('#hoverpic img');
+  const big=document.getElementById('bigpic');
+  const bigImg=big&&big.querySelector('img');
+  const closeBtn=document.getElementById('bigpic-close');
+  if(!thumb||!big||!bigImg) return;
+  const hide=()=>big.classList.remove('show');
+  thumb.addEventListener('mouseenter',()=>{
+    bigImg.src=thumb.src;
+    bigImg.alt=thumb.alt;
+    big.setAttribute('aria-label',thumb.alt||'Sparkling wine step');
+    big.classList.add('show');
+  });
+  if(closeBtn) closeBtn.addEventListener('click',hide);
+  big.addEventListener('click',e=>{ if(e.target===big) hide(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') hide(); });
+}
+
+/* ---------- RENDER ---------- */
+const flowsEl = document.getElementById('flows');
+const detailEl = document.getElementById('detail');
+const emptyEl = document.getElementById('empty');
+let selected = null; // {key, idx}
+
+function buildFlow(key){
+  const d = S[key];
+  const f = document.createElement('div');
+  f.className = 'flow '+d.cls;
+  f.innerHTML = '<h2>'+d.label+'</h2>';
+  d.steps.forEach((st,i)=>{
+    if(i>0){ const a=document.createElement('div'); a.className='arrow'; a.textContent='▼'; f.appendChild(a); }
+    const n=document.createElement('div');
+    n.className='node'; n.dataset.key=key; n.dataset.idx=i;
+    n.innerHTML='<div class="icon">'+stepIcon(st)+'</div>'+
+                '<div class="n-body">'+
+                  '<div class="n-title">'+st.t+(st.opt?' <span class="badge">optional</span>':'')+'</div>'+
+                  '<div class="n-fr">'+st.fr+'</div>'+
+                  (st.sub?'<div class="n-sub">'+st.sub+'</div>':'')+
+                '</div>';
+    n.addEventListener('click',()=>select(key,i));
+    f.appendChild(n);
+  });
+  return f;
+}
+
+function select(key,i){
+  document.querySelectorAll('.node.active').forEach(n=>n.classList.remove('active'));
+  const node=document.querySelector('.node[data-key="'+key+'"][data-idx="'+i+'"]');
+  if(node) node.classList.add('active');
+  const st=S[key].steps[i];
+  emptyEl.style.display='none'; detailEl.style.display='block';
+  const col={champagne:'var(--cg)',cremant:'var(--cm)',ancestrale:'var(--an)',charmat:'var(--ch)'}[key]||'var(--cg)';
+  detailEl.innerHTML =
+    '<div class="d-head">'+
+      '<div class="hero" style="color:'+col+'">'+stepIcon(st)+'</div>'+
+      '<div><div class="ph">'+S[key].label+' · '+st.ph+(st.opt?' · optional':'')+'</div>'+
+      '<h3>'+st.t+'</h3><p class="fr">'+st.fr+'</p></div>'+
+    '</div>'+
+    st.html+
+    '<div class="why">'+st.why+'</div>';
+  wireGloss(detailEl);
+  if(window.innerWidth<=900 && node) document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* tabs */
+const shown = new Set(['champagne','cremant']);
+function renderTabs(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',shown.has(t.dataset.k)));
+}
+function renderFlows(){
+  flowsEl.innerHTML='';
+  ['champagne','cremant','ancestrale','charmat'].forEach(k=>{ if(shown.has(k)) flowsEl.appendChild(buildFlow(k)); });
+  wireGloss(flowsEl);
+  wireHoverPic();
+  // keep selection valid
+  if(selected && shown.has(selected.key)) select(selected.key,selected.idx);
+  else { detailEl.style.display='none'; emptyEl.style.display='block'; }
+}
+document.getElementById('tabs').addEventListener('click',e=>{
+  const t=e.target.closest('.tab'); if(!t) return;
+  const k=t.dataset.k;
+  if(shown.has(k)){ if(shown.size>1) shown.delete(k); }
+  else shown.add(k);
+  renderTabs(); renderFlows();
+});
+// track selection
+const _select=select;
+select=function(key,i){ selected={key,idx:i}; _select(key,i); };
+
+/* ---------- GLOSSARY LIST ---------- */
+const gEl=document.getElementById('glossary');
+Object.keys(GLOSS).sort((a,b)=>GLOSS[a][0].localeCompare(GLOSS[b][0])).forEach(k=>{
+  // avoid duplicate display entries (malolactique/malolactic map to same idea)
+  if(k==='malolactique') return;
+  const d=document.createElement('div'); d.className='glitem';
+  d.innerHTML='<dt>'+GLOSS[k][0]+'</dt><dd>'+GLOSS[k][1]+'</dd>';
+  gEl.appendChild(d);
+});
+
+/* ---------- TOOLTIPS on .g terms ---------- */
+const tip=document.getElementById('tip');
+function lookup(text){
+  const key=text.toLowerCase().trim().replace(/[.,;:]$/,'');
+  if(GLOSS[key]) return GLOSS[key];
+  for(const k in GLOSS){ if(k.toLowerCase()===key) return GLOSS[k]; }
+  // partials
+  if(key.includes('malolactic')) return GLOSS['malolactic fermentation'];
+  if(key.includes('botrytis')) return GLOSS['Botrytis cinerea'];
+  if(key.includes('foudre')) return GLOSS['foudres'];
+  if(key.includes('macerat')) return GLOSS['macerated'];
+  if(key.includes('grand vin')) return GLOSS['grand vin'];
+  return null;
+}
+function wireGloss(scope){
+  scope.querySelectorAll('.g').forEach(el=>{
+    if(el.dataset.wired) return; el.dataset.wired='1';
+    el.addEventListener('mouseenter',ev=>{
+      const g=lookup(el.textContent); if(!g) return;
+      tip.innerHTML='<b>'+g[0]+'</b><br>'+g[1];
+      tip.style.opacity='1'; moveTip(ev);
+    });
+    el.addEventListener('mousemove',moveTip);
+    el.addEventListener('mouseleave',()=>{tip.style.opacity='0';});
+    el.addEventListener('click',()=>{ // jump to glossary on tap (mobile)
+      document.getElementById('glossary').scrollIntoView({behavior:'smooth'});
+    });
+  });
+}
+function moveTip(ev){
+  let x=ev.clientX+14, y=ev.clientY+16;
+  if(x+270>window.innerWidth) x=window.innerWidth-274;
+  if(y+120>window.innerHeight) y=ev.clientY-120;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+
+/* init */
+document.getElementById('deco1').innerHTML=ICONS.grape;
+document.getElementById('deco2').innerHTML=ICONS.grape;
+wireBigPic();
+renderTabs(); renderFlows();
+</script><!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="dark"] body{color:#ccb4a3;background:#280a11;background-image:radial-gradient(circle at 20% 10%,rgba(58,17,27,0.35),rgba(0,0,0,0) 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,0.10),rgba(0,0,0,0) 55%)}
+html[data-theme="dark"] header.top{background:linear-gradient(#3a111b,#280a11)}
+html[data-theme="dark"] .tdeco{color:#e4c68b}
+html[data-theme="dark"] header.top h1{color:#ccb4a3}
+html[data-theme="dark"] header.top p{color:#f1e8d8}
+html[data-theme="dark"] .tab{border:1px solid rgba(217,179,107,0.40);background:#3a111b;color:#f1e8d8}
+html[data-theme="dark"] .tab:hover{box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .hint{color:#f1e8d8}
+html[data-theme="dark"] .flow.champagne h2{background:linear-gradient(#3f3618,#bd9a2a)}
+html[data-theme="dark"] .node{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .node .icon{color:#d59abc}
+html[data-theme="dark"] .node .n-fr{color:#f1e8d8}
+html[data-theme="dark"] .node .n-sub{color:#f1e8d8}
+html[data-theme="dark"] .badge{background:#280a11;color:#f1e8d8;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] .arrow{color:#d59abc}
+html[data-theme="dark"] .panel{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .panel .ph{color:#e4c68b}
+html[data-theme="dark"] .panel .fr{color:#f1e8d8}
+html[data-theme="dark"] .panel .why{background:#280a11}
+html[data-theme="dark"] .panel .why b{color:#ed8391}
+html[data-theme="dark"] .panel .empty{color:#f1e8d8}
+html[data-theme="dark"] .g,html[data-theme="dark"] .gdemo{color:#ed8391}
+html[data-theme="dark"] #hoverpic{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] #hoverpic figcaption{color:#f1e8d8}
+html[data-theme="dark"] .bigpic-inner img{border:3px solid rgba(217,179,107,0.40);box-shadow:0 10px 40px rgba(0,0,0,0.70)}
+html[data-theme="dark"] #bigpic-close{border:2px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] #bigpic-close:hover{background:#3f3618}
+html[data-theme="dark"] details.acc{background:#3a111b;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] details.acc>summary::after{color:#e4c68b}
+html[data-theme="dark"] details.acc .body{color:#ccb4a3}
+html[data-theme="dark"] .glitem dt{color:#ed8391}
+html[data-theme="dark"] .glitem dd{color:#ccb4a3}
+html[data-theme="dark"] .glitem dd .en{color:#f1e8d8}
+html[data-theme="dark"] footer{color:#f1e8d8}
+html[data-theme="dark"] #tip{box-shadow:0 4px 14px rgba(0,0,0,0.56)}
+html[data-theme="dark"] #tip b{color:#e7ce88}
+
+</style><!--fw-theme:end-->
+

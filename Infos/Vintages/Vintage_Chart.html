@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Millésimes de France</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.66);--faint:rgba(245,239,227,.42);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.40);--glass-hi:rgba(38,10,18,.58);--glass-solid:#1e060c;
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --star:#e7c46f;--star-off:rgba(245,239,227,.18);
+    --title:#fff;--input:rgba(10,1,4,.45);
+    /* rating heat scale: 1 = ½ star … 10 = 5 stars */
+    --h1:#3a1a1f;--h2:#46201f;--h3:#552a22;--h4:#653526;--h5:#7a452b;
+    --h6:#8f5a31;--h7:#a8733a;--h8:#c08d45;--h9:#d6a954;--h10:#efcd72;
+    --h-ink-lo:rgba(245,239,227,.85);--h-ink-hi:#2a0d12;
+    --c-w:#e9d9a0;--c-r:#c25a6c;--c-rs:#eea3b4;--c-sw:#e0a54a;--c-sp:#cfe0e8;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.72);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;--glass-solid:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --star:#b8862b;--star-off:rgba(46,20,25,.16);
+    --title:#3a1219;--input:#fff;
+    --h1:#f6eee2;--h2:#f1e2cc;--h3:#ecd4b4;--h4:#e6c297;--h5:#dfab7a;
+    --h6:#d38e62;--h7:#c06b50;--h8:#a84a42;--h9:#8e2c37;--h10:#6e1426;
+    --h-ink-lo:#3a1219;--h-ink-hi:#fff;
+    --c-w:#d8bb52;--c-r:#8e1f33;--c-rs:#e58ca2;--c-sw:#c98a22;--c-sp:#7fa6b8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  html[data-theme="cream"] body{
+    background:
+      radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.5em;font-size:clamp(9px,1.3vw,11px);font-weight:600;
+    color:var(--gold);margin:0 0 18px;padding-left:.5em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,84px);line-height:.98;margin:0;color:var(--title);
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(13px,1.7vw,15.5px);line-height:1.65;font-weight:300;color:var(--muted);max-width:700px;margin:0 auto;}
+  .stats{display:flex;justify-content:center;gap:clamp(18px,4vw,44px);margin-top:24px;flex-wrap:wrap;}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:30px;color:var(--title);line-height:1;}
+  .stat span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);}
+  html[data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,30,40,.10),inset 0 1px 0 #fff;-webkit-backdrop-filter:none;backdrop-filter:none;}
+
+  /* controls */
+  .controls{padding:18px;}
+  .ctl-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;}
+  .field{display:flex;flex-direction:column;gap:6px;min-width:0;}
+  .field label{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+  select{appearance:none;-webkit-appearance:none;font:500 15px/1.2 var(--sans);color:var(--parchment);background:var(--input);
+    border:1px solid var(--hair);border-radius:12px;padding:12px 38px 12px 14px;outline:none;cursor:pointer;min-width:0;
+    background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+    background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat;}
+  select:focus{border-color:var(--hair-hi);}
+  select option{background:var(--glass-solid);color:var(--parchment);}
+  .field select{width:100%;}
+  .f-year{flex:0 1 190px;} .f-stars{flex:0 1 220px;} .f-mode{flex:0 1 160px;}
+  .reset{appearance:none;border:1px solid var(--hair);background:transparent;color:var(--muted);cursor:pointer;
+    font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:13px 16px;border-radius:12px;}
+  .reset:hover{color:var(--gold-soft);border-color:var(--hair-hi);}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;align-items:center;}
+  .chips .lbl{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-right:4px;}
+  .chip{appearance:none;border:1px solid var(--hair);background:transparent;color:var(--muted);cursor:pointer;
+    font:500 12px/1 var(--sans);padding:7px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;}
+  .chip:hover{border-color:var(--hair-hi);}
+  .chip[aria-pressed="true"]{border-color:var(--hair-hi);color:var(--title);background:rgba(217,179,107,.14);}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.3);}
+  .d-w{background:var(--c-w);} .d-r{background:var(--c-r);} .d-rs{background:var(--c-rs);} .d-sw{background:var(--c-sw);} .d-sp{background:var(--c-sp);}
+
+  /* stars */
+  .stars{display:inline-flex;gap:1px;font-size:15px;line-height:1;white-space:nowrap;letter-spacing:0;}
+  .st{position:relative;display:inline-block;color:var(--star-off);}
+  .st.f{color:var(--star);}
+  .st.h::before{content:"★";position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--star);}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 4px 0;font-size:12px;color:var(--muted);align-items:center;}
+  .scale{display:inline-flex;border-radius:6px;overflow:hidden;border:1px solid var(--hair);}
+  .scale i{width:18px;height:12px;display:block;}
+  .conf{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;
+    font:700 9px/1 var(--sans);border:1px solid var(--hair-hi);color:var(--gold-soft);flex:none;}
+  .conf.c-B{opacity:.8;border-style:dashed;} .conf.c-C{opacity:.65;border-style:dotted;}
+
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:30px 4px 14px;}
+  .sec-head h2{text-transform:uppercase;letter-spacing:.3em;font-size:11px;font-weight:600;color:var(--gold);margin:0;}
+  .sec-head .n{font-size:11px;letter-spacing:.1em;color:var(--faint);}
+  .sec-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--hair),transparent);}
+
+  /* period tabs */
+  .periods{display:flex;gap:6px;flex-wrap:wrap;margin:0 4px 12px;}
+
+  /* grid */
+  .grid-wrap{overflow:auto;max-height:78vh;border-radius:18px;}
+  table.grid{border-collapse:separate;border-spacing:2px;font-size:12px;}
+  .grid th,.grid td{padding:0;}
+  .grid thead th{position:sticky;top:0;z-index:3;background:var(--glass-solid);color:var(--gold);font:600 11px/1 var(--sans);
+    height:34px;min-width:38px;cursor:pointer;letter-spacing:.02em;}
+  .grid thead th:hover{color:var(--gold-soft);}
+  .grid thead th.corner{left:0;z-index:5;text-align:left;padding-left:12px;cursor:default;}
+  .grid th.rn{position:sticky;left:0;z-index:2;background:var(--glass-solid);text-align:left;font-weight:500;
+    padding:0 10px 0 12px;white-space:nowrap;color:var(--parchment);font-size:12.5px;height:30px;min-width:230px;max-width:300px;
+    overflow:hidden;text-overflow:ellipsis;}
+  .grid th.rn .in{display:flex;align-items:center;gap:7px;}
+  .grid tr.grp th{position:sticky;left:0;z-index:2;background:var(--glass-solid);text-align:left;padding:14px 12px 5px;
+    font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);}
+  .grid td.v{width:38px;min-width:38px;height:30px;text-align:center;border-radius:6px;font-weight:600;cursor:pointer;
+    font-variant-numeric:tabular-nums;transition:transform .12s,opacity .15s;}
+  .grid td.v:hover{transform:scale(1.12);position:relative;z-index:1;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+  .grid td.e{background:transparent;}
+  .grid td.off{opacity:.12;}
+  .grid td.hit{outline:2px solid var(--gold-soft);outline-offset:-2px;}
+  .l1{background:var(--h1);color:var(--h-ink-lo);} .l2{background:var(--h2);color:var(--h-ink-lo);}
+  .l3{background:var(--h3);color:var(--h-ink-lo);} .l4{background:var(--h4);color:var(--h-ink-lo);}
+  .l5{background:var(--h5);color:var(--h-ink-lo);} .l6{background:var(--h6);color:var(--h-ink-lo);}
+  .l7{background:var(--h7);color:var(--h-ink-hi);} .l8{background:var(--h8);color:var(--h-ink-hi);}
+  .l9{background:var(--h9);color:var(--h-ink-hi);} .l10{background:var(--h10);color:var(--h-ink-hi);}
+  html:not([data-theme="cream"]) .l1,html:not([data-theme="cream"]) .l2,html:not([data-theme="cream"]) .l3,
+  html:not([data-theme="cream"]) .l4,html:not([data-theme="cream"]) .l5,html:not([data-theme="cream"]) .l6{color:var(--h-ink-lo);}
+  html:not([data-theme="cream"]) .l7,html:not([data-theme="cream"]) .l8,html:not([data-theme="cream"]) .l9,
+  html:not([data-theme="cream"]) .l10{color:var(--h-ink-hi);}
+  html[data-theme="cream"] .l6{color:#fff;}
+
+  /* year view */
+  .yhead{padding:clamp(20px,3vw,30px);display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
+  .ybig{font-family:var(--serif);font-size:clamp(54px,9vw,92px);line-height:.9;color:var(--title);}
+  .ynav{display:flex;gap:6px;}
+  .ynote{flex:1;min-width:240px;font-size:15px;line-height:1.65;font-weight:300;color:var(--parchment);margin:0;}
+  .ynote.none{color:var(--faint);font-style:italic;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:14px;}
+  .card{padding:14px 16px;}
+  .card h3{margin:0 0 8px;font:600 10.5px/1.2 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);}
+  .line{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--hair);font-size:13.5px;}
+  .line:first-of-type{border-top:0;}
+  .line .nm{flex:1;min-width:0;}
+  .line .num{font-size:11px;color:var(--faint);width:26px;text-align:right;font-variant-numeric:tabular-nums;}
+  .line.na .nm{color:var(--faint);}
+  .line.off{opacity:.35;}
+
+  /* star-search list */
+  .hits{padding:6px 18px 14px;}
+  .hit-row{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--hair);align-items:flex-start;}
+  .hit-row:first-child{border-top:0;}
+  .hit-row .nm{width:260px;flex:none;font-size:13.5px;display:flex;gap:7px;align-items:center;}
+  .yrs{display:flex;flex-wrap:wrap;gap:5px;}
+  .yr{appearance:none;border:0;border-radius:6px;font:600 11.5px/1 var(--sans);padding:6px 7px;cursor:pointer;font-variant-numeric:tabular-nums;}
+  .yr:hover{outline:2px solid var(--gold-soft);}
+  .empty{padding:18px;color:var(--faint);font-size:14px;}
+
+  .method{padding:clamp(18px,3vw,28px);font-size:13px;line-height:1.7;color:var(--muted);}
+  .method h3{margin:0 0 8px;font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);}
+  .method p{margin:0 0 12px;}
+  .method ol{margin:0 0 12px;padding-left:20px;}
+  .method li{margin:3px 0;}
+  .method a{color:var(--gold-soft);}
+  footer{margin-top:46px;padding-top:22px;text-align:center;font-size:11px;line-height:1.8;color:var(--faint);border-top:1px solid var(--hair);}
+
+  #tip{position:fixed;z-index:50;pointer-events:none;background:var(--glass-solid);border:1px solid var(--hair-hi);border-radius:10px;
+    padding:8px 11px;font-size:12px;color:var(--parchment);box-shadow:0 10px 30px rgba(0,0,0,.35);display:none;max-width:280px;}
+  #tip b{color:var(--title);font-weight:600;}
+
+  @media (max-width:700px){
+    .field{flex:1 1 140px !important;}
+    .grid th.rn{min-width:150px;max-width:150px;font-size:11.5px;}
+    .hit-row{flex-direction:column;gap:6px;}
+    .hit-row .nm{width:auto;}
+    .cards{grid-template-columns:1fr;}
+  }
+  .pulse{animation:pulse 1.3s ease-in-out 2;border-radius:12px;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,150,62,0)}50%{box-shadow:0 0 0 6px rgba(201,150,62,.45)}}
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 18px 50px rgba(90,40,30,0.15),inset 0 1px 0 rgba(255,255,255,0.30)}
+html[data-theme="cream"][data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 1px 0 rgba(255,255,255,0.80)}
+html[data-theme="cream"] select{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] select:focus{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .reset{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .reset:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .chip{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .chip:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .chip[aria-pressed="true"]{border-color:rgba(90,30,40,0.18);background:rgba(154,106,31,0.14)}
+html[data-theme="cream"] .dot{box-shadow:0 0 0 1px rgba(90,40,30,0.09)}
+html[data-theme="cream"] .scale{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .conf{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .sec-head::after{background:linear-gradient(90deg,rgba(255,253,248,0.71),rgba(0,0,0,0))}
+html[data-theme="cream"] .grid td.v:hover{box-shadow:0 4px 14px rgba(90,40,30,0.10)}
+html[data-theme="cream"] .grid td.hit{outline:2px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .l7{color:#2e1419}
+html[data-theme="cream"] .l8{background:#fbf6ec;color:#2e1419}
+html[data-theme="cream"]:not([data-theme="cream"]) .l7,html[data-theme="cream"]:not([data-theme="cream"]) .l8,html[data-theme="cream"]:not([data-theme="cream"]) .l9,html[data-theme="cream"]:not([data-theme="cream"]) .l10{color:#2e1419}
+html[data-theme="cream"][data-theme="cream"] .l6{color:#2e1419}
+html[data-theme="cream"] .line{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .hit-row{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .yr:hover{outline:2px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] #tip{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.10)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="lang" type="button">EN</button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Guide des millésimes" data-en="Vintage guide">Guide des millésimes</p>
+    <h1 data-fr="Millésimes <em>de&nbsp;France</em>" data-en="French <em>Vintages</em>">Millésimes <em>de&nbsp;France</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="La qualité de chaque millésime, région par région et couleur par couleur, notée sur cinq étoiles par demi-étoiles. Choisissez une année ou un nombre d'étoiles."
+       data-en="The quality of every vintage, region by region and colour by colour, rated out of five stars in half-star steps. Pick a year or a number of stars.">
+      La qualité de chaque millésime, région par région et couleur par couleur, notée sur cinq étoiles par demi-étoiles. Choisissez une année ou un nombre d'étoiles.</p>
+    <div class="stats">
+      <div class="stat"><b id="st-r">–</b><span data-fr="Catégories" data-en="Categories">Catégories</span></div>
+      <div class="stat"><b id="st-y">–</b><span data-fr="Millésimes" data-en="Vintages">Millésimes</span></div>
+      <div class="stat"><b id="st-n">–</b><span data-fr="Notes" data-en="Ratings">Notes</span></div>
+    </div>
+  </header>
+
+  <section class="panel controls" aria-label="Filtres">
+    <div class="ctl-row">
+      <div class="field f-year">
+        <label for="selYear" data-fr="Millésime" data-en="Vintage">Millésime</label>
+        <select id="selYear"></select>
+      </div>
+      <div class="field f-stars">
+        <label for="selStars" data-fr="Étoiles" data-en="Stars">Étoiles</label>
+        <select id="selStars"></select>
+      </div>
+      <div class="field f-mode">
+        <label for="selMode" data-fr="Correspondance" data-en="Match">Correspondance</label>
+        <select id="selMode"></select>
+      </div>
+      <button class="reset" id="reset" type="button" data-fr="Tout effacer" data-en="Clear all">Tout effacer</button>
+    </div>
+    <div class="chips" id="grpChips"></div>
+    <div class="chips" id="typeChips"></div>
+  </section>
+
+  <div class="legend" id="legend"></div>
+
+  <div id="out"></div>
+
+  <section class="panel method" style="margin-top:34px">
+    <h3 data-fr="Méthode" data-en="Method">Méthode</h3>
+    <p data-fr="La base est le tableau des millésimes de l'auteur (1980–2025). Chaque tableau public ci-dessous est converti sur l'échelle de cinq étoiles par un étalonnage linéaire sur les notes de l'auteur, puis les sources sont moyennées (les notes de l'auteur comptent triple) et arrondies à la demi-étoile. Les catégories sans tableau publié propre sont estimées à partir des régions voisines, corrigées des accidents locaux documentés (gel, grêle, sécheresse). Avant la couverture continue d'une catégorie, seuls les très grands millésimes sont indiqués ; avant 1900, seulement les millésimes légendaires."
+       data-en="The base is the author's own vintage chart (1980–2025). Each public chart below is converted to the five-star scale by a linear calibration against the author's ratings, then the sources are averaged (the author's ratings count triple) and rounded to the nearest half star. Categories without their own published chart are estimated from neighbouring regions and adjusted for documented local events (frost, hail, drought). Before a category's continuous coverage, only the greatest vintages are shown; before 1900, only the legendary ones.">
+      La base est le tableau des millésimes de l'auteur (1980–2025).</p>
+    <p data-fr="Fiabilité :" data-en="Reliability:">Fiabilité :</p>
+    <p><span class="conf c-A">A</span> <span data-fr="plusieurs tableaux publiés pour cette catégorie" data-en="several published charts for this category"></span> &nbsp;
+       <span class="conf c-B">B</span> <span data-fr="peu de tableaux, complétés par les bilans de vendange" data-en="few charts, completed with harvest reports"></span> &nbsp;
+       <span class="conf c-C">C</span> <span data-fr="estimation d'après les régions voisines — à prendre comme tendance" data-en="estimate from neighbouring regions — read as a trend"></span></p>
+    <p data-fr="Un tableau de millésimes est une moyenne : dans chaque année, de bons producteurs réussissent au-dessus de la note, et d'autres en dessous."
+       data-en="A vintage chart is an average: in every year, good producers beat the rating and others fall short of it."></p>
+
+    <h3 style="margin-top:20px" data-fr="Sources" data-en="Sources">Sources</h3>
+    <ol>
+      <li><span data-fr="Tableau des millésimes de l'auteur, <i>Wine List vintage chart</i> (1980–2025, notes et « millésimes anciens remarquables »)." data-en="The author's own <i>Wine List vintage chart</i> (1980–2025, ratings and “older notable vintages”)."></span></li>
+      <li>Berry Bros. &amp; Rudd — <a href="https://www.bbr.com/vintage-chart" target="_blank" rel="noopener">Vintage Chart</a> <span data-fr="(1978–2025, sur 10)" data-en="(1978–2025, out of 10)"></span></li>
+      <li>iDealwine — <a href="https://www.idealwine.com/en/saga_millesime/table_notation" target="_blank" rel="noopener">Table of vintage ratings for French regions</a> <span data-fr="(1799–2023, sur 20)" data-en="(1799–2023, out of 20)"></span></li>
+      <li>Wine Scholar Guild — <a href="https://www.winescholarguild.com/vintage-charts/french-wine-vintage-chart" target="_blank" rel="noopener">French Wine Vintage Chart</a> <span data-fr="(notes d'Andrew Jefford, 2000–2024, sur 5 étoiles)" data-en="(notes by Andrew Jefford, 2000–2024, out of 5 stars)"></span></li>
+      <li>Wine Enthusiast — <a href="https://www.wineenthusiast.com/wp-content/uploads/2024/03/032024_VintageChart_WC.pdf" target="_blank" rel="noopener">2024 Vintage Chart (PDF)</a> <span data-fr="(1997–2022 sur 100, et liste des grands millésimes anciens)" data-en="(1997–2022 out of 100, plus its list of older great vintages)"></span></li>
+      <li>Grains &amp; Grappes — <a href="https://grains-et-grappes.com/en/vintage-chart" target="_blank" rel="noopener">Wine Vintage Chart</a> <span data-fr="(1990–2024, dont Jura, Provence et Languedoc-Roussillon)" data-en="(1990–2024, incl. Jura, Provence and Languedoc-Roussillon)"></span></li>
+      <li><span data-fr="Millésimes historiques et légendaires : Michael Broadbent, <i>Vintage Wine</i> (2002) ; Wikipédia," data-en="Historical and legendary vintages: Michael Broadbent, <i>Vintage Wine</i> (2002); Wikipedia,"></span> <a href="https://en.wikipedia.org/wiki/Comet_vintage" target="_blank" rel="noopener">Comet vintage</a>.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <b>French Wine</b> — <span data-fr="cartographie &amp; documentation" data-en="mapping &amp; documentation">cartographie &amp; documentation</span> · © 2026
+  </footer>
+</div>
+<div id="tip"></div>
+
+<script>
+(function(){
+var DATA = {"rows":[{"id":"champagne","g":"Champagne","en":"Champagne","fr":"Champagne","t":"sp","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":7,"2023":7,"2022":9,"2021":6,"2020":9,"2019":9,"2018":10,"2017":5,"2016":7,"2015":7,"2014":6,"2013":8,"2012":9,"2011":5,"2010":6,"2009":7,"2008":10,"2007":5,"2006":6,"2005":6,"2004":8,"2003":6,"2002":10,"2001":3,"2000":6,"1999":7,"1998":7,"1997":6,"1996":9,"1995":8,"1994":4,"1993":5,"1992":5,"1991":2,"1990":10,"1989":8,"1988":9,"1987":3,"1986":6,"1985":9,"1984":1,"1983":6,"1982":9,"1981":4,"1980":2,"1979":8,"1978":5,"1977":1,"1976":7,"1975":9,"1974":1,"1973":7,"1972":1,"1971":8,"1970":8,"1969":7,"1968":1,"1967":1,"1966":8,"1965":1,"1964":9,"1963":1,"1962":8,"1961":7,"1960":6,"1959":8,"1958":1,"1957":1,"1956":1,"1955":10,"1954":9,"1953":8,"1952":7,"1951":1,"1950":7,"1949":8,"1948":3,"1947":9,"1946":2,"1945":10,"1944":1,"1943":8,"1942":7,"1941":2,"1940":1,"1939":1,"1938":2,"1937":9,"1936":1,"1935":2,"1934":8,"1933":7,"1932":1,"1931":1,"1930":1,"1929":10,"1928":10,"1927":1,"1926":7,"1925":1,"1924":3,"1923":8,"1922":1,"1921":10,"1920":6,"1919":7,"1918":4,"1917":5,"1916":4,"1915":7,"1914":9,"1913":1,"1912":1,"1911":10,"1910":1,"1909":1,"1908":1,"1907":1,"1906":6,"1905":7,"1904":7,"1903":2,"1902":2,"1901":4,"1900":9,"1899":9,"1893":9,"1892":9,"1880":9,"1874":10}},{"id":"alsace_w","g":"Alsace","en":"Alsace White","fr":"Alsace Blanc","t":"w","c":"A","from":1919,"n":null,"v":{"2025":9,"2024":7,"2023":7,"2022":9,"2021":7,"2020":9,"2019":9,"2018":8,"2017":8,"2016":8,"2015":8,"2014":7,"2013":6,"2012":7,"2011":7,"2010":8,"2009":7,"2008":8,"2007":8,"2006":6,"2005":9,"2004":7,"2003":7,"2002":8,"2001":7,"2000":8,"1999":5,"1998":7,"1997":7,"1996":7,"1995":8,"1994":7,"1993":6,"1992":6,"1991":4,"1990":10,"1989":10,"1988":8,"1987":4,"1986":9,"1985":8,"1984":3,"1983":9,"1982":4,"1981":7,"1980":2,"1979":6,"1978":5,"1977":4,"1976":10,"1975":8,"1974":5,"1973":7,"1972":1,"1971":9,"1970":6,"1969":7,"1968":1,"1967":6,"1966":4,"1965":1,"1964":9,"1963":1,"1962":6,"1961":10,"1960":4,"1959":10,"1958":4,"1957":5,"1956":1,"1955":8,"1954":1,"1953":9,"1952":6,"1951":1,"1950":6,"1949":10,"1948":7,"1947":8,"1946":1,"1945":10,"1944":1,"1943":7,"1942":6,"1941":1,"1940":2,"1939":1,"1938":1,"1937":8,"1936":1,"1935":6,"1934":7,"1933":7,"1932":1,"1931":1,"1930":1,"1929":9,"1928":8,"1927":1,"1926":6,"1925":1,"1924":3,"1923":6,"1922":1,"1921":10,"1920":2,"1919":7}},{"id":"alsace_r","g":"Alsace","en":"Alsace Red","fr":"Alsace Rouge","t":"r","c":"B","from":1990,"n":null,"v":{"2025":9,"2024":6,"2023":7,"2022":10,"2021":5,"2020":10,"2019":10,"2018":9,"2017":9,"2016":8,"2015":9,"2014":6,"2013":5,"2012":7,"2011":6,"2010":7,"2009":8,"2008":7,"2007":8,"2006":6,"2005":9,"2004":7,"2003":8,"2002":8,"2001":7,"2000":8,"1999":6,"1998":7,"1997":7,"1996":8,"1995":8,"1994":7,"1993":6,"1992":6,"1991":4,"1990":10}},{"id":"jura_w","g":"Jura","en":"Jura White","fr":"Jura Blanc","t":"w","c":"B","from":1987,"n":null,"v":{"2025":8,"2024":5,"2023":5,"2022":6,"2021":6,"2020":6,"2019":9,"2018":8,"2017":6,"2016":7,"2015":9,"2014":8,"2013":7,"2012":8,"2011":7,"2010":9,"2009":8,"2008":8,"2007":8,"2006":8,"2005":10,"2004":5,"2003":7,"2002":6,"2001":5,"2000":9,"1999":8,"1998":7,"1997":8,"1996":10,"1995":8,"1994":5,"1993":5,"1992":3,"1991":5,"1990":10,"1989":8,"1988":8,"1987":8}},{"id":"jura_r","g":"Jura","en":"Jura Red","fr":"Jura Rouge","t":"r","c":"B","from":1987,"n":null,"v":{"2025":8,"2024":4,"2023":5,"2022":7,"2021":5,"2020":7,"2019":9,"2018":9,"2017":6,"2016":7,"2015":9,"2014":7,"2013":6,"2012":8,"2011":7,"2010":9,"2009":8,"2008":8,"2007":8,"2006":8,"2005":10,"2004":5,"2003":8,"2002":6,"2001":5,"2000":9,"1999":8,"1998":7,"1997":8,"1996":10,"1995":8,"1994":5,"1993":5,"1992":3,"1991":5,"1990":10,"1989":8,"1988":8,"1987":8}},{"id":"jura_s","g":"Jura","en":"Jura Sweet / Vin Jaune","fr":"Jura Vin de Paille / Vin Jaune","t":"sw","c":"B","from":1987,"n":["Vin jaune is released at least 6 years 3 months after the harvest; recent years rate the growing season.","Le vin jaune sort au moins 6 ans et 3 mois après la vendange ; les années récentes notent la saison."],"v":{"2025":8,"2024":5,"2023":5,"2022":6,"2021":6,"2020":6,"2019":9,"2018":9,"2017":6,"2016":7,"2015":9,"2014":8,"2013":7,"2012":8,"2011":7,"2010":9,"2009":8,"2008":8,"2007":8,"2006":8,"2005":10,"2004":5,"2003":9,"2002":6,"2001":5,"2000":9,"1999":8,"1998":7,"1997":8,"1996":10,"1995":8,"1994":5,"1993":5,"1992":3,"1991":5,"1990":10,"1989":8,"1988":8,"1987":8,"1959":10,"1947":10}},{"id":"savoie_w","g":"Savoie","en":"Savoie White","fr":"Savoie Blanc","t":"w","c":"B","from":1987,"n":null,"v":{"2025":8,"2024":6,"2023":6,"2022":7,"2021":8,"2020":6,"2019":9,"2018":8,"2017":7,"2016":8,"2015":9,"2014":8,"2013":7,"2012":8,"2011":7,"2010":9,"2009":8,"2008":8,"2007":8,"2006":8,"2005":10,"2004":5,"2003":7,"2002":6,"2001":5,"2000":9,"1999":8,"1998":7,"1997":8,"1996":10,"1995":8,"1994":5,"1993":5,"1992":3,"1991":5,"1990":10,"1989":8,"1988":8,"1987":8}},{"id":"savoie_r","g":"Savoie","en":"Savoie Red","fr":"Savoie Rouge","t":"r","c":"B","from":1987,"n":null,"v":{"2025":8,"2024":5,"2023":6,"2022":7,"2021":7,"2020":7,"2019":9,"2018":9,"2017":7,"2016":8,"2015":9,"2014":7,"2013":6,"2012":8,"2011":7,"2010":9,"2009":8,"2008":8,"2007":8,"2006":8,"2005":10,"2004":5,"2003":8,"2002":6,"2001":5,"2000":9,"1999":8,"1998":7,"1997":8,"1996":10,"1995":8,"1994":5,"1993":5,"1992":3,"1991":5,"1990":10,"1989":8,"1988":8,"1987":8}},{"id":"cdn_w","g":"Bourgogne","en":"Côte de Nuits White","fr":"Côte de Nuits Blanc","t":"w","c":"B","from":1900,"n":["Tiny production (Musigny blanc, Clos Blanc de Vougeot, Nuits whites); follows white Burgundy charts.","Production infime (Musigny blanc, Clos Blanc de Vougeot, Nuits blancs) ; suit les notes des blancs de Bourgogne."],"v":{"2025":8,"2024":8,"2023":8,"2022":9,"2021":7,"2020":9,"2019":9,"2018":8,"2017":9,"2016":7,"2015":8,"2014":9,"2013":7,"2012":8,"2011":6,"2010":10,"2009":8,"2008":7,"2007":6,"2006":7,"2005":8,"2004":7,"2003":6,"2002":9,"2001":7,"2000":7,"1999":8,"1998":6,"1997":7,"1996":9,"1995":8,"1994":6,"1993":5,"1992":8,"1991":6,"1990":9,"1989":9,"1988":6,"1987":5,"1986":8,"1985":9,"1984":2,"1983":8,"1982":8,"1981":5,"1980":5,"1979":6,"1978":8,"1977":4,"1976":7,"1975":5,"1974":6,"1973":7,"1972":6,"1971":10,"1970":9,"1969":9,"1968":9,"1967":7,"1966":9,"1965":3,"1964":8,"1963":3,"1962":9,"1961":7,"1960":4,"1959":9,"1958":3,"1957":4,"1956":3,"1955":9,"1954":7,"1953":8,"1952":9,"1951":4,"1950":9,"1949":9,"1948":7,"1947":10,"1946":7,"1945":9,"1944":1,"1943":7,"1942":5,"1941":1,"1940":4,"1939":5,"1938":6,"1937":9,"1936":1,"1935":9,"1934":9,"1933":8,"1932":6,"1931":2,"1930":3,"1929":9,"1928":10,"1927":2,"1926":8,"1925":1,"1924":5,"1923":10,"1922":7,"1921":10,"1920":7,"1919":7,"1918":4,"1917":1,"1916":5,"1915":7,"1914":6,"1913":1,"1912":7,"1911":9,"1909":1,"1908":6,"1907":8,"1906":8,"1905":1,"1904":7,"1903":1,"1902":1,"1901":1,"1900":8}},{"id":"cdn_r","g":"Bourgogne","en":"Côte de Nuits Red","fr":"Côte de Nuits Rouge","t":"r","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":6,"2023":7,"2022":9,"2021":8,"2020":9,"2019":9,"2018":9,"2017":8,"2016":8,"2015":10,"2014":7,"2013":7,"2012":8,"2011":7,"2010":10,"2009":9,"2008":6,"2007":5,"2006":7,"2005":10,"2004":6,"2003":7,"2002":9,"2001":6,"2000":5,"1999":8,"1998":8,"1997":5,"1996":9,"1995":6,"1994":4,"1993":8,"1992":6,"1991":5,"1990":9,"1989":8,"1988":10,"1987":5,"1986":8,"1985":10,"1984":3,"1983":6,"1982":5,"1981":5,"1980":5,"1979":6,"1978":10,"1977":3,"1976":9,"1975":1,"1974":4,"1973":4,"1972":3,"1971":9,"1970":7,"1969":10,"1968":1,"1967":7,"1966":9,"1965":3,"1964":7,"1963":3,"1962":9,"1961":9,"1960":5,"1959":10,"1958":4,"1957":6,"1956":3,"1955":7,"1954":6,"1953":9,"1952":8,"1951":5,"1950":3,"1949":10,"1948":6,"1947":9,"1946":5,"1945":10,"1944":1,"1943":8,"1942":6,"1941":1,"1940":5,"1939":4,"1938":7,"1937":9,"1936":1,"1935":6,"1934":8,"1933":7,"1932":5,"1931":1,"1930":2,"1929":10,"1928":9,"1927":3,"1926":8,"1925":2,"1924":5,"1923":8,"1922":2,"1921":7,"1920":5,"1919":7,"1918":5,"1917":2,"1916":6,"1915":7,"1914":6,"1913":1,"1912":7,"1911":10,"1909":1,"1908":5,"1907":7,"1906":9,"1905":1,"1904":7,"1903":1,"1902":1,"1901":1,"1900":7,"1869":9,"1865":10,"1858":9,"1846":9}},{"id":"cdb_w","g":"Bourgogne","en":"Côte de Beaune White","fr":"Côte de Beaune Blanc","t":"w","c":"A","from":1900,"n":null,"v":{"2025":8,"2024":8,"2023":8,"2022":9,"2021":7,"2020":9,"2019":9,"2018":8,"2017":9,"2016":7,"2015":8,"2014":9,"2013":7,"2012":8,"2011":6,"2010":10,"2009":8,"2008":7,"2007":6,"2006":7,"2005":8,"2004":7,"2003":6,"2002":9,"2001":7,"2000":7,"1999":8,"1998":6,"1997":7,"1996":9,"1995":8,"1994":6,"1993":5,"1992":8,"1991":6,"1990":9,"1989":9,"1988":6,"1987":5,"1986":8,"1985":9,"1984":2,"1983":8,"1982":8,"1981":5,"1980":5,"1979":6,"1978":8,"1977":4,"1976":7,"1975":5,"1974":6,"1973":7,"1972":6,"1971":10,"1970":9,"1969":9,"1968":9,"1967":7,"1966":9,"1965":3,"1964":8,"1963":3,"1962":9,"1961":7,"1960":4,"1959":9,"1958":3,"1957":4,"1956":3,"1955":9,"1954":7,"1953":8,"1952":9,"1951":4,"1950":9,"1949":9,"1948":7,"1947":10,"1946":7,"1945":9,"1944":1,"1943":7,"1942":5,"1941":1,"1940":4,"1939":5,"1938":6,"1937":9,"1936":1,"1935":9,"1934":9,"1933":8,"1932":6,"1931":2,"1930":3,"1929":9,"1928":10,"1927":2,"1926":8,"1925":1,"1924":5,"1923":10,"1922":7,"1921":10,"1920":7,"1919":7,"1918":4,"1917":1,"1916":5,"1915":7,"1914":6,"1913":1,"1912":7,"1911":9,"1909":1,"1908":6,"1907":8,"1906":8,"1905":1,"1904":7,"1903":1,"1902":1,"1901":1,"1900":8}},{"id":"cdb_r","g":"Bourgogne","en":"Côte de Beaune Red","fr":"Côte de Beaune Rouge","t":"r","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":6,"2023":7,"2022":8,"2021":8,"2020":9,"2019":9,"2018":9,"2017":8,"2016":8,"2015":10,"2014":7,"2013":6,"2012":7,"2011":7,"2010":10,"2009":9,"2008":6,"2007":5,"2006":7,"2005":10,"2004":6,"2003":7,"2002":9,"2001":6,"2000":5,"1999":7,"1998":7,"1997":5,"1996":9,"1995":6,"1994":4,"1993":8,"1992":6,"1991":5,"1990":9,"1989":8,"1988":9,"1987":5,"1986":6,"1985":10,"1984":3,"1983":6,"1982":5,"1981":5,"1980":5,"1979":6,"1978":10,"1977":3,"1976":9,"1975":1,"1974":4,"1973":4,"1972":3,"1971":9,"1970":7,"1969":10,"1968":1,"1967":7,"1966":9,"1965":3,"1964":7,"1963":3,"1962":9,"1961":9,"1960":5,"1959":10,"1958":4,"1957":6,"1956":3,"1955":7,"1954":6,"1953":9,"1952":8,"1951":5,"1950":3,"1949":10,"1948":6,"1947":9,"1946":5,"1945":10,"1944":1,"1943":8,"1942":6,"1941":1,"1940":5,"1939":4,"1938":7,"1937":9,"1936":1,"1935":6,"1934":8,"1933":7,"1932":5,"1931":1,"1930":2,"1929":10,"1928":9,"1927":3,"1926":8,"1925":2,"1924":5,"1923":8,"1922":2,"1921":7,"1920":5,"1919":7,"1918":5,"1917":2,"1916":6,"1915":7,"1914":6,"1913":1,"1912":7,"1911":10,"1909":1,"1908":5,"1907":7,"1906":9,"1905":1,"1904":7,"1903":1,"1902":1,"1901":1,"1900":7,"1869":9,"1865":10,"1858":9,"1846":9}},{"id":"chal_w","g":"Bourgogne","en":"Côte Chalonnaise White","fr":"Côte Chalonnaise Blanc","t":"w","c":"B","from":1978,"n":null,"v":{"2025":8,"2024":8,"2023":8,"2022":9,"2021":8,"2020":9,"2019":9,"2018":8,"2017":9,"2016":7,"2015":8,"2014":9,"2013":7,"2012":8,"2011":6,"2010":10,"2009":8,"2008":7,"2007":6,"2006":7,"2005":8,"2004":7,"2003":6,"2002":9,"2001":7,"2000":7,"1999":8,"1998":6,"1997":7,"1996":9,"1995":8,"1994":6,"1993":5,"1992":7,"1991":6,"1990":9,"1989":9,"1988":6,"1987":5,"1986":8,"1985":7,"1984":2,"1983":8,"1982":6,"1981":5,"1980":5,"1979":6,"1978":8}},{"id":"chal_r","g":"Bourgogne","en":"Côte Chalonnaise Red","fr":"Côte Chalonnaise Rouge","t":"r","c":"B","from":1978,"n":null,"v":{"2025":9,"2024":6,"2023":7,"2022":9,"2021":7,"2020":9,"2019":9,"2018":9,"2017":7,"2016":8,"2015":9,"2014":7,"2013":7,"2012":7,"2011":7,"2010":10,"2009":9,"2008":6,"2007":5,"2006":7,"2005":10,"2004":6,"2003":7,"2002":9,"2001":7,"2000":6,"1999":8,"1998":8,"1997":5,"1996":8,"1995":6,"1994":4,"1993":8,"1992":6,"1991":5,"1990":9,"1989":8,"1988":9,"1987":5,"1986":7,"1985":10,"1984":3,"1983":6,"1982":5,"1981":5,"1980":5,"1979":6,"1978":10}},{"id":"chal_rs","g":"Bourgogne","en":"Côte Chalonnaise Rosé","fr":"Côte Chalonnaise Rosé","t":"rs","c":"C","from":2010,"n":null,"v":{"2025":8,"2024":7,"2023":7,"2022":9,"2021":7,"2020":9,"2019":9,"2018":8,"2017":8,"2016":7,"2015":8,"2014":8,"2013":7,"2012":7,"2011":6,"2010":10}},{"id":"mac_w","g":"Bourgogne","en":"Mâconnais White","fr":"Mâconnais Blanc","t":"w","c":"A","from":1978,"n":null,"v":{"2025":8,"2024":8,"2023":8,"2022":9,"2021":7,"2020":9,"2019":9,"2018":9,"2017":9,"2016":8,"2015":8,"2014":9,"2013":7,"2012":8,"2011":7,"2010":9,"2009":8,"2008":7,"2007":6,"2006":7,"2005":8,"2004":7,"2003":6,"2002":8,"2001":7,"2000":7,"1999":7,"1998":6,"1997":7,"1996":9,"1995":8,"1994":6,"1993":5,"1992":7,"1991":6,"1990":9,"1989":9,"1988":6,"1987":5,"1986":8,"1985":7,"1984":2,"1983":8,"1982":6,"1981":5,"1980":5,"1979":6,"1978":8}},{"id":"mac_r","g":"Bourgogne","en":"Mâconnais Red","fr":"Mâconnais Rouge","t":"r","c":"B","from":1978,"n":["Mostly Gamay: follows Beaujolais charts.","Surtout du gamay : suit les notes du Beaujolais."],"v":{"2025":9,"2024":6,"2023":8,"2022":9,"2021":7,"2020":10,"2019":9,"2018":9,"2017":9,"2016":8,"2015":10,"2014":8,"2013":6,"2012":7,"2011":8,"2010":8,"2009":9,"2008":6,"2007":5,"2006":6,"2005":9,"2004":7,"2003":7,"2002":6,"2001":6,"2000":6,"1999":7,"1998":7,"1997":8,"1996":7,"1995":9,"1994":7,"1993":5,"1992":3,"1991":7,"1990":8,"1989":9,"1988":7,"1987":3,"1986":6,"1985":7,"1984":3,"1983":7,"1982":3,"1981":6,"1980":2,"1979":6,"1978":7}},{"id":"mac_rs","g":"Bourgogne","en":"Mâconnais Rosé","fr":"Mâconnais Rosé","t":"rs","c":"C","from":2010,"n":null,"v":{"2025":8,"2024":7,"2023":8,"2022":9,"2021":7,"2020":9,"2019":9,"2018":9,"2017":9,"2016":8,"2015":9,"2014":8,"2013":6,"2012":7,"2011":7,"2010":8}},{"id":"rhn_w","g":"Rhône","en":"Northern Rhône White","fr":"Rhône Nord Blanc","t":"w","c":"A","from":1978,"n":null,"v":{"2025":9,"2024":8,"2023":7,"2022":8,"2021":6,"2020":9,"2019":9,"2018":8,"2017":8,"2016":8,"2015":9,"2014":8,"2013":7,"2012":7,"2011":7,"2010":10,"2009":7,"2008":7,"2007":8,"2006":8,"2005":8,"2004":8,"2003":6,"2002":6,"2001":8,"2000":7,"1999":9,"1998":8,"1997":7,"1996":8,"1995":9,"1994":7,"1993":4,"1992":4,"1991":8,"1990":10,"1989":10,"1988":8,"1987":6,"1986":8,"1985":10,"1984":2,"1983":9,"1982":8,"1981":5,"1980":6,"1979":7,"1978":10}},{"id":"rhn_r","g":"Rhône","en":"Northern Rhône Red","fr":"Rhône Nord Rouge","t":"r","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":7,"2023":7,"2022":8,"2021":5,"2020":9,"2019":9,"2018":9,"2017":8,"2016":9,"2015":9,"2014":6,"2013":6,"2012":7,"2011":7,"2010":10,"2009":8,"2008":6,"2007":8,"2006":8,"2005":8,"2004":7,"2003":8,"2002":5,"2001":8,"2000":7,"1999":9,"1998":8,"1997":8,"1996":8,"1995":9,"1994":7,"1993":4,"1992":4,"1991":8,"1990":10,"1989":10,"1988":9,"1987":6,"1986":8,"1985":10,"1984":2,"1983":9,"1982":8,"1981":5,"1980":6,"1979":7,"1978":10,"1977":3,"1976":7,"1975":1,"1974":4,"1973":5,"1972":7,"1971":9,"1970":8,"1969":8,"1968":1,"1967":7,"1966":7,"1965":1,"1964":6,"1963":1,"1962":8,"1961":9,"1960":4,"1959":9,"1958":6,"1957":7,"1956":5,"1955":7,"1954":3,"1953":9,"1952":9,"1951":1,"1950":6,"1949":9,"1948":4,"1947":9,"1946":8,"1945":9,"1944":1,"1943":8,"1942":6,"1941":1,"1940":1,"1939":1,"1938":5,"1937":8,"1936":3,"1935":2,"1934":8,"1933":8,"1932":1,"1931":1,"1930":1,"1929":9,"1928":8,"1927":1,"1926":2,"1925":5,"1924":8,"1923":9,"1922":5,"1921":4,"1920":2,"1919":7,"1918":2,"1917":2,"1915":1,"1914":4,"1913":3,"1912":1,"1911":10,"1910":1,"1909":4,"1908":1,"1907":4,"1906":8,"1905":4,"1904":7,"1903":4,"1902":4,"1901":5,"1900":1}},{"id":"rhs_w","g":"Rhône","en":"Southern Rhône White","fr":"Rhône Sud Blanc","t":"w","c":"A","from":1978,"n":null,"v":{"2025":9,"2024":7,"2023":7,"2022":9,"2021":8,"2020":8,"2019":9,"2018":8,"2017":8,"2016":9,"2015":8,"2014":6,"2013":7,"2012":7,"2011":7,"2010":10,"2009":7,"2008":7,"2007":9,"2006":7,"2005":9,"2004":7,"2003":6,"2002":5,"2001":8,"2000":7,"1999":7,"1998":8,"1997":7,"1996":5,"1995":7,"1994":7,"1993":6,"1992":4,"1991":4,"1990":10,"1989":10,"1988":8,"1987":3,"1986":7,"1985":8,"1984":2,"1983":9,"1982":6,"1981":5,"1980":6,"1979":7,"1978":10}},{"id":"rhs_r","g":"Rhône","en":"Southern Rhône Red","fr":"Rhône Sud Rouge","t":"r","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":7,"2023":7,"2022":8,"2021":6,"2020":8,"2019":9,"2018":8,"2017":9,"2016":10,"2015":9,"2014":5,"2013":6,"2012":7,"2011":7,"2010":10,"2009":8,"2008":5,"2007":9,"2006":8,"2005":9,"2004":8,"2003":8,"2002":3,"2001":9,"2000":8,"1999":8,"1998":9,"1997":7,"1996":5,"1995":7,"1994":7,"1993":6,"1992":4,"1991":4,"1990":10,"1989":10,"1988":8,"1987":3,"1986":7,"1985":8,"1984":2,"1983":9,"1982":6,"1981":8,"1980":6,"1979":7,"1978":10,"1977":3,"1976":7,"1975":1,"1974":4,"1973":5,"1972":7,"1971":9,"1970":9,"1969":8,"1968":1,"1967":8,"1966":7,"1965":1,"1964":6,"1963":1,"1962":8,"1961":9,"1960":4,"1959":9,"1958":6,"1957":7,"1956":5,"1955":7,"1954":3,"1953":7,"1952":9,"1951":1,"1950":6,"1949":9,"1948":4,"1947":9,"1946":8,"1945":9,"1944":1,"1943":8,"1942":6,"1941":1,"1940":1,"1939":1,"1938":5,"1937":8,"1936":3,"1935":2,"1934":8,"1933":8,"1932":1,"1931":1,"1930":1,"1929":9,"1928":8,"1927":1,"1926":2,"1925":5,"1924":8,"1923":9,"1922":5,"1921":4,"1920":2,"1919":7,"1918":2,"1917":2,"1916":5,"1915":1,"1914":4,"1913":3,"1912":1,"1911":10,"1910":1,"1909":4,"1908":1,"1907":4,"1906":8,"1905":4,"1904":7,"1903":4,"1902":4,"1901":5,"1900":1}},{"id":"rhs_rs","g":"Rhône","en":"Southern Rhône Rosé","fr":"Rhône Sud Rosé","t":"rs","c":"C","from":2010,"n":null,"v":{"2025":9,"2024":7,"2023":7,"2022":8,"2021":7,"2020":8,"2019":9,"2018":8,"2017":8,"2016":9,"2015":8,"2014":5,"2013":6,"2012":7,"2011":7,"2010":10}},{"id":"prov_w","g":"Provence & Corse","en":"Provence & Corsica White","fr":"Provence & Corse Blanc","t":"w","c":"B","from":1990,"n":null,"v":{"2025":8,"2024":9,"2023":7,"2022":8,"2021":8,"2020":8,"2019":9,"2018":7,"2017":8,"2016":8,"2015":10,"2014":5,"2013":5,"2012":7,"2011":7,"2010":6,"2009":9,"2008":7,"2007":8,"2006":7,"2005":10,"2004":5,"2003":7,"2002":8,"2001":8,"2000":7,"1999":7,"1998":8,"1997":7,"1996":7,"1995":8,"1994":7,"1993":5,"1992":5,"1991":7,"1990":10}},{"id":"prov_r","g":"Provence & Corse","en":"Provence & Corsica Red","fr":"Provence & Corse Rouge","t":"r","c":"A","from":1990,"n":null,"v":{"2025":8,"2024":9,"2023":7,"2022":9,"2021":8,"2020":8,"2019":9,"2018":7,"2017":9,"2016":8,"2015":9,"2014":6,"2013":6,"2012":7,"2011":7,"2010":6,"2009":8,"2008":7,"2007":8,"2006":7,"2005":9,"2004":5,"2003":7,"2002":6,"2001":7,"2000":7,"1999":6,"1998":8,"1997":5,"1996":7,"1995":8,"1994":7,"1993":5,"1992":5,"1991":7,"1990":10}},{"id":"prov_rs","g":"Provence & Corse","en":"Provence & Corsica Rosé","fr":"Provence & Corse Rosé","t":"rs","c":"B","from":2005,"n":null,"v":{"2025":8,"2024":9,"2023":7,"2022":9,"2021":8,"2020":8,"2019":9,"2018":7,"2017":9,"2016":8,"2015":10,"2014":5,"2013":5,"2012":7,"2011":7,"2010":6,"2009":9,"2008":7,"2007":8,"2006":7,"2005":10}},{"id":"lang_w","g":"Languedoc","en":"Languedoc White","fr":"Languedoc Blanc","t":"w","c":"B","from":1990,"n":null,"v":{"2025":8,"2024":7,"2023":7,"2022":7,"2021":8,"2020":8,"2019":6,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9,"2009":7,"2008":7,"2007":7,"2006":7,"2005":8,"2004":7,"2003":5,"2002":5,"2001":8,"2000":8,"1999":7,"1998":9,"1997":5,"1996":8,"1995":7,"1994":7,"1993":7,"1992":5,"1991":7,"1990":8}},{"id":"lang_r","g":"Languedoc","en":"Languedoc Red","fr":"Languedoc Rouge","t":"r","c":"A","from":1990,"n":null,"v":{"2025":8,"2024":7,"2023":7,"2022":8,"2021":8,"2020":8,"2019":7,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9,"2009":7,"2008":7,"2007":7,"2006":7,"2005":8,"2004":7,"2003":7,"2002":5,"2001":8,"2000":8,"1999":7,"1998":9,"1997":5,"1996":8,"1995":7,"1994":7,"1993":7,"1992":5,"1991":7,"1990":8}},{"id":"lang_rs","g":"Languedoc","en":"Languedoc Rosé","fr":"Languedoc Rosé","t":"rs","c":"C","from":2010,"n":null,"v":{"2025":8,"2024":7,"2023":7,"2022":7,"2021":8,"2020":8,"2019":6,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9}},{"id":"lang_s","g":"Languedoc","en":"Languedoc Sweet (Muscats)","fr":"Languedoc Doux (Muscats)","t":"sw","c":"C","from":1990,"n":null,"v":{"2025":8,"2024":7,"2023":7,"2022":8,"2021":8,"2020":8,"2019":7,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9,"2009":7,"2008":7,"2007":7,"2006":7,"2005":8,"2004":7,"2003":6,"2002":5,"2001":8,"2000":8,"1999":7,"1998":9,"1997":5,"1996":8,"1995":7,"1994":7,"1993":7,"1992":5,"1991":7,"1990":8}},{"id":"rous_w","g":"Roussillon","en":"Roussillon White","fr":"Roussillon Blanc","t":"w","c":"B","from":1990,"n":null,"v":{"2025":8,"2024":5,"2023":6,"2022":6,"2021":8,"2020":8,"2019":7,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9,"2009":7,"2008":7,"2007":7,"2006":7,"2005":8,"2004":7,"2003":5,"2002":5,"2001":8,"2000":8,"1999":7,"1998":9,"1997":5,"1996":8,"1995":7,"1994":7,"1993":7,"1992":5,"1991":7,"1990":8}},{"id":"rous_r","g":"Roussillon","en":"Roussillon Red","fr":"Roussillon Rouge","t":"r","c":"B","from":1990,"n":null,"v":{"2025":8,"2024":5,"2023":6,"2022":7,"2021":8,"2020":8,"2019":7,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9,"2009":7,"2008":7,"2007":7,"2006":7,"2005":8,"2004":7,"2003":7,"2002":5,"2001":8,"2000":8,"1999":7,"1998":9,"1997":5,"1996":8,"1995":7,"1994":7,"1993":7,"1992":5,"1991":7,"1990":8}},{"id":"rous_rs","g":"Roussillon","en":"Roussillon Rosé","fr":"Roussillon Rosé","t":"rs","c":"C","from":2010,"n":null,"v":{"2025":8,"2024":5,"2023":6,"2022":6,"2021":8,"2020":8,"2019":7,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9}},{"id":"rous_s","g":"Roussillon","en":"Roussillon Sweet (Vins Doux Naturels)","fr":"Roussillon Vins Doux Naturels","t":"sw","c":"C","from":1990,"n":["Banyuls, Maury, Rivesaltes: fortified wines that age for decades.","Banyuls, Maury, Rivesaltes : vins mutés qui vieillissent des décennies."],"v":{"2025":8,"2024":5,"2023":6,"2022":8,"2021":8,"2020":8,"2019":7,"2018":8,"2017":8,"2016":8,"2015":7,"2014":6,"2013":7,"2012":7,"2011":8,"2010":9,"2009":7,"2008":7,"2007":7,"2006":7,"2005":8,"2004":7,"2003":7,"2002":5,"2001":8,"2000":8,"1999":7,"1998":9,"1997":5,"1996":8,"1995":7,"1994":7,"1993":7,"1992":5,"1991":7,"1990":8}},{"id":"swb_w","g":"Sud-Ouest","en":"South West · Bergerac & Dordogne White","fr":"Sud-Ouest · Bergerac & Dordogne Blanc","t":"w","c":"C","from":1990,"n":null,"v":{"2025":9,"2024":7,"2023":9,"2022":8,"2021":9,"2020":8,"2019":9,"2018":8,"2017":8,"2016":8,"2015":8,"2014":8,"2013":7,"2012":7,"2011":8,"2010":8,"2009":8,"2008":7,"2007":8,"2006":7,"2005":9,"2004":6,"2003":7,"2002":7,"2001":9,"2000":8,"1999":6,"1998":7,"1997":7,"1996":9,"1995":9,"1994":5,"1993":3,"1992":3,"1991":2,"1990":9}},{"id":"swb_r","g":"Sud-Ouest","en":"South West · Bergerac & Dordogne Red","fr":"Sud-Ouest · Bergerac & Dordogne Rouge","t":"r","c":"C","from":1990,"n":["Bergerac, Pécharmant, Côtes de Duras: estimated from Bordeaux charts and regional harvest reports.","Bergerac, Pécharmant, Côtes de Duras : estimé d'après Bordeaux et les bilans de vendange régionaux."],"v":{"2025":9,"2024":6,"2023":7,"2022":9,"2021":6,"2020":9,"2019":9,"2018":9,"2017":6,"2016":9,"2015":8,"2014":7,"2013":4,"2012":7,"2011":7,"2010":10,"2009":10,"2008":7,"2007":5,"2006":7,"2005":10,"2004":7,"2003":7,"2002":6,"2001":8,"2000":10,"1999":6,"1998":8,"1997":5,"1996":8,"1995":9,"1994":5,"1993":5,"1992":3,"1991":3,"1990":10}},{"id":"swb_s","g":"Sud-Ouest","en":"South West · Bergerac Sweet (Monbazillac…)","fr":"Sud-Ouest · Bergerac Liquoreux (Monbazillac…)","t":"sw","c":"C","from":1990,"n":null,"v":{"2025":8,"2024":8,"2023":7,"2022":9,"2021":9,"2020":7,"2019":8,"2018":8,"2017":9,"2016":8,"2015":10,"2014":8,"2013":8,"2012":6,"2011":9,"2010":8,"2009":10,"2008":6,"2007":8,"2006":7,"2005":9,"2004":5,"2003":8,"2002":9,"2001":10,"2000":7,"1999":6,"1998":9,"1997":9,"1996":8,"1995":8,"1994":4,"1993":2,"1992":3,"1991":2,"1990":9}},{"id":"swp_w","g":"Sud-Ouest","en":"South West · Garonne & Pyrénées White","fr":"Sud-Ouest · Garonne & Pyrénées Blanc","t":"w","c":"C","from":1990,"n":null,"v":{"2025":9,"2024":7,"2023":9,"2022":8,"2021":9,"2020":8,"2019":9,"2018":8,"2017":7,"2016":8,"2015":8,"2014":8,"2013":7,"2012":7,"2011":8,"2010":8,"2009":8,"2008":7,"2007":8,"2006":7,"2005":9,"2004":6,"2003":7,"2002":7,"2001":9,"2000":8,"1999":6,"1998":7,"1997":7,"1996":9,"1995":9,"1994":5,"1993":3,"1992":3,"1991":2,"1990":9}},{"id":"swp_r","g":"Sud-Ouest","en":"South West · Garonne & Pyrénées Red (Cahors, Madiran…)","fr":"Sud-Ouest · Garonne & Pyrénées Rouge (Cahors, Madiran…)","t":"r","c":"C","from":1990,"n":["Cahors, Madiran, Gaillac, Fronton, Irouléguy: estimated from Bordeaux charts and regional harvest reports.","Cahors, Madiran, Gaillac, Fronton, Irouléguy : estimé d'après Bordeaux et les bilans de vendange régionaux."],"v":{"2025":9,"2024":6,"2023":7,"2022":9,"2021":6,"2020":9,"2019":9,"2018":9,"2017":6,"2016":9,"2015":8,"2014":7,"2013":3,"2012":7,"2011":7,"2010":10,"2009":10,"2008":7,"2007":5,"2006":7,"2005":10,"2004":7,"2003":7,"2002":6,"2001":9,"2000":10,"1999":6,"1998":8,"1997":5,"1996":8,"1995":9,"1994":5,"1993":5,"1992":3,"1991":3,"1990":10}},{"id":"swp_s","g":"Sud-Ouest","en":"South West · Garonne & Pyrénées Sweet (Jurançon…)","fr":"Sud-Ouest · Garonne & Pyrénées Moelleux (Jurançon…)","t":"sw","c":"C","from":1990,"n":["Jurançon, Pacherenc: late-picked (passerillé), less dependent on botrytis than Sauternes.","Jurançon, Pacherenc : passerillage tardif, moins dépendant du botrytis que Sauternes."],"v":{"2025":8,"2024":8,"2023":7,"2022":9,"2021":9,"2020":7,"2019":8,"2018":8,"2017":9,"2016":8,"2015":10,"2014":8,"2013":8,"2012":6,"2011":9,"2010":8,"2009":10,"2008":6,"2007":8,"2006":7,"2005":9,"2004":5,"2003":8,"2002":9,"2001":10,"2000":7,"1999":6,"1998":9,"1997":9,"1996":8,"1995":8,"1994":4,"1993":2,"1992":3,"1991":2,"1990":9}},{"id":"bdx_w","g":"Bordeaux","en":"Bordeaux White","fr":"Bordeaux Blanc","t":"w","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":7,"2023":9,"2022":8,"2021":9,"2020":8,"2019":9,"2018":8,"2017":8,"2016":8,"2015":8,"2014":8,"2013":7,"2012":7,"2011":8,"2010":8,"2009":8,"2008":7,"2007":8,"2006":7,"2005":9,"2004":6,"2003":7,"2002":7,"2001":9,"2000":8,"1999":6,"1998":7,"1997":7,"1996":9,"1995":9,"1994":5,"1993":3,"1992":3,"1991":2,"1990":9,"1989":10,"1988":9,"1987":3,"1986":9,"1985":6,"1984":4,"1983":9,"1982":8,"1981":7,"1980":6,"1979":6,"1978":8,"1977":4,"1976":7,"1975":8,"1974":3,"1973":2,"1972":1,"1971":10,"1970":8,"1969":2,"1968":1,"1967":5,"1966":7,"1965":3,"1964":8,"1963":1,"1962":7,"1961":8,"1960":1,"1959":10,"1958":4,"1957":2,"1956":1,"1955":9,"1954":1,"1953":7,"1952":6,"1951":1,"1950":7,"1949":8,"1948":7,"1947":8,"1946":3,"1945":8,"1944":4,"1943":6,"1942":2,"1941":1,"1940":5,"1939":2,"1938":3,"1937":6,"1936":1,"1935":1,"1934":7,"1933":3,"1932":1,"1931":1,"1930":1,"1929":10,"1928":8,"1927":1,"1926":7,"1925":1,"1924":6,"1923":3,"1922":1,"1921":7,"1920":7,"1919":5,"1918":7,"1917":5,"1916":7,"1915":1,"1914":4,"1913":1,"1912":3,"1911":5,"1910":1,"1909":2,"1908":4,"1907":4,"1906":8,"1905":6,"1904":7,"1903":4,"1902":1,"1901":4,"1900":7}},{"id":"bdx_r","g":"Bordeaux","en":"Bordeaux Red","fr":"Bordeaux Rouge","t":"r","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":6,"2023":7,"2022":9,"2021":6,"2020":9,"2019":9,"2018":9,"2017":7,"2016":9,"2015":8,"2014":7,"2013":4,"2012":7,"2011":7,"2010":10,"2009":10,"2008":7,"2007":5,"2006":7,"2005":10,"2004":7,"2003":7,"2002":6,"2001":8,"2000":10,"1999":6,"1998":8,"1997":5,"1996":8,"1995":9,"1994":5,"1993":5,"1992":3,"1991":3,"1990":10,"1989":10,"1988":8,"1987":4,"1986":9,"1985":8,"1984":2,"1983":8,"1982":10,"1981":6,"1980":4,"1979":6,"1978":8,"1977":3,"1976":7,"1975":9,"1974":4,"1973":4,"1972":1,"1971":7,"1970":9,"1969":1,"1968":1,"1967":4,"1966":9,"1965":1,"1964":8,"1963":1,"1962":7,"1961":10,"1960":1,"1959":9,"1958":4,"1957":3,"1956":1,"1955":8,"1954":1,"1953":9,"1952":7,"1951":1,"1950":5,"1949":9,"1948":7,"1947":9,"1946":7,"1945":10,"1944":5,"1943":8,"1942":3,"1941":2,"1940":6,"1939":4,"1938":4,"1937":7,"1936":1,"1935":1,"1934":7,"1933":4,"1932":1,"1931":1,"1930":1,"1929":10,"1928":9,"1927":1,"1926":7,"1925":1,"1924":6,"1923":4,"1922":1,"1921":8,"1920":8,"1919":5,"1918":7,"1917":5,"1916":7,"1915":1,"1914":4,"1913":1,"1912":3,"1911":5,"1910":1,"1909":3,"1908":6,"1907":5,"1906":8,"1905":6,"1904":7,"1903":6,"1902":1,"1901":4,"1900":10,"1899":10,"1896":9,"1893":9,"1875":10,"1874":9,"1870":10,"1865":10,"1864":10,"1858":9,"1848":9,"1844":9,"1841":9,"1831":9,"1825":9,"1815":9,"1811":10,"1802":9}},{"id":"bdx_rs","g":"Bordeaux","en":"Bordeaux Rosé","fr":"Bordeaux Rosé","t":"rs","c":"C","from":2010,"n":null,"v":{"2025":9,"2024":6,"2023":8,"2022":8,"2021":7,"2020":8,"2019":9,"2018":8,"2017":7,"2016":8,"2015":8,"2014":7,"2013":5,"2012":7,"2011":7,"2010":9}},{"id":"sauternes","g":"Bordeaux","en":"Sauternes & Barsac","fr":"Sauternes & Barsac","t":"sw","c":"A","from":1900,"n":null,"v":{"2025":8,"2024":8,"2023":7,"2022":9,"2021":9,"2020":7,"2019":8,"2018":8,"2017":9,"2016":8,"2015":10,"2014":8,"2013":8,"2012":6,"2011":9,"2010":8,"2009":10,"2008":6,"2007":8,"2006":7,"2005":9,"2004":5,"2003":8,"2002":9,"2001":10,"2000":7,"1999":6,"1998":9,"1997":9,"1996":8,"1995":8,"1994":4,"1993":2,"1992":3,"1991":2,"1990":9,"1989":10,"1988":10,"1987":4,"1986":10,"1985":6,"1984":6,"1983":10,"1982":5,"1981":6,"1980":7,"1979":9,"1978":6,"1977":1,"1976":9,"1975":9,"1974":3,"1973":3,"1972":1,"1971":9,"1970":9,"1969":4,"1968":1,"1967":10,"1966":5,"1965":1,"1964":3,"1963":1,"1962":7,"1961":7,"1960":1,"1959":10,"1958":6,"1957":7,"1956":1,"1955":10,"1954":1,"1953":8,"1952":7,"1951":1,"1950":8,"1949":10,"1948":7,"1947":10,"1946":2,"1945":10,"1944":4,"1943":5,"1942":7,"1941":1,"1940":5,"1939":7,"1938":5,"1937":10,"1936":2,"1935":4,"1934":8,"1933":5,"1932":1,"1931":1,"1930":1,"1929":10,"1928":8,"1927":6,"1926":8,"1925":4,"1924":7,"1923":6,"1922":5,"1921":10,"1920":7,"1919":7,"1918":6,"1917":7,"1916":7,"1915":1,"1914":7,"1913":1,"1912":5,"1911":6,"1910":1,"1909":1,"1908":8,"1907":4,"1906":8,"1905":5,"1904":8,"1903":1,"1902":1,"1901":7,"1900":10,"1899":9,"1893":9,"1874":9,"1869":9,"1858":9,"1847":10,"1811":10}},{"id":"loire_w","g":"Loire","en":"Loire White","fr":"Loire Blanc","t":"w","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":5,"2023":7,"2022":8,"2021":7,"2020":8,"2019":8,"2018":8,"2017":8,"2016":8,"2015":8,"2014":9,"2013":5,"2012":6,"2011":6,"2010":9,"2009":8,"2008":8,"2007":8,"2006":6,"2005":10,"2004":7,"2003":7,"2002":9,"2001":6,"2000":6,"1999":6,"1998":6,"1997":7,"1996":9,"1995":8,"1994":6,"1993":5,"1992":4,"1991":7,"1990":8,"1989":10,"1988":8,"1987":6,"1986":7,"1985":8,"1984":2,"1983":5,"1982":7,"1981":6,"1980":4,"1979":5,"1978":8,"1977":3,"1976":9,"1975":7,"1974":3,"1973":7,"1972":1,"1971":8,"1970":7,"1969":8,"1968":1,"1967":5,"1966":7,"1965":1,"1964":7,"1963":1,"1962":7,"1961":7,"1960":1,"1959":10,"1958":4,"1957":5,"1956":1,"1955":7,"1954":1,"1953":9,"1952":7,"1951":1,"1950":6,"1949":7,"1948":4,"1947":10,"1946":4,"1945":10,"1944":1,"1943":5,"1942":3,"1941":1,"1940":3,"1939":2,"1938":4,"1937":7,"1936":4,"1935":7,"1934":7,"1933":8,"1932":1,"1931":1,"1930":1,"1929":9,"1928":8,"1927":1,"1926":5,"1925":1,"1924":6,"1923":9,"1922":1,"1921":10,"1920":3,"1919":9,"1918":3,"1917":4,"1916":3,"1915":4,"1914":6,"1913":1,"1912":1,"1911":10,"1910":1,"1909":1,"1908":1,"1907":1,"1906":9,"1905":5,"1904":5,"1903":2,"1902":2,"1901":4,"1900":7}},{"id":"loire_r","g":"Loire","en":"Loire Red","fr":"Loire Rouge","t":"r","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":5,"2023":7,"2022":8,"2021":6,"2020":8,"2019":9,"2018":9,"2017":8,"2016":8,"2015":8,"2014":9,"2013":7,"2012":5,"2011":6,"2010":8,"2009":9,"2008":7,"2007":7,"2006":8,"2005":8,"2004":7,"2003":7,"2002":9,"2001":6,"2000":7,"1999":7,"1998":6,"1997":7,"1996":9,"1995":8,"1994":6,"1993":5,"1992":4,"1991":7,"1990":8,"1989":10,"1988":8,"1987":6,"1986":7,"1985":8,"1984":2,"1983":5,"1982":7,"1981":6,"1980":4,"1979":5,"1978":7,"1977":3,"1976":9,"1975":7,"1974":3,"1973":7,"1972":1,"1971":8,"1970":7,"1969":7,"1968":1,"1967":5,"1966":7,"1965":1,"1964":7,"1963":1,"1962":7,"1961":7,"1960":1,"1959":10,"1958":4,"1957":5,"1956":1,"1955":7,"1954":1,"1953":9,"1952":7,"1951":1,"1950":6,"1949":7,"1948":4,"1947":10,"1946":4,"1945":10,"1944":1,"1943":5,"1942":3,"1941":1,"1940":3,"1939":2,"1938":4,"1937":7,"1936":4,"1935":7,"1934":7,"1933":8,"1932":1,"1931":1,"1930":1,"1929":9,"1928":8,"1927":1,"1926":5,"1925":1,"1924":6,"1923":9,"1922":1,"1921":10,"1920":3,"1919":9,"1918":3,"1917":4,"1916":3,"1915":4,"1914":6,"1913":1,"1912":1,"1911":10,"1910":1,"1909":1,"1908":1,"1907":1,"1906":9,"1905":5,"1904":5,"1903":2,"1902":2,"1901":4,"1900":7}},{"id":"loire_rs","g":"Loire","en":"Loire Rosé","fr":"Loire Rosé","t":"rs","c":"C","from":2010,"n":null,"v":{"2025":9,"2024":5,"2023":7,"2022":8,"2021":6,"2020":8,"2019":8,"2018":8,"2017":8,"2016":8,"2015":8,"2014":9,"2013":6,"2012":5,"2011":6,"2010":8}},{"id":"loire_s","g":"Loire","en":"Loire Sweet","fr":"Loire Liquoreux","t":"sw","c":"A","from":1900,"n":null,"v":{"2025":9,"2024":5,"2023":7,"2022":7,"2021":8,"2020":8,"2019":8,"2018":9,"2017":9,"2016":9,"2015":9,"2014":9,"2013":6,"2012":6,"2011":8,"2010":8,"2009":9,"2008":8,"2007":9,"2006":7,"2005":9,"2004":7,"2003":7,"2002":9,"2001":7,"2000":6,"1999":6,"1998":6,"1997":10,"1996":9,"1995":8,"1994":7,"1993":5,"1992":4,"1991":7,"1990":10,"1989":10,"1988":8,"1987":6,"1986":7,"1985":8,"1984":2,"1983":5,"1982":7,"1981":6,"1980":4,"1979":5,"1978":8,"1977":3,"1976":10,"1975":7,"1974":3,"1973":7,"1972":1,"1971":8,"1970":7,"1969":8,"1968":1,"1967":5,"1966":7,"1965":1,"1964":7,"1963":1,"1962":7,"1961":7,"1960":1,"1959":10,"1958":4,"1957":5,"1956":1,"1955":7,"1954":1,"1953":9,"1952":7,"1951":1,"1950":6,"1949":7,"1948":4,"1947":10,"1946":4,"1945":10,"1944":1,"1943":5,"1942":3,"1941":1,"1940":3,"1939":2,"1938":4,"1937":7,"1936":4,"1935":7,"1934":7,"1933":8,"1932":1,"1931":1,"1930":1,"1929":9,"1928":8,"1927":1,"1926":5,"1925":1,"1924":6,"1923":9,"1922":1,"1921":10,"1920":3,"1919":9,"1918":3,"1917":4,"1916":3,"1915":4,"1914":6,"1913":1,"1912":1,"1911":10,"1910":1,"1909":1,"1908":1,"1907":1,"1906":9,"1905":5,"1904":5,"1903":2,"1902":2,"1901":4,"1900":7}}],"notes":{"2025":["Early, hot and dry summer with a very early harvest; small crops, concentrated and promising wines in most regions.","Été précoce, chaud et sec, vendanges très précoces ; petits volumes, vins concentrés et prometteurs presque partout."],"2024":["Cold, wet, disease-ridden year across the north and Bordeaux: tiny crops and lighter wines. The dry south (except Roussillon) fared better.","Année froide, humide et malade au nord et à Bordeaux : récoltes minuscules, vins plus légers. Le Sud s'en sort mieux (sauf le Roussillon, très sec)."],"2023":["Large, warm vintage with a hot September; generous, charming wines, uneven where yields ran high.","Grand millésime chaud, septembre caniculaire ; vins généreux et charmeurs, inégaux là où les rendements furent élevés."],"2022":["Record heat and drought, yet balanced, deep wines: a great year for Bordeaux reds and much of France.","Chaleur et sécheresse record, mais des vins profonds et équilibrés : grande année pour les rouges de Bordeaux et une large part de la France."],"2021":["April frost, then a cool, wet summer and mildew: tiny volumes, fresh, lighter 'classic' wines. Best for whites and Sauternes.","Gel d'avril, été frais et humide, mildiou : volumes infimes, vins frais et plus légers. Réussite surtout en blanc et à Sauternes."],"2020":["Third warm year in a row, early harvest; ripe yet fresh wines of great quality in Bordeaux, Burgundy, Rhône and Champagne.","Troisième année chaude d'affilée, vendanges précoces ; vins mûrs et frais de grande qualité à Bordeaux, en Bourgogne, dans le Rhône et en Champagne."],"2019":["Hot, dry summer with cool nights; concentrated, balanced wines. Outstanding Northern Rhône and Bordeaux.","Été chaud et sec aux nuits fraîches ; vins concentrés et équilibrés. Rhône nord et Bordeaux remarquables."],"2018":["Wet spring (mildew) then a hot, sunny summer; generous, ripe, high-alcohol wines. Superb Champagne and Burgundy reds.","Printemps humide (mildiou) puis été chaud et ensoleillé ; vins généreux et mûrs. Champagne et rouges de Bourgogne superbes."],"2017":["Severe April frost in Bordeaux, Loire, Alsace and Champagne; good, fresh wines where untouched. Excellent white Burgundy and Sauternes.","Gel sévère d'avril à Bordeaux, en Loire, Alsace et Champagne ; vins frais et bons là où la vigne fut épargnée. Excellents blancs de Bourgogne et Sauternes."],"2016":["Frost in Burgundy and the Loire, then a dry summer; classic, age-worthy Bordeaux and a great Southern Rhône.","Gel en Bourgogne et en Loire, puis été sec ; Bordeaux classique et de garde, grand millésime en Rhône sud."],"2015":["Hot, sunny year: ripe, opulent wines everywhere; great Burgundy reds, Rhône, Alsace and Sauternes.","Année chaude et ensoleillée : vins mûrs et opulents partout ; grands rouges de Bourgogne, Rhône, Alsace et Sauternes."],"2014":["Cool summer rescued by a fine September; brilliant white Burgundy and Chablis, good Loire and Bordeaux.","Été frais sauvé par un beau mois de septembre ; blancs de Bourgogne et Chablis brillants, bonne Loire et bon Bordeaux."],"2013":["Late, cold, rot-plagued vintage; poor Bordeaux reds, good Sauternes and some fine Champagne and Alsace.","Millésime tardif, froid et pourri ; rouges de Bordeaux faibles, bons Sauternes, belles réussites en Champagne et en Alsace."],"2012":["Difficult flowering and small crops; lower volumes but great Champagne and fine Burgundy.","Floraison difficile et petites récoltes ; faibles volumes mais grande Champagne et belle Bourgogne."],"2011":["Very early, uneven year; best for Sauternes, Champagne blanc de blancs and Languedoc.","Année très précoce et hétérogène ; réussite surtout à Sauternes et en Languedoc."],"2010":["Cool, dry year with concentrated, structured wines: a great classic across France, especially Bordeaux, Burgundy and Rhône.","Année fraîche et sèche, vins concentrés et structurés : grand classique dans toute la France, surtout Bordeaux, Bourgogne et Rhône."],"2009":["Warm, sunny and generous; ripe, lush wines, superb Bordeaux, Burgundy reds, Loire reds and Sauternes.","Chaud, ensoleillé et généreux ; vins mûrs et pulpeux, superbes Bordeaux, rouges de Bourgogne, rouges de Loire et Sauternes."],"2008":["Cool and late; great Champagne and fine Chablis, lighter reds elsewhere.","Frais et tardif ; grande Champagne et beaux Chablis, rouges plus légers ailleurs."],"2007":["Wet summer saved by September; fine Alsace, Loire whites, Sauternes and Southern Rhône.","Été pluvieux sauvé par septembre ; belle Alsace, blancs de Loire, Sauternes et Rhône sud."],"2006":["Hot July, wet August; variable, best in the Rhône and for Burgundy whites.","Juillet caniculaire, août humide ; hétérogène, réussite surtout dans le Rhône et pour les blancs de Bourgogne."],"2005":["A great, balanced year almost everywhere: legendary Bordeaux, Burgundy and Loire, excellent Rhône.","Grande année équilibrée presque partout : Bordeaux, Bourgogne et Loire légendaires, Rhône excellent."],"2004":["Large crop, classic and fresh; good Champagne and white Burgundy.","Grosse récolte, style classique et frais ; bonne Champagne et beaux blancs de Bourgogne."],"2003":["The heatwave year: tiny crops, very ripe, low-acid wines; success in cooler sites and Northern Rhône.","L'année de la canicule : récoltes minuscules, vins très mûrs et peu acides ; réussites dans les sites frais et en Rhône nord."],"2002":["Great in Champagne, Burgundy and Loire; floods ruined the Southern Rhône.","Grande année en Champagne, en Bourgogne et en Loire ; les inondations ont ruiné le Rhône sud."],"2001":["Legendary Sauternes; fine Right Bank Bordeaux, Southern Rhône and Languedoc.","Sauternes légendaire ; beaux Bordeaux rive droite, Rhône sud et Languedoc."],"2000":["Millennium vintage: great Bordeaux reds and Southern Rhône.","Millésime du millénaire : grands rouges de Bordeaux et Rhône sud."],"1999":["Large crop; outstanding Northern Rhône and fine Burgundy reds.","Grosse récolte ; Rhône nord exceptionnel et beaux rouges de Bourgogne."],"1998":["Great Right Bank Bordeaux and Southern Rhône (Châteauneuf).","Grand Bordeaux rive droite et Rhône sud (Châteauneuf)."],"1997":["Soft, early-drinking reds; superb Sauternes and Loire sweet wines.","Rouges souples à boire jeunes ; superbes Sauternes et liquoreux de Loire."],"1996":["Cool, dry and classic: great Champagne, Burgundy, Loire and Médoc.","Frais, sec et classique : grande Champagne, Bourgogne, Loire et Médoc."],"1995":["First great year after four difficult ones; fine Bordeaux, Rhône and Loire.","Première grande année après quatre difficiles ; beaux Bordeaux, Rhône et Loire."],"1990":["Hot, sunny, generous: one of the great years of the century across France.","Chaud, ensoleillé et généreux : l'un des grands millésimes du siècle dans toute la France."],"1989":["Hot and early; superb Bordeaux, Rhône, Loire sweets and Alsace late harvests.","Chaud et précoce ; superbes Bordeaux, Rhône, liquoreux de Loire et vendanges tardives d'Alsace."],"1988":["Classic, firm vintage; great Sauternes and Northern Rhône.","Millésime classique et ferme ; grands Sauternes et Rhône nord."],"1985":["Charming, ripe year; great Burgundy, Champagne and Northern Rhône.","Année charmeuse et mûre ; grande Bourgogne, Champagne et Rhône nord."],"1982":["Hot year that made modern Bordeaux famous.","Année chaude qui a rendu célèbre le Bordeaux moderne."],"1978":["Late, saved by an Indian summer; magnificent Rhône and Burgundy.","Tardif, sauvé par un été indien ; Rhône et Bourgogne magnifiques."],"1976":["Drought year; great sweet wines (Loire, Alsace, Sauternes) and Champagne.","Année de sécheresse ; grands liquoreux (Loire, Alsace, Sauternes) et Champagne."],"1971":["Elegant, classic year; fine Burgundy, Champagne and Sauternes.","Année élégante et classique ; belle Bourgogne, Champagne et Sauternes."],"1961":["Tiny crop of immense quality: the great Bordeaux and Rhône of the post-war era.","Récolte minuscule d'immense qualité : le grand Bordeaux et Rhône de l'après-guerre."],"1959":["Hot, ripe 'vintage of the century' for many regions.","Chaud et mûr, « millésime du siècle » pour bien des régions."],"1955":["Classic, balanced year; great Sauternes and Champagne.","Année classique et équilibrée ; grands Sauternes et Champagne."],"1953":["Charming, supple year; great Bordeaux, Burgundy and Alsace.","Année charmeuse et souple ; grands Bordeaux, Bourgogne et Alsace."],"1949":["Elegant, great year across France.","Année élégante, grande dans toute la France."],"1947":["Torrid year of legendary, opulent wines (Cheval Blanc, Sauternes, Loire).","Année torride aux vins opulents et légendaires (Cheval Blanc, Sauternes, Loire)."],"1945":["Victory vintage: tiny, frost-reduced crop of extraordinary concentration.","Millésime de la Victoire : récolte réduite par le gel, d'une concentration extraordinaire."],"1937":["Great sweet wines; firm reds.","Grands liquoreux ; rouges fermes."],"1929":["Legendary everywhere: the greatest year between the wars.","Légendaire partout : le plus grand millésime de l'entre-deux-guerres."],"1928":["Powerful, long-lived tannic wines.","Vins puissants et tanniques, de très longue garde."],"1921":["Hot year; legendary sweet wines (Yquem, Vouvray) and Champagne.","Année chaude ; liquoreux légendaires (Yquem, Vouvray) et Champagne."],"1900":["Huge, excellent crop to close the century; great Bordeaux.","Récolte abondante et excellente pour clore le siècle ; grand Bordeaux."],"1893":["Precociously hot year, harvest in August; great across France.","Année précoce et chaude, vendanges en août ; grande dans toute la France."],"1870":["Great, very long-lived pre-phylloxera Bordeaux.","Grand Bordeaux pré-phylloxérique de très longue garde."],"1865":["Among the greatest pre-phylloxera vintages (Bordeaux, Burgundy).","Parmi les plus grands millésimes pré-phylloxériques (Bordeaux, Bourgogne)."],"1811":["The 'Comet vintage': legendary in Bordeaux (Yquem) and Champagne.","Le « millésime de la comète » : légendaire à Bordeaux (Yquem) et en Champagne."]},"fits":{"BBR":[0.636,-1.216,289],"ID":[0.499,-4.231,383],"WSG":[0.881,0.626,237],"WE":[0.229,-17.255,337],"GG":[0.836,0.836,409]}};
+var LANG = 'fr';
+try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+
+var GROUPS = [
+  ['Champagne','Champagne','Champagne'],['Alsace','Alsace','Alsace'],['Jura','Jura','Jura'],['Savoie','Savoie','Savoie'],
+  ['Bourgogne','Bourgogne','Burgundy'],['Rhône','Vallée du Rhône','Rhône Valley'],['Provence & Corse','Provence & Corse','Provence & Corsica'],
+  ['Languedoc','Languedoc','Languedoc'],['Roussillon','Roussillon','Roussillon'],['Sud-Ouest','Sud-Ouest','South West'],
+  ['Bordeaux','Bordeaux','Bordeaux'],['Loire','Vallée de la Loire','Loire Valley']
+];
+var TYPES = [['w','Blancs','Whites'],['r','Rouges','Reds'],['rs','Rosés','Rosés'],['sw','Doux & jaunes','Sweet & vin jaune'],['sp','Effervescents','Sparkling']];
+var WORDS = {5:['Exceptionnel','Exceptional'],4:['Excellent','Excellent'],3:['Bon','Good'],2:['Moyen','Average'],1:['Faible','Poor'],0:['Très faible','Very poor']};
+var PERIODS = [['2025–2000',2000,2025],['1999–1975',1975,1999],['1974–1950',1950,1974],['1949–1900',1900,1949],['pre',0,1899],['all',0,2025]];
+
+var st = {year:'', stars:'', mode:'ge', groups:{}, types:{}, period:0};
+var ROWS = DATA.rows;
+var YEARS = {};
+ROWS.forEach(function(r){ for(var y in r.v) YEARS[y]=1; });
+var yearList = Object.keys(YEARS).map(Number).sort(function(a,b){return b-a;});
+
+function t(fr,en){ return LANG==='en'?en:fr; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function word(h){ return WORDS[Math.floor(h/2)][LANG==='en'?1:0]; }
+function fmt(h){ var s = Math.floor(h/2), half = h%2; return (s||'') + (half?'½':'') || '½'; }
+function starsHtml(h){
+  var o='<span class="stars" aria-label="'+(h/2)+' / 5">';
+  for(var i=1;i<=5;i++){ var c = h>=2*i?'f':(h===2*i-1?'h':''); o+='<span class="st '+c+'">★</span>'; }
+  return o+'</span>';
+}
+function starsText(h){ var s=''; for(var i=1;i<=5;i++) s += h>=2*i?'★':(h===2*i-1?'½':''); return s; }
+function rname(r){ return LANG==='en'?r.en:r.fr; }
+function gname(g){ for(var i=0;i<GROUPS.length;i++) if(GROUPS[i][0]===g) return LANG==='en'?GROUPS[i][2]:GROUPS[i][1]; return g; }
+function dot(ty){ return '<span class="dot d-'+ty+'"></span>'; }
+function conf(c){ return '<span class="conf c-'+c+'" title="'+esc(t('Fiabilité ','Reliability ')+c)+'">'+c+'</span>'; }
+function anyOn(o){ for(var k in o) if(o[k]) return true; return false; }
+function visibleRows(){
+  var g = anyOn(st.groups), ty = anyOn(st.types);
+  return ROWS.filter(function(r){ return (!g||st.groups[r.g]) && (!ty||st.types[r.t]); });
+}
+function match(h){
+  if(st.stars==='') return true;
+  var s = +st.stars;
+  return st.mode==='eq' ? h===s : st.mode==='le' ? h<=s : h>=s;
+}
+
+/* ------------------------------------------------ controls */
+function buildControls(){
+  var sy = document.getElementById('selYear'), ss = document.getElementById('selStars'), sm = document.getElementById('selMode');
+  var o = '<option value="">'+t('Toutes les années','All years')+'</option>';
+  var pre = false;
+  yearList.forEach(function(y){
+    if(y<1900 && !pre){ pre=true; o+='<optgroup label="'+t('Avant 1900 — grands millésimes','Before 1900 — great vintages')+'">'; }
+    o+='<option value="'+y+'">'+y+'</option>';
+  });
+  if(pre) o+='</optgroup>';
+  sy.innerHTML = o; sy.value = st.year;
+  o = '<option value="">'+t('Toutes les notes','Any rating')+'</option>';
+  for(var h=10;h>=1;h--) o+='<option value="'+h+'">'+starsText(h)+'  ('+(h/2).toString().replace('.',LANG==='en'?'.':',')+')</option>';
+  ss.innerHTML = o; ss.value = st.stars;
+  sm.innerHTML = '<option value="ge">'+t('ou plus','or more')+'</option><option value="eq">'+t('exactement','exactly')+'</option><option value="le">'+t('ou moins','or less')+'</option>';
+  sm.value = st.mode; sm.disabled = st.stars==='';
+
+  var gc = '<span class="lbl">'+t('Régions','Regions')+'</span>';
+  GROUPS.forEach(function(g){ gc+='<button class="chip" type="button" data-g="'+esc(g[0])+'" aria-pressed="'+(!!st.groups[g[0]])+'">'+esc(LANG==='en'?g[2]:g[1])+'</button>'; });
+  document.getElementById('grpChips').innerHTML = gc;
+  var tc = '<span class="lbl">'+t('Types','Styles')+'</span>';
+  TYPES.forEach(function(x){ tc+='<button class="chip" type="button" data-t="'+x[0]+'" aria-pressed="'+(!!st.types[x[0]])+'">'+dot(x[0])+esc(LANG==='en'?x[2]:x[1])+'</button>'; });
+  document.getElementById('typeChips').innerHTML = tc;
+
+  var lg = '<span>'+t('Échelle','Scale')+'</span><span class="scale">';
+  for(var i=1;i<=10;i++) lg+='<i class="l'+i+'" title="'+starsText(i)+'"></i>';
+  lg += '</span><span>½ → ★★★★★</span>';
+  lg += '<span>★★★★★ '+t('exceptionnel','exceptional')+' · ★★★★ '+t('excellent','excellent')+' · ★★★ '+t('bon','good')+' · ★★ '+t('moyen','average')+' · ★ '+t('faible','poor')+'</span>';
+  document.getElementById('legend').innerHTML = lg;
+}
+
+/* ------------------------------------------------ views */
+function render(){
+  var out = document.getElementById('out');
+  var rows = visibleRows();
+  var html = '';
+  if(st.year) html = yearView(rows);
+  else {
+    if(st.stars!=='') html += starList(rows);
+    html += gridView(rows);
+  }
+  out.innerHTML = html;
+  writeHash();
+}
+
+function yearView(rows){
+  var y = +st.year, idx = yearList.indexOf(y);
+  var note = DATA.notes[y];
+  var h = '<div class="sec-head"><h2>'+t('Millésime','Vintage')+' '+y+'</h2></div>';
+  h += '<section class="panel yhead"><div class="ybig">'+y+'</div><div class="ynav">';
+  h += '<button class="chip" type="button" data-go="'+(yearList[idx+1]||'')+'"'+(yearList[idx+1]?'':' disabled')+'>← '+(yearList[idx+1]||'')+'</button>';
+  h += '<button class="chip" type="button" data-go="'+(yearList[idx-1]||'')+'"'+(idx>0?'':' disabled')+'>'+(yearList[idx-1]||'')+' →</button></div>';
+  h += note ? '<p class="ynote">'+esc(note[LANG==='en'?0:1])+'</p>' : '<p class="ynote none">'+t('Pas de résumé national pour cette année.','No France-wide summary for this year.')+'</p>';
+  h += '</section><div class="cards">';
+  var shown = 0;
+  GROUPS.forEach(function(g){
+    var rs = rows.filter(function(r){ return r.g===g[0]; });
+    if(!rs.length) return;
+    var lines = '';
+    rs.forEach(function(r){
+      var v = r.v[y];
+      if(v===undefined){ if(st.stars==='') lines += '<div class="line na">'+dot(r.t)+'<span class="nm">'+esc(rname(r))+'</span><span class="num">—</span></div>'; return; }
+      if(!match(v)) return;
+      shown++;
+      lines += '<div class="line" title="'+esc(word(v))+'">'+dot(r.t)+'<span class="nm">'+esc(rname(r))+'</span>'+starsHtml(v)+'<span class="num">'+fmt(v)+'</span></div>';
+    });
+    if(lines) h += '<section class="panel card"><h3>'+esc(gname(g[0]))+'</h3>'+lines+'</section>';
+  });
+  h += '</div>';
+  if(st.stars!=='' && !shown) h += '<div class="panel empty">'+t('Aucune catégorie ne correspond à cette note pour ce millésime.','No category matches this rating for this vintage.')+'</div>';
+  return h;
+}
+
+function starList(rows){
+  var total = 0, body = '';
+  rows.forEach(function(r){
+    var ys = Object.keys(r.v).map(Number).filter(function(y){ return match(r.v[y]); }).sort(function(a,b){return b-a;});
+    if(!ys.length) return;
+    total += ys.length;
+    body += '<div class="hit-row"><div class="nm">'+dot(r.t)+esc(rname(r))+'</div><div class="yrs">';
+    ys.forEach(function(y){ body += '<button class="yr l'+r.v[y]+'" type="button" data-go="'+y+'" title="'+esc(rname(r)+' '+y+' — '+starsText(r.v[y]))+'">'+y+'</button>'; });
+    body += '</div></div>';
+  });
+  var label = starsText(+st.stars)+' '+(st.mode==='ge'?t('ou plus','or more'):st.mode==='le'?t('ou moins','or less'):t('exactement','exactly'));
+  var h = '<div class="sec-head"><h2>'+esc(label)+'</h2><span class="n">'+total+' '+t('millésimes','vintages')+'</span></div>';
+  return h + (body ? '<section class="panel hits">'+body+'</section>' : '<div class="panel empty">'+t('Aucun résultat.','No results.')+'</div>');
+}
+
+function gridView(rows){
+  var p = PERIODS[st.period];
+  var ys = yearList.filter(function(y){ return y>=p[1] && y<=p[2]; });
+  if(p[0]==='pre') ys = ys.filter(function(y){ return rows.some(function(r){ return r.v[y]!==undefined; }); });
+  var h = '<div class="sec-head"><h2>'+t('Tableau','Chart')+'</h2><span class="n">'+t('cliquez sur une année pour le détail','click a year for details')+'</span></div>';
+  h += '<div class="periods">';
+  PERIODS.forEach(function(q,i){
+    var lab = q[0]==='pre'?t('Avant 1900','Before 1900'):q[0]==='all'?t('Tout','All'):q[0];
+    h += '<button class="chip" type="button" data-period="'+i+'" aria-pressed="'+(i===st.period)+'">'+lab+'</button>';
+  });
+  h += '</div>';
+  if(!rows.length) return h + '<div class="panel empty">'+t('Aucune catégorie sélectionnée.','No category selected.')+'</div>';
+  h += '<div class="panel grid-wrap"><table class="grid"><thead><tr><th class="corner">'+t('Région','Region')+'</th>';
+  ys.forEach(function(y){ h += '<th data-go="'+y+'" title="'+y+'">'+(p[0]==='all'||p[0]==='pre'?y:"'"+String(y).slice(2))+'</th>'; });
+  h += '</tr></thead><tbody>';
+  var last = null;
+  rows.forEach(function(r){
+    if(r.g!==last){ last=r.g; h += '<tr class="grp"><th colspan="1">'+esc(gname(r.g))+'</th><td colspan="'+ys.length+'"></td></tr>'; }
+    h += '<tr><th class="rn" title="'+esc(rname(r)+(r.n?' — '+r.n[LANG==='en'?0:1]:''))+'"><span class="in">'+dot(r.t)+conf(r.c)+'<span>'+esc(rname(r))+'</span></span></th>';
+    ys.forEach(function(y){
+      var v = r.v[y];
+      if(v===undefined){ h += '<td class="e"></td>'; return; }
+      var m = match(v);
+      h += '<td class="v l'+v+(m?(st.stars!==''?' hit':''):' off')+'" data-r="'+r.id+'" data-y="'+y+'">'+fmt(v)+'</td>';
+    });
+    h += '</tr>';
+  });
+  return h + '</tbody></table></div>';
+}
+
+/* ------------------------------------------------ events */
+document.addEventListener('change', function(e){
+  if(e.target.id==='selYear'){ st.year = e.target.value; render(); window.scrollTo({top:document.getElementById('out').offsetTop-140,behavior:'smooth'}); }
+  if(e.target.id==='selStars'){ st.stars = e.target.value; document.getElementById('selMode').disabled = st.stars===''; render(); }
+  if(e.target.id==='selMode'){ st.mode = e.target.value; render(); }
+});
+document.addEventListener('click', function(e){
+  var b = e.target.closest('[data-g],[data-t],[data-go],[data-period],#reset,#lang,td.v');
+  if(!b) return;
+  if(b.id==='lang'){ setLang(LANG==='fr'?'en':'fr'); return; }
+  if(b.id==='reset'){ st = {year:'',stars:'',mode:'ge',groups:{},types:{},period:st.period}; buildControls(); render(); return; }
+  if(b.hasAttribute('data-g')){ var g=b.getAttribute('data-g'); st.groups[g]=!st.groups[g]; b.setAttribute('aria-pressed',!!st.groups[g]); render(); return; }
+  if(b.hasAttribute('data-t')){ var ty=b.getAttribute('data-t'); st.types[ty]=!st.types[ty]; b.setAttribute('aria-pressed',!!st.types[ty]); render(); return; }
+  if(b.hasAttribute('data-period')){ st.period=+b.getAttribute('data-period'); render(); return; }
+  var y = b.getAttribute('data-go') || b.getAttribute('data-y');
+  if(y){ st.year = y; document.getElementById('selYear').value = y; render(); window.scrollTo({top:document.getElementById('out').offsetTop-140,behavior:'smooth'}); }
+});
+var tip = document.getElementById('tip');
+document.addEventListener('mouseover', function(e){
+  var c = e.target.closest('td.v');
+  if(!c){ tip.style.display='none'; return; }
+  var r = ROWS.filter(function(x){ return x.id===c.getAttribute('data-r'); })[0], y = c.getAttribute('data-y'), v = r.v[y];
+  tip.innerHTML = '<b>'+esc(rname(r))+' '+y+'</b><br>'+starsHtml(v)+' &nbsp;'+esc(word(v))+(r.n?'<br><span style="color:var(--faint)">'+esc(r.n[LANG==='en'?0:1])+'</span>':'');
+  tip.style.display='block';
+});
+document.addEventListener('mousemove', function(e){
+  if(tip.style.display!=='block') return;
+  var x = Math.min(e.clientX+14, window.innerWidth-tip.offsetWidth-10), y = e.clientY+16;
+  if(y+tip.offsetHeight>window.innerHeight) y = e.clientY-tip.offsetHeight-12;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+});
+
+function setLang(l){
+  LANG = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-fr]').forEach(function(n){ n.innerHTML = n.getAttribute('data-'+l); });
+  document.getElementById('lang').textContent = l==='fr'?'EN':'FR';
+  document.title = t('Millésimes de France','French Vintage Chart');
+  try{ localStorage.setItem('fw_lang', l); }catch(e){}
+  buildControls(); render();
+}
+
+function writeHash(){
+  var p=[]; if(st.year) p.push('y='+st.year); if(st.stars!=='') p.push('s='+(st.stars/2)+'&m='+st.mode);
+  try{ history.replaceState(null,'',p.length?'#'+p.join('&'):location.pathname+location.search); }catch(e){}
+}
+function readHash(){
+  location.hash.slice(1).split('&').forEach(function(kv){
+    var a=kv.split('='); if(a[0]==='y'&&YEARS[a[1]]) st.year=a[1];
+    if(a[0]==='s'&&+a[1]>=.5&&+a[1]<=5) st.stars=String(Math.round(a[1]*2));
+    if(a[0]==='m'&&/^(ge|eq|le)$/.test(a[1])) st.mode=a[1];
+    if(a[0]==='by'&&/^(year|region)$/.test(a[1])) FOCUS=a[1];
+    if(a[0]==='p'&&PERIODS[+a[1]]) st.period=+a[1];
+  });
+}
+var FOCUS='';
+function applyFocus(){
+  if(!FOCUS) return;
+  var el = FOCUS==='year' ? document.getElementById('selYear') : document.getElementById('grpChips');
+  var box = FOCUS==='year' ? el.closest('.field')||el : el;
+  box.scrollIntoView({block:'center'});
+  box.classList.add('pulse'); setTimeout(function(){ box.classList.remove('pulse'); }, 2600);
+  if(FOCUS==='year') el.focus();
+}
+
+var n=0; ROWS.forEach(function(r){ n+=Object.keys(r.v).length; });
+document.getElementById('st-r').textContent = ROWS.length;
+document.getElementById('st-y').textContent = yearList.length;
+document.getElementById('st-n').textContent = n.toLocaleString('fr-FR');
+readHash();
+setLang(LANG);
+applyFocus();
+})();
+</script>
+</body>
+</html>

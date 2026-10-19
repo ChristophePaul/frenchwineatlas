@@ -1,0 +1,329 @@
+@include champagne_common
+@h1 Published in the MASA Official Agriculture Bulletin (BO agri) on 7 August 2025
+@title Specification of the controlled designation of origin “CHAMPAGNE”
+@center approved by the order of 31 July 2025, published in the JORF of 5 August 2025
+# CHAPTER I
+## I. – Name of the designation
+Only wines meeting the provisions of the present specification, as well as the provisions of the law of 6 May 1919 on the protection of designations of origin, may claim the controlled designation of origin “Champagne”, initially recognised by the decree of 29 June 1936.
+## II. – Geographical denominations, indication of the vintage, complementary terms
+a) The wines may be presented with the indication of the vintage, subject to compliance with the production conditions set for vintage wines in the present specification.
+b) By virtue of local, fair and constant usages, the name of the appellation may be supplemented by the terms “grand cru” and “premier cru” for wines made from grapes harvested within the territory of the following communes of the Marne department: Ambonnay, Avize, Ay, Beaumont-sur-Vesle, Bouzy, Chouilly, Cramant, Louvois, Mailly-Champagne, Le Mesnil-sur-Oger, Oger, Oiry, Puisieulx, Sillery, Tours-sur-Marne, Verzenay and Verzy.
+c) By virtue of local, fair and constant usages, the name of the appellation may be supplemented by the term “premier cru” for wines made from grapes harvested within the territory of the following communes: Avenay-Val-d’Or, Bergères-lès-Vertus, Bezannes, Billy-le-Grand, Bisseuil, Chamery, Champillon, Chigny-lès-Roses, Coligny (Val-des-Marais), Cormontreuil, Coulommes-la-Montagne, Cuis, Cumières, Dizy, Ecueil, Etrechy, Grauves, Hautvillers, Jouy-lès-Reims, Ludes, Mareuil-sur-Ay, Les Mesneux, Montbré, Mutigny, Pargny-lès-Reims, Pierry, Rilly-la-Montagne, Sacy, Sermiers, Taissy, Tauxières, Trépail, Trois-Puits, Vaudemanges, Vertus, Villedommange, Villeneuve-Renneville, Villers-Allerand, Villers-aux-Nœuds, Villers-Marmery, Voipreux and Vrigny.
+## III. – Colour and types of product
+The controlled designation of origin “Champagne” is reserved for white or rosé sparkling wines.
+## IV. – Areas and zones in which the various operations are carried out
+The harvesting of the grapes, the vinification and the elaboration of the wines, including ageing and packaging, are carried out within the territories delimited by article 17 of the law of 6 May 1919, subject to the following provisions:
+@@CH_AREA
+## V. – Grape varieties
+@@CH_VARIETIES
+## VI. – Management of the vineyard
+### 1° – Training methods
+@@CH_DENSITY
+## VII. – Harvest, transport and ripeness of the grapes
+### 1° – Harvest
+a) The wines come from grapes harvested at good ripeness.
+The date of the start of the harvest is set in accordance with the provisions of Article D. 645-6 of the Rural and Maritime Fishing Code.
+A date for the end of picking is set by prefectoral order on the proposal of the services of the National Institute of Origin and Quality, after consulting the defence and management body.
+b) Particular harvesting provisions
+Any means that does not allow whole bunches of grapes to be harvested is prohibited.
+c) Particular provisions for transport of the harvest
+The grapes are transported whole to the pressing installations.
+The baskets, boxes and crates used to transport the grapes from the place of picking to the pressing installation have holes in the bottom and on all sides allowing rapid and complete drainage of the juice while awaiting pressing.
+### 2° – Ripeness of the grapes
+a) Sugar content of the grapes
+Grapes with a sugar content of less than 143 grams per litre of must may not be considered to be at good ripeness.
+b) Minimum natural alcoholic strength by volume
+The wines have a minimum natural alcoholic strength by volume of 9 %.
+## VIII. – Yields – Entry into production
+### 1° – Yield
+The yield referred to in Article D. 645-7 of the Rural and Maritime Fishing Code is set at 12,400 kilograms of grapes per hectare.
+### 2° – Limit yield
+The limit yield referred to in Article D. 645-7 of the Rural and Maritime Fishing Code is set at 15,500 kilograms of grapes per hectare.
+### 3° – Placing part of the harvest in reserve
+Where a reserve is created in application of article 167 of Regulation (EU) No 1308/2013 of 17 December 2013 establishing a common organisation of the markets in agricultural products, the maximum volume of base wines that an operator may place in reserve may not exceed 10,000 kilograms of grapes per hectare of area in production.
+Where grubbing-up for renewal is carried out, the area to be taken into account in determining the maximum volume of base wines that an operator may hold in reserve is the sum of the area in production and the area replanted or grubbed up, provided that replanting takes place at the latest during the second campaign following the grubbing-up.
+Any operator wishing to supply this reserve may request, for this purpose, to benefit individually from an increase in yield relative to the annual yield of the appellation set in application of 1 or 3 of a of II of Article D. 645-7 of the Rural and Maritime Fishing Code, within the limit of the limit yield mentioned in 2° of VIII of the present specification, provided that they can demonstrate qualitative control of their yields. The increase in yield granted individually to the operator falls, as the case may be, under 2° or 4° of a of II of Article D. 645-7 of the Rural and Maritime Fishing Code.
+The increase in yield allowing the reserve to be supplied is set annually, within the limit of the limit yield provided for by the present specification and in application of I of Article D. 645-7 of the Rural and Maritime Fishing Code. This individual increase in yield may not result in exceeding the maximum quantity that may be placed in reserve by the operator.
+Base wines placed in reserve may only claim the controlled designation of origin “Champagne” when they leave the reserve and after having been the subject of a claim declaration serving as a declaration of tirage in bottle.
+Base wines that have been placed in compulsory reserve may not be claimed with the indication of a vintage.
+Base wines placed in reserve are subject to quality monitoring.
+### 4° – Entry into production of the vines
+The benefit of the controlled designation of origin may only be granted to wines coming from parcels of young vines from the second year following that in the course of which planting was carried out in place before 31 July.
+### 5° – Particular provisions
+a) White wines and rosé wines obtained by direct pressing, without maceration or saignée
+The base wines intended for the elaboration of wines liable to benefit from the controlled designation of origin are obtained within the limit of a volume of 102 litres of settled must per 160 kilograms of grapes used. For a given harvest, taking particular account of its characteristics, an inter-ministerial order may reduce this volume.
+The lees resulting from pressing are extracted in a proportion of between 1 % and 4 % of the quantity of settled musts. They are eliminated in compliance with the provisions governing the elimination of by-products before 31 January of the year following the harvest.
+Musts intended for the elaboration of wines liable to benefit from the controlled designation of origin are settled before any exit from the pressing centre.
+b) Red wines and rosé wines made by maceration or saignée
+The base wines intended for the elaboration of wines liable to benefit from the controlled designation of origin are obtained within the limit of a volume of 102 litres of wine per 160 kilograms of grapes used. For a given harvest, taking particular account of its characteristics, an inter-ministerial order may reduce this volume.
+Press wines obtained at the end of pressing beyond the maximum authorised yield are treated as rebêches.
+c) Taking into account for the controlled designation of origin
+The wines are taken into account for the controlled designation of origin, at the latest when the harvest declaration is made, at the rate of 98.5 % of their volume.
+d) Rate of rebêches
+The rate of rebêches referred to in Article D. 645-16 of the Rural and Maritime Fishing Code is a minimum extraction of between 0 % and 10 % of the quantity of settled musts eligible for the controlled designation of origin. These rebêches are sent to a distillery before 15 December of the year following that of the harvest. However, they may be used to obtain a liqueur within the geographical area of the controlled designation of origin “Champagne”.
+## IX. – Processing, elaboration, ageing, packaging, storage
+### 1° – General provisions
+The wines are vinified in accordance with local, fair and constant usages.
+a) Every operator makes a qualitative selection among all the volumes of wine they hold that have been elaborated according to the provisions set for the controlled designation of origin “Champagne”.
+b) Growers or producers entitled to give their sparkling wines the designation of origin “Champagne” must store, handle and fully process their harvests and their wines, including the volumes produced in excess of the authorised annual yield and, for growers, the rebêche wines, in separate premises with no communication other than by the public highway with any premises containing harvests or wines to which the rules relating to the controlled designations of origin “Champagne”, “Coteaux champenois” or “Rosé des Riceys” do not apply.
+c) Reception
+Weighing of the grapes is compulsory at the place of pressing and vatting.
+d) Pressing of white wines and of rosé wines obtained by direct pressing, without maceration or saignée
+The grapes are poured whole into the press.
+The pressing installations allow the musts to be fractionated in accordance with Champagne usages.
+Every pressing installation must hold a simple or qualitative approval, depending on compliance with the rules relating to each of these approvals (tables 1 to 5).
+Every new pressing centre must hold an approval corresponding to compliance with the rules relating to qualitative approval.
+Any modification, extension or transfer entails a new approval of the installation, at the latest before the harvest following the change, in order to verify its compliance with the rules of simple or qualitative approval.
+Every newly installed press meets the rules relating to qualitative approval.
+However, the use of presses meeting the rules relating to simple approval is authorised for four successive harvests when an existing pressing centre equipped with such presses changes location. Beyond this period, the pressing centre must be equipped with presses on the list of presses meeting the rules relating to qualitative approval.
+Any prototype pressing equipment (presses, control consoles, sulphiting systems, pumping systems…) is subject to a probationary period to ensure that it meets the requirements of the approval.
+The level of approval is obtained by compliance with the rules relating to:
+- presses (table 1);
+- loading of the presses (table 2);
+- fractionation and settling (tables 3, 3.1 and 3.2);
+- hygiene (table 4);
+- wine effluents (table 5).
+In these tables, the elements given in italics and in brackets are recommendations.
+#### Table 1: Rules relating to presses
+| CRITERIA | RULES TO BE COMPLIED WITH for simple approval | RULES TO BE COMPLIED WITH for qualitative approval |
+| Siting of the press(es) | Covered premises | Covered premises |
+| Capacity of the press(es) in relation to the annual quantity of harvest pressed (on the basis of the actual number of harvest days claimed in the press register) | 5 cycles per day per press on average (6 if operating 24 hours a day) | 4 cycles per day per press on average (6 if operating 24 hours a day) |
+| Number of press loads per day not to be exceeded | 6 cycles maximum per 24 hours of operation per press | 6 cycles maximum per 24 hours of operation per press |
+| Individual size of the press(es) | 2,000 kilograms to 12,000 kilograms (with 2,000 kilograms = 3.5 cubic metres minimum). No 12,000-kilogram press operating alone | 2,000 kilograms to 12,000 kilograms (with 2,000 kilograms = 3.5 cubic metres minimum). No 2,000-kilogram press operating alone if more than 80,000 kilograms of harvest are pressed per year. No 12,000-kilogram press operating alone |
+| Type | Any press listed for simple approval | Any press listed for qualitative approval |
+| Operation of the press | No particular provision | Automatic control console (except for traditional presses) |
+| Visibility of the level drained from the pressing station | Compulsory | Compulsory |
+#### Table 2: Rules relating to loading of the presses
+| CRITERIA | RULES TO BE COMPLIED WITH for simple approval | RULES TO BE COMPLIED WITH for qualitative approval |
+| Suitable weighing device | Compulsory *(Maintenance contract)* | Compulsory *(Maintenance contract)* |
+| Storage area | Must be covered *(No stacking of pallets)* *(Area equivalent to half the average daily production)* | Must be covered *(No stacking of pallets)* *(Area equivalent to half the average daily production)* |
+| Drop height of the grapes | 2 metres maximum above the press *(As low as possible)* | 1 metre maximum above the press, except in the case of loading from under a slab for presses existing on 1 January 2013, within the limit of 2 metres *(As low as possible)* |
+| Grape belts | Prohibited | Prohibited |
+| Quantity of grapes | A press is loaded in a single operation with the quantity of grapes corresponding to its approved capacity. Loading with a smaller quantity is exceptional | A press is loaded in a single operation with the quantity of grapes corresponding to its approved capacity. Loading with a smaller quantity is exceptional |
+#### Table 3: Rules relating to fractionation and settling
+| CRITERIA | RULES TO BE COMPLIED WITH for simple approval | RULES TO BE COMPLIED WITH for qualitative approval |
+| Fractionation and sulphiting of the juices (see tables 3.1 and 3.2) | Every press has its own device for fractionating and sulphiting the musts, adapted to the approved capacity of the press *(3 measuring receptacles under each press)* | Every press has its own device for fractionating and sulphiting the musts, adapted to the approved capacity of the press *(3 measuring receptacles under each press)* |
+| Device for identifying the volume of juice at fractionation | Compulsory | Compulsory |
+| Number of settling vats per fraction and in relation to the average daily pressing capacity | At least the average daily number of cycles + 1 | At least the average daily number of cycles + 1 *(and more)* |
+| Individual capacity per vat in relation to the total pressing capacity in hectolitres of cuvée | 2 times maximum (200 hl maximum) | 1 time (200 hl maximum) |
+| Nature of the vats | Except bare iron and non-food-grade plastic. Minimum racking device (decanting elbow) | Except bare iron and non-food-grade plastic *(Except bare cement and plastic)* *(Closed vats)*. Minimum racking device (decanting elbow) |
+| Identification of the volume of each vat | Compulsory | Compulsory *(Level marking)* |
+| Transfer of the musts (from the press to the tanker or to the fermentation vats) | No particular provision | 2 pumpings maximum (3 if settled musts are blended) |
+| Accessibility of the settling vats for must transport tankers | No particular provision | *(4 press loads minimum)* |
+| Average distance between the settling vats and the transport tanker | No particular provision | *(25 metres maximum)* |
+#### Table 3.1: Definition of the approval level of the fractionation–sulphiting pair where the musts are sent to belons or to the settling vats by gravity
+| NUMBER AND VOLUME(S) of the fractionation belons | NATURE OF SULPHITING | TRANSFER OF THE MUSTS to the settling vat | ASSESSMENT of the fractionation |
+| **Case of dispatch to belons** | < | < | < |
+| 3 belons: – cuvée – taille or fraction of taille – taille or fraction of taille; 2 belons: – cuvée – taille; 2 belons: – ½ cuvée – ½ cuvée | Manual sulphiting, continuous, adjusted or not to the flow rate of the juice | By gravity or by pumping after filling of the fractionation belons | Qualitative approval |
+| 2 belons of respective volumes of taille | Manual sulphiting, continuous, adjusted or not to the flow rate of the juice | By gravity or by pumping after filling of the fractionation belons | Simple approval |
+| **Case of direct dispatch to settling vats** | < | < | < |
+| Direct dispatch to settling vats | Open vat with possible homogenisation: manual sulphiting, continuous, adjusted or not to the flow rate of the juice. Closed vat: continuous sulphiting adjusted or not to the flow rate of the juice | By gravity | Qualitative approval |
+| Direct dispatch to settling vats | Manual sulphiting | By gravity into a closed settling vat | Simple approval (for any installation before 1 January 2013) |
+| Direct dispatch to a settling vat of one fraction and dispatch to 1 or 2 belons for the other fraction | Refer to the previous cases | < | Decision according to the least favourable case |
+#### Table 3.2: Definition of the approval level of the fractionation–sulphiting pair where the musts are sent to settling vats by automatic pumping
+| VOLUME of the measuring belon | POSITION of sulphiting | NATURE OF SULPHITING | TRANSFER OF THE MUSTS to the settling vat | ASSESSMENT of the fractionation |
+| **Case of one press equipped with automatic pumping** | < | < | < | < |
+| Useful volume less than 50 litres. The useful volume of the fractionation belon corresponds to the maximum volume collected between two starts of the pump; it is related to a pressing of 4,000 kilograms, i.e. approximately 50 litres | At the press outlet or in the measuring belon | Continuous sulphiting adjusted to the flow rate of the juice | Automatic pumping with qualitative approval | Qualitative approval reserved for cases where gravity flow is impossible |
+| (same) | (same) | Continuous sulphiting not adjusted to the flow rate of the juice | Automatic pumping | Simple approval |
+| **Case of two presses each equipped with automatic pumping, sending to the same settling vat** | < | < | < | < |
+| Useful volume less than 50 litres. The useful volume of the fractionation belon corresponds to the maximum volume collected between two starts of the pump; it is related to a pressing of 4,000 kilograms, i.e. approximately 50 litres | At the press outlet or in the measuring belon | Continuous sulphiting adjusted to the flow rate of the juice | Automatic pumping with qualitative approval | Simple approval |
+#### Table 4: Rules relating to hygiene
+| CRITERIA | RULES TO BE COMPLIED WITH for simple approval | RULES TO BE COMPLIED WITH for qualitative approval |
+| Storage and pressing area | Impermeable surface; bare ground prohibited | Impermeable surface; bare ground prohibited |
+| Cleaning possible (water point minimum): | < | < |
+| – of the press | Compulsory | Compulsory |
+| – of the floor | Compulsory | Compulsory |
+| – of the fractionation vats | Compulsory | Compulsory |
+| – of the settling vats | Compulsory | Compulsory |
+| – of the harvest crates | Compulsory | Crate washer compulsory |
+| Good state of upkeep and cleanliness of the premises and equipment | Compulsory | Compulsory |
+#### Table 5: Rules relating to wine effluents
+| CRITERIA | RULES TO BE COMPLIED WITH for simple approval | RULES TO BE COMPLIED WITH for qualitative approval |
+| The operator demonstrates that wine effluents are dealt with | Compulsory | Compulsory |
+e) Analytical standards
+After prise de mousse, the wines have a fermentable sugar content (glucose and fructose) less than or equal to 10 grams per litre.
+f) Oenological practices and physical treatments
+The use of pieces of wood is prohibited.
+After enrichment, the wines do not exceed, after prise de mousse, a total alcoholic strength by volume of 13 %.
+The increase in the volume of fermenting must used may not exceed 1.12 % for each 1 % increase in the alcoholic strength by volume during the enrichment operation.
+Excess volumes are destroyed by being sent for industrial uses before 15 December of the year following that of the harvest, in accordance with the provisions of Article D. 645-14 of the Rural and Maritime Fishing Code.
+g) Upkeep of the cellar and equipment
+The cellar (floor and walls) and the vinification equipment are in a good general state of upkeep.
+h) Volumes resulting from particular technical requirements
+Volumes resulting from particular technical requirements, possibly generated before tirage, are entered in the cellar register, within the limit of 1 % of the volumes used, at the end of the vinification operations for all the vats and at the latest on 31 July of the year following that of the harvest. These volumes are destroyed by being sent for industrial uses before 15 December of the year following that of the harvest. In the event of a check before the end of the vinification operations, these volumes are justified by any means.
+### 2° – Provisions by type of product
+a) Rosé wines are elaborated either from base wines obtained by direct pressing or by maceration or saignée, or by blending white and red wines before tirage.
+b) The wines are elaborated exclusively by second fermentation in glass bottles.
+c) The wines come from one or more varieties. They may not come solely from the variety “of interest for adaptation purposes”. The proportion of the main variety or varieties is greater than or equal to 90 % of the blend. The proportion of the variety “of interest for adaptation purposes” is less than or equal to 10 % of the blend.
+d) Tirage in the bottles in which the prise de mousse takes place may only take place from 1 January of the year following that of the harvest.
+The blend is prepared from grape must, wine, or a mixture of grape must and/or wines of different characteristics. The increase in the volume of wine and, where applicable, of must may not exceed 1.12 % for each 1 % increase in the alcoholic strength by volume, after addition of the liqueur de tirage.
+Volumes resulting from particular technical requirements at the tirage stage may not exceed 1 % of the volumes used.
+e) The elimination of the by-products of the fermentation in bottle intended to make the wine sparkling is carried out by disgorging.
+Disgorging may not be carried out before a period of twelve months from the date of tirage, during which the wines must remain in bottle without interruption.
+f) The addition of liqueur d’expédition may not increase the volume of wine by a percentage greater than the sum of the increase in alcoholic strength by volume expressed as a percentage (A) multiplied by a coefficient of 1.266 and the increase in sugar content expressed in grams per litre (S) multiplied by a coefficient of 0.0666:
+V (%) = (1.266 × A) + (0.0666 × S)
+Excess volumes are destroyed by being sent for industrial uses before 15 December of the year following that of the disgorging of the lots concerned.
+g) The elaboration of the wines entails the elimination, in compliance with the provisions governing the elimination of by-products, before 31 July of the year following that of the harvest, of the by-products of vinification at the rate of 1.5 % of the settled musts.
+The by-products of disgorging, at the rate of 0.50 % of the volume of wine in bottles to be disgorged, are eliminated in compliance with the provisions governing the elimination of by-products before 31 July of the year following that of the disgorging.
+h) The wines may be presented with the indication of the vintage (vintage wines) if the grapes used for the elaboration of the base wines are grapes of the year concerned, with the exception of the volumes of wine or grape must used in the context of authorised oenological practices and treatments and of the products contained in the liqueur de tirage or in the liqueur d’expédition.
+In order to ensure qualitative selection among the volumes from a given vintage while maintaining a sufficient volume of wines to ensure blending and the building-up of reserve wines, which are indispensable to the quality of Champagne wines, the volumes of wine presented with the indication of the vintage (vintage wines) are less than or equal to 80 % of the volumes of wine of the year concerned bought or produced by the operator.
+### 3° – Provisions relating to packaging
+a) The wines are elaborated and sold in the bottle inside which the prise de mousse took place, with the exception of wines sold in bottles with a volume of less than 75 centilitres or more than 150 centilitres, which may be decanted (transvasement).
+Decanting of wine after prise de mousse is authorised within the delimited area into bottles with a volume of less than 75 centilitres or more than 150 centilitres. Every decanting installation must meet the following obligations:
+− The installation must have an isobaric system allowing the wines to be decanted under counter-pressure. The operator holds a food-contact certificate for the counter-pressure gas(es).
+− The installation implements the tools necessary for the traceability of the operations.
+− The installation must include one or more cooling devices allowing the wines to be filled into the final container at a temperature less than or equal to 5 °C.
+b) The wines are elaborated and sold in bottles bought new. The other closure supplies, or supplies intended for elaboration, are new.
+c) For every packaged lot, the operator keeps available for the approved control body:
+– the information appearing in the register of handling operations referred to in Article D. 645-18 of the Rural and Maritime Fishing Code;
+– an analysis carried out after tirage and prise de mousse.
+The analysis reports are kept for a period of sixty months from the date of packaging.
+### 4° – Provisions relating to storage
+The operator provides evidence of a specific place for the storage of packaged products.
+### 5° – Provisions relating to the circulation of products and placing on the market for the consumer
+a) Date of placing on the market for the consumer
+The wines are only placed on the market for the consumer after an ageing period of at least fifteen months from the date of tirage in bottle.
+Wines liable to be presented with the indication of the vintage (vintage wines) are only placed on the market for the consumer after an ageing period of at least thirty-six months from the date of tirage in bottle.
+Where a “remise en cercle” (return of bottled lots to bulk) is carried out by an operator, the minimum ageing period is determined from the date of the new tirage in bottle.
+b) Circulation with an accompanying document
+Grapes and all products intended for the elaboration of a wine of the controlled designation of origin may only circulate with an accompanying document bearing the name of the controlled designation of origin from a commune belonging to the geographical area defined in IV of the present specification to another commune belonging to that same area, in application of article 466 of the General Tax Code.
+## X. – Link with the geographical area
+### 1° – Information on the geographical area
+a) Description of the natural factors contributing to the link
+The geographical area is situated in the north-east of French territory and extends over communes spread across the departments of the Aisne, Aube, Haute-Marne, Marne and Seine-et-Marne.
+The parcels, precisely delimited for the harvesting of the grapes, form part of a landscape characterised by a hillside vineyard lying on the cuestas of the eastern Paris Basin, imposing geomorphological structures:
+– the Côte d’Île-de-France in the Marne, together with the slopes of the associated valleys, grouping from north to south the Montagne de Reims, the Marne valley (which extends into the south of the Aisne and as far as Seine-et-Marne), the Côte des Blancs and the Côte du Sézannais for the most emblematic sectors;
+– the Côte de Champagne, with the Marne Vitryat and the Aube sector of Montgueux;
+– the Côte des Bar, cut by many valleys, bringing together the Bar-sur-Aubois to the east and the Barséquanais to the west, in the Aube and Haute-Marne.
+This typical cuesta relief, with its adjacent valleys, presents hillsides facing east and south, sometimes north, as for the northern Montagne de Reims and the left bank of the Marne valley. The scarp crests are made up of hard layers of limestone or chalk. The slopes of the hillsides are chalky, marly or sandy, softer, cleared by erosion and then covered with colluvial deposits coming from the overlying scarp crests.
+The Champagne vineyard is situated in a northern zone. It is subject to a double climatic influence:
+– oceanic, bringing water in regular quantities with slight temperature contrasts from one season to the next;
+– continental, responsible for sometimes destructive frosts and favourable sunshine in summer.
+b) Description of the human factors contributing to the link
+Going back to Antiquity, the vine was well established in Champagne by the 9th century, following the development of monastic viticulture.
+The particularity of naturally sparkling white wine and of the prise de mousse was experimented with at the end of the 17th century. At the end of the 19th century, Weinmann, a renowned oenologist, observed that Champagne wine is eminently fermentable. The wines of Champagne accomplish the work of prise de mousse much more easily, more regularly and better than any other ferment.
+The first references to this wine, nicknamed “saute-bouchon” (cork-popper), appear in the poems of the Abbé Chaulieu in 1700. The method was however set out for the first time in 1718 by Canon Godinot, presumed author of “Manière de cultiver la vigne et de faire le vin de Champagne (…)”, who stated that these white wines, which must be “clear as tears (…), are made with black grapes. When the grapes are cut, the sooner they are pressed, the whiter the wine”.
+Thus the wine-growers strive to preserve the integrity of the grapes at harvest, to take great care over their transport and storage and to bring them intact to the press. Pressing must be gentle and progressive, with fractionation of the juices (cuvée and taille), which are vinified separately. The pressing centres therefore meet strict rules and are subject to rigorously controlled authorisation.
+A precise know-how developed in the abbeys; in 1866 Jules Guyot noted the importance of blending grapes from different varieties or different parcels. From the beginning of the 20th century, three varieties were selected for their qualities of sugar/acidity balance and their good aptitude for prise de mousse: pinot noir N, chardonnay B and meunier N.
+The producer builds the blends by tasting the different base wines obtained. The blended base wines are bottled for the prise de mousse and ageing on lees, which is necessarily long, particularly for vintage wines. The chalky Champagne cellars, which combine ideal natural conditions of temperature and humidity, have favoured the development of this prise de mousse stage.
+Once ageing on lees is complete comes the stage of riddling, to slide the lees slowly into the neck of the bottle, then disgorging, the operation of removing the lees present in the bottle. After disgorging, the liqueur d’expédition is added, which helps to define several types of Champagne wines.
+Once prise de mousse by second fermentation in bottle had been mastered, the “méthode champenoise” was exported and very soon the name “Champagne” was being used outside the limits of the production region. From 1882, legal actions were undertaken by the Champagne houses, which united in a syndical association (the Union des maisons de Champagne), and on the eve of the law of 1 August 1905 on frauds and falsifications, case law recognised that the name “Champagne” is reserved for wines elaborated from grapes harvested in Champagne, thus enshrining, for the first time, the protection of a designation of origin. Work on delimiting the geographical area began in 1908.
+The people of Champagne show solidarity, which they put into practice through major professional organisations. The houses and the wine-growers joined forces very early to fight phylloxera, which led to the founding of the Association Viticole Champenoise in 1898. The Syndicat Général des Vignerons de la Champagne (created in 1904) and the Union des Maisons de Champagne (created in 1882) come together within the Comité Interprofessionnel du Vin de Champagne, created by the law of 12 April 1941.
+### 2° – Information on the quality and characteristics of the product
+The wines may be white (from a blend of white and black grapes, from white grapes only [blanc de blancs], or from black grapes only [blanc de noirs]) or rosé (obtained by blending or by saignée), elaborated from grapes from one or more communes. They may or may not be vintage wines.
+All the wines have one thing in common: their acidity, guaranteeing their freshness and their aptitude for ageing.
+The youngest wines show notes of great freshness: white flowers and fruit, citrus, mineral notes. Mature wines offer a palette of rounder aromas: yellow fruit, cooked fruit, spices. The so-called “plenitude” wines, the most evolved, reveal deep tertiary aromas: candied fruit, undergrowth, roasted notes.
+The effervescence, the identity mark of Champagne, is sustained and persistent in young wines. With age it diminishes, becoming more delicate and creamier.
+### 3° – Causal interactions
+The wide opening of the landscape of the three cuestas onto the plain and the valleys guarantees the vineyards sufficient light for the ripening of the berries, even for north-facing exposures. This open landscape moreover prevents the stagnation of cold air and so reduces the risk of frost.
+The slope of the wine-growing hillsides ensures optimal natural drainage, also guaranteed by the different substrata, which allow natural water regulation of the vine. Chalk, through its porosity and permeability, eliminates excess water while ensuring rehydration of the soil in dry weather by capillary rise. The other subsoils combine marly levels, which provide the water reserve, with either limestone beds or carbonated sands, which allow the infiltration of excess water during wet periods.
+This nature of the subsoil and the delicate climatic conditions have guided the establishment of the varieties in the different regions of the vineyard.
+The unique climatic situation of Champagne gives the grapes, and then the musts, a natural acidity ideal for the elaboration of great sparkling wines. Indeed, the balance between this acidity – an indispensable guarantee of freshness – and the level of ripeness of the grapes produces the best vintages and ensures good ageing potential.
+A veritable mosaic, the diversity of natural factors is exploited at parcel level by the wine-grower, who masters all the cultivation practices to express the specific character of the grapes.
+Preservation of the integrity of the grapes from harvest onwards, gentle pressing and fractionation of the juices avoid their colouring and thus guarantee their clarity, indispensable to the quality of the mousse. Fractionation also brings additional aromatic complexity. The “cuvée”, rich in acidity, gives fresh, lively aromas; using it in blends allows the tertiary aromas that develop during maturation on lees to be fully revealed. The “taille” is fruitier and has greater tannic richness. Reserve wines (except for vintage wines), from previous harvests, bring to the blend the riper characters of evolved wines.
+The talent of the producer, selecting the wines for the desired blend, is expressed throughout the maturation on lees that gives birth to champagne. For wines of great constitution, this continuous maturation process may continue for several decades in the Champagne cellars, whose relative coolness guarantees a good prise de mousse.
+This great technical skill in the elaboration of champagne requires particular and costly infrastructure. The elaboration, handling and packaging sites are located in communes close to the vineyards.
+The existence of the Champagne vineyard goes back to the beginning of our era, but champagne acquired its prestige notably in the 17th century, with the progressive mastery of prise de mousse by second fermentation in bottle. At the end of that same century, Champagne producers packaged their wines in bottles rather than transporting them in barrels, in order to preserve all their quality and characteristics. The mousse and fine bubbles enclosed in the flasks were revealed in the glass, and the wine’s success was immediate.
+Young nobles, eager for novelty, celebrated it, poets sang its praises, writers gave it a place in their works. It became the favourite of the court of the Regent, of Louis XV and of Madame de Pompadour. Financiers and administrators imitated the nobles, the provinces copied the capital. Under Louis XV and Louis XVI, the wine industry became very prosperous and the reputation of champagne grew considerably in France and abroad. Sparkling wine was in vogue wherever it was fashionable to follow French fashion, and throughout 18th-century Europe champagne adorned celebrations and suppers. This renown endures today.
+The wine-growers, the cooperatives and the Champagne houses continue their efforts by improving the collective rules to promote the controlled designation of origin “Champagne”, their common heritage, towards excellence, and strive to ensure respect for its name and its personality.
+## XI. – Transitional measures
+### 1° – Training method
+Vine parcels in place on 17 January 1978 that do not comply with the provisions relating to planting density continue to benefit, for their harvest, from the right to the controlled designation of origin until they are grubbed up, provided that the trellising and foliage height rules set out in the present specification are complied with.
+## XII. – Rules of presentation and labelling
+a) Wines for which, under the terms of the present specification, the controlled designation of origin “Champagne” is claimed and which are presented under the said appellation may not be offered to the public, dispatched, put up for sale or sold unless, in advertisements, on leaflets, labels, invoices, any containers whatsoever, cases or packaging, the aforesaid controlled designation of origin is entered.
+b) The labelling of wines benefiting from the controlled designation of origin may specify the names of only the following smaller geographical units, under the conditions below:
+- a registered cadastral lieu-dit;
+- a commune.
+The lieu-dit or commune name claimed appears on the harvest declaration. All the grapes used for the elaboration of the base wines come from the commune or lieu-dit concerned.
+The name of the commune may be associated with “Premier Cru” and “Grand Cru” under the conditions set out in Chapter I, II – Geographical denominations, indication of the vintage, complementary terms, b and c of the present specification. Outside the communes concerned above, the name of the commune must be associated with the term “Vigne de” or “Vignoble de”.
+The name of a commune or of a registered cadastral lieu-dit must be printed in characters whose dimensions, in both height and width, may not exceed the size of the characters composing the name of the controlled designation of origin.
+The labelling of the name of the commune, according to the conditions set out above, may be supplemented by repeating the name of the commune in the name of the cuvée.
+c) The grape variety may be indicated in characters whose dimensions, both in height and in width, are not greater than 3 millimetres and half the size of the characters composing the name of the controlled designation of origin. The indication of a variety is only possible if all the grapes used for the elaboration of the base wines come from that variety, with the exception of the volumes of wine or grape must used in the context of authorised oenological practices and treatments and of the products contained in the liqueur de tirage or in the liqueur d’expédition.
+d) Where the vintage is indicated, it appears on the cork or, in the case of a nominal content of 0.20 litre or less, on another appropriate closure device, and on the labelling. The indication of the vintage also appears on invoices and accompanying documents.
+e) The bottles containing the wines are closed with a cork bearing the name of the controlled designation of origin on the part contained in the neck of the bottle or, in the case of a bottle with a nominal content of 0.20 litre or less, on another internal part of the appropriate closure device.
+f) The name of the producer (élaborateur), which appears on the labelling in full, clearly and legibly, is supplemented by the name of the commune of elaboration where the producer’s head office is situated outside the area referred to in point IV of the present specification.
+g) No bottle may circulate, except between two sites of the same operator or between two operators, unless finished, dressed and bearing labelling that complies with the regulations in force.
+h) Labelling and commercial documents bear the registration numbers prescribed by the Comité interprofessionnel du Vin de Champagne enabling the operators to be identified.
+# CHAPTER II
+## I. – Declaration obligations
+### 1° – Declaration of adaptation of planting density under the particular provisions
+Every operator adapting the planting density of a parcel under the particular planting provisions must lodge a declaration with the defence and management body at the latest within 48 hours following the end of the works. For each parcel concerned, the declaration specifies in particular:
+- the cadastral references and the commune;
+- the area.
+### 2° – Declaration of parcel development
+Before any development or any works liable to modify the morphology, the subsoil or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin, with the exception of classic deep-ploughing works, the operator sends a declaration to the ODG at least six weeks before the planned start date of the works. The ODG transmits a copy of this declaration to the INAO services without delay.
+### 3° – Declaration of intention of tirage
+The declaration of intention of tirage is sent to the approved control body and to the local services of the DGDDI (customs) at least forty-eight hours before the start of the operation. It indicates in particular:
+– the designation claimed and any particular claims (indication of the vintage, colour, terms, indication of a lieu-dit name…);
+– the estimated volume of wine to be used;
+– the estimated volume of sugar to be used;
+– the total volume to be drawn off;
+– the date of tirage;
+– the place of tirage;
+– the EVV number;
+– the name and address of the applicant.
+In addition, in the case of the elaboration of rosé wines by blending red and white wines before tirage:
+– the estimated volume of red wine to be used;
+– the estimated volume of white wine to be used.
+### 4° – Claim declaration
+The claim declaration, serving as the tirage declaration, is sent to the approved control body and to the local services of the DGDDI immediately after the end of the tirage operations. It indicates in particular:
+– the designation claimed and any particular claims (indication of the vintage, colour, terms, indication of a lieu-dit name…);
+– the volume of wine, expressed as a number of bottles;
+– the date of the end of tirage;
+– the EVV number or, for authorised warehousekeepers who are merchants, the excise number;
+– the name and address of the applicant;
+– the place of storage of the wine.
+### 5° – Declaration of “remise en cercle”
+Any remise en cercle is the subject of a prior declaration to the approved control body at least forty-eight hours before the start of the operations. This prior declaration indicates in particular the nature, the volume and, where applicable, the vintage of the products used.
+### 6° – Decanting declaration
+The holder of the decanted lots sends a decanting (transvasement) declaration to the defence and management body at the latest within forty-eight hours following the end of the operation. This declaration indicates the volume before and after the decanting operations, the type of bottles and, where applicable, the particular claims of the decanted products.
+## II. – Keeping of registers
+### 1° – Weighing register
+Pressing centres keep a weighing register separate from the press register. This register indicates for each weighing:
+– the date and time of the weighing;
+– the weight recorded;
+– any particular claims (terms, indication of a lieu-dit name…).
+For centres pressing on behalf of third parties, the weighing register also specifies the name of the operator delivering the grapes. A weighing ticket containing all these indications is issued to that operator.
+### 2° – Press register
+Keeping a press register is compulsory. It is filled in as the pressing operations proceed. This register specifies, for each press load (marc):
+– the date and time of the start of each operation;
+– the weight of grapes used, by variety;
+– the origin of the grapes, in the case of particular claims (terms, indication of a lieu-dit name…);
+– the name of the operator who delivered the grapes;
+– the volumes of musts obtained;
+– the potential alcoholic strength by volume;
+– the volumes of rebêches.
+For red and rosé wines, the quantity of wine obtained is only specified at the end of pressing. The volumes of lees are recorded globally at the end of the settling operations.
+### 3° – Decanting register
+The operator carrying out the decanting operation must keep a register. It is filled in as the operations proceed. This register indicates for each operation:
+− the date and time of the start of the operation;
+− temperature control throughout the process;
+− control of the isobaric filling;
+− the volume before and after the decanting operations;
+− the type of bottles;
+− the particular claims of the decanted products.
+# CHAPTER III
+## I. – Main points to be checked and evaluation methods
+@@CH_CHECKS_A
+| A4 – Production facilities | < |
+| Reception and pressing, pressing site | Visual on site |
+| **B – RULES LINKED TO THE PRODUCTION CYCLE** | < |
+| B1 – Management of the vineyard | < |
+| Pruning | Visual on site |
+| Average maximum load per parcel | Visual on site |
+| Cultivation condition of the vine | Visual on site |
+| Use of composts and organic household waste, of sewage sludge other than that from wine-making installations. Substantial modification of the morphology, the subsoil or the elements that guarantee the integrity and sustainability of the soils of a parcel | Visual on site |
+| B2 – Harvest, transport and ripeness of the grapes | < |
+| Monitoring of the harvest date | Documentary and visual on site |
+| B3 – Processing, elaboration, ageing, packaging, storage | < |
+| Pressing | Documentary and visual on site (verification of compliance with the pressing rules) |
+| B4 – Harvest declaration and claim declaration | < |
+| Authorised yield | Documentary, off site |
+| Claim declaration | Documentary and visual on site – check of the release of products into circulation |
+| **C – CHECKS ON THE PRODUCTS** | < |
+| Wines after tirage and prise de mousse | Analytical and organoleptic examination |
+## II. – References concerning the control structure
+Institut National de l’Origine et de la Qualité (INAO)
+TSA 30003, 93555 MONTREUIL Cedex
+Tel.: (33) (0)1.73.30.38.00 – contact@inao.gouv.fr
+Compliance with the present specification is checked on the basis of an approved control plan, by a third-party body offering guarantees of competence, impartiality and independence that has received delegation from the INAO.

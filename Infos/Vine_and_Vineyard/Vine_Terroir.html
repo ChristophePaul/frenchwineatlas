@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terroir &amp; site</title>
+<meta name="description" content="Le terroir viticole : climat, relief, exposition et sols ; la Côte d’Or en coupe, les grands types de sols de France, climats, lieux-dits et clos.">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  /* chapter 3 */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;}
+  .pillar{padding:14px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);}
+  .pillar svg{width:30px;height:30px;color:var(--c);}
+  html:not([data-theme="cream"]) .pillar svg{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .pillar h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:6px 0 4px;}
+  .pillar p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);}
+
+  .zones{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px;}
+  .zone{padding:12px 13px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:5px solid var(--c);font-size:13px;line-height:1.5;}
+  .zone small{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px;}
+  .zone b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:4px;line-height:1.2;}
+  .zone .aoc{display:block;margin-top:6px;font-size:11.5px;font-weight:700;color:var(--c);}
+  html:not([data-theme="cream"]) .zone .aoc{color:color-mix(in srgb,var(--c) 50%,#fff);}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .chips a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);}
+  .chips a:hover{border-color:var(--hair-hi);color:var(--gold-soft);}
+
+  .clims{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .clim{padding:14px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);}
+  .clim h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:0 0 6px;}
+  .clim p{margin:0;font-size:13.5px;line-height:1.55;}
+  .clim .clim-r{margin-top:8px;font-size:12px;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .clim .clim-r{color:color-mix(in srgb,var(--c) 50%,#fff);}
+
+  .relief{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:11px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14px;line-height:1.55;}
+  .fact b{color:var(--title);}
+
+  .soils{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+  .soil{border-radius:16px;overflow:hidden;background:var(--glass);border:1px solid var(--hair);display:flex;flex-direction:column;}
+  .swatch{display:block;width:100%;height:auto;aspect-ratio:200/120;}
+  .soil-photo{all:unset;cursor:zoom-in;display:block;}
+  .soil-photo img{display:block;width:100%;aspect-ratio:200/120;object-fit:cover;}
+  .soil-block{all:unset;cursor:zoom-in;display:flex;justify-content:center;align-items:center;height:250px;padding:14px 10px 6px;
+    background:radial-gradient(70% 60% at 50% 60%,#fffdf6 0%,var(--paper) 70%);}
+  .soil-block img{display:block;height:100%;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(60,30,10,.22));transition:transform .25s;}
+  .soil-block:hover img{transform:scale(1.03);}
+  .soil-photo img{height:250px;aspect-ratio:auto;}
+  .soil-b{padding:12px 15px 14px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .soil h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:0;}
+  .soil p{margin:0;font-size:13.5px;line-height:1.55;}
+  .soil-w{color:var(--muted);}
+  .soil-w b{color:var(--gold);font-weight:600;}
+  .soil-ex{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:4px;}
+  .soil-ex a,.soil-ex span{font-size:11.5px;text-decoration:none;padding:3px 9px;border-radius:999px;border:1px solid var(--hair);}
+  .soil-ex a:hover{border-color:var(--hair-hi);color:var(--gold-soft);}
+
+  .match-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .match{width:100%;border-collapse:collapse;font-size:14px;}
+  .match th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .match td{padding:8px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.45;}
+  .match td:first-child{font-family:var(--serif);font-size:15.5px;color:var(--title);}
+  .match td.g{font-weight:600;color:var(--gold-soft);white-space:nowrap;}
+  .match td:last-child{color:var(--muted);}
+
+  .words{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .word{padding:13px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:13.5px;line-height:1.55;}
+  .word b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .word i{display:block;font-size:12px;color:var(--gold);font-style:normal;font-weight:600;margin-bottom:4px;}
+
+  @media (max-width:1000px){ .zones,.words{grid-template-columns:repeat(2,1fr);} .clims,.pillars{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:900px){ .relief{grid-template-columns:minmax(0,1fr);} }
+  @media (max-width:620px){ .relief .diagram-card{overflow-x:auto;} .relief .diagram{min-width:540px;} }
+  @media (max-width:560px){ .zones,.words,.clims,.pillars{grid-template-columns:minmax(0,1fr);} .match td.g{white-space:normal;} }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .pillar{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zone{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .chips a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .chips a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .clim{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .fact{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .soil{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .soil-ex a,html[data-theme="cream"] .soil-ex span{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .soil-ex a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .match th{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .match td{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .word{border:1px solid rgba(90,30,40,0.18)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 3" data-en="The vine &amp; the vineyard · Chapter 3">La vigne &amp; le vignoble · Chapitre 3</p>
+    <h1 data-fr="Terroir <em>&amp; site</em>" data-en="Terroir <em>&amp; site</em>">Terroir <em>&amp; site</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Pourquoi deux vignes voisines, du même cépage, donnent-elles des vins différents ? Le climat, le relief, le sol et le savoir-faire des hommes : c’est cela, le terroir."
+       data-en="Why do two neighbouring vineyards, planted with the same grape, make different wines? Climate, relief, soil and human know-how: that is terroir.">Pourquoi deux vignes voisines, du même cépage, donnent-elles des vins différents ? Le climat, le relief, le sol et le savoir-faire des hommes : c’est cela, le terroir.</p>
+    <nav class="toc">
+      <a href="#terroir" data-fr="Qu’est-ce que le terroir ?" data-en="What is terroir?">Qu’est-ce que le terroir ?</a>
+      <a href="#cote" data-fr="La Côte d’Or en coupe" data-en="The Côte d’Or in section">La Côte d’Or en coupe</a>
+      <a href="#climat" data-fr="Les climats" data-en="Climates">Les climats</a>
+      <a href="#relief" data-fr="Relief &amp; exposition" data-en="Relief &amp; aspect">Relief &amp; exposition</a>
+      <a href="#sols" data-fr="Les sols" data-en="Soils">Les sols</a>
+      <a href="#cepages" data-fr="Le bon cépage au bon endroit" data-en="The right grape in the right place">Le bon cépage au bon endroit</a>
+      <a href="#lieux" data-fr="Climats, lieux-dits, clos" data-en="Climats, lieux-dits, clos">Climats, lieux-dits, clos</a>
+    </nav>
+  </header>
+
+  <!-- ===== what is terroir ===== -->
+  <section class="panel intro" id="terroir">
+    <div>
+      <p class="L fr">Le mot <b>terroir</b>, intraduisible, est au cœur du système des appellations françaises. Il désigne un lieu délimité dont le milieu naturel et les pratiques humaines, ensemble, donnent au vin une personnalité reconnaissable.</p>
+      <p class="L en">The word <b>terroir</b>, which has no real English equivalent, lies at the heart of the French appellation system. It refers to a defined place whose natural environment and human practices together give the wine a recognisable personality.</p>
+      <p class="L fr">Aucun facteur n’agit seul : un même sol ne donne pas le même vin sous un climat frais ou chaud, et un grand terroir mal travaillé ne donne rien de grand. C’est l’équilibre entre la vigne, son eau, sa chaleur et sa lumière qui compte.</p>
+      <p class="L en">No factor acts alone: the same soil does not give the same wine in a cool or a hot climate, and a great terroir badly farmed gives nothing great. What counts is the balance between the vine, its water, its warmth and its light.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Les grands facteurs du terroir, illustrés par la Côte d’Or et les sols de France." data-en="The main factors of terroir, illustrated by the Côte d’Or and the soils of France.">Les grands facteurs du terroir, illustrés par la Côte d’Or et les sols de France.</span></div></div>
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Définition de l’OIV, régime hydrique, géologie, calcaire actif, microclimat." data-en="OIV definition, water regime, geology, active lime, microclimate.">Définition de l’OIV, régime hydrique, géologie, calcaire actif, microclimat.</span></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="pillars">
+    <div class="pillar" style="--c:#4f7fae"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3.2"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/><path d="M10 20h9a3 3 0 0 0 0-6 4.5 4.5 0 0 0-8.6 1.2A2.5 2.5 0 0 0 10 20Z"/></svg>
+      <h3 data-fr="Le climat" data-en="Climate">Le climat</h3><p data-fr="Chaleur, pluie, lumière, vent : il fixe ce qu’on peut cultiver et le style des vins." data-en="Heat, rain, light, wind: it sets what can be grown and the style of the wines.">Chaleur, pluie, lumière, vent : il fixe ce qu’on peut cultiver et le style des vins.</p></div>
+    <div class="pillar" style="--c:#6f8b1e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20 9 7l4 6 3-4 6 11Z"/><path d="M7.5 10.5 9 12l1.5-1.5"/></svg>
+      <h3 data-fr="Le relief" data-en="Relief">Le relief</h3><p data-fr="Pente, exposition, altitude : il module le climat à l’échelle d’une colline, voire d’une parcelle." data-en="Slope, aspect, altitude: it adjusts the climate at the scale of a hill, or even a plot.">Pente, exposition, altitude : il module le climat à l’échelle d’une colline, voire d’une parcelle.</p></div>
+    <div class="pillar" style="--c:#8a5a2b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20M2 12h20M2 17h20"/><circle cx="6" cy="9.5" r=".8"/><circle cx="14" cy="14.5" r=".8"/><circle cx="18" cy="9.5" r=".8"/><circle cx="9" cy="19.5" r=".8"/><path d="M12 7V3M10 4.5 12 3l2 1.5"/></svg>
+      <h3 data-fr="Le sol" data-en="Soil">Le sol</h3><p data-fr="Profondeur, cailloux, argile, calcaire : il règle surtout l’alimentation en eau de la vigne." data-en="Depth, stones, clay, lime: above all it controls the vine’s water supply.">Profondeur, cailloux, argile, calcaire : il règle surtout l’alimentation en eau de la vigne.</p></div>
+    <div class="pillar" style="--c:#a0283c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
+      <h3 data-fr="L’homme" data-en="People">L’homme</h3><p data-fr="Choix des cépages, des parcelles, de la conduite : des siècles d’observation transmis et codifiés." data-en="Choice of grapes, plots and training: centuries of observation passed on and codified.">Choix des cépages, des parcelles, de la conduite : des siècles d’observation transmis et codifiés.</p></div>
+  </div>
+  <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Définition officielle" data-en="Official definition">Définition officielle</span></dt><dd><div class="L fr">Selon l’OIV (résolution OIV/VITI 333/2010), le terroir vitivinicole est « un concept qui se réfère à un espace sur lequel se développe un savoir collectif des interactions entre un milieu physique et biologique identifiable et les pratiques vitivinicoles appliquées, qui confèrent des caractéristiques distinctives aux produits originaires de cet espace ».</div><div class="L en">According to the OIV (resolution OIV/VITI 333/2010), vitivinicultural terroir is “a concept which refers to an area in which collective knowledge of the interactions between the identifiable physical and biological environment and applied vitivinicultural practices develops, providing distinctive characteristics for the products originating from this area”.</div></dd></div><div class="pro-item"><dt><span data-fr="Ce qui pèse le plus" data-en="What matters most">Ce qui pèse le plus</span></dt><dd><div class="L fr">Les travaux de Gérard Seguin puis de Cornelis van Leeuwen à Bordeaux ont montré que le sol agit d’abord par le <b>régime hydrique</b> qu’il impose à la vigne : une contrainte en eau modérée, à partir de la véraison, arrête la croissance des rameaux et favorise la maturité, la couleur et les tanins. Dans leurs essais à Saint-Émilion, l’effet du climat de l’année et celui du sol dépassaient celui du cépage.</div><div class="L en">Work by Gérard Seguin and later Cornelis van Leeuwen in Bordeaux showed that soil acts first through the <b>water regime</b> it imposes on the vine: moderate water stress from véraison stops shoot growth and favours ripeness, colour and tannin. In their Saint-Émilion trials, the effects of vintage weather and of soil outweighed the effect of grape variety.</div></dd></div><div class="pro-item"><dt><span data-fr="La « minéralité »" data-en="“Minerality”">La « minéralité »</span></dt><dd><div class="L fr">Les racines absorbent des ions minéraux dissous, pas le goût des roches : il n’y a pas de transfert direct du sol au verre. Ce que l’on appelle minéralité est plutôt lié à l’acidité, à certains composés soufrés ou à l’absence de fruit exubérant ; le sujet reste débattu.</div><div class="L en">Roots take up dissolved mineral ions, not the taste of rocks: there is no direct transfer from soil to glass. What is called minerality is more likely linked to acidity, certain sulphur compounds or the absence of exuberant fruit; the subject is still debated.</div></dd></div></dl></details>
+
+  <!-- ===== Côte d'Or ===== -->
+  <section class="sec" id="cote">
+    <div class="sec-head">
+      <h2 data-fr="La Côte d’Or <em>en coupe</em>" data-en="The Côte d’Or <em>in section</em>">La Côte d’Or <em>en coupe</em></h2>
+      <p data-fr="L’exemple le plus célèbre au monde : sur un même coteau, quelques centaines de mètres séparent un vin régional d’un grand cru. Cliquez sur l’illustration pour l’agrandir." data-en="The world’s most famous example: on a single slope, a few hundred metres separate a regional wine from a grand cru. Click the illustration to enlarge it.">L’exemple le plus célèbre au monde : sur un même coteau, quelques centaines de mètres séparent un vin régional d’un grand cru. Cliquez sur l’illustration pour l’agrandir.</p>
+    </div>
+    <figure class="plate wide"><button type="button" class="zoom" data-full="img/terroir/cote_dor_section.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/cote_dor_section.webp" alt="Coupe de la Côte d’Or / Côte d’Or cross-section" loading="lazy" decoding="async" width="1600" height="1090"><span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span></button></figure>
+    <div class="zones">
+      <div class="zone" style="--c:#3f6b2e"><small data-fr="Plateau, à l’ouest" data-en="Plateau, to the west">Plateau, à l’ouest</small><b data-fr="Les Hautes-Côtes" data-en="The Hautes-Côtes">Les Hautes-Côtes</b><span data-fr="Forêts et vignes à 300–450 m, plus fraîches, sur calcaire dur." data-en="Forest and vines at 300–450 m, cooler, on hard limestone.">Forêts et vignes à 300–450 m, plus fraîches, sur calcaire dur.</span><span class="aoc">Bourgogne Hautes-Côtes</span></div>
+      <div class="zone" style="--c:#7aa23c"><small data-fr="Haut de coteau" data-en="Upper slope">Haut de coteau</small><b data-fr="Sols minces sur la roche" data-en="Thin soils over rock">Sols minces sur la roche</b><span data-fr="Pente forte, sol pauvre, plus exposé au vent et plus frais." data-en="Steep, poor soil, windier and cooler.">Pente forte, sol pauvre, plus exposé au vent et plus frais.</span><span class="aoc" data-fr="Appellation village" data-en="Village appellation">Appellation village</span></div>
+      <div class="zone" style="--c:#7d3f78"><small data-fr="Mi-coteau" data-en="Mid-slope">Mi-coteau</small><b data-fr="Le cœur des grands vins" data-en="The heart of great wines">Le cœur des grands vins</b><span data-fr="Mélange idéal d’éboulis calcaires et de marnes, drainage parfait, soleil du matin, à l’abri des gelées." data-en="Ideal mix of limestone scree and marl, perfect drainage, morning sun, safe from frost.">Mélange idéal d’éboulis calcaires et de marnes, drainage parfait, soleil du matin, à l’abri des gelées.</span><span class="aoc" data-fr="Premiers crus &amp; grands crus" data-en="Premiers &amp; grands crus">Premiers crus &amp; grands crus</span></div>
+      <div class="zone" style="--c:#9ab84a"><small data-fr="Bas de coteau" data-en="Lower slope">Bas de coteau</small><b data-fr="Sols plus profonds" data-en="Deeper soils">Sols plus profonds</b><span data-fr="Terres descendues de la pente (colluvions), plus riches et plus humides." data-en="Soil washed down the slope (colluvium), richer and damper.">Terres descendues de la pente (colluvions), plus riches et plus humides.</span><span class="aoc" data-fr="Appellation village" data-en="Village appellation">Appellation village</span></div>
+      <div class="zone" style="--c:#c9a227"><small data-fr="Plaine, à l’est" data-en="Plain, to the east">Plaine, à l’est</small><b data-fr="Alluvions de la Saône" data-en="Saône alluvium">Alluvions de la Saône</b><span data-fr="Sols profonds et fertiles, gelées de printemps : vignes vigoureuses et cultures." data-en="Deep, fertile soils, spring frosts: vigorous vines and arable crops.">Sols profonds et fertiles, gelées de printemps : vignes vigoureuses et cultures.</span><span class="aoc" data-fr="Appellations régionales Bourgogne" data-en="Regional Bourgogne appellations">Appellations régionales Bourgogne</span></div>
+    </div>
+    <h3 class="sub" data-fr="Explorer les climats de la Côte d’Or sur nos cartes" data-en="Explore the Côte d’Or climats on our maps">Explorer les climats de la Côte d’Or sur nos cartes</h3>
+    <div class="chips"><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Gevrey-Chambertin%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Gevrey-Chambertin</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Morey-Saint-Denis%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Morey-Saint-Denis</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Chambolle-Musigny%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Chambolle-Musigny</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Vougeot%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Vougeot</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Vosne-Roman%C3%A9e%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Vosne-Romanée</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Nuits-Saint-Georges%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Nuits-Saint-Georges</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Aloxe-Corton%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Aloxe-Corton</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Beaune%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Beaune</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Pommard%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Pommard</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Volnay%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Volnay</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Meursault%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Meursault</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Puligny-Montrachet%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Puligny-Montrachet</a><a href="../../Bourgogne%20Regions/Bourgogne%20climats/Chassagne-Montrachet%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Chassagne-Montrachet</a></div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Géologie" data-en="Geology">Géologie</span></dt><dd><div class="L fr">La Côte est l’escarpement d’une grande faille apparue il y a environ 35 millions d’années, quand la plaine de la Saône (le fossé bressan) s’est effondrée. Elle met à nu des calcaires et marnes déposés au Jurassique, il y a 150 à 175 millions d’années, dans une mer chaude. La Côte de Nuits repose surtout sur des calcaires du Jurassique moyen ; la Côte de Beaune montre davantage de marnes du Jurassique supérieur, favorables aux grands blancs (Corton-Charlemagne, Meursault).</div><div class="L en">The Côte is the escarpment of a great fault formed some 35 million years ago, when the Saône plain (the Bresse graben) subsided. It exposes limestones and marls laid down in a warm Jurassic sea 150–175 million years ago. The Côte de Nuits sits mainly on Middle Jurassic limestones; the Côte de Beaune shows more Upper Jurassic marls, which suit great whites (Corton-Charlemagne, Meursault).</div></dd></div><div class="pro-item"><dt><span data-fr="Les chiffres" data-en="Figures">Les chiffres</span></dt><dd><div class="L fr">Une bande d’environ 50 km de Dijon aux Maranges, large de quelques centaines de mètres seulement, entre environ 220 et 400 m d’altitude ; la plupart des grands crus se situent entre 250 et 330 m.</div><div class="L en">A strip about 50 km long from Dijon to the Maranges, only a few hundred metres wide, between roughly 220 and 400 m in altitude; most grands crus lie between 250 and 330 m.</div></dd></div><div class="pro-item"><dt><span data-fr="La route" data-en="The road">La route</span></dt><dd><div class="L fr">L’ancienne route nationale 74 (aujourd’hui D974) marque grossièrement la limite entre les appellations villages, à l’ouest, et les appellations régionales Bourgogne, à l’est, dans la plaine.</div><div class="L en">The old N74 road (now the D974) roughly marks the boundary between village appellations to the west and regional Bourgogne appellations to the east, on the plain.</div></dd></div></dl></details>
+  </section>
+
+  <!-- ===== climate ===== -->
+  <section class="sec" id="climat">
+    <div class="sec-head">
+      <h2 data-fr="Les grands <em>climats</em>" data-en="The main <em>climates</em>">Les grands <em>climats</em></h2>
+      <p data-fr="La France viticole s’étend du 43<sup>e</sup> au 49<sup>e</sup> parallèle, à la limite nord de la culture de la vigne. Quatre grandes influences s’y mêlent ; on parle de macroclimat (la région), de mésoclimat (le coteau) et de microclimat (autour du cep)." data-en="French vineyards stretch from the 43rd to the 49th parallel, at the northern limit of vine growing. Four main influences mix there; we speak of macroclimate (the region), mesoclimate (the slope) and microclimate (around the vine).">La France viticole s’étend du 43<sup>e</sup> au 49<sup>e</sup> parallèle, à la limite nord de la culture de la vigne. Quatre grandes influences s’y mêlent ; on parle de macroclimat (la région), de mésoclimat (le coteau) et de microclimat (autour du cep).</p>
+    </div>
+    <div class="clims"><div class="clim" style="--c:#4f7fae"><h3><span data-fr="Océanique" data-en="Oceanic">Océanique</span></h3><p class="L fr">Hivers doux, étés tempérés, pluies réparties sur l’année ; le risque, c’est l’humidité et les maladies.</p><p class="L en">Mild winters, moderate summers, rain spread through the year; the risk is damp and disease.</p><p class="clim-r"><span data-fr="Bordeaux, Pays nantais, Anjou, Cognac, Sud-Ouest atlantique" data-en="Bordeaux, Pays Nantais, Anjou, Cognac, Atlantic South-West">Bordeaux, Pays nantais, Anjou, Cognac, Sud-Ouest atlantique</span></p></div><div class="clim" style="--c:#7a5aa0"><h3><span data-fr="Semi-continental" data-en="Semi-continental">Semi-continental</span></h3><p class="L fr">Hivers froids, étés chauds, gel de printemps fréquent ; grandes variations d’une année à l’autre.</p><p class="L en">Cold winters, warm summers, frequent spring frost; big swings from one year to the next.</p><p class="clim-r"><span data-fr="Bourgogne, Champagne, Alsace, Centre-Loire, Jura" data-en="Burgundy, Champagne, Alsace, Centre-Loire, Jura">Bourgogne, Champagne, Alsace, Centre-Loire, Jura</span></p></div><div class="clim" style="--c:#c0703a"><h3><span data-fr="Méditerranéen" data-en="Mediterranean">Méditerranéen</span></h3><p class="L fr">Étés chauds et secs, pluies d’automne parfois violentes, vents puissants (mistral, tramontane) qui assèchent et assainissent.</p><p class="L en">Hot, dry summers, sometimes violent autumn rain, strong winds (mistral, tramontane) that dry the vines and keep disease away.</p><p class="clim-r"><span data-fr="Languedoc, Roussillon, Provence, Rhône méridional, Corse" data-en="Languedoc, Roussillon, Provence, southern Rhône, Corsica">Languedoc, Roussillon, Provence, Rhône méridional, Corse</span></p></div><div class="clim" style="--c:#4f8a6a"><h3><span data-fr="Montagnard" data-en="Mountain">Montagnard</span></h3><p class="L fr">L’altitude rafraîchit (environ −0,6 °C par 100 m) ; les vignes cherchent les pentes bien exposées et l’abri des lacs.</p><p class="L en">Altitude cools (about −0.6 °C per 100 m); vines seek well-exposed slopes and the shelter of lakes.</p><p class="clim-r"><span data-fr="Savoie, Bugey, piémont pyrénéen (Jurançon, Irouléguy)" data-en="Savoie, Bugey, Pyrenean foothills (Jurançon, Irouléguy)">Savoie, Bugey, piémont pyrénéen (Jurançon, Irouléguy)</span></p></div></div>
+    <p class="hint" data-fr="La chaleur cumulée de la saison et les indices de Winkler et de Huglin sont présentés au <a href=&quot;Vine_Cycle.html#chaleur&quot;>chapitre 2</a>." data-en="Seasonal heat accumulation and the Winkler and Huglin indices are covered in <a href=&quot;Vine_Cycle.html#chaleur&quot;>chapter 2</a>.">La chaleur cumulée de la saison et les indices de Winkler et de Huglin sont présentés au <a href="Vine_Cycle.html#chaleur">chapitre 2</a>.</p>
+  </section>
+
+  <!-- ===== relief ===== -->
+  <section class="sec" id="relief">
+    <div class="sec-head">
+      <h2 data-fr="Relief <em>&amp; exposition</em>" data-en="Relief <em>&amp; aspect</em>">Relief <em>&amp; exposition</em></h2>
+      <p data-fr="À l’échelle d’une colline, le relief crée son propre climat : c’est pourquoi les meilleures vignes sont si souvent à flanc de coteau." data-en="At the scale of a hill, relief creates its own climate: that is why the best vineyards are so often on slopes.">À l’échelle d’une colline, le relief crée son propre climat : c’est pourquoi les meilleures vignes sont si souvent à flanc de coteau.</p>
+    </div>
+    <div class="relief">
+      <div class="diagram-card"><svg class="diagram" viewBox="0 0 680 400" role="img" aria-label="Le coteau et son microclimat / The hillside and its microclimate"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dcebf3"/><stop offset="1" stop-color="#f6f1e2"/></linearGradient><marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#3f7fae" stroke-width="1.8"/></marker><marker id="as" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M1 1L9 5L1 9" fill="none" stroke="#d29a1e" stroke-width="1.8"/></marker></defs><rect x="0" y="0" width="680" height="400" fill="url(#sky)"/><path d="M0 118 L150 112 C232 116 262 160 332 220 C392 270 452 302 540 314 L680 318 L680 400 L0 400 Z" fill="#a9c46b"/><path d="M0 118 L150 112 C232 116 262 160 332 220 C392 270 452 302 540 314 L680 318" fill="none" stroke="#6f8f34" stroke-width="2"/><path d="M0 360 L680 360 L680 400 L0 400 Z" fill="#c8a978" opacity=".55"/><path d="M6.4 109.8 l-7 0 l7 -19.7 l7 19.7 Z" fill="#3f6b2e"/><path d="M18.6 109.5 l-7 0 l7 -16.7 l7 16.7 Z" fill="#3f6b2e"/><path d="M25.1 108.7 l-7 0 l7 -18.6 l7 18.6 Z" fill="#3f6b2e"/><path d="M36.4 108.0 l-7 0 l7 -20.7 l7 20.7 Z" fill="#3f6b2e"/><path d="M50.0 110.1 l-7 0 l7 -22.4 l7 22.4 Z" fill="#3f6b2e"/><path d="M55.9 109.5 l-7 0 l7 -24.7 l7 24.7 Z" fill="#3f6b2e"/><path d="M68.1 109.0 l-7 0 l7 -22.7 l7 22.7 Z" fill="#3f6b2e"/><path d="M75.4 109.0 l-7 0 l7 -21.9 l7 21.9 Z" fill="#3f6b2e"/><path d="M86.8 111.9 l-7 0 l7 -24.7 l7 24.7 Z" fill="#3f6b2e"/><path d="M97.8 109.1 l-7 0 l7 -24.8 l7 24.8 Z" fill="#3f6b2e"/><path d="M109.3 108.3 l-7 0 l7 -19.9 l7 19.9 Z" fill="#3f6b2e"/><path d="M119.8 110.2 l-7 0 l7 -25.4 l7 25.4 Z" fill="#3f6b2e"/><path d="M130.3 111.6 l-7 0 l7 -17.4 l7 17.4 Z" fill="#3f6b2e"/><path d="M136.3 108.1 l-7 0 l7 -20.4 l7 20.4 Z" fill="#3f6b2e"/><path d="M148.8 110.8 l-7 0 l7 -21.1 l7 21.1 Z" fill="#3f6b2e"/><path d="M157.3 110.6 l-7 0 l7 -21.9 l7 21.9 Z" fill="#3f6b2e"/><line x1="165.0" y1="120.0" x2="165.0" y2="109.0" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="179.4" y1="124.8" x2="179.4" y2="113.8" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="193.8" y1="130.7" x2="193.8" y2="119.7" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="208.2" y1="137.1" x2="208.2" y2="126.1" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="222.6" y1="143.8" x2="222.6" y2="132.8" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="237.0" y1="150.8" x2="237.0" y2="139.8" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="251.4" y1="158.0" x2="251.4" y2="147.0" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="265.8" y1="165.3" x2="265.8" y2="154.3" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="280.2" y1="172.9" x2="280.2" y2="161.9" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="294.6" y1="180.5" x2="294.6" y2="169.5" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="309.0" y1="188.3" x2="309.0" y2="177.3" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="323.4" y1="196.2" x2="323.4" y2="185.2" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="337.8" y1="204.3" x2="337.8" y2="193.3" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="352.2" y1="212.4" x2="352.2" y2="201.4" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="366.6" y1="220.6" x2="366.6" y2="209.6" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="381.0" y1="228.9" x2="381.0" y2="217.9" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="395.4" y1="237.3" x2="395.4" y2="226.3" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="409.8" y1="245.8" x2="409.8" y2="234.8" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="424.2" y1="254.3" x2="424.2" y2="243.3" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="438.6" y1="263.0" x2="438.6" y2="252.0" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="453.0" y1="271.6" x2="453.0" y2="260.6" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="467.4" y1="280.4" x2="467.4" y2="269.4" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="481.8" y1="289.2" x2="481.8" y2="278.2" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="496.2" y1="298.1" x2="496.2" y2="287.1" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="510.6" y1="307.0" x2="510.6" y2="296.0" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><line x1="525.0" y1="316.0" x2="525.0" y2="305.0" stroke="#4f6e22" stroke-width="2.4" stroke-linecap="round"/><rect x="560" y="300" width="14" height="12" fill="#e8d8b8" stroke="#8a6a44"/><path d="M558 300 l9 -8 l9 8 Z" fill="#a0402e"/><rect x="578" y="304" width="12" height="9" fill="#e8d8b8" stroke="#8a6a44"/><path d="M576 304 l8 -7 l8 7 Z" fill="#a0402e"/><path d="M612 319 C630 322 650 321 676 323" fill="none" stroke="#4f8fc9" stroke-width="5" stroke-linecap="round"/><circle cx="626" cy="58" r="22" fill="#f2c14e"/><line x1="656.0" y1="58.0" x2="664.0" y2="58.0" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><line x1="596.0" y1="58.0" x2="588.0" y2="58.0" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><line x1="626.0" y1="88.0" x2="626.0" y2="96.0" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><line x1="626.0" y1="28.0" x2="626.0" y2="20.0" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><line x1="647.0" y1="79.0" x2="652.6" y2="84.6" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><line x1="605.0" y1="79.0" x2="599.4" y2="84.6" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><line x1="647.0" y1="37.0" x2="652.6" y2="31.4" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><line x1="605.0" y1="37.0" x2="599.4" y2="31.4" stroke="#f2c14e" stroke-width="2.4" stroke-linecap="round"/><path d="M596 74 L360 230" stroke="#d29a1e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#as)"/><path d="M604 84 L420 266" stroke="#d29a1e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#as)"/><path d="M618 88 L648 306" stroke="#d29a1e" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#as)"/><path d="M190 100 C250 120 280 165 330 200" fill="none" stroke="#3f7fae" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#ah)"/><path d="M300 170 C360 220 420 262 500 286" fill="none" stroke="#3f7fae" stroke-width="2.4" stroke-dasharray="7 5" marker-end="url(#ah)"/><ellipse cx="600" cy="316" rx="78" ry="14" fill="#9cc6e6" opacity=".55"/><text x="14" y="40" text-anchor="start" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Forêt sur le plateau :" data-en="Forest on the plateau:">Forêt sur le plateau :</text><path d="M60 64 L80 100" fill="none" stroke="#7a6650" stroke-width="1"/><circle cx="80" cy="100" r="2.4" fill="#3b2a1e"/><text x="14" y="58" text-anchor="start" font-size="14" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="elle abrite du vent d’ouest" data-en="shelter from westerly winds">elle abrite du vent d’ouest</text><text x="170" y="300" text-anchor="start" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Mi-coteau : sols drainés," data-en="Mid-slope: well-drained soils,">Mi-coteau : sols drainés,</text><path d="M300 304 L350 236" fill="none" stroke="#7a6650" stroke-width="1"/><circle cx="350" cy="236" r="2.4" fill="#3b2a1e"/><text x="170" y="318" text-anchor="start" font-size="14" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="soleil reçu presque de face" data-en="sun striking almost head-on">soleil reçu presque de face</text><text x="250" y="92" text-anchor="start" font-size="14" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="L’air froid, plus lourd," data-en="Cold, heavy air">L’air froid, plus lourd,</text><path d="M262 114 L262 136" fill="none" stroke="#7a6650" stroke-width="1"/><circle cx="262" cy="136" r="2.4" fill="#3b2a1e"/><text x="250" y="110" text-anchor="start" font-size="14" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="glisse vers le bas" data-en="drains downhill">glisse vers le bas</text><text x="592" y="30" text-anchor="end" font-size="14" font-weight="600" fill="#9a6a12" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Soleil du matin (est)" data-en="Morning sun (east)">Soleil du matin (est)</text><text x="460" y="354" text-anchor="start" font-size="14" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Plaine : sols profonds, gelées" data-en="Plain: deep soils, frost pocket">Plaine : sols profonds, gelées</text><text x="460" y="372" text-anchor="start" font-size="14" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="et humidité ; rivière" data-en="and damp; river nearby">et humidité ; rivière</text></svg></div>
+      <div class="facts">
+        <div class="fact L fr"><b>L’exposition.</b> Au nord de la France, on cherche le sud, le sud-est ou l’est : le soleil du matin sèche la rosée et réchauffe la vigne tôt. Dans le Midi, on recherche au contraire la fraîcheur.</div>
+        <div class="fact L en"><b>Aspect.</b> In northern France, growers look for south, south-east or east: morning sun dries the dew and warms the vines early. In the South they seek coolness instead.</div>
+        <div class="fact L fr"><b>La pente.</b> Elle évacue l’eau en excès, offre des sols moins profonds et reçoit le soleil plus franchement que la plaine.</div>
+        <div class="fact L en"><b>Slope.</b> It sheds excess water, has shallower soils and catches the sun more directly than flat land.</div>
+        <div class="fact L fr"><b>L’air froid.</b> Plus lourd, il descend la nuit vers les bas-fonds : c’est là que gèle la vigne au printemps.</div>
+        <div class="fact L en"><b>Cold air.</b> Being heavier, it slides down into the hollows at night: that is where vines freeze in spring.</div>
+        <div class="fact L fr"><b>L’eau et la forêt.</b> Fleuves et lacs adoucissent les températures et apportent les brumes ; la forêt abrite du vent.</div>
+        <div class="fact L en"><b>Water and forest.</b> Rivers and lakes soften temperatures and bring mists; forests shelter vines from the wind.</div>
+      </div>
+    </div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Altitude" data-en="Altitude">Altitude</span></dt><dd><div class="L fr">La température baisse d’environ 0,6 °C tous les 100 m. Avec le réchauffement, les parcelles plus hautes, autrefois trop fraîches, deviennent recherchées (Hautes-Côtes de Bourgogne, piémonts du Languedoc).</div><div class="L en">Temperature drops by about 0.6 °C every 100 m. With warming, higher plots once too cool are now sought after (Hautes-Côtes in Burgundy, Languedoc foothills).</div></dd></div><div class="pro-item"><dt><span data-fr="Exposition et pente" data-en="Aspect and slope">Exposition et pente</span></dt><dd><div class="L fr">Plus le soleil frappe la pente à angle droit, plus elle reçoit d’énergie : un coteau exposé au sud ou au sud-est gagne nettement sur la plaine, surtout au printemps et à l’automne quand le soleil est bas. Au sud de la France, des expositions nord ou plus fraîches préservent l’acidité.</div><div class="L en">The closer the sun strikes a slope at a right angle, the more energy it receives: a south- or south-east-facing slope clearly gains over flat land, especially in spring and autumn when the sun is low. In southern France, north-facing or cooler sites help keep acidity.</div></dd></div><div class="pro-item"><dt><span data-fr="Air froid" data-en="Cold air">Air froid</span></dt><dd><div class="L fr">Par nuit claire, l’air refroidi au sol s’écoule comme de l’eau vers les points bas : les gelées de printemps frappent d’abord les bas de pente et les cuvettes, rarement le mi-coteau.</div><div class="L en">On clear nights, air chilled at ground level flows like water to low points: spring frosts hit the foot of slopes and hollows first, rarely the mid-slope.</div></dd></div><div class="pro-item"><dt><span data-fr="Eau et forêts" data-en="Water and forests">Eau et forêts</span></dt><dd><div class="L fr">Fleuves, estuaires et lacs adoucissent les extrêmes et favorisent les brumes (la Gironde au Médoc, le Ciron à Sauternes) ; la forêt des Landes abrite le Médoc des vents de l’océan, celle des plateaux bourguignons protège la Côte.</div><div class="L en">Rivers, estuaries and lakes soften extremes and encourage mists (the Gironde in the Médoc, the Ciron at Sauternes); the Landes forest shelters the Médoc from ocean winds, and the plateau forests protect the Côte in Burgundy.</div></dd></div></dl></details>
+  </section>
+
+  <!-- ===== soils ===== -->
+  <section class="sec" id="sols">
+    <div class="sec-head">
+      <h2 data-fr="Les sols <em>de France</em>" data-en="The soils <em>of France</em>">Les sols <em>de France</em></h2>
+      <p data-fr="La vigne aime les sols pauvres et bien drainés, où elle doit chercher son eau en profondeur. Voici les grandes familles, avec quelques appellations emblématiques : chaque nom ouvre la carte ou le plan cadastral correspondant." data-en="The vine likes poor, well-drained soils where it has to search deep for water. Here are the main families, with a few emblematic appellations: each name opens the matching map or cadastral plan.">La vigne aime les sols pauvres et bien drainés, où elle doit chercher son eau en profondeur. Voici les grandes familles, avec quelques appellations emblématiques : chaque nom ouvre la carte ou le plan cadastral correspondant.</p>
+    </div>
+    <div class="soils"><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_limestone.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_limestone_s.webp" alt="Profil de sol calcaire / Limestone soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Calcaire" data-en="Limestone">Calcaire</span></h3><p class="L fr">Roche sédimentaire formée de coquilles et squelettes marins. Sols filtrants mais retenant un peu d’eau dans les fissures.</p><p class="L en">Sedimentary rock formed from marine shells and skeletons. Free-draining soils that still hold some water in their cracks.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Vins tendus, frais, élégants ; le grand terrain du Pinot noir et du Chardonnay." data-en="Taut, fresh, elegant wines; the great ground of Pinot Noir and Chardonnay.">Vins tendus, frais, élégants ; le grand terrain du Pinot noir et du Chardonnay.</span></p><div class="soil-ex"><a href="../../Bourgogne%20Regions/Cote-d_Or.html">Côte d’Or</a><a href="../../Plan%20Cadastraux/Bordeaux_RightBank/Saint-Emilion.html">Saint-Émilion (plateau)</a><a href="../../Plan%20Cadastraux/Loire_Centre/Sancerre.html">Sancerre</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_chalk.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_chalk_s.webp" alt="Profil de sol crayeux / Chalk soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Craie" data-en="Chalk">Craie</span></h3><p class="L fr">Calcaire tendre et très poreux : il emmagasine l’eau comme une éponge et la restitue en été.</p><p class="L en">Soft, very porous limestone: it soaks up water like a sponge and releases it in summer.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Acidité, finesse et longévité : la base des grands Champagnes." data-en="Acidity, finesse and longevity: the foundation of great Champagne.">Acidité, finesse et longévité : la base des grands Champagnes.</span></p><div class="soil-ex"><a href="../../Champagne.html">Champagne</a><a href="../../Plan%20Cadastraux/Champagne_Grands_Crus/Champagne-Grands-Crus.html">Côte des Blancs</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_marl.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_marl_s.webp" alt="Profil de sol marneux / Marl soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Marnes" data-en="Marl">Marnes</span></h3><p class="L fr">Mélange de calcaire et d’argile, souvent en couches. Plus frais et plus riche en eau que le calcaire pur.</p><p class="L en">A mix of limestone and clay, often layered. Cooler and moister than pure limestone.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Vins amples et structurés ; les marnes kimméridgiennes de Chablis donnent leur tension minérale aux Chardonnays." data-en="Broad, structured wines; Chablis’s Kimmeridgian marls give its Chardonnays their mineral tension.">Vins amples et structurés ; les marnes kimméridgiennes de Chablis donnent leur tension minérale aux Chardonnays.</span></p><div class="soil-ex"><a href="../../Bourgogne%20Regions/Chablis_et_de_l_Auxerrois.html">Chablis</a><a href="../../Jura.html">Jura</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_clay.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_clay_s.webp" alt="Profil de sol argileux / Clay soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Argile" data-en="Clay">Argile</span></h3><p class="L fr">Particules très fines qui retiennent l’eau et les éléments nutritifs ; sols frais, lourds, qui se réchauffent lentement.</p><p class="L en">Very fine particles that hold water and nutrients; cool, heavy soils that warm up slowly.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Vins ronds, charnus, puissants ; le Merlot y excelle, comme sur la « boutonnière » d’argile bleue de Pomerol." data-en="Round, fleshy, powerful wines; Merlot excels there, as on Pomerol’s “buttonhole” of blue clay.">Vins ronds, charnus, puissants ; le Merlot y excelle, comme sur la « boutonnière » d’argile bleue de Pomerol.</span></p><div class="soil-ex"><a href="../../Plan%20Cadastraux/Bordeaux_RightBank/Pomerol.html">Pomerol</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_gravel.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_gravel_s.webp" alt="Profil de sol de graves / Gravel soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Graves" data-en="Gravel">Graves</span></h3><p class="L fr">Galets et graviers apportés par les fleuves, mêlés de sable. Très drainants, ils emmagasinent la chaleur du jour.</p><p class="L en">Pebbles and gravel carried down by rivers, mixed with sand. Very free-draining, they store the day’s heat.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Le Cabernet Sauvignon, cépage tardif, y mûrit pleinement : les grands vins du Médoc et des Graves." data-en="Late-ripening Cabernet Sauvignon ripens fully there: the great wines of the Médoc and Graves.">Le Cabernet Sauvignon, cépage tardif, y mûrit pleinement : les grands vins du Médoc et des Graves.</span></p><div class="soil-ex"><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Medoc.html">Médoc</a><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Pessac-Leognan.html">Pessac-Léognan</a></div></div></article><article class="soil"><button type="button" class="zoom soil-photo" data-full="img/terroir/galets_chateauneuf.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/galets_chateauneuf_s.webp" alt="Galets roulés à Châteauneuf-du-Pape / Rounded pebbles at Châteauneuf-du-Pape" loading="lazy" decoding="async" width="600" height="400"></button><div class="soil-b"><h3><span data-fr="Galets roulés" data-en="Rounded pebbles">Galets roulés</span></h3><p class="L fr">Gros galets de quartzite polis par le Rhône, sur argile rouge. Ils restituent la chaleur la nuit.</p><p class="L en">Large quartzite cobbles polished by the Rhône, over red clay. They give back heat at night.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Grenache très mûr, vins chaleureux et généreux." data-en="Very ripe Grenache, warm, generous wines.">Grenache très mûr, vins chaleureux et généreux.</span></p><div class="soil-ex"><a href="../../Plan%20Cadastraux/Cotes_du_Rhone_Sud/Chateauneuf-du-Pape.html">Châteauneuf-du-Pape</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_granite.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_granite_s.webp" alt="Profil de sol granitique / Granite soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Granite" data-en="Granite">Granite</span></h3><p class="L fr">Roche cristalline dure qui se désagrège en sable grossier (« arène ») : sols acides, pauvres, drainants.</p><p class="L en">Hard crystalline rock that weathers into coarse sand (“arène”): acidic, poor, free-draining soils.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Vins fruités et floraux, à la structure fine : Gamay des crus du Beaujolais, Syrah de l’Hermitage." data-en="Fruity, floral wines with fine structure: Gamay in the Beaujolais crus, Syrah on Hermitage.">Vins fruités et floraux, à la structure fine : Gamay des crus du Beaujolais, Syrah de l’Hermitage.</span></p><div class="soil-ex"><a href="../../Bourgogne%20Regions/Beaujolais.html">Beaujolais</a><a href="../../Plan%20Cadastraux/Cotes_du_Rhone/Hermitage.html">Hermitage</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_schist.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_schist_s.webp" alt="Profil de sol schisteux / Schist soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Schiste" data-en="Schist">Schiste</span></h3><p class="L fr">Roche feuilletée, souvent sombre, qui se débite en plaquettes ; sols maigres et chauds.</p><p class="L en">Flaky rock, often dark, that splits into plates; thin, warm soils.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Vins concentrés, épicés ou très purs : Banyuls, Collioure, Faugères, Anjou « noir », Côte-Rôtie." data-en="Concentrated, spicy or very pure wines: Banyuls, Collioure, Faugères, “black” Anjou, Côte-Rôtie.">Vins concentrés, épicés ou très purs : Banyuls, Collioure, Faugères, Anjou « noir », Côte-Rôtie.</span></p><div class="soil-ex"><a href="../../Plan%20Cadastraux/Roussillon/Banyuls.html">Banyuls</a><a href="../../Plan%20Cadastraux/Cotes_du_Rhone/Cote-Rotie.html">Côte-Rôtie</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_sand.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_sand_s.webp" alt="Profil de sol sableux / Sandy soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Sable" data-en="Sand">Sable</span></h3><p class="L fr">Grains grossiers qui ne retiennent presque rien ; le phylloxéra ne peut pas y vivre.</p><p class="L en">Coarse grains that hold almost nothing; phylloxera cannot live there.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Vins légers, fruités, souvent de vignes franches de pied." data-en="Light, fruity wines, often from ungrafted vines.">Vins légers, fruités, souvent de vignes franches de pied.</span></p><div class="soil-ex"><span>Sables de Camargue</span></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_flint.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_flint_s.webp" alt="Profil de sol à silex / Flint soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Silex" data-en="Flint">Silex</span></h3><p class="L fr">Rognons de silice pris dans l’argile, issus de la craie : sols froids qui chauffent vite au soleil.</p><p class="L en">Silica nodules set in clay, left from chalk: cold soils that heat quickly in the sun.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Sauvignons et Chenins tendus, aux notes « pierre à fusil »." data-en="Taut Sauvignons and Chenins with “gunflint” notes.">Sauvignons et Chenins tendus, aux notes « pierre à fusil ».</span></p><div class="soil-ex"><a href="../../Plan%20Cadastraux/Loire_Centre/Pouilly-Fume.html">Pouilly-Fumé</a><a href="../../Plan%20Cadastraux/Loire_Anjou_Touraine/Vouvray.html">Vouvray</a></div></div></article><article class="soil"><button type="button" class="zoom soil-block" data-full="img/terroir/soil_volcanic.webp" aria-label="Agrandir / Enlarge"><img src="img/terroir/soil_volcanic_s.webp" alt="Profil de sol volcanique / Volcanic soil profile" loading="lazy" decoding="async" width="352" height="440"></button><div class="soil-b"><h3><span data-fr="Volcanique" data-en="Volcanic">Volcanique</span></h3><p class="L fr">Basaltes et cendres des anciens volcans : sols sombres, riches en minéraux.</p><p class="L en">Basalt and ash from old volcanoes: dark soils rich in minerals.</p><p class="soil-w"><b><span data-fr="Dans le verre : " data-en="In the glass: ">Dans le verre : </span></b><span data-fr="Vins vifs et épicés, comme les Gamay et Pinot noir des Côtes d’Auvergne." data-en="Lively, spicy wines, such as the Gamay and Pinot Noir of Côtes d’Auvergne.">Vins vifs et épicés, comme les Gamay et Pinot noir des Côtes d’Auvergne.</span></p><div class="soil-ex"><a href="../../Auvergne_et_du_Haut_Val_de_Loire.html">Auvergne</a></div></div></article></div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Réserve utile" data-en="Available water capacity">Réserve utile</span></dt><dd><div class="L fr">La quantité d’eau qu’un sol peut stocker et céder à la vigne (en mm) dépend de sa profondeur, de sa texture et de sa teneur en cailloux : quelques dizaines de mm sur un sol caillouteux superficiel, plus de 200 mm sur des limons profonds.</div><div class="L en">The amount of water a soil can store and release to the vine (in mm) depends on its depth, texture and stone content: a few tens of mm on a shallow stony soil, over 200 mm on deep silts.</div></dd></div><div class="pro-item"><dt><span data-fr="Calcaire actif et chlorose" data-en="Active lime and chlorosis">Calcaire actif et chlorose</span></dt><dd><div class="L fr">Un sol riche en calcaire actif bloque l’absorption du fer : les feuilles jaunissent (chlorose). On choisit alors un porte-greffe tolérant (41 B, Fercal, 333 EM) plutôt qu’un porte-greffe sensible comme le Riparia ; l’indice de pouvoir chlorosant (IPC) guide ce choix (chapitre 4).</div><div class="L en">Soil rich in active lime blocks iron uptake: the leaves turn yellow (chlorosis). Growers then choose a tolerant rootstock (41 B, Fercal, 333 EM) rather than a sensitive one such as Riparia; the chlorosis potential index (IPC) guides the choice (chapter 4).</div></dd></div><div class="pro-item"><dt><span data-fr="Couleur et chaleur" data-en="Colour and warmth">Couleur et chaleur</span></dt><dd><div class="L fr">Les sols sombres (schiste, basalte) et caillouteux se réchauffent vite et avancent la maturité ; les sols clairs (craie, calcaire blanc) renvoient la lumière vers les grappes ; les argiles humides restent froides au printemps.</div><div class="L en">Dark (schist, basalt) and stony soils warm up fast and advance ripening; pale soils (chalk, white limestone) reflect light onto the bunches; damp clays stay cold in spring.</div></dd></div></dl></details>
+  </section>
+
+  <!-- ===== grapes ===== -->
+  <section class="sec" id="cepages">
+    <div class="sec-head">
+      <h2 data-fr="Le bon cépage <em>au bon endroit</em>" data-en="The right grape <em>in the right place</em>">Le bon cépage <em>au bon endroit</em></h2>
+      <p data-fr="Des siècles d’essais ont associé chaque terroir aux cépages qui y donnent le meilleur. Les cahiers des charges des AOC ont ensuite fixé ces choix." data-en="Centuries of trial and error matched each terroir with the grapes that do best there. AOC specifications later set these choices in stone.">Des siècles d’essais ont associé chaque terroir aux cépages qui y donnent le meilleur. Les cahiers des charges des AOC ont ensuite fixé ces choix.</p>
+    </div>
+    <div class="panel match-wrap"><table class="match"><thead><tr><th data-fr="Terroir" data-en="Terroir">Terroir</th><th data-fr="Cépage" data-en="Grape">Cépage</th><th data-fr="Pourquoi" data-en="Why">Pourquoi</th></tr></thead><tbody><tr><td><span data-fr="Graves du Médoc" data-en="Médoc gravel">Graves du Médoc</span></td><td class="g">Cabernet Sauvignon</td><td><span data-fr="cépage tardif, il profite de la chaleur et du drainage des graves" data-en="a late variety, it benefits from the warmth and drainage of gravel">cépage tardif, il profite de la chaleur et du drainage des graves</span></td></tr><tr><td><span data-fr="Argiles de Pomerol" data-en="Pomerol clay">Argiles de Pomerol</span></td><td class="g">Merlot</td><td><span data-fr="précoce, il aime les sols frais qui ne manquent jamais d’eau" data-en="early-ripening, it likes cool soils that never run dry">précoce, il aime les sols frais qui ne manquent jamais d’eau</span></td></tr><tr><td><span data-fr="Calcaires et marnes de Bourgogne" data-en="Burgundy limestone and marl">Calcaires et marnes de Bourgogne</span></td><td class="g">Pinot noir, Chardonnay</td><td><span data-fr="précoces et délicats, ils traduisent les moindres nuances du sol" data-en="early and delicate, they reflect the subtlest differences in soil">précoces et délicats, ils traduisent les moindres nuances du sol</span></td></tr><tr><td><span data-fr="Craie de Champagne" data-en="Champagne chalk">Craie de Champagne</span></td><td class="g">Chardonnay, Pinot noir, Meunier</td><td><span data-fr="la fraîcheur du sol garde l’acidité indispensable aux effervescents" data-en="the cool soil keeps the acidity sparkling wine needs">la fraîcheur du sol garde l’acidité indispensable aux effervescents</span></td></tr><tr><td><span data-fr="Granite du Beaujolais" data-en="Beaujolais granite">Granite du Beaujolais</span></td><td class="g">Gamay</td><td><span data-fr="sols pauvres et acides qui tempèrent sa vigueur" data-en="poor, acidic soils that calm its vigour">sols pauvres et acides qui tempèrent sa vigueur</span></td></tr><tr><td><span data-fr="Granite de l’Hermitage" data-en="Hermitage granite">Granite de l’Hermitage</span></td><td class="g">Syrah</td><td><span data-fr="coteau très pentu exposé plein sud, au nord de sa limite de culture" data-en="a steep, south-facing slope near the northern limit of its range">coteau très pentu exposé plein sud, au nord de sa limite de culture</span></td></tr><tr><td><span data-fr="Galets de Châteauneuf-du-Pape" data-en="Châteauneuf-du-Pape cobbles">Galets de Châteauneuf-du-Pape</span></td><td class="g">Grenache</td><td><span data-fr="tardif et amoureux de la chaleur" data-en="late-ripening and heat-loving">tardif et amoureux de la chaleur</span></td></tr><tr><td><span data-fr="Calcaires et silex du Centre-Loire" data-en="Centre-Loire limestone and flint">Calcaires et silex du Centre-Loire</span></td><td class="g">Sauvignon blanc</td><td><span data-fr="climat frais qui préserve ses arômes" data-en="a cool climate that keeps its aromas">climat frais qui préserve ses arômes</span></td></tr><tr><td><span data-fr="Schistes d’Anjou" data-en="Anjou schist">Schistes d’Anjou</span></td><td class="g">Chenin</td><td><span data-fr="coteaux chauds au-dessus du Layon, propices aux liquoreux" data-en="warm slopes above the Layon, ideal for sweet wines">coteaux chauds au-dessus du Layon, propices aux liquoreux</span></td></tr></tbody></table></div>
+    <p class="hint" data-fr="Tous les cépages autorisés dans chaque appellation sont dans notre moteur de recherche <a href=&quot;Cepages/Cepages_et_Appellations.html&quot;>Cépages &amp; appellations</a>." data-en="Every grape permitted in each appellation is in our <a href=&quot;Cepages/Cepages_et_Appellations.html&quot;>Grapes &amp; appellations</a> search engine.">Tous les cépages autorisés dans chaque appellation sont dans notre moteur de recherche <a href="Cepages/Cepages_et_Appellations.html">Cépages &amp; appellations</a>.</p>
+  </section>
+
+  <!-- ===== words ===== -->
+  <section class="sec" id="lieux">
+    <div class="sec-head">
+      <h2 data-fr="Climats, lieux-dits <em>&amp; clos</em>" data-en="Climats, lieux-dits <em>&amp; clos</em>">Climats, lieux-dits <em>&amp; clos</em></h2>
+      <p data-fr="Le vocabulaire français du lieu, du plus petit au plus prestigieux." data-en="The French vocabulary of place, from the smallest to the most prestigious.">Le vocabulaire français du lieu, du plus petit au plus prestigieux.</p>
+    </div>
+    <div class="words">
+      <div class="word"><b data-fr="Parcelle" data-en="Parcelle">Parcelle</b><i data-fr="plot" data-en="plot">plot</i><span data-fr="L’unité cadastrale : un morceau de terre appartenant à un propriétaire." data-en="The land-registry unit: a piece of land with one owner.">L’unité cadastrale : un morceau de terre appartenant à un propriétaire.</span></div>
+      <div class="word"><b>Lieu-dit</b><i data-fr="named place" data-en="named place">named place</i><span data-fr="Un nom de lieu traditionnel, inscrit au cadastre, regroupant plusieurs parcelles." data-en="A traditional place name, recorded in the land registry, covering several plots.">Un nom de lieu traditionnel, inscrit au cadastre, regroupant plusieurs parcelles.</span></div>
+      <div class="word"><b>Climat</b><i data-fr="en Bourgogne" data-en="in Burgundy">en Bourgogne</i><span data-fr="Une parcelle ou un groupe de parcelles délimité avec précision et connu depuis des siècles pour son vin. Les « Climats du vignoble de Bourgogne » sont inscrits au patrimoine mondial de l’UNESCO depuis 2015." data-en="A precisely bounded plot or group of plots known for centuries for its wine. The “Climats of Burgundy” have been on UNESCO’s World Heritage list since 2015.">Une parcelle ou un groupe de parcelles délimité avec précision et connu depuis des siècles pour son vin. Les « Climats du vignoble de Bourgogne » sont inscrits au patrimoine mondial de l’UNESCO depuis 2015.</span></div>
+      <div class="word"><b>Clos</b><i data-fr="walled vineyard" data-en="walled vineyard">walled vineyard</i><span data-fr="Une vigne entourée de murs, souvent d’origine monastique : le <a href=&quot;../../Bourgogne%20Regions/Bourgogne%20climats/Vougeot%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html&quot;>Clos de Vougeot</a>, créé par les moines cisterciens au XII<sup>e</sup> siècle." data-en="A vineyard enclosed by walls, often of monastic origin: the <a href=&quot;../../Bourgogne%20Regions/Bourgogne%20climats/Vougeot%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html&quot;>Clos de Vougeot</a>, created by Cistercian monks in the 12th century.">Une vigne entourée de murs, souvent d’origine monastique : le <a href="../../Bourgogne%20Regions/Bourgogne%20climats/Vougeot%20%E2%80%94%20Climats%201er%20Cru%2C%20relief%205%20m%20%26%20climats%20communaux%20%C2%B7%20Carte.html">Clos de Vougeot</a>, créé par les moines cisterciens au XII<sup>e</sup> siècle.</span></div>
+      <div class="word"><b>Cru</b><i data-fr="growth" data-en="growth">growth</i><span data-fr="Un vignoble reconnu et classé : grand cru et premier cru en Bourgogne ou en Alsace, cru classé à Bordeaux (où le classement vise le château)." data-en="A recognised, classified vineyard: grand cru and premier cru in Burgundy or Alsace, cru classé in Bordeaux (where the classification applies to the château).">Un vignoble reconnu et classé : grand cru et premier cru en Bourgogne ou en Alsace, cru classé à Bordeaux (où le classement vise le château).</span></div>
+    </div>
+  </section>
+
+  <nav class="chapters" aria-label="Chapitres"><h3 data-fr="La vigne &amp;amp; le vignoble · les chapitres" data-en="The vine &amp;amp; the vineyard · chapters">La vigne &amp; le vignoble · les chapitres</h3><div class="ch-grid"><a class="ch" href="Vine_Plant.html"><span class="ch-n">01</span><span class="ch-t" data-fr="La plante vigne" data-en="The vine plant">La plante vigne</span></a><a class="ch" href="Vine_Cycle.html"><span class="ch-n">02</span><span class="ch-t" data-fr="Le cycle de la vigne" data-en="The vine’s year">Le cycle de la vigne</span></a><span class="ch cur" aria-current="page"><span class="ch-n">03</span><span class="ch-t" data-fr="Terroir &amp; site" data-en="Terroir &amp; site">Terroir & site</span></span><a class="ch" href="Vine_Planting.html"><span class="ch-n">04</span><span class="ch-t" data-fr="Plantation &amp; vie du vignoble" data-en="Planting &amp; the life of a vineyard">Plantation & vie du vignoble</span></a><a class="ch" href="Vine_Pruning.html"><span class="ch-n">05</span><span class="ch-t" data-fr="Taille &amp; modes de conduite" data-en="Training &amp; pruning">Taille & modes de conduite</span></a><a class="ch" href="Vine_Canopy.html"><span class="ch-n">06</span><span class="ch-t" data-fr="Travaux en vert &amp; du sol" data-en="Canopy &amp; soil work">Travaux en vert & du sol</span></a><a class="ch" href="Vine_Threats.html"><span class="ch-n">07</span><span class="ch-t" data-fr="Les ennemis de la vigne" data-en="Threats to the vine">Les ennemis de la vigne</span></a><a class="ch" href="Vine_Farming.html"><span class="ch-n">08</span><span class="ch-t" data-fr="Philosophies culturales" data-en="Farming philosophies">Philosophies culturales</span></a><a class="ch" href="Vine_Harvest.html"><span class="ch-n">09</span><span class="ch-t" data-fr="Les vendanges" data-en="Harvest">Les vendanges</span></a><a class="ch" href="Vine_Glossary.html"><span class="ch-n">10</span><span class="ch-t" data-fr="Glossaire" data-en="Glossary">Glossaire</span></a></div></nav>
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources"><li><span data-fr="OIV, résolution OIV/VITI 333/2010, définition du terroir vitivinicole." data-en="OIV, resolution OIV/VITI 333/2010, definition of vitivinicultural terroir.">OIV, résolution OIV/VITI 333/2010, définition du terroir vitivinicole.</span></li><li><span data-fr="Van Leeuwen C. et al., « Influence of climate, soil, and cultivar on terroir », <i>AJEV</i> 55, 2004 ; Seguin G., « Terroirs and pedology of wine growing », <i>Experientia</i>, 1986." data-en="Van Leeuwen C. et al., “Influence of climate, soil, and cultivar on terroir”, <i>AJEV</i> 55, 2004; Seguin G., “Terroirs and pedology of wine growing”, <i>Experientia</i>, 1986.">Van Leeuwen C. et al., « Influence of climate, soil, and cultivar on terroir », <i>AJEV</i> 55, 2004 ; Seguin G., « Terroirs and pedology of wine growing », <i>Experientia</i>, 1986.</span></li><li><span data-fr="Wilson J. E., <i>Terroir: the role of geology, climate and culture in the making of French wines</i>, 1998." data-en="Wilson J. E., <i>Terroir: the role of geology, climate and culture in the making of French wines</i>, 1998.">Wilson J. E., <i>Terroir: the role of geology, climate and culture in the making of French wines</i>, 1998.</span></li><li><span data-fr="UNESCO, « Les Climats du vignoble de Bourgogne », inscription au patrimoine mondial, 2015." data-en="UNESCO, “The Climats, terroirs of Burgundy”, World Heritage listing, 2015.">UNESCO, « Les Climats du vignoble de Bourgogne », inscription au patrimoine mondial, 2015.</span></li><li><span data-fr="INAO, cahiers des charges des appellations citées." data-en="INAO, specifications of the appellations mentioned.">INAO, cahiers des charges des appellations citées.</span></li></ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Terroir & site' : 'Terroir & site';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le cycle de la vigne</title>
+<meta name="description" content="Le cycle annuel de la vigne : dormance, débourrement, floraison, nouaison, véraison, maturation, vendanges, chute des feuilles ; stades BBCH, précocité des cépages et calendrier du vigneron.">
+<style>
+@@BASE_CSS@@
+  /* chapter 2 */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+
+  .wheel-wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(16px,3vw,36px);align-items:center;}
+  .wheel .w-seg path{transition:opacity .2s;}
+  .wheel .w-seg:hover path{opacity:.82;}
+  .wlegend{display:grid;gap:6px;}
+  .wl{display:flex;align-items:center;gap:12px;text-decoration:none;padding:8px 12px;border-radius:12px;background:var(--glass);border:1px solid var(--hair);transition:border-color .2s;}
+  .wl:hover{border-color:var(--c);}
+  .wl-n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-weight:700;font-family:var(--serif);font-size:16px;}
+  .wl b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);line-height:1.15;}
+  .wl small{font-size:12px;color:var(--muted);}
+
+  .stages{display:grid;gap:16px;}
+  .stage{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(14px,2.4vw,28px);padding:clamp(14px,2.2vw,22px);border-radius:20px;
+    background:var(--glass);border:1px solid var(--hair);border-left:5px solid var(--c);}
+  .st-side{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .st-side img{width:180px;height:180px;border-radius:50%;box-shadow:0 0 0 4px var(--paper),0 0 0 6px var(--c),var(--shadow);}
+  .codes{display:flex;flex-direction:column;gap:4px;align-items:center;}
+  .codes span{font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:999px;border:1px solid var(--hair);color:var(--gold);}
+  .st-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+  .st-n{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--serif);font-size:22px;}
+  .st-head h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);color:var(--title);margin:0;line-height:1.05;}
+  .st-period{margin:2px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c);font-weight:700;}
+  html:not([data-theme="cream"]) .st-period{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .st-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .st-grid>div{padding:12px 14px;border-radius:14px;background:var(--glass-hi);border:1px solid var(--hair);}
+  .stage h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .st-grid p{margin:0;font-size:14.2px;line-height:1.6;}
+  .st-risks{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;}
+  .st-risks h4{margin:0 6px 0 0;}
+  .st-risks a{font-size:12.5px;text-decoration:none;padding:4px 11px;border-radius:999px;border:1px solid color-mix(in srgb,#a0283c 40%,transparent);background:color-mix(in srgb,#a0283c 8%,transparent);}
+  .st-risks a:hover{border-color:#a0283c;}
+  .stage .warn{margin-top:12px;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .stage .warn b{color:var(--gold);}
+
+  .two-col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .explain p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+
+  .eps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .ep{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);}
+  .ep h4{margin:0;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .ep-d{margin:2px 0 8px;font-size:12px;color:var(--muted);}
+  .ep ul{margin:0;padding-left:18px;font-size:14px;line-height:1.65;}
+
+  .hv{padding:clamp(14px,2.4vw,24px);}
+  .hv-row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:10px;align-items:center;margin-bottom:6px;}
+  .hv-l{font-size:13.5px;}
+  .hv-months{display:grid;grid-template-columns:repeat(5,1fr);}
+  .hv-months span{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;border-left:1px solid var(--hair);padding-left:5px;}
+  .hv-track{position:relative;height:18px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--track) 0 calc(20% - 1px),var(--hair) calc(20% - 1px) 20%);}
+  .hv-bar{position:absolute;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#c0703a,#a0283c);}
+  .tail{position:absolute;top:3px;bottom:3px;border-radius:0 6px 6px 0;background:repeating-linear-gradient(135deg,#c08a1a 0 3px,transparent 3px 6px);}
+  .hv-key{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px;}
+  .hv-key i{display:inline-block;width:24px;height:10px;border-radius:3px;vertical-align:middle;margin-right:6px;}
+
+  .months{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+  .mo{padding:12px 13px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);font-size:13px;line-height:1.5;}
+  .mo b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:3px;}
+
+  .bbch-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .bbch{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .bbch th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .bbch td{padding:6px 10px;border-bottom:1px solid var(--hair);}
+  .bbch td.code{font-family:var(--serif);font-size:15px;color:var(--title);white-space:nowrap;}
+
+  @media (max-width:900px){
+    .wheel-wrap,.two-col{grid-template-columns:minmax(0,1fr);}
+    .stage{grid-template-columns:minmax(0,1fr);}
+    .st-side{flex-direction:row;justify-content:flex-start;}
+    .st-side img{width:110px;height:110px;}
+    .codes{align-items:flex-start;}
+    .months{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (max-width:620px){
+    .st-grid,.eps{grid-template-columns:minmax(0,1fr);}
+    .months{grid-template-columns:repeat(2,1fr);}
+    .hv-row{grid-template-columns:110px minmax(0,1fr);}
+    .hv-l{font-size:12px;}
+    .two-years .diagram{min-width:560px;} .two-years{overflow-x:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 2" data-en="The vine &amp; the vineyard · Chapter 2">La vigne &amp; le vignoble · Chapitre 2</p>
+    <h1 data-fr="Le cycle <em>de la vigne</em>" data-en="The vine’s <em>year</em>">Le cycle <em>de la vigne</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Du sommeil de l’hiver à la chute des feuilles, la vigne traverse chaque année les mêmes grandes étapes. Les connaître, c’est comprendre le travail du vigneron et ce qui fait un millésime."
+       data-en="From winter sleep to leaf fall, the vine goes through the same great stages every year. Knowing them means understanding the grower’s work and what makes a vintage.">Du sommeil de l’hiver à la chute des feuilles, la vigne traverse chaque année les mêmes grandes étapes. Les connaître, c’est comprendre le travail du vigneron et ce qui fait un millésime.</p>
+    <nav class="toc">
+      <a href="#infographie" data-fr="L’année en images" data-en="The year in pictures">L’année en images</a>
+      <a href="#roue" data-fr="La roue des saisons" data-en="Wheel of the seasons">La roue des saisons</a>
+      <a href="#stades" data-fr="Les 9 étapes" data-en="The 9 stages">Les 9 étapes</a>
+      <a href="#deux-ans" data-fr="Un cycle sur deux ans" data-en="A two-year cycle">Un cycle sur deux ans</a>
+      <a href="#chaleur" data-fr="Chaleur &amp; précocité" data-en="Heat &amp; earliness">Chaleur &amp; précocité</a>
+      <a href="#calendrier" data-fr="Le calendrier du vigneron" data-en="The grower’s calendar">Le calendrier du vigneron</a>
+      <a href="#bbch" data-fr="Stades BBCH" data-en="BBCH stages">Stades BBCH</a>
+    </nav>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">La vigne est une plante <b>pérenne</b> qui vit au rythme des saisons. Chaque année, elle enchaîne deux cycles imbriqués : un <b>cycle végétatif</b> (pousser, faire des feuilles, aoûter son bois, s’endormir) et un <b>cycle reproducteur</b> (fleurir, nouer, mûrir ses raisins).</p>
+      <p class="L en">The vine is a <b>perennial</b> plant that lives by the seasons. Every year it runs two interlocking cycles: a <b>vegetative cycle</b> (growing, making leaves, ripening its wood, going dormant) and a <b>reproductive cycle</b> (flowering, setting fruit, ripening its grapes).</p>
+      <p class="L fr">Les dates données ici valent pour la France, dans l’hémisphère nord ; elles avancent de deux à trois semaines dans le Midi par rapport au nord, varient selon les cépages et les années, et se sont nettement avancées avec le réchauffement climatique.</p>
+      <p class="L en">The dates given here apply to France, in the northern hemisphere; they come two to three weeks earlier in the South than in the North, vary with grape variety and year, and have moved noticeably earlier with climate warming.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Chaque étape : ce qui se passe dans la plante, le travail au vignoble et les risques." data-en="Each stage: what happens in the plant, the work in the vineyard and the risks.">Chaque étape : ce qui se passe dans la plante, le travail au vignoble et les risques.</span></div></div>
+        <div class="lvl"><span class="ico">@@PRO_ICON@@</span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Physiologie, stades BBCH et Baggiolini, indices climatiques, réglementation." data-en="Physiology, BBCH and Baggiolini stages, climate indices, regulation.">Physiologie, stades BBCH et Baggiolini, indices climatiques, réglementation.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="infographie">
+    <div class="sec-head">
+      <h2 data-fr="L’année <em>en images</em>" data-en="The year <em>in pictures</em>">L’année <em>en images</em></h2>
+      <p data-fr="Douze moments de l’année, de la taille d’hiver au repos hivernal suivant. Cliquez sur l’infographie pour l’agrandir." data-en="Twelve moments of the year, from winter pruning to the next winter rest. Click the infographic to enlarge it.">Douze moments de l’année, de la taille d’hiver au repos hivernal suivant. Cliquez sur l’infographie pour l’agrandir.</p>
+    </div>
+    @@PLATE_CYCLE@@
+  </section>
+
+  <section class="sec" id="roue">
+    <div class="sec-head">
+      <h2 data-fr="La roue <em>des saisons</em>" data-en="The wheel <em>of the seasons</em>">La roue <em>des saisons</em></h2>
+      <p data-fr="Le cycle se lit comme une horloge : janvier en haut, les mois dans le sens des aiguilles d’une montre. Cliquez sur une étape pour la découvrir." data-en="The cycle reads like a clock: January at the top, months running clockwise. Click a stage to find out more.">Le cycle se lit comme une horloge : janvier en haut, les mois dans le sens des aiguilles d’une montre. Cliquez sur une étape pour la découvrir.</p>
+    </div>
+    <div class="wheel-wrap">
+      <div class="diagram-card">@@WHEEL@@</div>
+      <div class="wlegend">@@WHEEL_LEGEND@@</div>
+    </div>
+  </section>
+
+  <section class="sec" id="stades">
+    <div class="sec-head">
+      <h2 data-fr="Les neuf <em>étapes</em>" data-en="The nine <em>stages</em>">Les neuf <em>étapes</em></h2>
+      <p data-fr="Pour chaque étape : sa période, ses codes dans les deux échelles de stades (BBCH et Baggiolini), ce qui se passe dans la vigne et ce que fait le vigneron." data-en="For each stage: its period, its codes on the two stage scales (BBCH and Baggiolini), what happens in the vine and what the grower does.">Pour chaque étape : sa période, ses codes dans les deux échelles de stades (BBCH et Baggiolini), ce qui se passe dans la vigne et ce que fait le vigneron.</p>
+    </div>
+    <div class="stages">@@STAGES@@</div>
+  </section>
+
+  <section class="sec" id="deux-ans">
+    <div class="sec-head">
+      <h2 data-fr="Un cycle <em>sur deux ans</em>" data-en="A cycle <em>over two years</em>">Un cycle <em>sur deux ans</em></h2>
+      <p data-fr="Les grappes d’un millésime se préparent dès l’été précédent, à l’intérieur des bourgeons." data-en="A vintage’s bunches are prepared the summer before, inside the buds.">Les grappes d’un millésime se préparent dès l’été précédent, à l’intérieur des bourgeons.</p>
+    </div>
+    <div class="two-col">
+      <div class="diagram-card two-years">@@TWO_YEARS@@</div>
+      <div class="explain">
+        <p class="L fr">Pendant l’été de l’année N−1, alors que la vigne mûrit ses raisins, les bourgeons qui se forment sur les rameaux fabriquent déjà les <b>ébauches des grappes</b> de l’année suivante. Plus ces bourgeons reçoivent de lumière et de chaleur, plus ils seront fertiles.</p>
+        <p class="L en">During the summer of year N−1, while the vine ripens its grapes, the buds forming on the shoots are already building the <b>bunch primordia</b> for the following year. The more light and warmth these buds receive, the more fruitful they will be.</p>
+        <p class="L fr">Ces bourgeons passent l’hiver en dormance sur le sarment. À la taille, le vigneron choisit combien en garder. Au printemps de l’année N, les fleurs achèvent de se former, juste avant le débourrement.</p>
+        <p class="L en">These buds spend the winter dormant on the cane. At pruning, the grower decides how many to keep. In spring of year N the flowers finish forming, just before budburst.</p>
+        <p class="L fr">Conséquence : une mauvaise année (grêle, gel, sécheresse, maladie) peut pénaliser <b>deux récoltes</b>, celle de l’année et celle de l’année suivante.</p>
+        <p class="L en">The consequence: a bad year (hail, frost, drought, disease) can hurt <b>two crops</b>, that year’s and the next.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="chaleur">
+    <div class="sec-head">
+      <h2 data-fr="Chaleur <em>&amp; précocité</em>" data-en="Heat <em>&amp; earliness</em>">Chaleur <em>&amp; précocité</em></h2>
+      <p data-fr="La vigne avance au rythme de la chaleur accumulée. Chaque cépage a ses besoins : on plante les plus précoces au nord, les plus tardifs au sud." data-en="The vine progresses with accumulated heat. Each variety has its needs: the earliest are planted in the north, the latest in the south.">La vigne avance au rythme de la chaleur accumulée. Chaque cépage a ses besoins : on plante les plus précoces au nord, les plus tardifs au sud.</p>
+    </div>
+    <h3 class="sub" data-fr="Époques de maturité (échelle de Pulliat)" data-en="Ripening periods (Pulliat scale)">Époques de maturité (échelle de Pulliat)</h3>
+    <div class="eps">@@EPOCHS@@</div>
+    <h3 class="sub" data-fr="Quand vendange-t-on ? Périodes indicatives des années récentes" data-en="When is the harvest? Indicative windows in recent years">Quand vendange-t-on ? Périodes indicatives des années récentes</h3>
+    <div class="panel">@@HARVEST@@
+      <div class="hv-key" style="padding:0 clamp(14px,2.4vw,24px) clamp(14px,2.4vw,20px)">
+        <span><i style="background:linear-gradient(90deg,#c0703a,#a0283c)"></i><span data-fr="Vendanges principales" data-en="Main harvest">Vendanges principales</span></span>
+        <span><i style="background:repeating-linear-gradient(135deg,#c08a1a 0 3px,transparent 3px 6px)"></i><span data-fr="Vendanges tardives, sélections de grains nobles" data-en="Late harvest, noble-rot selections">Vendanges tardives, sélections de grains nobles</span></span>
+      </div>
+    </div>
+    @@PRO_HEAT@@
+  </section>
+
+  <section class="sec" id="calendrier">
+    <div class="sec-head">
+      <h2 data-fr="Le calendrier <em>du vigneron</em>" data-en="The grower’s <em>calendar</em>">Le calendrier <em>du vigneron</em></h2>
+      <p data-fr="Les grands travaux de l’année, mois par mois. Ils seront détaillés aux chapitres 5 (taille) et 6 (travaux en vert et du sol)." data-en="The year’s main tasks, month by month. They will be covered in detail in chapters 5 (pruning) and 6 (canopy and soil work).">Les grands travaux de l’année, mois par mois. Ils seront détaillés aux chapitres 5 (taille) et 6 (travaux en vert et du sol).</p>
+    </div>
+    <div class="months">@@CALENDAR@@</div>
+  </section>
+
+  <section class="sec" id="bbch">
+    <div class="sec-head">
+      <h2 data-fr="Les échelles <em>de stades</em>" data-en="Growth-stage <em>scales</em>">Les échelles <em>de stades</em></h2>
+      <p data-fr="Pour parler précisément d’un stade, les techniciens utilisent l’échelle internationale BBCH (codes 00 à 99) ou, en France, l’échelle à lettres de Baggiolini (A à N). Ce sont ces codes qu’on lit dans les bulletins de santé du végétal." data-en="To refer to a stage precisely, technicians use the international BBCH scale (codes 00 to 99) or, in France, Baggiolini’s letter scale (A to N). These are the codes found in plant-health bulletins.">Pour parler précisément d’un stade, les techniciens utilisent l’échelle internationale BBCH (codes 00 à 99) ou, en France, l’échelle à lettres de Baggiolini (A à N). Ce sont ces codes qu’on lit dans les bulletins de santé du végétal.</p>
+    </div>
+    <div class="panel bbch-wrap"><table class="bbch"><thead><tr><th>BBCH</th><th>Baggiolini</th><th data-fr="Stade" data-en="Stage">Stade</th></tr></thead><tbody>@@BBCH@@</tbody></table></div>
+  </section>
+
+  @@CHAPTERS@@
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources">@@SOURCES@@</ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Le cycle de la vigne' : 'The vine’s year';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

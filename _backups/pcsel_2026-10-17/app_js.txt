@@ -1,0 +1,624 @@
+<script>
+(function(){
+  var D=window.MAPDATA, CFG=window.MAPCFG;
+  // compact parcel geometry ('g': polygons '|', rings ';', ring = x0,y0,dx,dy… in 1e-5°) -> GeoJSON
+  function decode(f){
+    if(f.geometry||!f.g) return;
+    var polys=f.g.split('|').map(function(p){ return p.split(';').map(function(r){
+      var v=r.split(','), x=0, y=0, out=new Array(v.length/2);
+      for(var i=0;i<v.length;i+=2){ x+=+v[i]; y+=+v[i+1]; out[i/2]=[x/1e5,y/1e5]; }
+      return out; }); });
+    f.geometry=polys.length===1?{type:'Polygon',coordinates:polys[0]}:{type:'MultiPolygon',coordinates:polys}; delete f.g;
+  }
+  D.pom.features.forEach(decode); D.ctx.features.forEach(decode);
+  var COMMUNE=D.cnames;
+  var MAIN=CFG.color, MAIN_D=CFG.colorDark, GOLD='#c9a24b';
+  var AOC_FILL={'Pomerol':'#e2b7bd','Saint-Émilion Grand Cru':'#d8c4da','Lalande-de-Pomerol':'#c6d3e3',
+    'Montagne-Saint-Émilion':'#cbd9a6','Saint-Georges-Saint-Émilion':'#bccc8e','Lussac-Saint-Émilion':'#d5dfb0','Puisseguin-Saint-Émilion':'#b9cf9c',
+    'Fronsac':'#e6b39c','Canon-Fronsac':'#dca08c','Castillon Côtes de Bordeaux':'#ecc79c','Francs Côtes de Bordeaux':'#ead3a4','Entre-deux-Mers':'#dfe3c6',
+    'Saint-Estèphe':'#dcc4d2','Pauillac':'#e2b7bd','Saint-Julien':'#ecc0b5','Listrac-Médoc':'#e6d0b0','Moulis-en-Médoc':'#d9dab0','Margaux':'#e6c0d4',
+    'Haut-Médoc':'#e9dfc2','Médoc':'#dfe3c6','Graves':'#e8dcb8','Cérons':'#efe0b0','Loupiac':'#e3d4ea','Sainte-Croix-du-Mont':'#d8cde6',
+    'Cadillac Côtes de Bordeaux':'#cfd9e6','Côtes de Bordeaux Saint-Macaire':'#d6e2cf',
+    'Pessac-Léognan':'#e6c2b8','Sauternes':'#f0dca0','Barsac':'#e8cf8a',
+    'Saussignac':'#e8d0b8','Monbazillac':'#f0dca8','Rosette':'#ead6c8','Haut-Montravel':'#d8d0e6','Côtes de Montravel':'#dcd6ea','Bergerac':'#e9dcc0',
+    'Côtes de Duras':'#d6e0c6','Côtes du Marmandais':'#e2d8c2','Côtes de Bourg':'#e2c6b2','Côtes de Bergerac':'#e9dcc0','Montravel':'#dcd6c0',
+    'Entre-deux-Mers':'#d8e2c0','Entre-deux-Mers Haut-Benauge':'#cfd9a8','Graves de Vayres':'#e4d9b8','Blaye Côtes de Bordeaux':'#d9cde6','Cadillac':'#f0dfae'};
+  if(CFG.aocFill) Object.keys(CFG.aocFill).forEach(function(k){AOC_FILL[k]=CFG.aocFill[k];});
+  var VIL=D.villages||[];   // Côtes du Rhône Villages: named villages (dénominations géographiques), parcel prop v = index
+  // classification tiers come from MAPCFG.ranks ({key:{t,short,r,fill,ring,w,minZ,pri,open}}, in display order)
+  var RANK=CFG.ranks||{}, RANK_ORDER=CFG.rankOrder||Object.keys(RANK);   // explicit order: JS sorts number-like keys ('1','2') first
+  ['fill','ring'].forEach(function(p){ RANK_ORDER.forEach(function(k){ if(RANK[k][p]==='GOLD') RANK[k][p]=GOLD; }); });
+  var LOWER={'de':1,'du':1,'des':1,'la':1,'le':1,'les':1,'et':1,'aux':1,'au':1,'sur':1,'en':1};
+
+  // "LE GRAND MOULINET" -> "Le Grand Moulinet", "BARRAIL DE LA GARENNE" -> "Barrail de la Garenne"
+  function tc(s){
+    if(!s) return '';
+    return s.toLowerCase().split(/(\s+|-)/).map(function(w,i){
+      if(!w.trim()||w==='-') return w;
+      if(i>0 && LOWER[w]) return w;
+      w=w.replace(/^([ld])'(.)/,function(m,a,b){return (i>0?a:a.toUpperCase())+"'"+b.toUpperCase();});
+      return w.charAt(0).toUpperCase()+w.slice(1);
+    }).join('');
+  }
+  function fmtN(n,d){return n.toLocaleString('fr-FR',{minimumFractionDigits:d||0,maximumFractionDigits:d||0});}
+  function fmtArea(m2){ // cadastral "ha a ca"
+    var ha=Math.floor(m2/10000), a=Math.floor((m2%10000)/100), ca=m2%100;
+    return (ha?ha+' ha ':'')+(ha||a?a+' a ':'')+ca+' ca';
+  }
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function cname(c){return COMMUNE[c]||c;}
+  function short(c){return cname(c).replace(/^Saint-/,'St-').replace(/-de-Pomerol$/,'');}
+
+  // ---------------------------------------------------------------- sidebar facts
+  var st=D.stats;
+  document.getElementById('st-ha').textContent=fmtN(st.ha,1);
+  if(CFG.haLabel) document.getElementById('st-ha').nextElementSibling.textContent=CFG.haLabel;
+  if(CFG.areaHeading){ var sh=document.querySelector('aside .sec .sec-t'); if(sh) sh.textContent=CFG.areaHeading; }
+  document.getElementById('st-n').textContent=fmtN(st.parcels);
+  document.getElementById('st-prod').textContent=CFG.prodHa?'≈ '+fmtN(CFG.prodHa):'—';   /* no reliable figure: show a dash */
+  document.getElementById('st-ch').textContent=D.chateaux.filter(function(c){return c.in;}).length;
+  var bc=document.getElementById('bycom');
+  Object.keys(st.byCommune).filter(function(c){return st.byCommune[c][1]>=0.5;}).sort(function(a,b){return st.byCommune[b][1]-st.byCommune[a][1];}).forEach(function(c){
+    var v=st.byCommune[c];
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td>'+cname(c)+'</td><td class="r">'+fmtN(v[0])+' parc.</td><td class="r">'+fmtN(v[1],1)+' ha</td>';
+    tr.onclick=function(){ loadCommune(c,function(){ selectSet(pomFeats.filter(function(f){return f.properties.c===c;}),
+      {ey:'Commune',title:cname(c),sub:'Part de la commune dans l’aire '+CFG.aocShort}); }); };
+    bc.appendChild(tr);
+  });
+  document.getElementById('aoc-card').innerHTML=CFG.card;
+  if(VIL.length){
+    var vs=document.createElement('div'); vs.className='sec';
+    vs.innerHTML='<div class="sec-t">'+(CFG.villagesTitle||('Les '+VIL.length+' villages nommés'))+'</div><table class="bycom" id="vtab"></table>'+
+      '<div class="note" style="font-family:ui-sans-serif,system-ui,sans-serif;font-size:10px;line-height:1.45;color:rgba(243,236,221,.55);margin-top:6px">'+(CFG.villagesNote||'Chaque village peut accoler son nom à l’appellation (dénomination géographique). Cliquez pour y aller, ↗ pour sa page. * Visan : aire reconstituée, non publiée par l’INAO.')+'</div>';
+    var s1=document.querySelector('aside .scroll .sec'); s1.parentNode.insertBefore(vs,s1.nextSibling);
+    var vt=vs.querySelector('#vtab');
+    VIL.slice().sort(function(a,b){return a.name.localeCompare(b.name,'fr');}).forEach(function(v){
+      var tr=document.createElement('tr');
+      var pg=CFG.villagePages&&CFG.villagePages[v.name];   // each named village also has its own page
+      tr.innerHTML='<td><span class="vsw" style="display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;background:'+v.color+'"></span>'+esc(v.name)+(v.recon?' <span title="Aire reconstituée : l’INAO ne la publie pas" style="color:rgba(243,236,221,.55)">*</span>':'')+
+        (pg?' <a href="'+pg+'" title="Page de '+esc(v.name)+'" style="color:#c9a24b;text-decoration:none;margin-left:3px">↗</a>':'')+'</td><td class="r">'+fmtN(v.parcels)+' parc.</td><td class="r">'+fmtN(v.ha,1)+' ha</td>';
+      var lk=tr.querySelector('a'); if(lk) lk.onclick=function(e){ e.stopPropagation(); };
+      tr.onclick=function(){ var bb=L.latLngBounds([v.bb[1],v.bb[0]],[v.bb[3],v.bb[2]]);   // close enough for its parcels to load
+        map.flyTo(bb.getCenter(),Math.max(map.getBoundsZoom(bb,false,L.point(40,40)),LOADZ+0.25),{duration:.8}); };
+      vt.appendChild(tr); });
+  }
+
+  // ---------------------------------------------------------------- map
+  var map=L.map('map',{zoomSnap:0,zoomDelta:1,scrollWheelZoom:false,doubleClickZoom:false,zoomAnimation:false,
+    minZoom:CFG.minZoom,maxZoom:19.5,zoomControl:false,attributionControl:false,inertia:true,inertiaDeceleration:3000});
+  L.control.zoom({position:'topright'}).addTo(map);
+
+  // ---- smooth zoom (Google-Maps style): cursor-anchored, momentum-accumulated, eased per frame.
+  // Wheel, trackpad pinch, +/- buttons, keyboard and double-click all go through smoothZoom().
+  var zooming=false;
+  var smoothZoom=(function(){
+    var target=null, anchor=null, raf=null, EASE=0.24;
+    function clamp(z){return Math.max(map.getMinZoom(),Math.min(map.getMaxZoom(),z));}
+    function step(){
+      var cur=map.getZoom(), d=target-cur;
+      if(Math.abs(d)<0.003){ map.setZoomAround(anchor,target,{animate:false}); raf=null; zooming=false; map.fire('smoothzoomend'); return; }
+      map.setZoomAround(anchor,cur+d*EASE,{animate:false});
+      raf=requestAnimationFrame(step);
+    }
+    function go(z,pt){
+      if(raf===null) target=map.getZoom();
+      target=clamp(z(target)); anchor=pt||map.getSize().divideBy(2);
+      if(raf===null){ zooming=true; map.fire('smoothzoomstart'); raf=requestAnimationFrame(step); }
+    }
+    var box=map.getContainer();
+    box.addEventListener('wheel',function(e){
+      e.preventDefault();
+      var dy=e.deltaY; if(e.deltaMode===1) dy*=16; else if(e.deltaMode===2) dy*=map.getSize().y;
+      if(e.ctrlKey) dy*=3;                         // trackpad pinch sends small deltas
+      dy=Math.max(-250,Math.min(250,dy));
+      var r=box.getBoundingClientRect();
+      go(function(t){return t-dy*0.0029;},L.point(e.clientX-r.left,e.clientY-r.top));
+    },{passive:false});
+    map.zoomIn=function(d){go(function(t){return t+(d||1);}); return map;};
+    map.zoomOut=function(d){go(function(t){return t-(d||1);}); return map;};
+    map.on('dblclick',function(e){go(function(t){return t+1;},e.containerPoint);});
+    return go;
+  })();
+  L.control.scale({position:'bottomright',imperial:false,maxWidth:140}).addTo(map);
+  function pane(n,z){map.createPane(n).style.zIndex=z; return L.canvas({pane:n,padding:0.4,tolerance:1});}
+  var rAoc=pane('aocPane',300), rWater=pane('waterPane',310), rParc=pane('parcelPane',325),
+      rStream=pane('streamPane',340), rRoad=pane('roadPane',350), rCom=pane('comPane',360), rSec=pane('secPane',370),
+      rOut=pane('outPane',380);
+  map.createPane('chPane').style.zIndex=395; var rCh=L.svg({pane:'chPane'});
+  map.createPane('hlPane').style.zIndex=390;
+  map.createPane('lblPane').style.zIndex=610; map.getPane('lblPane').style.pointerEvents='none';
+
+  var B=D.bounds, aBounds=L.latLngBounds([B[1],B[0]],[B[3],B[2]]);
+  map.setMaxBounds(aBounds.pad(0.9));
+  map.fitBounds(aBounds,{padding:[24,24]});
+  // a container with no size yet (hidden tab / pane) makes fitBounds jump to the max zoom: refit once it has a real size
+  if(!map.getSize().x||!map.getSize().y) map.once('resize',function(){ map.invalidateSize(); map.fitBounds(aBounds,{padding:[24,24]}); });
+
+  // neighbour appellations
+  var aocLayer=L.geoJSON(D.aocs,{renderer:rAoc,interactive:false,style:function(f){
+    return {stroke:false,fillColor:AOC_FILL[f.properties.name]||'#e6d193',fillOpacity:.6};}}).addTo(map);
+  // water
+  if(D.water) L.geoJSON(D.water,{renderer:rWater,interactive:false,style:{color:'#6f9fc2',weight:1,fillColor:'#a9c6da',fillOpacity:1}}).addTo(map);
+
+  // ---------------------------------------------------------------- parcels
+  var mode='aoc';
+  var pomFeats=D.pom.features, ctxFeats=D.ctx.features;
+  var lieuColor={}, secColor={}, comColor={};
+  var nLieu=0, nSec=0;
+  function lieuCol(n){ if(!lieuColor[n]){ var i=nLieu++; lieuColor[n]='hsl('+Math.round((i*137.508)%360)+','+(38+(i%3)*8)+'%,'+(58+(i%4)*5)+'%)'; } return lieuColor[n]; }
+  function secCol(k){ if(!secColor[k]){ var i=nSec++; secColor[k]='hsl('+Math.round((i*137.508+20)%360)+',42%,'+(52+(i%3)*7)+'%)'; } return secColor[k]; }
+  (function(){
+    var COM_PAL=['#b5475c','#d49a4a','#6f8f4e','#5f7fa6','#8a5f9e','#c3765f','#4f8f86','#a88c3c','#9e4f6d','#7a8f3f'];
+    Object.keys(st.byCommune).filter(function(c){return st.byCommune[c][1]>=0.5;}).sort().forEach(function(c,i){comColor[c]=COM_PAL[i%COM_PAL.length];});
+  })();
+  var RAMP=['#f4e6c8','#ecc9a0','#dc9d7d','#c46a64','#9b3a4c','#6a1426'];
+  function lerpHex(a,b,t){var p=function(h,i){return parseInt(h.substr(i,2),16);};
+    return '#'+[1,3,5].map(function(i){return ('0'+Math.round(p(a,i)+(p(b,i)-p(a,i))*t).toString(16)).slice(-2);}).join('');}
+  function sizeColor(a){ // log scale 100 m² .. 10 ha
+    var t=Math.max(0,Math.min(1,(Math.log10(Math.max(a,1))-2)/3)), x=t*(RAMP.length-1), i=Math.min(RAMP.length-2,Math.floor(x));
+    return lerpHex(RAMP[i],RAMP[i+1],x-i);
+  }
+  function mainStyle(f){
+    var p=f.properties, fill=(p.k&&CFG.subColor)?CFG.subColor:MAIN, op=p.k?.62:.5;
+    if(p.v!=null&&VIL[p.v]){ fill=VIL[p.v].color; op=.66; }
+    if(mode==='lieu'){ fill=p.l?lieuCol(p.l):'#e7dcc4'; op=.78; }
+    else if(mode==='section'){ fill=secCol(p.c+'|'+p.s); op=.66; }
+    else if(mode==='commune'){ fill=comColor[p.c]||MAIN; op=.62; }
+    else if(mode==='size'){ fill=sizeColor(p.a); op=.85; }
+    return {color:MAIN_D,weight:.55,opacity:.6,fillColor:fill,fillOpacity:op};
+  }
+  var CTX_STYLE={color:'#b3a384',weight:.4,opacity:.7,fillColor:'#fbf7ee',fillOpacity:.35};
+
+  // ParcelCanvas: draws every parcel on ONE canvas. Coordinates are projected once (zoom 0,
+  // relative to a local origin so Float32 stays precise); each redraw only scales/offsets them,
+  // culls by bbox, drops sub-pixel vertices and batches paths by colour. A grid index does hit-testing.
+  var ParcelCanvas=L.Layer.extend({
+    initialize:function(sets){ this.sets=sets; },
+    onAdd:function(m){
+      var c=this._c=L.DomUtil.create('canvas','parcel-canvas'); m.getPane('parcelPane').appendChild(c);
+      this._ctx=c.getContext('2d'); this._prep(); m.on('move zoom viewreset resize',this._schedule,this); this._frame();
+    },
+    onRemove:function(m){ L.DomUtil.remove(this._c); m.off('move zoom viewreset resize',this._schedule,this); },
+    _prep:function(){
+      if(this._ready) return; this._ready=true;
+      var B=D.bounds, o=this._o=map.project([B[3],B[0]],0), q=map.project([B[1],B[2]],0);
+      // hit-test grid: ~1000 cells across the AOC, numeric keys in a Map (a plain object hits V8's property limit)
+      this._cell=Math.max(Math.abs(q.x-o.x),Math.abs(q.y-o.y))/1000||1e-5; this._grid=new Map();
+      var self=this; this.sets.forEach(function(S){ self._index(S,S.feats); });
+    },
+    // project + index parcels; add() appends a batch (a commune loaded on zoom)
+    _index:function(S,feats){
+      var o=this._o, CELL=this._cell, grid=this._grid;
+      feats.forEach(function(f){
+        var g=f.geometry, polys=g.type==='Polygon'?[g.coordinates]:g.coordinates, rings=[], bb=[1e9,1e9,-1e9,-1e9];
+        polys.forEach(function(poly){ poly.forEach(function(ring){
+          var a=new Float32Array(ring.length*2);
+          for(var i=0;i<ring.length;i++){
+            var p=map.project([ring[i][1],ring[i][0]],0), x=p.x-o.x, y=p.y-o.y; a[2*i]=x; a[2*i+1]=y;
+            if(x<bb[0])bb[0]=x; if(y<bb[1])bb[1]=y; if(x>bb[2])bb[2]=x; if(y>bb[3])bb[3]=y;
+          }
+          rings.push(a);
+        }); });
+        f._r=rings; f._bb=bb; f._st=S.style(f);
+        for(var gx=Math.floor(bb[0]/CELL);gx<=Math.floor(bb[2]/CELL);gx++) for(var gy=Math.floor(bb[1]/CELL);gy<=Math.floor(bb[3]/CELL);gy++){
+          var k=gx*100003+gy, c=grid.get(k); if(!c) grid.set(k,c=[]); c.push([S,f]); }
+      });
+    },
+    add:function(S,feats){ if(!feats.length) return; Array.prototype.push.apply(S.feats,feats); if(this._ready) this._index(S,feats); this._dirty=true; this._schedule(); },
+    restyle:function(){ this.sets.forEach(function(S){ S.feats.forEach(function(f){ f._st=S.style(f); }); }); this._dirty=true; this._schedule(); },
+    setVisible:function(S,v){ S.visible=v; this._dirty=true; this._schedule(); },
+    _schedule:function(){ var t=this; if(t._raf) return; t._raf=requestAnimationFrame(function(){ t._raf=null; t._frame(); }); },
+    // current view -> canvas geometry; canvas px = X*s + ox (X = zoom-0 coords relative to origin)
+    _view:function(){
+      var m=this._map, size=m.getSize(), pad=Math.round(Math.max(size.x,size.y)*0.15);
+      var tl=m.containerPointToLayerPoint([-pad,-pad]).round(), s=Math.pow(2,m.getZoom()), po=m.getPixelOrigin(), o=this._o;
+      return {tl:tl,W:size.x+2*pad,H:size.y+2*pad,s:s,ox:o.x*s-po.x-tl.x,oy:o.y*s-po.y-tl.y,dpr:window.devicePixelRatio||1,z:m.getZoom()};
+    },
+    _size:function(c,v){ var w=Math.round(v.W*v.dpr), h=Math.round(v.H*v.dpr);
+      if(c.width!==w||c.height!==h){ c.width=w; c.height=h; } c.style.width=v.W+'px'; c.style.height=v.H+'px'; },
+    // cheap per-frame display: blit the last finished render, scaled/shifted to the current view
+    _frame:function(){
+      var m=this._map; if(!m) return;
+      if(!m.getSize().x||!m.getSize().y) return;   // nothing to draw into yet
+      var v=this._view(), c=this._c, ctx=this._ctx; this._size(c,v); L.DomUtil.setPosition(c,v.tl);
+      ctx.setTransform(1,0,0,1,0,0); ctx.clearRect(0,0,c.width,c.height);
+      var P=this._bufP;
+      if(P&&this._buf.width&&this._buf.height){ var k=v.s/P.s;       // off px -> current css px: px*k + (X0*s + ox)
+        ctx.setTransform(v.dpr*k,0,0,v.dpr*k,v.dpr*(P.X0*v.s+v.ox),v.dpr*(P.Y0*v.s+v.oy));
+        ctx.imageSmoothingEnabled=true; ctx.drawImage(this._buf,0,0,P.W,P.H); ctx.setTransform(1,0,0,1,0,0); }
+      var key=[v.z.toFixed(4),v.tl.x,v.tl.y,v.ox.toFixed(1),v.oy.toFixed(1),v.W,v.H].join('|');
+      if(key!==this._key||this._dirty){ this._key=key; this._dirty=false; this._cancel(); clearTimeout(this._tmr);
+        var t=this; this._tmr=setTimeout(function(){ t._render(); }, zooming?160:70); }
+    },
+    _cancel:function(){ if(this._job){ this._job.dead=true; this._job=null; } },
+    // crisp render into an offscreen canvas, time-sliced so the page never freezes; swapped in when done
+    _render:function(){
+      if(!this._map.getSize().x||!this._map.getSize().y) return;
+      if(zooming){ var t=this; clearTimeout(this._tmr); this._tmr=setTimeout(function(){t._render();},120); return; }
+      this._cancel();
+      var v=this._view(), work=this._spare||(this._spare=document.createElement('canvas')); this._size(work,v);
+      var ctx=work.getContext('2d'); ctx.setTransform(v.dpr,0,0,v.dpr,0,0); ctx.clearRect(0,0,v.W,v.H); ctx.lineJoin='round';
+      var s=v.s, ox=v.ox, oy=v.oy, vx0=-ox/s, vy0=-oy/s, vx1=(v.W-ox)/s, vy1=(v.H-oy)/s, MIN=0.6/s;
+      function trace(p,f){
+        var r=f._r;
+        for(var k=0;k<r.length;k++){ var a=r[k], n=a.length, lx=a[0], ly=a[1];
+          p.moveTo(lx*s+ox,ly*s+oy);
+          for(var i=2;i<n;i+=2){ var x=a[i], y=a[i+1];
+            if(i<n-2&&Math.abs(x-lx)<MIN&&Math.abs(y-ly)<MIN) continue;
+            p.lineTo(x*s+ox,y*s+oy); lx=x; ly=y; }
+        }   // no closePath(): rings already end on their first point, and closePath() is O(n) per call in Chromium
+      }
+      // work list: per set, fills grouped by colour (holed parcels filled even-odd on their own), then one stroke pass
+      var steps=[], CH=1200;
+      function chunks(list,fn){ for(var i=0;i<list.length;i+=CH) steps.push(fn.bind(null,list.slice(i,i+CH))); }
+      this.sets.forEach(function(S){
+        if(!S.visible) return;
+        var groups={}, keys=[], vis=[];
+        S.feats.forEach(function(f){ var b=f._bb; if(b[2]<vx0||b[0]>vx1||b[3]<vy0||b[1]>vy1) return;
+          var k=f._st.fillColor+'|'+f._st.fillOpacity; if(!groups[k]){groups[k]=[];keys.push(k);} groups[k].push(f); vis.push(f); });
+        keys.forEach(function(k){ var st=groups[k][0]._st;
+          chunks(groups[k],function(list){ var simple=new Path2D(), holed=null;
+            list.forEach(function(f){ if(f._r.length>1){ holed=holed||new Path2D(); trace(holed,f); } else trace(simple,f); });
+            ctx.globalAlpha=st.fillOpacity; ctx.fillStyle=st.fillColor; ctx.fill(simple); if(holed) ctx.fill(holed,'evenodd'); }); });
+        if(!vis.length) return;
+        var st0=vis[0]._st;
+        chunks(vis,function(list){ var p=new Path2D(); list.forEach(function(f){trace(p,f);});
+          ctx.globalAlpha=1-Math.pow(1-st0.opacity,2); ctx.strokeStyle=st0.color; /* shared borders are stroked once here (Leaflet drew them twice) */ ctx.lineWidth=st0.weight; ctx.stroke(p); });
+      });
+      var self=this, job=this._job={dead:false}, i=0;
+      (function slice(){
+        if(job.dead) return;
+        var t0=performance.now();
+        while(i<steps.length&&performance.now()-t0<12) steps[i++]();
+        if(i<steps.length){ requestAnimationFrame(slice); return; }
+        ctx.globalAlpha=1; self._job=null;
+        var tmp=self._buf; self._buf=work; self._spare=tmp||null;          // swap buffers
+        self._bufP={s:s,X0:-ox/s,Y0:-oy/s,W:v.W,H:v.H}; self._frame();
+      })();
+    },
+    // topmost visible parcel under a LatLng
+    hit:function(ll){
+      if(!this._ready) return null;
+      var p=map.project(ll,0), x=p.x-this._o.x, y=p.y-this._o.y, CELL=this._cell;
+      var cand=this._grid.get(Math.floor(x/CELL)*100003+Math.floor(y/CELL)); if(!cand) return null;
+      for(var i=cand.length-1;i>=0;i--){ var S=cand[i][0], f=cand[i][1], b=f._bb;
+        if(!S.visible||x<b[0]||x>b[2]||y<b[1]||y>b[3]) continue;
+        var inside=false;
+        f._r.forEach(function(a){ for(var j=0,n=a.length,k=n-2;j<n;k=j,j+=2){
+          if(((a[j+1]>y)!==(a[k+1]>y))&&(x<(a[k]-a[j])*(y-a[j+1])/(a[k+1]-a[j+1])+a[j])) inside=!inside; } });
+        if(inside) return f;
+      }
+      return null;
+    }
+  });
+  var CTX_SET={feats:ctxFeats,style:function(){return CTX_STYLE;},visible:true};
+  var MAIN_SET={feats:pomFeats,style:mainStyle,visible:true};
+  var parcels=new ParcelCanvas([CTX_SET,MAIN_SET]).addTo(map);
+  var byId={}; pomFeats.concat(ctxFeats).forEach(function(f){byId[f.properties.id]=f;});
+
+  var hint=document.getElementById('hint'), HINT0='Survolez une parcelle';
+
+  // ---- parcels load commune by commune once zoomed in (the AOC is too big for one file).
+  // Each chunk is a script (works from file://) calling window.__parcelChunk(code,{pom,ctx}).
+  var LOADZ=CFG.loadZoom!=null?CFG.loadZoom:13.5,   /* 0 = parcels embedded in the page */ ZOOM_HINT='Zoomez pour afficher les parcelles', loaded={}, pending={}, nPending=0;
+  var areaLayer=L.layerGroup([L.geoJSON(D.outline,{renderer:rAoc,interactive:false,style:{stroke:false,fillColor:MAIN,fillOpacity:.5}})]);
+  if(D.sub) areaLayer.addLayer(L.geoJSON(D.sub.outline,{renderer:rAoc,interactive:false,style:{stroke:false,fillColor:CFG.subColor,fillOpacity:.6}}));
+  VIL.forEach(function(v){ areaLayer.addLayer(L.geoJSON(v.outline,{renderer:rAoc,interactive:false,style:{stroke:false,fillColor:v.color,fillOpacity:.7}})); });
+  window.__parcelChunk=function(code,data){
+    [['pom',MAIN_SET],['ctx',CTX_SET]].forEach(function(p){ var fs=data[p[0]];
+      fs.forEach(function(f){ f.type='Feature'; decode(f); byId[f.properties.id]=f; }); parcels.add(p[1],fs); });
+    loaded[code]=true; var cbs=pending[code]||[]; delete pending[code]; nPending--; loadHint(); cbs.forEach(function(cb){cb();});
+  };
+  function loadCommune(code,cb){
+    if(!D.chunks[code]||loaded[code]){ if(cb) cb(); return; }
+    if(pending[code]){ if(cb) pending[code].push(cb); return; }
+    pending[code]=cb?[cb]:[]; nPending++; loadHint();
+    var sc=document.createElement('script'); sc.src=CFG.chunkDir+'/c'+code+'.js';
+    sc.onerror=function(){ delete pending[code]; nPending--; loadHint(); };
+    document.head.appendChild(sc);
+  }
+  function loadHint(){
+    if(nPending>0) hint.innerHTML='Chargement des parcelles… ('+nPending+' commune'+(nPending>1?'s':'')+')';
+    else if(/^(Chargement|Zoomez)/.test(hint.textContent)) hint.innerHTML=map.getZoom()<LOADZ?ZOOM_HINT:HINT0;
+  }
+  // embedded parcels (loadZoom 0) arrive in <script>s after this one: don't request chunk files before they have run (404s)
+  var inlineReady=LOADZ!==0;
+  if(!inlineReady) document.addEventListener('DOMContentLoaded',function(){ inlineReady=true; loadVisible(); });
+  function loadVisible(){
+    if(!inlineReady) return;
+    var z=map.getZoom();
+    // château dots only once zoomed in (hundreds of them would bury the overview)
+    if(CFG.chMinZoom&&on.chateaux){ var want=z>=CFG.chMinZoom; if(want!==map.hasLayer(chLayer)){ if(want) chLayer.addTo(map); else map.removeLayer(chLayer); } }
+    if(z<LOADZ){ if(!map.hasLayer(areaLayer)) areaLayer.addTo(map); loadHint(); return; }
+    if(map.hasLayer(areaLayer)) map.removeLayer(areaLayer);
+    var b=map.getBounds().pad(0.15);
+    Object.keys(D.chunks).forEach(function(c){ var bb=D.chunks[c].bb;
+      if(b.intersects(L.latLngBounds([bb[1],bb[0]],[bb[3],bb[2]]))) loadCommune(c); });
+    loadHint();
+  }
+  map.on('moveend smoothzoomend',loadVisible);
+  setTimeout(function(){ if(map.getZoom()<LOADZ) hint.innerHTML=ZOOM_HINT; loadVisible(); },0);
+  function inAoc(p){return p.f!==undefined;}
+  function parcelLabel(p){
+    return '<b>'+cname(p.c)+' '+p.s+' '+p.n+'</b> · '+fmtArea(p.a)+(p.l?' · '+esc(tc(p.l)):'')+' · '+(inAoc(p)?(p.k&&D.sub?(CFG.subHint||('AOC '+D.sub.name+' (et '+CFG.shortName+')')):(p.v!=null&&VIL[p.v]?CFG.aocShort+' '+VIL[p.v].name+(VIL[p.v].recon?' (aire reconstituée)':''):CFG.aocShort)):'hors appellation');
+  }
+  // hover outline = one small SVG path; hit-testing is throttled to one per frame
+  var hoverF=null, hoverShape=null, mmRaf=null, lastLL=null;
+  function setHover(f){
+    if(f===hoverF) return; hoverF=f;
+    if(hoverShape){ map.removeLayer(hoverShape); hoverShape=null; }
+    map.getContainer().style.cursor=f?'pointer':'';
+    if(!f){ hint.innerHTML=HINT0; return; }
+    hoverShape=L.geoJSON(f,{pane:'hlPane',interactive:false,style:{color:GOLD,weight:2.2,opacity:1,fill:false}}).addTo(map);
+    hint.innerHTML=parcelLabel(f.properties);
+  }
+  map.on('mousemove',function(e){ lastLL=e.latlng; if(mmRaf||zooming) return;
+    mmRaf=requestAnimationFrame(function(){ mmRaf=null; setHover(parcels.hit(lastLL)); }); });
+  map.on('mouseout',function(){ setHover(null); });
+  map.on('smoothzoomstart',function(){ setHover(null); });
+
+  // streams and roads
+  L.geoJSON(D.rivers,{renderer:rStream,interactive:false,style:function(f){
+    if(f.properties.big) return {color:'#8fb6d4',weight:9,opacity:.95,lineCap:'round',lineJoin:'round'};
+    var b=f.properties.main; return {color:'#2f74b0',weight:b?2.4:1.3,opacity:b?.95:.75};}}).addTo(map);
+  var roadLayer=L.layerGroup().addTo(map);
+  var ROAD={motorway:[4.2,'#d8b25a','#8a6a2a'],trunk:[3.6,'#e6c77a','#8a6a2a'],primary:[3,'#fffaf0','#a8957a'],secondary:[2.4,'#fffaf0','#b3a384'],tertiary:[1.6,'#fffaf0','#c2b395']};
+  var rOrder=['tertiary','secondary','primary','trunk','motorway'];
+  [0,1].forEach(function(casing){ rOrder.forEach(function(h){
+    var fs=D.roads.filter(function(f){return f.properties.h===h;}), s=ROAD[h];
+    L.geoJSON(fs,{renderer:rRoad,interactive:false,style:casing===0?{color:s[2],weight:s[0]+1.6,opacity:.55,lineCap:'round'}:{color:s[1],weight:s[0],opacity:1,lineCap:'round'}}).addTo(roadLayer);
+  }); });
+  if(D.rail){
+    L.geoJSON(D.rail,{renderer:rRoad,interactive:false,style:{color:'#6b5a48',weight:2.6,opacity:.8}}).addTo(roadLayer);
+    L.geoJSON(D.rail,{renderer:rRoad,interactive:false,style:{color:'#f3ecdd',weight:1.4,opacity:1,dashArray:'5 5'}}).addTo(roadLayer);
+  }
+  L.geoJSON(D.communes,{renderer:rCom,interactive:false,style:{color:'#6b5a48',weight:1.3,opacity:.75,dashArray:'7 4 2 4',fill:false}}).addTo(map);
+  var secLayer=L.geoJSON(D.sections,{renderer:rSec,interactive:false,style:{color:'#6a1426',weight:1.6,opacity:.75,dashArray:'2 5',fill:false}});
+  var outHalo=L.geoJSON(D.outline,{renderer:rOut,interactive:false,style:{color:GOLD,weight:7,opacity:.45,fill:false}}),
+      outLine=L.geoJSON(D.outline,{renderer:rOut,interactive:false,style:{color:'#6a1426',weight:2.4,opacity:.95,fill:false}});
+  L.layerGroup([outHalo,outLine]).addTo(map);
+  // on a big AOC the limit has hundreds of enclaves: thin line, no halo when zoomed out
+  function outlineByZoom(){ var far=map.getZoom()<(CFG.outlineFullZoom||12);
+    outHalo.setStyle({opacity:far?0:.45}); outLine.setStyle({weight:far?1:2.4,opacity:far?.7:.95}); }
+  map.on('zoomend smoothzoomend',outlineByZoom); outlineByZoom();
+
+  if(D.sub){
+    L.geoJSON(D.sub.outline,{renderer:rOut,interactive:false,style:{color:'#fff8ea',weight:4,opacity:.7,fill:false}}).addTo(map);
+    L.geoJSON(D.sub.outline,{renderer:rOut,interactive:false,style:{color:CFG.subDark,weight:2.2,opacity:.95,dashArray:'8 5',fill:false}}).addTo(map);
+    var tr=document.createElement('tr'); tr.className='subrow';
+    tr.innerHTML='<td>dont '+D.sub.name+'</td><td class="r">'+fmtN(D.sub.parcels)+' parc.</td><td class="r">'+fmtN(D.sub.ha,1)+' ha</td>';
+    tr.onclick=function(){ map.flyToBounds(L.geoJSON(D.sub.outline).getBounds(),{padding:[40,40],duration:.8}); };
+    bc.insertBefore(tr,bc.firstChild);
+  }
+  // other appellations sharing this land (different wine type): dashed limit + label, no parcel change
+  var extraLines=[];
+  (D.extraOutlines||[]).forEach(function(x){
+    var h=L.geoJSON(x.outline,{renderer:rOut,interactive:false,style:{color:'#fff8ea',weight:3.6,opacity:.6,fill:false}}).addTo(map);
+    var l=L.geoJSON(x.outline,{renderer:rOut,interactive:false,style:{color:x.color,weight:2,opacity:.95,dashArray:'7 5',fill:false}}).addTo(map);
+    extraLines.push([h,l]);
+  });
+  VIL.forEach(function(v){ L.geoJSON(v.outline,{renderer:rOut,interactive:false,style:{color:v.color,weight:1.4,opacity:.9,fill:false}}).addTo(map); });
+  function extraByZoom(){ var far=map.getZoom()<12;
+    extraLines.forEach(function(p){ p[0].setStyle({opacity:far?0:.6}); p[1].setStyle({weight:far?1.2:2,opacity:far?.8:.95,dashArray:far?'3 4':'7 5'}); }); }
+  map.on('zoomend smoothzoomend',extraByZoom); extraByZoom();
+  // châteaux
+  var chLayer=L.layerGroup().addTo(map);
+  function chRank(c){return c.r?RANK[c.r]:null;}
+  D.chateaux.slice().sort(function(a,b){return (a.r?1:0)-(b.r?1:0);}).forEach(function(c){
+    var R=chRank(c);
+    var m=L.circleMarker([c.lat,c.lng],R?{renderer:rCh,radius:R.r,color:R.ring,weight:R.w,fillColor:R.fill,fillOpacity:1}:
+      {renderer:rCh,radius:c.in?4:3,color:'#fff8ea',weight:1.3,fillColor:c.in?'#6a1426':'#8a7a66',fillOpacity:1});
+    m.on('mouseover',function(){ hint.innerHTML='<b>'+esc(c.n)+'</b>'+(R?' · '+R.t:'')+(c.l?' · lieu-dit '+esc(tc(c.l)):''); });
+    m.on('mouseout',function(){ hint.innerHTML=HINT0; });
+    m.on('click',function(e){ L.DomEvent.stopPropagation(e); selectChateau(c); });
+    chLayer.addLayer(m);
+  });
+
+  // ---------------------------------------------------------------- labels (collision-managed)
+  var labels=[], lblPane=map.getPane('lblPane');
+  function addLabel(o){
+    var el=document.createElement('div'); el.className='lbl '+o.cls; el.innerHTML=o.html||esc(o.text);
+    lblPane.appendChild(el); o.el=el; o.w=(o.text.length*o.fs*(o.wf||.56))+6; o.h=o.fs*1.35; labels.push(o); return o;
+  }
+  var on={chateaux:true,lieux:true,sections:false,numbers:false,ctx:true,aocs:true,roads:true};
+  D.places.forEach(function(p){
+    if(p.n==='Centre-Ville') return;
+    var big=(p.k==='town'||p.k==='village');
+    addLabel({lat:p.lat,lng:p.lng,text:p.n,cls:'lbl-pl'+(big?' big':''),fs:big?14:11,wf:.78,minZ:big?12:14,pri:big?100:40,layer:null});
+  });
+  (D.extraOutlines||[]).forEach(function(x){
+    addLabel({lat:x.lat,lng:x.lng,text:x.name,html:'<span style="color:'+x.color+'">'+esc(x.name)+'</span>',cls:'lbl-aoc',fs:15,minZ:10,maxZ:14.5,pri:92,layer:null}); });
+  D.aocs.forEach(function(f){ var p=f.properties;
+    addLabel({lat:p.lat,lng:p.lng,text:p.name,cls:'lbl-aoc',fs:15,minZ:12,maxZ:15.5,pri:90,layer:'aocs'}); });
+  D.rivers.forEach(function(f){ var p=f.properties; if(!p.lat) return;
+    addLabel({lat:p.lat,lng:p.lng,text:p.name,cls:'lbl-riv',fs:p.big?14:12,minZ:p.big?10:(p.main?13:15),pri:p.big?89:(p.main?85:20),layer:null}); });
+  VIL.forEach(function(v){
+    addLabel({lat:v.lat,lng:v.lng,text:v.name,html:'<span style="color:'+v.color+'">'+esc(v.name)+'</span>',cls:'lbl-aoc',fs:14,minZ:9,maxZ:13.75,pri:93,layer:null}); });
+  CFG.riverLabels.forEach(function(r){ addLabel({lat:r[1],lng:r[2],text:r[0],cls:'lbl-riv',fs:13,minZ:12,pri:88,layer:null}); });
+  D.sections.forEach(function(f){ var p=f.properties;
+    addLabel({lat:p.lat,lng:p.lng,text:p.s+'  '+cname(p.c),html:p.s+'<small>'+cname(p.c)+'</small>',cls:'lbl-sec',fs:24,wf:.5,minZ:12,maxZ:17,pri:95,layer:'sections'}); });
+  D.chateaux.forEach(function(c){ var R=chRank(c);
+    addLabel({lat:c.lat,lng:c.lng,text:c.n,cls:'lbl-ch'+(R?' rk rk-'+c.r:(c.in?'':' ctx')),fs:R?11:10.5,minZ:R?R.minZ:(c.in?14.25:15.5),pri:R?R.pri:(c.in?70:30),layer:'chateaux',dx:R?R.r+3:7}); });
+  D.lieux.slice().sort(function(a,b){return b.a-a.a;}).forEach(function(l,i){
+    addLabel({lat:l.lat,lng:l.lng,text:tc(l.n),cls:'lbl-ld',fs:11.5,minZ:l.a>CFG.ldBig?13.75:(l.a>CFG.ldMid?14.5:15.25),pri:60-i*0.01,layer:'lieux'}); });
+  labels.sort(function(a,b){return b.pri-a.pri;});
+
+  var numLabels=[];
+  function layoutLabels(){
+    if(zooming) return;
+    var z=map.getZoom(), size=map.getSize(), grid={}, G=80;
+    function hitsPlaced(bx){ for(var gx=Math.floor(bx.x0/G);gx<=Math.floor(bx.x1/G);gx++) for(var gy=Math.floor(bx.y0/G);gy<=Math.floor(bx.y1/G);gy++){
+        var cell=grid[gx+','+gy]; if(!cell) continue;
+        for(var i=0;i<cell.length;i++){var q=cell[i]; if(bx.x0<q.x1&&bx.x1>q.x0&&bx.y0<q.y1&&bx.y1>q.y0) return true;} } return false; }
+    function place(bx){ for(var gx=Math.floor(bx.x0/G);gx<=Math.floor(bx.x1/G);gx++) for(var gy=Math.floor(bx.y0/G);gy<=Math.floor(bx.y1/G);gy++){
+        var k=gx+','+gy; (grid[k]=grid[k]||[]).push(bx); } }
+    labels.forEach(function(o){
+      var show=z>=o.minZ&&(!o.maxZ||z<=o.maxZ)&&(!o.layer||on[o.layer]);
+      if(show){
+        var pt=map.latLngToLayerPoint([o.lat,o.lng]), cp=map.layerPointToContainerPoint(pt);
+        var x0=o.dx?cp.x+o.dx:cp.x-o.w/2, y0=cp.y-o.h/2, bx={x0:x0-2,y0:y0-1,x1:x0+o.w+2,y1:y0+o.h+1};
+        if(bx.x1<-50||bx.y1<-50||bx.x0>size.x+50||bx.y0>size.y+50) show=false;
+        else if(hitsPlaced(bx)) show=false;
+        if(show){ place(bx); o.el.style.left=(o.dx?pt.x+o.dx:pt.x)+'px'; o.el.style.top=pt.y+'px'; }
+      }
+      o.el.classList.toggle('hide',!show);
+    });
+    numLabels.forEach(function(el){el.remove();}); numLabels=[];
+    if(on.numbers&&z>=16.75){
+      var vb=map.getBounds().pad(0.05);
+      [pomFeats].concat(on.ctx?[ctxFeats]:[]).forEach(function(fs){ fs.forEach(function(f){
+        var p=f.properties; if(!vb.contains(p.p)) return;
+        if(z<18&&p.a<400) return;
+        var el=document.createElement('div'); el.className='lbl lbl-num'; el.textContent=p.s+' '+p.n;
+        lblPane.appendChild(el); var q=map.latLngToLayerPoint(p.p); el.style.left=q.x+'px'; el.style.top=q.y+'px'; numLabels.push(el);
+      });});
+    }
+  }
+  // labels hide while zooming and are laid out once the zoom settles (not on every frame)
+  map.on('smoothzoomstart zoomstart',function(){lblPane.style.visibility='hidden';});
+  map.on('smoothzoomend',function(){lblPane.style.visibility='';layoutLabels();});
+  map.on('moveend',function(){ if(!zooming){ lblPane.style.visibility=''; layoutLabels(); } });
+  map.whenReady(layoutLabels);
+
+  // ---------------------------------------------------------------- selection & readout
+  var hl=L.layerGroup().addTo(map), ro=document.getElementById('readout'), roBody=document.getElementById('ro-body');
+  function clearSel(){ hl.clearLayers(); ro.style.display='none'; }
+  document.getElementById('ro-close').onclick=clearSel;
+  map.on('click',function(e){ var f=parcels.hit(e.latlng); if(f) selectParcel(f); else clearSel(); });
+  function hlFeats(fs){
+    hl.clearLayers();
+    L.geoJSON({type:'FeatureCollection',features:fs},{pane:'hlPane',interactive:false,
+      style:{color:GOLD,weight:2.6,opacity:1,fillColor:'#f5d67a',fillOpacity:.35}}).addTo(hl);
+  }
+  function geoLink(lat,lng){
+    return 'https://www.geoportail.gouv.fr/carte?c='+lng+','+lat+'&z=18&l0=ORTHOIMAGERY.ORTHOPHOTOS::GEOPORTAIL:OGC:WMTS(1)&l1=CADASTRALPARCELS.PARCELLAIRE_EXPRESS::GEOPORTAIL:OGC:WMTS(1)&permalink=yes';
+  }
+  function show(html){ roBody.innerHTML=html; ro.style.display='block'; }
+  function badgeIn(){return '<span class="badge in" style="background:'+MAIN+'">'+CFG.aocShort+'</span>';}
+  function selectParcel(f){
+    var p=f.properties, inA=inAoc(p);
+    hlFeats([f]);
+    var part=inA&&p.f<0.99?' <span style="color:#5b5147;font-size:11px">('+Math.round(p.f*100)+' % de la parcelle dans l’aire)</span>':'';
+    var chs=D.chateaux.filter(function(c){return c.pid===p.id;});
+    show('<p class="ey">Parcelle cadastrale</p><h2>Section '+p.s+' · n° '+p.n+'</h2>'+
+      '<div class="sub">'+cname(p.c)+(p.l?' — lieu-dit '+esc(tc(p.l)):'')+'</div>'+
+      '<dl><dt>Appellation</dt><dd>'+(inA?(p.v!=null&&VIL[p.v]?'<span class="badge in" style="background:'+VIL[p.v].color+'">'+esc(VIL[p.v].name)+(VIL[p.v].recon?' · reconstituée':'')+'</span> ':'')+(p.k&&D.sub?'<span class="badge in" style="background:'+CFG.subColor+'">AOC '+D.sub.name+'</span> ':'')+badgeIn()+part:'<span class="badge out">Hors aire délimitée</span>')+'</dd>'+
+      '<dt>Contenance</dt><dd>'+fmtArea(p.a)+' <span style="color:#5b5147">('+fmtN(p.a/10000,2)+' ha)</span></dd>'+
+      '<dt>Commune</dt><dd>'+cname(p.c)+' ('+p.c+')</dd>'+
+      '<dt>Lieu-dit</dt><dd>'+(p.l?esc(tc(p.l)):'—')+'</dd>'+
+      (chs.length?'<dt>Domaine</dt><dd>'+chs.map(function(c){return esc(c.n);}).join(', ')+'</dd>':'')+
+      '<dt>Référence</dt><dd style="font-family:ui-monospace,monospace;font-size:11px">'+p.id+'</dd></dl>'+
+      '<div class="links"><a id="ro-zoom">Centrer</a><a href="'+geoLink(p.p[0],p.p[1])+'" target="_blank" rel="noopener">Voir sur Géoportail ↗</a>'+
+      (p.l?'<a id="ro-lieu">Tout le lieu-dit</a>':'')+'</div>');
+    document.getElementById('ro-zoom').onclick=function(){ map.flyToBounds(L.geoJSON(f).getBounds(),{padding:[80,80],maxZoom:18}); };
+    var rl=document.getElementById('ro-lieu'); if(rl) rl.onclick=function(){ selectLieu(p.l); };
+  }
+  function selectSet(fs,o){
+    if(!fs.length) return; hlFeats(fs);
+    var ha=fs.reduce(function(s,f){return s+f.properties.a;},0)/10000;
+    var inA=fs.filter(function(f){return inAoc(f.properties);});
+    show('<p class="ey">'+o.ey+'</p><h2>'+esc(o.title)+'</h2><div class="sub">'+(o.sub||'')+'</div>'+
+      '<dl><dt>Parcelles</dt><dd>'+fmtN(fs.length)+(inA.length!==fs.length?' (dont '+fmtN(inA.length)+' en AOC)':'')+'</dd>'+
+      '<dt>Surface</dt><dd>'+fmtN(ha,1)+' ha</dd>'+(o.extra||'')+'</dl>');
+    map.flyToBounds(L.geoJSON({type:'FeatureCollection',features:fs}).getBounds(),{padding:[70,70],maxZoom:17.5,duration:.8});
+  }
+  function selectLieu(name,code){
+    if(code&&!loaded[code]) return loadCommune(code,function(){ selectLieu(name,code); });
+    var fs=pomFeats.concat(ctxFeats).filter(function(f){return f.properties.l===name&&(!code||f.properties.c===code);});
+    var coms={}; fs.forEach(function(f){coms[cname(f.properties.c)]=1;});
+    var chs=D.chateaux.filter(function(c){return c.l===name;}).map(function(c){return esc(c.n);});
+    selectSet(fs,{ey:'Lieu-dit',title:tc(name),sub:Object.keys(coms).join(', '),
+      extra:chs.length?'<dt>Domaines</dt><dd>'+chs.join('<br>')+'</dd>':''});
+  }
+  function selectChateau(c){
+    if(c.c&&D.chunks[c.c]&&!loaded[c.c]) return loadCommune(c.c,function(){ selectChateau(c); });
+    var f=c.pid&&byId[c.pid]?byId[c.pid]:null, R=chRank(c);
+    if(!f){ f=parcels.hit(L.latLng(c.lat,c.lng)); if(f&&!c.l) c.l=f.properties.l; }
+    if(f) hlFeats([f]); else hl.clearLayers();
+    show('<p class="ey">Domaine</p><h2>'+esc(c.n)+'</h2><div class="sub">'+(c.c?cname(c.c):'')+(c.l?' — lieu-dit '+esc(tc(c.l)):'')+'</div>'+
+      '<dl><dt>Situation</dt><dd>'+(c.in?'<span class="badge in" style="background:'+MAIN+'">Dans l’aire '+CFG.aocShort+'</span>':'<span class="badge out">Hors aire '+CFG.aocShort+'</span>')+'</dd>'+
+      (R?'<dt>Classement</dt><dd>'+R.t+(R.note?'<br><span style="color:#5b5147;font-size:11px">'+R.note+'</span>':'')+'</dd>':'')+
+      (f?'<dt>Parcelle</dt><dd>Section '+f.properties.s+' n° '+f.properties.n+' · '+fmtArea(f.properties.a)+'</dd>':'')+'</dl>'+
+      '<div style="margin-top:9px;font-size:10.5px;color:#5b5147;line-height:1.45">Le point marque le bâtiment du domaine d’après OpenStreetMap, pas l’étendue de son vignoble. Les parcelles d’un domaine ne sont pas publiques.</div>'+
+      '<div class="links"><a href="'+geoLink(c.lat,c.lng)+'" target="_blank" rel="noopener">Voir sur Géoportail ↗</a></div>');
+    map.flyTo([c.lat,c.lng],Math.max(map.getZoom(),16.5),{duration:.8});
+  }
+
+  // ---------------------------------------------------------------- search
+  var sIn=document.getElementById('search'), sRes=document.getElementById('results');
+  // lieux-dits index from the page data (parcels may not be loaded yet): one entry per name + commune
+  var lieuIdx={}; D.lieux.forEach(function(l){ lieuIdx[l.n+'|'+l.c]={n:l.n,c:l.c}; });
+  function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[-'’]/g,' ');}
+  function runSearch(){
+    var q=sIn.value.trim(); sRes.innerHTML=''; if(q.length<1) return;
+    var out=[], m=q.match(/^([a-z]{1,2})\s*(?:n°\s*)?(\d+)$/i);
+    if(m){ var s=m[1].toUpperCase(), n=+m[2];
+      pomFeats.concat(ctxFeats).forEach(function(f){var p=f.properties; if(p.s===s&&p.n===n) out.push({k:'Parcelle',t:cname(p.c)+' '+p.s+' '+p.n,ct:inAoc(p)?'AOC':'hors AOC',go:function(){selectParcel(f); map.flyToBounds(L.geoJSON(f).getBounds(),{padding:[90,90],maxZoom:18,duration:.8});}});}); }
+    if(q.length>=2){ var nq=norm(q);
+      D.chateaux.forEach(function(c){ if(norm(c.n).indexOf(nq)>=0) out.push({k:'Domaine',t:c.n,ct:c.r?RANK[c.r].short:(c.in?CFG.shortName:''),go:function(){selectChateau(c);}}); });
+      Object.keys(lieuIdx).forEach(function(k){ var L_=lieuIdx[k]; if(norm(L_.n).indexOf(nq)>=0) out.push({k:'Lieu-dit',t:tc(L_.n),ct:cname(L_.c),go:function(){selectLieu(L_.n,L_.c);}}); });
+    }
+    out.slice(0,16).forEach(function(r){ var d=document.createElement('div'); d.className='res';
+      d.innerHTML='<span class="k">'+r.k+'</span><span>'+esc(r.t)+'</span><span class="ct">'+r.ct+'</span>'; d.onclick=r.go; sRes.appendChild(d); });
+    if(!out.length) sRes.innerHTML='<div class="res-empty">'+(m?'Aucune parcelle chargée ne correspond : zoomez sur la commune pour charger ses parcelles.':'Aucun résultat')+'</div>';
+  }
+  sIn.addEventListener('input',runSearch);
+
+  // classified châteaux list
+  var cl=document.getElementById('classes');
+  if(cl){
+    var ranked=D.chateaux.filter(function(c){return c.r;});
+    RANK_ORDER.forEach(function(r){
+      var cs=ranked.filter(function(c){return c.r===r;}).sort(function(a,b){return a.n.localeCompare(b.n,'fr');});
+      if(!cs.length) return;
+      var R=RANK[r], det=document.createElement('details'); if(R.open) det.open=true;
+      det.innerHTML='<summary><span class="rk-dot" style="background:'+R.fill+';box-shadow:0 0 0 1.5px '+R.ring+'"></span>'+R.t+' <span class="ct">'+cs.length+'</span></summary>';
+      cs.forEach(function(c){ var d=document.createElement('div'); d.className='res'; d.innerHTML='<span>'+esc(c.n)+'</span>'; d.onclick=function(){selectChateau(c);}; det.appendChild(d); });
+      cl.appendChild(det);
+    });
+  }
+
+  // ---------------------------------------------------------------- modes, layers, legend
+  var legend=document.getElementById('legend');
+  function buildLegend(){
+    var h='<div class="lt" id="lg-toggle" title="Replier / déplier">Légende <span class="chev">▾</span></div><div class="lg-body">';
+    if(mode==='aoc'){ h+='<div class="lr"><span class="sw" style="background:'+MAIN+';opacity:.7"></span>'+(CFG.parcelLabel||('Parcelle en '+CFG.aocShort))+'</div>';
+      if(D.sub) h+='<div class="lr"><span class="sw" style="background:'+CFG.subColor+';opacity:.85"></span>'+(CFG.subLegend||('AOC '+D.sub.name+' (aussi '+CFG.shortName+')'))+'</div>'; }
+    if(D.sub) h+='<div class="lr"><span class="ln" style="border-top:2.2px dashed '+CFG.subDark+'"></span>Limite '+D.sub.name+'</div>';
+    if(mode==='aoc'&&VIL.length) h+='<div class="lr"><span class="sw" style="background:linear-gradient(90deg,'+VIL.slice(0,6).map(function(v){return v.color;}).join(',')+')"></span>'+(CFG.villagesLegend||'Village nommé (couleur par village, liste à gauche)')+'</div>';
+    (D.extraOutlines||[]).forEach(function(x){ h+='<div class="lr"><span class="ln" style="border-top:2px dashed '+x.color+'"></span>Aire '+esc(x.name)+'</div>'; });
+    if(mode==='lieu') h+='<div class="lr"><span class="sw" style="background:linear-gradient(90deg,#c98a8a,#8fb07a,#7f9fc9,#c9b07a)"></span>Parcelles AOC par lieu-dit</div>';
+    if(mode==='section') h+='<div class="lr"><span class="sw" style="background:linear-gradient(90deg,#c98a8a,#8fb07a,#7f9fc9,#c9b07a)"></span>Parcelles AOC par section cadastrale</div>';
+    if(mode==='commune'){ h+='<div style="display:flex;flex-wrap:wrap;gap:1px 10px;max-width:240px">';
+      Object.keys(comColor).forEach(function(c){h+='<div class="lr" style="margin:1px 0"><span class="sw" style="background:'+comColor[c]+'"></span>'+short(c)+'</div>';}); h+='</div>'; }
+    if(mode==='size') h+='<div class="lr" style="font-size:10px;color:#5b5147;margin-bottom:0">Surface de la parcelle (AOC)</div><div class="ramp" style="background:linear-gradient(90deg,'+RAMP.join(',')+')"></div><div class="rl"><span>1 a</span><span>10 a</span><span>1 ha</span><span>10 ha</span></div>';
+    h+='<div class="lr"><span class="ln" style="border-top:3px solid #6a1426;box-shadow:0 0 0 2px rgba(201,162,75,.45)"></span>'+(CFG.outlineLabel||'Limite de l’aire délimitée')+'</div>';
+    if(on.ctx) h+='<div class="lr"><span class="sw" style="background:#fbf7ee;border:1px solid #b3a384;box-shadow:none"></span>Parcelle hors appellation</div>';
+    if(on.aocs){ var seen={}; D.aocs.forEach(function(f){var n=f.properties.name; if(CFG.legendAocs.indexOf(n)>=0&&!seen[n]){seen[n]=1;
+      h+='<div class="lr"><span class="sw" style="background:'+AOC_FILL[n]+'"></span>'+n+'</div>';}});
+      if(CFG.legendNote) h+='<div class="lr"><span class="sw" style="background:'+CFG.legendNote[1]+'"></span>'+CFG.legendNote[0]+'</div>'; }
+    if(on.chateaux){
+      if(D.chateaux.some(function(c){return c.r;})) RANK_ORDER.forEach(function(r){var R=RANK[r]; if(!D.chateaux.some(function(c){return c.r===r;})) return;
+        h+='<div class="lr"><span class="dot" style="width:'+(R.r*1.6)+'px;height:'+(R.r*1.6)+'px;background:'+R.fill+';box-shadow:0 0 0 1.5px '+R.ring+'"></span>'+R.t+'</div>';});
+      h+='<div class="lr"><span class="dot" style="background:#6a1426;box-shadow:0 0 0 1.5px #fff8ea,0 0 0 2.3px rgba(43,19,22,.25)"></span>'+(D.chateaux.some(function(c){return c.r;})?'Autre domaine':'Domaine (bâtiment)')+'</div>';
+    }
+    h+='<div class="lr"><span class="ln" style="border-top:2.4px solid #2f74b0"></span>Cours d’eau</div>';
+    h+='<div class="lr"><span class="ln" style="border-top:1.5px dashed #6b5a48"></span>Limite communale</div>';
+    if(on.sections) h+='<div class="lr"><span class="ln" style="border-top:1.6px dotted #6a1426"></span>Section cadastrale</div>';
+    legend.innerHTML=h+'</div>';
+    document.getElementById('lg-toggle').onclick=function(){legend.classList.toggle('min');};
+  }
+  document.querySelectorAll('#modes .btn').forEach(function(b){ b.onclick=function(){
+    document.querySelectorAll('#modes .btn').forEach(function(x){x.classList.toggle('active',x===b);});
+    mode=b.dataset.mode; parcels.restyle(); buildLegend(); }; });
+  var LAYERS={chateaux:chLayer,sections:secLayer,aocs:aocLayer,roads:roadLayer};
+  document.querySelectorAll('.toggles input').forEach(function(i){ i.onchange=function(){
+    var k=i.dataset.layer; on[k]=i.checked;
+    if(LAYERS[k]){ if(i.checked) LAYERS[k].addTo(map); else map.removeLayer(LAYERS[k]); }
+    if(k==='ctx') parcels.setVisible(CTX_SET,i.checked);
+    if(k==='numbers'&&i.checked&&map.getZoom()<16.75){ map.flyTo(map.getCenter(),17,{duration:.6}); }
+    buildLegend(); layoutLabels(); }; });
+  buildLegend();
+})();
+</script>

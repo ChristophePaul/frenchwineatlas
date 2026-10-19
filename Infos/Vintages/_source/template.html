@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Millésimes de France</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.66);--faint:rgba(245,239,227,.42);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.40);--glass-hi:rgba(38,10,18,.58);--glass-solid:#1e060c;
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --star:#e7c46f;--star-off:rgba(245,239,227,.18);
+    --title:#fff;--input:rgba(10,1,4,.45);
+    /* rating heat scale: 1 = ½ star … 10 = 5 stars */
+    --h1:#3a1a1f;--h2:#46201f;--h3:#552a22;--h4:#653526;--h5:#7a452b;
+    --h6:#8f5a31;--h7:#a8733a;--h8:#c08d45;--h9:#d6a954;--h10:#efcd72;
+    --h-ink-lo:rgba(245,239,227,.85);--h-ink-hi:#2a0d12;
+    --c-w:#e9d9a0;--c-r:#c25a6c;--c-rs:#eea3b4;--c-sw:#e0a54a;--c-sp:#cfe0e8;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.72);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;--glass-solid:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --star:#b8862b;--star-off:rgba(46,20,25,.16);
+    --title:#3a1219;--input:#fff;
+    --h1:#f6eee2;--h2:#f1e2cc;--h3:#ecd4b4;--h4:#e6c297;--h5:#dfab7a;
+    --h6:#d38e62;--h7:#c06b50;--h8:#a84a42;--h9:#8e2c37;--h10:#6e1426;
+    --h-ink-lo:#3a1219;--h-ink-hi:#fff;
+    --c-w:#d8bb52;--c-r:#8e1f33;--c-rs:#e58ca2;--c-sw:#c98a22;--c-sp:#7fa6b8;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  html[data-theme="cream"] body{
+    background:
+      radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.5em;font-size:clamp(9px,1.3vw,11px);font-weight:600;
+    color:var(--gold);margin:0 0 18px;padding-left:.5em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,84px);line-height:.98;margin:0;color:var(--title);
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(13px,1.7vw,15.5px);line-height:1.65;font-weight:300;color:var(--muted);max-width:700px;margin:0 auto;}
+  .stats{display:flex;justify-content:center;gap:clamp(18px,4vw,44px);margin-top:24px;flex-wrap:wrap;}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:30px;color:var(--title);line-height:1;}
+  .stat span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);}
+  html[data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,30,40,.10),inset 0 1px 0 #fff;-webkit-backdrop-filter:none;backdrop-filter:none;}
+
+  /* controls */
+  .controls{padding:18px;}
+  .ctl-row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;}
+  .field{display:flex;flex-direction:column;gap:6px;min-width:0;}
+  .field label{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+  select{appearance:none;-webkit-appearance:none;font:500 15px/1.2 var(--sans);color:var(--parchment);background:var(--input);
+    border:1px solid var(--hair);border-radius:12px;padding:12px 38px 12px 14px;outline:none;cursor:pointer;min-width:0;
+    background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);
+    background-position:calc(100% - 18px) 52%,calc(100% - 13px) 52%;background-size:5px 5px;background-repeat:no-repeat;}
+  select:focus{border-color:var(--hair-hi);}
+  select option{background:var(--glass-solid);color:var(--parchment);}
+  .field select{width:100%;}
+  .f-year{flex:0 1 190px;} .f-stars{flex:0 1 220px;} .f-mode{flex:0 1 160px;}
+  .reset{appearance:none;border:1px solid var(--hair);background:transparent;color:var(--muted);cursor:pointer;
+    font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:13px 16px;border-radius:12px;}
+  .reset:hover{color:var(--gold-soft);border-color:var(--hair-hi);}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;align-items:center;}
+  .chips .lbl{font:600 10px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-right:4px;}
+  .chip{appearance:none;border:1px solid var(--hair);background:transparent;color:var(--muted);cursor:pointer;
+    font:500 12px/1 var(--sans);padding:7px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;}
+  .chip:hover{border-color:var(--hair-hi);}
+  .chip[aria-pressed="true"]{border-color:var(--hair-hi);color:var(--title);background:rgba(217,179,107,.14);}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.3);}
+  .d-w{background:var(--c-w);} .d-r{background:var(--c-r);} .d-rs{background:var(--c-rs);} .d-sw{background:var(--c-sw);} .d-sp{background:var(--c-sp);}
+
+  /* stars */
+  .stars{display:inline-flex;gap:1px;font-size:15px;line-height:1;white-space:nowrap;letter-spacing:0;}
+  .st{position:relative;display:inline-block;color:var(--star-off);}
+  .st.f{color:var(--star);}
+  .st.h::before{content:"★";position:absolute;left:0;top:0;width:50%;overflow:hidden;color:var(--star);}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 4px 0;font-size:12px;color:var(--muted);align-items:center;}
+  .scale{display:inline-flex;border-radius:6px;overflow:hidden;border:1px solid var(--hair);}
+  .scale i{width:18px;height:12px;display:block;}
+  .conf{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;
+    font:700 9px/1 var(--sans);border:1px solid var(--hair-hi);color:var(--gold-soft);flex:none;}
+  .conf.c-B{opacity:.8;border-style:dashed;} .conf.c-C{opacity:.65;border-style:dotted;}
+
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:30px 4px 14px;}
+  .sec-head h2{text-transform:uppercase;letter-spacing:.3em;font-size:11px;font-weight:600;color:var(--gold);margin:0;}
+  .sec-head .n{font-size:11px;letter-spacing:.1em;color:var(--faint);}
+  .sec-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--hair),transparent);}
+
+  /* period tabs */
+  .periods{display:flex;gap:6px;flex-wrap:wrap;margin:0 4px 12px;}
+
+  /* grid */
+  .grid-wrap{overflow:auto;max-height:78vh;border-radius:18px;}
+  table.grid{border-collapse:separate;border-spacing:2px;font-size:12px;}
+  .grid th,.grid td{padding:0;}
+  .grid thead th{position:sticky;top:0;z-index:3;background:var(--glass-solid);color:var(--gold);font:600 11px/1 var(--sans);
+    height:34px;min-width:38px;cursor:pointer;letter-spacing:.02em;}
+  .grid thead th:hover{color:var(--gold-soft);}
+  .grid thead th.corner{left:0;z-index:5;text-align:left;padding-left:12px;cursor:default;}
+  .grid th.rn{position:sticky;left:0;z-index:2;background:var(--glass-solid);text-align:left;font-weight:500;
+    padding:0 10px 0 12px;white-space:nowrap;color:var(--parchment);font-size:12.5px;height:30px;min-width:230px;max-width:300px;
+    overflow:hidden;text-overflow:ellipsis;}
+  .grid th.rn .in{display:flex;align-items:center;gap:7px;}
+  .grid tr.grp th{position:sticky;left:0;z-index:2;background:var(--glass-solid);text-align:left;padding:14px 12px 5px;
+    font:600 10px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);}
+  .grid td.v{width:38px;min-width:38px;height:30px;text-align:center;border-radius:6px;font-weight:600;cursor:pointer;
+    font-variant-numeric:tabular-nums;transition:transform .12s,opacity .15s;}
+  .grid td.v:hover{transform:scale(1.12);position:relative;z-index:1;box-shadow:0 4px 14px rgba(0,0,0,.35);}
+  .grid td.e{background:transparent;}
+  .grid td.off{opacity:.12;}
+  .grid td.hit{outline:2px solid var(--gold-soft);outline-offset:-2px;}
+  .l1{background:var(--h1);color:var(--h-ink-lo);} .l2{background:var(--h2);color:var(--h-ink-lo);}
+  .l3{background:var(--h3);color:var(--h-ink-lo);} .l4{background:var(--h4);color:var(--h-ink-lo);}
+  .l5{background:var(--h5);color:var(--h-ink-lo);} .l6{background:var(--h6);color:var(--h-ink-lo);}
+  .l7{background:var(--h7);color:var(--h-ink-hi);} .l8{background:var(--h8);color:var(--h-ink-hi);}
+  .l9{background:var(--h9);color:var(--h-ink-hi);} .l10{background:var(--h10);color:var(--h-ink-hi);}
+  html:not([data-theme="cream"]) .l1,html:not([data-theme="cream"]) .l2,html:not([data-theme="cream"]) .l3,
+  html:not([data-theme="cream"]) .l4,html:not([data-theme="cream"]) .l5,html:not([data-theme="cream"]) .l6{color:var(--h-ink-lo);}
+  html:not([data-theme="cream"]) .l7,html:not([data-theme="cream"]) .l8,html:not([data-theme="cream"]) .l9,
+  html:not([data-theme="cream"]) .l10{color:var(--h-ink-hi);}
+  html[data-theme="cream"] .l6{color:#fff;}
+
+  /* year view */
+  .yhead{padding:clamp(20px,3vw,30px);display:flex;gap:22px;align-items:center;flex-wrap:wrap;}
+  .ybig{font-family:var(--serif);font-size:clamp(54px,9vw,92px);line-height:.9;color:var(--title);}
+  .ynav{display:flex;gap:6px;}
+  .ynote{flex:1;min-width:240px;font-size:15px;line-height:1.65;font-weight:300;color:var(--parchment);margin:0;}
+  .ynote.none{color:var(--faint);font-style:italic;}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:14px;}
+  .card{padding:14px 16px;}
+  .card h3{margin:0 0 8px;font:600 10.5px/1.2 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);}
+  .line{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--hair);font-size:13.5px;}
+  .line:first-of-type{border-top:0;}
+  .line .nm{flex:1;min-width:0;}
+  .line .num{font-size:11px;color:var(--faint);width:26px;text-align:right;font-variant-numeric:tabular-nums;}
+  .line.na .nm{color:var(--faint);}
+  .line.off{opacity:.35;}
+
+  /* star-search list */
+  .hits{padding:6px 18px 14px;}
+  .hit-row{display:flex;gap:12px;padding:10px 0;border-top:1px solid var(--hair);align-items:flex-start;}
+  .hit-row:first-child{border-top:0;}
+  .hit-row .nm{width:260px;flex:none;font-size:13.5px;display:flex;gap:7px;align-items:center;}
+  .yrs{display:flex;flex-wrap:wrap;gap:5px;}
+  .yr{appearance:none;border:0;border-radius:6px;font:600 11.5px/1 var(--sans);padding:6px 7px;cursor:pointer;font-variant-numeric:tabular-nums;}
+  .yr:hover{outline:2px solid var(--gold-soft);}
+  .empty{padding:18px;color:var(--faint);font-size:14px;}
+
+  .method{padding:clamp(18px,3vw,28px);font-size:13px;line-height:1.7;color:var(--muted);}
+  .method h3{margin:0 0 8px;font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold);}
+  .method p{margin:0 0 12px;}
+  .method ol{margin:0 0 12px;padding-left:20px;}
+  .method li{margin:3px 0;}
+  .method a{color:var(--gold-soft);}
+  footer{margin-top:46px;padding-top:22px;text-align:center;font-size:11px;line-height:1.8;color:var(--faint);border-top:1px solid var(--hair);}
+
+  #tip{position:fixed;z-index:50;pointer-events:none;background:var(--glass-solid);border:1px solid var(--hair-hi);border-radius:10px;
+    padding:8px 11px;font-size:12px;color:var(--parchment);box-shadow:0 10px 30px rgba(0,0,0,.35);display:none;max-width:280px;}
+  #tip b{color:var(--title);font-weight:600;}
+
+  @media (max-width:700px){
+    .field{flex:1 1 140px !important;}
+    .grid th.rn{min-width:150px;max-width:150px;font-size:11.5px;}
+    .hit-row{flex-direction:column;gap:6px;}
+    .hit-row .nm{width:auto;}
+    .cards{grid-template-columns:1fr;}
+  }
+  .pulse{animation:pulse 1.3s ease-in-out 2;border-radius:12px;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,150,62,0)}50%{box-shadow:0 0 0 6px rgba(201,150,62,.45)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="lang" type="button">EN</button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Guide des millésimes" data-en="Vintage guide">Guide des millésimes</p>
+    <h1 data-fr="Millésimes <em>de&nbsp;France</em>" data-en="French <em>Vintages</em>">Millésimes <em>de&nbsp;France</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="La qualité de chaque millésime, région par région et couleur par couleur, notée sur cinq étoiles par demi-étoiles. Choisissez une année ou un nombre d'étoiles."
+       data-en="The quality of every vintage, region by region and colour by colour, rated out of five stars in half-star steps. Pick a year or a number of stars.">
+      La qualité de chaque millésime, région par région et couleur par couleur, notée sur cinq étoiles par demi-étoiles. Choisissez une année ou un nombre d'étoiles.</p>
+    <div class="stats">
+      <div class="stat"><b id="st-r">–</b><span data-fr="Catégories" data-en="Categories">Catégories</span></div>
+      <div class="stat"><b id="st-y">–</b><span data-fr="Millésimes" data-en="Vintages">Millésimes</span></div>
+      <div class="stat"><b id="st-n">–</b><span data-fr="Notes" data-en="Ratings">Notes</span></div>
+    </div>
+  </header>
+
+  <section class="panel controls" aria-label="Filtres">
+    <div class="ctl-row">
+      <div class="field f-year">
+        <label for="selYear" data-fr="Millésime" data-en="Vintage">Millésime</label>
+        <select id="selYear"></select>
+      </div>
+      <div class="field f-stars">
+        <label for="selStars" data-fr="Étoiles" data-en="Stars">Étoiles</label>
+        <select id="selStars"></select>
+      </div>
+      <div class="field f-mode">
+        <label for="selMode" data-fr="Correspondance" data-en="Match">Correspondance</label>
+        <select id="selMode"></select>
+      </div>
+      <button class="reset" id="reset" type="button" data-fr="Tout effacer" data-en="Clear all">Tout effacer</button>
+    </div>
+    <div class="chips" id="grpChips"></div>
+    <div class="chips" id="typeChips"></div>
+  </section>
+
+  <div class="legend" id="legend"></div>
+
+  <div id="out"></div>
+
+  <section class="panel method" style="margin-top:34px">
+    <h3 data-fr="Méthode" data-en="Method">Méthode</h3>
+    <p data-fr="La base est le tableau des millésimes de l'auteur (1980–2025). Chaque tableau public ci-dessous est converti sur l'échelle de cinq étoiles par un étalonnage linéaire sur les notes de l'auteur, puis les sources sont moyennées (les notes de l'auteur comptent triple) et arrondies à la demi-étoile. Les catégories sans tableau publié propre sont estimées à partir des régions voisines, corrigées des accidents locaux documentés (gel, grêle, sécheresse). Avant la couverture continue d'une catégorie, seuls les très grands millésimes sont indiqués ; avant 1900, seulement les millésimes légendaires."
+       data-en="The base is the author's own vintage chart (1980–2025). Each public chart below is converted to the five-star scale by a linear calibration against the author's ratings, then the sources are averaged (the author's ratings count triple) and rounded to the nearest half star. Categories without their own published chart are estimated from neighbouring regions and adjusted for documented local events (frost, hail, drought). Before a category's continuous coverage, only the greatest vintages are shown; before 1900, only the legendary ones.">
+      La base est le tableau des millésimes de l'auteur (1980–2025).</p>
+    <p data-fr="Fiabilité :" data-en="Reliability:">Fiabilité :</p>
+    <p><span class="conf c-A">A</span> <span data-fr="plusieurs tableaux publiés pour cette catégorie" data-en="several published charts for this category"></span> &nbsp;
+       <span class="conf c-B">B</span> <span data-fr="peu de tableaux, complétés par les bilans de vendange" data-en="few charts, completed with harvest reports"></span> &nbsp;
+       <span class="conf c-C">C</span> <span data-fr="estimation d'après les régions voisines — à prendre comme tendance" data-en="estimate from neighbouring regions — read as a trend"></span></p>
+    <p data-fr="Un tableau de millésimes est une moyenne : dans chaque année, de bons producteurs réussissent au-dessus de la note, et d'autres en dessous."
+       data-en="A vintage chart is an average: in every year, good producers beat the rating and others fall short of it."></p>
+
+    <h3 style="margin-top:20px" data-fr="Sources" data-en="Sources">Sources</h3>
+    <ol>
+      <li><span data-fr="Tableau des millésimes de l'auteur, <i>Wine List vintage chart</i> (1980–2025, notes et « millésimes anciens remarquables »)." data-en="The author's own <i>Wine List vintage chart</i> (1980–2025, ratings and “older notable vintages”)."></span></li>
+      <li>Berry Bros. &amp; Rudd — <a href="https://www.bbr.com/vintage-chart" target="_blank" rel="noopener">Vintage Chart</a> <span data-fr="(1978–2025, sur 10)" data-en="(1978–2025, out of 10)"></span></li>
+      <li>iDealwine — <a href="https://www.idealwine.com/en/saga_millesime/table_notation" target="_blank" rel="noopener">Table of vintage ratings for French regions</a> <span data-fr="(1799–2023, sur 20)" data-en="(1799–2023, out of 20)"></span></li>
+      <li>Wine Scholar Guild — <a href="https://www.winescholarguild.com/vintage-charts/french-wine-vintage-chart" target="_blank" rel="noopener">French Wine Vintage Chart</a> <span data-fr="(notes d'Andrew Jefford, 2000–2024, sur 5 étoiles)" data-en="(notes by Andrew Jefford, 2000–2024, out of 5 stars)"></span></li>
+      <li>Wine Enthusiast — <a href="https://www.wineenthusiast.com/wp-content/uploads/2024/03/032024_VintageChart_WC.pdf" target="_blank" rel="noopener">2024 Vintage Chart (PDF)</a> <span data-fr="(1997–2022 sur 100, et liste des grands millésimes anciens)" data-en="(1997–2022 out of 100, plus its list of older great vintages)"></span></li>
+      <li>Grains &amp; Grappes — <a href="https://grains-et-grappes.com/en/vintage-chart" target="_blank" rel="noopener">Wine Vintage Chart</a> <span data-fr="(1990–2024, dont Jura, Provence et Languedoc-Roussillon)" data-en="(1990–2024, incl. Jura, Provence and Languedoc-Roussillon)"></span></li>
+      <li><span data-fr="Millésimes historiques et légendaires : Michael Broadbent, <i>Vintage Wine</i> (2002) ; Wikipédia," data-en="Historical and legendary vintages: Michael Broadbent, <i>Vintage Wine</i> (2002); Wikipedia,"></span> <a href="https://en.wikipedia.org/wiki/Comet_vintage" target="_blank" rel="noopener">Comet vintage</a>.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <b>French Wine</b> — <span data-fr="cartographie &amp; documentation" data-en="mapping &amp; documentation">cartographie &amp; documentation</span> · © 2026
+  </footer>
+</div>
+<div id="tip"></div>
+
+<script>
+(function(){
+var DATA = /*__DATA__*/null;
+var LANG = 'fr';
+try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+
+var GROUPS = [
+  ['Champagne','Champagne','Champagne'],['Alsace','Alsace','Alsace'],['Jura','Jura','Jura'],['Savoie','Savoie','Savoie'],
+  ['Bourgogne','Bourgogne','Burgundy'],['Rhône','Vallée du Rhône','Rhône Valley'],['Provence & Corse','Provence & Corse','Provence & Corsica'],
+  ['Languedoc','Languedoc','Languedoc'],['Roussillon','Roussillon','Roussillon'],['Sud-Ouest','Sud-Ouest','South West'],
+  ['Bordeaux','Bordeaux','Bordeaux'],['Loire','Vallée de la Loire','Loire Valley']
+];
+var TYPES = [['w','Blancs','Whites'],['r','Rouges','Reds'],['rs','Rosés','Rosés'],['sw','Doux & jaunes','Sweet & vin jaune'],['sp','Effervescents','Sparkling']];
+var WORDS = {5:['Exceptionnel','Exceptional'],4:['Excellent','Excellent'],3:['Bon','Good'],2:['Moyen','Average'],1:['Faible','Poor'],0:['Très faible','Very poor']};
+var PERIODS = [['2025–2000',2000,2025],['1999–1975',1975,1999],['1974–1950',1950,1974],['1949–1900',1900,1949],['pre',0,1899],['all',0,2025]];
+
+var st = {year:'', stars:'', mode:'ge', groups:{}, types:{}, period:0};
+var ROWS = DATA.rows;
+var YEARS = {};
+ROWS.forEach(function(r){ for(var y in r.v) YEARS[y]=1; });
+var yearList = Object.keys(YEARS).map(Number).sort(function(a,b){return b-a;});
+
+function t(fr,en){ return LANG==='en'?en:fr; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+function word(h){ return WORDS[Math.floor(h/2)][LANG==='en'?1:0]; }
+function fmt(h){ var s = Math.floor(h/2), half = h%2; return (s||'') + (half?'½':'') || '½'; }
+function starsHtml(h){
+  var o='<span class="stars" aria-label="'+(h/2)+' / 5">';
+  for(var i=1;i<=5;i++){ var c = h>=2*i?'f':(h===2*i-1?'h':''); o+='<span class="st '+c+'">★</span>'; }
+  return o+'</span>';
+}
+function starsText(h){ var s=''; for(var i=1;i<=5;i++) s += h>=2*i?'★':(h===2*i-1?'½':''); return s; }
+function rname(r){ return LANG==='en'?r.en:r.fr; }
+function gname(g){ for(var i=0;i<GROUPS.length;i++) if(GROUPS[i][0]===g) return LANG==='en'?GROUPS[i][2]:GROUPS[i][1]; return g; }
+function dot(ty){ return '<span class="dot d-'+ty+'"></span>'; }
+function conf(c){ return '<span class="conf c-'+c+'" title="'+esc(t('Fiabilité ','Reliability ')+c)+'">'+c+'</span>'; }
+function anyOn(o){ for(var k in o) if(o[k]) return true; return false; }
+function visibleRows(){
+  var g = anyOn(st.groups), ty = anyOn(st.types);
+  return ROWS.filter(function(r){ return (!g||st.groups[r.g]) && (!ty||st.types[r.t]); });
+}
+function match(h){
+  if(st.stars==='') return true;
+  var s = +st.stars;
+  return st.mode==='eq' ? h===s : st.mode==='le' ? h<=s : h>=s;
+}
+
+/* ------------------------------------------------ controls */
+function buildControls(){
+  var sy = document.getElementById('selYear'), ss = document.getElementById('selStars'), sm = document.getElementById('selMode');
+  var o = '<option value="">'+t('Toutes les années','All years')+'</option>';
+  var pre = false;
+  yearList.forEach(function(y){
+    if(y<1900 && !pre){ pre=true; o+='<optgroup label="'+t('Avant 1900 — grands millésimes','Before 1900 — great vintages')+'">'; }
+    o+='<option value="'+y+'">'+y+'</option>';
+  });
+  if(pre) o+='</optgroup>';
+  sy.innerHTML = o; sy.value = st.year;
+  o = '<option value="">'+t('Toutes les notes','Any rating')+'</option>';
+  for(var h=10;h>=1;h--) o+='<option value="'+h+'">'+starsText(h)+'  ('+(h/2).toString().replace('.',LANG==='en'?'.':',')+')</option>';
+  ss.innerHTML = o; ss.value = st.stars;
+  sm.innerHTML = '<option value="ge">'+t('ou plus','or more')+'</option><option value="eq">'+t('exactement','exactly')+'</option><option value="le">'+t('ou moins','or less')+'</option>';
+  sm.value = st.mode; sm.disabled = st.stars==='';
+
+  var gc = '<span class="lbl">'+t('Régions','Regions')+'</span>';
+  GROUPS.forEach(function(g){ gc+='<button class="chip" type="button" data-g="'+esc(g[0])+'" aria-pressed="'+(!!st.groups[g[0]])+'">'+esc(LANG==='en'?g[2]:g[1])+'</button>'; });
+  document.getElementById('grpChips').innerHTML = gc;
+  var tc = '<span class="lbl">'+t('Types','Styles')+'</span>';
+  TYPES.forEach(function(x){ tc+='<button class="chip" type="button" data-t="'+x[0]+'" aria-pressed="'+(!!st.types[x[0]])+'">'+dot(x[0])+esc(LANG==='en'?x[2]:x[1])+'</button>'; });
+  document.getElementById('typeChips').innerHTML = tc;
+
+  var lg = '<span>'+t('Échelle','Scale')+'</span><span class="scale">';
+  for(var i=1;i<=10;i++) lg+='<i class="l'+i+'" title="'+starsText(i)+'"></i>';
+  lg += '</span><span>½ → ★★★★★</span>';
+  lg += '<span>★★★★★ '+t('exceptionnel','exceptional')+' · ★★★★ '+t('excellent','excellent')+' · ★★★ '+t('bon','good')+' · ★★ '+t('moyen','average')+' · ★ '+t('faible','poor')+'</span>';
+  document.getElementById('legend').innerHTML = lg;
+}
+
+/* ------------------------------------------------ views */
+function render(){
+  var out = document.getElementById('out');
+  var rows = visibleRows();
+  var html = '';
+  if(st.year) html = yearView(rows);
+  else {
+    if(st.stars!=='') html += starList(rows);
+    html += gridView(rows);
+  }
+  out.innerHTML = html;
+  writeHash();
+}
+
+function yearView(rows){
+  var y = +st.year, idx = yearList.indexOf(y);
+  var note = DATA.notes[y];
+  var h = '<div class="sec-head"><h2>'+t('Millésime','Vintage')+' '+y+'</h2></div>';
+  h += '<section class="panel yhead"><div class="ybig">'+y+'</div><div class="ynav">';
+  h += '<button class="chip" type="button" data-go="'+(yearList[idx+1]||'')+'"'+(yearList[idx+1]?'':' disabled')+'>← '+(yearList[idx+1]||'')+'</button>';
+  h += '<button class="chip" type="button" data-go="'+(yearList[idx-1]||'')+'"'+(idx>0?'':' disabled')+'>'+(yearList[idx-1]||'')+' →</button></div>';
+  h += note ? '<p class="ynote">'+esc(note[LANG==='en'?0:1])+'</p>' : '<p class="ynote none">'+t('Pas de résumé national pour cette année.','No France-wide summary for this year.')+'</p>';
+  h += '</section><div class="cards">';
+  var shown = 0;
+  GROUPS.forEach(function(g){
+    var rs = rows.filter(function(r){ return r.g===g[0]; });
+    if(!rs.length) return;
+    var lines = '';
+    rs.forEach(function(r){
+      var v = r.v[y];
+      if(v===undefined){ if(st.stars==='') lines += '<div class="line na">'+dot(r.t)+'<span class="nm">'+esc(rname(r))+'</span><span class="num">—</span></div>'; return; }
+      if(!match(v)) return;
+      shown++;
+      lines += '<div class="line" title="'+esc(word(v))+'">'+dot(r.t)+'<span class="nm">'+esc(rname(r))+'</span>'+starsHtml(v)+'<span class="num">'+fmt(v)+'</span></div>';
+    });
+    if(lines) h += '<section class="panel card"><h3>'+esc(gname(g[0]))+'</h3>'+lines+'</section>';
+  });
+  h += '</div>';
+  if(st.stars!=='' && !shown) h += '<div class="panel empty">'+t('Aucune catégorie ne correspond à cette note pour ce millésime.','No category matches this rating for this vintage.')+'</div>';
+  return h;
+}
+
+function starList(rows){
+  var total = 0, body = '';
+  rows.forEach(function(r){
+    var ys = Object.keys(r.v).map(Number).filter(function(y){ return match(r.v[y]); }).sort(function(a,b){return b-a;});
+    if(!ys.length) return;
+    total += ys.length;
+    body += '<div class="hit-row"><div class="nm">'+dot(r.t)+esc(rname(r))+'</div><div class="yrs">';
+    ys.forEach(function(y){ body += '<button class="yr l'+r.v[y]+'" type="button" data-go="'+y+'" title="'+esc(rname(r)+' '+y+' — '+starsText(r.v[y]))+'">'+y+'</button>'; });
+    body += '</div></div>';
+  });
+  var label = starsText(+st.stars)+' '+(st.mode==='ge'?t('ou plus','or more'):st.mode==='le'?t('ou moins','or less'):t('exactement','exactly'));
+  var h = '<div class="sec-head"><h2>'+esc(label)+'</h2><span class="n">'+total+' '+t('millésimes','vintages')+'</span></div>';
+  return h + (body ? '<section class="panel hits">'+body+'</section>' : '<div class="panel empty">'+t('Aucun résultat.','No results.')+'</div>');
+}
+
+function gridView(rows){
+  var p = PERIODS[st.period];
+  var ys = yearList.filter(function(y){ return y>=p[1] && y<=p[2]; });
+  if(p[0]==='pre') ys = ys.filter(function(y){ return rows.some(function(r){ return r.v[y]!==undefined; }); });
+  var h = '<div class="sec-head"><h2>'+t('Tableau','Chart')+'</h2><span class="n">'+t('cliquez sur une année pour le détail','click a year for details')+'</span></div>';
+  h += '<div class="periods">';
+  PERIODS.forEach(function(q,i){
+    var lab = q[0]==='pre'?t('Avant 1900','Before 1900'):q[0]==='all'?t('Tout','All'):q[0];
+    h += '<button class="chip" type="button" data-period="'+i+'" aria-pressed="'+(i===st.period)+'">'+lab+'</button>';
+  });
+  h += '</div>';
+  if(!rows.length) return h + '<div class="panel empty">'+t('Aucune catégorie sélectionnée.','No category selected.')+'</div>';
+  h += '<div class="panel grid-wrap"><table class="grid"><thead><tr><th class="corner">'+t('Région','Region')+'</th>';
+  ys.forEach(function(y){ h += '<th data-go="'+y+'" title="'+y+'">'+(p[0]==='all'||p[0]==='pre'?y:"'"+String(y).slice(2))+'</th>'; });
+  h += '</tr></thead><tbody>';
+  var last = null;
+  rows.forEach(function(r){
+    if(r.g!==last){ last=r.g; h += '<tr class="grp"><th colspan="1">'+esc(gname(r.g))+'</th><td colspan="'+ys.length+'"></td></tr>'; }
+    h += '<tr><th class="rn" title="'+esc(rname(r)+(r.n?' — '+r.n[LANG==='en'?0:1]:''))+'"><span class="in">'+dot(r.t)+conf(r.c)+'<span>'+esc(rname(r))+'</span></span></th>';
+    ys.forEach(function(y){
+      var v = r.v[y];
+      if(v===undefined){ h += '<td class="e"></td>'; return; }
+      var m = match(v);
+      h += '<td class="v l'+v+(m?(st.stars!==''?' hit':''):' off')+'" data-r="'+r.id+'" data-y="'+y+'">'+fmt(v)+'</td>';
+    });
+    h += '</tr>';
+  });
+  return h + '</tbody></table></div>';
+}
+
+/* ------------------------------------------------ events */
+document.addEventListener('change', function(e){
+  if(e.target.id==='selYear'){ st.year = e.target.value; render(); window.scrollTo({top:document.getElementById('out').offsetTop-140,behavior:'smooth'}); }
+  if(e.target.id==='selStars'){ st.stars = e.target.value; document.getElementById('selMode').disabled = st.stars===''; render(); }
+  if(e.target.id==='selMode'){ st.mode = e.target.value; render(); }
+});
+document.addEventListener('click', function(e){
+  var b = e.target.closest('[data-g],[data-t],[data-go],[data-period],#reset,#lang,td.v');
+  if(!b) return;
+  if(b.id==='lang'){ setLang(LANG==='fr'?'en':'fr'); return; }
+  if(b.id==='reset'){ st = {year:'',stars:'',mode:'ge',groups:{},types:{},period:st.period}; buildControls(); render(); return; }
+  if(b.hasAttribute('data-g')){ var g=b.getAttribute('data-g'); st.groups[g]=!st.groups[g]; b.setAttribute('aria-pressed',!!st.groups[g]); render(); return; }
+  if(b.hasAttribute('data-t')){ var ty=b.getAttribute('data-t'); st.types[ty]=!st.types[ty]; b.setAttribute('aria-pressed',!!st.types[ty]); render(); return; }
+  if(b.hasAttribute('data-period')){ st.period=+b.getAttribute('data-period'); render(); return; }
+  var y = b.getAttribute('data-go') || b.getAttribute('data-y');
+  if(y){ st.year = y; document.getElementById('selYear').value = y; render(); window.scrollTo({top:document.getElementById('out').offsetTop-140,behavior:'smooth'}); }
+});
+var tip = document.getElementById('tip');
+document.addEventListener('mouseover', function(e){
+  var c = e.target.closest('td.v');
+  if(!c){ tip.style.display='none'; return; }
+  var r = ROWS.filter(function(x){ return x.id===c.getAttribute('data-r'); })[0], y = c.getAttribute('data-y'), v = r.v[y];
+  tip.innerHTML = '<b>'+esc(rname(r))+' '+y+'</b><br>'+starsHtml(v)+' &nbsp;'+esc(word(v))+(r.n?'<br><span style="color:var(--faint)">'+esc(r.n[LANG==='en'?0:1])+'</span>':'');
+  tip.style.display='block';
+});
+document.addEventListener('mousemove', function(e){
+  if(tip.style.display!=='block') return;
+  var x = Math.min(e.clientX+14, window.innerWidth-tip.offsetWidth-10), y = e.clientY+16;
+  if(y+tip.offsetHeight>window.innerHeight) y = e.clientY-tip.offsetHeight-12;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+});
+
+function setLang(l){
+  LANG = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-fr]').forEach(function(n){ n.innerHTML = n.getAttribute('data-'+l); });
+  document.getElementById('lang').textContent = l==='fr'?'EN':'FR';
+  document.title = t('Millésimes de France','French Vintage Chart');
+  try{ localStorage.setItem('fw_lang', l); }catch(e){}
+  buildControls(); render();
+}
+
+function writeHash(){
+  var p=[]; if(st.year) p.push('y='+st.year); if(st.stars!=='') p.push('s='+(st.stars/2)+'&m='+st.mode);
+  try{ history.replaceState(null,'',p.length?'#'+p.join('&'):location.pathname+location.search); }catch(e){}
+}
+function readHash(){
+  location.hash.slice(1).split('&').forEach(function(kv){
+    var a=kv.split('='); if(a[0]==='y'&&YEARS[a[1]]) st.year=a[1];
+    if(a[0]==='s'&&+a[1]>=.5&&+a[1]<=5) st.stars=String(Math.round(a[1]*2));
+    if(a[0]==='m'&&/^(ge|eq|le)$/.test(a[1])) st.mode=a[1];
+    if(a[0]==='by'&&/^(year|region)$/.test(a[1])) FOCUS=a[1];
+    if(a[0]==='p'&&PERIODS[+a[1]]) st.period=+a[1];
+  });
+}
+var FOCUS='';
+function applyFocus(){
+  if(!FOCUS) return;
+  var el = FOCUS==='year' ? document.getElementById('selYear') : document.getElementById('grpChips');
+  var box = FOCUS==='year' ? el.closest('.field')||el : el;
+  box.scrollIntoView({block:'center'});
+  box.classList.add('pulse'); setTimeout(function(){ box.classList.remove('pulse'); }, 2600);
+  if(FOCUS==='year') el.focus();
+}
+
+var n=0; ROWS.forEach(function(r){ n+=Object.keys(r.v).length; });
+document.getElementById('st-r').textContent = ROWS.length;
+document.getElementById('st-y').textContent = yearList.length;
+document.getElementById('st-n').textContent = n.toLocaleString('fr-FR');
+readHash();
+setLang(LANG);
+applyFocus();
+})();
+</script>
+</body>
+</html>

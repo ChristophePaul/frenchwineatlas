@@ -1,0 +1,494 @@
+[
+[
+"Reconnue par decree",
+"Recognised by decree"
+],
+[
+"Reconnue en",
+"Recognised in"
+],
+[
+"reconnue en",
+"recognised in"
+],
+[
+"\\(reconnue (\\d{4})\\)",
+"(recognised $1)"
+],
+[
+"décret de (\\d{4})",
+"decree of $1"
+],
+[
+"\\(réhomologué en (\\d{4})\\)",
+"(re-approved in $1)"
+],
+[
+"AOC depuis",
+"AOC since"
+],
+[
+"depuis (\\d{4})",
+"since $1"
+],
+[
+"Créée en (\\d{4})",
+"Created in $1"
+],
+[
+"plus ancien AOC rouge du Languedoc",
+"oldest red AOC in the Languedoc"
+],
+[
+"Dénomination géographique complémentaire de l\\'AOC Bourgogne",
+"Complementary geographical dénomination of the AOC Bourgogne"
+],
+[
+"Cru · dénomination géographique complémentaire",
+"Cru · complementary geographical dénomination"
+],
+[
+"dénomination géographique",
+"geographical dénomination"
+],
+[
+"Dénomination géographique",
+"Geographical dénomination"
+],
+[
+"dénominations géographiques",
+"geographical dénominations"
+],
+[
+"terroir du Couchois",
+"Couchois terroir"
+],
+[
+"Dénomination · rouges & rosés",
+"Dénomination · reds & rosés"
+],
+[
+"Dénomination · rouges",
+"Dénomination · reds"
+],
+[
+"Dénomination · blancs",
+"Dénomination · whites"
+],
+[
+"\\(Nord-Ouest\\)",
+"(north-west)"
+],
+[
+"\\(extrême Sud\\)",
+"(far south)"
+],
+[
+"\\(Sud-Ouest\\)",
+"(south-west)"
+],
+[
+"Sud-Est",
+"South-East"
+],
+[
+"Mention « vin de paille » · raisins passerillés hors souche",
+"“Vin de paille” mention · grapes dried off the vine"
+],
+[
+"AOP effervescente rouge \\(méthode traditionnelle\\)",
+"Red sparkling AOP (traditional method)"
+],
+[
+"Aire (\\d{4}) · AOC (\\d{4}) · crus délimités (\\d{4})",
+"Area $1 · AOC $2 · crus delimited $3"
+],
+[
+"ex-Bourgogne Grand Ordinaire",
+"formerly Bourgogne Grand Ordinaire"
+],
+[
+"\\(ex-« Bourgogne Grand Ordinaire »\\)",
+"(formerly “Bourgogne Grand Ordinaire”)"
+],
+[
+"\\(ex-Coteaux du Tricastin\\)",
+"(formerly Coteaux du Tricastin)"
+],
+[
+"« Languedoc » since",
+"“Languedoc” since"
+],
+[
+"AOC régionale Bourgogne",
+"Regional AOC Bourgogne"
+],
+[
+"Rendement (\\d)",
+"Yield $1"
+],
+[
+"\\(butoir (\\d+)\\)",
+"(ceiling $1)"
+],
+[
+"butoir",
+"ceiling"
+],
+[
+"le plus bas de la Loire",
+"the lowest in the Loire"
+],
+[
+"hl/ha de moût",
+"hl/ha of must"
+],
+[
+"TAV naturel min\\.",
+"Min. natural ABV"
+],
+[
+"TAV nat\\. ≥",
+"Natural ABV ≥"
+],
+[
+"TAV acquis ≥",
+"Actual ABV ≥"
+],
+[
+"TAV total min\\.",
+"Min. total ABV"
+],
+[
+"TAN min\\.",
+"Min. natural ABV"
+],
+[
+"[Tt]itre naturel min\\.",
+"Min. natural ABV"
+],
+[
+"Titre total ≤",
+"Total ABV ≤"
+],
+[
+"total ≤",
+"total ≤"
+],
+[
+"% vol\\. nat\\. min\\.",
+"% vol. natural min."
+],
+[
+"% vol\\. acquis",
+"% vol. actual"
+],
+[
+"% acquis",
+"% actual"
+],
+[
+"VDN muté sur grains ≥",
+"VDN fortified on the skins ≥"
+],
+[
+"VDN muté ≥",
+"VDN fortified ≥"
+],
+[
+"muté à l\\'alcool, ≥",
+"fortified with spirit, ≥"
+],
+[
+"Vin de base",
+"Base wine"
+],
+[
+"Moût à ≥ (\\d+) g/l de sucre",
+"Must ≥ $1 g/l sugar"
+],
+[
+"min\\. ~(\\d+) g/l de sucre",
+"min. ~$1 g/l sugar"
+],
+[
+"g/l de sucre",
+"g/l sugar"
+],
+[
+"richesse min\\. (\\d+) g/l de moût",
+"min. sugar content $1 g/l of must"
+],
+[
+"Richesse",
+"Sugar content"
+],
+[
+"richesse",
+"sugar content"
+],
+[
+"sucres ≥",
+"sugar ≥"
+],
+[
+"\\(Chaume (\\d+), SGN (\\d+)\\)",
+"(Chaume $1, SGN $2)"
+],
+[
+"acidité volatile",
+"volatile acidity"
+],
+[
+"eau-de-vie ≤",
+"spirit ≤"
+],
+[
+"Double distillation charentaise \\(alambic à repasse\\) au plus tard le 31 mars",
+"Double Charentais distillation (pot still) by 31 March at the latest"
+],
+[
+"ambré, tuilé, grenat, rosé, rancio",
+"ambré, tuilé, grenat, rosé, rancio"
+],
+[
+"mentions grenat / tuilé / ambré / rancio",
+"grenat / tuilé / ambré / rancio mentions"
+],
+[
+"cépage accessoire ≤",
+"accessory grape ≤"
+],
+[
+"cépage baroque \\(blanc\\)",
+"Baroque grape (white)"
+],
+[
+"min\\. (\\d+) % négrette",
+"min. $1% Négrette"
+],
+[
+"min\\. (\\d+) % malbec",
+"min. $1% Malbec"
+],
+[
+"min\\. (\\d+) % fer servadou",
+"min. $1% Fer Servadou"
+],
+[
+"prise de mousse en bouteille, élevage ≥ 12 mois",
+"second fermentation in bottle, ageing ≥ 12 months"
+],
+[
+"seconde fermentation en bouteille",
+"second fermentation in bottle"
+],
+[
+"vieillissement ≥ 2 ans sous chêne",
+"ageing ≥ 2 years in oak"
+],
+[
+"vin de paille (\\d+) hl/ha",
+"vin de paille $1 hl/ha"
+],
+[
+"vin de paille ≥ (\\d+) % acquis",
+"vin de paille ≥ $1% actual"
+],
+[
+"vins tranquilles rouges, blancs et rosés",
+"still red, white and rosé wines"
+],
+[
+"élevage (\\d+) mois \\((\\d+) mois si millésimé\\)",
+"ageing $1 months ($2 months if vintage-dated)"
+],
+[
+"élevage oxydatif ≥ (\\d+) mois sous bois",
+"oxidative ageing ≥ $1 months in wood"
+],
+[
+"élevage sur lie",
+"aged on the lees"
+],
+[
+"élevé sous bois \\(chêne\\) ≥ (\\d+) mois",
+"aged in wood (oak) ≥ $1 months"
+],
+[
+"blancs élevés en barrique",
+"whites aged in barrique"
+],
+[
+"sélection plus mûre",
+"riper selection"
+],
+[
+"tannat dominant",
+"Tannat dominant"
+],
+[
+"vendanges tardives",
+"late harvest"
+],
+[
+"Sec ou moelleux",
+"Dry or medium-sweet"
+],
+[
+"Sec \\(< 4 g/l\\)",
+"Dry (< 4 g/l)"
+],
+[
+"Blanc sec de coteaux",
+"Dry white from the slopes"
+],
+[
+"Liquoreux botrytisé",
+"Botrytised sweet"
+],
+[
+"\\(« sur lie » : (\\d+)\\)",
+"(“sur lie”: $1)"
+],
+[
+"« sur lie »",
+"“sur lie”"
+],
+[
+"\\(crus Clisson/Gorges/Le Pallet : (\\d+)\\)",
+"(Clisson/Gorges/Le Pallet crus: $1)"
+],
+[
+"\\(crus (\\d+)\\)",
+"(crus $1)"
+],
+[
+"\\(74 \\+ tirage\\)",
+"(74 + tirage)"
+],
+[
+"\\(raisins\\)",
+"(grapes)"
+],
+[
+"Passerillage",
+"Raisining (passerillage)"
+],
+[
+"premier cru",
+"premier cru"
+],
+[
+"village",
+"village"
+],
+[
+"\\bBlanc/Rosé\\b",
+"White/Rosé"
+],
+[
+"\\bBlanc/Rouge\\b",
+"White/Red"
+],
+[
+"\\bRouge/Rosé\\b",
+"Red/Rosé"
+],
+[
+"\\bRouge/gris\\b",
+"Red/gris"
+],
+[
+"\\bGris/rouge\\b",
+"Gris/red"
+],
+[
+"\\bBlanc liquoreux\\b",
+"Sweet white"
+],
+[
+"\\bBlanc moelleux\\b",
+"Medium-sweet white"
+],
+[
+"\\bBlanc sec\\b",
+"Dry white"
+],
+[
+"\\bBlancs\\b",
+"Whites"
+],
+[
+"\\bBlanc\\b",
+"White"
+],
+[
+"\\bRouge\\b",
+"Red"
+],
+[
+"\\brouge\\b",
+"red"
+],
+[
+"\\bblanc\\b",
+"white"
+],
+[
+"\\brouges & rosés\\b",
+"reds & rosés"
+],
+[
+"\\brouges\\b",
+"reds"
+],
+[
+"\\bblancs\\b",
+"whites"
+],
+[
+"\\bLiquoreux\\b",
+"Sweet"
+],
+[
+"\\bMoelleux\\b",
+"Medium-sweet"
+],
+[
+"\\bMousseux\\b",
+"Sparkling"
+],
+[
+"\\bTranquille\\b",
+"Still"
+],
+[
+"\\bSecs\\b",
+"Dry"
+],
+[
+"\\bSec\\b",
+"Dry"
+],
+[
+"\\bsecs\\b",
+"dry"
+],
+[
+"(\\d),(\\d)",
+"$1.$2"
+],
+[
+" %",
+"%"
+],
+[
+"(\\d+) à (\\d+)",
+"$1 to $2"
+],
+[
+"(\\w) : ",
+"$1: "
+]
+]

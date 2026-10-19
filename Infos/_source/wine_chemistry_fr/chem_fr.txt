@@ -1,0 +1,207 @@
+0	Chimie du vin : les composés au fil de la vinification
+1	Aller au contenu principal
+2	Chimie du vin : les composés au fil de la vinification
+3	Un tableau de référence organisé selon la composition du raisin, les fermentations, l’élevage et les altérations.
+4	Sommaire
+5	<a href="#grape-varietal">RAISIN / CÉPAGE</a>
+6	<a href="#alcoholic-fermentation">FERMENTATION ALCOOLIQUE</a>
+7	<a href="#malolactic-fermentation">FERMENTATION MALOLACTIQUE</a>
+8	<a href="#aging-barrel-bottle-lees">ÉLEVAGE (fût / bouteille / lies)</a>
+9	<a href="#microbial-spoilage">MICROBIOLOGIE / ALTÉRATIONS</a>
+10	Unités de concentration : % ppm (mg/L) ppb (μg/L)* variable/traces
+11	RAISIN / CÉPAGE
+12	Composés présents dans la baie avant la fermentation : pellicule, pulpe, pépins, jus. Ils varient selon le cépage, le terroir et la maturité du raisin.
+13	Composé
+14	Formule
+15	Arôme
+16	Conc.
+17	Description
+18	Glucose / fructose
+19	Sucré
+20	Principaux sucres fermentescibles (150–250 g/L). Transformés en éthanol + CO₂.
+21	Acide tartrique
+22	Acide, vif
+23	Acide stable dominant (2000–8000 ppm). Persiste tout au long de la fermentation.
+24	Acide malique
+25	Pomme verte
+26	Acide mordant qui diminue avec la maturité. Transformé en acide lactique pendant la FML.
+27	Linalol
+28	Lavande, floral
+29	Terpène clé du muscat et du riesling. Seuil ~15 ppb. Les formes liées se libèrent pendant l’élevage.
+30	β-Damascénone
+31	Rose, pomme cuite
+32	Norisoprénoïde ; seuil ~0,05 ppb. Renforce tous les autres arômes fruités.
+33	β-Ionone
+34	Violette, framboise
+35	Issue du β-carotène. Seuil ~0,007 ppb. Signature du cabernet-sauvignon.
+36	IBMP (méthoxypyrazine)
+37	Poivron vert, herbe
+38	Seuil ~2 ppb. Marqueur des climats frais. Détruite par les UV et la lumière du soleil.
+39	Anthocyanes
+40	C₁₅H₁₁O⁺·glycoside
+41	(couleur)
+42	Pigments rouges des pellicules (50 mg/L pinot → 5 g/L tannat). Se stabilisent pendant l’élevage.
+43	Tanins condensés
+44	Polymère (catéchines)
+45	Astringent
+46	Principale source d’astringence (0,5–4 g/L dans un vin rouge). Se polymérisent et s’assouplissent avec l’âge.
+47	Cys-3MH / GSH-3MH (précurseurs)
+48	Conjugués Cys / GSH
+49	Inodore
+50	Précurseurs inodores de thiols très puissants (3MH, 4MMP). Libérés par les enzymes des levures.
+51	Glutathion
+52	Tripeptide antioxydant qui protège les thiols variétaux du brunissement oxydatif.
+53	Acide citrique
+54	Agrumes
+55	Acide mineur ; consommé par les BL pendant la FML, en produisant diacétyle + acide acétique.
+56	FERMENTATION ALCOOLIQUE
+57	Saccharomyces cerevisiae : transforme les sucres en éthanol + CO₂ tout en produisant des centaines de métabolites secondaires qui forment la colonne vertébrale aromatique du vin
+58	Éthanol
+59	Chaleureux, solvant
+60	Produit principal (80 000–160 000 ppm). Solvant, conservateur et vecteur des arômes.
+61	Glycérol
+62	Sucré, visqueux
+63	3ᵉ composé le plus abondant après l’eau et l’éthanol. Apporte corps et rondeur en bouche.
+64	Acétate d’isoamyle
+65	Banane, bonbon anglais
+66	Ester d’acétate clé. Seuil ~0,03 mg/L. Plus abondant quand la fermentation est fraîche.
+67	Acétate d’éthyle
+68	Solvant / vernis à ongles
+69	L’ester le plus abondant. Défaut au-delà de ~120 mg/L. Produit par les levures et les bactéries.
+70	Hexanoate / butyrate d’éthyle
+71	Esters éthyliques C₈–C₆
+72	Pomme, ananas
+73	Esters éthyliques fruités ; seuil ~0,005–0,02 mg/L. Diminuent avec le vieillissement en bouteille.
+74	Alcool isoamylique
+75	Fusel, banane
+76	L’alcool supérieur (fusel) le plus abondant. Dur au-delà de 300–400 mg/L. Issu du catabolisme de la leucine.
+77	2-Phényléthanol
+78	Eau de rose, floral
+79	Alcool supérieur agréable issu de la phénylalanine. Seuil ~10 mg/L.
+80	Acétaldéhyde
+81	Pomme verte, pomme blette
+82	Principal aldéhyde. Combine le SO₂. Un taux élevé signale une oxydation. Jusqu’à 500 ppm dans le xérès.
+83	Diacétyle
+84	Beurre, crème
+85	Arôme beurré. Seuil 0,2 mg/L (blanc), 1 mg/L (rouge). Produit par les levures + les BL.
+86	Acide succinique
+87	Acide, salé-amer
+88	Principal acide fixe produit par la levure (500–1500 ppm). Goût unique, à la fois salé, amer et acide.
+89	Acide acétique
+90	Vinaigre
+91	Acidité volatile. Défaut au-delà de 0,9 g/L (blanc) / 1,2 g/L (rouge).
+92	3MH / 3MHA / 4MMP (thiols)
+93	Fruit de la passion, buis
+94	Thiols variétaux très puissants libérés par la levure. Seuil du 4MMP ~1 ppb ; du 3MH ~60 ppb.
+95	H₂S / méthanethiol
+96	Œuf pourri / chou
+97	Défauts de réduction dus à une fermentation carencée en azote. Éliminés par aération ou traitement au cuivre.
+98	Mannoprotéines / β-glucanes
+99	Glycoprotéine / polysaccharide
+100	Polysaccharides de la paroi des levures. Améliorent la rondeur en bouche et la stabilité tartrique et de la mousse.
+101	FERMENTATION MALOLACTIQUE
+102	Oenococcus oeni : transforme l’acide malique → acide lactique + CO₂. Modifie l’acidité, la texture et la complexité aromatique.
+103	Acide L-malique → L-lactique
+104	Mordant → souple, crémeux
+105	Réaction centrale de la FML. Fait monter le pH de 0,1–0,3 unité. Assouplit l’ensemble de l’acidité.
+106	Diacétyle (FML)
+107	Composé aromatique clé de la FML. Peut monter à plus de 5 mg/L pendant la FML. Issu de l’acide citrique + du pyruvate.
+108	Acétoïne
+109	Yaourt, crémeux
+110	Produit de réduction du diacétyle. Seuil ~150 mg/L — généralement sous le seuil.
+111	2,3-Butanediol
+112	Légère douceur
+113	Réduction supplémentaire de l’acétoïne. Non aromatique ; contribue un peu au corps.
+114	Lactate d’éthyle
+115	Crémeux, lacté
+116	Acide lactique + éthanol. S’accumule lentement après la FML. Apporte de la souplesse à la texture.
+117	Acide acétique (apport de la FML)
+118	Risque de piqûre acétique
+119	Issu du catabolisme de l’acide citrique par les BL. Risque plus élevé quand le moût est riche en acide citrique.
+120	Amines biogènes (histamine, tyramine)
+121	Hétérocycles azotés
+122	Décarboxylation des acides aminés par les BL. Recommandation UE &lt;10 mg/L pour l’histamine.
+123	Hausse du pH
+124	Fait monter le pH de 0,1–0,3 unité. Influe sur l’efficacité du SO₂, la couleur et la stabilité microbienne.
+125	ÉLEVAGE (fût / bouteille / lies)
+126	Extraction du bois, oxydation, évolution des tanins et lente chimie de réduction, de quelques mois à plusieurs décennies en fût et en bouteille.
+127	Vanilline
+128	Vanille, sucré
+129	Dégradation de la lignine du chêne. Seuil ~0,1 mg/L. Chêne américain &gt; chêne français. Diminue quand le fût est réutilisé.
+130	Eugénol
+131	Clou de girofle, épices
+132	Phénylpropanoïde du chêne. Seuil ~0,5 mg/L. Plus abondant dans les fûts de chêne américain.
+133	Gaïacol / 4-méthylgaïacol
+134	Fumée, pain grillé, lard
+135	Issu de la lignine du chêne chauffé (bousinage). Seuil ~0,065–0,095 mg/L. Plus la chauffe est forte, plus il y en a.
+136	Whisky-lactone
+137	Noix de coco, cèdre
+138	Signature du chêne américain. Seuil de l’isomère cis ~0,067 mg/L. Chêne français : traces seulement.
+139	Furfural
+140	Caramel, amande
+141	Dégradation de l’hémicellulose pendant la chauffe. Généralement sous le seuil de perception (~14 mg/L).
+142	Ellagitanins
+143	Polyphénol (chêne)
+144	Tanins hydrosolubles du chêne. Permettent la micro-oxygénation et modulent l’astringence.
+145	Sotolon
+146	Curry, fenugrec, noix
+147	Marqueur du vieillissement oxydatif. Seuil ~7 ppb. Définit le caractère du xérès, du vin jaune et du madère.
+148	TDN (note pétrolée)
+149	Pétrole, kérosène
+150	Apparaît dans le riesling en 10–30 ans. Seuil ~20 ppb. Recherché par les collectionneurs.
+151	Pyranoanthocyanes (vitisines A/B)
+152	Adduits pigmentés
+153	Pigments stables issus des anthocyanes + pyruvate/acétaldéhyde. Teintes rouge brique des rouges âgés.
+154	Polymères de tanins / adduits T-A
+155	Polymère
+156	Astringence plus souple
+157	variable
+158	Liaison tanins-anthocyanes par oxydation ou par pont acétaldéhyde. Stabilise la couleur.
+159	DMS (vieillissement en bouteille)
+160	Truffe, olive noire
+161	Augmente lentement en bouteille par hydrolyse de la SMM. Apporte de l’umami sous le seuil d’environ 25 ppb.
+162	Mannoprotéines (autolyse)
+163	Glycoprotéine
+164	Libérées pendant l’autolyse des levures sur lies. Essentielles à la tenue de la mousse et à la texture du champagne.
+165	MICROBIOLOGIE / ALTÉRATIONS
+166	Des micro-organismes indésirables produisent des composés de défaut caractéristiques : Brettanomyces, bactéries acétiques, BL déviantes et défauts chimiques
+167	Métabolites de Brettanomyces
+168	4-Éthylphénol (4-EP)
+169	Écurie, cuir, pansement
+170	Principal composé des Brett. Seuil 140–440 ppb. Issu de l’acide p-coumarique. Très persistant.
+171	4-Éthylgaïacol (4-EG)
+172	Fumée, épices, lard
+173	Accompagne le 4-EP (rapport ~10:1). Seuil ~33 ppb. Issu de l’acide férulique, via les Brett.
+174	Acide isovalérique
+175	Fromage rance, sueur
+176	Produit par les Brett et les BL. Seuil ~0,4–1 mg/L. Persistant ; très difficile à masquer.
+177	Bactéries acétiques
+178	Acide acétique (bactérien)
+179	Vinaigre (défaut)
+180	Acetobacter oxyde l’éthanol. Défaut au-delà de 0,9 g/L (blanc) / 1,2 g/L (rouge). Des limites légales s’appliquent.
+181	Acétate d’éthyle (bactérien)
+182	Vernis à ongles (défaut)
+183	Accompagne une AV élevée. Seuil de défaut ~120 mg/L. Limite légale généralement de 150 mg/L.
+184	TCA (goût de bouchon)
+185	Moisi, carton mouillé
+186	Seuil ~1,4 ppb. Même sous le seuil, il étouffe la perception des arômes. Le défaut du vin le plus courant.
+187	Goût de souris (ATHP, ETPY)
+188	Cage à souris, pop-corn
+189	Perçu seulement quand la salive a fait monter le pH. Fréquent dans les vins nature peu sulfités.
+190	Mannitol
+191	Sucré, visqueux (défaut)
+192	Réduction du fructose par les BL dans les moûts en arrêt de fermentation ou très sucrés. Défaut dans les vins secs — douceur sirupeuse.
+193	Goût de géranium
+194	Feuille de géranium, métallique
+195	Acide sorbique métabolisé par les BL → 2-éthoxyhexa-3,5-diène. Seuil ~0,1 mg/L.
+196	Acide gluconique
+197	Produit par Gluconobacter dans les raisins abîmés ou botrytisés. Combine fortement le SO₂. Signe d’une vendange altérée.
+198	Références choisies et liens
+199	Le document de référence associé recense 30 sources réparties en sept catégories. Les liens ci-dessous sont ceux des sources directement liées dans ce document.
+200	<a {https://onlinelibrary.wiley.com/doi/book/10.1002/9781118730720}>Waterhouse, Sacks &amp; Jeffery (2016), Understanding Wine Chemistry</a>
+201	<a {https://doi.org/10.1002/(SICI)1099-1026(199805/06)13:3%3C159::AID-FFJ709%3E3.0.CO;2-7}>Tominaga et al. (1998), les thiols volatils du sauvignon blanc</a>
+202	<a {https://doi.org/10.1016/j.ijfoodmicro.2004.05.020}>Bartowsky &amp; Henschke (2004), le diacétyle et le caractère beurré</a>
+203	<a {https://doi.org/10.1016/j.foodchem.2022.134910}>He et al. (2022), les composés de l’arôme du vin : revue critique</a>
+204	<a {https://doi.org/10.1111/j.1755-0238.2005.tb00283.x}>Francis &amp; Newton (2005), déterminer l’arôme du vin à partir de sa composition</a>
+205	<a {https://doi.org/10.1007/s10295-011-1018-4}>Styger, Prior &amp; Bauer (2011), la flaveur et l’arôme du vin</a>
+206	Édition web établie à partir des documents Word fournis. Les plages de concentration sont des valeurs typiques ; elles varient selon le cépage, le terroir, le millésime, la souche de levure et la technique de vinification.

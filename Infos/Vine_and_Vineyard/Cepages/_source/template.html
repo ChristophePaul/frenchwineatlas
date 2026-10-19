@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cépages &amp; Appellations</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.66);--faint:rgba(245,239,227,.42);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.40);--glass-hi:rgba(38,10,18,.58);--glass-solid:rgba(30,6,12,.96);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --c-b:#e9d9a0;--c-n:#c25a6c;--c-g:#b9b1ad;--c-rs:#eea3b4;--c-rg:#e0707a;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  .wrap{max-width:1160px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  /* top bar */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);
+    transition:border-color .2s,background .2s,transform .2s;}
+  .back:hover{border-color:var(--hair-hi);background:var(--glass-hi);transform:translateX(-2px);}
+  .lang{color:var(--gold-soft);}
+  .lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang svg{width:15px;height:15px;}
+
+  /* hero */
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(26px,4vw,40px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.5em;font-size:clamp(9px,1.3vw,11px);font-weight:600;
+    color:var(--gold);margin:0 0 18px;padding-left:.5em;opacity:.9;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,84px);line-height:.98;margin:0;color:#fff;
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(13px,1.7vw,15.5px);line-height:1.65;font-weight:300;color:rgba(245,239,227,.84);
+    max-width:680px;margin:0 auto;text-shadow:0 1px 10px rgba(0,0,0,.5);}
+  .stats{display:flex;justify-content:center;gap:clamp(18px,4vw,44px);margin-top:26px;flex-wrap:wrap;}
+  .stat b{display:block;font-family:var(--serif);font-weight:500;font-size:30px;color:#fff;line-height:1;}
+  .stat span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);}
+
+  /* panel */
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);}
+  .search-panel{padding:18px;position:relative;z-index:5;}
+
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+  .tab{appearance:none;border:1px solid var(--hair);background:transparent;color:var(--muted);cursor:pointer;
+    font:600 11px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:10px 16px;border-radius:999px;
+    transition:all .2s;}
+  .tab:hover{color:var(--gold-soft);border-color:var(--hair-hi);}
+  .tab[aria-selected="true"]{background:rgba(217,179,107,.16);border-color:var(--hair-hi);color:var(--gold-soft);}
+
+  .combo{position:relative;}
+  .combo input{width:100%;font:400 17px/1.2 var(--sans);color:#fff;background:rgba(10,1,4,.45);
+    border:1px solid var(--hair);border-radius:12px;padding:15px 44px 15px 46px;outline:none;transition:border-color .2s,background .2s;}
+  .combo input::placeholder{color:var(--faint);}
+  .combo input:focus{border-color:var(--hair-hi);background:rgba(10,1,4,.6);}
+  .combo .mag{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--gold);pointer-events:none;}
+  .combo .clr{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--muted);
+    font-size:20px;cursor:pointer;width:30px;height:30px;border-radius:50%;display:none;}
+  .combo .clr:hover{color:#fff;background:rgba(255,255,255,.08);}
+  .combo.has .clr{display:block;}
+  .list{position:absolute;left:0;right:0;top:calc(100% + 6px);max-height:min(420px,60vh);overflow:auto;
+    background:var(--glass-solid);border:1px solid var(--hair-hi);border-radius:12px;padding:6px;margin:0;list-style:none;
+    box-shadow:0 24px 60px rgba(0,0,0,.6);display:none;}
+  .list.open{display:block;}
+  .opt{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:8px;cursor:pointer;font-size:14.5px;}
+  .opt .sub{margin-left:auto;font-size:11px;color:var(--faint);white-space:nowrap;}
+  .opt .hint{font-size:11px;color:var(--faint);}
+  .opt[aria-selected="true"],.opt:hover{background:rgba(217,179,107,.14);}
+  .opt mark{background:transparent;color:var(--gold-soft);font-weight:600;}
+  .empty{padding:12px;color:var(--faint);font-size:13px;}
+
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px;align-items:center;}
+  .chip{appearance:none;border:1px solid var(--hair);background:transparent;color:var(--muted);cursor:pointer;
+    font:500 12px/1 var(--sans);padding:7px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:6px;}
+  .chip[aria-pressed="true"]{border-color:var(--hair-hi);color:#fff;background:rgba(217,179,107,.12);}
+  .dot{width:9px;height:9px;border-radius:50%;display:inline-block;flex:none;box-shadow:0 0 0 1px rgba(0,0,0,.35);}
+  .d-b{background:var(--c-b);} .d-n{background:var(--c-n);} .d-g{background:var(--c-g);} .d-rs{background:var(--c-rs);} .d-rg{background:var(--c-rg);}
+
+  /* legend */
+  .legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:16px 4px 0;font-size:12px;color:var(--muted);}
+  .legend i{color:var(--muted);}
+  .legend b{color:#fff;font-weight:600;}
+
+  /* results */
+  #out{margin-top:22px;}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:30px 4px 16px;}
+  .sec-head h2{text-transform:uppercase;letter-spacing:.3em;font-size:11px;font-weight:600;color:var(--gold);margin:0;}
+  .sec-head .n{font-size:10px;letter-spacing:.15em;color:var(--faint);font-weight:500;}
+  .sec-head::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--hair),transparent);}
+
+  .hero-card{padding:clamp(20px,3vw,32px);}
+  .hc-top{display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+  .hc-top h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.5vw,44px);margin:0;color:#fff;line-height:1.05;}
+  .kick{text-transform:uppercase;letter-spacing:.22em;font-size:10px;font-weight:600;color:var(--gold);margin:0 0 8px;}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.08em;
+    padding:5px 10px;border-radius:999px;border:1px solid var(--hair-hi);color:var(--gold-soft);background:rgba(217,179,107,.08);}
+  .pill.warn{border-color:rgba(238,163,180,.5);color:#f3c1cc;background:rgba(238,163,180,.08);}
+  .desc{font-size:15px;line-height:1.7;color:rgba(245,239,227,.9);margin:14px 0 0;max-width:820px;font-weight:300;}
+  .facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 26px;margin-top:18px;}
+  .fact span{display:block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:4px;}
+  .fact p{margin:0;font-size:13px;line-height:1.55;color:var(--muted);}
+  .counts{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;}
+  .count{padding:10px 14px;border:1px solid var(--hair);border-radius:12px;background:rgba(10,1,4,.25);}
+  .count b{font-family:var(--serif);font-size:24px;font-weight:500;color:#fff;margin-right:6px;}
+  .count span{font-size:11px;color:var(--muted);letter-spacing:.06em;}
+
+  .region{margin-top:14px;}
+  .region h3{font:600 11px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);margin:22px 4px 10px;display:flex;gap:10px;align-items:center;}
+  .region h3 small{color:var(--faint);letter-spacing:.1em;font-weight:500;}
+  .rows{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;}
+  .row{padding:13px 15px;border:1px solid var(--hair);border-radius:12px;background:rgba(10,1,4,.28);cursor:pointer;
+    transition:border-color .2s,background .2s,transform .2s;text-align:left;color:inherit;font:inherit;width:100%;}
+  .row:hover,.row:focus-visible{border-color:var(--hair-hi);background:rgba(38,10,18,.55);transform:translateY(-2px);outline:none;}
+  .row .t{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .row .t strong{font-family:var(--serif);font-weight:500;font-size:18px;color:#fff;}
+  .row .t strong.minor{font-style:italic;color:rgba(245,239,227,.8);}
+  .row ul{list-style:none;margin:8px 0 0;padding:0;font-size:12.5px;line-height:1.55;color:var(--muted);}
+  .row li .wl{color:var(--gold-soft);}
+  .row li.minor .rl{font-style:italic;}
+  .tag{font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:3px 7px;border-radius:999px;
+    border:1px solid var(--hair-hi);color:var(--gold-soft);}
+  .tag.solo{background:rgba(217,179,107,.18);color:#fff;}
+  .tag.ad{border-color:rgba(160,200,170,.5);color:#bfe0c6;}
+  .tag.hd{border-color:rgba(238,163,180,.5);color:#f3c1cc;}
+
+  /* AOC view */
+  .wine{margin-top:16px;padding:16px 18px;border:1px solid var(--hair);border-radius:14px;background:rgba(10,1,4,.28);}
+  .wine h4{margin:0 0 10px;font:600 12px/1.2 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+  .gl{display:flex;flex-wrap:wrap;gap:8px;}
+  .g{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:10px;border:1px solid var(--hair);
+    background:rgba(255,255,255,.03);cursor:pointer;color:#fff;font:inherit;font-size:14px;transition:border-color .2s,background .2s;}
+  .g:hover,.g:focus-visible{border-color:var(--hair-hi);background:rgba(217,179,107,.1);outline:none;}
+  .g .p{font-size:11.5px;color:var(--gold-soft);}
+  .g .r{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  .g.minor{font-style:italic;color:rgba(245,239,227,.78);border-style:dashed;}
+  .notes{margin:16px 2px 0;font-size:13px;line-height:1.6;color:var(--muted);}
+  .notes p{margin:4px 0;}
+  .src{margin-top:16px;font-size:11.5px;color:var(--faint);}
+
+  /* A–Z */
+  .az-nav{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 8px;}
+  .az-nav a{font:600 12px/1 var(--sans);color:var(--gold);text-decoration:none;padding:6px 8px;border-radius:6px;}
+  .az-nav a:hover{background:rgba(217,179,107,.14);}
+  .az-letter{font-family:var(--serif);font-size:30px;color:var(--gold-soft);margin:26px 4px 10px;border-bottom:1px solid var(--hair);padding-bottom:6px;}
+  .az-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:10px;}
+  .az-item{padding:14px 16px;border:1px solid var(--hair);border-radius:12px;background:rgba(10,1,4,.28);cursor:pointer;text-align:left;color:inherit;font:inherit;
+    transition:border-color .2s,background .2s,transform .2s;}
+  .az-item:hover,.az-item:focus-visible{border-color:var(--hair-hi);background:rgba(38,10,18,.55);transform:translateY(-2px);outline:none;}
+  .az-item .t{display:flex;align-items:center;gap:8px;}
+  .az-item strong{font-family:var(--serif);font-weight:500;font-size:18px;color:#fff;}
+  .az-item .k{margin-left:auto;font-size:11px;color:var(--gold);white-space:nowrap;}
+  .az-item p{margin:7px 0 0;font-size:12.5px;line-height:1.55;color:var(--muted);}
+
+  footer{margin-top:64px;padding-top:26px;text-align:center;font-size:11px;line-height:1.8;color:var(--faint);border-top:1px solid var(--hair);}
+  footer b{color:rgba(231,207,156,.85);font-weight:600;letter-spacing:.04em;}
+  .tools{display:flex;gap:8px;}
+
+  /* ================= CREAM THEME ================= */
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.72);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.82);--glass-hi:#fffdf8;--glass-solid:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --c-b:#e2c86a;--c-n:#8e1f33;--c-g:#9a918c;--c-rs:#e58ca2;--c-rg:#c9404e;
+  }
+  html[data-theme="cream"] body{
+    background:
+      radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;
+  }
+  html[data-theme="cream"] h1,
+  html[data-theme="cream"] .stat b,
+  html[data-theme="cream"] .hc-top h2,
+  html[data-theme="cream"] .row .t strong,
+  html[data-theme="cream"] .az-item strong,
+  html[data-theme="cream"] .count b{color:#3a1219;text-shadow:none;}
+  html[data-theme="cream"] h1 em{color:#9b2235;}
+  html[data-theme="cream"] .tagline{color:rgba(46,20,25,.82);text-shadow:none;}
+  html[data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,30,40,.10),inset 0 1px 0 #fff;
+    -webkit-backdrop-filter:none;backdrop-filter:none;}
+  html[data-theme="cream"] .combo input{background:#fff;color:#2e1419;}
+  html[data-theme="cream"] .combo input:focus{background:#fff;}
+  html[data-theme="cream"] .combo .clr:hover{color:#2e1419;background:rgba(142,31,51,.08);}
+  html[data-theme="cream"] .list{box-shadow:0 18px 40px rgba(90,30,40,.18);}
+  html[data-theme="cream"] .opt[aria-selected="true"],html[data-theme="cream"] .opt:hover,
+  html[data-theme="cream"] .tab[aria-selected="true"],html[data-theme="cream"] .chip[aria-pressed="true"]{background:rgba(155,34,53,.09);}
+  html[data-theme="cream"] .chip[aria-pressed="true"]{color:#2e1419;}
+  html[data-theme="cream"] .legend b{color:#2e1419;}
+  html[data-theme="cream"] .row,html[data-theme="cream"] .az-item,html[data-theme="cream"] .wine,
+  html[data-theme="cream"] .count{background:#fffdf8;}
+  html[data-theme="cream"] .row:hover,html[data-theme="cream"] .row:focus-visible,
+  html[data-theme="cream"] .az-item:hover,html[data-theme="cream"] .az-item:focus-visible{background:#fff;box-shadow:0 8px 22px rgba(90,30,40,.12);}
+  html[data-theme="cream"] .row .t strong.minor{color:rgba(46,20,25,.75);}
+  html[data-theme="cream"] .desc{color:rgba(46,20,25,.88);}
+  html[data-theme="cream"] .g{color:#2e1419;background:#fff;}
+  html[data-theme="cream"] .g:hover{background:rgba(155,34,53,.07);}
+  html[data-theme="cream"] .g.minor{color:rgba(46,20,25,.72);background:transparent;}
+  html[data-theme="cream"] .tag.solo{background:#8e1f33;color:#fff;border-color:#8e1f33;}
+  html[data-theme="cream"] .tag.ad{border-color:rgba(46,120,70,.45);color:#2e6b43;}
+  html[data-theme="cream"] .tag.hd,html[data-theme="cream"] .pill.warn{border-color:rgba(160,40,70,.45);color:#9b2235;background:rgba(155,34,53,.05);}
+  html[data-theme="cream"] .pill{background:rgba(155,34,53,.06);}
+  html[data-theme="cream"] .dot{box-shadow:0 0 0 1px rgba(46,20,25,.35);}
+  html[data-theme="cream"] footer b{color:#8e1f33;}
+  html[data-theme="cream"] .az-letter{color:#8e1f33;}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+  @media (max-width:560px){.rows,.az-grid{grid-template-columns:1fr;} .combo input{font-size:16px;}}
+  .pulse{animation:pulse 1.3s ease-in-out 2;border-radius:12px;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(201,150,62,0)}50%{box-shadow:0 0 0 6px rgba(201,150,62,.45)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <div class="tools">
+    <button class="lang" id="themebtn" type="button" aria-label="Theme">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17A8.5 8.5 0 0 0 12 3.5Z" fill="currentColor"/></svg>
+      <span id="themelbl">Fond sombre</span>
+    </button>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+    </div>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Cahiers des charges AOC-AOP" data-en="AOC-PDO specifications">Cahiers des charges AOC-AOP</p>
+    <h1 data-fr="Cépages <em>&amp;&nbsp;Appellations</em>" data-en="Grapes <em>&amp;&nbsp;Appellations</em>">Cépages <em>&amp;&nbsp;Appellations</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Quels cépages chaque AOC autorise-t-elle, et dans quelles appellations trouve-t-on chaque cépage ? Les règles d'encépagement et d'assemblage sont tirées des cahiers des charges officiels de l'INAO."
+       data-en="Which grapes does each AOC allow, and in which appellations is each grape found? Varietal and blending rules are taken from the official INAO specifications (cahiers des charges).">Quels cépages chaque AOC autorise-t-elle, et dans quelles appellations trouve-t-on chaque cépage ? Les règles d'encépagement et d'assemblage sont tirées des cahiers des charges officiels de l'INAO.</p>
+    <div class="stats">
+      <div class="stat"><b id="st-g">–</b><span data-fr="Cépages" data-en="Grapes">Cépages</span></div>
+      <div class="stat"><b id="st-a">–</b><span data-fr="Appellations" data-en="Appellations">Appellations</span></div>
+      <div class="stat"><b id="st-s">–</b><span data-fr="AOC monocépage" data-en="Single-grape AOCs">AOC monocépage</span></div>
+    </div>
+  </header>
+
+  <div class="panel search-panel">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="tab-g" data-mode="g" data-fr="Par cépage" data-en="By grape">Par cépage</button>
+      <button class="tab" role="tab" id="tab-a" data-mode="a" data-fr="Par appellation" data-en="By appellation">Par appellation</button>
+      <button class="tab" role="tab" id="tab-z" data-mode="z" data-fr="Tous les cépages A–Z" data-en="All grapes A–Z">Tous les cépages A–Z</button>
+    </div>
+    <div class="combo" id="combo">
+      <svg class="mag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+      <label class="sr" for="q" id="qlbl">Recherche</label>
+      <input id="q" type="text" autocomplete="off" spellcheck="false" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="list">
+      <button class="clr" id="clr" type="button" aria-label="Effacer">×</button>
+      <ul class="list" id="list" role="listbox"></ul>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <div id="out"></div>
+
+  <footer>
+    <b>French Wine</b> — <span data-fr="cartographie &amp; documentation" data-en="mapping &amp; documentation">cartographie &amp; documentation</span><br>
+    <span data-fr="Sources : cahiers des charges INAO (section V « Encépagement » et règles d'assemblage), liste officielle des cépages, Vin-Vigne. Les proportions indiquées sont celles de l'assemblage lorsque le cahier des charges les précise, sinon celles du vignoble de l'exploitation (« vignoble »). © 2026"
+          data-en="Sources: INAO specifications (section V “Encépagement” and blending rules), official grape list, Vin-Vigne. Percentages are blend percentages where the specification states them, otherwise vineyard (planting) percentages (“vignoble”). © 2026">Sources : cahiers des charges INAO (section V « Encépagement » et règles d'assemblage), liste officielle des cépages, Vin-Vigne. Les proportions indiquées sont celles de l'assemblage lorsque le cahier des charges les précise, sinon celles du vignoble de l'exploitation (« vignoble »). © 2026</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var DATA = /*__DATA__*/null;
+  var $ = function(id){ return document.getElementById(id); };
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+
+  var GRAPES = DATA.grapes, AOCS = DATA.aocs;
+  var GBY = {}, ABY = {};
+  GRAPES.forEach(function(g){ GBY[g.id] = g; g.uses = []; });
+  AOCS.forEach(function(a){
+    ABY[a.id] = a;
+    a.w.forEach(function(w, wi){
+      w.g.forEach(function(x){
+        var g = GBY[x[0]]; if(!g) return;
+        g.uses.push({a:a, wi:wi, role:x[1], pct:x[2], ad:x[3], solo:w.g.length===1});
+      });
+    });
+  });
+  GRAPES.forEach(function(g){
+    var set = {}; g.uses.forEach(function(u){ set[u.a.id]=1; }); g.nA = Object.keys(set).length;
+  });
+
+  var T = {
+    fr:{ph_g:'Rechercher un cépage (ex. syrah, malbec, chenin)…', ph_a:'Rechercher une appellation (ex. Chablis, Bandol)…', ph_z:'Filtrer la liste des cépages…',
+        lbl:'Recherche', none:'Aucun résultat', aoc:'AOC', aocs:'AOC', grape:'cépage', grapes:'cépages',
+        colors:{B:'Blanc',N:'Noir',G:'Gris',Rs:'Rosé',Rg:'Rouge'}, all:'Tous',
+        roles:{P:'principal',C:'complémentaire',S:'secondaire',A:'accessoire','':'autorisé'},
+        leg:['<b>Romain</b> : cépage principal ou autorisé','<i>Italique</i> : cépage accessoire / secondaire','<span class="tag solo">Monocépage</span> seul cépage autorisé','<span class="tag ad">Adaptation</span> variété d\'intérêt à fin d\'adaptation (plafonnée, sous convention)'],
+        solo:'Monocépage', soloAoc:'AOC monocépage', ad:'Adaptation', hd:'Règles hors dossier — à vérifier',
+        syn:'Synonymes', orig:'Origine', ha:'Surface en France', inA:'appellations', asMaj:'comme cépage principal', asMin:'comme accessoire', asSolo:'comme cépage unique',
+        byReg:'Appellations qui l\'autorisent', grapesOf:'Cépages autorisés', notes:'Règles particulières (texte du cahier des charges)',
+        cdc:'Cahier des charges', pickG:'Choisissez un cépage dans la liste, ou parcourez l\'onglet A–Z.', pickA:'Choisissez une appellation dans la liste.',
+        region:'Région', wineTypes:'types de vin', az:'Tous les cépages autorisés en AOC', usedIn:'AOC', noDesc:''},
+    en:{ph_g:'Search a grape (e.g. syrah, malbec, chenin)…', ph_a:'Search an appellation (e.g. Chablis, Bandol)…', ph_z:'Filter the grape list…',
+        lbl:'Search', none:'No results', aoc:'AOC', aocs:'AOCs', grape:'grape', grapes:'grapes',
+        colors:{B:'White',N:'Black',G:'Grey',Rs:'Pink',Rg:'Red'}, all:'All',
+        roles:{P:'principal',C:'complementary',S:'secondary',A:'accessory','':'authorised'},
+        leg:['<b>Roman</b>: principal or authorised grape','<i>Italic</i>: accessory / secondary grape','<span class="tag solo">Single grape</span> only grape allowed','<span class="tag ad">Adaptation</span> climate-adaptation variety (capped, under agreement)'],
+        solo:'Single grape', soloAoc:'Single-grape AOC', ad:'Adaptation', hd:'Rules not from a local CDC — to be verified',
+        syn:'Synonyms', orig:'Origin', ha:'Area in France', inA:'appellations', asMaj:'as a principal grape', asMin:'as an accessory', asSolo:'as the only grape',
+        byReg:'Appellations that allow it', grapesOf:'Authorised grapes', notes:'Specific rules (specification text, in French)',
+        cdc:'Specification', pickG:'Pick a grape from the list, or browse the A–Z tab.', pickA:'Pick an appellation from the list.',
+        region:'Region', wineTypes:'wine types', az:'All grapes authorised in AOC wines', usedIn:'AOC', noDesc:''}
+  };
+  function t(k){ return T[LANG][k]; }
+
+  var WL = [[/Vin doux naturel/g,'Vin doux naturel'],[/Vin de liqueur/g,'Liqueur wine'],[/Vin de paille/g,'Straw wine'],[/Vin jaune/g,'Vin jaune'],
+    [/Vendanges tardives/g,'Late harvest'],[/Sélection de grains nobles/g,'Selection of noble grapes'],[/Méthode ancestrale/g,'Méthode ancestrale'],
+    [/Mousseux/g,'Sparkling'],[/mousseux/g,'sparkling'],[/effervescent/g,'sparkling'],[/pétillant/g,'semi-sparkling'],[/tranquille/g,'still'],
+    [/Rouge sec/g,'Dry red'],[/Blanc sec/g,'Dry white'],[/liquoreux/g,'sweet'],[/moelleux/g,'medium-sweet'],[/demi-sec/g,'medium-dry'],[/\bsec\b/g,'dry'],
+    [/Rouges?/g,'Red'],[/rouge/g,'red'],[/Blancs?/g,'White'],[/blanc/g,'white'],[/Rosés?/g,'Rosé'],[/rosé/g,'rosé'],[/Gris de gris/g,'Gris de gris'],
+    [/ et /g,' and '],[/\bdont\b/g,'incl.'],[/Primeur/g,'Primeur'],[/Crémant/g,'Crémant']];
+  function wl(s){ if(LANG==='fr') return s; WL.forEach(function(p){ s = s.replace(p[0], p[1]); }); return s; }
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+  function norm(s){ return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/œ/g,'oe').replace(/[^a-z0-9]+/g,' ').trim(); }
+  function isMinor(role){ return role==='A'||role==='S'; }
+  function pctFr(p){ return LANG==='fr' ? p : p.replace(/vignoble/g,'vineyard').replace(/assemblage/g,'blend').replace(/majoritaire/g,'majority').replace(/obligatoire/g,'mandatory').replace(/avec/g,'with'); }
+  function dot(c){ return '<span class="dot d-'+c.toLowerCase()+'" title="'+esc(t('colors')[c])+'"></span>'; }
+
+  /* ---------------- state ---------------- */
+  var MODE = 'g', SEL = null, COLF = '';
+  var input = $('q'), list = $('list'), combo = $('combo'), active = -1, items = [];
+
+  function setMode(m, keep){
+    MODE = m;
+    ['g','a','z'].forEach(function(x){ $('tab-'+x).setAttribute('aria-selected', x===m ? 'true':'false'); });
+    input.placeholder = t('ph_'+m);
+    if(!keep){ input.value=''; SEL=null; }
+    combo.classList.toggle('has', !!input.value);
+    renderFilters(); closeList(); render();
+  }
+
+  function searchIndex(){
+    if(MODE==='a') return AOCS.map(function(a){ return {id:a.id, label:a.n, sub:a.r, key:norm(a.n+' '+a.aka), hint:a.aka}; });
+    return GRAPES.filter(function(g){ return !COLF || g.c===COLF; })
+      .map(function(g){ return {id:g.id, label:g.n, sub:g.nA+' '+(g.nA>1?t('aocs'):t('aoc')), key:norm(g.n+' '+g.syn), c:g.c, syn:g.syn}; });
+  }
+  function hl(label, q){
+    if(!q) return esc(label);
+    var nl = norm(label), i = nl.indexOf(q);
+    if(i<0) return esc(label);
+    // map normalized index back approximately (labels are mostly ASCII-length-preserving)
+    return esc(label.slice(0,i))+'<mark>'+esc(label.slice(i,i+q.length))+'</mark>'+esc(label.slice(i+q.length));
+  }
+  function openList(){
+    var q = norm(input.value), idx = searchIndex();
+    items = idx.filter(function(x){ return !q || x.key.indexOf(q)>=0; });
+    items.sort(function(a,b){
+      var an = norm(a.label).indexOf(q)===0 ? 0 : (norm(a.label).indexOf(q)>=0 ? 1 : 2);
+      var bn = norm(b.label).indexOf(q)===0 ? 0 : (norm(b.label).indexOf(q)>=0 ? 1 : 2);
+      return an-bn || norm(a.label).localeCompare(norm(b.label));
+    });
+    items = items.slice(0,80);
+    if(!items.length){ list.innerHTML = '<li class="empty">'+t('none')+'</li>'; }
+    else list.innerHTML = items.map(function(x,i){
+      var viaSyn = q && norm(x.label).indexOf(q)<0 && (x.syn||x.hint);
+      return '<li class="opt" role="option" id="o'+i+'" data-i="'+i+'" aria-selected="false">'+(x.c?dot(x.c):'')+
+        '<span>'+hl(x.label,q)+(viaSyn?' <span class="hint">('+esc(matchedSyn(x.syn||x.hint,q))+')</span>':'')+'</span><span class="sub">'+esc(x.sub)+'</span></li>';
+    }).join('');
+    active = -1; list.classList.add('open'); input.setAttribute('aria-expanded','true');
+  }
+  function matchedSyn(s,q){ var parts = String(s).split(/,\s*/); for(var i=0;i<parts.length;i++){ if(norm(parts[i]).indexOf(q)>=0) return parts[i]; } return ''; }
+  function closeList(){ list.classList.remove('open'); input.setAttribute('aria-expanded','false'); active=-1; }
+  function move(d){
+    if(!list.classList.contains('open')) openList();
+    var opts = list.querySelectorAll('.opt'); if(!opts.length) return;
+    if(active>=0) opts[active].setAttribute('aria-selected','false');
+    active = (active + d + opts.length) % opts.length;
+    opts[active].setAttribute('aria-selected','true'); opts[active].scrollIntoView({block:'nearest'});
+    input.setAttribute('aria-activedescendant', 'o'+active);
+  }
+  function choose(i){
+    var x = items[i]; if(!x) return;
+    if(MODE==='z'){ go('g', x.id); return; }
+    go(MODE, x.id);
+  }
+  function go(mode, id){
+    MODE = mode; SEL = id;
+    ['g','a','z'].forEach(function(x){ $('tab-'+x).setAttribute('aria-selected', x===mode ? 'true':'false'); });
+    input.placeholder = t('ph_'+mode);
+    input.value = mode==='a' ? ABY[id].n : GBY[id].n;
+    combo.classList.add('has'); closeList(); renderFilters(); render();
+    try{ history.replaceState(null,'','#'+(mode==='a'?'aoc':'cepage')+'='+id); }catch(e){ location.hash = (mode==='a'?'aoc':'cepage')+'='+id; }
+    var out = $('out'); if(out.getBoundingClientRect().top < 0 || out.getBoundingClientRect().top > innerHeight*0.6) out.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  input.addEventListener('input', function(){
+    combo.classList.toggle('has', !!input.value);
+    if(MODE==='z'){ render(); return; }
+    openList();
+  });
+  input.addEventListener('focus', function(){ if(MODE!=='z') openList(); });
+  input.addEventListener('keydown', function(e){
+    if(MODE==='z') return;
+    if(e.key==='ArrowDown'){ e.preventDefault(); move(1); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); move(-1); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(!list.classList.contains('open')) openList(); choose(active>=0?active:0); }
+    else if(e.key==='Escape'){ closeList(); }
+  });
+  list.addEventListener('mousedown', function(e){ var o = e.target.closest('.opt'); if(o){ e.preventDefault(); choose(+o.dataset.i); } });
+  document.addEventListener('click', function(e){ if(!combo.contains(e.target)) closeList(); });
+  $('clr').addEventListener('click', function(){ input.value=''; SEL=null; combo.classList.remove('has'); try{ history.replaceState(null,'',location.pathname); }catch(e){} render(); input.focus(); });
+  document.querySelectorAll('.tab').forEach(function(b){ b.addEventListener('click', function(){ setMode(b.dataset.mode); try{ history.replaceState(null,'',location.pathname); }catch(e){} }); });
+
+  function renderFilters(){
+    var f = $('filters');
+    if(MODE==='a'){ f.innerHTML=''; return; }
+    var cs = ['','B','N','G','Rs','Rg'];
+    f.innerHTML = cs.map(function(c){
+      return '<button class="chip" type="button" data-c="'+c+'" aria-pressed="'+(COLF===c)+'">'+(c?dot(c):'')+esc(c?t('colors')[c]:t('all'))+'</button>';
+    }).join('');
+    f.querySelectorAll('.chip').forEach(function(b){ b.addEventListener('click', function(){ COLF = b.dataset.c; renderFilters(); if(MODE==='z') render(); else if(document.activeElement===input) openList(); }); });
+  }
+
+  /* ---------------- views ---------------- */
+  function render(){
+    var out = $('out');
+    $('legend').innerHTML = t('leg').map(function(x){ return '<span>'+x+'</span>'; }).join('');
+    if(MODE==='z'){ out.innerHTML = viewAZ(); bindOut(); return; }
+    if(!SEL){ out.innerHTML = '<p class="desc" style="text-align:center;margin:30px auto;color:var(--muted)">'+(MODE==='a'?t('pickA'):t('pickG'))+'</p>'; if(MODE==='g') out.innerHTML += viewAZ(true); bindOut(); return; }
+    out.innerHTML = MODE==='a' ? viewAOC(ABY[SEL]) : viewGrape(GBY[SEL]);
+    bindOut();
+  }
+  function bindOut(){
+    $('out').querySelectorAll('[data-go]').forEach(function(el){
+      el.addEventListener('click', function(){ var p = el.dataset.go.split(':'); go(p[0], p[1]); });
+    });
+    $('out').querySelectorAll('.az-nav a').forEach(function(a){ a.addEventListener('click', function(e){ e.preventDefault(); var el = document.getElementById(a.getAttribute('href').slice(1)); if(el) el.scrollIntoView({behavior:'smooth'}); }); });
+  }
+
+  function viewGrape(g){
+    var d = LANG==='fr' ? g.fr : g.en;
+    var byA = {}; g.uses.forEach(function(u){ (byA[u.a.id] = byA[u.a.id] || {a:u.a, us:[]}).us.push(u); });
+    var entries = Object.keys(byA).map(function(k){ return byA[k]; });
+    var nMaj=0,nMin=0,nSolo=0;
+    entries.forEach(function(e){
+      if(e.us.some(function(u){ return u.solo; })) nSolo++;
+      if(e.us.some(function(u){ return !isMinor(u.role) && !u.ad; })) nMaj++; else nMin++;
+    });
+    var regs = {}; entries.forEach(function(e){ (regs[e.a.r] = regs[e.a.r] || []).push(e); });
+    var h = '<div class="panel hero-card"><p class="kick">'+dot(g.c)+' '+esc(t('colors')[g.c])+'</p><div class="hc-top"><h2>'+esc(g.n)+'</h2></div>'+
+      (d?'<p class="desc">'+esc(d)+'</p>':'')+
+      '<div class="facts">'+
+        (g.syn?'<div class="fact"><span>'+t('syn')+'</span><p>'+esc(trimSyn(g.syn))+'</p></div>':'')+
+        (g.orig?'<div class="fact"><span>'+t('orig')+'</span><p>'+esc(g.orig)+'</p></div>':'')+
+        (g.ha?'<div class="fact"><span>'+t('ha')+'</span><p>≈ '+g.ha.toLocaleString(LANG==='fr'?'fr-FR':'en-GB')+' ha</p></div>':'')+
+      '</div>'+
+      '<div class="counts"><div class="count"><b>'+entries.length+'</b><span>'+t('inA')+'</span></div>'+
+      '<div class="count"><b>'+nMaj+'</b><span>'+t('asMaj')+'</span></div>'+
+      '<div class="count"><b>'+nMin+'</b><span>'+t('asMin')+'</span></div>'+
+      '<div class="count"><b>'+nSolo+'</b><span>'+t('asSolo')+'</span></div></div></div>';
+    h += '<div class="sec-head"><h2>'+t('byReg')+'</h2><span class="n">'+entries.length+'</span></div>';
+    DATA.regions.forEach(function(r){
+      if(!regs[r]) return;
+      var es = regs[r].sort(function(x,y){ return norm(x.a.n).localeCompare(norm(y.a.n)); });
+      h += '<div class="region"><h3>'+esc(r)+' <small>'+es.length+'</small></h3><div class="rows">';
+      es.forEach(function(e){
+        var allMinor = e.us.every(function(u){ return isMinor(u.role) || u.ad; });
+        var solo = e.a.one;
+        h += '<button class="row" type="button" data-go="a:'+e.a.id+'"><div class="t"><strong class="'+(allMinor?'minor':'')+'">'+esc(e.a.n)+'</strong>'+
+          (solo?'<span class="tag solo">'+t('soloAoc')+'</span>':'')+(e.a.src==='hors dossier'?'<span class="tag hd">!</span>':'')+'</div><ul>';
+        e.us.forEach(function(u){
+          var w = e.a.w[u.wi];
+          var bits = [];
+          if(u.solo && !solo) bits.push('<span class="tag solo">'+t('solo')+'</span>');
+          else if(!u.solo) bits.push('<span class="rl">'+t('roles')[u.role]+'</span>');
+          if(u.pct) bits.push(esc(pctFr(u.pct)));
+          if(u.ad) bits.push('<span class="tag ad">'+t('ad')+'</span>');
+          h += '<li class="'+((isMinor(u.role)||u.ad)?'minor':'')+'"><span class="wl">'+esc(wl(w.l))+'</span>'+(bits.length?' · '+bits.join(' · '):'')+'</li>';
+        });
+        h += '</ul></button>';
+      });
+      h += '</div></div>';
+    });
+    return h;
+  }
+  function trimSyn(s){ var p = s.split(/,\s*/).filter(Boolean); var seen = {}, out = []; p.forEach(function(x){ var k = norm(x); if(!seen[k]){ seen[k]=1; out.push(x.trim()); } }); return out.slice(0,14).join(', ')+(out.length>14?'…':''); }
+
+  function viewAOC(a){
+    var h = '<div class="panel hero-card"><p class="kick">'+esc(a.r)+'</p><div class="hc-top"><h2>'+esc(a.n)+'</h2>'+
+      (a.one?'<span class="pill">★ '+t('soloAoc')+'</span>':'')+(a.src==='hors dossier'?'<span class="pill warn">'+t('hd')+'</span>':'')+'</div>'+
+      (a.aka?'<p class="src" style="margin-top:8px">'+esc(a.aka)+'</p>':'');
+    a.w.forEach(function(w){
+      var solo = w.g.length===1;
+      h += '<div class="wine"><h4>'+esc(wl(w.l))+(solo&&!a.one?' <span class="tag solo">'+t('solo')+'</span>':'')+'</h4><div class="gl">';
+      var sorted = w.g.slice().sort(function(x,y){ return (isMinor(x[1])||x[3]) - (isMinor(y[1])||y[3]); });
+      sorted.forEach(function(x){
+        var g = GBY[x[0]], minor = isMinor(x[1]) || x[3];
+        h += '<button class="g '+(minor?'minor':'')+'" type="button" data-go="g:'+g.id+'">'+dot(g.c)+esc(g.n)+
+          (x[1]&&!solo?' <span class="r">'+t('roles')[x[1]]+'</span>':'')+(x[2]?' <span class="p">'+esc(pctFr(x[2]))+'</span>':'')+
+          (x[3]?' <span class="tag ad">'+t('ad')+'</span>':'')+'</button>';
+      });
+      h += '</div></div>';
+    });
+    if(a.notes.length) h += '<div class="notes"><div class="kick" style="margin-top:6px">'+t('notes')+'</div>'+a.notes.map(function(n){ return '<p>'+esc(n)+'</p>'; }).join('')+'</div>';
+    h += '<p class="src">'+t('cdc')+' : '+esc(a.cdc||'—')+'</p></div>';
+    return h;
+  }
+
+  function viewAZ(embedded){
+    var q = MODE==='z' ? norm(input.value) : '';
+    var gs = GRAPES.filter(function(g){ return (!COLF || g.c===COLF) && (!q || norm(g.n+' '+g.syn).indexOf(q)>=0); });
+    var groups = {}; gs.forEach(function(g){ var L = norm(g.n).charAt(0).toUpperCase(); (groups[L] = groups[L] || []).push(g); });
+    var Ls = Object.keys(groups).sort();
+    var h = '<div class="sec-head"><h2>'+t('az')+'</h2><span class="n">'+gs.length+'</span></div>';
+    h += '<div class="az-nav">'+Ls.map(function(L){ return '<a href="#L-'+L+'">'+L+'</a>'; }).join('')+'</div>';
+    if(!gs.length) h += '<p class="empty">'+t('none')+'</p>';
+    Ls.forEach(function(L){
+      h += '<div class="az-letter" id="L-'+L+'">'+L+'</div><div class="az-grid">';
+      groups[L].forEach(function(g){
+        var d = LANG==='fr' ? g.fr : g.en;
+        h += '<button class="az-item" type="button" data-go="g:'+g.id+'"><div class="t">'+dot(g.c)+'<strong>'+esc(g.n)+'</strong><span class="k">'+g.nA+' '+(g.nA>1?t('aocs'):t('aoc'))+'</span></div><p>'+esc(d)+'</p></button>';
+      });
+      h += '</div>';
+    });
+    return h;
+  }
+
+  /* ---------------- language ---------------- */
+  function setLang(l){
+    LANG = l; document.documentElement.lang = l;
+    document.querySelectorAll('[data-fr]').forEach(function(n){ n.innerHTML = n.getAttribute('data-'+l); });
+    $('langlbl').textContent = l==='fr' ? 'English' : 'Français';
+    $('qlbl').textContent = t('lbl'); input.placeholder = t('ph_'+MODE);
+    try{ localStorage.setItem('fw_lang', l); }catch(e){}
+    renderFilters(); render();
+  }
+  $('langbtn').addEventListener('click', function(){ setLang(LANG==='fr'?'en':'fr'); });
+
+
+
+  /* ---------------- init ---------------- */
+  $('st-g').textContent = GRAPES.length; $('st-a').textContent = AOCS.length;
+  $('st-s').textContent = AOCS.filter(function(a){ return a.one; }).length;
+  var m = /^#(aoc|cepage)=(.+)$/.exec(location.hash);
+  /* renamed AOCs: old links keep working */
+  var OLD_IDS = {'corbieres-boutenac':'boutenac','minervois-la-liviniere':'la-liviniere','anjou-villages-brissac':'anjou-brissac','savennieres-coulee-de-serrant':'coulee-de-serrant'};
+  if(m && m[1]==='aoc' && OLD_IDS[m[2]]) m[2] = OLD_IDS[m[2]];
+  setLang(LANG);
+  var v = /^#view=(grape|aoc|color)$/.exec(location.hash);
+  if(m && (m[1]==='aoc' ? ABY[m[2]] : GBY[m[2]])) go(m[1]==='aoc'?'a':'g', m[2]);
+  else if(v){
+    setMode(v[1]==='aoc'?'a':v[1]==='color'?'z':'g');
+    try{ history.replaceState(null,'',location.pathname); }catch(e){}
+    var tgt = v[1]==='color' ? $('filters') : input;
+    tgt.classList.add('pulse'); setTimeout(function(){ tgt.classList.remove('pulse'); }, 2600);
+    if(v[1]!=='color') input.focus();
+  }
+  else setMode('g');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+= Banyuls | Roussillon | CDC Banyuls
+VDN rouge (rimage, traditionnel): grenache N/P ≥50 %; grenache gris G/A; carignan N/A; cinsaut N/A; counoise N/A; mourvèdre N/A; syrah N/A
+VDN ambré, blanc: grenache blanc B/P; grenache gris G/P; macabeu B/P; tourbat B/P; muscat à petits grains B/A; muscat d'Alexandrie B/A; marsanne B/A ≤10 %; roussanne B/A ≤10 %; vermentino B/A ≤10 %; carignan blanc B/A ≤10 %
+VDN rosé: grenache N/P; grenache blanc B/P; grenache gris G/P; macabeu B/P; tourbat B/P; muscat à petits grains B/A; muscat d'Alexandrie B/A
+! Rouges : grenache seul ou majoritaire. Muscats ≤20 % dans les ambrés, blancs et rosés.
+
+= Collioure | Roussillon | CDC Collioure
+Rouge: carignan N/P; grenache N/P; mourvèdre N/P; syrah N/P; cinsaut N/A; counoise N/A
+Rosé: carignan N/P; grenache gris G/P; grenache N/P; mourvèdre N/P; syrah N/P; cinsaut N/A; counoise N/A
+Blanc: grenache blanc B/P; grenache gris G/P; macabeu B/P; marsanne B/P; roussanne B/P; tourbat B/P; vermentino B/P; carignan blanc B/A; muscat à petits grains B/A ≤5 %; muscat d'Alexandrie B/A ≤5 %
+! Rouges et rosés : au moins 2 cépages.
+
+= Côtes du Roussillon Villages | Roussillon | CDC Côtes du Roussillon Villages
+Rouge: carignan N/P ≤60 %; grenache N/P; mourvèdre N/P; syrah N/P; lledoner pelut N/A ≤20 %
+! Au moins 2 cépages, aucun >80 % ; mourvèdre + syrah ≥30 % du vignoble. Dénominations Caramany, Latour-de-France, Lesquerde, Tautavel, Les Aspres (≥3 cépages).
+
+= Côtes du Roussillon | Roussillon | CDC Côtes du Roussillon
+Rouge: carignan N/P ≤50 % (vignoble); grenache N/P; mourvèdre N/P; syrah N/P; cinsaut N/A; lledoner pelut N/A
+Rosé: grenache N/P; syrah N/P; grenache gris G/P; carignan N/A; mourvèdre N/A; cinsaut N/A; lledoner pelut N/A; macabeu B/A
+Blanc: grenache blanc B/P; macabeu B/P; tourbat B/P; grenache gris G/C; marsanne B/C; roussanne B/C; vermentino B/C; viognier B/A ≤10 %; carignan blanc B/A ≤10 %
+! Au moins 2 cépages, aucun >80 % ; accessoires ≤30 % (rouges, rosés). Blancs : grenache blanc + macabeu + tourbat ≥50 %.
+
+= Grand Roussillon | Roussillon | CDC Grand-Roussillon
+Vin doux naturel: grenache blanc B/P; grenache gris G/P; grenache N/P; macabeu B/P; tourbat B/P; muscat à petits grains B/A ≤20 %; muscat d'Alexandrie B/A ≤20 %
+
+= Maury | Roussillon | CDC Maury
+VDN grenat, tuilé: grenache N/P ≥75 % (vignoble); grenache blanc B/C; grenache gris G/C; carignan N/A; macabeu B/A ≤10 %; syrah N/A
+VDN ambré, blanc: grenache blanc B/P; grenache gris G/P; macabeu B/P; tourbat B/P; muscat à petits grains B/A ≤20 %; muscat d'Alexandrie B/A ≤20 %
+Rouge sec: grenache N/P 60–80 %; carignan N/C; mourvèdre N/C; syrah N/C; lledoner pelut N/A ≤10 %
+
+= Muscat de Rivesaltes | Roussillon | CDC Muscat de Rivesaltes
+Vin doux naturel: muscat à petits grains B; muscat d'Alexandrie B
+
+= Rivesaltes | Roussillon | CDC Rivesaltes
+VDN grenat: grenache N
+VDN ambré, rosé, tuilé: grenache blanc B/P; grenache gris G/P; grenache N/P; macabeu B/P; tourbat B/P; muscat à petits grains B/A ≤20 %; muscat d'Alexandrie B/A ≤20 %

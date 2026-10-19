@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>French Wine in Numbers</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.62);--faint:rgba(245,239,227,.42);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.34);--glass-hi:rgba(38,10,18,.5);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --field:rgba(10,2,5,.5);
+    /* light calculator theme (#dee0ba frames) */
+    --calc-bg:#dee0ba;--calc-ink:#33131a;--calc-head:#6d1526;--calc-accent:#9b2235;
+    --calc-muted:#5c4a38;--calc-hair:rgba(109,21,38,.20);--calc-hair-hi:rgba(109,21,38,.45);
+    --calc-field:rgba(255,255,255,.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  .wrap{max-width:1160px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(18px,4vw,44px) 64px;}
+
+  /* ---------- top bar ---------- */
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);
+    transition:border-color .2s,background .2s,transform .2s;}
+  .back:hover{border-color:var(--hair-hi);background:var(--glass-hi);transform:translateX(-2px);}
+  .lang{color:var(--gold-soft);}
+  .lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang svg{width:15px;height:15px;}
+
+  /* ---------- hero ---------- */
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(30px,5vw,52px);}
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.5em;
+    font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);
+    margin:0 0 22px;padding-left:.5em;opacity:.9;}
+  h1{font-family:var(--serif);font-weight:500;
+    font-size:clamp(40px,8vw,90px);line-height:.98;margin:0;color:#fff;
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:28px auto 22px;}
+  .tagline{font-size:clamp(13px,1.7vw,16px);line-height:1.65;font-weight:300;
+    color:rgba(245,239,227,.82);max-width:640px;margin:0 auto;
+    text-shadow:0 1px 10px rgba(0,0,0,.5);}
+
+  /* ---------- section heading ---------- */
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin:clamp(44px,6vw,68px) 4px 22px;}
+  .sec-head h2{font-family:var(--sans);text-transform:uppercase;letter-spacing:.3em;
+    font-size:11px;font-weight:600;color:var(--gold);margin:0;}
+  .sec-head .n{font-size:10px;letter-spacing:.15em;color:var(--faint);font-weight:500;}
+  .sec-head::after{content:"";flex:1;height:1px;
+    background:linear-gradient(90deg,var(--hair),transparent);}
+  .sec-intro{font-size:13px;line-height:1.6;color:var(--muted);font-weight:300;
+    max-width:720px;margin:-6px 4px 24px;}
+  .sub-head{font-family:var(--sans);text-transform:uppercase;letter-spacing:.22em;
+    font-size:10px;font-weight:600;color:var(--gold);margin:30px 4px 14px;opacity:.9;}
+
+  /* ---------- stat grid ---------- */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:16px;}
+  .stat{
+    position:relative;overflow:hidden;background:var(--glass);
+    -webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:16px;padding:22px 22px 20px;
+    box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);
+    transition:transform .22s cubic-bezier(.2,.7,.3,1),border-color .22s,background .22s;
+  }
+  .stat::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;
+    background:linear-gradient(180deg,var(--gold),rgba(217,179,107,0));
+    transform:scaleY(0);transform-origin:top;transition:transform .28s ease;}
+  .stat:hover{transform:translateY(-4px);border-color:var(--hair-hi);background:var(--glass-hi);}
+  .stat:hover::before{transform:scaleY(1);}
+  .stat .kick{font-family:var(--sans);text-transform:uppercase;letter-spacing:.2em;
+    font-size:9px;font-weight:600;color:var(--gold);margin:0 0 12px;opacity:.85;}
+  .stat .fig{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.4vw,40px);
+    line-height:1;color:#fff;margin:0;letter-spacing:-.01em;}
+  .stat .fig small{font-size:.5em;color:var(--gold-soft);font-weight:500;letter-spacing:0;margin-left:3px;}
+  .stat .lbl{font-family:var(--serif);font-size:15px;color:var(--parchment);margin:9px 0 0;line-height:1.25;}
+  .stat .sub{font-size:11px;line-height:1.5;color:var(--muted);margin:8px 0 0;font-weight:300;}
+
+  /* ---------- wide info panel ---------- */
+  .panel{background:var(--glass);border:1px solid var(--hair);border-radius:16px;
+    padding:clamp(20px,3vw,30px);box-shadow:0 18px 50px rgba(10,1,4,.45);
+    -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);}
+  .panel h3{font-family:var(--serif);font-weight:500;font-size:22px;color:#fff;margin:0 0 4px;}
+  .panel .note{font-size:12px;color:var(--muted);font-weight:300;line-height:1.55;margin:0 0 18px;}
+
+  /* bar list */
+  .bars{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none;}
+  .bar-row{display:grid;grid-template-columns:150px 1fr 62px;align-items:center;gap:14px;}
+  .bar-row .name{font-size:13px;color:var(--parchment);}
+  .bar-row .track{height:9px;border-radius:6px;background:rgba(217,179,107,.1);overflow:hidden;}
+  .bar-row .fill{height:100%;border-radius:6px;
+    background:linear-gradient(90deg,var(--bordeaux),var(--gold));}
+  .bar-row .val{font-size:12px;color:var(--gold-soft);text-align:right;font-variant-numeric:tabular-nums;}
+  @media (max-width:520px){.bar-row{grid-template-columns:110px 1fr 50px;gap:9px;}}
+
+  /* donut for colours */
+  .donut-wrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+  .donut{width:150px;height:150px;flex:none;border-radius:50%;
+    background:conic-gradient(var(--bordeaux) 0 38%, var(--gold-soft) 38% 76%, #e79ba6 76% 100%);
+    -webkit-mask:radial-gradient(circle 44px at 50% 50%,transparent 98%,#000 100%);
+    mask:radial-gradient(circle 44px at 50% 50%,transparent 98%,#000 100%);}
+  .legend{display:flex;flex-direction:column;gap:11px;margin:0;padding:0;list-style:none;}
+  .legend li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--parchment);}
+  .legend .dot{width:12px;height:12px;border-radius:3px;flex:none;}
+  .legend b{color:var(--gold-soft);font-weight:600;margin-left:auto;font-variant-numeric:tabular-nums;padding-left:14px;}
+
+  /* cépage chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0;}
+  .chip{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair);
+    background:rgba(217,179,107,.06);color:var(--parchment);}
+  .chip b{color:var(--gold-soft);font-weight:600;margin-left:5px;font-variant-numeric:tabular-nums;}
+
+  /* coop-by-appellation cards */
+  .coop-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;}
+  .coop{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--hair);
+    border-radius:16px;padding:20px 20px 18px;box-shadow:0 14px 40px rgba(10,1,4,.4);
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);}
+  .coop .rg{font-family:var(--serif);font-size:19px;color:#fff;margin:0 0 10px;font-weight:500;}
+  .coop .big{font-family:var(--serif);font-size:33px;color:var(--gold-soft);line-height:1;margin:0;font-variant-numeric:tabular-nums;}
+  .coop .big small{font-size:.4em;color:var(--muted);letter-spacing:.02em;margin-left:4px;}
+  .coop .share{margin:12px 0 0;}
+  .coop .share .lab{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:0 0 5px;}
+  .coop .share .lab b{color:var(--gold-soft);font-weight:600;}
+  .coop .track{height:7px;border-radius:5px;background:rgba(217,179,107,.1);overflow:hidden;}
+  .coop .fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--bordeaux),var(--gold));}
+  .coop .foot{font-size:10.5px;color:var(--faint);font-weight:300;line-height:1.45;margin:11px 0 0;}
+  .est{font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);
+    border:1px solid rgba(217,179,107,.4);border-radius:999px;padding:2px 7px;margin-left:7px;vertical-align:middle;
+    background:rgba(217,179,107,.08);}
+
+  /* ============ CALCULATORS (light #dee0ba theme, larger type) ============ */
+  .tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:20px;}
+  .tool{position:relative;overflow:hidden;background:var(--calc-bg);color:var(--calc-ink);
+    border:1px solid var(--calc-hair);border-radius:18px;padding:26px 26px 24px;
+    box-shadow:0 20px 54px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.5);}
+  .tool-head{display:flex;align-items:center;gap:13px;margin:0 0 4px;}
+  .tool-head .ic-wrap{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;flex:none;
+    background:rgba(155,34,53,.12);border:1px solid rgba(155,34,53,.28);}
+  .tool-head .ic{width:24px;height:24px;color:var(--calc-accent);}
+  .tool-head h3{font-family:var(--serif);font-weight:600;font-size:24px;color:var(--calc-head);margin:0;line-height:1.08;}
+  .tool-head .kick{font-family:var(--sans);text-transform:uppercase;letter-spacing:.18em;
+    font-size:10px;font-weight:700;color:var(--calc-accent);margin:0 0 3px;opacity:.9;}
+  .tool p.desc{font-size:14px;line-height:1.6;color:var(--calc-muted);margin:14px 0 18px;font-weight:400;}
+
+  .field{margin:0 0 15px;}
+  .field label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.1em;
+    font-weight:700;color:var(--calc-accent);margin:0 0 7px;}
+  .field .row{display:flex;gap:9px;}
+  .tool input[type=number]{width:100%;font-family:var(--sans);font-size:18px;font-weight:600;color:var(--calc-ink);
+    background:var(--calc-field);border:1px solid var(--calc-hair-hi);border-radius:11px;
+    padding:12px 13px;outline:none;transition:border-color .18s,box-shadow .18s;-moz-appearance:textfield;}
+  .tool input[type=number]:focus{border-color:var(--calc-accent);box-shadow:0 0 0 3px rgba(155,34,53,.14);}
+  .tool select{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--calc-ink);background:var(--calc-field);
+    border:1px solid var(--calc-hair-hi);border-radius:11px;padding:12px 13px;outline:none;cursor:pointer;
+    transition:border-color .18s;min-width:120px;}
+  .tool select:focus{border-color:var(--calc-accent);}
+  .tool select option{background:#f3f1dc;color:var(--calc-ink);}
+  .hint{font-size:12px;color:#7a6a54;font-weight:400;margin:6px 0 0;line-height:1.5;}
+
+  .slider-wrap{display:flex;align-items:center;gap:12px;}
+  .tool input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:5px;border-radius:4px;
+    background:linear-gradient(90deg,var(--bordeaux),var(--gold));outline:none;}
+  .tool input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+    background:#fff;border:3px solid var(--calc-accent);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+  .tool input[type=range]::-moz-range-thumb{width:17px;height:17px;border-radius:50%;background:#fff;
+    border:3px solid var(--calc-accent);cursor:pointer;}
+  .slider-val{font-size:15px;font-weight:600;color:var(--calc-head);font-variant-numeric:tabular-nums;min-width:92px;text-align:right;}
+
+  .out{margin-top:6px;border-top:1px solid var(--calc-hair-hi);padding-top:18px;display:flex;flex-direction:column;gap:13px;}
+  .out-row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;}
+  .out-row .k{font-size:14px;color:var(--calc-muted);font-weight:500;}
+  .out-row .v{font-family:var(--serif);font-size:clamp(24px,3.4vw,30px);color:var(--calc-head);font-weight:600;
+    font-variant-numeric:tabular-nums;letter-spacing:-.01em;line-height:1;}
+  .out-row .v small{font-size:.5em;color:var(--calc-accent);margin-left:4px;letter-spacing:.02em;font-weight:600;}
+  .out-row.hero .v{color:var(--calc-accent);font-size:clamp(30px,4.6vw,42px);}
+  .tool .hint{color:#7a6a54;}
+
+  /* ---------- sources ---------- */
+  .sources{columns:2;column-gap:34px;font-size:12px;line-height:1.7;color:var(--muted);font-weight:300;}
+  .sources li{break-inside:avoid;margin:0 0 9px;}
+  .sources a{color:var(--gold-soft);text-decoration:none;border-bottom:1px solid rgba(217,179,107,.28);}
+  .sources a:hover{border-bottom-color:var(--gold);}
+  .sources .lead{color:var(--gold-soft);font-weight:600;}
+  @media (max-width:640px){.sources{columns:1;}}
+
+  footer{margin-top:60px;padding-top:26px;text-align:center;font-family:var(--sans);
+    font-size:11px;line-height:1.9;color:var(--faint);border-top:1px solid var(--hair);}
+  footer b{color:rgba(231,207,156,.85);font-weight:600;letter-spacing:.04em;}
+  .disclaimer{font-size:10.5px;color:var(--faint);font-weight:300;line-height:1.6;
+    max-width:760px;margin:18px auto 0;font-style:italic;}
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{color:#2e1419;background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{color:#8a5d17;border:1px solid rgba(154,106,31,0.23);background:rgba(255,253,248,0.89)}
+html[data-theme="cream"] .back:hover{border-color:rgba(154,106,31,0.66);background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] .lang{color:#8a5d17}
+html[data-theme="cream"] .lang:hover{border-color:rgba(154,106,31,0.66);background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] .eyebrow{color:#8a5d17}
+html[data-theme="cream"] h1{color:#2e1419;text-shadow:none}
+html[data-theme="cream"] h1 em{color:#8a5d17}
+html[data-theme="cream"] .tagline{color:rgba(46,20,25,0.82);text-shadow:none}
+html[data-theme="cream"] .sec-head h2{color:#8a5d17}
+html[data-theme="cream"] .sec-head .n{color:rgba(46,20,25,0.50)}
+html[data-theme="cream"] .sec-head::after{background:linear-gradient(90deg,rgba(154,106,31,0.16),rgba(0,0,0,0))}
+html[data-theme="cream"] .sec-intro{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .sub-head{color:#8a5d17}
+html[data-theme="cream"] .stat{background:rgba(255,253,248,0.89);border:1px solid rgba(154,106,31,0.23);box-shadow:0 18px 50px rgba(90,40,30,0.15),inset 0 1px 0 rgba(255,255,255,0.30)}
+html[data-theme="cream"] .stat:hover{border-color:rgba(154,106,31,0.66);background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] .stat .kick{color:#8a5d17}
+html[data-theme="cream"] .stat .fig{color:#2e1419}
+html[data-theme="cream"] .stat .fig small{color:#8a5d17}
+html[data-theme="cream"] .stat .lbl{color:#2e1419}
+html[data-theme="cream"] .stat .sub{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .panel{background:rgba(255,253,248,0.89);border:1px solid rgba(154,106,31,0.23);box-shadow:0 18px 50px rgba(90,40,30,0.14)}
+html[data-theme="cream"] .panel h3{color:#2e1419}
+html[data-theme="cream"] .panel .note{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .bar-row .name{color:#2e1419}
+html[data-theme="cream"] .bar-row .track{background:rgba(154,106,31,0.10)}
+html[data-theme="cream"] .bar-row .val{color:#8a5d17}
+html[data-theme="cream"] .legend li{color:#2e1419}
+html[data-theme="cream"] .legend b{color:#8a5d17}
+html[data-theme="cream"] .chip{border:1px solid rgba(154,106,31,0.23);background:rgba(154,106,31,0.06);color:#2e1419}
+html[data-theme="cream"] .chip b{color:#8a5d17}
+html[data-theme="cream"] .coop{background:rgba(255,253,248,0.89);border:1px solid rgba(154,106,31,0.23);box-shadow:0 14px 40px rgba(90,40,30,0.12)}
+html[data-theme="cream"] .coop .rg{color:#2e1419}
+html[data-theme="cream"] .coop .big{color:#8a5d17}
+html[data-theme="cream"] .coop .big small{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .coop .share .lab{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .coop .share .lab b{color:#8a5d17}
+html[data-theme="cream"] .coop .track{background:rgba(154,106,31,0.10)}
+html[data-theme="cream"] .coop .foot{color:rgba(46,20,25,0.50)}
+html[data-theme="cream"] .est{color:#8a5d17;border:1px solid rgba(154,106,31,0.49);background:rgba(154,106,31,0.08)}
+html[data-theme="cream"] .tool{border:1px solid rgba(90,30,40,0.18);box-shadow:0 20px 54px rgba(90,40,30,0.15),inset 0 1px 0 rgba(255,255,255,0.80)}
+html[data-theme="cream"] .tool-head .ic-wrap{background:rgba(155,34,53,0.04);border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tool input[type=number]{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tool input[type=number]:focus{border-color:rgba(90,30,40,0.18);box-shadow:0 0 0 3px rgba(90,40,30,0.04)}
+html[data-theme="cream"] .tool select{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tool select:focus{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tool input[type=range]::-webkit-slider-thumb{border:3px solid rgba(90,30,40,0.18);box-shadow:0 2px 8px rgba(90,40,30,0.09)}
+html[data-theme="cream"] .tool input[type=range]::-moz-range-thumb{border:3px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .out{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .sources{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .sources a{color:#8a5d17;border-bottom:1px solid rgba(154,106,31,0.36)}
+html[data-theme="cream"] .sources a:hover{border-bottom-color:#9a6a1f}
+html[data-theme="cream"] .sources .lead{color:#8a5d17}
+html[data-theme="cream"] footer{color:rgba(46,20,25,0.50);border-top:1px solid rgba(154,106,31,0.23)}
+html[data-theme="cream"] footer b{color:rgba(138,93,23,0.85)}
+html[data-theme="cream"] .disclaimer{color:rgba(46,20,25,0.50)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <h1 data-fr="Les vins <em>en&nbsp;chiffres</em>" data-en="French wine <em>in&nbsp;numbers</em>">Les vins <em>en&nbsp;chiffres</em></h1>
+    <div class="rule"></div>
+    <p class="tagline"
+       data-fr="Les données officielles du vignoble français — surfaces, appellations, commerce et production mondiale — accompagnées de convertisseurs de rendement et de volume. Sources INAO, FranceAgriMer, Agreste, Douanes, INSEE, OIV."
+       data-en="Official figures on the French vineyard — area, appellations, trade and world production — paired with yield and volume converters. Sources: INAO, FranceAgriMer, Agreste, French Customs, INSEE, OIV.">Les données officielles du vignoble français — surfaces, appellations, commerce et production mondiale — accompagnées de convertisseurs de rendement et de volume. Sources INAO, FranceAgriMer, Agreste, Douanes, INSEE, OIV.</p>
+  </header>
+
+  <!-- ============ 01 · LE VIGNOBLE ============ -->
+  <div class="sec-head"><h2 data-fr="Le Vignoble" data-en="The Vineyard">Le Vignoble</h2><span class="n">01</span></div>
+  <p class="sec-intro"
+     data-fr="La photographie du vignoble français en production : surfaces, exploitations, coopératives et diversité des cépages. Chiffres FranceAgriMer / Agreste 2024 sauf mention contraire."
+     data-en="A snapshot of the French vineyard in production: area, holdings, cooperatives and grape diversity. FranceAgriMer / Agreste 2024 figures unless otherwise noted.">La photographie du vignoble français en production : surfaces, exploitations, coopératives et diversité des cépages. Chiffres FranceAgriMer / Agreste 2024 sauf mention contraire.</p>
+  <div class="grid">
+
+    <div class="stat">
+      <p class="kick" data-fr="Surface en production · 2024" data-en="Area in production · 2024">Surface en production · 2024</p>
+      <p class="fig">766 674<small>ha</small></p>
+      <p class="lbl" data-fr="Hectares de vigne" data-en="Hectares of vines">Hectares de vigne</p>
+      <p class="sub"
+         data-fr="Soit 3 % de la surface agricole utile française. En repli de 2 % sur dix ans (783 029 ha en 2014)."
+         data-en="About 3% of France's farmed land. Down 2% over ten years (783,029 ha in 2014).">Soit 3 % de la surface agricole utile française. En repli de 2 % sur dix ans (783 029 ha en 2014).</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Exploitations · 2022" data-en="Holdings · 2022">Exploitations · 2022</p>
+      <p class="fig">≈ 58 100</p>
+      <p class="lbl" data-fr="Exploitations viticoles" data-en="Wine-growing holdings">Exploitations viticoles</p>
+      <p class="sub"
+         data-fr="Spécialisées en viticulture — 15 % des exploitations agricoles françaises. La filière emploie ≈ 130 300 ETP."
+         data-en="Specialised in viticulture — 15% of all French farms. The sector employs ≈ 130,300 full-time equivalents.">Spécialisées en viticulture — 15 % des exploitations agricoles françaises. La filière emploie ≈ 130 300 ETP.</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Cépages de cuve" data-en="Wine grape varieties">Cépages de cuve</p>
+      <p class="fig">200<small>+</small></p>
+      <p class="lbl" data-fr="Variétés autorisées" data-en="Authorised varieties">Variétés autorisées</p>
+      <p class="sub"
+         data-fr="Inscrites au Catalogue officiel des variétés de vigne ; une cinquantaine couvre l'essentiel des surfaces."
+         data-en="Listed in the official Catalogue of vine varieties; about fifty cover most of the planted area.">Inscrites au Catalogue officiel des variétés de vigne ; une cinquantaine couvre l'essentiel des surfaces.</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Appellations · INAO" data-en="Appellations · INAO">Appellations · INAO</p>
+      <p class="fig">363</p>
+      <p class="lbl" data-fr="AOC / AOP viticoles" data-en="Wine AOC / PDO">AOC / AOP viticoles</p>
+      <p class="sub"
+         data-fr="≈ 446 000 ha (60 % du vignoble) et ≈ 22 millions d'hl commercialisés."
+         data-en="≈ 446,000 ha (60% of the vineyard) and ≈ 22 million hl sold.">≈ 446 000 ha (60 % du vignoble) et ≈ 22 millions d'hl commercialisés.</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Appellations · INAO" data-en="Appellations · INAO">Appellations · INAO</p>
+      <p class="fig">74</p>
+      <p class="lbl" data-fr="IGP viticoles" data-en="Wine PGI">IGP viticoles</p>
+      <p class="sub"
+         data-fr="≈ 195 000 ha (25 % du vignoble) et ≈ 12,6 millions d'hl. AOP + IGP = 92 % de la production nationale."
+         data-en="≈ 195,000 ha (25% of the vineyard) and ≈ 12.6 million hl. PDO + PGI = 92% of national output.">≈ 195 000 ha (25 % du vignoble) et ≈ 12,6 millions d'hl. AOP + IGP = 92 % de la production nationale.</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Coopération · 2024" data-en="Cooperatives · 2024">Coopération · 2024</p>
+      <p class="fig">≈ 590</p>
+      <p class="lbl" data-fr="Caves coopératives & unions" data-en="Cooperative cellars & unions">Caves coopératives & unions</p>
+      <p class="sub"
+         data-fr="≈ 85 000 vignerons coopérateurs. Elles vinifient près de 40 % du vin français (48 % hors Charentes)."
+         data-en="≈ 85,000 cooperative growers. They vinify nearly 40% of French wine (48% excluding the Charentes).">≈ 85 000 vignerons coopérateurs. Elles vinifient près de 40 % du vin français (48 % hors Charentes).</p>
+    </div>
+
+  </div>
+
+  <!-- coops by basin + cépages -->
+  <div class="grid" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+    <div class="panel">
+      <h3 data-fr="Coopératives par bassin" data-en="Cooperatives by wine basin">Coopératives par bassin</h3>
+      <p class="note"
+         data-fr="Répartition des caves coopératives françaises (2024). La ventilation la plus fine publiée comme jeu de données unique est par bassin viticole ; le détail par appellation est rassemblé ci-dessous à partir des fédérations régionales."
+         data-en="Distribution of French cooperative cellars (2024). The finest breakdown published as a single dataset is by wine basin; per-appellation detail is compiled below from regional federations.">Répartition des caves coopératives françaises (2024). La ventilation la plus fine publiée comme jeu de données unique est par bassin viticole ; le détail par appellation est rassemblé ci-dessous à partir des fédérations régionales.</p>
+      <ul class="bars">
+        <li class="bar-row"><span class="name">Occitanie</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">46 %</span></li>
+        <li class="bar-row"><span class="name">PACA</span><span class="track"><span class="fill" style="width:48%"></span></span><span class="val">22 %</span></li>
+        <li class="bar-row"><span class="name">Nouvelle-Aquitaine</span><span class="track"><span class="fill" style="width:26%"></span></span><span class="val">12 %</span></li>
+        <li class="bar-row"><span class="name">Auvergne-Rhône-Alpes</span><span class="track"><span class="fill" style="width:20%"></span></span><span class="val">9 %</span></li>
+        <li class="bar-row"><span class="name" data-fr="Autres régions" data-en="Other regions">Autres régions</span><span class="track"><span class="fill" style="width:24%"></span></span><span class="val">11 %</span></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3 data-fr="Principaux cépages plantés · 2024" data-en="Top planted grape varieties · 2024">Principaux cépages plantés · 2024</h3>
+      <p class="note"
+         data-fr="Les dix premiers cépages par surface (hectares), d'après FranceAgriMer. L'Ugni Blanc (base du Cognac) domine largement le classement."
+         data-en="The ten largest varieties by area (hectares), per FranceAgriMer. Ugni Blanc (the base of Cognac) leads by a wide margin.">Les dix premiers cépages par surface (hectares), d'après FranceAgriMer. L'Ugni Blanc (base du Cognac) domine largement le classement.</p>
+      <div class="chips">
+        <span class="chip">Ugni Blanc <b>~ 92 500 ha</b></span>
+        <span class="chip">Merlot N</span>
+        <span class="chip">Grenache N</span>
+        <span class="chip">Syrah N</span>
+        <span class="chip">Chardonnay B</span>
+        <span class="chip">Cabernet Sauvignon N <b>~ 47 000 ha</b></span>
+        <span class="chip">Sauvignon B</span>
+        <span class="chip">Cabernet Franc N</span>
+        <span class="chip">Pinot Noir N</span>
+        <span class="chip">Cinsaut N</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- coops per major appellation -->
+  <p class="sub-head" data-fr="Coopératives dans les grandes appellations" data-en="Cooperatives in the major appellations">Coopératives dans les grandes appellations</p>
+  <div class="coop-grid">
+
+    <div class="coop">
+      <p class="rg">Bordeaux</p>
+      <p class="big">25 <small data-fr="caves + 3 unions" data-en="cellars + 3 unions">caves + 3 unions</small></p>
+      <div class="share">
+        <div class="lab"><span data-fr="Part de la récolte" data-en="Share of the harvest">Part de la récolte</span><b>26 %</b></div>
+        <div class="track"><span class="fill" style="width:26%"></span></div>
+      </div>
+      <p class="foot"
+         data-fr="≈ 940 000 hl (2024). Plus marquée en Entre-Deux-Mers (37 %), Bordeaux rouge (34 %) et Crémant (65 %). — DRAAF Nouvelle-Aquitaine."
+         data-en="≈ 940,000 hl (2024). Higher in Entre-Deux-Mers (37%), red Bordeaux (34%) and Crémant (65%). — DRAAF Nouvelle-Aquitaine.">≈ 940 000 hl (2024). Plus marquée en Entre-Deux-Mers (37 %), Bordeaux rouge (34 %) et Crémant (65 %). — DRAAF Nouvelle-Aquitaine.</p>
+    </div>
+
+    <div class="coop">
+      <p class="rg">Champagne</p>
+      <p class="big">≈ 130 <small data-fr="coopératives" data-en="cooperatives">coopératives</small></p>
+      <div class="share">
+        <div class="lab"><span data-fr="Part du vignoble AOC" data-en="Share of the AOC vineyard">Part du vignoble AOC</span><b>≈ 40 %</b></div>
+        <div class="track"><span class="fill" style="width:40%"></span></div>
+      </div>
+      <p class="foot"
+         data-fr="≈ 14 000 vignerons coopérateurs pour ~13 000 ha, face à ~360 maisons. — Fédération des Coopératives Vinicoles de la Champagne (FCVC)."
+         data-en="≈ 14,000 cooperative growers on ~13,000 ha, alongside ~360 houses. — Champagne Wine Cooperatives Federation (FCVC).">≈ 14 000 vignerons coopérateurs pour ~13 000 ha, face à ~360 maisons. — Fédération des Coopératives Vinicoles de la Champagne (FCVC).</p>
+    </div>
+
+    <div class="coop">
+      <p class="rg" data-fr="Vallée du Rhône" data-en="Rhône Valley">Vallée du Rhône</p>
+      <p class="big">≈ 65 %<small data-fr="de la production*" data-en="of production*">de la production*</small></p>
+      <div class="share">
+        <div class="lab"><span data-fr="Côtes du Rhône vinifiés en cave" data-en="Côtes du Rhône vinified by co-ops">Côtes du Rhône vinifiés en cave</span><b>≈ 2/3</b></div>
+        <div class="track"><span class="fill" style="width:65%"></span></div>
+      </div>
+      <p class="foot"
+         data-fr="* Les coopératives vinifient environ deux tiers des Côtes du Rhône. Le nombre exact de caves (de l'ordre de 90) n'est pas publié comme donnée unique. — Inter Rhône / Vignerons Coopérateurs."
+         data-en="* Cooperatives vinify roughly two-thirds of Côtes du Rhône. The exact cellar count (around 90) is not published as a single figure. — Inter Rhône / cooperative growers.">* Les coopératives vinifient environ deux tiers des Côtes du Rhône. Le nombre exact de caves (de l'ordre de 90) n'est pas publié comme donnée unique. — Inter Rhône / Vignerons Coopérateurs.</p>
+    </div>
+
+    <div class="coop">
+      <p class="rg" data-fr="Languedoc (Occitanie)" data-en="Languedoc (Occitanie)">Languedoc (Occitanie)</p>
+      <p class="big">230 <small data-fr="caves + unions" data-en="cellars + unions">caves + unions</small></p>
+      <div class="share">
+        <div class="lab"><span data-fr="Production régionale" data-en="Regional production">Production régionale</span><b>≈ 70 %</b></div>
+        <div class="track"><span class="fill" style="width:70%"></span></div>
+      </div>
+      <p class="foot"
+         data-fr="16 500 adhérents, ~90 % des vignerons de la région. Cœur historique de la coopération viticole française. — La Coopération Agricole Occitanie."
+         data-en="16,500 members, ~90% of the region's growers. The historic heartland of French wine cooperation. — La Coopération Agricole Occitanie.">16 500 adhérents, ~90 % des vignerons de la région. Cœur historique de la coopération viticole française. — La Coopération Agricole Occitanie.</p>
+    </div>
+
+  </div>
+
+  <!-- ============ 02 · PRODUCTION & COMMERCE ============ -->
+  <div class="sec-head"><h2 data-fr="Production & Commerce" data-en="Production & Trade">Production &amp; Commerce</h2><span class="n">02</span></div>
+  <p class="sec-intro"
+     data-fr="Le vin dans l'économie française et sa place dans le monde. Le millésime 2024 fut historiquement bas (gel, grêle, mildiou) : ≈ 37 millions d'hl, soit −19 % sur un an."
+     data-en="Wine in the French economy and its place in the world. The 2024 vintage was historically low (frost, hail, mildew): ≈ 37 million hl, down 19% year on year.">Le vin dans l'économie française et sa place dans le monde. Le millésime 2024 fut historiquement bas (gel, grêle, mildiou) : ≈ 37 millions d'hl, soit −19 % sur un an.</p>
+  <div class="grid">
+
+    <div class="stat">
+      <p class="kick" data-fr="Valeur · INSEE 2024" data-en="Value · INSEE 2024">Valeur · INSEE 2024</p>
+      <p class="fig">10,9<small>Md€</small></p>
+      <p class="lbl" data-fr="Production viticole" data-en="Wine production">Production viticole</p>
+      <p class="sub"
+         data-fr="12 % de la valeur de la production agricole française, 24 % des productions végétales."
+         data-en="12% of French farm output by value, 24% of crop production.">12 % de la valeur de la production agricole française, 24 % des productions végétales.</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Exportations · Douanes 2024" data-en="Exports · Customs 2024">Exportations · Douanes 2024</p>
+      <p class="fig">≈ 11<small>Md€</small></p>
+      <p class="lbl" data-fr="Vin exporté" data-en="Wine exported">Vin exporté</p>
+      <p class="sub"
+         data-fr="Pour ≈ 13 millions d'hl. Vins et spiritueux réunis : 15,6 Md€ (FEVS)."
+         data-en="For ≈ 13 million hl. Wine and spirits together: €15.6bn (FEVS).">Pour ≈ 13 millions d'hl. Vins et spiritueux réunis : 15,6 Md€ (FEVS).</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Production 2024" data-en="Production 2024">Production 2024</p>
+      <p class="fig">≈ 37<small>M hl</small></p>
+      <p class="lbl" data-fr="Vin produit" data-en="Wine produced">Vin produit</p>
+      <p class="sub"
+         data-fr="Rouge 38 % · Blanc 38 % · Rosé 24 %. Millésime en fort recul climatique."
+         data-en="Red 38% · White 38% · Rosé 24%. A vintage sharply cut by the weather.">Rouge 38 % · Blanc 38 % · Rosé 24 %. Millésime en fort recul climatique.</p>
+    </div>
+
+    <div class="stat">
+      <p class="kick" data-fr="Rang mondial · OIV 2025" data-en="World rank · OIV 2025">Rang mondial · OIV 2025</p>
+      <p class="fig">2<sup style="font-size:.5em;color:var(--gold-soft)" data-fr="e" data-en="nd">e</sup></p>
+      <p class="lbl" data-fr="Producteur mondial" data-en="World producer">Producteur mondial</p>
+      <p class="sub"
+         data-fr="France 36,1 M hl, derrière l'Italie (44,4 M hl) — 1er mondial en 2025 — et devant l'Espagne (28,7)."
+         data-en="France 36.1M hl, behind Italy (44.4M hl) — world no. 1 in 2025 — and ahead of Spain (28.7).">France 36,1 M hl, derrière l'Italie (44,4 M hl) — 1er mondial en 2025 — et devant l'Espagne (28,7).</p>
+    </div>
+
+  </div>
+
+  <!-- production by colour + world production -->
+  <div class="grid" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+    <div class="panel">
+      <h3 data-fr="Production par couleur · 2024" data-en="Production by colour · 2024">Production par couleur · 2024</h3>
+      <p class="note"
+         data-fr="Répartition de la production française de vin en 2024. Rouge et blanc sont pour la première fois à parité."
+         data-en="Breakdown of French wine production in 2024. Red and white are level for the first time.">Répartition de la production française de vin en 2024. Rouge et blanc sont pour la première fois à parité.</p>
+      <div class="donut-wrap">
+        <div class="donut" role="img" aria-label="38% rouge, 38% blanc, 24% rosé"></div>
+        <ul class="legend">
+          <li><span class="dot" style="background:var(--bordeaux)"></span><span data-fr="Vin rouge" data-en="Red wine">Vin rouge</span><b>38 %</b></li>
+          <li><span class="dot" style="background:var(--gold-soft)"></span><span data-fr="Vin blanc" data-en="White wine">Vin blanc</span><b>38 %</b></li>
+          <li><span class="dot" style="background:#e79ba6"></span><span data-fr="Vin rosé" data-en="Rosé wine">Vin rosé</span><b>24 %</b></li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel">
+      <h3 data-fr="Production mondiale · 2025" data-en="World production · 2025">Production mondiale · 2025</h3>
+      <p class="note"
+         data-fr="Estimations OIV (millions d'hectolitres). Ces trois pays produisent à eux seuls près de la moitié du vin mondial."
+         data-en="OIV estimates (million hectolitres). These three countries alone make nearly half the world's wine.">Estimations OIV (millions d'hectolitres). Ces trois pays produisent à eux seuls près de la moitié du vin mondial.</p>
+      <ul class="bars">
+        <li class="bar-row"><span class="name">🇮🇹 Italie</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">44,4</span></li>
+        <li class="bar-row"><span class="name">🇫🇷 France</span><span class="track"><span class="fill" style="width:81%"></span></span><span class="val">36,1</span></li>
+        <li class="bar-row"><span class="name">🇪🇸 Espagne</span><span class="track"><span class="fill" style="width:65%"></span></span><span class="val">28,7</span></li>
+      </ul>
+      <p class="hint" style="margin-top:12px;color:var(--faint);"
+         data-fr="Unité : millions d'hl. L'Italie reste 1er producteur mondial en 2025 (+0,7 % sur 2024) ; la France est stable mais 15 % sous sa moyenne quinquennale."
+         data-en="Unit: million hl. Italy remains the world's top producer in 2025 (+0.7% on 2024); France is stable but 15% below its five-year average.">Unité : millions d'hl. L'Italie reste 1er producteur mondial en 2025 (+0,7 % sur 2024) ; la France est stable mais 15 % sous sa moyenne quinquennale.</p>
+    </div>
+  </div>
+
+  <!-- export partners + surface by basin -->
+  <div class="grid" style="margin-top:16px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
+    <div class="panel">
+      <h3 data-fr="Principaux partenaires à l'export" data-en="Main export partners">Principaux partenaires à l'export</h3>
+      <p class="note"
+         data-fr="Part de la valeur des exportations de vin français, 2024 (Douanes / FranceAgriMer). L'Union Européenne reste le premier marché dans son ensemble."
+         data-en="Share of French wine export value, 2024 (Customs / FranceAgriMer). The EU as a whole remains the top market.">Part de la valeur des exportations de vin français, 2024 (Douanes / FranceAgriMer). L'Union Européenne reste le premier marché dans son ensemble.</p>
+      <ul class="bars">
+        <li class="bar-row"><span class="name" data-fr="Union Européenne*" data-en="European Union*">Union Européenne*</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">1<sup>er</sup></span></li>
+        <li class="bar-row"><span class="name" data-fr="États-Unis" data-en="United States">États-Unis</span><span class="track"><span class="fill" style="width:80%"></span></span><span class="val">20 %</span></li>
+        <li class="bar-row"><span class="name" data-fr="Royaume-Uni" data-en="United Kingdom">Royaume-Uni</span><span class="track"><span class="fill" style="width:52%"></span></span><span class="val">13 %</span></li>
+        <li class="bar-row"><span class="name" data-fr="Allemagne" data-en="Germany">Allemagne</span><span class="track"><span class="fill" style="width:28%"></span></span><span class="val">7 %</span></li>
+      </ul>
+      <p class="hint" style="margin-top:12px;color:var(--faint);"
+         data-fr="* L'UE est comptée comme un marché agrégé ; les États-Unis sont le premier pays tiers. Suivent la Belgique, le Japon, les Pays-Bas et la Chine."
+         data-en="* The EU is counted as one aggregate market; the US is the leading non-EU country. Then Belgium, Japan, the Netherlands and China.">* L'UE est comptée comme un marché agrégé ; les États-Unis sont le premier pays tiers. Suivent la Belgique, le Japon, les Pays-Bas et la Chine.</p>
+    </div>
+    <div class="panel">
+      <h3 data-fr="Surface du vignoble par bassin · 2024" data-en="Vineyard area by basin · 2024">Surface du vignoble par bassin · 2024</h3>
+      <p class="note"
+         data-fr="Hectares en production par grand bassin viticole (FranceAgriMer). Le Languedoc-Roussillon reste, de loin, le premier vignoble français en surface."
+         data-en="Hectares in production by major wine basin (FranceAgriMer). Languedoc-Roussillon remains by far the largest French vineyard by area.">Hectares en production par grand bassin viticole (FranceAgriMer). Le Languedoc-Roussillon reste, de loin, le premier vignoble français en surface.</p>
+      <ul class="bars">
+        <li class="bar-row"><span class="name">Languedoc-Roussillon</span><span class="track"><span class="fill" style="width:100%"></span></span><span class="val">207 101</span></li>
+        <li class="bar-row"><span class="name" data-fr="Rhône - Provence" data-en="Rhône - Provence">Rhône - Provence</span><span class="track"><span class="fill" style="width:55%"></span></span><span class="val">112 943</span></li>
+        <li class="bar-row"><span class="name" data-fr="Bordelais" data-en="Bordeaux">Bordelais</span><span class="track"><span class="fill" style="width:54%"></span></span><span class="val">111 910</span></li>
+        <li class="bar-row"><span class="name">Charentes-Cognac</span><span class="track"><span class="fill" style="width:47%"></span></span><span class="val">96 963</span></li>
+        <li class="bar-row"><span class="name" data-fr="Val de Loire - Centre" data-en="Loire - Centre">Val de Loire - Centre</span><span class="track"><span class="fill" style="width:27%"></span></span><span class="val">55 270</span></li>
+        <li class="bar-row"><span class="name" data-fr="Bourgogne - Beauj. - Savoie - Jura" data-en="Burgundy - Beauj. - Savoie - Jura">Bourgogne - Beauj. - Savoie - Jura</span><span class="track"><span class="fill" style="width:25%"></span></span><span class="val">52 185</span></li>
+        <li class="bar-row"><span class="name" data-fr="Sud-Ouest" data-en="South-West">Sud-Ouest</span><span class="track"><span class="fill" style="width:21%"></span></span><span class="val">43 318</span></li>
+        <li class="bar-row"><span class="name">Champagne</span><span class="track"><span class="fill" style="width:15%"></span></span><span class="val">31 779</span></li>
+        <li class="bar-row"><span class="name" data-fr="Alsace - Est" data-en="Alsace - East">Alsace - Est</span><span class="track"><span class="fill" style="width:8%"></span></span><span class="val">15 827</span></li>
+        <li class="bar-row"><span class="name">Corse</span><span class="track"><span class="fill" style="width:3%"></span></span><span class="val">6 123</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ 03 · CALCULATEURS ============ -->
+  <div class="sec-head"><h2 data-fr="Calculateurs de Rendement & Volume" data-en="Yield & Volume Calculators">Calculateurs de Rendement &amp; Volume</h2><span class="n">03</span></div>
+  <p class="sec-intro"
+     data-fr="Cinq outils pour convertir entre les unités du monde viticole. Les conversions volume↔raisin dépendent d'un taux d'extraction (litres de vin par kg de raisin) que vous pouvez ajuster — la valeur par défaut de 0,70 L/kg (700 L/tonne) est une moyenne courante."
+     data-en="Five tools to convert between the units of the wine world. Volume↔grape conversions depend on an extraction rate (litres of wine per kg of grapes) you can adjust — the 0.70 L/kg (700 L/tonne) default is a common average.">Cinq outils pour convertir entre les unités du monde viticole. Les conversions volume↔raisin dépendent d'un taux d'extraction (litres de vin par kg de raisin) que vous pouvez ajuster — la valeur par défaut de 0,70 L/kg (700 L/tonne) est une moyenne courante.</p>
+  <div class="tools">
+
+    <!-- TOOL 1 -->
+    <div class="tool">
+      <div class="tool-head">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M12 3v18M7 7l10 10M17 7 7 17"/></svg></span>
+        <div><p class="kick" data-fr="Rendement" data-en="Yield">Rendement</p><h3>Tons / acre ↔ hl / ha</h3></div>
+      </div>
+      <p class="desc"
+         data-fr="Comparez le rendement à l'américaine (poids de raisin par acre) et à l'européenne (volume de vin par hectare). Deux conversions : la masse pure (sans hypothèse) et le volume de vin (via le taux d'extraction)."
+         data-en="Compare the US style of yield (grape weight per acre) with the European one (wine volume per hectare). Two conversions: pure mass (no assumption) and wine volume (via the extraction rate).">Comparez le rendement à l'américaine (poids de raisin par acre) et à l'européenne (volume de vin par hectare). Deux conversions : la masse pure (sans hypothèse) et le volume de vin (via le taux d'extraction).</p>
+
+      <div class="field">
+        <label data-fr="Valeur à convertir" data-en="Value to convert">Valeur à convertir</label>
+        <div class="row">
+          <input type="number" id="t1-in" value="3" min="0" step="0.1">
+          <select id="t1-dir">
+            <option value="ta2hl" data-fr="tons/acre → hl/ha" data-en="tons/acre → hl/ha">tons/acre → hl/ha</option>
+            <option value="hl2ta" data-fr="hl/ha → tons/acre" data-en="hl/ha → tons/acre">hl/ha → tons/acre</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label data-fr="Type de tonne" data-en="Ton type">Type de tonne</label>
+        <select id="t1-ton" style="width:100%">
+          <option value="907.18474" data-fr="US short ton (2 000 lb)" data-en="US short ton (2,000 lb)">US short ton (2 000 lb)</option>
+          <option value="1000" data-fr="Tonne métrique (1 000 kg)" data-en="Metric tonne (1,000 kg)">Tonne métrique (1 000 kg)</option>
+          <option value="1016.0469" data-fr="UK long ton (2 240 lb)" data-en="UK long ton (2,240 lb)">UK long ton (2 240 lb)</option>
+        </select>
+      </div>
+      <div class="field">
+        <label><span data-fr="Taux d'extraction" data-en="Extraction rate">Taux d'extraction</span> — <span id="t1-extlbl">0,70 L/kg</span></label>
+        <div class="slider-wrap">
+          <input type="range" id="t1-ext" min="0.55" max="0.85" step="0.01" value="0.70">
+          <span class="slider-val" id="t1-extval">700 L/t</span>
+        </div>
+      </div>
+      <div class="out">
+        <div class="out-row hero"><span class="k" id="t1-k">Volume de vin</span><span class="v"><span id="t1-v">—</span></span></div>
+        <div class="out-row"><span class="k" id="t1-k2" data-fr="Conversion de masse pure (raisin)" data-en="Pure mass conversion (grapes)">Conversion de masse pure (raisin)</span><span class="v" style="font-size:21px"><span id="t1-mass">—</span></span></div>
+        <p class="hint" id="t1-note"></p>
+      </div>
+    </div>
+
+    <!-- TOOL 2 -->
+    <div class="tool">
+      <div class="tool-head">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4M11 2v3l-1.4 2.2A3 3 0 0 0 9 8.9V20a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V8.9a3 3 0 0 0-.6-1.7L13 5V2"/><path d="M9 13h6"/></svg></span>
+        <div><p class="kick" data-fr="Volume" data-en="Volume">Volume</p><h3 data-fr="hl/ha → Litres → Bouteilles" data-en="hl/ha → Litres → Bottles">hl/ha → Litres → Bouteilles</h3></div>
+      </div>
+      <p class="desc"
+         data-fr="Traduisez un rendement en hectolitres/hectare en litres puis en bouteilles. Indiquez une surface pour obtenir le total d'une parcelle ou d'un domaine."
+         data-en="Turn a yield in hectolitres per hectare into litres, then bottles. Enter an area to get the total for a plot or an estate.">Traduisez un rendement en hectolitres/hectare en litres puis en bouteilles. Indiquez une surface pour obtenir le total d'une parcelle ou d'un domaine.</p>
+
+      <div class="field">
+        <label data-fr="Rendement (hl / ha)" data-en="Yield (hl / ha)">Rendement (hl / ha)</label>
+        <input type="number" id="t2-hl" value="50" min="0" step="1">
+        <p class="hint"
+           data-fr="Repères : rendement max Champagne ≈ 63,5 · Bordeaux rouge ≈ 50–60 · grands crus souvent 35–45."
+           data-en="Benchmarks: max Champagne yield ≈ 63.5 · red Bordeaux ≈ 50–60 · grands crus often 35–45.">Repères : rendement max Champagne ≈ 63,5 · Bordeaux rouge ≈ 50–60 · grands crus souvent 35–45.</p>
+      </div>
+      <div class="field">
+        <label data-fr="Surface (ha)" data-en="Area (ha)">Surface (ha)</label>
+        <input type="number" id="t2-ha" value="1" min="0" step="0.1">
+      </div>
+      <div class="field">
+        <label data-fr="Format de bouteille" data-en="Bottle format">Format de bouteille</label>
+        <select id="t2-btl" style="width:100%">
+          <option value="0.75" data-fr="Standard — 75 cl" data-en="Standard — 750 ml">Standard — 75 cl</option>
+          <option value="0.375" data-fr="Demi — 37,5 cl" data-en="Half — 375 ml">Demi — 37,5 cl</option>
+          <option value="1.5" data-fr="Magnum — 1,5 L" data-en="Magnum — 1.5 L">Magnum — 1,5 L</option>
+          <option value="1" data-fr="Litre — 1 L" data-en="Litre — 1 L">Litre — 1 L</option>
+        </select>
+      </div>
+      <div class="out">
+        <div class="out-row"><span class="k" data-fr="Volume total" data-en="Total volume">Volume total</span><span class="v" style="font-size:22px"><span id="t2-l">—</span> <small>L</small></span></div>
+        <div class="out-row hero"><span class="k" data-fr="Bouteilles" data-en="Bottles">Bouteilles</span><span class="v"><span id="t2-btls">—</span></span></div>
+        <div class="out-row"><span class="k" data-fr="Caisses de 12" data-en="Cases of 12">Caisses de 12</span><span class="v" style="font-size:21px"><span id="t2-cases">—</span></span></div>
+      </div>
+    </div>
+
+    <!-- TOOL 3 -->
+    <div class="tool">
+      <div class="tool-head">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10l-1.2 8L17 20H7l1.2-8L7 4Z"/><path d="M4.5 8.5h15M4.5 15.5h15M12 4v16"/></svg></span>
+        <div><p class="kick" data-fr="Élevage" data-en="Ageing">Élevage</p><h3 data-fr="Fûts → Bouteilles" data-en="Barrels → Bottles">Fûts → Bouteilles</h3></div>
+      </div>
+      <p class="desc"
+         data-fr="Combien de bouteilles tire-t-on d'un fût ? Choisissez le format de fût — la barrique bordelaise (225 L) donne exactement 300 bouteilles de 75 cl."
+         data-en="How many bottles come from a barrel? Pick the barrel size — the Bordeaux barrique (225 L) yields exactly 300 standard bottles.">Combien de bouteilles tire-t-on d'un fût ? Choisissez le format de fût — la barrique bordelaise (225 L) donne exactement 300 bouteilles de 75 cl.</p>
+
+      <div class="field">
+        <label data-fr="Nombre de fûts" data-en="Number of barrels">Nombre de fûts</label>
+        <input type="number" id="t3-n" value="1" min="0" step="1">
+      </div>
+      <div class="field">
+        <label data-fr="Type de fût" data-en="Barrel type">Type de fût</label>
+        <select id="t3-bar" style="width:100%">
+          <option value="225" data-fr="Barrique bordelaise — 225 L" data-en="Bordeaux barrique — 225 L">Barrique bordelaise — 225 L</option>
+          <option value="228" data-fr="Pièce bourguignonne — 228 L" data-en="Burgundy pièce — 228 L">Pièce bourguignonne — 228 L</option>
+          <option value="216" data-fr="Pièce (Mâcon/Chablis) — 216 L" data-en="Pièce (Mâcon/Chablis) — 216 L">Pièce (Mâcon/Chablis) — 216 L</option>
+          <option value="300" data-fr="Hogshead — 300 L" data-en="Hogshead — 300 L">Hogshead — 300 L</option>
+          <option value="223.48" data-fr="US barrel — 59 gal (223 L)" data-en="US barrel — 59 gal (223 L)">US barrel — 59 gal (223 L)</option>
+          <option value="500" data-fr="Tonneau / puncheon — 500 L" data-en="Puncheon — 500 L">Tonneau / puncheon — 500 L</option>
+          <option value="600" data-fr="Demi-muid — 600 L" data-en="Demi-muid — 600 L">Demi-muid — 600 L</option>
+        </select>
+      </div>
+      <div class="field">
+        <label data-fr="Format de bouteille" data-en="Bottle format">Format de bouteille</label>
+        <select id="t3-btl" style="width:100%">
+          <option value="0.75" data-fr="Standard — 75 cl" data-en="Standard — 750 ml">Standard — 75 cl</option>
+          <option value="0.375" data-fr="Demi — 37,5 cl" data-en="Half — 375 ml">Demi — 37,5 cl</option>
+          <option value="1.5" data-fr="Magnum — 1,5 L" data-en="Magnum — 1.5 L">Magnum — 1,5 L</option>
+        </select>
+      </div>
+      <div class="out">
+        <div class="out-row"><span class="k" data-fr="Volume total" data-en="Total volume">Volume total</span><span class="v" style="font-size:22px"><span id="t3-l">—</span> <small>L</small></span></div>
+        <div class="out-row hero"><span class="k" data-fr="Bouteilles" data-en="Bottles">Bouteilles</span><span class="v"><span id="t3-btls">—</span></span></div>
+        <div class="out-row"><span class="k" data-fr="Caisses de 12" data-en="Cases of 12">Caisses de 12</span><span class="v" style="font-size:21px"><span id="t3-cases">—</span></span></div>
+      </div>
+    </div>
+
+    <!-- TOOL 4 -->
+    <div class="tool">
+      <div class="tool-head">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 0 1.8.8 1.8 1.8"/><circle cx="9" cy="9" r="2"/><circle cx="15" cy="9" r="2"/><circle cx="12" cy="12.5" r="2"/><circle cx="8.5" cy="15" r="2"/><circle cx="15.5" cy="15" r="2"/><circle cx="12" cy="18" r="2"/></svg></span>
+        <div><p class="kick" data-fr="Approximatif" data-en="Approximate">Approximatif</p><h3 data-fr="Grappes ↔ Bouteilles" data-en="Clusters ↔ Bottles">Grappes ↔ Bouteilles</h3></div>
+      </div>
+      <p class="desc"
+         data-fr="Un ordre de grandeur : combien de grappes faut-il pour une bouteille ? Une grappe pèse en moyenne ≈ 100 g (75–150 g selon le cépage). Résultat forcément approximatif."
+         data-en="A ballpark figure: how many clusters make a bottle? A cluster averages ≈ 100 g (75–150 g depending on the grape). The result is necessarily approximate.">Un ordre de grandeur : combien de grappes faut-il pour une bouteille ? Une grappe pèse en moyenne ≈ 100 g (75–150 g selon le cépage). Résultat forcément approximatif.</p>
+
+      <div class="field">
+        <label><span data-fr="Poids moyen d'une grappe" data-en="Average cluster weight">Poids moyen d'une grappe</span> — <span id="t4-cwlbl">100 g</span></label>
+        <div class="slider-wrap">
+          <input type="range" id="t4-cw" min="60" max="180" step="5" value="100">
+          <span class="slider-val" id="t4-cwval">100 g</span>
+        </div>
+      </div>
+      <div class="field">
+        <label><span data-fr="Taux d'extraction" data-en="Extraction rate">Taux d'extraction</span> — <span id="t4-extlbl">0,70 L/kg</span></label>
+        <div class="slider-wrap">
+          <input type="range" id="t4-ext" min="0.55" max="0.85" step="0.01" value="0.70">
+          <span class="slider-val" id="t4-extval">0,70 L/kg</span>
+        </div>
+      </div>
+      <div class="field">
+        <label data-fr="Format de bouteille" data-en="Bottle format">Format de bouteille</label>
+        <select id="t4-btl" style="width:100%">
+          <option value="0.75" data-fr="Standard — 75 cl" data-en="Standard — 750 ml">Standard — 75 cl</option>
+          <option value="1.5" data-fr="Magnum — 1,5 L" data-en="Magnum — 1.5 L">Magnum — 1,5 L</option>
+        </select>
+      </div>
+      <div class="out">
+        <div class="out-row hero"><span class="k" data-fr="Grappes par bouteille" data-en="Clusters per bottle">Grappes par bouteille</span><span class="v"><span id="t4-cpb">—</span></span></div>
+        <div class="out-row"><span class="k" data-fr="Vin par grappe" data-en="Wine per cluster">Vin par grappe</span><span class="v" style="font-size:21px"><span id="t4-lpc">—</span> <small>mL</small></span></div>
+        <div class="out-row"><span class="k" data-fr="Raisins par bouteille (≈ 1,8 g/grain)" data-en="Berries per bottle (≈ 1.8 g each)">Raisins par bouteille (≈ 1,8 g/grain)</span><span class="v" style="font-size:21px">≈ <span id="t4-berries">—</span></span></div>
+      </div>
+    </div>
+
+    <!-- TOOL 5 -->
+    <div class="tool">
+      <div class="tool-head">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 7l3-3M4 7l3 3M20 17H4m16 0-3-3m3 3-3 3"/></svg></span>
+        <div><p class="kick" data-fr="Surface & Volume" data-en="Area & Volume">Surface &amp; Volume</p><h3 data-fr="Convertisseur d'unités" data-en="Unit converter">Convertisseur d'unités</h3></div>
+      </div>
+      <p class="desc"
+         data-fr="Les conversions de base entre unités métriques et anglo-saxonnes, plus les volumes de vin usuels. Saisissez une valeur, choisissez les unités."
+         data-en="The basic conversions between metric and imperial units, plus the usual wine volumes. Enter a value and pick the units.">Les conversions de base entre unités métriques et anglo-saxonnes, plus les volumes de vin usuels. Saisissez une valeur, choisissez les unités.</p>
+
+      <div class="field">
+        <label data-fr="Valeur" data-en="Value">Valeur</label>
+        <input type="number" id="t5-in" value="1" min="0" step="0.1">
+      </div>
+      <div class="field">
+        <label data-fr="Convertir de → vers" data-en="Convert from → to">Convertir de → vers</label>
+        <div class="row">
+          <select id="t5-from" style="flex:1"></select>
+          <select id="t5-to" style="flex:1"></select>
+        </div>
+      </div>
+      <div class="out">
+        <div class="out-row hero"><span class="k" data-fr="Résultat" data-en="Result">Résultat</span><span class="v"><span id="t5-out">—</span></span></div>
+        <p class="hint" id="t5-note"></p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ 04 · SOURCES ============ -->
+  <div class="sec-head"><h2 data-fr="Sources" data-en="Sources">Sources</h2><span class="n">04</span></div>
+  <p class="sec-intro"
+     data-fr="Toutes les données chiffrées proviennent de sources officielles françaises, européennes et internationales. Priorité donnée à l'INAO et aux sources publiques françaises."
+     data-en="All figures come from official French, European and international sources. Priority is given to INAO and French public data.">Toutes les données chiffrées proviennent de sources officielles françaises, européennes et internationales. Priorité donnée à l'INAO et aux sources publiques françaises.</p>
+  <ul class="sources">
+    <li><span class="lead">INAO</span> — <span data-fr="Institut national de l'origine et de la qualité : appellations AOC/AOP et IGP." data-en="French national institute for origin and quality: AOC/PDO and PGI appellations.">Institut national de l'origine et de la qualité : appellations AOC/AOP et IGP.</span> <a href="https://www.inao.gouv.fr/" target="_blank" rel="noopener">inao.gouv.fr</a></li>
+    <li><span class="lead">FranceAgriMer</span> — <span data-fr="« Les chiffres-clés de la filière Viti-Vinicole 2024 » (nov. 2025) : surfaces, exploitations, production, cépages, commerce extérieur." data-en="&quot;Key figures of the wine sector 2024&quot; (Nov. 2025): area, holdings, production, grapes, foreign trade.">« Les chiffres-clés de la filière Viti-Vinicole 2024 » (nov. 2025) : surfaces, exploitations, production, cépages, commerce extérieur.</span> <a href="https://www.franceagrimer.fr/chiffre-et-analyses-economiques/chiffres-cles-de-la-filiere-vitivinicole" target="_blank" rel="noopener">franceagrimer.fr</a></li>
+    <li><span class="lead">Agreste</span> — <span data-fr="Ministère de l'Agriculture, statistique agricole : production viticole 2024." data-en="French Ministry of Agriculture, farm statistics: 2024 wine production.">Ministère de l'Agriculture, statistique agricole : production viticole 2024.</span> <a href="https://www.agreste.agriculture.gouv.fr/" target="_blank" rel="noopener">agreste.agriculture.gouv.fr</a></li>
+    <li><span class="lead">INSEE</span> — <span data-fr="valeur de la production viticole 2024." data-en="value of wine production 2024.">valeur de la production viticole 2024.</span> <a href="https://www.insee.fr/" target="_blank" rel="noopener">insee.fr</a></li>
+    <li><span class="lead">Douane / DGDDI</span> — <span data-fr="commerce extérieur des vins." data-en="wine foreign trade.">commerce extérieur des vins.</span> <a href="https://www.douane.gouv.fr/" target="_blank" rel="noopener">douane.gouv.fr</a></li>
+    <li><span class="lead">FEVS</span> — <span data-fr="Fédération des Exportateurs de Vins & Spiritueux, bilan export 2024." data-en="Federation of Wine & Spirits Exporters, 2024 export review.">Fédération des Exportateurs de Vins & Spiritueux, bilan export 2024.</span> <a href="https://www.fevs.com/" target="_blank" rel="noopener">fevs.com</a></li>
+    <li><span class="lead">La Coopération Agricole</span> — <span data-fr="Vignerons Coopérateurs ; DRAAF Nouvelle-Aquitaine (Bordeaux) et FCVC (Champagne) pour le détail régional." data-en="Cooperative growers; DRAAF Nouvelle-Aquitaine (Bordeaux) and FCVC (Champagne) for regional detail.">Vignerons Coopérateurs ; DRAAF Nouvelle-Aquitaine (Bordeaux) et FCVC (Champagne) pour le détail régional.</span> <a href="https://www.lacooperationagricole.coop/filieres/vignerons" target="_blank" rel="noopener">lacooperationagricole.coop</a></li>
+    <li><span class="lead">OIV</span> — <span data-fr="Organisation internationale de la vigne et du vin : production mondiale 2025." data-en="International Organisation of Vine and Wine: world production 2025.">Organisation internationale de la vigne et du vin : production mondiale 2025.</span> <a href="https://www.oiv.int/" target="_blank" rel="noopener">oiv.int</a></li>
+  </ul>
+
+  <p class="disclaimer"
+     data-fr="Les convertisseurs sont fournis à titre indicatif. Les conversions entre poids de raisin et volume de vin reposent sur un taux d'extraction moyen (rendement au pressurage) qui varie selon le cépage, la vinification et le millésime ; ajustez-le pour votre cas. Les chiffres de coopératives par appellation proviennent des fédérations régionales et peuvent différer légèrement selon l'année et le périmètre retenu."
+     data-en="The converters are provided for guidance only. Grape-weight to wine-volume conversions rely on an average extraction rate (press yield) that varies with grape, winemaking and vintage; adjust it for your case. Per-appellation cooperative figures come from regional federations and may vary slightly by year and scope.">Les convertisseurs sont fournis à titre indicatif. Les conversions entre poids de raisin et volume de vin reposent sur un taux d'extraction moyen (rendement au pressurage) qui varie selon le cépage, la vinification et le millésime ; ajustez-le pour votre cas. Les chiffres de coopératives par appellation proviennent des fédérations régionales et peuvent différer légèrement selon l'année et le périmètre retenu.</p>
+
+  <footer>
+    <b>French Wine</b> — <span data-fr="cartographie & documentation" data-en="mapping & documentation">cartographie &amp; documentation</span><br>
+    <span data-fr="Chiffres officiels 2024–2025 · INAO · FranceAgriMer · Agreste · Douanes · OIV · © 2026" data-en="Official figures 2024–2025 · INAO · FranceAgriMer · Agreste · Customs · OIV · © 2026">Chiffres officiels 2024–2025 · INAO · FranceAgriMer · Agreste · Douanes · OIV · © 2026</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(id){ return document.getElementById(id); };
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+
+  function locale(){ return LANG==='fr' ? 'fr-FR' : 'en-US'; }
+  function fmt(n, dec){
+    if(!isFinite(n)) return "—";
+    dec = (dec===undefined)?0:dec;
+    return n.toLocaleString(locale(),{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  }
+  function extLabel(ext){ return fmt(ext,2) + ' L/kg'; }
+
+  var ACRE_HA = 0.40468564224;
+
+  function tonName(kgPerTon){
+    if(kgPerTon===1000) return 'tonne';
+    if(kgPerTon>1010)   return LANG==='fr' ? 'tonne UK' : 'long ton';
+    return LANG==='fr' ? 'tonne US' : 'short ton';
+  }
+  var STR = {
+    fr:{ volwine:'Volume de vin', grapeyield:'Rendement en raisin',
+         approxTH:function(u,x){return '1 '+u+'/acre ≈ '+x+' hl/ha à ce taux d’extraction.';},
+         approxHT:function(u,x){return '1 hl/ha ≈ '+x+' '+u+'/acre à ce taux d’extraction.';},
+         massG:'tonnes de raisin/ha',
+         mismatch:function(a,b){return 'Choisissez deux unités de la même famille ('+a+' ≠ '+b+').';},
+         eq:function(a,va,b,vb){return va+' '+a+' = '+vb+' '+b+'.';} },
+    en:{ volwine:'Wine volume', grapeyield:'Grape yield',
+         approxTH:function(u,x){return '1 '+u+'/acre ≈ '+x+' hl/ha at this extraction rate.';},
+         approxHT:function(u,x){return '1 hl/ha ≈ '+x+' '+u+'/acre at this extraction rate.';},
+         massG:'tonnes of grapes/ha',
+         mismatch:function(a,b){return 'Pick two units from the same family ('+a+' ≠ '+b+').';},
+         eq:function(a,va,b,vb){return va+' '+a+' = '+vb+' '+b+'.';} }
+  };
+  function T(){ return STR[LANG]; }
+
+  /* ---------- TOOL 1 ---------- */
+  function t1(){
+    var val = parseFloat($('t1-in').value)||0;
+    var kgPerTon = parseFloat($('t1-ton').value);
+    var ext = parseFloat($('t1-ext').value);
+    var dir = $('t1-dir').value;
+    $('t1-extlbl').textContent = extLabel(ext);
+    $('t1-extval').textContent = Math.round(ext*1000) + ' L/t';
+    var kgPerHa_perUnit = kgPerTon / ACRE_HA;
+    var hlPerHa_perUnit = kgPerHa_perUnit * ext / 100;
+    var uname = tonName(kgPerTon);
+    if(dir==='ta2hl'){
+      var hl = val * hlPerHa_perUnit;
+      var tHa = val * kgPerTon / 1000 / ACRE_HA;
+      $('t1-k').textContent = T().volwine;
+      $('t1-v').innerHTML = fmt(hl,1) + ' <small>hl/ha</small>';
+      $('t1-mass').innerHTML = fmt(tHa,2) + ' <small>' + T().massG + '</small>';
+      $('t1-note').textContent = T().approxTH(uname, fmt(hlPerHa_perUnit,1));
+    } else {
+      var ta = (hlPerHa_perUnit>0) ? val / hlPerHa_perUnit : 0;
+      var tHa2 = val * 100 / ext / 1000;
+      $('t1-k').textContent = T().grapeyield;
+      $('t1-v').innerHTML = fmt(ta,2) + ' <small>' + uname + '/acre</small>';
+      $('t1-mass').innerHTML = fmt(tHa2,2) + ' <small>' + T().massG + '</small>';
+      $('t1-note').textContent = T().approxHT(uname, fmt(1/hlPerHa_perUnit,3));
+    }
+  }
+
+  /* ---------- TOOL 2 ---------- */
+  function t2(){
+    var hlha = parseFloat($('t2-hl').value)||0;
+    var ha = parseFloat($('t2-ha').value)||0;
+    var btl = parseFloat($('t2-btl').value);
+    var litres = hlha * ha * 100;
+    var bottles = litres / btl;
+    $('t2-l').textContent = fmt(litres,0);
+    $('t2-btls').textContent = fmt(bottles,0);
+    $('t2-cases').textContent = fmt(bottles/12,0);
+  }
+
+  /* ---------- TOOL 3 ---------- */
+  function t3(){
+    var n = parseFloat($('t3-n').value)||0;
+    var barL = parseFloat($('t3-bar').value);
+    var btl = parseFloat($('t3-btl').value);
+    var litres = n * barL;
+    var bottles = litres / btl;
+    $('t3-l').textContent = fmt(litres,0);
+    $('t3-btls').textContent = fmt(bottles,0);
+    $('t3-cases').textContent = fmt(bottles/12,1);
+  }
+
+  /* ---------- TOOL 4 ---------- */
+  function t4(){
+    var cw = parseFloat($('t4-cw').value);
+    var ext = parseFloat($('t4-ext').value);
+    var btl = parseFloat($('t4-btl').value);
+    $('t4-cwlbl').textContent = cw + ' g';
+    $('t4-cwval').textContent = cw + ' g';
+    $('t4-extlbl').textContent = extLabel(ext);
+    $('t4-extval').textContent = extLabel(ext);
+    var lPerCluster = (cw/1000) * ext;
+    var clustersPerBottle = btl / lPerCluster;
+    var kgPerBottle = btl / ext;
+    var berries = kgPerBottle*1000 / 1.8;
+    $('t4-cpb').textContent = fmt(clustersPerBottle,0);
+    $('t4-lpc').textContent = fmt(lPerCluster*1000,0);
+    $('t4-berries').textContent = fmt(berries,0);
+  }
+
+  /* ---------- TOOL 5 ---------- */
+  var UNITS = [
+    {g:'surface', id:'ha',    f:1,             name:{fr:'hectare (ha)',fr2:0,en:'hectare (ha)'}},
+    {g:'surface', id:'acre',  f:0.40468564224, name:{fr:'acre',en:'acre'}},
+    {g:'surface', id:'m2',    f:0.0001,        name:{fr:'m²',en:'m²'}},
+    {g:'surface', id:'ouv',   f:0.00428,       name:{fr:'ouvrée (Bourgogne)',en:'ouvrée (Burgundy)'}},
+    {g:'volume',  id:'L',     f:1,             name:{fr:'litre (L)',en:'litre (L)'}},
+    {g:'volume',  id:'hl',    f:100,           name:{fr:'hectolitre (hl)',en:'hectolitre (hl)'}},
+    {g:'volume',  id:'usgal', f:3.785411784,   name:{fr:'gallon US',en:'US gallon'}},
+    {g:'volume',  id:'ukgal', f:4.54609,       name:{fr:'gallon impérial',en:'imperial gallon'}},
+    {g:'volume',  id:'btl',   f:0.75,          name:{fr:'bouteille (75 cl)',en:'bottle (750 ml)'}},
+    {g:'volume',  id:'case',  f:9,             name:{fr:'caisse (12×75 cl)',en:'case (12×750 ml)'}},
+    {g:'volume',  id:'barrique', f:225,        name:{fr:'barrique (225 L)',en:'barrique (225 L)'}},
+    {g:'masse',   id:'kg',    f:1,             name:{fr:'kilogramme (kg)',en:'kilogram (kg)'}},
+    {g:'masse',   id:'t',     f:1000,          name:{fr:'tonne métrique',en:'metric tonne'}},
+    {g:'masse',   id:'uston', f:907.18474,     name:{fr:'US short ton',en:'US short ton'}},
+    {g:'masse',   id:'lb',    f:0.45359237,    name:{fr:'livre (lb)',en:'pound (lb)'}}
+  ];
+  var GRP = {fr:{surface:'SURFACE',volume:'VOLUME',masse:'MASSE'},
+             en:{surface:'AREA',volume:'VOLUME',masse:'MASS'}};
+  function buildT5(keepFrom, keepTo){
+    var from=$('t5-from'), to=$('t5-to');
+    from.innerHTML=''; to.innerHTML='';
+    var lastG=null, og1, og2;
+    UNITS.forEach(function(u){
+      if(u.g!==lastG){
+        og1=document.createElement('optgroup'); og1.label=GRP[LANG][u.g]; from.appendChild(og1);
+        og2=document.createElement('optgroup'); og2.label=GRP[LANG][u.g]; to.appendChild(og2);
+        lastG=u.g;
+      }
+      var nm = u.name[LANG];
+      var o1=document.createElement('option'); o1.value=u.id; o1.textContent=nm; og1.appendChild(o1);
+      var o2=document.createElement('option'); o2.value=u.id; o2.textContent=nm; og2.appendChild(o2);
+    });
+    from.value = keepFrom || 'acre';
+    to.value   = keepTo   || 'ha';
+  }
+  function unitById(id){ for(var i=0;i<UNITS.length;i++){ if(UNITS[i].id===id) return UNITS[i]; } return null; }
+  function t5(){
+    var v=parseFloat($('t5-in').value)||0;
+    var uf=unitById($('t5-from').value), ut=unitById($('t5-to').value);
+    if(!uf||!ut) return;
+    if(uf.g!==ut.g){
+      $('t5-out').textContent='—';
+      $('t5-note').textContent=T().mismatch(GRP[LANG][uf.g], GRP[LANG][ut.g]);
+      return;
+    }
+    var res = v * uf.f / ut.f;
+    var dec = (res!==0 && Math.abs(res)<10) ? 3 : (Math.abs(res)<1000?2:0);
+    $('t5-out').innerHTML = fmt(res,dec) + ' <small>' + uf.id.replace('m2','m²') + '→' + ut.id.replace('m2','m²') + '</small>';
+    $('t5-note').textContent = T().eq(uf.name[LANG], fmt(v,2), ut.name[LANG], fmt(res,dec));
+  }
+
+  function recalcAll(){ t1(); t2(); t3(); t4(); t5(); }
+
+  /* ---------- i18n ---------- */
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){
+      var v = nodes[i].getAttribute('data-'+LANG);
+      if(v!==null) nodes[i].innerHTML = v;
+    }
+    $('langlbl').textContent = (LANG==='fr') ? 'English' : 'Français';
+  }
+  function setLang(l){
+    var kf=$('t5-from')?$('t5-from').value:null, kt=$('t5-to')?$('t5-to').value:null;
+    LANG=l;
+    try{ localStorage.setItem('fw_lang', l); }catch(e){}
+    applyLang();
+    buildT5(kf,kt);
+    recalcAll();
+  }
+
+  // wire calculators
+  ['t1-in','t1-ton','t1-ext','t1-dir'].forEach(function(id){ $(id).addEventListener('input',t1); });
+  ['t2-hl','t2-ha','t2-btl'].forEach(function(id){ $(id).addEventListener('input',t2); });
+  ['t3-n','t3-bar','t3-btl'].forEach(function(id){ $(id).addEventListener('input',t3); });
+  ['t4-cw','t4-ext','t4-btl'].forEach(function(id){ $(id).addEventListener('input',t4); });
+  ['t5-in','t5-from','t5-to'].forEach(function(id){ $(id).addEventListener('input',t5); });
+  $('langbtn').addEventListener('click', function(){ setLang(LANG==='fr'?'en':'fr'); });
+
+  // init
+  applyLang();
+  buildT5();
+  recalcAll();
+})();
+</script>
+</body>
+</html>

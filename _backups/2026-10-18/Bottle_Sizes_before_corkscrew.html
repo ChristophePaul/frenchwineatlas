@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formats de bouteilles</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.66);--faint:rgba(245,239,227,.42);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.40);--glass-hi:rgba(38,10,18,.58);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --title:#fff;--shelf:rgba(217,179,107,.35);--floor:rgba(0,0,0,.55);
+    --chip:rgba(10,1,4,.45);
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.72);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--shelf:rgba(142,31,51,.30);--floor:rgba(60,20,25,.28);
+    --chip:#fff;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;min-height:100%;}
+  section[id]{scroll-margin-top:20px;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  html[data-theme="cream"] body{
+    background:
+      radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.5em;font-size:clamp(9px,1.3vw,11px);font-weight:600;
+    color:var(--gold);margin:0 0 18px;padding-left:.5em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,84px);line-height:.98;margin:0;color:var(--title);
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(13px,1.7vw,15.5px);line-height:1.65;font-weight:300;color:var(--muted);max-width:720px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);}
+  html[data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,30,40,.10),inset 0 1px 0 #fff;-webkit-backdrop-filter:none;backdrop-filter:none;}
+
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  h2 em{font-style:italic;color:var(--gold-soft);}
+  .sec{margin-top:clamp(40px,6vw,72px);}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:18px;}
+  .sec-head p{margin:6px 0 0;color:var(--muted);font-size:14px;line-height:1.55;max-width:640px;}
+
+
+  /* lineup */
+  .lineup-wrap{padding:22px 18px 10px;}
+  .scroller{overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;padding-bottom:6px;}
+  .lineup{display:flex;align-items:flex-end;gap:6px;width:max-content;margin:0 auto;}
+  .col{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;flex:0 0 auto;position:relative;
+    padding:8px 2px 0;border-radius:12px;transition:background .2s;}
+  .col:hover{background:rgba(217,179,107,.07);}
+  .col:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .col img.b{display:block;transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s;transform-origin:50% 100%;}
+  .col:hover img.b{transform:translateY(-4px);}
+  .col.on img.b{transform:translateY(-6px);filter:drop-shadow(0 0 14px rgba(231,196,111,.35));}
+  .col .shadow{width:100%;height:10px;margin-top:-5px;background:radial-gradient(50% 50% at 50% 50%,var(--floor),transparent 70%);}
+  .col .nm{font-family:var(--serif);font-size:13px;color:var(--title);margin-top:10px;white-space:nowrap;}
+  .col .vol{font-size:10.5px;color:var(--muted);margin-top:2px;white-space:nowrap;letter-spacing:.02em;}
+  .col .x{font-size:10px;font-weight:700;color:var(--gold);margin-top:3px;letter-spacing:.06em;}
+  .col.on .nm{color:var(--gold-soft);}
+  .col.on::after{content:"";position:absolute;left:22%;right:22%;bottom:-8px;height:2px;border-radius:2px;background:var(--gold);}
+  .shelf{height:1px;background:linear-gradient(90deg,transparent,var(--shelf) 12%,var(--shelf) 88%,transparent);margin:14px 0 0;}
+  .hint{text-align:center;font-size:11px;color:var(--faint);margin:10px 0 4px;letter-spacing:.06em;}
+  .note-bdx{font-size:12.5px;color:var(--muted);text-align:center;margin:12px auto 4px;max-width:760px;line-height:1.55;}
+  .note-bdx b{color:var(--gold-soft);font-weight:600;}
+
+  /* detail */
+  .detail{display:grid;grid-template-columns:minmax(220px,340px) 1fr;gap:clamp(18px,3vw,36px);padding:clamp(18px,3vw,30px);margin-top:16px;align-items:center;}
+  .stage{display:flex;align-items:flex-end;justify-content:center;gap:18px;height:300px;position:relative;}
+  .stage .ref{opacity:.9;}
+  .stage figure{margin:0;display:flex;flex-direction:column;align-items:center;}
+  .stage figcaption{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:8px;}
+  .stage .shadow{width:130%;height:12px;margin-top:-6px;background:radial-gradient(50% 50% at 50% 50%,var(--floor),transparent 70%);}
+  .d-eye{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .d-name{font-family:var(--serif);font-size:clamp(30px,4.4vw,48px);color:var(--title);margin:6px 0 4px;line-height:1.05;}
+  .badge{display:inline-block;vertical-align:middle;margin-left:10px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:#3a2604;background:linear-gradient(180deg,#f6dc8c,#c99a33);border-radius:999px;padding:4px 10px;}
+  .facts{display:flex;gap:clamp(14px,3vw,34px);flex-wrap:wrap;margin:14px 0 14px;}
+  .fact b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);color:var(--title);line-height:1;}
+  .fact span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);}
+  .d-story{font-size:15px;line-height:1.65;color:var(--muted);margin:0 0 14px;max-width:620px;}
+  .minis{display:flex;flex-wrap:wrap;gap:3px;max-width:560px;align-items:flex-end;}
+  img{display:block;user-select:none;}
+  .minis .part{opacity:.35;}
+  .d-nav{display:flex;gap:8px;margin-top:16px;}
+  .d-nav button{all:unset;cursor:pointer;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);
+    border:1px solid var(--hair);border-radius:999px;padding:7px 14px;background:var(--chip);}
+  .d-nav button:hover{border-color:var(--hair-hi);}
+  .d-nav button:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+
+  /* 750 ml */
+  .why{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .why p{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 12px;}
+  .why p b{color:var(--title);font-weight:600;}
+  .eq{display:flex;flex-direction:column;gap:12px;}
+  .eqrow{display:flex;align-items:center;gap:14px;border:1px solid var(--hair);border-radius:14px;padding:12px 14px;background:var(--chip);}
+  .eqrow .big{font-family:var(--serif);font-size:26px;color:var(--title);min-width:92px;line-height:1;}
+  .eqrow .big small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-top:5px;}
+  .eqrow .txt{font-size:13px;line-height:1.5;color:var(--muted);}
+  .eqrow .row6{display:flex;gap:2px;margin-left:auto;align-items:flex-end;}
+
+  /* other bottles */
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+  .card{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:20px;align-items:end;}
+  .card .pic{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:190px;}
+  .card .pic .shadow{width:110%;height:10px;margin-top:-5px;background:radial-gradient(50% 50% at 50% 50%,var(--floor),transparent 70%);}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--title);margin:0 0 4px;}
+  .card .meta{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .card p{font-size:13.5px;line-height:1.6;color:var(--muted);margin:0;}
+  .card.wide{grid-column:span 2;grid-template-columns:200px 1fr;}
+  .card.wide .pic{height:200px;}
+
+  /* giants */
+  .giants{padding:clamp(18px,3vw,30px);}
+  .gstage{display:flex;align-items:flex-end;justify-content:center;gap:clamp(10px,2.4vw,34px);flex-wrap:nowrap;overflow-x:auto;padding:10px 4px 0;}
+  .gstage figure{margin:0;display:flex;flex-direction:column;align-items:center;flex:0 0 auto;}
+  .gstage figcaption{text-align:center;margin-top:10px;}
+  .gstage figcaption b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);}
+  .gstage figcaption span{font-size:11px;color:var(--muted);}
+  .gstage .shadow{width:120%;height:12px;margin-top:-6px;background:radial-gradient(50% 50% at 50% 50%,var(--floor),transparent 70%);}
+  .gtext{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px;}
+  .gtext > div{border:1px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--chip);}
+  .gtext h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:0 0 4px;}
+  .gtext p{font-size:13.5px;line-height:1.6;color:var(--muted);margin:0;}
+  .gtext .meta{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;}
+  .scale-note{font-size:11px;color:var(--faint);text-align:center;margin:14px 0 0;}
+
+  footer{margin-top:56px;text-align:center;font-size:11.5px;color:var(--faint);line-height:1.6;}
+
+
+  /* section jump chips */
+  .jump{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto clamp(26px,4vw,40px);}
+  .jump a{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--gold);
+    border:1px solid var(--hair);border-radius:999px;padding:7px 14px;background:var(--chip);}
+  .jump a:hover{border-color:var(--hair-hi);color:var(--gold-soft);}
+
+  /* history timeline */
+  .hist-intro{display:grid;grid-template-columns:1.4fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);margin-bottom:16px;}
+  .hist-intro p,.tv-intro p{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 12px;}
+  .hist-intro p b,.tv-intro p b,.tl p b,.tv-card p b,.tv-box p b{color:var(--title);font-weight:600;}
+  .who{border:1px solid var(--hair-hi);border-radius:14px;padding:16px 18px;background:var(--chip);align-self:start;}
+  .who h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:0 0 8px;}
+  .who p{font-size:13.5px !important;line-height:1.6 !important;}
+  .tl{list-style:none;margin:0;padding:clamp(18px,3vw,30px) clamp(18px,3vw,30px) clamp(8px,2vw,14px);position:relative;}
+  .tl li{display:grid;grid-template-columns:150px 1fr;gap:22px;position:relative;padding-bottom:22px;}
+  .tl li::before{content:"";position:absolute;left:171px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(217,179,107,.15);}
+  .tl li::after{content:"";position:absolute;left:175px;top:20px;bottom:-4px;width:1px;background:var(--hair-hi);}
+  .tl li:last-child::after{display:none;}
+  .tl .when{font-family:var(--serif);font-size:19px;color:var(--gold-soft);text-align:right;line-height:1.2;padding-top:1px;}
+  .tl .when small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:4px;}
+  .tl .what{padding-left:22px;}
+  .tl h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:0 0 4px;}
+  .tl p{font-size:14px;line-height:1.62;color:var(--muted);margin:0;max-width:760px;}
+  .shapes{display:flex;justify-content:center;align-items:flex-end;gap:clamp(14px,4vw,46px);padding:6px 10px 18px;flex-wrap:wrap;}
+  .shapes figure{margin:0;text-align:center;}
+  .shapes svg{display:block;margin:0 auto;height:110px;width:auto;}
+  .shapes svg path{fill:rgba(40,60,30,.55);stroke:var(--gold);stroke-width:1.2;}
+  html[data-theme="cream"] .shapes svg path{fill:rgba(40,60,30,.30);stroke:#6d4a17;}
+  .shapes figcaption{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:8px;line-height:1.4;}
+  .shapes figcaption b{display:block;color:var(--gold);font-weight:700;}
+
+  /* tastevin */
+  .tv-intro{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);align-items:center;}
+  .tv-hero{position:relative;}
+  .tv-hero img{width:100%;height:auto;filter:drop-shadow(0 18px 26px rgba(0,0,0,.45));}
+  html[data-theme="cream"] .tv-hero img{filter:drop-shadow(0 12px 18px rgba(60,20,25,.25));}
+  .tv-anat{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:16px;}
+  .tv-anat > div{border:1px solid var(--hair);border-radius:14px;padding:14px 16px;background:var(--chip);}
+  .tv-anat h3{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);margin:0 0 2px;}
+  .tv-anat .meta{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:7px;}
+  .tv-anat p{font-size:13.5px;line-height:1.58;color:var(--muted);margin:0;}
+  .tv-gal{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:16px;}
+  @media (max-width:1000px){ .tv-gal{grid-template-columns:repeat(3,1fr);} }
+  @media (max-width:620px){ .tv-gal{grid-template-columns:repeat(2,1fr);} .tv-gal .tv-card .ph{height:140px;} }
+  .tv-card{padding:16px 16px 18px;display:flex;flex-direction:column;}
+  .tv-card .ph{height:170px;display:flex;align-items:center;justify-content:center;}
+  .tv-card .ph img{max-height:100%;max-width:100%;width:auto;height:auto;transition:transform .4s cubic-bezier(.2,.8,.2,1);
+    filter:drop-shadow(0 10px 14px rgba(0,0,0,.4));}
+  html[data-theme="cream"] .tv-card .ph img{filter:drop-shadow(0 8px 12px rgba(60,20,25,.22));}
+  .tv-card:hover .ph img{transform:scale(1.06) rotate(-2deg);}
+  .tv-card h3{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);margin:12px 0 4px;}
+  .tv-card p{font-size:13px;line-height:1.55;color:var(--muted);margin:0;}
+  .tv-two{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
+  .tv-box{padding:clamp(18px,3vw,28px);}
+  .tv-box h3{font-family:var(--serif);font-weight:500;font-size:24px;color:var(--title);margin:0 0 4px;}
+  .tv-box .meta{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .tv-box p{font-size:14px;line-height:1.65;color:var(--muted);margin:0 0 10px;}
+  .tv-box.beaune{border-color:var(--hair-hi);}
+  .steps{counter-reset:s;list-style:none;margin:6px 0 0;padding:0;}
+  .steps li{counter-increment:s;position:relative;padding:0 0 10px 34px;font-size:14px;line-height:1.6;color:var(--muted);}
+  .steps li::before{content:counter(s);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;border:1px solid var(--hair-hi);
+    color:var(--gold);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;}
+
+  sup.src{font-size:.68em;line-height:0;margin-left:1px;}
+  sup.src a{color:var(--gold);text-decoration:none;font-weight:600;}
+  sup.src a:hover{text-decoration:underline;}
+  .tv-sources{margin-top:16px;}
+  .tv-sources ol{margin:8px 0 0;padding-left:22px;}
+  .tv-sources li{font-size:12.5px;line-height:1.55;color:var(--muted);margin-bottom:6px;scroll-margin-top:20px;}
+  .tv-sources li:target{color:var(--title);}
+  .tv-sources a.u{color:var(--gold);text-decoration:none;font-weight:700;}
+
+  @media (max-width:820px){
+    .hist-intro{grid-template-columns:1fr;}
+    .tl li{grid-template-columns:1fr;gap:4px;padding-left:26px;}
+    .tl li::before{left:0;}
+    .tl li::after{left:4px;}
+    .tl .when{text-align:left;}
+    .tl .what{padding-left:0;}
+    .tv-intro,.tv-two{grid-template-columns:1fr;}
+    .detail{grid-template-columns:1fr;}
+    .stage{height:240px;}
+    .why{grid-template-columns:1fr;}
+    .card.wide{grid-column:auto;grid-template-columns:96px 1fr;}
+    .card.wide .pic{height:190px;}
+    .gtext{grid-template-columns:1fr;}
+  }
+  @media (max-width:420px){
+    .card{grid-template-columns:72px 1fr;padding:16px;gap:12px;}
+    .card.wide{grid-template-columns:72px 1fr;}
+  }
+  @media (prefers-reduced-motion:reduce){ .col img.b{transition:none;} }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 18px 50px rgba(90,40,30,0.15),inset 0 1px 0 rgba(255,255,255,0.30)}
+html[data-theme="cream"][data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 1px 0 rgba(255,255,255,0.80)}
+html[data-theme="cream"] .col:hover{background:rgba(154,106,31,0.07)}
+html[data-theme="cream"] .col .shadow{background:radial-gradient(50% 50% at 50% 50%,rgba(255,253,248,0.83),rgba(0,0,0,0) 70%)}
+html[data-theme="cream"] .shelf{background:linear-gradient(90deg,rgba(0,0,0,0),rgba(255,253,248,0.85) 12%,rgba(255,253,248,0.85) 88%,rgba(0,0,0,0))}
+html[data-theme="cream"] .stage .shadow{background:radial-gradient(50% 50% at 50% 50%,rgba(255,253,248,0.83),rgba(0,0,0,0) 70%)}
+html[data-theme="cream"] .d-nav button{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .d-nav button:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .eqrow{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .card .pic .shadow{background:radial-gradient(50% 50% at 50% 50%,rgba(255,253,248,0.83),rgba(0,0,0,0) 70%)}
+html[data-theme="cream"] .gstage .shadow{background:radial-gradient(50% 50% at 50% 50%,rgba(255,253,248,0.83),rgba(0,0,0,0) 70%)}
+html[data-theme="cream"] .gtext > div{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .jump a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .jump a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .who{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tl li::before{box-shadow:0 0 0 4px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .tl li::after{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] .tv-anat > div{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tv-box.beaune{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .steps li::before{border:1px solid rgba(90,30,40,0.18)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Du piccolo au melchizédech" data-en="From piccolo to melchizedek">Du piccolo au melchizédech</p>
+    <h1 data-fr="Les formats <em>de&nbsp;bouteilles</em>" data-en="Wine bottle <em>sizes</em>">Les formats <em>de&nbsp;bouteilles</em></h1>
+    <div class="rule"></div>
+    <p class="tagline"
+       data-fr="Quatorze formats, de 18,75&nbsp;cl à 30&nbsp;litres, la plupart baptisés d’après des rois et patriarches bibliques. Cliquez sur une bouteille pour son histoire et son équivalence en bouteilles de 75&nbsp;cl."
+       data-en="Fourteen sizes, from 18.75&nbsp;cl to 30&nbsp;litres, most of them named after biblical kings and patriarchs. Click a bottle for its story and how many 75&nbsp;cl bottles it holds.">Quatorze formats, de 18,75&nbsp;cl à 30&nbsp;litres, la plupart baptisés d’après des rois et patriarches bibliques. Cliquez sur une bouteille pour son histoire et son équivalence en bouteilles de 75&nbsp;cl.</p>
+  </header>
+
+  <nav class="jump" aria-label="Sections">
+    <a href="#gamme" data-fr="La gamme" data-en="Line-up">La gamme</a>
+    <a href="#pourquoi-75cl" data-fr="Pourquoi 75&amp;nbsp;cl" data-en="Why 750&amp;nbsp;ml">Pourquoi 75&nbsp;cl</a>
+    <a href="#autres" data-fr="Bouteilles remarquables" data-en="Noteworthy bottles">Bouteilles remarquables</a>
+    <a href="#demesures" data-fr="Les démesurés" data-en="The giants">Les démesurés</a>
+    <a href="#histoire" data-fr="Histoire de la bouteille" data-en="History of the bottle">Histoire de la bouteille</a>
+    <a href="#tastevin" data-fr="Le tastevin" data-en="The tastevin">Le tastevin</a>
+  </nav>
+
+  <!-- ===== lineup ===== -->
+  <section id="gamme">
+    <div class="sec-head">
+      <div>
+        <h2 data-fr="La <em>gamme</em>" data-en="The <em>line-up</em>">La <em>gamme</em></h2>
+        <p data-fr="Bouteilles à l’échelle : à forme égale, la hauteur croît comme la racine cubique du volume." data-en="Bottles shown to scale: for the same shape, height grows with the cube root of volume.">Bouteilles à l’échelle : à forme égale, la hauteur croît comme la racine cubique du volume.</p>
+      </div>
+    </div>
+    <div class="panel lineup-wrap">
+      <div class="scroller"><div class="lineup" id="lineup"></div></div>
+      <div class="shelf"></div>
+      <p class="note-bdx" id="bdxnote"
+         data-fr="À Bordeaux, les noms changent : <b>double magnum</b> pour 3&nbsp;L, <b>jéroboam</b> pour 4,5 à 5&nbsp;L, <b>impériale</b> pour 6&nbsp;L."
+         data-en="In Bordeaux the names differ: <b>double magnum</b> for 3&nbsp;L, <b>jeroboam</b> for 4.5–5&nbsp;L, <b>imperial</b> for 6&nbsp;L."></p>
+    </div>
+
+    <div class="panel detail" id="detail" aria-live="polite">
+      <div class="stage" id="stage"></div>
+      <div>
+        <div class="d-eye" id="d-eye"></div>
+        <div class="d-name" id="d-name"></div>
+        <div class="facts">
+          <div class="fact"><b id="d-vol"></b><span data-fr="Contenance" data-en="Volume">Contenance</span></div>
+          <div class="fact"><b id="d-btl"></b><span data-fr="Bouteilles de 75 cl" data-en="75 cl bottles">Bouteilles de 75 cl</span></div>
+          <div class="fact"><b id="d-gl"></b><span data-fr="Verres de 12,5 cl" data-en="12.5 cl glasses">Verres de 12,5 cl</span></div>
+        </div>
+        <p class="d-story" id="d-story"></p>
+        <div class="minis" id="minis" aria-hidden="true"></div>
+        <div class="d-nav">
+          <button type="button" id="prev" data-fr="← Plus petit" data-en="← Smaller">← Plus petit</button>
+          <button type="button" id="next" data-fr="Plus grand →" data-en="Larger →">Plus grand →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== why 750 ===== -->
+  <section class="sec" id="pourquoi-75cl">
+    <div class="sec-head"><div>
+      <h2 data-fr="Pourquoi <em>75&nbsp;cl</em>&nbsp;?" data-en="Why <em>750&nbsp;ml</em>?">Pourquoi <em>75&nbsp;cl</em>&nbsp;?</h2>
+    </div></div>
+    <div class="panel why">
+      <div>
+        <p data-fr="Au <b>XIX<sup>e</sup> siècle</b>, le premier client des vins français est l’<b>Angleterre</b>. Pour faciliter les transactions, le négoce prend le <b>gallon impérial</b> (4,546&nbsp;L) comme mesure de référence."
+           data-en="In the <b>19th century</b>, the main buyer of French wine was <b>England</b>. To make trading easier, merchants used the <b>imperial gallon</b> (4.546&nbsp;L) as their reference measure.">Au <b>XIX<sup>e</sup> siècle</b>, le premier client des vins français est l’<b>Angleterre</b>. Pour faciliter les transactions, le négoce prend le <b>gallon impérial</b> (4,546&nbsp;L) comme mesure de référence.</p>
+        <p data-fr="La <b>barrique</b> bordelaise de 225&nbsp;L contient environ <b>50 gallons</b>, soit <b>300 bouteilles</b>. Un gallon équivaut à <b>6 bouteilles</b> de 75&nbsp;cl, d’où la vente en caisses de <b>6</b> ou de <b>12</b>."
+           data-en="A 225&nbsp;L Bordeaux <b>barrique</b> holds roughly <b>50 gallons</b>, or <b>300 bottles</b>. One gallon equals <b>6 bottles</b> of 75&nbsp;cl, which is why wine is sold in cases of <b>6</b> or <b>12</b>.">La <b>barrique</b> bordelaise de 225&nbsp;L contient environ <b>50 gallons</b>, soit <b>300 bouteilles</b>. Un gallon équivaut à <b>6 bouteilles</b> de 75&nbsp;cl, d’où la vente en caisses de <b>6</b> ou de <b>12</b>.</p>
+        <p data-fr="Longtemps simple usage, le 75&nbsp;cl est devenu la norme légale en Europe en <b>1975</b> (directive 75/106/CEE), puis aux États-Unis en 1979."
+           data-en="Long a matter of custom, 75&nbsp;cl became the legal standard in Europe in <b>1975</b> (Directive 75/106/EEC), and in the United States in 1979.">Longtemps simple usage, le 75&nbsp;cl est devenu la norme légale en Europe en <b>1975</b> (directive 75/106/CEE), puis aux États-Unis en 1979.</p>
+      </div>
+      <div class="eq">
+        <div class="eqrow">
+          <div class="big">4,5 L<small data-fr="≈ 1 gallon" data-en="≈ 1 gallon">≈ 1 gallon</small></div>
+          <div class="txt" data-fr="6 bouteilles de 75&nbsp;cl : une caisse de six." data-en="6 bottles of 75&nbsp;cl: one six-pack case.">6 bouteilles de 75&nbsp;cl : une caisse de six.</div>
+          <div class="row6" id="row6"></div>
+        </div>
+        <div class="eqrow">
+          <div class="big">225 L<small data-fr="1 barrique" data-en="1 barrique">1 barrique</small></div>
+          <div class="txt" data-fr="≈ 50 gallons = 300 bouteilles = 25 caisses de 12." data-en="≈ 50 gallons = 300 bottles = 25 cases of 12.">≈ 50 gallons = 300 bouteilles = 25 caisses de 12.</div>
+        </div>
+        <div class="eqrow">
+          <div class="big">6<small data-fr="verres" data-en="glasses">verres</small></div>
+          <div class="txt" data-fr="Une bouteille sert six verres de 12,5&nbsp;cl, la dose de service usuelle." data-en="One bottle pours six 12.5&nbsp;cl glasses, the usual serving size.">Une bouteille sert six verres de 12,5&nbsp;cl, la dose de service usuelle.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== other bottles ===== -->
+  <section class="sec" id="autres">
+    <div class="sec-head"><div>
+      <h2 data-fr="Autres bouteilles <em>remarquables</em>" data-en="Other <em>noteworthy</em> bottles">Autres bouteilles <em>remarquables</em></h2>
+    </div></div>
+    <div class="cards">
+      <article class="panel card wide">
+        <div class="pic" data-draw="damejeanne"></div>
+        <div>
+          <h3>Dame-jeanne</h3>
+          <div class="meta" data-fr="20 – 30 litres" data-en="20 – 30 litres">20 – 30 litres</div>
+          <p data-fr="L’origine du nom est incertaine. La légende veut qu’une reine Jeanne de Naples, en exil, se soit abritée chez un verrier qui baptisa la bonbonne en son honneur. Le mot viendrait plutôt du persan <i>Damghan</i>, ville réputée pour son verre. Aujourd’hui, on l’utilise notamment à <b>Banyuls</b> et <b>Maury</b> : exposées au soleil, les dames-jeannes donnent les vins <b>rancio</b>."
+             data-en="The origin of the name is uncertain. Legend has it that an exiled Queen Joan of Naples sheltered in a glassmaker’s shop, and he named the jug after her. It more likely comes from the Persian town of <i>Damghan</i>, famous for its glass. Today it is used notably in <b>Banyuls</b> and <b>Maury</b>, where demijohns left out in the sun produce <b>rancio</b> wines.">L’origine du nom est incertaine. La légende veut qu’une reine Jeanne de Naples, en exil, se soit abritée chez un verrier qui baptisa la bonbonne en son honneur. Le mot viendrait plutôt du persan <i>Damghan</i>, ville réputée pour son verre. Aujourd’hui, on l’utilise notamment à <b>Banyuls</b> et <b>Maury</b> : exposées au soleil, les dames-jeannes donnent les vins <b>rancio</b>.</p>
+        </div>
+      </article>
+      <article class="panel card">
+        <div class="pic" data-draw="clavelin"></div>
+        <div>
+          <h3>Clavelin</h3>
+          <div class="meta" data-fr="62 cl · ⅚ bouteille" data-en="62 cl · ⅚ bottle">62 cl · ⅚ bouteille</div>
+          <p data-fr="Réservé au <b>vin jaune</b> du <b>Jura</b>, élevé sous voile sans ouillage pendant au moins 6 ans et 3 mois. La légende dit que 62&nbsp;cl, c’est ce qui reste d’un litre après l’élevage : la « part des anges »."
+             data-en="Reserved for the <b>vin jaune</b> of the <b>Jura</b>, aged under a veil of yeast, never topped up, for at least 6 years and 3 months. Legend says 62&nbsp;cl is what remains of one litre after ageing: the “angels’ share”.">Réservé au <b>vin jaune</b> du <b>Jura</b>, élevé sous voile sans ouillage pendant au moins 6 ans et 3 mois. La légende dit que 62&nbsp;cl, c’est ce qui reste d’un litre après l’élevage : la « part des anges ».</p>
+        </div>
+      </article>
+      <article class="panel card">
+        <div class="pic" data-draw="flute"></div>
+        <div>
+          <h3 data-fr="Flûte d’Alsace" data-en="Alsace flute">Flûte d’Alsace</h3>
+          <div class="meta">75 cl</div>
+          <p data-fr="Obligatoire pour les AOC d’<b>Alsace</b> et autorisée dans une poignée d’appellations : Cassis, Tavel, Muscadet, Château-Grillet, Côtes de Provence… Elle contenait autrefois 70&nbsp;cl ; c’est aujourd’hui presque toujours 75&nbsp;cl."
+             data-en="Mandatory for <b>Alsace</b> AOCs and allowed in a handful of others: Cassis, Tavel, Muscadet, Château-Grillet, Côtes de Provence… It once held 70&nbsp;cl; today it is almost always 75&nbsp;cl.">Obligatoire pour les AOC d’<b>Alsace</b> et autorisée dans une poignée d’appellations : Cassis, Tavel, Muscadet, Château-Grillet, Côtes de Provence… Elle contenait autrefois 70&nbsp;cl ; c’est aujourd’hui presque toujours 75&nbsp;cl.</p>
+        </div>
+      </article>
+      <article class="panel card">
+        <div class="pic" data-draw="pot"></div>
+        <div>
+          <h3 data-fr="Pot lyonnais" data-en="Pot lyonnais">Pot lyonnais</h3>
+          <div class="meta" data-fr="46 cl · ≈ ⅔ bouteille" data-en="46 cl · ≈ ⅔ bottle">46 cl · ≈ ⅔ bouteille</div>
+          <p data-fr="Carafe à fond épais des bouchons et bistrots de <b>Lyon</b>, traditionnellement remplie de beaujolais ou de côtes-du-rhône. On en trouve aujourd’hui aussi en 50&nbsp;cl."
+             data-en="Thick-bottomed carafe of the <b>Lyon</b> bouchons and bistros, traditionally filled with Beaujolais or Côtes du Rhône. 50&nbsp;cl versions are also common today.">Carafe à fond épais des bouchons et bistrots de <b>Lyon</b>, traditionnellement remplie de beaujolais ou de côtes-du-rhône. On en trouve aujourd’hui aussi en 50&nbsp;cl.</p>
+        </div>
+      </article>
+      <article class="panel card">
+        <div class="pic" data-draw="chopine"></div>
+        <div>
+          <h3>Chopine</h3>
+          <div class="meta" data-fr="25 cl · ⅓ bouteille" data-en="25 cl · ⅓ bottle">25 cl · ⅓ bouteille</div>
+          <p data-fr="Ancienne mesure de cabaret, devenue petite bouteille d’un tiers : de quoi servir deux verres."
+             data-en="An old tavern measure that became a one-third bottle: enough for two glasses.">Ancienne mesure de cabaret, devenue petite bouteille d’un tiers : de quoi servir deux verres.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== giants ===== -->
+  <section class="sec" id="demesures">
+    <div class="sec-head"><div>
+      <h2 data-fr="Et les <em>démesurés</em>" data-en="And the <em>ridiculously large</em>">Et les <em>démesurés</em></h2>
+      <p data-fr="À côté d’une bouteille de 75&nbsp;cl et d’un melchizédech." data-en="Next to a standard 75&nbsp;cl bottle and a melchizedek.">À côté d’une bouteille de 75&nbsp;cl et d’un melchizédech.</p>
+    </div></div>
+    <div class="panel giants">
+      <div class="gstage" id="gstage"></div>
+      <div class="gtext">
+        <div>
+          <h3>Adélaïde</h3>
+          <div class="meta" data-fr="93 litres · 124 bouteilles" data-en="93 litres · 124 bottles">93 litres · 124 bouteilles</div>
+          <p data-fr="Format rarissime, réservé au champagne." data-en="Extremely rare, reserved for Champagne.">Format rarissime, réservé au champagne.</p>
+        </div>
+        <div>
+          <h3>Sublime</h3>
+          <div class="meta" data-fr="150 litres · 200 bouteilles" data-en="150 litres · 200 bottles">150 litres · 200 bouteilles</div>
+          <p data-fr="Apparu au début des années 2000. Pas pour les cœurs fragiles : venez avec la famille et les amis !" data-en="Introduced in the early 2000s. Not for the faint of heart: bring friends and family along!">Apparu au début des années 2000. Pas pour les cœurs fragiles : venez avec la famille et les amis !</p>
+        </div>
+      </div>
+      <p class="scale-note" data-fr="Hauteurs indicatives, calculées à proportions constantes à partir d’une bouteille de 30&nbsp;cm." data-en="Indicative heights, scaled at constant proportions from a 30&nbsp;cm bottle.">Hauteurs indicatives, calculées à proportions constantes à partir d’une bouteille de 30&nbsp;cm.</p>
+    </div>
+  </section>
+
+  <!-- ===== history of the bottle ===== -->
+  <section class="sec" id="histoire">
+    <div class="sec-head"><div>
+      <h2 data-fr="Histoire de &lt;em&gt;la bouteille&lt;/em&gt;" data-en="A history of &lt;em&gt;the bottle&lt;/em&gt;">Histoire de <em>la bouteille</em></h2>
+      <p data-fr="De la jarre au flexitank : comment le vin a voyagé, et quand la bouteille est devenue son contenant." data-en="From clay jar to flexitank: how wine travelled, and when the bottle became its container.">De la jarre au flexitank : comment le vin a voyagé, et quand la bouteille est devenue son contenant.</p>
+    </div></div>
+    <div class="panel hist-intro">
+      <div>
+        <p data-fr="Pendant près de &lt;b&gt;8&amp;nbsp;000 ans&lt;/b&gt;, le vin a surtout voyagé en &lt;b&gt;jarre&lt;/b&gt;, en &lt;b&gt;amphore&lt;/b&gt; puis en &lt;b&gt;tonneau&lt;/b&gt;. La bouteille de verre existe depuis l’Antiquité, mais elle est restée un objet de table, trop fragile pour le commerce. Il a fallu attendre le &lt;b&gt;XVII&lt;sup&gt;e&lt;/sup&gt; siècle&lt;/b&gt; anglais, un verre plus solide et le bouchon de liège, pour qu’elle transporte le vin, puis le XVIII&lt;sup&gt;e&lt;/sup&gt; siècle pour qu’on la couche et qu’on y fasse vieillir le vin." data-en="For nearly &lt;b&gt;8,000 years&lt;/b&gt; wine travelled mainly in &lt;b&gt;jars&lt;/b&gt;, &lt;b&gt;amphorae&lt;/b&gt; and then &lt;b&gt;barrels&lt;/b&gt;. The glass bottle has existed since antiquity, but it remained a table object, too fragile for trade. It took 17th-century &lt;b&gt;England&lt;/b&gt;, stronger glass and the cork stopper for it to carry wine, and the 18th century for bottles to be laid down and wine aged in them.">Pendant près de <b>8&nbsp;000 ans</b>, le vin a surtout voyagé en <b>jarre</b>, en <b>amphore</b> puis en <b>tonneau</b>. La bouteille de verre existe depuis l’Antiquité, mais elle est restée un objet de table, trop fragile pour le commerce. Il a fallu attendre le <b>XVII<sup>e</sup> siècle</b> anglais, un verre plus solide et le bouchon de liège, pour qu’elle transporte le vin, puis le XVIII<sup>e</sup> siècle pour qu’on la couche et qu’on y fasse vieillir le vin.</p>
+        <p data-fr="Retour de l’histoire : aujourd’hui, <b>≈&nbsp;35&nbsp;%</b> du vin exporté dans le monde (en volume) voyage de nouveau en vrac, en citernes de 24&nbsp;000&nbsp;litres, et n’est souvent mis en bouteille qu’à l’arrivée." data-en="History repeating itself: today <b>≈&nbsp;35%</b> of the world’s exported wine (by volume) travels in bulk again, in 24,000-litre tanks, and is often only bottled on arrival.">Retour de l’histoire : aujourd’hui, <b>≈&nbsp;35&nbsp;%</b> du vin exporté dans le monde (en volume) voyage de nouveau en vrac, en citernes de 24&nbsp;000&nbsp;litres, et n’est souvent mis en bouteille qu’à l’arrivée.</p>
+      </div>
+      <div class="who">
+        <h3 data-fr="Qui a inventé la bouteille&amp;nbsp;?" data-en="Who invented the bottle?">Qui a inventé la bouteille&nbsp;?</h3>
+        <p data-fr="Personne en particulier : le verre soufflé est né au I&lt;sup&gt;er&lt;/sup&gt; siècle av. J.-C. au Proche-Orient. La &lt;b&gt;bouteille à vin moderne&lt;/b&gt;, épaisse et sombre, est en revanche attribuée à l’Anglais &lt;b&gt;Sir Kenelm Digby&lt;/b&gt; (1603–1665), dont la paternité fut reconnue en 1662. L’attribution reste discutée : plusieurs verriers anglais travaillaient alors sur le même verre au charbon." data-en="No single person: blown glass appeared in the Near East in the 1st century BC. The &lt;b&gt;modern wine bottle&lt;/b&gt;, thick and dark, is however credited to the Englishman &lt;b&gt;Sir Kenelm Digby&lt;/b&gt; (1603–1665), whose claim was recognised in 1662. The credit is still debated: several English glassmakers were working on the same coal-fired glass at the time.">Personne en particulier : le verre soufflé est né au I<sup>er</sup> siècle av. J.-C. au Proche-Orient. La <b>bouteille à vin moderne</b>, épaisse et sombre, est en revanche attribuée à l’Anglais <b>Sir Kenelm Digby</b> (1603–1665), dont la paternité fut reconnue en 1662. L’attribution reste discutée : plusieurs verriers anglais travaillaient alors sur le même verre au charbon.</p>
+      </div>
+    </div>
+    <div class="panel">
+      <ol class="tl">
+      <li><div class="when" data-fr="≈ 6000 av. J.-C.&lt;small&gt;Caucase · Mésopotamie&lt;/small&gt;" data-en="≈ 6000 BC&lt;small&gt;Caucasus · Mesopotamia&lt;/small&gt;">≈ 6000 av. J.-C.<small>Caucase · Mésopotamie</small></div><div class="what"><h3 data-fr="Jarres et outres" data-en="Jars and skins">Jarres et outres</h3><p data-fr="Les premiers vins connus sont faits et conservés dans de grandes &lt;b&gt;jarres de terre&lt;/b&gt; enterrées (ancêtres des &lt;i&gt;qvevri&lt;/i&gt; géorgiens). Pour voyager, on utilise des &lt;b&gt;outres&lt;/b&gt; en peau de chèvre, légères mais qui donnent leur goût au vin." data-en="The earliest known wines were made and kept in large buried &lt;b&gt;clay jars&lt;/b&gt; (ancestors of the Georgian &lt;i&gt;qvevri&lt;/i&gt;). For travel, people used goatskin &lt;b&gt;wineskins&lt;/b&gt;: light, but they flavoured the wine.">Les premiers vins connus sont faits et conservés dans de grandes <b>jarres de terre</b> enterrées (ancêtres des <i>qvevri</i> géorgiens). Pour voyager, on utilise des <b>outres</b> en peau de chèvre, légères mais qui donnent leur goût au vin.</p></div></li>
+      <li><div class="when" data-fr="XV&lt;sup&gt;e&lt;/sup&gt; s. av. – III&lt;sup&gt;e&lt;/sup&gt; s.&lt;small&gt;Méditerranée&lt;/small&gt;" data-en="15th c. BC – 3rd c. AD&lt;small&gt;Mediterranean&lt;/small&gt;">XV<sup>e</sup> s. av. – III<sup>e</sup> s.<small>Méditerranée</small></div><div class="what"><h3 data-fr="L’âge de l’amphore" data-en="The age of the amphora">L’âge de l’amphore</h3><p data-fr="Phéniciens, Grecs puis Romains expédient le vin dans des &lt;b&gt;amphores&lt;/b&gt; de terre cuite d’environ 25&amp;nbsp;litres, enduites de poix à l’intérieur et scellées d’argile ou de liège. Fondée vers 600 av. J.-C., &lt;b&gt;Marseille&lt;/b&gt; en produit très tôt ; aux II&lt;sup&gt;e&lt;/sup&gt; et I&lt;sup&gt;er&lt;/sup&gt; siècles av. J.-C., des millions d’amphores de vin italien remontent le Rhône et la Saône vers la Gaule. Les épaves en sont encore remplies." data-en="Phoenicians, Greeks and then Romans shipped wine in terracotta &lt;b&gt;amphorae&lt;/b&gt; of about 25&amp;nbsp;litres, lined with pitch and sealed with clay or cork. &lt;b&gt;Marseille&lt;/b&gt;, founded around 600 BC, made them early on; in the 2nd and 1st centuries BC millions of amphorae of Italian wine travelled up the Rhône and Saône into Gaul. Shipwrecks are still full of them.">Phéniciens, Grecs puis Romains expédient le vin dans des <b>amphores</b> de terre cuite d’environ 25&nbsp;litres, enduites de poix à l’intérieur et scellées d’argile ou de liège. Fondée vers 600 av. J.-C., <b>Marseille</b> en produit très tôt ; aux II<sup>e</sup> et I<sup>er</sup> siècles av. J.-C., des millions d’amphores de vin italien remontent le Rhône et la Saône vers la Gaule. Les épaves en sont encore remplies.</p></div></li>
+      <li><div class="when" data-fr="I&lt;sup&gt;er&lt;/sup&gt; s. av. J.-C.&lt;small&gt;Syrie · Rome&lt;/small&gt;" data-en="1st c. BC&lt;small&gt;Syria · Rome&lt;/small&gt;">I<sup>er</sup> s. av. J.-C.<small>Syrie · Rome</small></div><div class="what"><h3 data-fr="Le verre soufflé" data-en="Blown glass">Le verre soufflé</h3><p data-fr="Le &lt;b&gt;soufflage du verre&lt;/b&gt; est inventé sur la côte syro-palestinienne et se répand dans tout l’Empire. Les Romains font des fioles et des bouteilles, mais ce verre est trop fragile pour le transport : il sert à &lt;b&gt;la table&lt;/b&gt;, pas au commerce." data-en="&lt;b&gt;Glassblowing&lt;/b&gt; was invented on the Syro-Palestinian coast and spread across the Empire. Romans made flasks and bottles, but the glass was far too fragile for shipping: it was for &lt;b&gt;the table&lt;/b&gt;, not for trade.">Le <b>soufflage du verre</b> est inventé sur la côte syro-palestinienne et se répand dans tout l’Empire. Les Romains font des fioles et des bouteilles, mais ce verre est trop fragile pour le transport : il sert à <b>la table</b>, pas au commerce.</p></div></li>
+      <li><div class="when" data-fr="I&lt;sup&gt;er&lt;/sup&gt; – III&lt;sup&gt;e&lt;/sup&gt; s.&lt;small&gt;Gaule&lt;/small&gt;" data-en="1st – 3rd c. AD&lt;small&gt;Gaul&lt;/small&gt;">I<sup>er</sup> – III<sup>e</sup> s.<small>Gaule</small></div><div class="what"><h3 data-fr="Le tonneau gaulois" data-en="The Gallic barrel">Le tonneau gaulois</h3><p data-fr="Les &lt;b&gt;Gaulois&lt;/b&gt;, tonneliers habiles, cerclent des douelles de bois. Le tonneau est plus léger, plus solide et se roule : il remplace peu à peu l’amphore et va dominer le commerce du vin pendant &lt;b&gt;plus de 1&amp;nbsp;500 ans&lt;/b&gt;. Le vin voyage en fût, se vend au fût, et l’on remplit cruches et pichets à la cave ou à la taverne. Le tonneau devient même une unité : le &lt;b&gt;tonneau bordelais&lt;/b&gt; (900&amp;nbsp;L, quatre barriques) mesure encore aujourd’hui le commerce de Bordeaux, et la « jauge » des navires." data-en="The &lt;b&gt;Gauls&lt;/b&gt;, skilled coopers, bound wooden staves with hoops. The barrel was lighter, stronger and could be rolled: it gradually replaced the amphora and dominated the wine trade for &lt;b&gt;more than 1,500 years&lt;/b&gt;. Wine travelled in casks, was sold by the cask, and jugs and pitchers were filled in the cellar or tavern. The cask even became a unit: the &lt;b&gt;Bordeaux tonneau&lt;/b&gt; (900&amp;nbsp;L, four barriques) still measures the Bordeaux trade, and ships’ “tonnage”.">Les <b>Gaulois</b>, tonneliers habiles, cerclent des douelles de bois. Le tonneau est plus léger, plus solide et se roule : il remplace peu à peu l’amphore et va dominer le commerce du vin pendant <b>plus de 1&nbsp;500 ans</b>. Le vin voyage en fût, se vend au fût, et l’on remplit cruches et pichets à la cave ou à la taverne. Le tonneau devient même une unité : le <b>tonneau bordelais</b> (900&nbsp;L, quatre barriques) mesure encore aujourd’hui le commerce de Bordeaux, et la « jauge » des navires.</p></div></li>
+      <li><div class="when" data-fr="Moyen Âge&lt;small&gt;Europe&lt;/small&gt;" data-en="Middle Ages&lt;small&gt;Europe&lt;/small&gt;">Moyen Âge<small>Europe</small></div><div class="what"><h3 data-fr="Une « petite barrique »" data-en="A “little cask”">Une « petite barrique »</h3><p data-fr="Le mot &lt;b&gt;bouteille&lt;/b&gt; vient du bas latin &lt;i&gt;butticula&lt;/i&gt;, diminutif de &lt;i&gt;buttis&lt;/i&gt;, « tonneau » : la bouteille est d’abord un petit récipient de service, en grès, en étain, en cuir ou en verre clissé d’osier (la &lt;i&gt;fiasque&lt;/i&gt; italienne). On l’apporte à la cave pour la faire remplir." data-en="The French word &lt;b&gt;bouteille&lt;/b&gt; (bottle) comes from Late Latin &lt;i&gt;butticula&lt;/i&gt;, a diminutive of &lt;i&gt;buttis&lt;/i&gt;, “cask”: the bottle began as a small serving vessel in stoneware, pewter, leather or wicker-covered glass (the Italian &lt;i&gt;fiasco&lt;/i&gt;). You took it to the cellar to have it filled.">Le mot <b>bouteille</b> vient du bas latin <i>butticula</i>, diminutif de <i>buttis</i>, « tonneau » : la bouteille est d’abord un petit récipient de service, en grès, en étain, en cuir ou en verre clissé d’osier (la <i>fiasque</i> italienne). On l’apporte à la cave pour la faire remplir.</p></div></li>
+      <li><div class="when" data-fr="1615 – 1660&lt;small&gt;Angleterre&lt;/small&gt;" data-en="1615 – 1660&lt;small&gt;England&lt;/small&gt;">1615 – 1660<small>Angleterre</small></div><div class="what"><h3 data-fr="Le verre noir anglais" data-en="English black glass">Le verre noir anglais</h3><p data-fr="En &lt;b&gt;1615&lt;/b&gt;, Jacques&amp;nbsp;I&lt;sup&gt;er&lt;/sup&gt; interdit de chauffer les fours de verrerie au bois, réservé à la marine. Les verriers passent au &lt;b&gt;charbon&lt;/b&gt; : fours plus chauds, verre plus épais, vert sombre presque noir et bien plus résistant. Vers &lt;b&gt;1630&lt;/b&gt;, &lt;b&gt;Sir Kenelm Digby&lt;/b&gt; fait fabriquer des bouteilles robustes à panse ronde et col court ; en 1662, le Parlement lui reconnaît la paternité de cette « bouteille à vin » moderne. En 1662 aussi, &lt;b&gt;Christopher Merret&lt;/b&gt; décrit l’ajout de sucre pour rendre les vins mousseux : seules ces bouteilles anglaises supportent la pression." data-en="In &lt;b&gt;1615&lt;/b&gt; James&amp;nbsp;I banned wood as fuel for glass furnaces, keeping timber for the navy. Glassmakers switched to &lt;b&gt;coal&lt;/b&gt;: hotter furnaces, thicker glass, dark green, almost black, and far stronger. Around &lt;b&gt;1630&lt;/b&gt;, &lt;b&gt;Sir Kenelm Digby&lt;/b&gt; had sturdy round-bodied, short-necked bottles made; in 1662 Parliament recognised him as the father of this modern “wine bottle”. Also in 1662, &lt;b&gt;Christopher Merret&lt;/b&gt; described adding sugar to make wine sparkle: only these English bottles could take the pressure.">En <b>1615</b>, Jacques&nbsp;I<sup>er</sup> interdit de chauffer les fours de verrerie au bois, réservé à la marine. Les verriers passent au <b>charbon</b> : fours plus chauds, verre plus épais, vert sombre presque noir et bien plus résistant. Vers <b>1630</b>, <b>Sir Kenelm Digby</b> fait fabriquer des bouteilles robustes à panse ronde et col court ; en 1662, le Parlement lui reconnaît la paternité de cette « bouteille à vin » moderne. En 1662 aussi, <b>Christopher Merret</b> décrit l’ajout de sucre pour rendre les vins mousseux : seules ces bouteilles anglaises supportent la pression.</p></div></li>
+      <li><div class="when" data-fr="XVII&lt;sup&gt;e&lt;/sup&gt; s.&lt;small&gt;Europe&lt;/small&gt;" data-en="17th c.&lt;small&gt;Europe&lt;/small&gt;">XVII<sup>e</sup> s.<small>Europe</small></div><div class="what"><h3 data-fr="Bouchon de liège et tire-bouchon" data-en="Cork and corkscrew">Bouchon de liège et tire-bouchon</h3><p data-fr="Le &lt;b&gt;bouchon de liège&lt;/b&gt; enfoncé dans le col remplace la cheville de bois entourée de chanvre huilé. Pour l’extraire, on invente le « ver d’acier » : le &lt;b&gt;tire-bouchon&lt;/b&gt; est mentionné en Angleterre dès 1681. Le vin peut désormais rester bouché longtemps." data-en="The &lt;b&gt;cork stopper&lt;/b&gt; pushed into the neck replaced the wooden peg wrapped in oiled hemp. To pull it out, the “steel worm” was invented: the &lt;b&gt;corkscrew&lt;/b&gt; is mentioned in England as early as 1681. Wine could now stay sealed for a long time.">Le <b>bouchon de liège</b> enfoncé dans le col remplace la cheville de bois entourée de chanvre huilé. Pour l’extraire, on invente le « ver d’acier » : le <b>tire-bouchon</b> est mentionné en Angleterre dès 1681. Le vin peut désormais rester bouché longtemps.</p></div></li>
+      <li><div class="when" data-fr="1723 · 1728&lt;small&gt;Bordeaux · Champagne&lt;/small&gt;" data-en="1723 · 1728&lt;small&gt;Bordeaux · Champagne&lt;/small&gt;">1723 · 1728<small>Bordeaux · Champagne</small></div><div class="what"><h3 data-fr="La France s’y met" data-en="France catches up">La France s’y met</h3><p data-fr="En &lt;b&gt;1723&lt;/b&gt;, l’Irlandais &lt;b&gt;Pierre Mitchell&lt;/b&gt; fonde à Bordeaux la première verrerie de bouteilles « à l’anglaise », future Verrerie royale. Le &lt;b&gt;25 mai 1728&lt;/b&gt;, un arrêt de Louis&amp;nbsp;XV autorise enfin le transport du vin de &lt;b&gt;Champagne en bouteilles&lt;/b&gt; : jusque-là, le vin ne voyageait qu’en fût. Ruinart, première maison de champagne, naît l’année suivante (1729)." data-en="In &lt;b&gt;1723&lt;/b&gt; the Irishman &lt;b&gt;Pierre Mitchell&lt;/b&gt; founded in Bordeaux the first works making English-style bottles, later the Royal Glassworks. On &lt;b&gt;25 May 1728&lt;/b&gt; a decree of Louis&amp;nbsp;XV finally allowed &lt;b&gt;Champagne to be shipped in bottles&lt;/b&gt;: until then wine could only travel in casks. Ruinart, the first Champagne house, was founded the next year (1729).">En <b>1723</b>, l’Irlandais <b>Pierre Mitchell</b> fonde à Bordeaux la première verrerie de bouteilles « à l’anglaise », future Verrerie royale. Le <b>25 mai 1728</b>, un arrêt de Louis&nbsp;XV autorise enfin le transport du vin de <b>Champagne en bouteilles</b> : jusque-là, le vin ne voyageait qu’en fût. Ruinart, première maison de champagne, naît l’année suivante (1729).</p></div></li>
+      <li><div class="when" data-fr="1680 – 1800&lt;small&gt;Formes&lt;/small&gt;" data-en="1680 – 1800&lt;small&gt;Shapes&lt;/small&gt;">1680 – 1800<small>Formes</small></div><div class="what"><h3 data-fr="De l’oignon au cylindre" data-en="From onion to cylinder">De l’oignon au cylindre</h3><p data-fr="La bouteille s’allonge : &lt;b&gt;oignon&lt;/b&gt; trapu (vers 1680–1730), puis &lt;b&gt;maillet&lt;/b&gt;, puis &lt;b&gt;cylindre&lt;/b&gt; à la fin du XVIII&lt;sup&gt;e&lt;/sup&gt; siècle. Une bouteille cylindrique se &lt;b&gt;couche&lt;/b&gt; : le bouchon reste humide et étanche, on peut empiler, stocker… et faire vieillir. C’est la naissance du vin de garde en bouteille et des grands millésimes." data-en="The bottle grew taller: squat &lt;b&gt;onion&lt;/b&gt; (c. 1680–1730), then &lt;b&gt;mallet&lt;/b&gt;, then &lt;b&gt;cylinder&lt;/b&gt; by the late 18th century. A cylindrical bottle can be &lt;b&gt;laid down&lt;/b&gt;: the cork stays moist and tight, bottles can be stacked, stored… and aged. This is the birth of bottle-aged wine and of great vintages.">La bouteille s’allonge : <b>oignon</b> trapu (vers 1680–1730), puis <b>maillet</b>, puis <b>cylindre</b> à la fin du XVIII<sup>e</sup> siècle. Une bouteille cylindrique se <b>couche</b> : le bouchon reste humide et étanche, on peut empiler, stocker… et faire vieillir. C’est la naissance du vin de garde en bouteille et des grands millésimes.</p></div></li>
+      <li><div class="when" data-fr="XIX&lt;sup&gt;e&lt;/sup&gt; s.&lt;small&gt;France&lt;/small&gt;" data-en="19th c.&lt;small&gt;France&lt;/small&gt;">XIX<sup>e</sup> s.<small>France</small></div><div class="what"><h3 data-fr="Les formes régionales" data-en="Regional shapes">Les formes régionales</h3><p data-fr="Chaque région fixe sa silhouette : &lt;b&gt;bordelaise&lt;/b&gt; à épaules hautes, &lt;b&gt;bourguignonne&lt;/b&gt; à épaules tombantes, &lt;b&gt;champenoise&lt;/b&gt; au verre épais pour résister à environ 6&amp;nbsp;bars, &lt;b&gt;flûte&lt;/b&gt; d’Alsace. Soufflées à la bouche, les bouteilles restent de contenance variable (70 à 80&amp;nbsp;cl) : en Angleterre, on a longtemps vendu le vin à la mesure plutôt qu’à la bouteille pour cette raison. La mise en bouteille se fait surtout chez les négociants, souvent dans le pays acheteur." data-en="Each region settled on its shape: high-shouldered &lt;b&gt;Bordeaux&lt;/b&gt;, sloping-shouldered &lt;b&gt;Burgundy&lt;/b&gt;, thick-walled &lt;b&gt;Champagne&lt;/b&gt; to withstand about 6&amp;nbsp;bar, and the Alsace &lt;b&gt;flute&lt;/b&gt;. Being mouth-blown, bottles still varied in volume (70 to 80&amp;nbsp;cl): in England wine was long sold by measure rather than by the bottle for that reason. Bottling was mostly done by merchants, often in the buyer’s country.">Chaque région fixe sa silhouette : <b>bordelaise</b> à épaules hautes, <b>bourguignonne</b> à épaules tombantes, <b>champenoise</b> au verre épais pour résister à environ 6&nbsp;bars, <b>flûte</b> d’Alsace. Soufflées à la bouche, les bouteilles restent de contenance variable (70 à 80&nbsp;cl) : en Angleterre, on a longtemps vendu le vin à la mesure plutôt qu’à la bouteille pour cette raison. La mise en bouteille se fait surtout chez les négociants, souvent dans le pays acheteur.</p></div></li>
+      <li><div class="when" data-fr="1903&lt;small&gt;États-Unis&lt;/small&gt;" data-en="1903&lt;small&gt;United States&lt;/small&gt;">1903<small>États-Unis</small></div><div class="what"><h3 data-fr="La bouteille industrielle" data-en="The industrial bottle">La bouteille industrielle</h3><p data-fr="L’Américain &lt;b&gt;Michael Owens&lt;/b&gt; met au point la première machine entièrement automatique à fabriquer les bouteilles. Les contenances deviennent régulières et le prix s’effondre : la bouteille devient l’emballage normal du vin." data-en="American &lt;b&gt;Michael Owens&lt;/b&gt; developed the first fully automatic bottle-making machine. Volumes became consistent and prices collapsed: the bottle became wine’s everyday container.">L’Américain <b>Michael Owens</b> met au point la première machine entièrement automatique à fabriquer les bouteilles. Les contenances deviennent régulières et le prix s’effondre : la bouteille devient l’emballage normal du vin.</p></div></li>
+      <li><div class="when" data-fr="1924&lt;small&gt;Pauillac&lt;/small&gt;" data-en="1924&lt;small&gt;Pauillac&lt;/small&gt;">1924<small>Pauillac</small></div><div class="what"><h3 data-fr="Mis en bouteille au château" data-en="Château bottled">Mis en bouteille au château</h3><p data-fr="Le baron &lt;b&gt;Philippe de Rothschild&lt;/b&gt; impose la mise en bouteille de toute la récolte de &lt;b&gt;Mouton&lt;/b&gt; au château, pour garantir l’authenticité du vin. Les grands crus suivent ; la mention « mis en bouteille au château / au domaine » devient un gage de qualité." data-en="Baron &lt;b&gt;Philippe de Rothschild&lt;/b&gt; had the entire &lt;b&gt;Mouton&lt;/b&gt; crop bottled at the château to guarantee authenticity. The great growths followed; “château / estate bottled” became a mark of quality.">Le baron <b>Philippe de Rothschild</b> impose la mise en bouteille de toute la récolte de <b>Mouton</b> au château, pour garantir l’authenticité du vin. Les grands crus suivent ; la mention « mis en bouteille au château / au domaine » devient un gage de qualité.</p></div></li>
+      <li><div class="when" data-fr="1975&lt;small&gt;Europe&lt;/small&gt;" data-en="1975&lt;small&gt;Europe&lt;/small&gt;">1975<small>Europe</small></div><div class="what"><h3 data-fr="75&amp;nbsp;cl, la norme" data-en="75&amp;nbsp;cl becomes law">75&nbsp;cl, la norme</h3><p data-fr="La directive 75/106/CEE fait du &lt;b&gt;75&amp;nbsp;cl&lt;/b&gt; le volume légal de la bouteille de vin (voir plus haut)." data-en="Directive 75/106/EEC made &lt;b&gt;75&amp;nbsp;cl&lt;/b&gt; the legal volume of the wine bottle (see above).">La directive 75/106/CEE fait du <b>75&nbsp;cl</b> le volume légal de la bouteille de vin (voir plus haut).</p></div></li>
+      <li><div class="when" data-fr="Aujourd’hui&lt;small&gt;Monde&lt;/small&gt;" data-en="Today&lt;small&gt;Worldwide&lt;/small&gt;">Aujourd’hui<small>Monde</small></div><div class="what"><h3 data-fr="Le vrac revient" data-en="Bulk is back">Le vrac revient</h3><p data-fr="&lt;b&gt;≈&amp;nbsp;35&amp;nbsp;%&lt;/b&gt; du vin exporté dans le monde voyage en &lt;b&gt;vrac&lt;/b&gt; (mais ≈&amp;nbsp;7&amp;nbsp;% seulement de la valeur) : navires-citernes, camions-citernes, &lt;b&gt;flexitanks&lt;/b&gt; de 24&amp;nbsp;000&amp;nbsp;L glissés dans un conteneur. Il est souvent embouteillé près du consommateur : ≈&amp;nbsp;85&amp;nbsp;% du vin australien vendu au Royaume-Uni y arrive en vrac. Le &lt;b&gt;bag-in-box&lt;/b&gt; (Australie, années&amp;nbsp;1960) et la capsule à vis se sont imposés, et l’on allège le verre : la bouteille pèse souvent le plus lourd dans l’empreinte carbone du vin (≈&amp;nbsp;30 à 50&amp;nbsp;% selon les études)." data-en="&lt;b&gt;≈&amp;nbsp;35%&lt;/b&gt; of the world’s exported wine travels in &lt;b&gt;bulk&lt;/b&gt; (but only ≈&amp;nbsp;7% of its value): tanker ships, road tankers, 24,000&amp;nbsp;L &lt;b&gt;flexitanks&lt;/b&gt; slipped into a shipping container. It is often bottled close to the consumer: ≈&amp;nbsp;85% of Australian wine sold in the UK arrives there in bulk. The &lt;b&gt;bag-in-box&lt;/b&gt; (Australia, 1960s) and the screw cap have taken hold, and glass is getting lighter: the bottle is often the largest part of wine’s carbon footprint (≈&amp;nbsp;30–50% depending on the study)."><b>≈&nbsp;35&nbsp;%</b> du vin exporté dans le monde voyage en <b>vrac</b> (mais ≈&nbsp;7&nbsp;% seulement de la valeur) : navires-citernes, camions-citernes, <b>flexitanks</b> de 24&nbsp;000&nbsp;L glissés dans un conteneur. Il est souvent embouteillé près du consommateur : ≈&nbsp;85&nbsp;% du vin australien vendu au Royaume-Uni y arrive en vrac. Le <b>bag-in-box</b> (Australie, années&nbsp;1960) et la capsule à vis se sont imposés, et l’on allège le verre : la bouteille pèse souvent le plus lourd dans l’empreinte carbone du vin (≈&nbsp;30 à 50&nbsp;% selon les études).</p></div></li>
+      </ol>
+      <div class="shapes" id="formes" aria-label="Evolution of bottle shapes">
+      <figure><svg viewBox="-6 0 48 66" aria-hidden="true"><path d="M14 2h8v14c0 4 18 10 18 28c0 14-8 20-22 20S-4 58-4 44C-4 26 14 20 14 16Z"/></svg><figcaption data-fr="&lt;b&gt;Oignon&lt;/b&gt;≈ 1700" data-en="&lt;b&gt;Onion&lt;/b&gt;≈ 1700"><b>Oignon</b>≈ 1700</figcaption></figure>
+      <figure><svg viewBox="0 0 36 66" aria-hidden="true"><path d="M14 2h8v20c0 2 10 4 12 10v32H2V32c2-6 12-8 12-10Z"/></svg><figcaption data-fr="&lt;b&gt;Maillet&lt;/b&gt;≈ 1740" data-en="&lt;b&gt;Mallet&lt;/b&gt;≈ 1740"><b>Maillet</b>≈ 1740</figcaption></figure>
+      <figure><svg viewBox="4 0 28 66" aria-hidden="true"><path d="M14 2h8v22c0 2 8 3 8 8v32H6V32c0-5 8-6 8-8Z"/></svg><figcaption data-fr="&lt;b&gt;Cylindre&lt;/b&gt;≈ 1790" data-en="&lt;b&gt;Cylinder&lt;/b&gt;≈ 1790"><b>Cylindre</b>≈ 1790</figcaption></figure>
+      <figure><svg viewBox="4 0 28 66" aria-hidden="true"><path d="M15 2h6v20c0 4 9 4 9 10v32H6V32c0-6 9-6 9-10Z"/></svg><figcaption data-fr="&lt;b&gt;Bordelaise&lt;/b&gt;XIX&lt;sup&gt;e&lt;/sup&gt;" data-en="&lt;b&gt;Bordeaux&lt;/b&gt;19th c."><b>Bordelaise</b>XIX<sup>e</sup></figcaption></figure>
+      <figure><svg viewBox="2 0 32 66" aria-hidden="true"><path d="M15 2h6v14c0 8 11 12 11 20v28H4V36c0-8 11-12 11-20Z"/></svg><figcaption data-fr="&lt;b&gt;Bourguignonne&lt;/b&gt;XIX&lt;sup&gt;e&lt;/sup&gt;" data-en="&lt;b&gt;Burgundy&lt;/b&gt;19th c."><b>Bourguignonne</b>XIX<sup>e</sup></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== tastevin ===== -->
+  <section class="sec" id="tastevin">
+    <div class="sec-head"><div>
+      <h2 data-fr="Le &lt;em&gt;tastevin&lt;/em&gt;" data-en="The &lt;em&gt;tastevin&lt;/em&gt;">Le <em>tastevin</em></h2>
+      <p data-fr="La petite tasse d’argent des caves de Bourgogne, outil du vigneron devenu insigne du sommelier." data-en="The little silver cup of Burgundy’s cellars: a winegrower’s tool turned sommelier’s emblem.">La petite tasse d’argent des caves de Bourgogne, outil du vigneron devenu insigne du sommelier.</p>
+    </div></div>
+    <div class="panel tv-intro">
+      <div class="tv-hero"><img src="Bottle_Sizes_img/tastevin_1.webp" alt="Tastevin, Hospices de Beaune" draggable="false"></div>
+      <div>
+        <p data-fr="Le &lt;b&gt;tastevin&lt;/b&gt; (ou &lt;i&gt;tâte-vin&lt;/i&gt;, de « tâter » le vin) est une petite coupelle peu profonde en métal, le plus souvent en &lt;b&gt;argent&lt;/b&gt;, munie d’une anse&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. On y verse un peu de vin tiré du fût pour l’&lt;b&gt;examiner, le sentir et le goûter&lt;/b&gt; à la cave, avant qu’il ne soit vendu&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;,&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;." data-en="The &lt;b&gt;tastevin&lt;/b&gt; (or &lt;i&gt;tâte-vin&lt;/i&gt;, from &lt;i&gt;tâter&lt;/i&gt;, “to feel, to try”) is a small, shallow metal cup, usually &lt;b&gt;silver&lt;/b&gt;, with a handle&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. A little wine drawn from the cask is poured in to &lt;b&gt;look at, smell and taste&lt;/b&gt; it in the cellar, before it is sold&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;,&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.">Le <b>tastevin</b> (ou <i>tâte-vin</i>, de « tâter » le vin) est une petite coupelle peu profonde en métal, le plus souvent en <b>argent</b>, munie d’une anse<sup class="src"><a href="#tv-src-1">1</a></sup>. On y verse un peu de vin tiré du fût pour l’<b>examiner, le sentir et le goûter</b> à la cave, avant qu’il ne soit vendu<sup class="src"><a href="#tv-src-1">1</a>,<a href="#tv-src-2">2</a></sup>.</p>
+        <p data-fr="Pourquoi un tel objet&amp;nbsp;? Dans la &lt;b&gt;pénombre des caves&lt;/b&gt;, on ne voyait qu’&lt;b&gt;à la bougie&lt;/b&gt;, et le verre était rare et fragile. L’argent poli renvoie la moindre flamme à travers le vin : couleur et limpidité apparaissent d’un coup d’œil&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;. Il ne casse pas, résiste à la corrosion et ne donne aucun goût au vin&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;." data-en="Why such an object? In the &lt;b&gt;dim light of cellars&lt;/b&gt;, lit only &lt;b&gt;by candle&lt;/b&gt;, glass was rare and fragile. Polished silver reflects the smallest flame back through the wine: colour and clarity show at a glance&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;. It does not break, resists corrosion and gives no taste to the wine&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;.">Pourquoi un tel objet&nbsp;? Dans la <b>pénombre des caves</b>, on ne voyait qu’<b>à la bougie</b>, et le verre était rare et fragile. L’argent poli renvoie la moindre flamme à travers le vin : couleur et limpidité apparaissent d’un coup d’œil<sup class="src"><a href="#tv-src-2">2</a>,<a href="#tv-src-3">3</a></sup>. Il ne casse pas, résiste à la corrosion et ne donne aucun goût au vin<sup class="src"><a href="#tv-src-2">2</a></sup>.</p>
+        <p data-fr="L’usage est associé à la &lt;b&gt;Bourgogne&lt;/b&gt;. Les tastevins d’argent conservés dans les musées datent surtout du &lt;b&gt;XVIII&lt;sup&gt;e&lt;/sup&gt; siècle&lt;/b&gt; et du XIX&lt;sup&gt;e&lt;/sup&gt; (par exemple Paris, 1760)&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Vignerons, &lt;b&gt;courtiers&lt;/b&gt; et négociants avaient le leur, souvent gravé de leur nom, de leurs initiales ou d’une date&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;. On en trouve aussi en étain ou en métal argenté." data-en="The custom is associated with &lt;b&gt;Burgundy&lt;/b&gt;. The silver tastevins kept in museums date mostly from the &lt;b&gt;18th&lt;/b&gt; and 19th centuries (for example Paris, 1760)&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Growers, &lt;b&gt;brokers&lt;/b&gt; and merchants each had their own, often engraved with a name, initials or a date&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;. Pewter and silver-plated versions also exist.">L’usage est associé à la <b>Bourgogne</b>. Les tastevins d’argent conservés dans les musées datent surtout du <b>XVIII<sup>e</sup> siècle</b> et du XIX<sup>e</sup> (par exemple Paris, 1760)<sup class="src"><a href="#tv-src-2">2</a>,<a href="#tv-src-4">4</a></sup>. Vignerons, <b>courtiers</b> et négociants avaient le leur, souvent gravé de leur nom, de leurs initiales ou d’une date<sup class="src"><a href="#tv-src-2">2</a>,<a href="#tv-src-10">10</a></sup>. On en trouve aussi en étain ou en métal argenté.</p>
+      </div>
+    </div>
+
+    <div class="tv-anat">
+      <div><h3 data-fr="L’ombilic" data-en="The dome">L’ombilic</h3><div class="meta" data-fr="Le centre" data-en="The centre">Le centre</div><p data-fr="Le grand dôme central (le « nombril ») étale le vin en anneau mince et renforce la lumière : on y lit la &lt;b&gt;nuance&lt;/b&gt; et la &lt;b&gt;limpidité&lt;/b&gt;&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;." data-en="The large central dome (the “navel”) spreads the wine into a thin ring and strengthens the light: it shows &lt;b&gt;hue&lt;/b&gt; and &lt;b&gt;clarity&lt;/b&gt;&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.">Le grand dôme central (le « nombril ») étale le vin en anneau mince et renforce la lumière : on y lit la <b>nuance</b> et la <b>limpidité</b><sup class="src"><a href="#tv-src-3">3</a></sup>.</p></div>
+      <div><h3 data-fr="Les cupules" data-en="The cupules">Les cupules</h3><div class="meta" data-fr="Les reflets" data-en="Reflections">Les reflets</div><p data-fr="Bosses rondes martelées de l’intérieur. Elles fragmentent et multiplient les reflets à travers des épaisseurs de vin différentes&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;. La tradition orale les réserve aux &lt;b&gt;rouges&lt;/b&gt;." data-en="Round bosses hammered from below. They break up and multiply reflections through different depths of wine&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;. Cellar lore assigns them to &lt;b&gt;reds&lt;/b&gt;.">Bosses rondes martelées de l’intérieur. Elles fragmentent et multiplient les reflets à travers des épaisseurs de vin différentes<sup class="src"><a href="#tv-src-3">3</a></sup>. La tradition orale les réserve aux <b>rouges</b>.</p></div>
+      <div><h3 data-fr="Les godrons" data-en="The flutes">Les godrons</h3><div class="meta" data-fr="Filets de vin" data-en="Streaks of wine">Filets de vin</div><p data-fr="Côtes rayonnantes, droites ou torses : le vin y coule en filets fins. Toujours selon la tradition, ils serviraient aux &lt;b&gt;blancs&lt;/b&gt;, pour en voir l’éclat&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;." data-en="Radiating ribs, straight or twisted: the wine runs in thin streaks. Again according to tradition, they are for &lt;b&gt;whites&lt;/b&gt;, to show their brilliance&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.">Côtes rayonnantes, droites ou torses : le vin y coule en filets fins. Toujours selon la tradition, ils serviraient aux <b>blancs</b>, pour en voir l’éclat<sup class="src"><a href="#tv-src-3">3</a></sup>.</p></div>
+      <div><h3 data-fr="Les perles" data-en="The pearls">Les perles</h3><div class="meta" data-fr="Décor" data-en="Ornament">Décor</div><p data-fr="Petites perles en relief, en couronnes, qui font scintiller la surface. Le tastevin de &lt;b&gt;Bordeaux&lt;/b&gt;, lui, était souvent lisse : seul compte le reflet de l’argent&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;." data-en="Little raised beads in rings that make the surface sparkle. The &lt;b&gt;Bordeaux&lt;/b&gt; taster, by contrast, was often plain: what matters is the silver’s reflection&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.">Petites perles en relief, en couronnes, qui font scintiller la surface. Le tastevin de <b>Bordeaux</b>, lui, était souvent lisse : seul compte le reflet de l’argent<sup class="src"><a href="#tv-src-3">3</a></sup>.</p></div>
+    </div>
+
+    <div class="tv-gal" id="collection">
+      <article class="panel tv-card"><div class="ph"><img src="Bottle_Sizes_img/tastevin_1.webp" alt="" loading="lazy" draggable="false"></div><h3 data-fr="Le modèle bourguignon" data-en="The Burgundian model">Le modèle bourguignon</h3><p data-fr="Anneau plat pour le pouce, couronnes de &lt;b&gt;cupules&lt;/b&gt; et de &lt;b&gt;perles&lt;/b&gt; autour d’un grand &lt;b&gt;ombilic&lt;/b&gt; central." data-en="Flat thumb ring, rings of &lt;b&gt;cupules&lt;/b&gt; and &lt;b&gt;pearls&lt;/b&gt; around a large central &lt;b&gt;dome&lt;/b&gt;.">Anneau plat pour le pouce, couronnes de <b>cupules</b> et de <b>perles</b> autour d’un grand <b>ombilic</b> central.</p></article>
+      <article class="panel tv-card"><div class="ph"><img src="Bottle_Sizes_img/tastevin_2.webp" alt="" loading="lazy" draggable="false"></div><h3 data-fr="Vu de dessus" data-en="Seen from above">Vu de dessus</h3><p data-fr="Le même décor à plat : chaque bosse renvoie la lumière à travers une épaisseur de vin différente." data-en="The same pattern from above: each boss reflects light through a different depth of wine.">Le même décor à plat : chaque bosse renvoie la lumière à travers une épaisseur de vin différente.</p></article>
+      <article class="panel tv-card"><div class="ph"><img src="Bottle_Sizes_img/tastevin_3.webp" alt="" loading="lazy" draggable="false"></div><h3 data-fr="Anse aux serpents" data-en="Serpent handle">Anse aux serpents</h3><p data-fr="Anse ajourée de deux &lt;b&gt;serpents affrontés&lt;/b&gt;, &lt;b&gt;godrons&lt;/b&gt; rayonnants et fond cerné d’un rang de perles." data-en="Pierced handle of two &lt;b&gt;facing serpents&lt;/b&gt;, radiating &lt;b&gt;flutes&lt;/b&gt; and a bowl ringed with beading.">Anse ajourée de deux <b>serpents affrontés</b>, <b>godrons</b> rayonnants et fond cerné d’un rang de perles.</p></article>
+      <article class="panel tv-card"><div class="ph"><img src="Bottle_Sizes_img/tastevin_4.webp" alt="" loading="lazy" draggable="false"></div><h3 data-fr="Godrons et cupules" data-en="Flutes and cupules">Godrons et cupules</h3><p data-fr="Le décor classique en deux moitiés : &lt;b&gt;godrons torses&lt;/b&gt; d’un côté, &lt;b&gt;cupules&lt;/b&gt; de l’autre. Anneau gravé des initiales du propriétaire." data-en="The classic two-half design: &lt;b&gt;twisted flutes&lt;/b&gt; on one side, &lt;b&gt;cupules&lt;/b&gt; on the other. Ring engraved with the owner’s initials.">Le décor classique en deux moitiés : <b>godrons torses</b> d’un côté, <b>cupules</b> de l’autre. Anneau gravé des initiales du propriétaire.</p></article>
+      <article class="panel tv-card"><div class="ph"><img src="Bottle_Sizes_img/tastevin_5.webp" alt="" loading="lazy" draggable="false"></div><h3 data-fr="Poucier plat" data-en="Flat thumbpiece">Poucier plat</h3><p data-fr="Prise en &lt;b&gt;poucier&lt;/b&gt; (« oreille ») au lieu de l’anneau, godrons ondulés et perles." data-en="&lt;b&gt;Thumbpiece&lt;/b&gt; (“ear”) grip instead of a ring, wavy flutes and pearls.">Prise en <b>poucier</b> (« oreille ») au lieu de l’anneau, godrons ondulés et perles.</p></article>
+    </div>
+    <p class="scale-note tv-credit" data-fr="Tastevins de la collection des Hospices de Beaune (Hôtel-Dieu) · Photos&amp;nbsp;: ©&amp;nbsp;2026 Christophe A.&amp;nbsp;Paul&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;" data-en="Tastevins from the Hospices de Beaune collection (Hôtel-Dieu) · Photos: ©&amp;nbsp;2026 Christophe A.&amp;nbsp;Paul&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;">Tastevins de la collection des Hospices de Beaune (Hôtel-Dieu) · Photos&nbsp;: ©&nbsp;2026 Christophe A.&nbsp;Paul<sup class="src"><a href="#tv-src-10">10</a></sup></p>
+
+    <div class="tv-two" id="usage">
+      <div class="panel tv-box">
+        <h3 data-fr="Comment s’en servir" data-en="How to use it">Comment s’en servir</h3>
+        <div class="meta" data-fr="Le geste du caviste" data-en="The cellar master’s gesture">Le geste du caviste</div>
+        <ol class="steps">
+          <li data-fr="Tirer un peu de vin du fût par la bonde à la &lt;b&gt;pipette&lt;/b&gt;, que l’on appelle elle aussi « tâte-vin »&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;." data-en="Draw a little wine from the cask through the bung with a &lt;b&gt;pipette&lt;/b&gt;, which is also called a &lt;i&gt;tâte-vin&lt;/i&gt;&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.">Tirer un peu de vin du fût par la bonde à la <b>pipette</b>, que l’on appelle elle aussi « tâte-vin »<sup class="src"><a href="#tv-src-1">1</a></sup>.</li>
+          <li data-fr="Tenir le tastevin par l’anneau, le pouce posé sur la prise, et n’y verser qu’un fond de vin." data-en="Hold the tastevin by the ring, thumb on the grip, and pour in just a little wine.">Tenir le tastevin par l’anneau, le pouce posé sur la prise, et n’y verser qu’un fond de vin.</li>
+          <li data-fr="L’incliner vers la bougie ou la lampe : l’ombilic et les reliefs révèlent couleur et limpidité&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;." data-en="Tilt it towards the candle or lamp: the dome and the raised pattern reveal colour and clarity&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-2&quot;&gt;2&lt;/a&gt;,&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;.">L’incliner vers la bougie ou la lampe : l’ombilic et les reliefs révèlent couleur et limpidité<sup class="src"><a href="#tv-src-2">2</a>,<a href="#tv-src-3">3</a></sup>.</li>
+          <li data-fr="Faire tourner, sentir, goûter&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;… et recracher." data-en="Swirl, smell, taste&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;… and spit.">Faire tourner, sentir, goûter<sup class="src"><a href="#tv-src-1">1</a></sup>… et recracher.</li>
+        </ol>
+        <p data-fr="Aujourd’hui, le verre à pied a pris le relais : le tastevin sert surtout d’&lt;b&gt;insigne&lt;/b&gt;, porté en sautoir par les sommeliers et les membres des confréries&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;,&lt;a href=&quot;#tv-src-5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;." data-en="Today the stemmed glass has taken over: the tastevin is mostly an &lt;b&gt;emblem&lt;/b&gt;, worn around the neck by sommeliers and members of wine brotherhoods&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-3&quot;&gt;3&lt;/a&gt;,&lt;a href=&quot;#tv-src-5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.">Aujourd’hui, le verre à pied a pris le relais : le tastevin sert surtout d’<b>insigne</b>, porté en sautoir par les sommeliers et les membres des confréries<sup class="src"><a href="#tv-src-3">3</a>,<a href="#tv-src-5">5</a></sup>.</p>
+      </div>
+      <div class="panel tv-box">
+        <h3 data-fr="Les Chevaliers du Tastevin" data-en="The Chevaliers du Tastevin">Les Chevaliers du Tastevin</h3>
+        <div class="meta" data-fr="Nuits-Saint-Georges, 1934" data-en="Nuits-Saint-Georges, 1934">Nuits-Saint-Georges, 1934</div>
+        <p data-fr="En pleine crise des années 1930, alors que le vin ne sort plus des caves, &lt;b&gt;Georges Faiveley&lt;/b&gt; et &lt;b&gt;Camille Rodier&lt;/b&gt; fondent le &lt;b&gt;16 novembre 1934&lt;/b&gt;, au Caveau Nuiton de Nuits-Saint-Georges, la &lt;b&gt;Confrérie des Chevaliers du Tastevin&lt;/b&gt;, pour relancer les vins de Bourgogne. Le tastevin en devient l’emblème&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;." data-en="In the depths of the 1930s slump, when wine was no longer leaving the cellars, &lt;b&gt;Georges Faiveley&lt;/b&gt; and &lt;b&gt;Camille Rodier&lt;/b&gt; founded the &lt;b&gt;Confrérie des Chevaliers du Tastevin&lt;/b&gt; on &lt;b&gt;16 November 1934&lt;/b&gt; in the Caveau Nuiton at Nuits-Saint-Georges, to revive Burgundy wines. The tastevin became its emblem&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;.">En pleine crise des années 1930, alors que le vin ne sort plus des caves, <b>Georges Faiveley</b> et <b>Camille Rodier</b> fondent le <b>16 novembre 1934</b>, au Caveau Nuiton de Nuits-Saint-Georges, la <b>Confrérie des Chevaliers du Tastevin</b>, pour relancer les vins de Bourgogne. Le tastevin en devient l’emblème<sup class="src"><a href="#tv-src-5">5</a></sup>.</p>
+        <p data-fr="Depuis &lt;b&gt;1944&lt;/b&gt;, la confrérie a son siège au &lt;b&gt;Château du Clos de Vougeot&lt;/b&gt;, où elle tient ses chapitres. Depuis &lt;b&gt;1950&lt;/b&gt;, son &lt;b&gt;Tastevinage&lt;/b&gt; sélectionne à l’aveugle des vins de Bourgogne, qui portent ensuite une étiquette spéciale&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-9&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;." data-en="Since &lt;b&gt;1944&lt;/b&gt; the brotherhood has been based at the &lt;b&gt;Château du Clos de Vougeot&lt;/b&gt;, where it holds its ceremonies. Since &lt;b&gt;1950&lt;/b&gt; its &lt;b&gt;Tastevinage&lt;/b&gt; blind tasting has selected Burgundy wines that then carry a special label&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-9&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;.">Depuis <b>1944</b>, la confrérie a son siège au <b>Château du Clos de Vougeot</b>, où elle tient ses chapitres. Depuis <b>1950</b>, son <b>Tastevinage</b> sélectionne à l’aveugle des vins de Bourgogne, qui portent ensuite une étiquette spéciale<sup class="src"><a href="#tv-src-9">9</a></sup>.</p>
+      </div>
+    </div>
+
+    <div class="panel tv-box beaune" style="margin-top:16px">
+      <h3 data-fr="À voir : les Hospices de Beaune" data-en="Go and see: the Hospices de Beaune">À voir : les Hospices de Beaune</h3>
+      <div class="meta" data-fr="Hôtel-Dieu · Beaune (Côte-d’Or)" data-en="Hôtel-Dieu · Beaune (Côte-d’Or)">Hôtel-Dieu · Beaune (Côte-d’Or)</div>
+      <p data-fr="Fondé en &lt;b&gt;1443&lt;/b&gt; par le chancelier &lt;b&gt;Nicolas Rolin&lt;/b&gt; et son épouse &lt;b&gt;Guigone de Salins&lt;/b&gt; pour soigner les pauvres, l’Hôtel-Dieu de Beaune, avec ses célèbres toits de tuiles vernissées, est aujourd’hui un musée&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;. On y voit une belle &lt;b&gt;collection de tastevins&lt;/b&gt; : tous ceux photographiés sur cette page en font partie&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;. Elle permet de comparer les décors, les anses et les poinçons d’orfèvres de plusieurs siècles." data-en="Founded in &lt;b&gt;1443&lt;/b&gt; by Chancellor &lt;b&gt;Nicolas Rolin&lt;/b&gt; and his wife &lt;b&gt;Guigone de Salins&lt;/b&gt; to care for the poor, the Hôtel-Dieu in Beaune, with its famous glazed-tile roofs, is now a museum&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;. It displays a fine &lt;b&gt;collection of tastevins&lt;/b&gt;: every one photographed on this page belongs to it&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-10&quot;&gt;10&lt;/a&gt;&lt;/sup&gt;. It is a chance to compare the patterns, handles and silversmiths’ marks of several centuries.">Fondé en <b>1443</b> par le chancelier <b>Nicolas Rolin</b> et son épouse <b>Guigone de Salins</b> pour soigner les pauvres, l’Hôtel-Dieu de Beaune, avec ses célèbres toits de tuiles vernissées, est aujourd’hui un musée<sup class="src"><a href="#tv-src-6">6</a></sup>. On y voit une belle <b>collection de tastevins</b> : tous ceux photographiés sur cette page en font partie<sup class="src"><a href="#tv-src-10">10</a></sup>. Elle permet de comparer les décors, les anses et les poinçons d’orfèvres de plusieurs siècles.</p>
+      <p data-fr="Le lien avec le vin est ancien : au fil des siècles, des donateurs ont légué leurs vignes aux Hospices, qui possèdent aujourd’hui une soixantaine d’hectares, surtout en premiers et grands crus. Depuis &lt;b&gt;1859&lt;/b&gt;, leurs vins sont vendus aux enchères le &lt;b&gt;troisième dimanche de novembre&lt;/b&gt;&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-7&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;. À quelques rues de là, le &lt;b&gt;Musée du Vin de Bourgogne&lt;/b&gt; présente lui aussi des tastevins, dans sa salle des rites et coutumes&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-8&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;." data-en="The link with wine is old: over the centuries donors bequeathed their vineyards to the Hospices, which now own some sixty hectares, mostly premiers and grands crus. Since &lt;b&gt;1859&lt;/b&gt; their wines have been auctioned on the &lt;b&gt;third Sunday of November&lt;/b&gt;&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-7&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;. A few streets away, the &lt;b&gt;Musée du Vin de Bourgogne&lt;/b&gt; also shows tastevins, in its rites and customs room&lt;sup class=&quot;src&quot;&gt;&lt;a href=&quot;#tv-src-8&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;.">Le lien avec le vin est ancien : au fil des siècles, des donateurs ont légué leurs vignes aux Hospices, qui possèdent aujourd’hui une soixantaine d’hectares, surtout en premiers et grands crus. Depuis <b>1859</b>, leurs vins sont vendus aux enchères le <b>troisième dimanche de novembre</b><sup class="src"><a href="#tv-src-7">7</a></sup>. À quelques rues de là, le <b>Musée du Vin de Bourgogne</b> présente lui aussi des tastevins, dans sa salle des rites et coutumes<sup class="src"><a href="#tv-src-8">8</a></sup>.</p>
+    </div>
+
+    <div class="panel tv-box tv-sources" id="tastevin-sources">
+      <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+      <ol>
+        <li id="tv-src-1" data-fr="Académie française, &lt;i&gt;Dictionnaire&lt;/i&gt;, 9&lt;sup&gt;e&lt;/sup&gt; édition, article « tâte-vin » (pipette et petite coupe ; graphies &lt;i&gt;taste-vin&lt;/i&gt;, &lt;i&gt;tastevin&lt;/i&gt;). &lt;a class=&quot;u&quot; href=&quot;https://www.dictionnaire-academie.fr/article/A9T0388&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Académie française, &lt;i&gt;Dictionnaire&lt;/i&gt;, 9th edition, entry “tâte-vin” (pipette and small cup; spellings &lt;i&gt;taste-vin&lt;/i&gt;, &lt;i&gt;tastevin&lt;/i&gt;). &lt;a class=&quot;u&quot; href=&quot;https://www.dictionnaire-academie.fr/article/A9T0388&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Académie française, <i>Dictionnaire</i>, 9<sup>e</sup> édition, article « tâte-vin » (pipette et petite coupe ; graphies <i>taste-vin</i>, <i>tastevin</i>). <a class="u" href="https://www.dictionnaire-academie.fr/article/A9T0388" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-2" data-fr="The Metropolitan Museum of Art, New York, notices « Wine taster » (tasses à vin françaises en argent, XVIII&lt;sup&gt;e&lt;/sup&gt; siècle) : usage par les marchands, choix de l’argent. &lt;a class=&quot;u&quot; href=&quot;https://www.metmuseum.org/art/collection/search/200180&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="The Metropolitan Museum of Art, New York, “Wine taster” records (French silver wine tasters, 18th century): use by merchants, why silver. &lt;a class=&quot;u&quot; href=&quot;https://www.metmuseum.org/art/collection/search/200180&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">The Metropolitan Museum of Art, New York, notices « Wine taster » (tasses à vin françaises en argent, XVIII<sup>e</sup> siècle) : usage par les marchands, choix de l’argent. <a class="u" href="https://www.metmuseum.org/art/collection/search/200180" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-3" data-fr="Jancis Robinson, « The return of the tastevin », JancisRobinson.com : bosses et « nombril », traditions orales, tastevin lisse de Bordeaux. &lt;a class=&quot;u&quot; href=&quot;https://jancisrobinson.com/articles/the-return-of-the-tastevin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Jancis Robinson, “The return of the tastevin”, JancisRobinson.com: bosses and “navel”, oral traditions, plain Bordeaux taster. &lt;a class=&quot;u&quot; href=&quot;https://jancisrobinson.com/articles/the-return-of-the-tastevin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Jancis Robinson, « The return of the tastevin », JancisRobinson.com : bosses et « nombril », traditions orales, tastevin lisse de Bordeaux. <a class="u" href="https://jancisrobinson.com/articles/the-return-of-the-tastevin" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-4" data-fr="Tastevin en argent, Paris 1760–1761, orfèvre Jean-Baptiste Gillet (notice d’antiquaire avec poinçons), Proantic. &lt;a class=&quot;u&quot; href=&quot;https://www.proantic.com/1803311-paris-1760-tastevin-en-argent-massif-par-jean-baptiste-gillet.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Silver tastevin, Paris 1760–1761, silversmith Jean-Baptiste Gillet (dealer’s record with hallmarks), Proantic. &lt;a class=&quot;u&quot; href=&quot;https://www.proantic.com/1803311-paris-1760-tastevin-en-argent-massif-par-jean-baptiste-gillet.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Tastevin en argent, Paris 1760–1761, orfèvre Jean-Baptiste Gillet (notice d’antiquaire avec poinçons), Proantic. <a class="u" href="https://www.proantic.com/1803311-paris-1760-tastevin-en-argent-massif-par-jean-baptiste-gillet.html" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-5" data-fr="Confrérie des Chevaliers du Tastevin, « Histoire » (fondation le 16 novembre 1934 au Caveau Nuiton, acquisition du Clos de Vougeot à la Libération). &lt;a class=&quot;u&quot; href=&quot;https://tastevin-bourgogne.com/en/history&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Confrérie des Chevaliers du Tastevin, “History” (founded 16 November 1934 at the Caveau Nuiton, Clos de Vougeot acquired after the Liberation). &lt;a class=&quot;u&quot; href=&quot;https://tastevin-bourgogne.com/en/history&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Confrérie des Chevaliers du Tastevin, « Histoire » (fondation le 16 novembre 1934 au Caveau Nuiton, acquisition du Clos de Vougeot à la Libération). <a class="u" href="https://tastevin-bourgogne.com/en/history" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-6" data-fr="Hospices Civils de Beaune, &lt;i&gt;Dossier de présentation de l’Hôtel-Dieu de Beaune&lt;/i&gt; (PDF). &lt;a class=&quot;u&quot; href=&quot;https://musee.hospices-de-beaune.com/sites/musee/files/2022-06/Dossier%20de%20pr%C3%A9sentation%20-%20H%C3%B4tel-Dieu%20de%20Beaune%20-%20Hospices%20Civils%20de%20Beaune_0.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Hospices Civils de Beaune, &lt;i&gt;Hôtel-Dieu de Beaune presentation file&lt;/i&gt; (PDF, in French). &lt;a class=&quot;u&quot; href=&quot;https://musee.hospices-de-beaune.com/sites/musee/files/2022-06/Dossier%20de%20pr%C3%A9sentation%20-%20H%C3%B4tel-Dieu%20de%20Beaune%20-%20Hospices%20Civils%20de%20Beaune_0.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Hospices Civils de Beaune, <i>Dossier de présentation de l’Hôtel-Dieu de Beaune</i> (PDF). <a class="u" href="https://musee.hospices-de-beaune.com/sites/musee/files/2022-06/Dossier%20de%20pr%C3%A9sentation%20-%20H%C3%B4tel-Dieu%20de%20Beaune%20-%20Hospices%20Civils%20de%20Beaune_0.pdf" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-7" data-fr="Sotheby’s, catalogue de la 161&lt;sup&gt;e&lt;/sup&gt; vente des vins des Hospices de Beaune (domaine, enchères depuis 1859). &lt;a class=&quot;u&quot; href=&quot;https://www.sothebys.com/en/digital-catalogues/161e-vente-des-vins-des-hospices-de-beaune&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Sotheby’s, catalogue of the 161st Hospices de Beaune wine sale (estate, auctions since 1859). &lt;a class=&quot;u&quot; href=&quot;https://www.sothebys.com/en/digital-catalogues/161e-vente-des-vins-des-hospices-de-beaune&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Sotheby’s, catalogue de la 161<sup>e</sup> vente des vins des Hospices de Beaune (domaine, enchères depuis 1859). <a class="u" href="https://www.sothebys.com/en/digital-catalogues/161e-vente-des-vins-des-hospices-de-beaune" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-8" data-fr="Office de tourisme de Beaune, « Musée du Vin de Bourgogne » (salle des rites et coutumes : tastevins). &lt;a class=&quot;u&quot; href=&quot;https://beaune-tourism.com/things-to-do/attractions/musee-du-vin-de-bourgogne-675138&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Beaune tourist office, “Musée du Vin de Bourgogne” (rites and customs room: tastevins). &lt;a class=&quot;u&quot; href=&quot;https://beaune-tourism.com/things-to-do/attractions/musee-du-vin-de-bourgogne-675138&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Office de tourisme de Beaune, « Musée du Vin de Bourgogne » (salle des rites et coutumes : tastevins). <a class="u" href="https://beaune-tourism.com/things-to-do/attractions/musee-du-vin-de-bourgogne-675138" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-9" data-fr="Château du Clos de Vougeot, « The seal of approval of the Greater Burgundy Wine Region » (Tastevinage créé en 1950, dégustation à l’aveugle). &lt;a class=&quot;u&quot; href=&quot;https://www.closdevougeot.fr/en/news/11/the-seal-of-approval-of-the-greater-burgundy-wine-region&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;" data-en="Château du Clos de Vougeot, “The seal of approval of the Greater Burgundy Wine Region” (Tastevinage created in 1950, blind tasting). &lt;a class=&quot;u&quot; href=&quot;https://www.closdevougeot.fr/en/news/11/the-seal-of-approval-of-the-greater-burgundy-wine-region&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;↗&lt;/a&gt;">Château du Clos de Vougeot, « The seal of approval of the Greater Burgundy Wine Region » (Tastevinage créé en 1950, dégustation à l’aveugle). <a class="u" href="https://www.closdevougeot.fr/en/news/11/the-seal-of-approval-of-the-greater-burgundy-wine-region" target="_blank" rel="noopener">↗</a></li>
+        <li id="tv-src-10" data-fr="Photographies et observations de l’auteur, collection de tastevins de l’Hôtel-Dieu, Hospices de Beaune. © 2026 Christophe A. Paul." data-en="Photographs and observations by the author, tastevin collection of the Hôtel-Dieu, Hospices de Beaune. © 2026 Christophe A. Paul.">Photographies et observations de l’auteur, collection de tastevins de l’Hôtel-Dieu, Hospices de Beaune. © 2026 Christophe A. Paul.</li>
+      </ol>
+    </div>
+  </section>
+
+  <footer data-fr="Une bouteille de 75&nbsp;cl = 6 verres · 1 magnum = 2 bouteilles · 1 caisse = 6 ou 12 bouteilles" data-en="One 75&nbsp;cl bottle = 6 glasses · 1 magnum = 2 bottles · 1 case = 6 or 12 bottles">Une bouteille de 75&nbsp;cl = 6 verres · 1 magnum = 2 bouteilles · 1 caisse = 6 ou 12 bouteilles</footer>
+</div>
+
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var NS = 'http://www.w3.org/2000/svg';
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+
+  /* ---------- bottle photos (white backgrounds cut out to transparent PNGs) ---------- */
+  var IMG = { bourgogne:[241,855], chopine:[75,257], clavelin:[209,565], damejeanne:[483,729], flute:[160,693], pot:[150,590] };
+  function photo(name, hpx, cls){
+    var r = IMG[name], w = hpx * r[0] / r[1];
+    return '<img class="'+(cls||'')+'" src="Bottle_Sizes_img/'+name+'.png" width="'+w.toFixed(1)+'" height="'+hpx.toFixed(1)+'" alt="" draggable="false">';
+  }
+
+  /* ---------- data ---------- */
+  var B = [
+    {id:'piccolo', L:.1875, fr:'Piccolo', en:'Piccolo', alt:{fr:'quart', en:'split'},
+      sfr:'Le quart de bouteille, format individuel du champagne servi au bar ou en avion.',
+      sen:'The quarter bottle, a single serving of Champagne in bars and on planes.'},
+    {id:'fillette', L:.375, fr:'Fillette', en:'Fillette', alt:{fr:'demi-bouteille', en:'half bottle'},
+      sfr:'Nom traditionnel de la demi-bouteille en Loire (Anjou, Touraine). Idéale au restaurant pour accorder un vin à chaque plat.',
+      sen:'The traditional Loire (Anjou, Touraine) name for a half bottle. Ideal in restaurants for matching a wine to each course.'},
+    {id:'bouteille', L:.75, fr:'Bouteille', en:'Bottle', alt:null,
+      sfr:'Le format de référence : 75 cl, six verres. Pourquoi ce volume ? Réponse plus bas.',
+      sen:'The reference size: 75 cl, six glasses. Why this volume? See below.'},
+    {id:'magnum', L:1.5, fr:'Magnum', en:'Magnum', alt:null,
+      sfr:'Du latin <i>magnum</i>, « grand ». Le format préféré des amateurs : avec moins d’air par rapport au vin, il vieillit plus lentement et plus harmonieusement.',
+      sen:'From the Latin <i>magnum</i>, “great”. Collectors’ favourite: with less air relative to the wine, it ages more slowly and more gracefully.'},
+    {id:'jeroboam', L:3, fr:'Jéroboam', en:'Jeroboam', alt:null,
+      sfr:'Jéroboam I<sup>er</sup>, premier roi d’Israël (v. 931–909 av. J.-C.). À Bordeaux, le nom désigne une bouteille plus grande et les 3 L s’y appellent double magnum.',
+      sen:'Jeroboam I, first king of Israel (c. 931–909 BC). In Bordeaux the name refers to a larger bottle, and 3 L is called a double magnum.'},
+    {id:'rehoboam', L:4.5, fr:'Réhoboam', en:'Rehoboam', alt:null,
+      sfr:'Roboam, fils du roi Salomon et roi de Juda (v. 931–914 av. J.-C.). Surtout utilisé en Champagne.',
+      sen:'Rehoboam, son of King Solomon and king of Judah (c. 931–914 BC). Mostly used in Champagne.'},
+    {id:'mathusalem', L:6, fr:'Mathusalem', en:'Methuselah', alt:null,
+      sfr:'Le patriarche le plus âgé de l’Ancien Testament : il aurait vécu 969 ans. À Bordeaux, les 6 L s’appellent impériale.',
+      sen:'The oldest man in the Old Testament, said to have lived 969 years. In Bordeaux, 6 L is called an imperial.'},
+    {id:'salmanazar', L:9, fr:'Salmanazar', en:'Salmanazar', alt:null,
+      sfr:'Salmanazar V, roi d’Assyrie (727–722 av. J.-C.).',
+      sen:'Shalmaneser V, king of Assyria (727–722 BC).'},
+    {id:'balthazar', L:12, fr:'Balthazar', en:'Balthazar', alt:null,
+      sfr:'L’un des trois Rois mages venus offrir l’or, l’encens et la myrrhe.',
+      sen:'One of the three Wise Men who brought gold, frankincense and myrrh.'},
+    {id:'nabuchodonosor', L:15, fr:'Nabuchodonosor', en:'Nebuchadnezzar', alt:null,
+      sfr:'Nabuchodonosor II, roi de Babylone (605–562 av. J.-C.), à qui la tradition attribue les jardins suspendus.',
+      sen:'Nebuchadnezzar II, king of Babylon (605–562 BC), traditionally credited with the Hanging Gardens.'},
+    {id:'melchior', L:18, fr:'Melchior', en:'Melchior', alt:null,
+      sfr:'Un autre des trois Rois mages. On l’appelle parfois Salomon.',
+      sen:'Another of the three Wise Men. Sometimes called a Solomon.'},
+    {id:'souverain', L:26.25, fr:'Souverain', en:'Sovereign', alt:null, ch:1,
+      sfr:'Format propre à la Champagne.',
+      sen:'A Champagne-only size.'},
+    {id:'primat', L:27, fr:'Primat', en:'Primat', alt:null, ch:1,
+      sfr:'Champagne uniquement. Aussi appelé Goliath.',
+      sen:'Champagne only. Also called a Goliath.'},
+    {id:'melchizedech', L:30, fr:'Melchizédech', en:'Melchizedek', alt:null, ch:1,
+      sfr:'Figure biblique énigmatique, roi de Salem (Jérusalem) et prêtre, qui rencontra Abraham et lui offrit le pain et le vin. Aussi appelé Midas.',
+      sen:'An enigmatic biblical figure, king of Salem (Jerusalem) and priest, who met Abraham and offered him bread and wine. Also called a Midas.'}
+  ];
+
+  function num(x, dec){
+    var t = (+x.toFixed(dec==null?2:dec)).toString();
+    return LANG==='fr' ? t.replace('.', ',') : t;
+  }
+  function vol(L){ return L < 1 ? num(L*100) + ' cl' : num(L) + ' L'; }
+  function btl(L){
+    var n = L/.75;
+    if(n===.25) return '¼'; if(n===.5) return '½';
+    return num(n, 2);
+  }
+
+  /* ---------- lineup ---------- */
+  var SEL = 2;
+  var cur = -1;
+  function colMin(){ return window.innerWidth < 600 ? 54 : 64; }
+  function fitH0(){
+    var avail = $('lineup').parentNode.clientWidth - 4, ratio = IMG.bourgogne[0]/IMG.bourgogne[1], gap = 6;
+    for(var h0 = 128; h0 > 72; h0 -= 2){
+      var tot = 0;
+      for(var i=0;i<B.length;i++) tot += Math.max(colMin(), h0*Math.cbrt(B[i].L/.75)*ratio + 4) + gap;
+      if(tot <= avail) return h0;
+    }
+    return 72;
+  }
+  function renderLineup(){
+    var h0 = fitH0(), sc = $('lineup').parentNode;
+    drawLineup(h0);
+    while(h0 > 64 && $('lineup').offsetWidth > sc.clientWidth){ h0 -= 4; drawLineup(h0); }
+  }
+  function drawLineup(h0){
+    var html = '';
+    for(var i=0;i<B.length;i++){
+      var b = B[i], hp = h0*Math.cbrt(b.L/.75);
+      html += '<button type="button" class="col'+(i===SEL?' on':'')+'" data-i="'+i+'" style="min-width:'+colMin()+'px" aria-label="'+b[LANG]+', '+vol(b.L)+'">'
+            + photo('bourgogne', hp, 'b')
+            + '<div class="shadow"></div>'
+            + '<div class="nm">'+b[LANG]+'</div>'
+            + '<div class="vol">'+vol(b.L)+'</div>'
+            + '<div class="x">×'+btl(b.L)+'</div>'
+            + '</button>';
+    }
+    $('lineup').innerHTML = html;
+  }
+  function renderDetail(){
+    var b = B[SEL];
+    $('d-eye').innerHTML = (LANG==='fr' ? 'Format ' : 'Size ') + (SEL+1) + ' / ' + B.length + (b.alt ? ' · ' + b.alt[LANG] : '');
+    $('d-name').innerHTML = b[LANG] + (b.ch ? '<span class="badge">'+(LANG==='fr'?'Champagne uniquement':'Champagne only')+'</span>' : '');
+    $('d-vol').textContent = vol(b.L);
+    $('d-btl').textContent = btl(b.L);
+    $('d-gl').textContent = num(b.L/.125, 1);
+    $('d-story').innerHTML = LANG==='fr' ? b.sfr : b.sen;
+    // stage: selected bottle next to a 75 cl reference, scaled so the bigger one fits
+    var maxH = $('stage').clientHeight - 40, r = Math.cbrt(b.L/.75), hb, hr;
+    if(r >= 1){ hb = maxH; hr = maxH / r; } else { hr = maxH * 0.8; hb = hr * r; }
+    var html = '<figure>' + photo('bourgogne', hb) + '<div class="shadow"></div><figcaption>'+b[LANG]+'</figcaption></figure>';
+    if(SEL !== 2) html += '<figure class="ref">' + photo('bourgogne', hr) + '<div class="shadow"></div><figcaption>75 cl</figcaption></figure>';
+    $('stage').innerHTML = html;
+    // mini bottles
+    var n = b.L/.75, full = Math.floor(n + 1e-9), part = n - full, m = '';
+    var mh = n > 24 ? 22 : 30;
+    for(var i=0;i<full;i++) m += photo('bourgogne', mh);
+    if(part > 1e-6) m += photo('bourgogne', mh, 'part');
+    $('minis').innerHTML = m;
+    $('prev').disabled = SEL === 0; $('next').disabled = SEL === B.length-1;
+    $('prev').style.opacity = SEL === 0 ? .4 : 1; $('next').style.opacity = SEL === B.length-1 ? .4 : 1;
+  }
+  function select(i){
+    SEL = Math.max(0, Math.min(B.length-1, i));
+    var cols = $('lineup').children;
+    for(var k=0;k<cols.length;k++) cols[k].classList.toggle('on', k===SEL);
+    if(cols[SEL] && cols[SEL].scrollIntoView){
+      var sc = $('lineup').parentNode;
+      if(sc.scrollWidth > sc.clientWidth) sc.scrollTo({left: cols[SEL].offsetLeft - sc.clientWidth/2 + cols[SEL].offsetWidth/2, behavior:'smooth'});
+    }
+    renderDetail();
+  }
+  $('lineup').addEventListener('click', function(e){
+    var c = e.target.closest('.col'); if(c) select(+c.getAttribute('data-i'));
+  });
+  $('lineup').addEventListener('keydown', function(e){
+    if(e.key==='ArrowRight'){ select(SEL+1); $('lineup').children[SEL].focus(); e.preventDefault(); }
+    if(e.key==='ArrowLeft'){ select(SEL-1); $('lineup').children[SEL].focus(); e.preventDefault(); }
+  });
+  $('prev').addEventListener('click', function(){ select(SEL-1); });
+  $('next').addEventListener('click', function(){ select(SEL+1); });
+  /* ---------- static drawings ---------- */
+  function renderStatic(){
+    var r6 = '';
+    for(var i=0;i<6;i++) r6 += photo('bourgogne', 34);
+    $('row6').innerHTML = r6;
+  }
+  var CARD = {
+    damejeanne:function(){ return photo('damejeanne', 185); },
+    clavelin:  function(){ return photo('clavelin', 130); },
+    flute:     function(){ return photo('flute', 180); },
+    pot:       function(){ return photo('pot', 135); },
+    chopine:   function(){ return photo('chopine', 100); }
+  };
+  var pics = document.querySelectorAll('[data-draw]');
+  for(var p=0;p<pics.length;p++) pics[p].innerHTML = CARD[pics[p].getAttribute('data-draw')]() + '<div class="shadow"></div>';
+
+  function renderGiants(){
+    // 30 cm bottle → px scale, constant proportions
+    var wide = window.innerWidth > 700, cm = wide ? 1.9 : 1.15, html = '';
+    var items = [
+      {L:.75, fr:'Bouteille', en:'Bottle', glass:'bottle'},
+      {L:30, fr:'Melchizédech', en:'Melchizedek', glass:'bottle'},
+      {L:93, fr:'Adélaïde', en:'Adélaïde', glass:'bottle'},
+      {L:150, fr:'Sublime', en:'Sublime', glass:'bottle'}
+    ];
+    for(var i=0;i<items.length;i++){
+      var it = items[i], hcm = 30*Math.cbrt(it.L/.75);
+      html += '<figure>' + photo('bourgogne', hcm*cm) + '<div class="shadow"></div>'
+            + '<figcaption><b>'+it[LANG]+'</b><span>'+vol(it.L)+' · ≈ '+(hcm>=100 ? num(hcm/100,2)+' m' : Math.round(hcm)+' cm')+'</span></figcaption></figure>';
+    }
+    $('gstage').innerHTML = html;
+  }
+
+  /* ---------- i18n ---------- */
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Formats de bouteilles' : 'Wine bottle sizes';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){
+      var v = nodes[i].getAttribute('data-'+LANG);
+      if(v!==null) nodes[i].innerHTML = v;
+    }
+    $('langlbl').textContent = (LANG==='fr') ? 'English' : 'Français';
+  }
+  function renderAll(){ renderLineup(); renderDetail(); renderStatic(); renderGiants(); }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang(); renderAll();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); renderAll(); }
+  });
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(function(){ renderLineup(); renderDetail(); renderGiants(); }, 120); });
+
+  // init
+  applyLang(); renderAll();
+  // deep links (#gamme, #pourquoi-75cl, #autres, #demesures, #histoire, #tastevin): re-jump once the drawings have set the layout
+  if(location.hash){
+    var tgt = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    var jump = function(){ if(tgt) tgt.scrollIntoView({behavior:'instant', block:'start'}); };
+    jump(); setTimeout(jump, 0); window.addEventListener('load', jump);
+  }
+})();
+</script>
+</body>
+</html>

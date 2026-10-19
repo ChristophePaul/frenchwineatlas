@@ -1,0 +1,7 @@
+/* Vineyard-in-fog watermark (user's photo), the same as on « Anatomie d'un décret AOC » — 2026-10-19.
+   Loaded by assets/theme.js only on the pages listed in its WATERMARK_PAGES; images made by
+   Infos/AOC_Decree/_wm_src/make_watermark.py (copied here). A fixed layer behind the page content,
+   above the page background; bump ?v= after regenerating the images. */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:url("watermark/wm_vineyard_cream.webp?v=1") center / cover no-repeat;}
+html[data-theme="dark"] body::before{background-image:url("watermark/wm_vineyard_dark.webp?v=1");opacity:.7;}

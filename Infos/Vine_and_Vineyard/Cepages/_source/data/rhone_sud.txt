@@ -1,0 +1,75 @@
+= Beaumes-de-Venise | Vallée du Rhône | CDC Beaumes de Venise
+Rouge: grenache N/P ≥50 % (vignoble); syrah N/C ≥20 % (vignoble); mourvèdre N/C; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; ugni blanc B/A; viognier B/A
+! Principal + complémentaires ≥60 % de l'assemblage ; cépages blancs ≤10 % du vignoble.
+
+= Cairanne | Vallée du Rhône | CDC Cairanne
+Rouge: grenache N/P ≥40 %; mourvèdre N/C; syrah N/C; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; viognier B/A
+Blanc: clairette B/P ≥20 %; grenache blanc B/P ≥20 %; roussanne B/P ≥20 %; bourboulenc B/A ≤10 %; marsanne B/A ≤10 %; piquepoul blanc B/A ≤10 %; viognier B/A ≤10 %
+! Rouges : grenache + au moins un cépage complémentaire. Blancs : au moins deux cépages principaux, accessoires ≤30 % au total.
+
+= Châteauneuf-du-Pape | Vallée du Rhône | CDC Châteauneuf-du-Pape
+Rouge, Blanc: bourboulenc B; brun argenté N; cinsaut N; clairette B; clairette rose Rs; counoise N; grenache blanc B; grenache gris G; grenache N; mourvèdre N; muscardin N; picardan B; piquepoul blanc B; piquepoul gris G; piquepoul noir N; roussanne B; syrah N; terret noir N
+! Les 13 cépages historiques (18 variétés en comptant les couleurs), sans hiérarchie ni proportion imposée.
+
+= Côtes du Vivarais | Vallée du Rhône | CDC Cotes du Vivarais
+Rouge: grenache N/P ≥30 %; syrah N/P ≥40 %; cinsaut N/A; marselan N/A
+Rosé: grenache N/P 60–80 %; syrah N/P ≥10 % (vignoble); cinsaut N/A; marselan N/A
+Blanc: grenache blanc B/P ≥50 %; clairette B/C; marsanne B/C; viognier B/A; roussanne B/A
+! Blancs : complémentaires ≥30 %, accessoires ≤20 % de l'assemblage.
+
+= Côtes du Rhône Villages | Vallée du Rhône | CDC Cotes-du-Rhone-Villages
+Rouge, Rosé: grenache N/P majoritaire; mourvèdre N/C; syrah N/C; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; ugni blanc B/A; viognier B/A
+Blanc: bourboulenc B/P; clairette B/P; grenache blanc B/P; marsanne B/P; roussanne B/P; viognier B/P; piquepoul blanc B/A; ugni blanc B/A
+! Rouges : principal + complémentaires ≥66 % de l'assemblage, au moins un complémentaire ; cépages blancs ≤5 % (rouges) / ≤20 % (rosés). Blancs : principaux ≥80 % du vignoble.
+
+= Gigondas | Vallée du Rhône | CDC Gigondas
+Rouge, Rosé: grenache N/P ≥50 %; syrah N/C; mourvèdre N/C; cinsaut N/C; bourboulenc B/A; brun argenté N/A; carignan N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; ugni blanc B/A; viognier B/A; piquepoul gris G/A ≤10 % (variété d'adaptation)
+Blanc: clairette B/P ≥70 %; bourboulenc B/C; clairette rose Rs/C; grenache blanc B/C; grenache gris G/C; marsanne B/C; piquepoul blanc B/C; roussanne B/C; viognier B/A ≤5 % (vignoble); ugni blanc B/A ≤5 % (vignoble); piquepoul gris G/A ≤10 % (variété d'adaptation)
+
+= Grignan-les-Adhémar | Vallée du Rhône | CDC Grignan-les-Adhémar
+Rouge, Rosé: grenache N/P 20–70 % (vignoble); syrah N/P 30–80 % (vignoble); bourboulenc B/A; carignan N/A; cinsaut N/A; clairette B/A; grenache blanc B/A; marsanne B/A; marselan N/A ≤10 %; mourvèdre N/A; roussanne B/A; viognier B/A
+Blanc: bourboulenc B; clairette B; grenache blanc B; marsanne B; roussanne B; viognier B >30 % (vignoble)
+! Rouges : cépages blancs ≤10 % ; rosés ≤20 %. Blancs : bourboulenc + clairette ≤50 % ; aucun cépage >80 % du vignoble.
+
+= Lirac | Vallée du Rhône | CDC Lirac
+Rouge, Rosé: cinsaut N/P; grenache N/P ≥40 % (vignoble); mourvèdre N/P; syrah N/P; carignan N/A ≤10 %; clairette rose Rs/A; counoise N/A; grenache gris G/A; marsanne B/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; ugni blanc B/A; viognier B/A
+Blanc: bourboulenc B/P; clairette B/P; grenache blanc B/P; roussanne B/P; marsanne B/A; piquepoul blanc B/A; ugni blanc B/A; viognier B/A
+! Cépages principaux majoritaires ; mourvèdre + syrah ≥25 % du vignoble ; accessoires ≤10 % (rouges) / ≤20 % (rosés) ; blancs : chaque principal ≤60 %, accessoires ≤30 %.
+
+= Luberon | Vallée du Rhône | CDC Luberon
+Rouge, Rosé: grenache N/P; syrah N/P ≥20 % (vignoble); mourvèdre N/P; bourboulenc B/A; carignan N/A ≤20 %; cinsaut N/A ≤20 %; clairette B/A; grenache blanc B/A; marsanne B/A; marselan N/A ≤10 %; roussanne B/A; ugni blanc B/A; vermentino B/A; viognier B/A
+Blanc: bourboulenc B/P; clairette B/P; grenache blanc B/P; marsanne B/P; roussanne B/P; vermentino B/P; ugni blanc B/C ≤50 %; viognier B/A ≤10 %
+! Au moins 2 cépages ; cépages principaux majoritaires ; grenache + syrah ≥60 % du vignoble.
+
+= Muscat de Beaumes-de-Venise | Vallée du Rhône | CDC Muscat Beaume de Venise
+Vin doux naturel: muscat à petits grains B; muscat à petits grains Rg
+
+= Rasteau | Vallée du Rhône | CDC Rasteau
+Rouge: grenache N/P ≥50 % (vignoble); mourvèdre N/C; syrah N/C; bourboulenc B/A; brun argenté N/A; carignan N/A ≤15 %; cinsaut N/A ≤15 %; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; ugni blanc B/A; viognier B/A
+VDN blanc: grenache blanc B/P; grenache gris G/P; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; marsanne B/A; mourvèdre N/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; syrah N/A; terret noir N/A; ugni blanc B/A; viognier B/A
+VDN ambré, grenat, rosé, tuilé: grenache N/P ≥75 % (grenat, tuilé); grenache gris G/P; grenache blanc B/P; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; marsanne B/A; mourvèdre N/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; syrah N/A; terret noir N/A; ugni blanc B/A; viognier B/A
+! Rouges : principal + complémentaires ≥60 % de l'assemblage. Vins doux naturels : cépages principaux ≥90 % de l'assemblage.
+
+= Tavel | Vallée du Rhône | CDC TAVEL
+Rosé: grenache N/P (obligatoire); bourboulenc B/P; cinsaut N/P; clairette B/P; clairette rose Rs/P; grenache blanc B/P; grenache gris G/P; mourvèdre N/P; piquepoul blanc B/P; piquepoul gris G/P; piquepoul noir N/P; syrah N/P; calitor N/A ≤10 %; carignan blanc B/A ≤10 %; carignan N/A ≤10 %
+! Grenache (noir, blanc, gris) : 30–60 % du vignoble ; chaque cépage principal ≤60 %.
+
+= Vacqueyras | Vallée du Rhône | CDC Vacqueyras
+Rouge: grenache N/P majoritaire (≥50 % vignoble); mourvèdre N/C; syrah N/C; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; viognier B/A
+Rosé: cinsaut N/P; grenache N/P; mourvèdre N/P; syrah N/P; bourboulenc B/A; brun argenté N/A; carignan N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; viognier B/A
+Blanc: bourboulenc B ≤80 %; clairette B ≤80 %; grenache blanc B ≤80 %; marsanne B ≤80 %; roussanne B ≤80 %; viognier B ≤80 %
+! Rouges : accessoires ≤10 %, cépages blancs ≤5 % du vignoble.
+
+= Ventoux | Vallée du Rhône | CDC Ventoux
+Rouge, Rosé: carignan N/P; cinsaut N/P; grenache N/P; mourvèdre N/P; syrah N/P; bourboulenc B/A; clairette B/A; counoise N/A; grenache blanc B/A; marsanne B/A; marselan N/A ≤10 %; piquepoul noir N/A; roussanne B/A; vermentino B/A; viognier B/A; caladoc N/A ≤10 % (variété d'adaptation)
+Blanc: bourboulenc B/P; clairette B/P; grenache blanc B/P; roussanne B/P; vermentino B/P; viognier B/P; marsanne B/A ≤10 %
+! Au moins 2 cépages ; cépages principaux majoritaires ; accessoires ≤20 % (rouges, rosés).
+
+= Vinsobres | Vallée du Rhône | CDC Vinsobres
+Rouge: grenache N/P ≥50 % (vignoble); mourvèdre N/C; syrah N/C; bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; clairette rose Rs/A; counoise N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; ugni blanc B/A; viognier B/A
+! Majoritairement grenache + au moins un complémentaire ; mourvèdre + syrah ≥25 % ; accessoires ≤20 % ; cépages blancs ≤5 %.
+
+= Laudun | Vallée du Rhône | CDC Laudun
+Rouge: grenache N/P ≥50 % (vignoble); syrah N/P ≥25 % (vignoble); bourboulenc B/A; brun argenté N/A; carignan N/A; cinsaut N/A; clairette B/A; counoise N/A; grenache blanc B/A; marsanne B/A; mourvèdre N/A; muscardin N/A; piquepoul blanc B/A; piquepoul noir N/A; roussanne B/A; terret noir N/A; ugni blanc B/A; viognier B/A
+Blanc: clairette B/P ≥25 % (vignoble); grenache blanc B/P ≥25 % (vignoble); roussanne B/C; viognier B/C; bourboulenc B/A; marsanne B/A; piquepoul blanc B/A; ugni blanc B/A
+! 18e cru des Côtes du Rhône (INAO, 2024 ; premier millésime 2024). Rouges : grenache + syrah ≥75 % du vignoble, cépages blancs ≤5 % ; assemblage : les deux principaux ≥66 %, grenache ≥40 %. Blancs : principaux + complémentaires ≥80 % du vignoble, viognier ou roussanne 15 à 30 % ; assemblage des deux principaux et d'au moins un complémentaire ≥75 %, aucun cépage >75 %.

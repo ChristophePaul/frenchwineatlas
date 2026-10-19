@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les vendanges</title>
+<meta name="description" content="Les vendanges : choisir la date, contrôles de maturité, vendange manuelle ou mécanique, tries successives, tri, rendements et règles des appellations.">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  /* chapter 9 */
+  .twocol{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .twocol.stacked{grid-template-columns:minmax(0,1fr);gap:14px;}
+  .stacked .facts{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:11px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14px;line-height:1.55;}
+  .fact b{color:var(--title);}
+
+  .tbl-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .tbl{width:100%;border-collapse:collapse;font-size:14px;}
+  .tbl th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .tbl td{padding:8px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.45;}
+  .tbl td a{font-family:var(--serif);font-size:15.5px;color:var(--title);text-decoration:none;border-bottom:1px dotted var(--faint);}
+  .tbl td.num{font-family:var(--serif);font-size:16px;color:var(--gold-soft);white-space:nowrap;}
+  .tbl td.bar span{display:block;height:12px;border-radius:6px;background:var(--track);overflow:hidden;min-width:120px;}
+  .tbl td.bar i{display:block;height:100%;background:linear-gradient(90deg,#c08a1a,#a0283c);}
+  .tbl td:first-child{white-space:normal;}
+  .mh{display:none;font-family:var(--sans);font-size:12px;color:var(--faint);}
+
+  .conv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(16px,3vw,28px);padding:clamp(16px,2.6vw,26px);align-items:center;}
+  .conv-in{display:grid;gap:10px;}
+  .conv-in label{font-size:13px;color:var(--muted);display:grid;gap:5px;}
+  .conv-in input,.conv-in select{font:600 16px var(--sans);padding:8px 10px;border-radius:10px;border:1px solid var(--hair-hi);background:var(--glass-hi);color:var(--parchment);}
+  .conv-in input:focus,.conv-in select:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .conv-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;}
+  .conv-out div{padding:12px 12px;border-radius:12px;background:var(--glass-hi);border:1px solid var(--hair);}
+  .conv-out b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;color:var(--title);line-height:1.1;}
+  .conv-out span{font-size:12px;color:var(--muted);}
+  .conv-err{color:#c0392b;font-size:12.5px;min-height:1em;margin:0;}
+  .conv-note{grid-column:1/-1;font-size:12px;color:var(--faint);margin:0;}
+
+  .chain{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:14px;}
+  .ch-step{padding:12px 13px;background:var(--glass);border:1px solid var(--hair);border-left:none;font-size:13px;line-height:1.5;}
+  .ch-step:first-child{border-left:1px solid var(--hair);border-radius:14px 0 0 14px;}
+  .ch-step:last-child{border-radius:0 14px 14px 0;}
+  .ch-step::before{content:"";display:block;height:5px;border-radius:3px;background:var(--c);margin-bottom:8px;}
+  .ch-step b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:2px;}
+
+  .hm th:nth-child(2),.hm th:nth-child(3){width:38%;}
+
+  .tries{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .try{padding:14px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);font-size:13.5px;line-height:1.55;}
+  .try b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);margin-bottom:4px;}
+  .try a{color:var(--gold-soft);}
+
+  @media (max-width:1000px){ .tries{grid-template-columns:repeat(2,1fr);} .chain{grid-template-columns:repeat(3,1fr);gap:8px;} .ch-step,.ch-step:first-child,.ch-step:last-child{border:1px solid var(--hair);border-radius:12px;} }
+  @media (max-width:900px){ .twocol,.conv{grid-template-columns:minmax(0,1fr);} }
+  @media (max-width:620px){
+    .tries,.chain{grid-template-columns:minmax(0,1fr);}
+    .diagram-card.scroll{overflow-x:auto;} .diagram-card.scroll .diagram{min-width:560px;}
+    .tbl thead{display:none;} .tbl tr{display:block;padding:10px 4px;border-bottom:1px solid var(--hair);} .tbl td{display:block;border:none;padding:2px 0;}
+    .mh{display:inline;} .tbl td.num{display:inline-block;margin-right:14px;}
+  }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .fact{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tbl th{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tbl td{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tbl td a{border-bottom:1px dotted rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tbl td.bar span{background:rgba(255,253,248,0.60)}
+html[data-theme="cream"] .conv-in input,html[data-theme="cream"] .conv-in select{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .conv-out div{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch-step{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch-step:first-child{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .try{border:1px solid rgba(90,30,40,0.18)}
+@media (max-width:1000px){html[data-theme="cream"] .ch-step,html[data-theme="cream"] .ch-step:first-child,html[data-theme="cream"] .ch-step:last-child{border:1px solid rgba(90,30,40,0.18)}}
+@media (max-width:620px){html[data-theme="cream"] .tbl tr{border-bottom:1px solid rgba(90,30,40,0.18)}}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 9" data-en="The vine &amp; the vineyard · Chapter 9">La vigne &amp; le vignoble · Chapitre 9</p>
+    <h1 data-fr="Les <em>vendanges</em>" data-en="The <em>harvest</em>">Les <em>vendanges</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Une année de travail se joue en quelques semaines. Choisir le bon jour, cueillir vite et proprement, trier et rentrer le raisin intact au chai : tout le style du vin en dépend."
+       data-en="A year’s work comes down to a few weeks. Choosing the right day, picking quickly and cleanly, sorting and bringing the grapes to the winery intact: the whole style of the wine depends on it.">Une année de travail se joue en quelques semaines. Choisir le bon jour, cueillir vite et proprement, trier et rentrer le raisin intact au chai : tout le style du vin en dépend.</p>
+    <nav class="toc">
+      <a href="#quand" data-fr="Quand vendanger ?" data-en="When to pick?">Quand vendanger ?</a>
+      <a href="#mesurer" data-fr="Mesurer la maturité" data-en="Measuring ripeness">Mesurer la maturité</a>
+      <a href="#ban" data-fr="Le ban des vendanges" data-en="The harvest start">Le ban des vendanges</a>
+      <a href="#main-machine" data-fr="À la main ou à la machine" data-en="By hand or by machine">À la main ou à la machine</a>
+      <a href="#tries" data-fr="Tries &amp; vendanges tardives" data-en="Tries &amp; late harvests">Tries &amp; vendanges tardives</a>
+      <a href="#rendements" data-fr="Les rendements" data-en="Yields">Les rendements</a>
+    </nav>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">Les vendanges ont lieu, en France, de la mi-août dans le Midi jusqu’à novembre pour certains vins liquoreux. Pendant quelques semaines, le vignoble s’anime : équipes de vendangeurs, machines, va-et-vient des remorques vers les pressoirs et les cuves.</p>
+      <p class="L en">In France, harvest runs from mid-August in the South to November for some sweet wines. For a few weeks the vineyards come alive: picking crews, machines, trailers shuttling to the presses and vats.</p>
+      <p class="L fr">La décision la plus importante est la <b>date</b> : quelques jours trop tôt, le vin sera vert et acide ; quelques jours trop tard, il sera lourd, ou la pluie et la pourriture auront gâché la récolte.</p>
+      <p class="L en">The most important decision is the <b>date</b>: a few days too early and the wine will be green and sharp; a few days too late and it will be heavy, or rain and rot will have spoiled the crop.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Comment on choisit la date et comment on récolte." data-en="How the date is chosen and how the grapes are picked.">Comment on choisit la date et comment on récolte.</span></div></div>
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Contrôles de maturité, convertisseur d’échelles, minimums et rendements des cahiers des charges." data-en="Ripeness sampling, scale converter, specification minimums and yields.">Contrôles de maturité, convertisseur d’échelles, minimums et rendements des cahiers des charges.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="quand">
+    <div class="sec-head">
+      <h2 data-fr="Quand <em>vendanger ?</em>" data-en="When <em>to pick?</em>">Quand <em>vendanger ?</em></h2>
+      <p data-fr="Après la véraison, le sucre monte, l’acidité baisse et les tanins mûrissent, chacun à son rythme. Le moment de la récolte dépend du vin que l’on veut faire. Courbes indicatives." data-en="After véraison, sugar rises, acidity falls and tannins ripen, each at its own pace. The moment to pick depends on the wine to be made. Indicative curves.">Après la véraison, le sucre monte, l’acidité baisse et les tanins mûrissent, chacun à son rythme. Le moment de la récolte dépend du vin que l’on veut faire. Courbes indicatives.</p>
+    </div>
+    <div class="twocol">
+      <div class="diagram-card scroll"><svg class="diagram" viewBox="0 0 680 360" role="img" aria-label="Évolution des raisins après la véraison / How grapes change after véraison"><rect x="288.4" y="40" width="62.4" height="260" fill="#e8e0f2"/><text x="319.6" y="72.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#6b5a48" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Effervescents" data-en="Sparkling">Effervescents</text><rect x="361.2" y="40" width="62.4" height="260" fill="#eef3d6"/><text x="392.4" y="54.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#6b5a48" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Blancs secs" data-en="Dry whites">Blancs secs</text><rect x="423.6" y="40" width="93.6" height="260" fill="#f5dde0"/><text x="470.4" y="72.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#6b5a48" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Rouges" data-en="Reds">Rouges</text><rect x="538.0" y="40" width="52.0" height="260" fill="#f6ead0"/><text x="564.0" y="54.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#6b5a48" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Vendanges tardives" data-en="Late harvest">Vendanges tardives</text><line x1="70" y1="300" x2="590" y2="300" stroke="#7a6650"/><line x1="70" y1="40" x2="70" y2="300" stroke="#7a6650"/><text x="70" y="318" text-anchor="middle" font-size="12" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif">0</text><text x="174" y="318" text-anchor="middle" font-size="12" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif">2</text><text x="278" y="318" text-anchor="middle" font-size="12" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif">4</text><text x="382" y="318" text-anchor="middle" font-size="12" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif">6</text><text x="486" y="318" text-anchor="middle" font-size="12" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif">8</text><text x="590" y="318" text-anchor="middle" font-size="12" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif">10</text><text x="330.0" y="340.0" text-anchor="middle" font-size="12.5" font-weight="400" fill="#7a6650" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="semaines après la véraison" data-en="weeks after véraison">semaines après la véraison</text><path d="M70.0 277.5 L122.0 237.0 L174.0 196.5 L226.0 165.0 L278.0 142.5 L330.0 124.5 L382.0 111.0 L434.0 100.2 L486.0 91.2 L538.0 84.0 L590.0 75.0" fill="none" stroke="#c08a1a" stroke-width="3.5" stroke-linejoin="round"/><path d="M70.0 66.0 L122.0 120.0 L174.0 165.0 L226.0 192.0 L278.0 214.5 L330.0 228.0 L382.0 237.0 L434.0 244.2 L486.0 249.6 L538.0 253.2 L590.0 255.0" fill="none" stroke="#2f7d8c" stroke-width="3.5" stroke-linejoin="round"/><path d="M70.0 282.0 L174.0 273.0 L278.0 246.0 L382.0 201.0 L434.0 165.0 L486.0 133.5 L538.0 115.5 L590.0 106.5" fill="none" stroke="#7d3f78" stroke-width="3" stroke-dasharray="8 5" stroke-linejoin="round"/><text x="129.8" y="227.0" text-anchor="end" font-size="13.5" font-weight="600" fill="#9a6a12" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Sucres" data-en="Sugars">Sucres</text><text x="137.6" y="112.0" text-anchor="start" font-size="13.5" font-weight="600" fill="#2f6f7c" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Acidité" data-en="Acidity">Acidité</text><text x="590.0" y="162.0" text-anchor="end" font-size="13" font-weight="600" fill="#5e2a5a" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="Maturité des tanins" data-en="Tannin and colour">Maturité des tanins</text><text x="590.0" y="178.0" text-anchor="end" font-size="13" font-weight="600" fill="#5e2a5a" font-family="Iowan Old Style,Palatino,Georgia,serif" paint-order="stroke" stroke="#fbf6ea" stroke-width="3" data-fr="et de la couleur" data-en="ripeness">et de la couleur</text></svg></div>
+      <div class="facts">
+        <div class="fact L fr"><b>Effervescents.</b> On récolte tôt, pour garder une acidité vive et un degré modéré (Champagne : au moins 9 % vol. naturel).</div>
+        <div class="fact L en"><b>Sparkling wines.</b> Picked early, to keep bright acidity and moderate alcohol (Champagne: at least 9 % natural).</div>
+        <div class="fact L fr"><b>Blancs secs.</b> On cherche l’équilibre entre arômes, fraîcheur et maturité.</div>
+        <div class="fact L en"><b>Dry whites.</b> The aim is a balance of aroma, freshness and ripeness.</div>
+        <div class="fact L fr"><b>Rouges.</b> On attend en plus la maturité des tanins et de la couleur : pépins bruns, peaux souples.</div>
+        <div class="fact L en"><b>Reds.</b> Growers also wait for tannin and colour ripeness: brown seeds, supple skins.</div>
+        <div class="fact L fr"><b>Liquoreux.</b> On laisse le raisin se concentrer sur pied, parfois jusqu’en novembre (voir plus bas).</div>
+        <div class="fact L en"><b>Sweet wines.</b> Grapes are left to concentrate on the vine, sometimes into November (see below).</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="mesurer">
+    <div class="sec-head">
+      <h2 data-fr="Mesurer <em>la maturité</em>" data-en="Measuring <em>ripeness</em>">Mesurer <em>la maturité</em></h2>
+      <p data-fr="Le sucre du raisin se mesure avec un réfractomètre ou un densimètre, selon plusieurs échelles. Convertissez-les ici." data-en="Grape sugar is measured with a refractometer or a hydrometer, on several scales. Convert between them here.">Le sucre du raisin se mesure avec un réfractomètre ou un densimètre, selon plusieurs échelles. Convertissez-les ici.</p>
+    </div>
+    <div class="panel conv">
+      <form class="conv-in" id="conv" novalidate>
+        <label><span data-fr="Valeur mesurée" data-en="Measured value">Valeur mesurée</span><input type="number" id="cv-val" value="22" step="0.1" inputmode="decimal"></label>
+        <label><span data-fr="Échelle" data-en="Scale">Échelle</span>
+          <select id="cv-scale">
+            <option value="brix">°Brix</option><option value="be">°Baumé</option><option value="oe">°Oechsle</option>
+            <option value="sug" data-fr="Sucre (g/L)" data-en="Sugar (g/L)">Sucre (g/L)</option><option value="pa" data-fr="Alcool potentiel (% vol.)" data-en="Potential alcohol (% vol)">Alcool potentiel (% vol.)</option>
+          </select></label>
+        <p class="conv-err" id="cv-err" aria-live="polite"></p>
+      </form>
+      <div class="conv-out">
+        <div><b id="o-brix">—</b><span>°Brix</span></div>
+        <div><b id="o-be">—</b><span>°Baumé</span></div>
+        <div><b id="o-oe">—</b><span>°Oechsle</span></div>
+        <div><b id="o-sug">—</b><span data-fr="g/L de sucre" data-en="g/L sugar">g/L de sucre</span></div>
+        <div><b id="o-pa">—</b><span data-fr="% vol. potentiel" data-en="% potential alcohol">% vol. potentiel</span></div>
+      </div>
+      <p class="conv-note" data-fr="Conversions approchées, valables pour des moûts de raisin mûr (environ 15 à 30 °Brix) : sucre ≈ 10 × Brix − 15 ; alcool potentiel ≈ sucre ÷ 16,83 ; Baumé ≈ Brix ÷ 1,8 ; Oechsle ≈ 4,25 × Brix." data-en="Approximate conversions, valid for ripe grape musts (about 15–30 °Brix): sugar ≈ 10 × Brix − 15; potential alcohol ≈ sugar ÷ 16.83; Baumé ≈ Brix ÷ 1.8; Oechsle ≈ 4.25 × Brix.">Conversions approchées, valables pour des moûts de raisin mûr (environ 15 à 30 °Brix) : sucre ≈ 10 × Brix − 15 ; alcool potentiel ≈ sucre ÷ 16,83 ; Baumé ≈ Brix ÷ 1,8 ; Oechsle ≈ 4,25 × Brix.</p>
+    </div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Le contrôle de maturité" data-en="Ripeness sampling">Le contrôle de maturité</span></dt><dd><div class="L fr">Chaque semaine après la véraison, on prélève environ 200 baies par parcelle, prises au hasard sur les deux faces du rang, à différentes hauteurs des grappes. On les presse et on mesure le sucre (réfractomètre), l’acidité totale, le pH et parfois l’acide malique et l’azote.</div><div class="L en">Every week after véraison, about 200 berries per plot are sampled at random from both sides of the row and different parts of the bunches. They are pressed and sugar (refractometer), total acidity, pH and sometimes malic acid and nitrogen are measured.</div></dd></div><div class="pro-item"><dt><span data-fr="Au-delà du sucre" data-en="Beyond sugar">Au-delà du sucre</span></dt><dd><div class="L fr">La maturité phénolique (couleur, tanins) se suit par analyses d’extractibilité des anthocyanes et, surtout, en goûtant les baies : peau qui se déchire facilement, pulpe qui se détache, pépins bruns et croquants, tanins non asséchants.</div><div class="L en">Phenolic ripeness (colour, tannins) is tracked by anthocyanin extractability tests and, above all, by tasting berries: skin that tears easily, pulp that comes away, brown crunchy seeds, tannins that no longer dry the mouth.</div></dd></div><div class="pro-item"><dt><span data-fr="Les minimums des AOC" data-en="AOC minimums">Les minimums des AOC</span></dt><dd><div class="L fr">Chaque cahier des charges fixe une richesse minimale en sucre des raisins et un titre alcoométrique naturel minimum ; le tableau ci-dessous en donne des exemples, tirés des cahiers des charges.</div><div class="L en">Each specification sets a minimum grape sugar content and a minimum natural alcohol; the table below gives examples, taken from the specifications.</div></dd></div></dl></details>
+    <h3 class="sub" data-fr="Maturité minimale exigée par quelques cahiers des charges" data-en="Minimum ripeness required by some specifications">Maturité minimale exigée par quelques cahiers des charges</h3>
+    <div class="panel tbl-wrap"><table class="tbl"><thead><tr><th>AOC</th><th data-fr="Sucre minimal (g/L de moût)" data-en="Minimum sugar (g/L must)">Sucre minimal (g/L de moût)</th><th data-fr="Titre naturel minimal" data-en="Minimum natural alcohol">Titre naturel minimal</th></tr></thead><tbody><tr><td><a href="../../Champagne.html">Champagne</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>143</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>9 %</td></tr><tr><td><a href="../../Bourgogne%20Regions/Chablis_et_de_l_Auxerrois.html">Chablis</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>161 (1er cru : 170)</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>10 % (10,5 %)</td></tr><tr><td><a href="../../Bourgogne%20Regions/Beaujolais.html">Morgon</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>180</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>10,5 %</td></tr><tr><td><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Pauillac.html">Pauillac</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>189 (Merlot) · 180</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>—</td></tr><tr><td><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Sauternes.html">Sauternes</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>221</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>15 %</td></tr><tr><td><a href="../../Alsace.html">Alsace VT · Riesling, Muscat</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>244</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>14,5 %</td></tr><tr><td><a href="../../Alsace.html">Alsace VT · Gewurztraminer, Pinot gris</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>270</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>16 %</td></tr><tr><td><a href="../../Alsace.html">Alsace SGN · Riesling, Muscat</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>276</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>16,4 %</td></tr><tr><td><a href="../../Alsace.html">Alsace SGN · Gewurztraminer, Pinot gris</a></td><td class="num"><span class="mh" data-fr="Sucre minimal : " data-en="Minimum sugar: ">Sucre minimal : </span>306</td><td class="num"><span class="mh" data-fr="Titre naturel : " data-en="Natural alcohol: ">Titre naturel : </span>18,2 %</td></tr></tbody></table></div>
+  </section>
+
+  <section class="sec" id="ban">
+    <div class="sec-head">
+      <h2 data-fr="Le ban <em>des vendanges</em>" data-en="The official <em>harvest start</em>">Le ban <em>des vendanges</em></h2>
+    </div>
+    <div class="facts">
+      <div class="fact L fr"><b>Une tradition médiévale.</b> Le seigneur ou la communauté fixait le jour où l’on avait le droit de vendanger, pour éviter les récoltes trop précoces et faciliter la perception de la dîme.</div>
+      <div class="fact L en"><b>A medieval tradition.</b> The lord or the community set the day when picking was allowed, to prevent premature harvests and make tithe collection easier.</div>
+      <div class="fact L fr"><b>Aujourd’hui.</b> Pour les AOC, la date de début des vendanges est fixée chaque année, cépage par cépage ou secteur par secteur, à partir des contrôles de maturité, sur proposition de l’organisme de défense de l’appellation (ODG) et après avis de l’INAO. Des dérogations sont possibles pour les parcelles en avance.</div>
+      <div class="fact L en"><b>Today.</b> For AOCs, the harvest start date is set every year, by variety or by sector, from ripeness checks, on the proposal of the appellation’s growers’ body (ODG) and after INAO’s opinion. Exemptions are possible for early plots.</div>
+      <div class="fact L fr"><b>La fête.</b> La fin des vendanges se célèbre encore : la Paulée en Bourgogne, dont la plus célèbre est celle de Meursault.</div>
+      <div class="fact L en"><b>The celebration.</b> The end of harvest is still celebrated: the Paulée in Burgundy, the most famous being Meursault’s.</div>
+    </div>
+  </section>
+
+  <section class="sec" id="main-machine">
+    <div class="sec-head">
+      <h2 data-fr="À la main <em>ou à la machine</em>" data-en="By hand <em>or by machine</em>">À la main <em>ou à la machine</em></h2>
+      <p data-fr="Aujourd’hui, la majorité du vignoble français est vendangée à la machine ; la vendange manuelle reste la règle pour les grands crus, les vins effervescents et les liquoreux." data-en="Today most of the French vineyard is machine-harvested; hand-picking remains the rule for grands crus, sparkling wines and sweet wines.">Aujourd’hui, la majorité du vignoble français est vendangée à la machine ; la vendange manuelle reste la règle pour les grands crus, les vins effervescents et les liquoreux.</p>
+    </div>
+    <h3 class="sub" data-fr="La chaîne de la vendange manuelle" data-en="The hand-picking chain">La chaîne de la vendange manuelle</h3>
+    <div class="chain">
+      <div class="ch-step" style="--c:#6f8b1e"><b data-fr="Coupeurs" data-en="Pickers">Coupeurs</b><span data-fr="cueillent au sécateur, grappe par grappe, en écartant les grappes abîmées" data-en="cut bunch by bunch with shears, leaving out damaged bunches">cueillent au sécateur, grappe par grappe, en écartant les grappes abîmées</span></div>
+      <div class="ch-step" style="--c:#c08a1a"><b data-fr="Porteurs" data-en="Carriers">Porteurs</b><span data-fr="vident seaux et paniers dans la hotte ou les caisses" data-en="empty buckets and baskets into back-baskets or crates">vident seaux et paniers dans la hotte ou les caisses</span></div>
+      <div class="ch-step" style="--c:#8a5a2b"><b data-fr="Petites caisses" data-en="Small crates">Petites caisses</b><span data-fr="10 à 20 kg, pour ne pas écraser le raisin" data-en="10–20 kg, so the grapes are not crushed">10 à 20 kg, pour ne pas écraser le raisin</span></div>
+      <div class="ch-step" style="--c:#a0283c"><b data-fr="Table de tri" data-en="Sorting table">Table de tri</b><span data-fr="on retire feuilles, grains pourris ou verts" data-en="leaves, rotten or green berries are removed">on retire feuilles, grains pourris ou verts</span></div>
+      <div class="ch-step" style="--c:#4f1c47"><b data-fr="Au chai" data-en="To the winery">Au chai</b><span data-fr="vite et au frais, avant que le raisin ne s’oxyde" data-en="quickly and cool, before the grapes oxidise">vite et au frais, avant que le raisin ne s’oxyde</span></div>
+    </div>
+    <h3 class="sub" data-fr="Comment fonctionne une machine à vendanger" data-en="How a grape harvester works">Comment fonctionne une machine à vendanger</h3>
+    <div class="twocol stacked">
+      <div><figure class="plate wide"><button type="button" class="zoom" data-full="img/harvest/harvester.webp" aria-label="Agrandir / Enlarge"><img src="img/harvest/harvester.webp" alt="Machine à vendanger et ses organes / Grape harvester and its parts" loading="lazy" decoding="async" width="1469" height="982"><span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span></button></figure></div>
+      <div class="facts">
+        <div class="fact L fr"><b>Elle enjambe le rang</b> et le secoue avec des tiges secoueuses souples, appelées aussi batteurs : les baies mûres se détachent, les rafles restent accrochées au cep.</div>
+        <div class="fact L en"><b>It straddles the row</b> and shakes it with flexible shaking rods: ripe berries come loose, the stalks stay on the vine.</div>
+        <div class="fact L fr"><b>Les convoyeurs à raisins</b> recueillent les baies et les remontent vers la trémie de réception ; le système de nettoyage chasse les feuilles.</div>
+        <div class="fact L en"><b>Grape conveyors</b> collect the berries and carry them up to the grape collection bin; the cleaning system removes the leaves.</div>
+        <div class="fact L fr"><b>Les modèles récents</b> trient et éraflent à bord ; certains reconnaissent les baies par caméra.</div>
+        <div class="fact L en"><b>Recent models</b> sort and destem on board; some recognise berries by camera.</div>
+      </div>
+    </div>
+    <div class="panel tbl-wrap" style="margin-top:14px"><table class="tbl hm"><thead><tr><th></th><th data-fr="À la main" data-en="By hand">À la main</th><th data-fr="À la machine" data-en="By machine">À la machine</th></tr></thead><tbody><tr><td><span data-fr="Rythme" data-en="Pace">Rythme</span></td><td><span data-fr="environ 1 ha par jour pour une équipe de 15 à 20 personnes" data-en="about 1 ha a day for a crew of 15–20">environ 1 ha par jour pour une équipe de 15 à 20 personnes</span></td><td><span data-fr="1 ha en 2 à 3 heures" data-en="1 ha in 2–3 hours">1 ha en 2 à 3 heures</span></td></tr><tr><td><span data-fr="Vendange" data-en="Crop">Vendange</span></td><td><span data-fr="grappes entières, intactes" data-en="whole, intact bunches">grappes entières, intactes</span></td><td><span data-fr="baies détachées, un peu de jus" data-en="loose berries, some juice">baies détachées, un peu de jus</span></td></tr><tr><td><span data-fr="Tri" data-en="Sorting">Tri</span></td><td><span data-fr="dès la vigne, grappe par grappe" data-en="in the vineyard, bunch by bunch">dès la vigne, grappe par grappe</span></td><td><span data-fr="au chai, ou par tri optique embarqué" data-en="at the winery, or by on-board optical sorting">au chai, ou par tri optique embarqué</span></td></tr><tr><td><span data-fr="Souplesse" data-en="Flexibility">Souplesse</span></td><td><span data-fr="pentes, terrasses, tries successives" data-en="slopes, terraces, successive passes">pentes, terrasses, tries successives</span></td><td><span data-fr="nuit, fraîcheur, réactivité face à la pluie" data-en="at night, in the cool, quick response to rain">nuit, fraîcheur, réactivité face à la pluie</span></td></tr><tr><td><span data-fr="Coût" data-en="Cost">Coût</span></td><td><span data-fr="élevé : main-d’œuvre, hébergement" data-en="high: labour, accommodation">élevé : main-d’œuvre, hébergement</span></td><td><span data-fr="investissement, mais coût à l’hectare bas" data-en="capital outlay, but low cost per hectare">investissement, mais coût à l’hectare bas</span></td></tr><tr><td><span data-fr="Obligatoire" data-en="Compulsory">Obligatoire</span></td><td><span data-fr="Châteauneuf-du-Pape, Sauternes, crémants, lieux-dits d’Alsace en Pinot gris et noir ; de fait en Champagne et dans les crus du Beaujolais" data-en="Châteauneuf-du-Pape, Sauternes, crémants, Alsace lieu-dit Pinot Gris and Noir; in practice in Champagne and the Beaujolais crus">Châteauneuf-du-Pape, Sauternes, crémants, lieux-dits d’Alsace en Pinot gris et noir ; de fait en Champagne et dans les crus du Beaujolais</span></td><td><span data-fr="—" data-en="—">—</span></td></tr></tbody></table></div>
+  </section>
+
+  <section class="sec" id="tries">
+    <div class="sec-head">
+      <h2 data-fr="Tries <em>&amp; vendanges tardives</em>" data-en="Tries <em>&amp; late harvests</em>">Tries <em>&amp; vendanges tardives</em></h2>
+      <p data-fr="Pour les vins doux, on ne vendange pas en une fois : on revient plusieurs fois dans la même vigne." data-en="For sweet wines, the vineyard is not picked in one go: pickers return to the same vines several times.">Pour les vins doux, on ne vendange pas en une fois : on revient plusieurs fois dans la même vigne.</p>
+    </div>
+    <div class="tries">
+      <div class="try L fr" style="--c:#c08a1a"><b>Tries successives</b>À Sauternes, les vendangeurs passent jusqu’à cinq ou six fois et ne cueillent que les baies parfaitement botrytisées (voir la <a href="Vine_Threats.html#pourriture-noble">pourriture noble</a>).</div>
+      <div class="try L en" style="--c:#c08a1a"><b>Successive passes</b>At Sauternes, pickers go through up to five or six times, taking only perfectly botrytised berries (see <a href="Vine_Threats.html#pourriture-noble">noble rot</a>).</div>
+      <div class="try L fr" style="--c:#9b4f8a"><b>Vendanges tardives (VT)</b>En Alsace, raisins surmûris sur pied, avec des minimums de sucre très élevés (244 à 270 g/L selon le cépage).</div>
+      <div class="try L en" style="--c:#9b4f8a"><b>Vendanges tardives (VT)</b>In Alsace, grapes over-ripened on the vine, with very high sugar minimums (244–270 g/L depending on variety).</div>
+      <div class="try L fr" style="--c:#7d3f78"><b>Sélection de grains nobles</b>Récolte grain par grain de baies botrytisées, encore plus riches (276 à 306 g/L).</div>
+      <div class="try L en" style="--c:#7d3f78"><b>Sélection de grains nobles</b>Berry-by-berry picking of botrytised grapes, richer still (276–306 g/L).</div>
+      <div class="try L fr" style="--c:#8a5a2b"><b>Passerillage &amp; paille</b>À Jurançon, les raisins sèchent sur pied ; dans le Jura, ils sèchent après la récolte, sur des claies ou suspendus, pour le vin de paille.</div>
+      <div class="try L en" style="--c:#8a5a2b"><b>Raisining &amp; straw wine</b>At Jurançon the grapes shrivel on the vine; in the Jura they dry after picking, on racks or hung up, for vin de paille.</div>
+    </div>
+  </section>
+
+  <section class="sec" id="rendements">
+    <div class="sec-head">
+      <h2 data-fr="Les <em>rendements</em>" data-en="<em>Yields</em>">Les <em>rendements</em></h2>
+      <p data-fr="Chaque appellation limite la quantité de vin par hectare. Le calculateur du <a href=&quot;Vine_Pruning.html#charge&quot;>chapitre 5</a> montre comment la taille prépare ce rendement." data-en="Each appellation limits the amount of wine per hectare. The calculator in <a href=&quot;Vine_Pruning.html#charge&quot;>chapter 5</a> shows how pruning prepares that yield.">Chaque appellation limite la quantité de vin par hectare. Le calculateur du <a href="Vine_Pruning.html#charge">chapitre 5</a> montre comment la taille prépare ce rendement.</p>
+    </div>
+    <div class="panel tbl-wrap"><table class="tbl"><thead><tr><th>AOC</th><th data-fr="Rendement (hL/ha)" data-en="Base yield (hL/ha)">Rendement (hL/ha)</th><th data-fr="Butoir (hL/ha)" data-en="Cap (hL/ha)">Butoir (hL/ha)</th><th></th></tr></thead><tbody><tr><td><a href="../../Bourgogne%20Regions/Chablis_et_de_l_Auxerrois.html">Chablis</a></td><td class="num"><span class="mh" data-fr="Rendement : " data-en="Base yield: ">Rendement : </span>60</td><td class="num"><span class="mh" data-fr="Butoir : " data-en="Cap: ">Butoir : </span>75</td><td class="bar"><span><i style="width:75%"></i></span></td></tr><tr><td><a href="../../Bourgogne%20Regions/Chablis_et_de_l_Auxerrois.html">Chablis premier cru</a></td><td class="num"><span class="mh" data-fr="Rendement : " data-en="Base yield: ">Rendement : </span>58</td><td class="num"><span class="mh" data-fr="Butoir : " data-en="Cap: ">Butoir : </span>73</td><td class="bar"><span><i style="width:72%"></i></span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Pauillac.html">Pauillac</a></td><td class="num"><span class="mh" data-fr="Rendement : " data-en="Base yield: ">Rendement : </span>57</td><td class="num"><span class="mh" data-fr="Butoir : " data-en="Cap: ">Butoir : </span>63</td><td class="bar"><span><i style="width:71%"></i></span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Cotes_du_Rhone_Sud/Chateauneuf-du-Pape.html">Châteauneuf-du-Pape</a></td><td class="num"><span class="mh" data-fr="Rendement : " data-en="Base yield: ">Rendement : </span>35</td><td class="num"><span class="mh" data-fr="Butoir : " data-en="Cap: ">Butoir : </span>35</td><td class="bar"><span><i style="width:44%"></i></span></td></tr><tr><td><a href="../../Plan%20Cadastraux/Bordeaux_LeftBank/Sauternes.html">Sauternes</a></td><td class="num"><span class="mh" data-fr="Rendement : " data-en="Base yield: ">Rendement : </span>25</td><td class="num"><span class="mh" data-fr="Butoir : " data-en="Cap: ">Butoir : </span>—</td><td class="bar"><span><i style="width:31%"></i></span></td></tr></tbody></table></div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Rendement et rendement butoir" data-en="Base yield and cap">Rendement et rendement butoir</span></dt><dd><div class="L fr">Le « rendement » est le volume de vin d’appellation autorisé par hectare ; l’INAO peut l’ajuster chaque année, sur demande de l’ODG, sans dépasser le « rendement butoir ». Au-delà, la récolte perd le droit à l’appellation et doit être distillée ou détruite.</div><div class="L en">The “rendement” is the volume of appellation wine permitted per hectare; INAO can adjust it each year, at the growers’ body’s request, without exceeding the “rendement butoir” (cap). Beyond that, the crop loses appellation status and must be distilled or destroyed.</div></dd></div><div class="pro-item"><dt><span data-fr="Volume complémentaire individuel" data-en="Individual reserve">Volume complémentaire individuel</span></dt><dd><div class="L fr">Dans certaines appellations, le VCI permet de mettre de côté, les bonnes années, un petit volume au-delà du rendement, pour compenser une récolte future déficitaire (gel, grêle).</div><div class="L en">In some appellations, the VCI lets growers set aside, in good years, a small volume above the base yield, to make up for a future short crop (frost, hail).</div></dd></div><div class="pro-item"><dt><span data-fr="Champagne" data-en="Champagne">Champagne</span></dt><dd><div class="L fr">Le rendement y est exprimé en kilos de raisin par hectare et fixé chaque année par l’interprofession, dans la limite d’une charge maximale de 19 700 kg/ha prévue par le cahier des charges ; 160 kg de raisins donnent au plus 102 litres de moût.</div><div class="L en">There the yield is expressed in kilos of grapes per hectare and set every year by the trade body, within a maximum load of 19,700 kg/ha in the specification; 160 kg of grapes give at most 102 litres of must.</div></dd></div></dl></details>
+  </section>
+
+  <nav class="chapters" aria-label="Chapitres"><h3 data-fr="La vigne &amp;amp; le vignoble · les chapitres" data-en="The vine &amp;amp; the vineyard · chapters">La vigne &amp; le vignoble · les chapitres</h3><div class="ch-grid"><a class="ch" href="Vine_Plant.html"><span class="ch-n">01</span><span class="ch-t" data-fr="La plante vigne" data-en="The vine plant">La plante vigne</span></a><a class="ch" href="Vine_Cycle.html"><span class="ch-n">02</span><span class="ch-t" data-fr="Le cycle de la vigne" data-en="The vine’s year">Le cycle de la vigne</span></a><a class="ch" href="Vine_Terroir.html"><span class="ch-n">03</span><span class="ch-t" data-fr="Terroir &amp; site" data-en="Terroir &amp; site">Terroir & site</span></a><a class="ch" href="Vine_Planting.html"><span class="ch-n">04</span><span class="ch-t" data-fr="Plantation &amp; vie du vignoble" data-en="Planting &amp; the life of a vineyard">Plantation & vie du vignoble</span></a><a class="ch" href="Vine_Pruning.html"><span class="ch-n">05</span><span class="ch-t" data-fr="Taille &amp; modes de conduite" data-en="Training &amp; pruning">Taille & modes de conduite</span></a><a class="ch" href="Vine_Canopy.html"><span class="ch-n">06</span><span class="ch-t" data-fr="Travaux en vert &amp; du sol" data-en="Canopy &amp; soil work">Travaux en vert & du sol</span></a><a class="ch" href="Vine_Threats.html"><span class="ch-n">07</span><span class="ch-t" data-fr="Les ennemis de la vigne" data-en="Threats to the vine">Les ennemis de la vigne</span></a><a class="ch" href="Vine_Farming.html"><span class="ch-n">08</span><span class="ch-t" data-fr="Philosophies culturales" data-en="Farming philosophies">Philosophies culturales</span></a><span class="ch cur" aria-current="page"><span class="ch-n">09</span><span class="ch-t" data-fr="Les vendanges" data-en="Harvest">Les vendanges</span></span><a class="ch" href="Vine_Glossary.html"><span class="ch-n">10</span><span class="ch-t" data-fr="Glossaire" data-en="Glossary">Glossaire</span></a></div></nav>
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources"><li><span data-fr="INAO, cahiers des charges des AOC Champagne, Chablis, Morgon, Pauillac, Sauternes, Alsace, Crémant d’Alsace, Châteauneuf-du-Pape." data-en="INAO, specifications of the Champagne, Chablis, Morgon, Pauillac, Sauternes, Alsace, Crémant d’Alsace and Châteauneuf-du-Pape AOCs.">INAO, cahiers des charges des AOC Champagne, Chablis, Morgon, Pauillac, Sauternes, Alsace, Crémant d’Alsace, Châteauneuf-du-Pape.</span></li><li><span data-fr="Code rural et de la pêche maritime, articles D. 644-25 et D. 645-7 (rendements), date de début des vendanges." data-en="French rural code, articles D. 644-25 and D. 645-7 (yields), harvest start date.">Code rural et de la pêche maritime, articles D. 644-25 et D. 645-7 (rendements), date de début des vendanges.</span></li><li><span data-fr="IFV, guide des contrôles de maturité ; Ribéreau-Gayon P. et al., <i>Traité d’œnologie</i>, Dunod." data-en="IFV, ripeness-monitoring guide; Ribéreau-Gayon P. et al., <i>Handbook of Enology</i>, Dunod/Wiley.">IFV, guide des contrôles de maturité ; Ribéreau-Gayon P. et al., <i>Traité d’œnologie</i>, Dunod.</span></li></ul>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Les vendanges' : 'The harvest';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    conv();
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+
+  /* ripeness converter: everything goes through °Brix */
+  var TO_BRIX = { brix:function(v){return v;}, be:function(v){return v*1.8;}, oe:function(v){return v/4.25;},
+                  sug:function(v){return (v+15)/10;}, pa:function(v){return (v*16.83+15)/10;} };
+  function fmt(n, d){ return n.toLocaleString(LANG==='fr' ? 'fr-FR' : 'en-GB', {maximumFractionDigits:d, minimumFractionDigits:d}); }
+  function conv(){
+    var raw = $('cv-val').value.replace(',', '.'), v = parseFloat(raw), sc = $('cv-scale').value;
+    var ids = ['o-brix','o-be','o-oe','o-sug','o-pa'];
+    var brix = isFinite(v) ? TO_BRIX[sc](v) : NaN;
+    if(!isFinite(brix) || brix < 10 || brix > 40){
+      $('cv-err').textContent = LANG==='fr' ? 'Saisissez une valeur correspondant à environ 10 à 40 °Brix.' : 'Enter a value equivalent to roughly 10–40 °Brix.';
+      $('cv-val').setAttribute('aria-invalid','true');
+      ids.forEach(function(id){ $(id).textContent = '—'; }); return;
+    }
+    $('cv-err').textContent = ''; $('cv-val').setAttribute('aria-invalid','false');
+    var sug = 10*brix - 15;
+    $('o-brix').textContent = fmt(brix, 1);
+    $('o-be').textContent = fmt(brix/1.8, 1);
+    $('o-oe').textContent = fmt(4.25*brix, 0);
+    $('o-sug').textContent = fmt(sug, 0);
+    $('o-pa').textContent = fmt(sug/16.83, 1);
+  }
+  $('cv-val').addEventListener('input', conv);
+  $('cv-scale').addEventListener('change', conv);
+  applyLang();
+})();
+</script>
+</body>
+</html>

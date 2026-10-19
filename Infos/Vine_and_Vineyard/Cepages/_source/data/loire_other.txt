@@ -1,0 +1,84 @@
+= Coteaux du Giennois | Val de Loire | CDC Coteaux Giennois
+Blanc: sauvignon B
+Rouge, Rosé: gamay N ≤80 %; pinot noir N ≤80 %
+! Rouges et rosés : assemblage obligatoire des deux cépages.
+
+= Menetou-Salon | Val de Loire | CDC Menetou Salon
+Blanc: sauvignon B
+Rouge, Rosé: pinot noir N
+
+= Orléans-Cléry | Val de Loire | CDC Orleans Clery
+Rouge: cabernet franc N
+
+= Orléans | Val de Loire | CDC Orleans
+Blanc: chardonnay B/P ≥60 %; pinot gris G/A
+Rouge: meunier N/P 70–90 %; pinot noir N/C
+Rosé: meunier N/P ≥60 %; pinot gris G/A; pinot noir N/A
+
+= Pouilly-Fumé | Val de Loire | CDC Pouilly-Fumé : sur Loire
+Blanc: sauvignon B
+
+= Pouilly-sur-Loire | Val de Loire | CDC Pouilly-Fumé : sur Loire
+Blanc: chasselas B
+
+= Quincy | Val de Loire | CDC Quincy
+Blanc: sauvignon B/P; sauvignon gris G/A ≤10 %
+
+= Reuilly | Val de Loire | CDC Reuilly
+Blanc: sauvignon B
+Rouge: pinot noir N
+Rosé, Gris: pinot gris G; pinot noir N
+
+= Sancerre | Val de Loire | CDC Sancerre
+Blanc: sauvignon B
+Rouge, Rosé: pinot noir N
+
+= Coteaux d'Ancenis | Val de Loire | CDC Coteaux-d Ancenis
+Blanc: pinot gris G
+Rouge, Rosé: gamay N/P; cabernet franc N/A ≤10 %
+
+= Fiefs Vendéens | Val de Loire | CDC Fiefs-Vendeens
+Blanc: chenin B/P ≥60 %; chardonnay B/C ≥10 %; grolleau gris G/A (Brem); sauvignon B/A (Vix)
+Rouge: pinot noir N/P; cabernet franc N/P; négrette N/C; cabernet-sauvignon N/A; gamay N/A
+Rosé: pinot noir N/P; gamay N/P; cabernet franc N/A; cabernet-sauvignon N/A; grolleau gris G/A; négrette N/A
+! Règles propres à chaque dénomination : Brem, Chantonnay, Mareuil, Pissotte, Vix. Cépages principaux ≥60 % de l'assemblage.
+
+= Gros Plant du Pays Nantais | Val de Loire | CDC Gros-Plant-du-Pays-Nantais
+Blanc: folle blanche B/P ≥70 %; colombard B/A ≤10 %; montils B/A
+
+= Haut-Poitou | Val de Loire | CDC Haut-Poitou
+Rouge: cabernet franc N/P ≥60 %; gamay N/A; gamay de Chaudenay N/A; gamay de Bouze N/A; pinot noir N/A; merlot N/A; cabernet-sauvignon N/A
+Blanc: sauvignon B; sauvignon gris G
+Rosé: pinot noir N; cabernet franc N; cabernet-sauvignon N; gamay N
+
+= Muscadet Côtes de Grandlieu | Val de Loire | CDC Muscadet Côtes de Grandlieu
+Blanc: melon B
+
+= Muscadet Sèvre et Maine | Val de Loire | CDC Muscadet Sèvre et Maine
+Blanc: melon B
+
+= Muscadet | Val de Loire | CDC Muscadet
+Blanc: melon B
+
+= Châteaumeillant | Val de Loire | CDC Chateaumeillant
+Rouge: gamay N/P ≥60 %; pinot noir N/A
+Gris: gamay N/P ≥60 %; pinot gris G/A ≤15 %; pinot noir N/A
+
+= Coteaux du Lyonnais | Beaujolais | CDC Coteaux du Lyonnais
+Blanc: aligoté B/P; chardonnay B/P; pinot blanc B/A ≤30 %
+Rouge, Rosé: gamay N/P; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %
+
+= Côte Roannaise | Val de Loire | CDC Cotes Roannaises
+Rouge, Rosé: gamay N
+
+= Côtes d'Auvergne | Val de Loire | CDC Cotes d'Auvergne
+Blanc: chardonnay B
+Rouge, Rosé: gamay N/P ≥50 %; pinot noir N/A
+
+= Côtes du Forez | Val de Loire | CDC Cotes du Forez
+Rouge, Rosé: gamay N
+
+= Saint-Pourçain | Val de Loire | CDC Saint Pourçain
+Blanc: chardonnay B/P 50–80 %; sacy B/C 20–40 %; sauvignon B/A ≤10 %
+Rouge: gamay N 40–75 %; pinot noir N 25–60 %
+Rosé: gamay N

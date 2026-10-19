@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le cycle de la vigne</title>
+<meta name="description" content="Le cycle annuel de la vigne : dormance, débourrement, floraison, nouaison, véraison, maturation, vendanges, chute des feuilles ; stades BBCH, précocité des cépages et calendrier du vigneron.">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  /* chapter 2 */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+
+  .wheel-wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(16px,3vw,36px);align-items:center;}
+  .wheel .w-seg path{transition:opacity .2s;}
+  .wheel .w-seg:hover path{opacity:.82;}
+  .wlegend{display:grid;gap:6px;}
+  .wl{display:flex;align-items:center;gap:12px;text-decoration:none;padding:8px 12px;border-radius:12px;background:var(--glass);border:1px solid var(--hair);transition:border-color .2s;}
+  .wl:hover{border-color:var(--c);}
+  .wl-n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-weight:700;font-family:var(--serif);font-size:16px;}
+  .wl b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);line-height:1.15;}
+  .wl small{font-size:12px;color:var(--muted);}
+
+  .stages{display:grid;gap:16px;}
+  .stage{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(14px,2.4vw,28px);padding:clamp(14px,2.2vw,22px);border-radius:20px;
+    background:var(--glass);border:1px solid var(--hair);border-left:5px solid var(--c);}
+  .st-side{display:flex;flex-direction:column;align-items:center;gap:10px;}
+  .st-side img{width:180px;height:180px;border-radius:50%;box-shadow:0 0 0 4px var(--paper),0 0 0 6px var(--c),var(--shadow);}
+  .codes{display:flex;flex-direction:column;gap:4px;align-items:center;}
+  .codes span{font-size:10.5px;font-weight:700;letter-spacing:.08em;padding:3px 9px;border-radius:999px;border:1px solid var(--hair);color:var(--gold);}
+  .st-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
+  .st-n{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;font-family:var(--serif);font-size:22px;}
+  .st-head h3{font-family:var(--serif);font-weight:500;font-size:clamp(24px,3vw,32px);color:var(--title);margin:0;line-height:1.05;}
+  .st-period{margin:2px 0 0;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--c);font-weight:700;}
+  html:not([data-theme="cream"]) .st-period{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .st-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .st-grid>div{padding:12px 14px;border-radius:14px;background:var(--glass-hi);border:1px solid var(--hair);}
+  .stage h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .st-grid p{margin:0;font-size:14.2px;line-height:1.6;}
+  .st-risks{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:12px;}
+  .st-risks h4{margin:0 6px 0 0;}
+  .st-risks a{font-size:12.5px;text-decoration:none;padding:4px 11px;border-radius:999px;border:1px solid color-mix(in srgb,#a0283c 40%,transparent);background:color-mix(in srgb,#a0283c 8%,transparent);}
+  .st-risks a:hover{border-color:#a0283c;}
+  .stage .warn{margin-top:12px;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .stage .warn b{color:var(--gold);}
+
+  .two-col{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .explain p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+
+  .eps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .ep{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);}
+  .ep h4{margin:0;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .ep-d{margin:2px 0 8px;font-size:12px;color:var(--muted);}
+  .ep ul{margin:0;padding-left:18px;font-size:14px;line-height:1.65;}
+
+  .hv{padding:clamp(14px,2.4vw,24px);}
+  .hv-row{display:grid;grid-template-columns:170px minmax(0,1fr);gap:10px;align-items:center;margin-bottom:6px;}
+  .hv-l{font-size:13.5px;}
+  .hv-months{display:grid;grid-template-columns:repeat(5,1fr);}
+  .hv-months span{font-size:11px;font-weight:700;color:var(--gold);letter-spacing:.08em;border-left:1px solid var(--hair);padding-left:5px;}
+  .hv-track{position:relative;height:18px;border-radius:6px;background:repeating-linear-gradient(90deg,var(--track) 0 calc(20% - 1px),var(--hair) calc(20% - 1px) 20%);}
+  .hv-bar{position:absolute;top:0;bottom:0;border-radius:6px;background:linear-gradient(90deg,#c0703a,#a0283c);}
+  .tail{position:absolute;top:3px;bottom:3px;border-radius:0 6px 6px 0;background:repeating-linear-gradient(135deg,#c08a1a 0 3px,transparent 3px 6px);}
+  .hv-key{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin-top:10px;}
+  .hv-key i{display:inline-block;width:24px;height:10px;border-radius:3px;vertical-align:middle;margin-right:6px;}
+
+  .months{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+  .mo{padding:12px 13px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);font-size:13px;line-height:1.5;}
+  .mo b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:3px;}
+
+  .bbch-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .bbch{width:100%;border-collapse:collapse;font-size:13.5px;}
+  .bbch th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .bbch td{padding:6px 10px;border-bottom:1px solid var(--hair);}
+  .bbch td.code{font-family:var(--serif);font-size:15px;color:var(--title);white-space:nowrap;}
+
+  @media (max-width:900px){
+    .wheel-wrap,.two-col{grid-template-columns:minmax(0,1fr);}
+    .stage{grid-template-columns:minmax(0,1fr);}
+    .st-side{flex-direction:row;justify-content:flex-start;}
+    .st-side img{width:110px;height:110px;}
+    .codes{align-items:flex-start;}
+    .months{grid-template-columns:repeat(3,1fr);}
+  }
+  @media (max-width:620px){
+    .st-grid,.eps{grid-template-columns:minmax(0,1fr);}
+    .months{grid-template-columns:repeat(2,1fr);}
+    .hv-row{grid-template-columns:110px minmax(0,1fr);}
+    .hv-l{font-size:12px;}
+    .two-years .diagram{min-width:560px;} .two-years{overflow-x:auto;}
+  }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .wl{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .wl-n{color:#2e1419}
+html[data-theme="cream"] .stage{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .codes span{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .st-n{color:#2e1419}
+html[data-theme="cream"] .st-grid>div{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .st-risks a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .stage .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .ep{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .hv-months span{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .hv-track{background:repeating-linear-gradient(90deg,rgba(255,253,248,0.60) 0 calc(20% - 1px),rgba(255,253,248,0.71) calc(20% - 1px) 20%)}
+html[data-theme="cream"] .mo{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .bbch th{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .bbch td{border-bottom:1px solid rgba(90,30,40,0.18)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 2" data-en="The vine &amp; the vineyard · Chapter 2">La vigne &amp; le vignoble · Chapitre 2</p>
+    <h1 data-fr="Le cycle <em>de la vigne</em>" data-en="The vine’s <em>year</em>">Le cycle <em>de la vigne</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Du sommeil de l’hiver à la chute des feuilles, la vigne traverse chaque année les mêmes grandes étapes. Les connaître, c’est comprendre le travail du vigneron et ce qui fait un millésime."
+       data-en="From winter sleep to leaf fall, the vine goes through the same great stages every year. Knowing them means understanding the grower’s work and what makes a vintage.">Du sommeil de l’hiver à la chute des feuilles, la vigne traverse chaque année les mêmes grandes étapes. Les connaître, c’est comprendre le travail du vigneron et ce qui fait un millésime.</p>
+    <nav class="toc">
+      <a href="#infographie" data-fr="L’année en images" data-en="The year in pictures">L’année en images</a>
+      <a href="#roue" data-fr="La roue des saisons" data-en="Wheel of the seasons">La roue des saisons</a>
+      <a href="#stades" data-fr="Les 9 étapes" data-en="The 9 stages">Les 9 étapes</a>
+      <a href="#deux-ans" data-fr="Un cycle sur deux ans" data-en="A two-year cycle">Un cycle sur deux ans</a>
+      <a href="#chaleur" data-fr="Chaleur &amp; précocité" data-en="Heat &amp; earliness">Chaleur &amp; précocité</a>
+      <a href="#calendrier" data-fr="Le calendrier du vigneron" data-en="The grower’s calendar">Le calendrier du vigneron</a>
+      <a href="#bbch" data-fr="Stades BBCH" data-en="BBCH stages">Stades BBCH</a>
+    </nav>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">La vigne est une plante <b>pérenne</b> qui vit au rythme des saisons. Chaque année, elle enchaîne deux cycles imbriqués : un <b>cycle végétatif</b> (pousser, faire des feuilles, aoûter son bois, s’endormir) et un <b>cycle reproducteur</b> (fleurir, nouer, mûrir ses raisins).</p>
+      <p class="L en">The vine is a <b>perennial</b> plant that lives by the seasons. Every year it runs two interlocking cycles: a <b>vegetative cycle</b> (growing, making leaves, ripening its wood, going dormant) and a <b>reproductive cycle</b> (flowering, setting fruit, ripening its grapes).</p>
+      <p class="L fr">Les dates données ici valent pour la France, dans l’hémisphère nord ; elles avancent de deux à trois semaines dans le Midi par rapport au nord, varient selon les cépages et les années, et se sont nettement avancées avec le réchauffement climatique.</p>
+      <p class="L en">The dates given here apply to France, in the northern hemisphere; they come two to three weeks earlier in the South than in the North, vary with grape variety and year, and have moved noticeably earlier with climate warming.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Chaque étape : ce qui se passe dans la plante, le travail au vignoble et les risques." data-en="Each stage: what happens in the plant, the work in the vineyard and the risks.">Chaque étape : ce qui se passe dans la plante, le travail au vignoble et les risques.</span></div></div>
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Physiologie, stades BBCH et Baggiolini, indices climatiques, réglementation." data-en="Physiology, BBCH and Baggiolini stages, climate indices, regulation.">Physiologie, stades BBCH et Baggiolini, indices climatiques, réglementation.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="infographie">
+    <div class="sec-head">
+      <h2 data-fr="L’année <em>en images</em>" data-en="The year <em>in pictures</em>">L’année <em>en images</em></h2>
+      <p data-fr="Douze moments de l’année, de la taille d’hiver au repos hivernal suivant. Cliquez sur l’infographie pour l’agrandir." data-en="Twelve moments of the year, from winter pruning to the next winter rest. Click the infographic to enlarge it.">Douze moments de l’année, de la taille d’hiver au repos hivernal suivant. Cliquez sur l’infographie pour l’agrandir.</p>
+    </div>
+    <figure class="plate wide"><button type="button" class="zoom" data-full="img/cycle/cycle_infographic.webp" aria-label="Agrandir / Enlarge"><img src="img/cycle/cycle_infographic.webp" alt="Le cycle de croissance de la vigne / Grapevine growth cycle" loading="lazy" decoding="async" width="1448" height="1086"><span class="zoom-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21M10.5 7.5v6M7.5 10.5h6"/></svg></span></button></figure>
+  </section>
+
+  <section class="sec" id="roue">
+    <div class="sec-head">
+      <h2 data-fr="La roue <em>des saisons</em>" data-en="The wheel <em>of the seasons</em>">La roue <em>des saisons</em></h2>
+      <p data-fr="Le cycle se lit comme une horloge : janvier en haut, les mois dans le sens des aiguilles d’une montre. Cliquez sur une étape pour la découvrir." data-en="The cycle reads like a clock: January at the top, months running clockwise. Click a stage to find out more.">Le cycle se lit comme une horloge : janvier en haut, les mois dans le sens des aiguilles d’une montre. Cliquez sur une étape pour la découvrir.</p>
+    </div>
+    <div class="wheel-wrap">
+      <div class="diagram-card"><svg class="diagram wheel" viewBox="0 0 660 660" role="img" aria-label="Roue du cycle annuel de la vigne / The vine’s annual cycle wheel"><path d="M330.0 30.0 A300 300 0 0 1 480.0 70.2 L461.0 103.1 A262 262 0 0 0 330.0 68.0 Z" fill="#f6eedd" stroke="#d9c9a3" stroke-width="1"/><text x="402.7" y="63.6" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Janv." data-en="Jan">Janv.</text><path d="M480.0 70.2 A300 300 0 0 1 589.8 180.0 L556.9 199.0 A262 262 0 0 0 461.0 103.1 Z" fill="#efe5cf" stroke="#d9c9a3" stroke-width="1"/><text x="528.7" y="136.3" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Févr." data-en="Feb">Févr.</text><path d="M589.8 180.0 A300 300 0 0 1 630.0 330.0 L592.0 330.0 A262 262 0 0 0 556.9 199.0 Z" fill="#f6eedd" stroke="#d9c9a3" stroke-width="1"/><text x="601.4" y="262.3" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Mars" data-en="Mar">Mars</text><path d="M630.0 330.0 A300 300 0 0 1 589.8 480.0 L556.9 461.0 A262 262 0 0 0 592.0 330.0 Z" fill="#efe5cf" stroke="#d9c9a3" stroke-width="1"/><text x="601.4" y="407.7" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Avr." data-en="Apr">Avr.</text><path d="M589.8 480.0 A300 300 0 0 1 480.0 589.8 L461.0 556.9 A262 262 0 0 0 556.9 461.0 Z" fill="#f6eedd" stroke="#d9c9a3" stroke-width="1"/><text x="528.7" y="533.7" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Mai" data-en="May">Mai</text><path d="M480.0 589.8 A300 300 0 0 1 330.0 630.0 L330.0 592.0 A262 262 0 0 0 461.0 556.9 Z" fill="#efe5cf" stroke="#d9c9a3" stroke-width="1"/><text x="402.7" y="606.4" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Juin" data-en="Jun">Juin</text><path d="M330.0 630.0 A300 300 0 0 1 180.0 589.8 L199.0 556.9 A262 262 0 0 0 330.0 592.0 Z" fill="#f6eedd" stroke="#d9c9a3" stroke-width="1"/><text x="257.3" y="606.4" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Juil." data-en="Jul">Juil.</text><path d="M180.0 589.8 A300 300 0 0 1 70.2 480.0 L103.1 461.0 A262 262 0 0 0 199.0 556.9 Z" fill="#efe5cf" stroke="#d9c9a3" stroke-width="1"/><text x="131.3" y="533.7" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Août" data-en="Aug">Août</text><path d="M70.2 480.0 A300 300 0 0 1 30.0 330.0 L68.0 330.0 A262 262 0 0 0 103.1 461.0 Z" fill="#f6eedd" stroke="#d9c9a3" stroke-width="1"/><text x="58.6" y="407.7" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Sept." data-en="Sep">Sept.</text><path d="M30.0 330.0 A300 300 0 0 1 70.2 180.0 L103.1 199.0 A262 262 0 0 0 68.0 330.0 Z" fill="#efe5cf" stroke="#d9c9a3" stroke-width="1"/><text x="58.6" y="262.3" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Oct." data-en="Oct">Oct.</text><path d="M70.2 180.0 A300 300 0 0 1 180.0 70.2 L199.0 103.1 A262 262 0 0 0 103.1 199.0 Z" fill="#f6eedd" stroke="#d9c9a3" stroke-width="1"/><text x="131.3" y="136.3" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Nov." data-en="Nov">Nov.</text><path d="M180.0 70.2 A300 300 0 0 1 330.0 30.0 L330.0 68.0 A262 262 0 0 0 199.0 103.1 Z" fill="#efe5cf" stroke="#d9c9a3" stroke-width="1"/><text x="257.3" y="63.6" text-anchor="middle" font-size="14" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Déc." data-en="Dec">Déc.</text><a href="#stade-1" class="w-seg"><path d="M189.5 113.6 A258 258 0 0 1 553.4 201.0 L475.5 246.0 A168 168 0 0 0 238.5 189.1 Z" fill="#6f5a48" stroke="#fbf6ea" stroke-width="3"/><circle cx="379.7" cy="122.9" r="17" fill="#fbf6ea" opacity=".95"/><text x="379.7" y="128.9" text-anchor="middle" font-size="17" font-weight="700" fill="#6f5a48" font-family="Iowan Old Style,Palatino,Georgia,serif">1</text></a><a href="#stade-2" class="w-seg"><path d="M553.4 201.0 A258 258 0 0 1 565.7 434.9 L483.5 398.3 A168 168 0 0 0 475.5 246.0 Z" fill="#b07a8a" stroke="#fbf6ea" stroke-width="3"/><circle cx="542.7" cy="318.9" r="17" fill="#fbf6ea" opacity=".95"/><text x="542.7" y="324.9" text-anchor="middle" font-size="17" font-weight="700" fill="#b07a8a" font-family="Iowan Old Style,Palatino,Georgia,serif">2</text></a><a href="#stade-3" class="w-seg"><path d="M565.7 434.9 A258 258 0 0 1 481.6 538.7 L428.7 465.9 A168 168 0 0 0 483.5 398.3 Z" fill="#7aa23c" stroke="#fbf6ea" stroke-width="3"/><circle cx="495.5" cy="464.0" r="17" fill="#fbf6ea" opacity=".95"/><text x="495.5" y="470.0" text-anchor="middle" font-size="17" font-weight="700" fill="#7aa23c" font-family="Iowan Old Style,Palatino,Georgia,serif">3</text></a><a href="#stade-4" class="w-seg"><path d="M481.6 538.7 A258 258 0 0 1 383.6 582.4 L364.9 494.3 A168 168 0 0 0 428.7 465.9 Z" fill="#c9b84a" stroke="#fbf6ea" stroke-width="3"/><circle cx="416.6" cy="524.6" r="17" fill="#fbf6ea" opacity=".95"/><text x="416.6" y="530.6" text-anchor="middle" font-size="17" font-weight="700" fill="#c9b84a" font-family="Iowan Old Style,Palatino,Georgia,serif">4</text></a><a href="#stade-5" class="w-seg"><path d="M383.6 582.4 A258 258 0 0 1 250.3 575.4 L278.1 489.8 A168 168 0 0 0 364.9 494.3 Z" fill="#5f9a3a" stroke="#fbf6ea" stroke-width="3"/><circle cx="318.9" cy="542.7" r="17" fill="#fbf6ea" opacity=".95"/><text x="318.9" y="548.7" text-anchor="middle" font-size="17" font-weight="700" fill="#5f9a3a" font-family="Iowan Old Style,Palatino,Georgia,serif">5</text></a><a href="#stade-6" class="w-seg"><path d="M250.3 575.4 A258 258 0 0 1 138.3 502.6 L205.2 442.4 A168 168 0 0 0 278.1 489.8 Z" fill="#9b4f8a" stroke="#fbf6ea" stroke-width="3"/><circle cx="214.0" cy="508.6" r="17" fill="#fbf6ea" opacity=".95"/><text x="214.0" y="514.6" text-anchor="middle" font-size="17" font-weight="700" fill="#9b4f8a" font-family="Iowan Old Style,Palatino,Georgia,serif">6</text></a><a href="#stade-7" class="w-seg"><path d="M138.3 502.6 A258 258 0 0 1 77.6 383.6 L165.7 364.9 A168 168 0 0 0 205.2 442.4 Z" fill="#4f2a6e" stroke="#fbf6ea" stroke-width="3"/><circle cx="140.2" cy="426.7" r="17" fill="#fbf6ea" opacity=".95"/><text x="140.2" y="432.7" text-anchor="middle" font-size="17" font-weight="700" fill="#4f2a6e" font-family="Iowan Old Style,Palatino,Georgia,serif">7</text></a><a href="#stade-8" class="w-seg"><path d="M77.6 383.6 A258 258 0 0 1 94.3 225.1 L176.5 261.7 A168 168 0 0 0 165.7 364.9 Z" fill="#a0283c" stroke="#fbf6ea" stroke-width="3"/><circle cx="118.2" cy="307.7" r="17" fill="#fbf6ea" opacity=".95"/><text x="118.2" y="313.7" text-anchor="middle" font-size="17" font-weight="700" fill="#a0283c" font-family="Iowan Old Style,Palatino,Georgia,serif">8</text></a><a href="#stade-9" class="w-seg"><path d="M94.3 225.1 A258 258 0 0 1 189.5 113.6 L238.5 189.1 A168 168 0 0 0 176.5 261.7 Z" fill="#d39a2a" stroke="#fbf6ea" stroke-width="3"/><circle cx="168.0" cy="191.7" r="17" fill="#fbf6ea" opacity=".95"/><text x="168.0" y="197.7" text-anchor="middle" font-size="17" font-weight="700" fill="#d39a2a" font-family="Iowan Old Style,Palatino,Georgia,serif">9</text></a><path d="M248.0 188.0 A164 164 0 0 1 472.0 248.0 L433.9 270.0 A120 120 0 0 0 270.0 226.1 Z" fill="#c9d6e3" stroke="#fbf6ea" stroke-width="3"/><path id="season11" d="M261.5 211.4 A137 137 0 0 1 448.6 261.5" fill="none"/><text font-size="15" font-weight="600" fill="#4b3a2a" font-family="Iowan Old Style,Palatino,Georgia,serif" letter-spacing="1"><textPath href="#season11" startOffset="50%" text-anchor="middle" data-fr="Hiver" data-en="Winter">Hiver</textPath></text><path d="M472.0 248.0 A164 164 0 0 1 412.0 472.0 L390.0 433.9 A120 120 0 0 0 433.9 270.0 Z" fill="#d8e6b8" stroke="#fbf6ea" stroke-width="3"/><path id="season2" d="M448.6 261.5 A137 137 0 0 1 398.5 448.6" fill="none"/><text font-size="15" font-weight="600" fill="#4b3a2a" font-family="Iowan Old Style,Palatino,Georgia,serif" letter-spacing="1"><textPath href="#season2" startOffset="50%" text-anchor="middle" data-fr="Printemps" data-en="Spring">Printemps</textPath></text><path d="M412.0 472.0 A164 164 0 0 1 188.0 412.0 L226.1 390.0 A120 120 0 0 0 390.0 433.9 Z" fill="#f1dd9a" stroke="#fbf6ea" stroke-width="3"/><path id="season5" d="M201.8 404.0 A148 148 0 0 0 404.0 458.2" fill="none"/><text font-size="15" font-weight="600" fill="#4b3a2a" font-family="Iowan Old Style,Palatino,Georgia,serif" letter-spacing="1"><textPath href="#season5" startOffset="50%" text-anchor="middle" data-fr="Été" data-en="Summer">Été</textPath></text><path d="M188.0 412.0 A164 164 0 0 1 248.0 188.0 L270.0 226.1 A120 120 0 0 0 226.1 390.0 Z" fill="#efc39a" stroke="#fbf6ea" stroke-width="3"/><path id="season8" d="M211.4 398.5 A137 137 0 0 1 261.5 211.4" fill="none"/><text font-size="15" font-weight="600" fill="#4b3a2a" font-family="Iowan Old Style,Palatino,Georgia,serif" letter-spacing="1"><textPath href="#season8" startOffset="50%" text-anchor="middle" data-fr="Automne" data-en="Autumn">Automne</textPath></text><circle cx="330" cy="330" r="114" fill="#fbf6ea" stroke="#d9c9a3"/><text x="330.0" y="316.0" text-anchor="middle" font-size="24" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Le cycle" data-en="The vine’s">Le cycle</text><text x="330.0" y="344.0" text-anchor="middle" font-size="24" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="de la vigne" data-en="year">de la vigne</text><text x="330.0" y="374.0" text-anchor="middle" font-size="13" font-weight="400" fill="#8a7a64" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="hémisphère nord" data-en="northern hemisphere">hémisphère nord</text></svg></div>
+      <div class="wlegend"><a class="wl" href="#stade-1" style="--c:#6f5a48"><span class="wl-n">1</span><span><b data-fr="Dormance hivernale" data-en="Winter dormancy">Dormance hivernale</b><small data-fr="décembre à février" data-en="December to February">décembre à février</small></span></a><a class="wl" href="#stade-2" style="--c:#b07a8a"><span class="wl-n">2</span><span><b data-fr="Débourrement" data-en="Budburst">Débourrement</b><small data-fr="mars à avril" data-en="March to April">mars à avril</small></span></a><a class="wl" href="#stade-3" style="--c:#7aa23c"><span class="wl-n">3</span><span><b data-fr="Croissance des rameaux" data-en="Shoot growth">Croissance des rameaux</b><small data-fr="avril à mai" data-en="April to May">avril à mai</small></span></a><a class="wl" href="#stade-4" style="--c:#c9b84a"><span class="wl-n">4</span><span><b data-fr="Floraison" data-en="Flowering">Floraison</b><small data-fr="fin mai à juin" data-en="late May to June">fin mai à juin</small></span></a><a class="wl" href="#stade-5" style="--c:#5f9a3a"><span class="wl-n">5</span><span><b data-fr="Nouaison" data-en="Fruit set">Nouaison</b><small data-fr="juin à juillet" data-en="June to July">juin à juillet</small></span></a><a class="wl" href="#stade-6" style="--c:#9b4f8a"><span class="wl-n">6</span><span><b data-fr="Véraison" data-en="Véraison">Véraison</b><small data-fr="mi-juillet à mi-août" data-en="mid-July to mid-August">mi-juillet à mi-août</small></span></a><a class="wl" href="#stade-7" style="--c:#4f2a6e"><span class="wl-n">7</span><span><b data-fr="Maturation" data-en="Ripening">Maturation</b><small data-fr="août à septembre" data-en="August to September">août à septembre</small></span></a><a class="wl" href="#stade-8" style="--c:#a0283c"><span class="wl-n">8</span><span><b data-fr="Vendanges" data-en="Harvest">Vendanges</b><small data-fr="septembre à octobre" data-en="September to October">septembre à octobre</small></span></a><a class="wl" href="#stade-9" style="--c:#d39a2a"><span class="wl-n">9</span><span><b data-fr="Chute des feuilles" data-en="Leaf fall">Chute des feuilles</b><small data-fr="octobre à novembre" data-en="October to November">octobre à novembre</small></span></a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="stades">
+    <div class="sec-head">
+      <h2 data-fr="Les neuf <em>étapes</em>" data-en="The nine <em>stages</em>">Les neuf <em>étapes</em></h2>
+      <p data-fr="Pour chaque étape : sa période, ses codes dans les deux échelles de stades (BBCH et Baggiolini), ce qui se passe dans la vigne et ce que fait le vigneron." data-en="For each stage: its period, its codes on the two stage scales (BBCH and Baggiolini), what happens in the vine and what the grower does.">Pour chaque étape : sa période, ses codes dans les deux échelles de stades (BBCH et Baggiolini), ce qui se passe dans la vigne et ce que fait le vigneron.</p>
+    </div>
+    <div class="stages">
+    <article class="stage" id="stade-1" style="--c:#6f5a48">
+      <div class="st-side"><img src="img/cycle/stage1.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 00</span><span title="Baggiolini">Baggiolini A</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">1</span><div><h3><span data-fr="Dormance hivernale" data-en="Winter dormancy">Dormance hivernale</span></h3><p class="st-period" data-fr="décembre à février" data-en="December to February">décembre à février</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Les feuilles sont tombées, la sève est descendue : la vigne vit au ralenti sur les réserves d’amidon stockées dans ses racines et son bois. Le froid hivernal lève progressivement la dormance des bourgeons.</p><p class="L en">The leaves have fallen and the sap has withdrawn: the vine idles on the starch reserves stored in its roots and wood. Winter cold gradually lifts the buds’ dormancy.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">La taille, de décembre à mars : le vigneron choisit le bois qui portera la récolte. Sarments broyés ou brûlés, réparation des piquets et des fils.</p><p class="L en">Pruning, from December to March: the grower chooses the wood that will carry the crop. Cuttings shredded or burned, posts and wires repaired.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#autres"><span data-fr="Gel d’hiver extrême" data-en="Extreme winter frost">Gel d’hiver extrême</span></a><a href="Vine_Threats.html#esca"><span data-fr="Esca (plaies de taille)" data-en="Esca (pruning wounds)">Esca (plaies de taille)</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Deux phases" data-en="Two phases">Deux phases</span></dt><dd><div class="L fr">Endodormance (le bourgeon ne peut pas débourrer, même au chaud), levée par une accumulation de froid ; puis écodormance : le bourgeon attend simplement la chaleur.</div><div class="L en">Endodormancy (the bud cannot burst, even if warm), lifted by accumulated chilling; then ecodormancy: the bud simply waits for warmth.</div></dd></div><div class="pro-item"><dt><span data-fr="Résistance au froid" data-en="Cold hardiness">Résistance au froid</span></dt><dd><div class="L fr">Un œil bien aoûté de <i>vinifera</i> supporte souvent −15 à −20 °C. Le gel de février 1956 a détruit une grande partie des vignes de Saint-Émilion et de Pomerol.</div><div class="L en">A well-hardened <i>vinifera</i> bud often withstands −15 to −20 °C. The February 1956 freeze destroyed much of the vineyard in Saint-Émilion and Pomerol.</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-2" style="--c:#b07a8a">
+      <div class="st-side"><img src="img/cycle/stage2.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 01–09</span><span title="Baggiolini">Baggiolini B–C</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">2</span><div><h3><span data-fr="Débourrement" data-en="Budburst">Débourrement</span></h3><p class="st-period" data-fr="mars à avril" data-en="March to April">mars à avril</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Quand le sol se réchauffe, les racines se remettent à pomper : la sève coule des plaies de taille, ce sont les « pleurs ». Puis les bourgeons gonflent, s’ouvrent dans leur bourre cotonneuse et laissent apparaître une pointe verte.</p><p class="L en">As the soil warms, the roots start pumping again: sap drips from the pruning cuts, the vine’s “weeping”. Then the buds swell, open in their cottony wool and show a green tip.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Fin de la taille, pliage et attachage des baguettes sur le fil, travail du sol (débuttage), surveillance du gel.</p><p class="L en">Pruning finishes, canes are bent and tied to the wire, soil work (removing the winter earth mound), frost watch.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#autres"><span data-fr="Gel de printemps" data-en="Spring frost">Gel de printemps</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Seuil thermique" data-en="Thermal threshold">Seuil thermique</span></dt><dd><div class="L fr">Le débourrement suit une température moyenne d’environ 10 °C, le « zéro de végétation » de la vigne. Chardonnay et Pinot débourrent tôt ; Cabernet Sauvignon, Grenache et Ugni blanc plus tard, ce qui les expose moins au gel.</div><div class="L en">Budburst follows a mean temperature of about 10 °C, the vine’s “growth threshold”. Chardonnay and Pinot burst early; Cabernet Sauvignon, Grenache and Ugni Blanc later, which makes them less exposed to frost.</div></dd></div><div class="pro-item"><dt><span data-fr="Pleurs" data-en="Bleeding">Pleurs</span></dt><dd><div class="L fr">Les pleurs commencent quand le sol atteint environ 10 à 12 °C ; un cep peut perdre plusieurs litres de sève sans dommage.</div><div class="L en">Bleeding starts when the soil reaches about 10–12 °C; a vine can lose several litres of sap without harm.</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-3" style="--c:#7aa23c">
+      <div class="st-side"><img src="img/cycle/stage3.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 11–57</span><span title="Baggiolini">Baggiolini D–H</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">3</span><div><h3><span data-fr="Croissance des rameaux" data-en="Shoot growth">Croissance des rameaux</span></h3><p class="st-period" data-fr="avril à mai" data-en="April to May">avril à mai</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Les feuilles s’étalent une à une et les rameaux s’allongent vite, parfois de plusieurs centimètres par jour. Les futures grappes deviennent visibles, puis leurs boutons floraux se séparent.</p><p class="L en">Leaves unfold one by one and the shoots lengthen fast, sometimes several centimetres a day. The future bunches become visible, then their flower buds separate.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Ébourgeonnage (supprimer les pousses inutiles), relevage des rameaux entre les fils, premiers traitements, travail du sol ou tonte de l’herbe.</p><p class="L en">Shoot thinning (removing unwanted shoots), lifting shoots between the wires, first sprays, soil work or mowing.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#mildiou"><span data-fr="Mildiou" data-en="Downy mildew">Mildiou</span></a><a href="Vine_Threats.html#oidium"><span data-fr="Oïdium" data-en="Powdery mildew">Oïdium</span></a><a href="Vine_Threats.html#black-rot"><span data-fr="Black rot" data-en="Black rot">Black rot</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Réserves puis photosynthèse" data-en="Reserves, then photosynthesis">Réserves puis photosynthèse</span></dt><dd><div class="L fr">Jusqu’au stade 6 à 8 feuilles environ, la pousse vit surtout sur les réserves ; ensuite les feuilles deviennent exportatrices de sucres.</div><div class="L en">Until roughly the 6–8 leaf stage the shoot lives mainly on reserves; after that the leaves become net exporters of sugars.</div></dd></div><div class="pro-item"><dt><span data-fr="Premiers risques" data-en="First risks">Premiers risques</span></dt><dd><div class="L fr">Les contaminations primaires de mildiou sont possibles dès que les rameaux atteignent environ 10 cm (règle des 3 × 10, voir chapitre 7).</div><div class="L en">Primary downy-mildew infections are possible once shoots reach about 10 cm (the 3 × 10 rule, see chapter 7).</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-4" style="--c:#c9b84a">
+      <div class="st-side"><img src="img/cycle/stage4.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 60–69</span><span title="Baggiolini">Baggiolini I</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">4</span><div><h3><span data-fr="Floraison" data-en="Flowering">Floraison</span></h3><p class="st-period" data-fr="fin mai à juin" data-en="late May to June">fin mai à juin</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Les capuchons tombent et les minuscules fleurs libèrent leur pollen. Une parcelle fleurit en une à deux semaines ; le vignoble embaume d’un parfum discret, proche du réséda.</p><p class="L en">The caps fall and the tiny flowers release their pollen. A plot flowers within one to two weeks; the vineyard gives off a faint scent, rather like mignonette.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Palissage, premiers rognages ; on évite de déranger la vigne. Les vignerons notent la date de mi-floraison : la vendange suit environ 100 jours plus tard.</p><p class="L en">Trellising, first trimming; the vines are left in peace. Growers note the date of mid-flowering: harvest follows about 100 days later.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Plant.html#fleur"><span data-fr="Coulure, millerandage" data-en="Coulure, millerandage">Coulure, millerandage</span></a><a href="Vine_Threats.html#mildiou"><span data-fr="Mildiou sur grappes" data-en="Downy mildew on bunches">Mildiou sur grappes</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Conditions" data-en="Conditions">Conditions</span></dt><dd><div class="L fr">Au moins 15 °C, idéalement 20–25 °C, temps sec. Froid et pluie ralentissent la germination du pollen et provoquent la coulure.</div><div class="L en">At least 15 °C, ideally 20–25 °C, dry weather. Cold and rain slow pollen germination and cause coulure.</div></dd></div><div class="pro-item"><dt><span data-fr="Repère" data-en="Benchmark">Repère</span></dt><dd><div class="L fr">BBCH 65 = pleine floraison (50 % des capuchons tombés), la date de référence des modèles de prévision de récolte.</div><div class="L en">BBCH 65 = full bloom (50 % of caps fallen), the reference date for harvest-forecasting models.</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-5" style="--c:#5f9a3a">
+      <div class="st-side"><img src="img/cycle/stage5.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 71–79</span><span title="Baggiolini">Baggiolini J–L</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">5</span><div><h3><span data-fr="Nouaison" data-en="Fruit set">Nouaison</span></h3><p class="st-period" data-fr="juin à juillet" data-en="June to July">juin à juillet</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Les fleurs fécondées deviennent de petites baies vertes, dures et très acides. Elles grossissent jusqu’à se toucher : c’est la fermeture de la grappe.</p><p class="L en">The fertilised flowers become small green berries, hard and very acidic. They swell until they touch: bunch closure.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Rognage (couper l’extrémité des rameaux), effeuillage de la zone des grappes, traitements, parfois vendange verte en juillet.</p><p class="L en">Trimming (topping the shoots), leaf removal around the bunches, sprays, sometimes green harvesting in July.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#oidium"><span data-fr="Oïdium" data-en="Powdery mildew">Oïdium</span></a><a href="Vine_Threats.html#mildiou"><span data-fr="Mildiou" data-en="Downy mildew">Mildiou</span></a><a href="Vine_Threats.html#autres"><span data-fr="Grêle" data-en="Hail">Grêle</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Croissance de la baie" data-en="Berry growth">Croissance de la baie</span></dt><dd><div class="L fr">Première phase : multiplication cellulaire puis grossissement ; les acides (malique surtout) s’accumulent. Un stress hydrique à ce stade réduit définitivement la taille des baies.</div><div class="L en">First phase: cell division then expansion; acids (mainly malic) accumulate. Water stress at this stage permanently reduces berry size.</div></dd></div><div class="pro-item"><dt><span data-fr="Plateau" data-en="Lag phase">Plateau</span></dt><dd><div class="L fr">Avant la véraison, la croissance marque une pause de 1 à 3 semaines pendant laquelle les pépins mûrissent.</div><div class="L en">Before véraison, growth pauses for 1–3 weeks while the seeds mature.</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-6" style="--c:#9b4f8a">
+      <div class="st-side"><img src="img/cycle/stage6.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 81–85</span><span title="Baggiolini">Baggiolini M</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">6</span><div><h3><span data-fr="Véraison" data-en="Véraison">Véraison</span></h3><p class="st-period" data-fr="mi-juillet à mi-août" data-en="mid-July to mid-August">mi-juillet à mi-août</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Les baies s’assouplissent et changent de couleur : les raisins noirs rougissent puis bleuissent, les blancs deviennent translucides et dorés. Les sucres commencent à affluer, l’acidité à baisser. Les rameaux brunissent : c’est l’aoûtement.</p><p class="L en">The berries soften and change colour: black grapes turn red then blue, white grapes become translucent and golden. Sugars start pouring in and acidity begins to fall. The shoots turn brown: they are ripening into wood.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Vendange verte pour éliminer les grappes en retard, filets contre les oiseaux, premiers prélèvements de baies.</p><p class="L en">Green harvest to remove lagging bunches, nets against birds, first berry sampling.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#pourriture-grise"><span data-fr="Pourriture grise" data-en="Grey rot">Pourriture grise</span></a><a href="Vine_Threats.html#autres"><span data-fr="Canicule, sécheresse" data-en="Heat, drought">Canicule, sécheresse</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Bascule physiologique" data-en="Physiological switch">Bascule physiologique</span></dt><dd><div class="L fr">La baie passe de l’alimentation par le xylème à celle par le phloème : sucres, potassium et eau arrivent par la sève élaborée. Les anthocyanes s’accumulent dans la pellicule des cépages rouges.</div><div class="L en">The berry switches from xylem to phloem supply: sugars, potassium and water arrive in the phloem sap. Anthocyanins build up in red varieties’ skins.</div></dd></div><div class="pro-item"><dt><span data-fr="Durée" data-en="Duration">Durée</span></dt><dd><div class="L fr">À l’échelle d’une grappe, quelques jours ; à l’échelle d’une parcelle, une à deux semaines. Une véraison étalée annonce une vendange hétérogène.</div><div class="L en">A few days for one bunch, one to two weeks for a whole plot. A drawn-out véraison means an uneven harvest.</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-7" style="--c:#4f2a6e">
+      <div class="st-side"><img src="img/cycle/stage7.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 85–89</span><span title="Baggiolini">Baggiolini M–N</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">7</span><div><h3><span data-fr="Maturation" data-en="Ripening">Maturation</span></h3><p class="st-period" data-fr="août à septembre" data-en="August to September">août à septembre</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Pendant quarante à cinquante jours, les baies se gorgent de sucre, perdent de l’acidité, gagnent en arômes et en couleur ; les tanins des pépins et des peaux s’affinent.</p><p class="L en">For forty to fifty days the berries fill with sugar, lose acidity and gain aroma and colour; the tannins in seeds and skins soften.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Contrôles de maturité : prélèvement de baies, mesure du sucre et de l’acidité, dégustation des baies. Préparation du matériel et des équipes.</p><p class="L en">Ripeness checks: berry sampling, measuring sugar and acidity, tasting berries. Equipment and crews prepared.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#pourriture-grise"><span data-fr="Pourriture grise" data-en="Grey rot">Pourriture grise</span></a><a href="Vine_Threats.html#autres"><span data-fr="Vers de la grappe" data-en="Grape moths">Vers de la grappe</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Évolution type" data-en="Typical evolution">Évolution type</span></dt><dd><div class="L fr">Les sucres passent d’environ 20 g/L à la véraison à 180–250 g/L ; l’acide malique est respiré, d’autant plus vite qu’il fait chaud ; l’acide tartrique reste stable.</div><div class="L en">Sugars rise from about 20 g/L at véraison to 180–250 g/L; malic acid is respired, faster in hot weather; tartaric acid stays stable.</div></dd></div><div class="pro-item"><dt><span data-fr="Ban des vendanges" data-en="Official harvest start">Ban des vendanges</span></dt><dd><div class="L fr">Pour les AOC, la date d’ouverture des vendanges est fixée chaque année par arrêté préfectoral, sur proposition de l’ODG et après avis de l’INAO, à partir des contrôles de maturité.</div><div class="L en">For AOCs, the harvest opening date is set every year by prefectoral order, on the proposal of the growers’ body (ODG) and after INAO’s opinion, based on ripeness checks.</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-8" style="--c:#a0283c">
+      <div class="st-side"><img src="img/cycle/stage8.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 89</span><span title="Baggiolini">Baggiolini N</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">8</span><div><h3><span data-fr="Vendanges" data-en="Harvest">Vendanges</span></h3><p class="st-period" data-fr="septembre à octobre" data-en="September to October">septembre à octobre</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Le raisin est cueilli au moment choisi par le vigneron, selon le style de vin voulu : plus tôt pour la fraîcheur des effervescents, plus tard pour la richesse ou les vins doux.</p><p class="L en">The grapes are picked when the grower decides, according to the wine style: earlier for the freshness of sparkling wines, later for richness or sweet wines.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Vendange à la main ou à la machine, tri, transport rapide au chai. Chapitre 9 à venir.</p><p class="L en">Hand or machine picking, sorting, quick transport to the winery. Chapter 9 to come.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#pourriture-grise"><span data-fr="Pluie, pourriture" data-en="Rain, rot">Pluie, pourriture</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Avance des dates" data-en="Earlier dates">Avance des dates</span></dt><dd><div class="L fr">Avec le réchauffement, les vendanges ont lieu en moyenne deux à trois semaines plus tôt qu’il y a quarante ans ; en Languedoc, elles commencent souvent dès la mi-août.</div><div class="L en">With climate warming, harvests now take place on average two to three weeks earlier than forty years ago; in Languedoc they often start in mid-August.</div></dd></div><div class="pro-item"><dt><span data-fr="Après la récolte" data-en="After picking">Après la récolte</span></dt><dd><div class="L fr">Les feuilles restent actives plusieurs semaines : c’est le moment où la vigne reconstitue ses réserves pour l’année suivante. Une défoliation précoce (maladie, gel d’automne) pénalise le millésime suivant.</div><div class="L en">The leaves stay active for several weeks: this is when the vine rebuilds its reserves for the next year. Early defoliation (disease, autumn frost) hurts the following vintage.</div></dd></div></dl></details>
+      </div>
+    </article>
+    <article class="stage" id="stade-9" style="--c:#d39a2a">
+      <div class="st-side"><img src="img/cycle/stage9.webp" alt="" loading="lazy" decoding="async" width="180" height="180">
+        <div class="codes"><span title="BBCH">BBCH 91–97</span><span title="Baggiolini">Baggiolini —</span></div></div>
+      <div class="st-body">
+        <div class="st-head"><span class="st-n">9</span><div><h3><span data-fr="Chute des feuilles" data-en="Leaf fall">Chute des feuilles</span></h3><p class="st-period" data-fr="octobre à novembre" data-en="October to November">octobre à novembre</p></div></div>
+        <div class="st-grid">
+          <div><h4><span data-fr="Dans la vigne" data-en="In the vine">Dans la vigne</span></h4><p class="L fr">Les feuilles jaunissent ou rougissent, puis tombent aux premières gelées. La sève redescend, les sarments achèvent de s’aoûter et la vigne entre en dormance.</p><p class="L en">Leaves turn yellow or red, then fall at the first frosts. The sap withdraws, the canes finish hardening and the vine goes dormant.</p></div>
+          <div><h4><span data-fr="Au vignoble" data-en="In the vineyard">Au vignoble</span></h4><p class="L fr">Buttage (remonter la terre au pied des ceps contre le froid), apport de fumure ou de compost, semis des couverts végétaux, plantations.</p><p class="L en">Hilling up soil around the vine base against the cold, spreading manure or compost, sowing cover crops, planting.</p></div>
+        </div>
+        <div class="st-risks"><h4><span data-fr="À surveiller" data-en="Watch out for">À surveiller</span></h4><a href="Vine_Threats.html#flavescence-doree"><span data-fr="Couleurs anormales : virus, flavescence" data-en="Abnormal colours: virus, flavescence">Couleurs anormales : virus, flavescence</span></a></div>
+        
+        <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Mise en réserve" data-en="Storing reserves">Mise en réserve</span></dt><dd><div class="L fr">Amidon et azote migrent des feuilles vers le bois et les racines avant leur chute ; la qualité de cette mise en réserve conditionne le débourrement suivant.</div><div class="L en">Starch and nitrogen move from the leaves into the wood and roots before leaf fall; how well this happens determines the next budburst.</div></dd></div></dl></details>
+      </div>
+    </article></div>
+  </section>
+
+  <section class="sec" id="deux-ans">
+    <div class="sec-head">
+      <h2 data-fr="Un cycle <em>sur deux ans</em>" data-en="A cycle <em>over two years</em>">Un cycle <em>sur deux ans</em></h2>
+      <p data-fr="Les grappes d’un millésime se préparent dès l’été précédent, à l’intérieur des bourgeons." data-en="A vintage’s bunches are prepared the summer before, inside the buds.">Les grappes d’un millésime se préparent dès l’été précédent, à l’intérieur des bourgeons.</p>
+    </div>
+    <div class="two-col">
+      <div class="diagram-card two-years"><svg class="diagram" viewBox="0 0 680 330" role="img" aria-label="Le cycle reproducteur sur deux ans / The two-year reproductive cycle"><rect x="180.0" y="40" width="240.0" height="250" fill="#f3ead6"/><rect x="420.0" y="40" width="240.0" height="250" fill="#eef1dc"/><text x="300.0" y="30.0" text-anchor="middle" font-size="16" font-weight="600" fill="#8a5a2b" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Année N − 1" data-en="Year N − 1">Année N − 1</text><text x="540.0" y="30.0" text-anchor="middle" font-size="16" font-weight="600" fill="#4f6e22" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Année N (millésime)" data-en="Year N (vintage)">Année N (millésime)</text><line x1="180.0" y1="40" x2="180.0" y2="290" stroke="#ffffff" stroke-width="2.5"/><line x1="200.0" y1="40" x2="200.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="220.0" y1="40" x2="220.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="240.0" y1="40" x2="240.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="260.0" y1="40" x2="260.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="280.0" y1="40" x2="280.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="300.0" y1="40" x2="300.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="320.0" y1="40" x2="320.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="340.0" y1="40" x2="340.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="360.0" y1="40" x2="360.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="380.0" y1="40" x2="380.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="400.0" y1="40" x2="400.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="420.0" y1="40" x2="420.0" y2="290" stroke="#ffffff" stroke-width="2.5"/><line x1="440.0" y1="40" x2="440.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="460.0" y1="40" x2="460.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="480.0" y1="40" x2="480.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="500.0" y1="40" x2="500.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="520.0" y1="40" x2="520.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="540.0" y1="40" x2="540.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="560.0" y1="40" x2="560.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="580.0" y1="40" x2="580.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="600.0" y1="40" x2="600.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="620.0" y1="40" x2="620.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="640.0" y1="40" x2="640.0" y2="290" stroke="#ffffff" stroke-width="1.5"/><line x1="660.0" y1="40" x2="660.0" y2="290" stroke="#ffffff" stroke-width="2.5"/><text x="190.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">J</text><text x="210.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">F</text><text x="230.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">M</text><text x="250.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">A</text><text x="270.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">M</text><text x="290.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">J</text><text x="310.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">J</text><text x="330.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">A</text><text x="350.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">S</text><text x="370.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">O</text><text x="390.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">N</text><text x="410.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">D</text><text x="430.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">J</text><text x="450.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">F</text><text x="470.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">M</text><text x="490.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">A</text><text x="510.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">M</text><text x="530.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">J</text><text x="550.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">J</text><text x="570.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">A</text><text x="590.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">S</text><text x="610.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">O</text><text x="630.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">N</text><text x="650.0" y="306" text-anchor="middle" font-size="11" fill="#8a7a64" font-family="Iowan Old Style,Georgia,serif">D</text><defs><pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="7" height="7" fill="#e8dcc0"/><line x1="0" y1="0" x2="0" y2="7" stroke="#b9a37a" stroke-width="2.5"/></pattern></defs><text x="172.0" y="74.0" text-anchor="end" font-size="13" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Le rameau de l’an N−1" data-en="Shoot of year N−1">Le rameau de l’an N−1</text><rect x="240.0" y="56" width="156.0" height="26" rx="6" fill="#7aa23c" stroke="#7aa23c" stroke-width="1.2"/><text x="318.0" y="74.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="pousse et récolte N−1" data-en="growth, crop N−1">pousse et récolte N−1</text><text x="172.0" y="120.0" text-anchor="end" font-size="13" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Ses bourgeons" data-en="Its buds">Ses bourgeons</text><rect x="280.0" y="102" width="60.0" height="26" rx="6" fill="#c08a1a" stroke="#c08a1a" stroke-width="1.2"/><text x="310.0" y="120.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="initiation" data-en="initiation">initiation</text><rect x="340.0" y="102" width="130.0" height="26" rx="6" fill="url(#hatch)" stroke="#b9a37a" stroke-width="1.2"/><text x="405.0" y="120.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="dormance" data-en="dormancy">dormance</text><rect x="470.0" y="102" width="26.0" height="26" rx="6" fill="#9b4f8a" stroke="#9b4f8a" stroke-width="1.2"/><text x="483.0" y="120.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="" data-en=""></text><text x="502.0" y="120.0" text-anchor="start" font-size="12.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" font-style="italic" data-fr="fleurs formées" data-en="flowers formed">fleurs formées</text><text x="172.0" y="166.0" text-anchor="end" font-size="13" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Le sarment taillé" data-en="The pruned cane">Le sarment taillé</text><rect x="410.0" y="148" width="54.0" height="26" rx="6" fill="#8a5a2b" stroke="#8a5a2b" stroke-width="1.2"/><text x="437.0" y="166.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="taille" data-en="pruning">taille</text><text x="172.0" y="212.0" text-anchor="end" font-size="13" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Le rameau de l’an N" data-en="Shoot of year N">Le rameau de l’an N</text><rect x="480.0" y="194" width="156.0" height="26" rx="6" fill="#5f9a3a" stroke="#5f9a3a" stroke-width="1.2"/><text x="558.0" y="212.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="débourrement → chute" data-en="budburst → leaf fall">débourrement → chute</text><text x="172.0" y="258.0" text-anchor="end" font-size="13" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="Les grappes de l’an N" data-en="Bunches of year N">Les grappes de l’an N</text><rect x="520.0" y="240" width="20.0" height="26" rx="6" fill="#c9b84a" stroke="#c9b84a" stroke-width="1.2"/><text x="530.0" y="258.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="" data-en=""></text><rect x="540.0" y="240" width="32.0" height="26" rx="6" fill="#5f9a3a" stroke="#5f9a3a" stroke-width="1.2"/><text x="556.0" y="258.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="" data-en=""></text><rect x="572.0" y="240" width="20.0" height="26" rx="6" fill="#9b4f8a" stroke="#9b4f8a" stroke-width="1.2"/><text x="582.0" y="258.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="" data-en=""></text><rect x="592.0" y="240" width="24.0" height="26" rx="6" fill="#a0283c" stroke="#a0283c" stroke-width="1.2"/><text x="604.0" y="258.0" text-anchor="middle" font-size="12.5" font-weight="600" fill="#fff" font-family="Iowan Old Style,Palatino,Georgia,serif" data-fr="" data-en=""></text><text x="514.0" y="258.0" text-anchor="end" font-size="12.5" font-weight="400" fill="#3b2a1e" font-family="Iowan Old Style,Palatino,Georgia,serif" font-style="italic" data-fr="floraison → véraison → vendange" data-en="flowering → véraison → harvest">floraison → véraison → vendange</text></svg></div>
+      <div class="explain">
+        <p class="L fr">Pendant l’été de l’année N−1, alors que la vigne mûrit ses raisins, les bourgeons qui se forment sur les rameaux fabriquent déjà les <b>ébauches des grappes</b> de l’année suivante. Plus ces bourgeons reçoivent de lumière et de chaleur, plus ils seront fertiles.</p>
+        <p class="L en">During the summer of year N−1, while the vine ripens its grapes, the buds forming on the shoots are already building the <b>bunch primordia</b> for the following year. The more light and warmth these buds receive, the more fruitful they will be.</p>
+        <p class="L fr">Ces bourgeons passent l’hiver en dormance sur le sarment. À la taille, le vigneron choisit combien en garder. Au printemps de l’année N, les fleurs achèvent de se former, juste avant le débourrement.</p>
+        <p class="L en">These buds spend the winter dormant on the cane. At pruning, the grower decides how many to keep. In spring of year N the flowers finish forming, just before budburst.</p>
+        <p class="L fr">Conséquence : une mauvaise année (grêle, gel, sécheresse, maladie) peut pénaliser <b>deux récoltes</b>, celle de l’année et celle de l’année suivante.</p>
+        <p class="L en">The consequence: a bad year (hail, frost, drought, disease) can hurt <b>two crops</b>, that year’s and the next.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="chaleur">
+    <div class="sec-head">
+      <h2 data-fr="Chaleur <em>&amp; précocité</em>" data-en="Heat <em>&amp; earliness</em>">Chaleur <em>&amp; précocité</em></h2>
+      <p data-fr="La vigne avance au rythme de la chaleur accumulée. Chaque cépage a ses besoins : on plante les plus précoces au nord, les plus tardifs au sud." data-en="The vine progresses with accumulated heat. Each variety has its needs: the earliest are planted in the north, the latest in the south.">La vigne avance au rythme de la chaleur accumulée. Chaque cépage a ses besoins : on plante les plus précoces au nord, les plus tardifs au sud.</p>
+    </div>
+    <h3 class="sub" data-fr="Époques de maturité (échelle de Pulliat)" data-en="Ripening periods (Pulliat scale)">Époques de maturité (échelle de Pulliat)</h3>
+    <div class="eps"><div class="ep" style="--c:#7aa23c"><h4><span data-fr="Première époque" data-en="First period">Première époque</span></h4><p class="ep-d" data-fr="même date que le Chasselas" data-en="same time as Chasselas">même date que le Chasselas</p><ul><li>Chasselas</li><li>Pinot noir</li><li>Chardonnay</li><li>Gamay</li><li>Pinot gris</li><li>Sauvignon blanc</li><li>Gewurztraminer</li></ul></div><div class="ep" style="--c:#9b4f8a"><h4><span data-fr="Deuxième époque" data-en="Second period">Deuxième époque</span></h4><p class="ep-d" data-fr="≈ 12 à 15 jours après" data-en="≈ 12–15 days later">≈ 12 à 15 jours après</p><ul><li>Merlot</li><li>Syrah</li><li>Cabernet franc</li><li>Chenin</li><li>Riesling</li><li>Sémillon</li><li><span data-fr="Cabernet Sauvignon (tardif)" data-en="Cabernet Sauvignon (late)">Cabernet Sauvignon (tardif)</span></li></ul></div><div class="ep" style="--c:#a0283c"><h4><span data-fr="Troisième époque" data-en="Third period">Troisième époque</span></h4><p class="ep-d" data-fr="≈ 3 à 4 semaines après" data-en="≈ 3–4 weeks later">≈ 3 à 4 semaines après</p><ul><li>Grenache</li><li>Mourvèdre</li><li>Carignan</li><li>Ugni blanc</li><li>Clairette</li></ul></div></div>
+    <h3 class="sub" data-fr="Quand vendange-t-on ? Périodes indicatives des années récentes" data-en="When is the harvest? Indicative windows in recent years">Quand vendange-t-on ? Périodes indicatives des années récentes</h3>
+    <div class="panel"><div class="hv"><div class="hv-row hv-head"><span class="hv-l"></span><div class="hv-months"><span><span data-fr="Août" data-en="Aug">Août</span></span><span><span data-fr="Sept." data-en="Sep">Sept.</span></span><span><span data-fr="Oct." data-en="Oct">Oct.</span></span><span><span data-fr="Nov." data-en="Nov">Nov.</span></span><span><span data-fr="Déc." data-en="Dec">Déc.</span></span></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Languedoc-Roussillon" data-en="Languedoc-Roussillon">Languedoc-Roussillon</span></span><div class="hv-track"><i class="hv-bar" style="left:10.0%;width:28.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Provence" data-en="Provence">Provence</span></span><div class="hv-track"><i class="hv-bar" style="left:14.0%;width:24.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Beaujolais" data-en="Beaujolais">Beaujolais</span></span><div class="hv-track"><i class="hv-bar" style="left:16.0%;width:16.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Champagne" data-en="Champagne">Champagne</span></span><div class="hv-track"><i class="hv-bar" style="left:16.0%;width:18.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Bourgogne" data-en="Burgundy">Bourgogne</span></span><div class="hv-track"><i class="hv-bar" style="left:18.0%;width:18.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Vallée du Rhône sud" data-en="Southern Rhône">Vallée du Rhône sud</span></span><div class="hv-track"><i class="hv-bar" style="left:20.0%;width:24.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Bordeaux" data-en="Bordeaux">Bordeaux</span></span><div class="hv-track"><i class="hv-bar" style="left:18.0%;width:30.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Alsace" data-en="Alsace">Alsace</span></span><div class="hv-track"><i class="hv-bar" style="left:22.0%;width:26.0%"></i><i class="tail" style="left:48.0%;width:24.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Loire" data-en="Loire">Loire</span></span><div class="hv-track"><i class="hv-bar" style="left:20.0%;width:30.0%"></i><i class="tail" style="left:50.0%;width:26.0%"></i></div></div><div class="hv-row"><span class="hv-l"><span data-fr="Sauternes" data-en="Sauternes">Sauternes</span></span><div class="hv-track"><i class="hv-bar" style="left:28.0%;width:42.0%"></i></div></div></div>
+      <div class="hv-key" style="padding:0 clamp(14px,2.4vw,24px) clamp(14px,2.4vw,20px)">
+        <span><i style="background:linear-gradient(90deg,#c0703a,#a0283c)"></i><span data-fr="Vendanges principales" data-en="Main harvest">Vendanges principales</span></span>
+        <span><i style="background:repeating-linear-gradient(135deg,#c08a1a 0 3px,transparent 3px 6px)"></i><span data-fr="Vendanges tardives, sélections de grains nobles" data-en="Late harvest, noble-rot selections">Vendanges tardives, sélections de grains nobles</span></span>
+      </div>
+    </div>
+    <details class="pro"><summary><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg><span data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</span><span class="chev" aria-hidden="true">›</span></summary><dl><div class="pro-item"><dt><span data-fr="Degrés-jours" data-en="Degree-days">Degrés-jours</span></dt><dd><div class="L fr">On additionne chaque jour la température moyenne au-dessus de 10 °C (le zéro de végétation). Exemple : une journée à 22 °C de moyenne compte 12 degrés-jours. Un cépage précoce a besoin de moins de chaleur cumulée qu’un cépage tardif pour mûrir.</div><div class="L en">Each day, the mean temperature above 10 °C (the growth threshold) is added up. Example: a day averaging 22 °C counts 12 degree-days. An early variety needs less accumulated heat to ripen than a late one.</div></dd></div><div class="pro-item"><dt><span data-fr="Indice de Winkler" data-en="Winkler index">Indice de Winkler</span></dt><dd><div class="L fr">Somme des degrés-jours (base 10 °C) du 1<sup>er</sup> avril au 31 octobre, créée en Californie dans les années 1940 ; cinq régions climatiques de I (fraîche) à V (chaude).</div><div class="L en">Sum of degree-days (base 10 °C) from 1 April to 31 October, devised in California in the 1940s; five climate regions from I (cool) to V (hot).</div></dd></div><div class="pro-item"><dt><span data-fr="Indice héliothermique de Huglin" data-en="Huglin heliothermal index">Indice héliothermique de Huglin</span></dt><dd><div class="L fr">Plus utilisé en Europe : il combine températures moyennes et maximales d’avril à septembre et corrige selon la latitude (longueur du jour). Classes : très frais ≤ 1 500, frais 1 500–1 800, tempéré 1 800–2 100, tempéré chaud 2 100–2 400, chaud 2 400–3 000. Historiquement, la Champagne et l’Alsace se situaient dans les classes fraîches, Bordeaux en tempéré, le Languedoc en chaud ; toutes ces valeurs augmentent avec le réchauffement.</div><div class="L en">More widely used in Europe: it combines mean and maximum temperatures from April to September and adjusts for latitude (day length). Classes: very cool ≤ 1,500, cool 1,500–1,800, temperate 1,800–2,100, warm temperate 2,100–2,400, warm 2,400–3,000. Historically Champagne and Alsace fell in the cool classes, Bordeaux in temperate and Languedoc in warm; all these values are rising with climate warming.</div></dd></div><div class="pro-item"><dt><span data-fr="Échelle de Pulliat" data-en="Pulliat scale">Échelle de Pulliat</span></dt><dd><div class="L fr">Classement de la précocité de maturité établi au XIX<sup>e</sup> siècle par Victor Pulliat, avec le Chasselas pour référence. Les écarts réels varient selon le climat et l’année.</div><div class="L en">Ranking of ripening earliness drawn up in the 19th century by Victor Pulliat, using Chasselas as the reference. Actual gaps vary with climate and year.</div></dd></div></dl></details>
+  </section>
+
+  <section class="sec" id="calendrier">
+    <div class="sec-head">
+      <h2 data-fr="Le calendrier <em>du vigneron</em>" data-en="The grower’s <em>calendar</em>">Le calendrier <em>du vigneron</em></h2>
+      <p data-fr="Les grands travaux de l’année, mois par mois. Ils seront détaillés aux chapitres 5 (taille) et 6 (travaux en vert et du sol)." data-en="The year’s main tasks, month by month. They will be covered in detail in chapters 5 (pruning) and 6 (canopy and soil work).">Les grands travaux de l’année, mois par mois. Ils seront détaillés aux chapitres 5 (taille) et 6 (travaux en vert et du sol).</p>
+    </div>
+    <div class="months"><div class="mo" style="--c:#6f8fb0"><b><span data-fr="Janvier" data-en="January">Janvier</span></b><span data-fr="Taille. Broyage des sarments." data-en="Pruning. Shredding cuttings.">Taille. Broyage des sarments.</span></div><div class="mo" style="--c:#6f8fb0"><b><span data-fr="Février" data-en="February">Février</span></b><span data-fr="Taille, réparation du palissage." data-en="Pruning, trellis repairs.">Taille, réparation du palissage.</span></div><div class="mo" style="--c:#7aa23c"><b><span data-fr="Mars" data-en="March">Mars</span></b><span data-fr="Fin de la taille, pliage et attachage, débuttage. Les pleurs." data-en="End of pruning, bending and tying canes, removing the winter mound. Bleeding.">Fin de la taille, pliage et attachage, débuttage. Les pleurs.</span></div><div class="mo" style="--c:#7aa23c"><b><span data-fr="Avril" data-en="April">Avril</span></b><span data-fr="Débourrement. Lutte contre le gel, plantations." data-en="Budburst. Frost protection, planting.">Débourrement. Lutte contre le gel, plantations.</span></div><div class="mo" style="--c:#7aa23c"><b><span data-fr="Mai" data-en="May">Mai</span></b><span data-fr="Ébourgeonnage, relevage, premiers traitements, travail du sol." data-en="Shoot thinning, shoot lifting, first sprays, soil work.">Ébourgeonnage, relevage, premiers traitements, travail du sol.</span></div><div class="mo" style="--c:#c9a227"><b><span data-fr="Juin" data-en="June">Juin</span></b><span data-fr="Floraison. Palissage, rognage, traitements." data-en="Flowering. Trellising, trimming, sprays.">Floraison. Palissage, rognage, traitements.</span></div><div class="mo" style="--c:#c9a227"><b><span data-fr="Juillet" data-en="July">Juillet</span></b><span data-fr="Rognage, effeuillage, vendange verte." data-en="Trimming, leaf removal, green harvest.">Rognage, effeuillage, vendange verte.</span></div><div class="mo" style="--c:#c9a227"><b><span data-fr="Août" data-en="August">Août</span></b><span data-fr="Véraison. Contrôles de maturité, préparation des vendanges." data-en="Véraison. Ripeness checks, harvest preparation.">Véraison. Contrôles de maturité, préparation des vendanges.</span></div><div class="mo" style="--c:#c0703a"><b><span data-fr="Septembre" data-en="September">Septembre</span></b><span data-fr="Vendanges." data-en="Harvest.">Vendanges.</span></div><div class="mo" style="--c:#c0703a"><b><span data-fr="Octobre" data-en="October">Octobre</span></b><span data-fr="Fin des vendanges, nettoyage." data-en="End of harvest, clean-up.">Fin des vendanges, nettoyage.</span></div><div class="mo" style="--c:#c0703a"><b><span data-fr="Novembre" data-en="November">Novembre</span></b><span data-fr="Chute des feuilles. Buttage, fumure, semis des couverts, plantations." data-en="Leaf fall. Hilling up, manuring, sowing cover crops, planting.">Chute des feuilles. Buttage, fumure, semis des couverts, plantations.</span></div><div class="mo" style="--c:#6f8fb0"><b><span data-fr="Décembre" data-en="December">Décembre</span></b><span data-fr="Dormance. Début de la taille." data-en="Dormancy. Pruning begins.">Dormance. Début de la taille.</span></div></div>
+  </section>
+
+  <section class="sec" id="bbch">
+    <div class="sec-head">
+      <h2 data-fr="Les échelles <em>de stades</em>" data-en="Growth-stage <em>scales</em>">Les échelles <em>de stades</em></h2>
+      <p data-fr="Pour parler précisément d’un stade, les techniciens utilisent l’échelle internationale BBCH (codes 00 à 99) ou, en France, l’échelle à lettres de Baggiolini (A à N). Ce sont ces codes qu’on lit dans les bulletins de santé du végétal." data-en="To refer to a stage precisely, technicians use the international BBCH scale (codes 00 to 99) or, in France, Baggiolini’s letter scale (A to N). These are the codes found in plant-health bulletins.">Pour parler précisément d’un stade, les techniciens utilisent l’échelle internationale BBCH (codes 00 à 99) ou, en France, l’échelle à lettres de Baggiolini (A à N). Ce sont ces codes qu’on lit dans les bulletins de santé du végétal.</p>
+    </div>
+    <div class="panel bbch-wrap"><table class="bbch"><thead><tr><th>BBCH</th><th>Baggiolini</th><th data-fr="Stade" data-en="Stage">Stade</th></tr></thead><tbody><tr><td class="code">00</td><td class="code">A</td><td><span data-fr="Bourgeon d’hiver, dormance" data-en="Winter bud, dormancy">Bourgeon d’hiver, dormance</span></td></tr><tr><td class="code">01–03</td><td class="code">B</td><td><span data-fr="Gonflement du bourgeon" data-en="Bud swelling">Gonflement du bourgeon</span></td></tr><tr><td class="code">05</td><td class="code">B</td><td><span data-fr="Stade « dans le coton »" data-en="Woolly bud">Stade « dans le coton »</span></td></tr><tr><td class="code">07–09</td><td class="code">C</td><td><span data-fr="Pointe verte" data-en="Green tip">Pointe verte</span></td></tr><tr><td class="code">11</td><td class="code">D–E</td><td><span data-fr="Première feuille étalée" data-en="First leaf unfolded">Première feuille étalée</span></td></tr><tr><td class="code">12–19</td><td class="code">E</td><td><span data-fr="2 à 9 feuilles étalées" data-en="2 to 9 leaves unfolded">2 à 9 feuilles étalées</span></td></tr><tr><td class="code">53</td><td class="code">F</td><td><span data-fr="Inflorescences visibles" data-en="Inflorescences visible">Inflorescences visibles</span></td></tr><tr><td class="code">55</td><td class="code">G</td><td><span data-fr="Inflorescences séparées" data-en="Inflorescences swelling">Inflorescences séparées</span></td></tr><tr><td class="code">57</td><td class="code">H</td><td><span data-fr="Boutons floraux séparés" data-en="Flowers separating">Boutons floraux séparés</span></td></tr><tr><td class="code">61</td><td class="code">I</td><td><span data-fr="Début floraison (10 % de capuchons tombés)" data-en="Beginning of flowering (10 % caps off)">Début floraison (10 % de capuchons tombés)</span></td></tr><tr><td class="code">65</td><td class="code">I</td><td><span data-fr="Pleine floraison (50 %)" data-en="Full flowering (50 %)">Pleine floraison (50 %)</span></td></tr><tr><td class="code">69</td><td class="code">I</td><td><span data-fr="Fin de floraison" data-en="End of flowering">Fin de floraison</span></td></tr><tr><td class="code">71</td><td class="code">J</td><td><span data-fr="Nouaison" data-en="Fruit set">Nouaison</span></td></tr><tr><td class="code">73</td><td class="code">K</td><td><span data-fr="Baies taille « plomb »" data-en="Berries groat-sized">Baies taille « plomb »</span></td></tr><tr><td class="code">75</td><td class="code">K</td><td><span data-fr="Baies taille « petit pois »" data-en="Berries pea-sized">Baies taille « petit pois »</span></td></tr><tr><td class="code">77–79</td><td class="code">L</td><td><span data-fr="Fermeture de la grappe" data-en="Bunch closure">Fermeture de la grappe</span></td></tr><tr><td class="code">81–83</td><td class="code">M</td><td><span data-fr="Véraison : début de coloration" data-en="Véraison: colour change begins">Véraison : début de coloration</span></td></tr><tr><td class="code">85</td><td class="code">M</td><td><span data-fr="Ramollissement des baies" data-en="Berries softening">Ramollissement des baies</span></td></tr><tr><td class="code">89</td><td class="code">N</td><td><span data-fr="Maturité de récolte" data-en="Ripe for harvest">Maturité de récolte</span></td></tr><tr><td class="code">91</td><td class="code">—</td><td><span data-fr="Après vendange, fin de l’aoûtement" data-en="After harvest, end of wood ripening">Après vendange, fin de l’aoûtement</span></td></tr><tr><td class="code">92–97</td><td class="code">—</td><td><span data-fr="Coloration puis chute des feuilles" data-en="Leaf discolouration, then leaf fall">Coloration puis chute des feuilles</span></td></tr></tbody></table></div>
+  </section>
+
+  <nav class="chapters" aria-label="Chapitres"><h3 data-fr="La vigne &amp;amp; le vignoble · les chapitres" data-en="The vine &amp;amp; the vineyard · chapters">La vigne &amp; le vignoble · les chapitres</h3><div class="ch-grid"><a class="ch" href="Vine_Plant.html"><span class="ch-n">01</span><span class="ch-t" data-fr="La plante vigne" data-en="The vine plant">La plante vigne</span></a><span class="ch cur" aria-current="page"><span class="ch-n">02</span><span class="ch-t" data-fr="Le cycle de la vigne" data-en="The vine’s year">Le cycle de la vigne</span></span><a class="ch" href="Vine_Terroir.html"><span class="ch-n">03</span><span class="ch-t" data-fr="Terroir &amp; site" data-en="Terroir &amp; site">Terroir & site</span></a><a class="ch" href="Vine_Planting.html"><span class="ch-n">04</span><span class="ch-t" data-fr="Plantation &amp; vie du vignoble" data-en="Planting &amp; the life of a vineyard">Plantation & vie du vignoble</span></a><a class="ch" href="Vine_Pruning.html"><span class="ch-n">05</span><span class="ch-t" data-fr="Taille &amp; modes de conduite" data-en="Training &amp; pruning">Taille & modes de conduite</span></a><a class="ch" href="Vine_Canopy.html"><span class="ch-n">06</span><span class="ch-t" data-fr="Travaux en vert &amp; du sol" data-en="Canopy &amp; soil work">Travaux en vert & du sol</span></a><a class="ch" href="Vine_Threats.html"><span class="ch-n">07</span><span class="ch-t" data-fr="Les ennemis de la vigne" data-en="Threats to the vine">Les ennemis de la vigne</span></a><a class="ch" href="Vine_Farming.html"><span class="ch-n">08</span><span class="ch-t" data-fr="Philosophies culturales" data-en="Farming philosophies">Philosophies culturales</span></a><a class="ch" href="Vine_Harvest.html"><span class="ch-n">09</span><span class="ch-t" data-fr="Les vendanges" data-en="Harvest">Les vendanges</span></a><a class="ch" href="Vine_Glossary.html"><span class="ch-n">10</span><span class="ch-t" data-fr="Glossaire" data-en="Glossary">Glossaire</span></a></div></nav>
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources"><li><span data-fr="Lorenz D. H. et al., « Growth stages of the grapevine… (BBCH) », <i>Australian Journal of Grape and Wine Research</i>, 1995 ; Baggiolini M., 1952." data-en="Lorenz D. H. et al., “Growth stages of the grapevine… (BBCH)”, <i>Australian Journal of Grape and Wine Research</i>, 1995; Baggiolini M., 1952.">Lorenz D. H. et al., « Growth stages of the grapevine… (BBCH) », <i>Australian Journal of Grape and Wine Research</i>, 1995 ; Baggiolini M., 1952.</span></li><li><span data-fr="Huglin P., <i>Biologie et écologie de la vigne</i>, Payot, 1986 ; Tonietto J., Carbonneau A., « A multicriteria climatic classification system for grape-growing regions worldwide », <i>Agricultural and Forest Meteorology</i>, 2004." data-en="Huglin P., <i>Biologie et écologie de la vigne</i>, Payot, 1986; Tonietto J., Carbonneau A., “A multicriteria climatic classification system for grape-growing regions worldwide”, <i>Agricultural and Forest Meteorology</i>, 2004.">Huglin P., <i>Biologie et écologie de la vigne</i>, Payot, 1986 ; Tonietto J., Carbonneau A., « A multicriteria climatic classification system for grape-growing regions worldwide », <i>Agricultural and Forest Meteorology</i>, 2004.</span></li><li><span data-fr="Reynier A., <i>Manuel de viticulture</i>, Lavoisier Tec &amp; Doc." data-en="Reynier A., <i>Manuel de viticulture</i>, Lavoisier Tec &amp; Doc.">Reynier A., <i>Manuel de viticulture</i>, Lavoisier Tec & Doc.</span></li><li><span data-fr="IFV et chambres d’agriculture : bulletins de santé du végétal, stades phénologiques." data-en="IFV and chambers of agriculture: plant-health bulletins, phenological stages.">IFV et chambres d’agriculture : bulletins de santé du végétal, stades phénologiques.</span></li></ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Le cycle de la vigne' : 'The vine’s year';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

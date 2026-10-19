@@ -1,0 +1,321 @@
+= Aloxe-Corton | Bourgogne | CDC Aloxe-Corton
+Blanc: chardonnay B/P; pinot blanc B/A ≤30 %
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Bienvenues-Bâtard-Montrachet | Bourgogne | CDC Bienvenues-Batard-Montrachet
+Blanc: chardonnay B
+
+= Blagny | Bourgogne | CDC Blagny
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Chassagne-Montrachet | Bourgogne | CDC Chassagne-Montrachet
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Chevalier-Montrachet | Bourgogne | CDC Chevalier-Montrachet
+Blanc: chardonnay B
+
+= Chorey-lès-Beaune | Bourgogne | CDC Chorey-les-Beaune
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Corton-Charlemagne | Bourgogne | CDC Corton-Charlemagne
+Blanc: chardonnay B/P; pinot blanc B/A ≤30 %
+
+= Côte de Beaune-Villages | Bourgogne | CDC Cote De Beaune-Villages
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Côte de Beaune | Bourgogne | CDC Cote De Beaune
+Blanc: chardonnay B/P; pinot blanc B/P; pinot gris G/A ≤30 %
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Criots-Bâtard-Montrachet | Bourgogne | CDC Criots-Batard-Montrachet
+Blanc: chardonnay B
+
+= Ladoix | Bourgogne | CDC Ladoix
+Blanc: chardonnay B/P; pinot blanc B/P; pinot gris G/A ≤30 %
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Maranges | Bourgogne | CDC Maranges
+Blanc: chardonnay B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Meursault | Bourgogne | CDC Meursault
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Monthélie | Bourgogne | CDC Monthelie
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Montrachet | Bourgogne | CDC Montrachet
+Blanc: chardonnay B
+
+= Pernand-Vergelesses | Bourgogne | CDC Pernand-Vergelesses
+Blanc: chardonnay B/P; pinot blanc B/P; pinot gris G/A ≤30 %
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Pommard | Bourgogne | CDC Pommard
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Puligny-Montrachet | Bourgogne | CDC Puligny-Montrachet
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Saint-Aubin | Bourgogne | CDC Saint-Aubin
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Saint-Romain | Bourgogne | CDC Saint-Romain
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Santenay | Bourgogne | CDC Santenay
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Savigny-lès-Beaune | Bourgogne | CDC Savigny-les-Beaune
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Auxey-Duresses | Bourgogne | CDC-Auxey-Duresses
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Bâtard-Montrachet | Bourgogne | CDC-Batard-Montrachet
+Blanc: chardonnay B
+
+= Beaune | Bourgogne | CDC-Beaune
+Blanc: chardonnay B/P; pinot blanc B/P; pinot gris G/A ≤30 %
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Corton | Bourgogne | CDC-Corton
+Blanc: chardonnay B/P; pinot blanc B/A ≤10 % (vignoble)
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Volnay | Bourgogne | CDC Volnay
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Charlemagne | Bourgogne | CDC Charlemagne
+Blanc: chardonnay B/P; pinot blanc B/A ≤30 %
+
+= Bonnes-Mares | Bourgogne | CDC Bonnes-Mares
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Chambertin-Clos de Bèze | Bourgogne | CDC Chambertin Clos de Beze
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Chambertin | Bourgogne | CDC Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Chambolle-Musigny | Bourgogne | CDC Chambolle-Musigny
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Chapelle-Chambertin | Bourgogne | CDC Chapelle-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Charmes-Chambertin | Bourgogne | CDC Charmes-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Clos Saint-Denis | Bourgogne | CDC Clos Saint-Denis
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Clos de Vougeot | Bourgogne | CDC Clos de Vougeot
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Clos de Tart | Bourgogne | CDC Clos-de-Tart
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Clos de la Roche | Bourgogne | CDC Clos-de-la-Roche
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Clos des Lambrays | Bourgogne | CDC Clos-des-Lambrays
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Échezeaux | Bourgogne | CDC Echezeaux
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Gevrey-Chambertin | Bourgogne | CDC Gevrey-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Grands-Échezeaux | Bourgogne | CDC Grands-Echezeaux
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Griotte-Chambertin | Bourgogne | CDC Griotte-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= La Grande Rue | Bourgogne | CDC La Grande Rue
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= La Romanée | Bourgogne | CDC La Romanee
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= La Tâche | Bourgogne | CDC La Tache
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Mazis-Chambertin | Bourgogne | CDC Mazis-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Mazoyères-Chambertin | Bourgogne | CDC Mazoyeres-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Richebourg | Bourgogne | CDC Richebourg
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Romanée-Conti | Bourgogne | CDC Romanee-Conti
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Romanée-Saint-Vivant | Bourgogne | CDC Romanee-Saint-Vivant
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Ruchottes-Chambertin | Bourgogne | CDC Ruchottes-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Vosne-Romanée | Bourgogne | CDC Vosne-Romanee
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Latricières-Chambertin | Bourgogne | CDC Latricieres-Chambertin
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Côte de Nuits-Villages | Bourgogne | CDC Cote De Nuits-Villages
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Fixin | Bourgogne | CDC Fixin
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Marsannay | Bourgogne | CDC Marsannay
+Blanc: chardonnay B/P; pinot blanc B/P; pinot gris G/A ≤30 %
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+Rosé: pinot noir N/P; pinot gris G/P; chardonnay B/A; pinot blanc B/A
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Morey-Saint-Denis | Bourgogne | CDC Morey-Saint-Denis
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Blancs du climat « Monts Luisants » : aligoté B autorisé en plus.
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Musigny | Bourgogne | CDC Musigny
+Blanc: chardonnay B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Nuits-Saint-Georges | Bourgogne | CDC Nuits-Saint-Georges
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Vougeot | Bourgogne | CDC Vougeot
+Blanc: chardonnay B; pinot blanc B
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot blanc B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Chablis | Bourgogne | CDC Chablis (and 1er Cru)
+Blanc: chardonnay B
+! Également Chablis Premier Cru.
+
+= Chablis Grand Cru | Bourgogne | CDC Chablis Grand Cru
+Blanc: chardonnay B
+
+= Petit Chablis | Bourgogne | CDC Petit Chablis
+Blanc: chardonnay B
+
+= Irancy | Bourgogne | CDC Irancy
+Rouge: pinot noir N/P; césar N/A ≤10 %; pinot gris G/A ≤10 %
+
+= Saint-Bris | Bourgogne | CDC Saint-Bris
+Blanc: sauvignon B; sauvignon gris G
+
+= Vézelay | Bourgogne | CDC Vezelay
+Blanc: chardonnay B
+
+= Bouzeron | Bourgogne | CDC Bouzeron
+Blanc: aligoté B
+
+= Givry | Bourgogne | CDC Givry
+Blanc: chardonnay B/P; pinot blanc B/A; pinot gris G/A
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot gris G/A ≤15 %
+! Accessoires uniquement en mélange de plants dans les vignes (≤15 % par parcelle).
+
+= Mercurey | Bourgogne | CDC Mercurey
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %
+Blanc: chardonnay B; pinot gris G
+
+= Montagny | Bourgogne | CDC Montagny
+Blanc: chardonnay B
+
+= Rully | Bourgogne | CDC Rully
+Rouge: pinot noir N/P; chardonnay B/A ≤15 %; pinot gris G/A ≤15 %
+Blanc: chardonnay B; pinot gris G
+
+= Mâcon | Bourgogne | CDC Macon (Villages : Primeur)
+Rouge, Rosé: gamay N; pinot noir N
+Blanc: chardonnay B
+! Mâcon + dénomination géographique : rouges et rosés de gamay seul. Mâcon-Villages : chardonnay seul.
+
+= Pouilly-Fuissé | Bourgogne | CDC Pouilly-Fuissé (and 1er Cru)
+Blanc: chardonnay B
+
+= Pouilly-Loché | Bourgogne | CDC Pouilly-Loche
+Blanc: chardonnay B
+
+= Pouilly-Vinzelles | Bourgogne | CDC Pouilly-Vinzelles
+Blanc: chardonnay B
+
+= Saint-Véran | Bourgogne | CDC Saint-Véran
+Blanc: chardonnay B
+
+= Viré-Clessé | Bourgogne | CDC Viré-Clessé
+Blanc: chardonnay B
+

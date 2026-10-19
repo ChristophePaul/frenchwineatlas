@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les jeux du vin</title>
+<meta name="description" content="Jouez avec le vin : le grand quiz en trois niveaux, et bientôt « Goûtez votre savoir », le jeu des apprentis sommeliers.">
+<style>
+@@BASE_CSS@@
+  .sect-strip{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px;}
+  .sect-strip a,.sect-strip span{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold);text-decoration:none;}
+  .sect-strip a:hover{border-color:var(--hair-hi);}
+  .sect-strip .on{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+  .games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;}
+  .game{position:relative;display:flex;flex-direction:column;gap:12px;padding:clamp(22px,3vw,32px);text-decoration:none;overflow:hidden;transition:transform .2s,border-color .2s;}
+  a.game:hover{transform:translateY(-3px);border-color:var(--hair-hi);}
+  .game .ico{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:color-mix(in srgb,var(--gold) 14%,transparent);color:var(--gold);}
+  .game .ico svg{width:36px;height:36px;}
+  .game .kick{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .game h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(26px,3vw,34px);color:var(--title);line-height:1.1;}
+  .game h2 em{font-style:italic;color:var(--gold-soft);}
+  .game p{margin:0;font-size:14.5px;line-height:1.65;}
+  .game ul{margin:0;padding-left:18px;font-size:13.6px;line-height:1.7;color:var(--muted);}
+  .game .go{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;border-radius:999px;background:var(--gold);color:var(--solid);}
+  .game.soon{opacity:.8;}
+  .game.soon .go{background:none;color:var(--faint);border:1px dashed var(--hair-hi);}
+  .lv3{display:grid;gap:6px;margin:4px 0 2px;}
+  .lv3 a{display:flex;gap:10px;align-items:baseline;font-size:13.5px;text-decoration:none;color:var(--parchment);position:relative;z-index:2;}
+  .lv3 a:hover i{text-decoration:underline;}
+  .lv3 b{flex:none;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+  .lv3 i{font-family:var(--serif);color:var(--gold-soft);}
+  .game .stretch::after{content:"";position:absolute;inset:0;z-index:1;}
+  @media (max-width:820px){ .games{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+  <header>
+    <p class="eyebrow" data-fr="Littérature &amp; jeux" data-en="Literature &amp; games">Littérature &amp; jeux</p>
+    <h1 data-fr="Les jeux <em>du vin</em>" data-en="Wine <em>games</em>">Les jeux <em>du vin</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Apprendre en s’amusant : chaque jeu s’appuie sur les pages du site, et chaque réponse renvoie à l’endroit où tout est expliqué."
+       data-en="Learning while having fun: every game draws on the site’s pages, and every answer points to where it is all explained.">Apprendre en s’amusant : chaque jeu s’appuie sur les pages du site, et chaque réponse renvoie à l’endroit où tout est expliqué.</p>
+    <nav class="sect-strip" aria-label="Littérature &amp; jeux">
+      <a href="Wine_Quotes.html" data-fr="Citations" data-en="Quotations">Citations</a>
+      <span class="on" aria-current="page" data-fr="Jeux" data-en="Games">Jeux</span>
+      <a href="Map_Game.html" data-fr="Placez l’AOC" data-en="Pin the AOC">Placez l’AOC</a>
+      <a href="Bon_Cep.html" data-fr="Le bon cep" data-en="Grape Expectations">Le bon cep</a>
+      <a href="IGP_Game.html" data-fr="Au pays des IGP" data-en="Lost in the Pays">Au pays des IGP</a>
+    </nav>
+  </header>
+
+  <div class="games">
+    <div class="panel game">
+      <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="20" cy="20" r="15"/><path d="M15.5 15.5a4.5 4.5 0 1 1 6.3 4.1c-1.2.6-1.8 1.6-1.8 2.9v1"/><circle cx="20" cy="28" r=".6" fill="currentColor"/></svg></span>
+      <span class="kick" data-fr="Jeu n° 1 · @@NQ@@ questions" data-en="Game no. 1 · @@NQ@@ questions">Jeu n° 1 · @@NQ@@ questions</span>
+      <h2><a class="stretch" href="Wine_Quiz.html" style="text-decoration:none;color:inherit" data-fr="Le grand <em>quiz du vin</em>" data-en="The great <em>wine quiz</em>">Le grand <em>quiz du vin</em></a></h2>
+      <p class="L fr">Dix questions à choix multiple sur les appellations, les cépages, les crus, la vigne, les bouteilles et l’histoire. Trois niveaux :</p>
+      <p class="L en">Ten multiple-choice questions on appellations, grapes, crus, the vine, bottles and history. Three levels:</p>
+      <div class="lv3">
+        <a href="Wine_Quiz.html#niveau=1"><b data-fr="Niveau 1" data-en="Level 1">Niveau 1</b><i data-fr="« Je peux encore conduire »" data-en="“I can still drive”">« Je peux encore conduire »</i></a>
+        <a href="Wine_Quiz.html#niveau=2"><b data-fr="Niveau 2" data-en="Level 2">Niveau 2</b><i data-fr="« On dit que je bois en société, mais je ne sais plus qui l’a dit »" data-en="“They say I’m a social drinker, but I don’t remember who said that”">« On dit que je bois en société, mais je ne sais plus qui l’a dit »</i></a>
+        <a href="Wine_Quiz.html#niveau=3"><b data-fr="Niveau 3" data-en="Level 3">Niveau 3</b><i data-fr="« On a voulu donner mon nom à une AOC »" data-en="“They offered to name an AOC after me”">« On a voulu donner mon nom à une AOC »</i></a>
+      </div>
+      <span class="go" data-fr="Jouer →" data-en="Play →">Jouer →</span>
+    </div>
+
+    <div class="panel game">
+      <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h14l1 9a8 8 0 0 1-16 0Z"/><path d="M12.4 11h15.2"/><path d="M20 22v11M14 34h12"/></svg></span>
+      <span class="kick" data-fr="Jeu n° 2 · @@NT@@ vins" data-en="Game no. 2 · @@NT@@ wines">Jeu n° 2 · @@NT@@ vins</span>
+      <h2><a class="stretch" href="Taste_Quiz.html" style="text-decoration:none;color:inherit" data-fr="Goûtez <em>votre savoir</em>" data-en="Taste <em>your knowledge</em>">Goûtez <em>votre savoir</em></a></h2>
+      <p class="L fr">Le jeu des apprentis sommeliers : un commentaire de dégustation, et à vous de trouver l’appellation. Dix vins par partie, trois indices pour toute la partie (région, couleur, cépage) — à dépenser avec sagesse.</p>
+      <p class="L en">The apprentice sommelier’s game: a written tasting note, and you find the appellation. Ten wines per game, three hints for the whole game (region, colour, grape) — spend them wisely.</p>
+      <span class="go" data-fr="Jouer →" data-en="Play →">Jouer →</span>
+    </div>
+    <div class="panel game">
+      <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 35s10-10.2 10-18a10 10 0 0 0-20 0c0 7.8 10 18 10 18Z"/><circle cx="20" cy="17" r="3.6"/></svg></span>
+      <span class="kick" data-fr="Jeu n° 3 · @@NM@@ appellations" data-en="Game no. 3 · @@NM@@ appellations">Jeu n° 3 · @@NM@@ appellations</span>
+      <h2><a class="stretch" href="Map_Game.html" style="text-decoration:none;color:inherit" data-fr="Placez <em>l’AOC</em>" data-en="Pin <em>the AOC</em>">Placez <em>l’AOC</em></a></h2>
+      <p class="L fr">Le jeu de géographie du vin : dix appellations tirées au sort à placer sur la carte de France. Dans l’aire officielle 10 points, à moins de 10 km 5, à moins de 50 km 2. Zoom par région et loupe pour viser juste.</p>
+      <p class="L en">The wine geography game: ten randomly drawn appellations to pin on the map of France. Inside the official area 10 points, within 10 km 5, within 50 km 2. Zoom by region and a lens to aim precisely.</p>
+      <div class="lv3">
+        <a href="Map_Game.html#niveau=1"><b data-fr="Niveau 1" data-en="Level 1">Niveau 1</b><i data-fr="« Je sais où est Bordeaux »" data-en="“I know where Bordeaux is”">« Je sais où est Bordeaux »</i></a>
+        <a href="Map_Game.html#niveau=2"><b data-fr="Niveau 2" data-en="Level 2">Niveau 2</b><i data-fr="« GPS en option »" data-en="“Satnav optional”">« GPS en option »</i></a>
+        <a href="Map_Game.html#niveau=3"><b data-fr="Niveau 3" data-en="Level 3">Niveau 3</b><i data-fr="« Le cadastre, c’est moi »" data-en="“I am the land registry”">« Le cadastre, c’est moi »</i></a>
+      </div>
+      <span class="go" data-fr="Jouer →" data-en="Play →">Jouer →</span>
+    </div>
+    <div class="panel game">
+      <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9c0-3 2-5 5-5"/><path d="M21 8c3-2.5 7-2 9 .5-2.5 2.5-6.5 2.5-9-.5Z"/><circle cx="15" cy="14" r="3.4"/><circle cx="22" cy="14" r="3.4"/><circle cx="18.5" cy="20" r="3.4"/><circle cx="25.5" cy="20" r="3.4"/><circle cx="12" cy="20" r="3.4"/><circle cx="15" cy="26" r="3.4"/><circle cx="22" cy="26" r="3.4"/><circle cx="18.5" cy="32" r="3.4"/></svg></span>
+      <span class="kick" data-fr="Jeu n° 4 · @@NC@@ questions" data-en="Game no. 4 · @@NC@@ questions">Jeu n° 4 · @@NC@@ questions</span>
+      <h2><a class="stretch" href="Bon_Cep.html" style="text-decoration:none;color:inherit" data-fr="Le bon <em>cep</em>" data-en="Grape <em>Expectations</em>">Le bon <em>cep</em></a></h2>
+      <p class="L fr">Appellations et cépages : quatre réponses, une seule bonne… sauf quand elles le sont toutes, ou aucune. Le bon assemblage, l’intrus, et au niveau 3 les variétés d’adaptation au changement climatique.</p>
+      <p class="L en">Appellations and grapes: four answers, only one right… except when they all are, or none is. The right blend, the odd one out, and at level 3 the climate-change adaptation varieties.</p>
+      <div class="lv3">
+        <a href="Bon_Cep.html#niveau=1"><b data-fr="Niveau 1" data-en="Level 1">Niveau 1</b><i data-fr="« Je croyais que le merlot était un oiseau »" data-en="“I thought Merlot was a bird”">« Je croyais que le merlot était un oiseau »</i></a>
+        <a href="Bon_Cep.html#niveau=2"><b data-fr="Niveau 2" data-en="Level 2">Niveau 2</b><i data-fr="« Je reconnais le cépage… quand il est écrit sur l’étiquette »" data-en="“I can name the grape… when it’s on the label”">« Je reconnais le cépage… quand il est écrit sur l’étiquette »</i></a>
+        <a href="Bon_Cep.html#niveau=3"><b data-fr="Niveau 3" data-en="Level 3">Niveau 3</b><i data-fr="« Je récite les cahiers des charges au dessert »" data-en="“I recite the rulebooks over dessert”">« Je récite les cahiers des charges au dessert »</i></a>
+      </div>
+      <span class="go" data-fr="Jouer →" data-en="Play →">Jouer →</span>
+    </div>
+    <div class="panel game">
+      <span class="ico"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10l9-4 12 4 9-4v24l-9 4-12-4-9 4Z"/><path d="M14 6v24M26 10v24"/><path d="M18 17h4M18 21h4"/></svg></span>
+      <span class="kick" data-fr="Jeu n° 5 · @@NI@@ questions" data-en="Game no. 5 · @@NI@@ questions">Jeu n° 5 · @@NI@@ questions</span>
+      <h2><a class="stretch" href="IGP_Game.html" style="text-decoration:none;color:inherit" data-fr="Au pays <em>des IGP</em>" data-en="Lost in <em>the Pays</em>">Au pays <em>des IGP</em></a></h2>
+      <p class="L fr">Le jeu des anciens vins de pays : finir le nom d’une IGP (Sainte-… Nitouche ?), trouver sa région, son département, ses unités géographiques plus petites, ses cépages oubliés.</p>
+      <p class="L en">The game of the former vins de pays: finish an IGP’s name (Sainte-… Nitouche?), find its region, its département, its smaller geographical units, its forgotten grapes.</p>
+      <div class="lv3">
+        <a href="IGP_Game.html#niveau=1"><b data-fr="Niveau 1" data-en="Level 1">Niveau 1</b><i data-fr="« IGP ? Je croyais que c’était un parti politique »" data-en="“IGP? I thought it was a political party”">« IGP ? Je croyais que c’était un parti politique »</i></a>
+        <a href="IGP_Game.html#niveau=2"><b data-fr="Niveau 2" data-en="Level 2">Niveau 2</b><i data-fr="« Je bois local… enfin, départemental »" data-en="“I drink local… well, departmental”">« Je bois local… enfin, départemental »</i></a>
+        <a href="IGP_Game.html#niveau=3"><b data-fr="Niveau 3" data-en="Level 3">Niveau 3</b><i data-fr="« Je connais toutes les unités géographiques plus petites »" data-en="“I know every smaller geographical unit”">« Je connais toutes les unités géographiques plus petites »</i></a>
+      </div>
+      <span class="go" data-fr="Jouer →" data-en="Play →">Jouer →</span>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var LANG = (function(){ try{ return localStorage.getItem('fw_lang') || 'fr'; }catch(e){ return 'fr'; } })();
+  if(LANG!=='en') LANG = 'fr';
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Les jeux du vin' : 'Wine games';
+    var n = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<n.length;i++){ var v = n[i].getAttribute('data-'+LANG); if(v!==null) n[i].innerHTML = v; }
+    document.getElementById('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  document.getElementById('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr'; try{ localStorage.setItem('fw_lang', LANG); }catch(e){} applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+})();
+</script>
+</body>
+</html>

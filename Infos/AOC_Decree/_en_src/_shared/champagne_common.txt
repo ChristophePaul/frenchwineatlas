@@ -1,0 +1,92 @@
+@define CH_AREA
+– in the arrondissement of Vitry-le-François (Marne department), the delimited parcel area is that approved by the competent national committee of the National Institute of Origin and Quality at its session of 7 and 8 November 1990, the plans of which are lodged at the town halls of the communes concerned;
+– in the following communes of the Aube department: Arsonval, Cunfin, Dolancourt, Jaucourt, the delimited parcel area is that approved by the competent national committee of the National Institute of Origin and Quality at its sessions of 23 June 1994, 8 September 1994 and 19 May 1995, the plans of which are lodged at the town halls of the communes concerned;
+– in the following communes of the Aube department: Brienne-le-Château, Epagne, Précy-Saint-Martin and Saint-Léger-sous-Brienne, and in the following communes of the Marne department: Esclavolle-Lurey, Potangis, Saint-Quentin-le-Verger and Villiers-aux-Corneilles, no parcel was selected, in accordance with the decisions of the competent national committee of the National Institute of Origin and Quality at its sessions of 23 and 24 June 1994, 7 and 8 September 1994, 18 and 19 May 1995 and 6 and 7 September 1995;
+– in the following communes of the Aube department: Marcilly-le-Hayer and La Villeneuve-au-Châtelot, no parcel was selected, in accordance with the decision of the competent national committee of the National Institute of Origin and Quality at its session of 10 September 1997;
+– in the Marne commune of Fontaine-sur-Ay, the delimited parcel area is that approved by the competent national committee of the National Institute of Origin and Quality at its session of 9 and 10 September 1999, the plans of which are lodged at the town hall of the commune concerned;
+– in the following communes of the Marne department: Corfélix, Corrobert, Le Thoult-Trosnay, Verdon, Reuves and Broussy-le-Petit, no parcel was selected, in accordance with the decision of the competent national committee of the National Institute of Origin and Quality at its session of 5 and 6 September 2001.
+@enddef
+@define CH_VARIETIES
+### 1° – Grape varieties
+The wines come exclusively from the following varieties:
+- main varieties: Arbane B, Chardonnay B, Chardonnay rose Rs, Meunier N, Petit meslier B, Pinot blanc B, Pinot gris G, Pinot noir N;
+- and the variety “of interest for adaptation purposes”: Voltis B, subject to the signature between the INAO, the ODG, the authorised operator concerned, the operator-vinifier and the producer (élaborateur) of an agreement conforming to the framework agreement approved by the competent national committee of 2 June 2021.
+### 2° – Proportion rule on the holding
+a) The proportion of the main varieties is greater than or equal to 95 % of the planting.
+b) The proportion of the variety “of interest for adaptation purposes” is less than or equal to 5 % of the planting.
+In order to encourage the reduction of plant-protection inputs in areas adjoining inhabited/urbanised zones, the areas planted with Voltis and situated less than 20 metres from the places mentioned in Article L253-7-1, in I of Article L253-7 and in III of Article L253-8 of the Rural and Maritime Fishing Code are not taken into account in calculating the areas of varieties “of interest for adaptation purposes” subject to the limit of 5 % of the area of the holding declared under the AOC.
+@enddef
+@define CH_DENSITY
+a) Planting density
+*General provisions:*
+The vines are planted with a spacing between rows that may not exceed 2.00 metres. The spacing between plants within the same row is between 0.70 metre and 1.50 metres.
+The sum of the spacing between rows and the spacing between plants within the same row may not exceed 3.00 metres.
+Any transformation of the parcel resulting in a change in planting density is prohibited until it is grubbed up.
+*Particular provisions:*
+In order to allow the passage of suitable machinery, parcels with:
+- either a slope greater than 35 %,
+- or a slope greater than 25 % combined with a cross-slope greater than 10 %,
+may have alleys between 1.50 metres and 3 metres wide, at a maximum frequency of one row in six. In this case, the sum of the spacing between the other rows and the spacing between plants within the same row may not exceed 2.30 metres.
+b) Pruning rules
+A “free eye” means a bud separated from the base of the cane or “crown”, whatever the length of the internode.
+Any overlapping between plants and any superposition of fruiting branches is prohibited.
+The number of free eyes is less than or equal to 18 eyes per square metre.
+Pruning is carried out at the latest before phenological stage (F) (Lorenz 12), i.e. four leaves unfolded.
+The vines are pruned according to the following techniques:
+| SO-CALLED “CHABLIS PRUNING” | < |
+| Description | a) Chablis pruning comprises at most one framework per 0.30 metre. b) Each framework bears a fruiting extension at its end, pruned with a maximum of 5 free eyes. c) A replacement spur known as the “rachet”, pruned to a maximum of 2 free eyes, is left at the base of the stock. |
+| Particular requirements | The stocks must be set up so that the bud at the end of the extensions is at a maximum height of 0.60 metre above ground level. |
+| Particular provision | a) If a framework is missing, a “rentrure” of a maximum of 2 free eyes may be made on one of the frameworks, in addition to the replacement or rejuvenation spur (known as the rachet) at the base of the stock; b) Vines planted with the meunier N variety and with a spacing within the row greater than 1.20 metres may be trained with 3 frameworks each bearing a fruiting extension, laid on a wire and pruned with a maximum of 6 free eyes. |
+| CORDON (ROYAT) PRUNING | < |
+| Description | A single horizontal framework is established, without limitation of length, at a maximum height of 0.60 metre above ground level. |
+| Particular requirements | The spurs are spaced at least 0.15 metre apart and are pruned to a maximum of 3 free eyes. The replacement spur known as the “rachet”, at the base of the cordon, is pruned to 2 free eyes. The extension is pruned to a maximum of 5 free eyes. Rejuvenation of the cordon may be carried out in one or more stages. |
+| Particular provisions | a) In the case of progressive rejuvenation by means of young wood, but without removal of the old framework, this young wood is trained along the old framework. Spurs requiring it are removed from the old framework so that there is no superposition or juxtaposition between the shoots of the two frameworks, and provided that the rejuvenation is not renewed each year on the same plant. b) The establishment of a framework in the opposite direction to that originally existing (known as a “retour”), intended to fill an accidental gap, is possible provided that it does not give rise to a launch of young wood renewed each year. c) The annual percentage of rejuvenation must not exceed 20 % of the plants of a single parcel. |
+| MARNE VALLEY PRUNING | < |
+| Description | a) The vines are pruned with: – one spur of a maximum of 3 free eyes per plant; – a cane launched from the previous year’s spur and bearing a maximum of 9 free eyes; – an extension (fruiting) established at the end of the previous year’s cane and bearing a maximum of 6 free eyes. b) The fruiting extension is tied horizontally at a maximum height of 0.60 metre above ground level. |
+| Particular requirements | This pruning technique is only authorised for the meunier N variety. |
+| Particular provisions | a) Where a new cane is not launched every year, one of the two frameworks may bear a rejuvenation spur, known as a “rentrure”, pruned to a maximum of 2 free eyes. The spur at the base of the plant is then pruned to a maximum of 3 free eyes. b) On total rejuvenation of one of the two frameworks, the launch taken from the spur is pruned to a maximum of 8 free eyes. The fruiting extensions are tied horizontally at a maximum height of 0.60 metre above ground level. |
+| SINGLE GUYOT AND DOUBLE GUYOT PRUNING | < |
+| Description | a) The vines are pruned: – by single Guyot pruning with one spur of a maximum of 3 free eyes and one cane of a maximum of 10 free eyes; – by double Guyot pruning with at most 2 spurs of a maximum of 2 free eyes and at most 2 canes of a maximum of 8 free eyes, of which a maximum of 6 are placed horizontally on the wire. b) The canes are tied at a maximum height of 0.60 metre above ground level. |
+| Particular provisions | In single Guyot, the canes may have 12 free eyes if they are arched. This cane must be tied on 2 wires 0.20 metre apart and the terminal bud must be tied at a height of 0.60 metre. In double Guyot, the canes may have a maximum of 10 free eyes if they are arched. This cane must be tied on 2 wires 0.20 metre apart and the terminal bud must be tied at a height of 0.60 metre. |
+| ASYMMETRICAL GUYOT PRUNING | < |
+| Description | a) The vines are pruned: – with a rachet of a maximum of 2 free eyes; – a launch bearing a maximum of 6 free eyes; – an extension (fruiting) established at the end of the previous year’s launch, or of a framework more than 2 years old, and bearing a maximum of 6 free eyes. b) The arrangement of the wood must be such that the last buds are at a maximum height of 0.60 metre. |
+c) Trellising rule
+The trellising system is in place at the latest in the year of entry into production under the controlled designation of origin.
+d) Tying
+Tying is completed before phenological stage (I) (Lorenz 23), known as “flowering”, and is consistent with the pruning system adopted.
+e) Lifting
+Lifting the shoots held by wires is compulsory. It is carried out at the latest at phenological stage (L) (Lorenz stage 33), known as “bunch closure”.
+f) Foliage height
+The height of trellised foliage, after trimming, is at least equal to 0.6 times the spacing between rows. It is measured between the tying wire and the upper trimming limit.
+g) Average maximum load per parcel
+The average maximum load per parcel is set at 19,700 kilograms of grapes per hectare.
+The number of bunches per square metre of vine in production is less than or equal to 17.
+h) Threshold of missing vines
+The percentage of dead or missing vine plants referred to in Article D. 645-4 of the Rural and Maritime Fishing Code is set at 20 %.
+i) Cultivation condition of the vine
+The parcels are managed so as to ensure a good overall cultivation condition of the vine, in particular its sanitary condition and the upkeep of its soil.
+### 2° – Other cultivation practices
+In order to preserve the characteristics of the soils, which constitute a fundamental element of the terroir:
+a) Permanent grass cover of the headlands is compulsory;
+b) The use of composts and organic household waste, and of sewage sludge other than that from wine-making installations, alone or mixed, is prohibited;
+c) The maximum width of the strip that may be chemically weeded is 40 centimetres on either side of the vine row;
+d) The inter-row must have a plant cover, spontaneous or sown, from 30 November to 31 January of the following year;
+e) Vine plantings and replacements are carried out with plants all of whose components (scions and rootstocks) have been hot-water treated before grafting. Failing this, the plants are hot-water treated before planting. Hot-water treatment must be carried out in a station approved by FranceAgriMer;
+f) Any substantial modification of the morphology, the subsoil or the elements that guarantee the integrity and sustainability of the soils of a parcel intended for the production of the controlled designation of origin is prohibited, with the exception of classic deep-ploughing works.
+### 3° – Irrigation
+Irrigation is prohibited.
+@enddef
+@define CH_NATURAL
+They form part of a landscape characterised by a hillside vineyard lying on the cuestas of the eastern Paris Basin, imposing geomorphological structures:
+– the Côte d’Île-de-France in the Marne, together with the slopes of the associated valleys, grouping from north to south the Montagne de Reims, the Marne valley (which extends into the south of the Aisne and as far as Seine-et-Marne), the Côte des Blancs and the Côte du Sézannais for the most emblematic sectors;
+– the Côte de Champagne, with the Marne Vitryat and the Aube sector of Montgueux;
+– the Côte des Bar, cut by many valleys, bringing together the Bar-sur-Aubois to the east and the Barséquanais to the west, in the Aube and Haute-Marne.
+This typical cuesta relief, with its adjacent valleys, presents hillsides facing east and south, sometimes north, as for the northern Montagne de Reims and the left bank of the Marne valley. The scarp crests are made up of hard layers of limestone or chalk. The slopes of the hillsides are chalky, marly or sandy, softer, cleared by erosion and then covered with colluvial deposits coming from the overlying scarp crests.
+@enddef
+@define CH_CHECKS_A
+| MAIN POINTS TO BE CHECKED | EVALUATION METHODS |
+| **A – STRUCTURAL RULES** | < |
+| A1 – Belonging of the planted parcels to the delimited area | Documentary and visual on site |
+| A2 – Claimable production potential (grape varieties, planting density and trellising system, entry of the vines into production) | Documentary and visual on site |
+| A3 – Development of a parcel | Documentary and visual on site |
+@enddef

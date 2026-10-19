@@ -1,0 +1,202 @@
+@define NAT
+The controlled designation of origin “Alsace grand cru {1}” forms an integral part of the Alsace vineyard, its geographical area being set in the heart of it. It is delimited within the area of the controlled designation of origin “Alsace”.
+The Vosges massif offering protection against the humid, cool north-westerly winds, the vineyard finds its ideal conditions of establishment on the well-exposed (east to south-west), steeply sloping hillsides of the sub-Vosgian hills. The delimitation therefore refers to this typical landscape.
+The controlled designation of origin “Alsace grand cru {1}” is characterised by soils belonging to a single geo-pedological unit associated with a most favourable mesoclimate.
+@enddef
+@define HUM1
+Having noticed very early the specific features that certain lieux-dits gave to their viticulture and their wines, Alsace wine-growers made the most of these differences by communicating for centuries on the origin of the wines and, more recently, by stating the geographical origin of the products on the bottle. This usage is thus enshrined in article 2 of the ordinance of 2 November 1945 in its original wording: “the sub-regional, communal and local designations of origin of Alsace shall be the subject, within the production area, of delimitations on the proposal of the local wine-growers’ syndicates.”
+@enddef
+@define HUM2
+As a translation of this usage, the controlled designation of origin “Alsace grand cru {1}” was recognised in {2}. The wines come from parcels that have been the subject of a rigorous and precise delimitation inspired by the historical cores of production. This recognition was built around the white varieties. The only varieties selected are the following: {3}. They may be vinified and marketed under their respective denomination.
+@enddef
+@define HUM3
+Since the law of 5 July 1972, the wines must be bottled within the Bas-Rhin and Haut-Rhin departments, traditionally in the “Vin du Rhin”-type flute described in the decree of 1955.
+The vineyard, trained on high trellises in order to benefit from an optimal leaf area, is subject to more restrictive production conditions than the controlled designation of origin “Alsace”. The minimum planting density is {1} plants per hectare. The grapes are harvested by hand. Wines benefiting from the terms “vendanges tardives” and “sélection de grains nobles” come from overripe and fragile grapes, also harvested by hand. These wines must undergo a minimum ageing period of 18 months.
+@enddef
+@define QUAL
+White wines for laying down par excellence, they are characterised by a marked freshness based on a dominant tartaric acidity linked to good ripeness of the grapes. The name of the appellation may be supplemented by customary denominations, provided that the wines come exclusively from the varieties that may be designated under the denomination concerned. They show great substance, much complexity and strong aromatic power with various nuances. Of great length on the palate, they gain in complexity over time.
+Four types of wine can be distinguished:
+- dry, mineral wines;
+- aromatic, fruity, rich, full-bodied wines.
+These two types of wine show a deep colour intensity ranging up to golden yellow.
+- Wines benefiting from the term “vendanges tardives” often display very exotic aromas of candied fruit, with a fresh finish.
+- Wines benefiting from the term “sélection de grains nobles” are more concentrated, powerful wines, often showing aromas of fruit paste.
+These two types of wine show a deep colour intensity ranging up to amber yellow. Wines benefiting from these last two terms are sweet wines of very long keeping. They are of remarkable concentration and great aromatic persistence. The terms “vendanges tardives” and “sélection de grains nobles” are systematically followed by the denominations {1}, and the indication of the vintage is compulsory.
+@enddef
+@define CAU1
+Drawing on the favourable climatic conditions that characterise the Alsace vineyard, the controlled designation of origin “Alsace grand cru {1}” exploits one of its best locations. Nestled within the picturesque Alsace landscape, the vineyard allows the production of wines of high expression, with a marked character and a unique personality.
+@enddef
+@define CAU2
+The excellent late-season climatic conditions, favourable to concentration on the vine and to the development of noble rot, allow the production of wines from overripe harvests. The ageing provided for in the specification allows the wines to improve.
+By adopting rigorous production rules, such as maintaining a large leaf area and manual harvesting, Alsace wine-growers preserve the assertive character of wines recognised for their complexity and their aptitude for long keeping. They constitute the top of the range of this region. They are wines that command higher prices than the wines of the controlled designation of origin “Alsace”.
+@enddef
+### 4° – Entry into production of young vines
+The benefit of the controlled designation of origin may only be granted to wines coming from:
+- parcels of young vines only from the 3rd year following that in the course of which planting was carried out in place before 31 July;
+- parcels of young vines only from the 2nd year following that in the course of which grafting in place was carried out before 31 July;
+- parcels of vines that have been top-grafted, at the earliest in the 1st year following that in the course of which the top-grafting was carried out before 31 July, and once the parcels no longer contain any varieties other than those permitted for the appellation. By derogation, in the year following that in the course of which the top-grafting was carried out before 31 July, the varieties permitted for the appellation may represent only 80 % of the planting of each parcel concerned.
+*Appellations referred to in article I supplemented by the terms “vendanges tardives” or “sélection de grains nobles”*
+- parcels of young vines only from the 9th year following that in the course of which planting was carried out in place before 31 July;
+- parcels of young vines only from the 8th year following that in the course of which grafting in place was carried out before 31 July;
+- parcels of vines that have been top-grafted, at the earliest in the 1st year following that in the course of which the top-grafting was carried out before 31 July, and once the parcels no longer contain any varieties other than those permitted for the appellation. By derogation, in the year following that in the course of which the top-grafting was carried out before 31 July, the varieties permitted for the appellation may represent only 80 % of the planting of each parcel concerned.
+### 5° – Particular provisions
+No additional particular provision.
+## IX. – Processing, elaboration, ageing, packaging, storage
+### 1° – General provisions
+The wines are vinified in accordance with local, fair and constant usages.
+a) – Reception and pressing
+The installation for receiving and pressing the harvest is sheltered from all kinds of bad weather, as is the press while it is in operation.
+The floor of the reception and pressing premises must be easy to clean (nature of the floor, water point, drainage…).
+Daily washing of the press is compulsory.
+b) – Blending of varieties
+The presence of grapes from the varieties gewurztraminer Rs, pinot gris G and riesling B is compulsory in blended wines liable to benefit from the controlled designation of origin “Alsace grand cru Altenberg de Bergheim”. The blending of the grapes is carried out at the pressing stage.
+c) – Malolactic fermentation
+Malolactic fermentation is completed for red wines.
+At the packaging stage, red wines have a malic acid content less than or equal to 0.4 gram per litre.
+d) – Analytical standards
+Red wines have, after fermentation, a fermentable sugar content (glucose and fructose) less than or equal to 2 grams per litre.
+e) – Oenological practices and physical treatments
+- The use of pieces of wood is prohibited.
+- Wines liable to benefit from the terms “vendanges tardives” or “sélection de grains nobles” are not enriched in any way.
+- The increase in the minimum average natural alcoholic strength by volume may not exceed 0.5 % vol. for wines from the gewurztraminer and pinot gris G varieties, and 1.5 % vol. for wines from the other varieties and for wines from a blend of varieties for the appellation “Alsace grand cru Kaefferkopf”.
+- For the controlled designation of origin “Alsace grand cru Altenberg de Bergheim”, the wines are not enriched in any way.
+- Red wines are not enriched in any way.
+- After enrichment, the wines do not exceed the following total alcoholic strength by volume:
+| APPELLATION, CUSTOMARY DENOMINATIONS | TOTAL ALCOHOLIC STRENGTH BY VOLUME |
+| **Appellations covered by the present specification except the AOCs “Alsace grand cru Altenberg de Bergheim”, “Alsace grand cru Kaefferkopf” and “Alsace grand cru Zotzenberg”** | < |
+| Muscat Ottonel or Muscat | 14 % |
+| Riesling | 14 % |
+| Gewurztraminer | 15 % |
+| Pinot gris | 15 % |
+| **AOC “Alsace grand cru Zotzenberg” supplemented by the customary denomination** | < |
+| Riesling | 14 % |
+| Gewurztraminer | 15 % |
+| Pinot gris | 15 % |
+| Sylvaner | 14 % |
+| **AOC “Alsace grand cru Kaefferkopf” supplemented by the customary denomination** | < |
+| (blended wines) | 15 % |
+| Riesling | 14 % |
+| Gewurztraminer | 15 % |
+| Pinot gris | 15 % |
+f) – Prohibited equipment
+- Continuous presses are prohibited.
+- Centrifugal pumps for the transfer of the harvest are prohibited.
+g) – Vinification and storage vat capacity
+Every operator must have a vinification vat capacity equivalent to at least 1.2 times the volume of the previous harvest.
+h) – Upkeep of the cellar and equipment
+The cellar (floors and walls) and the vinification equipment are in a good general state of upkeep.
+### 2° – Provisions by type of product
+- White and red wines are aged at least until 1 November of the year following that of the harvest.
+- Wines liable to benefit from the terms “vendanges tardives” or “sélection de grains nobles” are aged at least until 1 June of the second year following that of the harvest.
+### 3° – Provisions relating to packaging
+a) – Wines benefiting from the controlled designations of origin covered by the present specification are packaged in bottles of the “Vin du Rhin” type meeting the provisions of European regulations and of decree no. 55-673 of 20 May 1955, the order of 13 May 1959 and the decree of 19 March 1963, or in bottles with the following characteristics:
+For 300 cl containers: straight glass body, cylindrical in appearance, topped by a neck with an elongated profile, whose ratios do not exceed:
+> • Total height / base diameter: between 4.3 and 5.0
+> • Total height / height of the cylindrical part: between 2.4 and 3.1
+For 150 cl containers: straight glass body, cylindrical in appearance, topped by a neck with an elongated profile, whose ratios do not exceed:
+> • Total height / base diameter: between 4.8 and 5.2
+> • Total height / height of the cylindrical part: between 2.1 and 3.1
+For 100 cl containers: straight glass body, cylindrical in appearance, topped by a neck with an elongated profile, whose ratios do not exceed:
+> • Total height / base diameter: between 3.6 and 5.0
+> • Total height / height of the cylindrical part: between 2.1 and 3.1
+For 75 cl containers: straight glass body, cylindrical in appearance, topped by a neck with an elongated profile, whose ratios do not exceed:
+> • Total height / base diameter: between 3.8 and 5.1
+> • Total height / height of the cylindrical part: between 2.8 and 5.0
+For 50 cl containers: straight glass body, cylindrical in appearance, topped by a neck with an elongated profile, whose ratios do not exceed:
+> • Total height / base diameter: between 4.3 and 5.1
+> • Total height / height of the cylindrical part: between 2.5 and 4.2
+For 37.5 cl containers: straight glass body, cylindrical in appearance, topped by a neck with an elongated profile, whose ratios do not exceed:
+> • Total height / base diameter: between 4.3 and 5.1
+> • Total height / height of the cylindrical part: between 2.5 and 5.2
+For containers of less than 37.5 cl: straight body, cylindrical in appearance, topped by a neck with an elongated profile, whose ratios do not exceed:
+> • Total height / base diameter: between 3.3 and 4.4
+> • Total height / height of the cylindrical part: between 2.6 and 3.0
+b) – For every packaged lot, the operator keeps available for the approved control body:
+- the information appearing in the register of handling operations referred to in Article D. 645-18 of the Rural and Maritime Fishing Code;
+- an analysis carried out before or after packaging.
+The analysis reports must be kept for a period of 6 months from the date of packaging.
+### 4° – Provisions relating to storage
+The operator provides evidence of an appropriate, closed and covered place for the storage of packaged products.
+### 5° – Provisions relating to the circulation of products and placing on the market for the consumer
+a) – Date of placing on the market for the consumer
+- At the end of the ageing period, white and red wines may only be placed on the market for the consumer from 1 November of the year following that of the harvest.
+- At the end of the ageing period, wines benefiting from the terms “vendanges tardives” or “sélection de grains nobles” are placed on the market for the consumer from 1 June of the 2nd year following that of the harvest.
+b) – Period during which musts, partially fermented musts and wines may not circulate between authorised warehousekeepers
+Musts, partially fermented musts and wines may circulate between authorised warehousekeepers at the earliest on 1 December of the year of harvest.
+## X. – Link with the geographical area
+### “Alsace grand cru Altenberg de Bergheim”
+#### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+The controlled designation of origin “Alsace grand cru Altenberg de Bergheim” forms an integral part of the Alsace vineyard, its geographical area being set in the heart of it. It is delimited within the area of the controlled designation of origin “Alsace”.
+Located entirely in the commune of Bergheim, at the outlet of the small closed valley of the Bergenbach, the Altenberg de Bergheim grand cru is a majestic, warm and sunny terroir, facing mainly south yet never short of water, with a moderate to steep slope.
+The Vosges massif offering protection against the humid, cool north-westerly winds, the vineyard finds its ideal conditions of establishment on the well-exposed (east to south-west), steeply sloping hillsides of the Grasberg hill. The landscape is completely open, without screening.
+This terroir, detached from the Vosges massif and marked by a certain surface diversity of soils, is very particular. The clay-limestone-sandstone geological nature of the terroir gives red, calcareous, fine and stony soils, rich in marls and highly prone to erosion. There is a tendency to chlorosis, and humus is not a central issue.
+In climatic terms, this appellation is protected from north winds by the relief of the Altenberg and from west winds by the Taennchel massif. Rainfall is low. The mesoclimate is calm and still; there is no wind. Consequently, the difference between day and night temperatures is small; this absence of jolts means that physiological ripening advances gently: the grapes are harvested late, often at a time when noble rot is beginning to develop.
+The parcels are fairly large, planted in the direction of the slope, at high planting density and of rather advanced age. The vineyard shows good vigour and low but regular productivity. A terroir that is regular in terms of yield, physiological ripeness and degree, regularly capable of great ripeness, the Altenberg de Bergheim is marked by a complex mix of varieties, ripened and harvested at the same time.
+b) – Description of the human factors contributing to the link
+@@HUM1
+Indeed, the Altenberg de Bergheim is cited in the oldest chronicles, bequests and religious properties. It long belonged to the Cistercian order and then to the powerful Ribeaupierre family. The work by Médard Barth, “Der Rebbau des Elsass und die Absatzgebieten seiner Weine”, written in 1958, praises this lieu-dit, recognised today.
+As a modern translation of this usage, the controlled designation of origin “Alsace grand cru Altenberg de Bergheim” was recognised in 1983. The wines come from parcels that have been the subject of a rigorous and precise delimitation inspired by the historical cores of production. This recognition was built around the white varieties. The varieties selected are mainly the following: riesling B, gewurztraminer Rs, pinot gris G. Other varieties may enter into the composition of a blended wine bearing the name of the terroir.
+@@HUM3 5,500
+#### 2° – Information on the quality and characteristics of the products
+White wines for laying down par excellence, the wines of the appellation “Alsace grand cru Altenberg de Bergheim” are characterised by a marked freshness based on a dominant tartaric acidity linked to excellent ripeness of the grapes. They show great substance, much complexity and strong aromatic power. Of great length on the palate, they gain in complexity over time. Young wines are discreet on the attack, voluminous on the palate and with a fruity acidity. Originality is expressed very well in the blended wines.
+The Altenberg de Bergheim produces wines powerfully marked by the terroir because the grapes harvested are thin-skinned, physiologically ripe, sensitive to the weather and of high degree: the musts are never enriched. These wines show a seasonal evolution and very high ageing potential, and reach their peak after 15 to 20 years. These original characteristics are linked to the natural factors of the terroir and to the practices of the wine-growers detailed here.
+At their peak these wines are very powerful, discreet on the attack, voluminous on the palate, with a fruity, vanilla-tinged and gentle acidity, often marked by noble rot yet remaining very mouth-watering.
+Four types of product can be distinguished:
+- the identity group, by far the largest, made up of aromatic, rich, fruity, full and complex wines from the authorised varieties, planted alone or mixed as permitted by the specification, wines that are never technically dry;
+- a group from the riesling variety alone, characterised by drier, mineral, deep wines, sometimes marked by fossil aromas.
+These two types of wine show a deep colour intensity ranging up to golden yellow.
+- wines benefiting from the term “vendanges tardives” often display very exotic aromas of candied fruit, with a fresh finish;
+- wines benefiting from the term “sélection de grains nobles” are more concentrated, powerful wines, often showing aromas of fruit paste.
+These two types of wine show a deep colour intensity ranging up to amber yellow. Wines benefiting from these last two terms are sweet wines of very long keeping. They are of remarkable concentration and great aromatic persistence. The terms “vendanges tardives” and “sélection de grains nobles” are systematically followed by the denominations Gewurztraminer, Pinot gris and Riesling, and the indication of the vintage is compulsory.
+#### 3° – Causal interactions
+Drawing on the favourable climatic conditions that characterise the Alsace vineyard, the controlled designation of origin “Alsace grand cru Altenberg de Bergheim” expresses the quintessence of a very great terroir. Nestled within the picturesque Alsace landscape, this vineyard allows the production of wines of high expression, with a marked character and a unique personality.
+The location, the general full-south orientation, the slope, the geology and particularly the highly fractured limestone subsoils, the strength of the shallow clay-limestone soils, the warm climate and the regular water supply give the vine the possibility of regular growth, balanced vigour and production of extreme quality.
+Rather late-ripening, the terroir leads to high levels of ripeness, often amplified by the excellent late-season climatic conditions favourable to concentration on the vine and to the development of noble rot, allowing the production of wines from overripe harvests. The ageing provided for in the specification allows the wines to improve.
+By adopting rigorous production rules, such as maintaining a large leaf area and manual harvesting, Alsace wine-growers preserve the assertive character of wines recognised for their complexity and their aptitude for long keeping. They constitute the top of the range of this region. The “Altenberg de Bergheim” wines include some of the most highly valued wines produced in Alsace.
+### “Alsace grand cru Brand”
+#### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+@@NAT Brand
+Exposed to winds (föhn) owing to its situation at the entrance to a valley, the grand cru enjoys abundant sunshine. The Brand grand cru is a warm, early-ripening terroir. The fractured granite, a rock made up of quartz, feldspar and two micas, known as “Turckheim granite”, gives the “Brand” a unique identity. The sandy, coarse texture of the soil and its stoniness favour deep rooting of the vine and ensure good drainage.
+b) – Description of the human factors contributing to the link
+@@HUM1
+@@HUM2 Brand | 1983 | riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+@@QUAL Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling
+#### 3° – Causal interactions
+@@CAU1 Brand
+The fineness of the granitic soils and the föhn make the wines aromatic, of great power and intensity. The silica gives this expression of fine, straight acidity (“steinglitz”). A sometimes peppery note, a mouth-watering palate, structural bitterness.
+@@CAU2
+The work by Médard Barth, “Der Rebbau des Elsass und die Absatzgebieten seiner Weine”, written in 1958, already praises this lieu-dit, recognised today.
+### “Alsace grand cru Eichberg”
+#### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+@@NAT Eichberg
+The substratum of this grand cru is essentially made up of calcareous conglomerates and marls, overlain at the foot of the slope by colluvium of the same nature, which may however incorporate sandstone scree and pebbles. The scree does not rest directly on the coastal conglomerate but is separated from it by a layer of yellow clay of variable thickness. The soil is thus sometimes siliceous, fairly clayey and rich in gravel.
+b) – Description of the human factors contributing to the link
+@@HUM1
+@@HUM2 Eichberg | 1983 | riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+@@QUAL Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling
+#### 3° – Causal interactions
+@@CAU1 Eichberg
+Reflecting the pedo-geological situation of the grand cru, the wines, of great minerality, show a lively acidity complemented by fruity and floral aromas. Austere in their youth, they are of great longevity with a remarkable ageing capacity.
+@@CAU2
+### “Alsace grand cru Florimont”
+#### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+@@NAT Florimont
+Situated on an advanced knoll of the sub-Vosgian hills, this grand cru benefits from a warm, dry mesoclimate favourable to early ripening of the grapes. The substratum is characterised by Bathonian and Bajocian limestone rocks, covered lower down the slope by Oligocene conglomerates and marls, and gives relatively stony marl-limestone soils.
+b) – Description of the human factors contributing to the link
+@@HUM1
+@@HUM2 Florimont | 1992 | riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+@@QUAL Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling
+#### 3° – Causal interactions
+@@CAU1 Florimont
+Its climatic characteristics and the strength of its calcareous marls make the Florimont an early-ripening, warm grand cru that gives powerful wines of great finesse. Their acidity provides structure.
+@@CAU2

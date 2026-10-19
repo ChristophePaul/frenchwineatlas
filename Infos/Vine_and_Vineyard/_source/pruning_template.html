@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taille &amp; modes de conduite</title>
+<meta name="description" content="La taille de la vigne : pourquoi et comment tailler, Guyot, gobelet, cordon de Royat, taille Chablis, Vallée de la Marne, médocaine ; règles des AOC et calcul de la charge.">
+<style>
+@@BASE_CSS@@
+  /* chapter 5 */
+  .why{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;}
+  .why div{padding:13px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .why b{display:block;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);margin-bottom:3px;}
+
+  .intro2{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .intro2 .plate{position:sticky;top:20px;}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:12px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14.2px;line-height:1.6;}
+  .fact b{color:var(--title);}
+  .fact.short{border-left:4px solid #6f8b1e;} .fact.long{border-left:4px solid #a0283c;}
+
+  .systems{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:16px;}
+  .sys{border-radius:16px;overflow:hidden;background:var(--glass);border:1px solid var(--hair);display:flex;flex-direction:column;}
+  .sys-fig{background:linear-gradient(to top,#cdb48a 0 16px,var(--paper) 16px);border-bottom:3px solid var(--c);padding:10px 14px 15px;}
+  .mini{display:block;width:100%;height:118px;}
+  .sys-b{padding:12px 15px 14px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .sys h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:2px 0 0;}
+  .sys p{margin:0;font-size:13.5px;line-height:1.55;}
+  .sys .chip{align-self:flex-start;}
+  .sys-w{color:var(--gold-soft);font-size:12.5px !important;font-weight:600;}
+  .sys-r{margin-top:auto !important;padding-top:6px;border-top:1px dashed var(--hair);font-size:12.5px !important;color:var(--muted);}
+  .sys-r b{color:var(--gold);font-weight:600;}
+
+  .calc{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(16px,3vw,30px);padding:clamp(16px,2.6vw,28px);align-items:center;}
+  .calc label{display:grid;grid-template-columns:1fr 92px;gap:10px;align-items:center;font-size:13.5px;padding:7px 0;border-bottom:1px solid var(--hair);}
+  .calc label small{display:block;color:var(--faint);font-size:11.5px;}
+  .calc input{font:600 15px var(--sans);width:100%;padding:6px 8px;border-radius:8px;border:1px solid var(--hair-hi);background:var(--glass-hi);color:var(--parchment);text-align:right;}
+  .calc input:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .res{display:grid;gap:10px;}
+  .res div{padding:14px 16px;border-radius:14px;background:var(--glass-hi);border:1px solid var(--hair);}
+  .res b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(28px,3.6vw,38px);color:var(--title);line-height:1.1;}
+  .res span{font-size:12.5px;color:var(--muted);}
+  .res .formula{font-size:12.5px;color:var(--faint);line-height:1.5;background:transparent;border-style:dashed;}
+  .calc-err{color:#c0392b;font-size:12.5px;min-height:1em;}
+
+  .rules-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .rules{width:100%;border-collapse:collapse;font-size:14px;}
+  .rules th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .rules td{padding:9px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5;}
+  .rules td:first-child a{font-family:var(--serif);font-size:16px;color:var(--title);text-decoration:none;border-bottom:1px dotted var(--faint);white-space:nowrap;}
+  .rules td.mx{font-weight:600;color:var(--gold-soft);white-space:nowrap;}
+
+  .words{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .word{padding:12px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:13px;line-height:1.5;color:var(--muted);}
+  .word b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:2px;}
+
+  @media (max-width:1000px){ .why,.words{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:900px){ .intro2,.calc{grid-template-columns:minmax(0,1fr);} .intro2 .plate{position:static;max-width:460px;margin:0 auto;width:100%;} }
+  @media (max-width:620px){ .why,.words{grid-template-columns:minmax(0,1fr);} .diagram-card.scroll{overflow-x:auto;} .diagram-card.scroll .diagram{min-width:560px;} .rules td.mx{white-space:normal;}
+    .rules thead{display:none;} .rules tr{display:block;padding:10px 4px;border-bottom:1px solid var(--hair);} .rules td{display:block;border:none;padding:2px 0;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 5" data-en="The vine &amp; the vineyard · Chapter 5">La vigne &amp; le vignoble · Chapitre 5</p>
+    <h1 data-fr="Taille <em>&amp; modes de conduite</em>" data-en="Training <em>&amp; pruning</em>">Taille <em>&amp; modes de conduite</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Chaque hiver, le vigneron passe devant chacun de ses ceps, sécateur en main, et décide combien de bourgeons garder. C’est le geste qui fixe la récolte à venir et la forme de la vigne pour des décennies."
+       data-en="Every winter the grower walks past each vine, shears in hand, and decides how many buds to keep. It is the act that sets the coming crop and shapes the vine for decades.">Chaque hiver, le vigneron passe devant chacun de ses ceps, sécateur en main, et décide combien de bourgeons garder. C’est le geste qui fixe la récolte à venir et la forme de la vigne pour des décennies.</p>
+    <nav class="toc">
+      <a href="#principe" data-fr="Le principe" data-en="The principle">Le principe</a>
+      <a href="#modes" data-fr="Les modes de conduite" data-en="Training systems">Les modes de conduite</a>
+      <a href="#seve" data-fr="Respecter la sève" data-en="Respecting sap flow">Respecter la sève</a>
+      <a href="#charge" data-fr="Calculer la charge" data-en="Calculating crop load">Calculer la charge</a>
+      <a href="#regles" data-fr="Les règles des AOC" data-en="AOC rules">Les règles des AOC</a>
+      <a href="#mots" data-fr="Les mots de la taille" data-en="Pruning vocabulary">Les mots de la taille</a>
+    </nav>
+  </header>
+
+  <section class="panel intro" id="principe">
+    <div>
+      <p class="L fr">La vigne ne porte ses raisins que sur les rameaux de l’année, nés de bourgeons situés sur le <b>bois d’un an</b> (les sarments). Le vieux bois ne donne presque rien. Tailler, c’est donc choisir, parmi les sarments de l’an dernier, ceux qui porteront la récolte, et les raccourcir au bon nombre d’yeux.</p>
+      <p class="L en">The vine only bears grapes on the current season’s shoots, which grow from buds on <b>one-year-old wood</b> (the canes). Old wood yields almost nothing. Pruning therefore means choosing, among last year’s canes, those that will carry the crop, and cutting them back to the right number of buds.</p>
+      <p class="L fr">Un cep non taillé porterait des dizaines de sarments et des centaines de bourgeons ; après la taille, il n’en garde souvent que 8 à 12.</p>
+      <p class="L en">An unpruned vine would carry dozens of canes and hundreds of buds; after pruning it often keeps only 8 to 12.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Le principe de la taille et les grands modes de conduite, en schémas." data-en="The principle of pruning and the main training systems, in diagrams.">Le principe de la taille et les grands modes de conduite, en schémas.</span></div></div>
+        <div class="lvl"><span class="ico">@@PRO_ICON@@</span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Règles de taille des cahiers des charges, calcul de charge, taille respectueuse des flux de sève." data-en="Specification pruning rules, crop-load calculation, sap-flow pruning.">Règles de taille des cahiers des charges, calcul de charge, taille respectueuse des flux de sève.</span></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="why">
+    <div style="--c:#7aa23c"><b data-fr="Régler la récolte" data-en="Set the crop">Régler la récolte</b><span data-fr="Le nombre d’yeux laissés fixe le nombre de grappes." data-en="The number of buds left sets the number of bunches.">Le nombre d’yeux laissés fixe le nombre de grappes.</span></div>
+    <div style="--c:#c08a1a"><b data-fr="Équilibrer la vigne" data-en="Balance the vine">Équilibrer la vigne</b><span data-fr="Assez de feuilles pour mûrir, pas trop de raisins." data-en="Enough leaves to ripen, not too many grapes.">Assez de feuilles pour mûrir, pas trop de raisins.</span></div>
+    <div style="--c:#8a5a2b"><b data-fr="Donner sa forme" data-en="Shape the vine">Donner sa forme</b><span data-fr="Garder le cep bas, compact, adapté au palissage." data-en="Keep the vine low, compact, suited to the trellis.">Garder le cep bas, compact, adapté au palissage.</span></div>
+    <div style="--c:#a0283c"><b data-fr="Préserver sa santé" data-en="Protect its health">Préserver sa santé</b><span data-fr="Des plaies bien placées limitent les maladies du bois." data-en="Well-placed cuts limit trunk diseases.">Des plaies bien placées limitent les maladies du bois.</span></div>
+  </div>
+
+  <section class="sec">
+    <div class="sec-head">
+      <h2 data-fr="Avant <em>&amp; après</em>" data-en="Before <em>&amp; after</em>">Avant <em>&amp; après</em></h2>
+      <p data-fr="Un cep conduit en Guyot simple, la taille la plus répandue en Bourgogne, en Loire et en Alsace." data-en="A vine trained in single Guyot, the most widespread system in Burgundy, the Loire and Alsace.">Un cep conduit en Guyot simple, la taille la plus répandue en Bourgogne, en Loire et en Alsace.</p>
+    </div>
+    <div class="diagram-card scroll">@@BEFORE_AFTER@@</div>
+    @@PRO_WHY@@
+  </section>
+
+  <!-- ===== systems ===== -->
+  <section class="sec" id="modes">
+    <div class="sec-head">
+      <h2 data-fr="Les modes <em>de conduite</em>" data-en="Training <em>systems</em>">Les modes <em>de conduite</em></h2>
+      <p data-fr="Deux grandes familles, selon la longueur du bois laissé à la taille." data-en="Two broad families, depending on the length of wood left at pruning.">Deux grandes familles, selon la longueur du bois laissé à la taille.</p>
+    </div>
+    <div class="intro2">
+      @@PLATE_TRAINING@@
+      <div class="facts">
+        <div class="fact short L fr"><b>Taille courte.</b> Le cep porte seulement des coursons de 1 à 3 yeux, sur des bras permanents (gobelet, cordon de Royat, éventail). Simple, rapide, elle convient aux cépages dont les yeux de la base sont fertiles.</div>
+        <div class="fact short L en"><b>Short (spur) pruning.</b> The vine carries only 1–3-bud spurs on permanent arms (gobelet, Royat cordon, fan). Simple and quick, it suits varieties whose basal buds are fruitful.</div>
+        <div class="fact long L fr"><b>Taille longue.</b> On garde une ou deux baguettes de 6 à 12 yeux, renouvelées chaque année à partir d’un courson (Guyot, taille Chablis, médocaine). Elle demande plus de savoir-faire mais convient à presque tous les cépages.</div>
+        <div class="fact long L en"><b>Long (cane) pruning.</b> One or two canes of 6–12 buds are kept, renewed every year from a spur (Guyot, Chablis pruning, Médoc pruning). It needs more skill but suits almost every variety.</div>
+        <div class="fact L fr"><b>La planche</b> montre six modes répandus ; les cartes ci-dessous détaillent neuf systèmes français, avec un exemple de règle tiré des cahiers des charges.</div>
+        <div class="fact L en"><b>The plate</b> shows six common systems; the cards below detail nine French systems, each with an example rule from the appellation specifications.</div>
+      </div>
+    </div>
+    <div class="systems">@@SYSTEMS@@</div>
+  </section>
+
+  <!-- ===== sap flow ===== -->
+  <section class="sec" id="seve">
+    <div class="sec-head">
+      <h2 data-fr="Respecter <em>la sève</em>" data-en="Respecting <em>sap flow</em>">Respecter <em>la sève</em></h2>
+      <p data-fr="Depuis l’interdiction de l’arsénite de sodium en 2001, la façon de couper est redevenue une arme majeure contre les maladies du bois." data-en="Since sodium arsenite was banned in 2001, the way cuts are made has again become a major weapon against trunk diseases.">Depuis l’interdiction de l’arsénite de sodium en 2001, la façon de couper est redevenue une arme majeure contre les maladies du bois.</p>
+    </div>
+    <div class="diagram-card scroll">@@SAPFLOW@@</div>
+    @@PRO_SAP@@
+  </section>
+
+  <!-- ===== calculator ===== -->
+  <section class="sec" id="charge">
+    <div class="sec-head">
+      <h2 data-fr="Calculer <em>la charge</em>" data-en="Calculating <em>crop load</em>">Calculer <em>la charge</em></h2>
+      <p data-fr="Le rendement se prépare dès la taille. Modifiez les valeurs pour voir l’effet de chaque paramètre : c’est le calcul que font les vignerons pour respecter le rendement de leur appellation." data-en="Yield is set at pruning time. Change the values to see the effect of each parameter: this is the calculation growers make to stay within their appellation’s yield.">Le rendement se prépare dès la taille. Modifiez les valeurs pour voir l’effet de chaque paramètre : c’est le calcul que font les vignerons pour respecter le rendement de leur appellation.</p>
+    </div>
+    <div class="panel calc">
+      <form id="calc" novalidate>
+        <label><span data-fr="Densité (pieds/ha)" data-en="Density (vines/ha)">Densité (pieds/ha)</span><input type="number" id="c-dens" value="8000" min="1000" max="15000" step="100"></label>
+        <label><span><span data-fr="Yeux laissés par pied" data-en="Buds left per vine">Yeux laissés par pied</span><small data-fr="après la taille" data-en="after pruning">après la taille</small></span><input type="number" id="c-eyes" value="8" min="1" max="40" step="1"></label>
+        <label><span><span data-fr="Taux de débourrement (%)" data-en="Budburst rate (%)">Taux de débourrement (%)</span><small data-fr="part des yeux qui donnent un rameau" data-en="share of buds that grow a shoot">part des yeux qui donnent un rameau</small></span><input type="number" id="c-burst" value="90" min="10" max="100" step="1"></label>
+        <label><span><span data-fr="Grappes par rameau" data-en="Bunches per shoot">Grappes par rameau</span><small data-fr="fertilité, souvent 1 à 2" data-en="fruitfulness, often 1–2">fertilité, souvent 1 à 2</small></span><input type="number" id="c-fert" value="1.6" min="0.1" max="4" step="0.1"></label>
+        <label><span><span data-fr="Poids d’une grappe (g)" data-en="Bunch weight (g)">Poids d’une grappe (g)</span><small data-fr="Pinot ≈ 100 g, Grenache ≈ 250 g" data-en="Pinot ≈ 100 g, Grenache ≈ 250 g">Pinot ≈ 100 g, Grenache ≈ 250 g</small></span><input type="number" id="c-bw" value="110" min="20" max="600" step="5"></label>
+        <label><span><span data-fr="Kilos de raisin pour 1 hL de vin" data-en="Kilos of grapes per hL of wine">Kilos de raisin pour 1 hL de vin</span><small data-fr="environ 130 à 160 selon le pressurage" data-en="about 130–160 depending on pressing">environ 130 à 160 selon le pressurage</small></span><input type="number" id="c-kghl" value="135" min="100" max="200" step="1"></label>
+        <p class="calc-err" id="c-err" aria-live="polite"></p>
+      </form>
+      <div class="res">
+        <div><b id="r-kg">—</b><span data-fr="kilos de raisin par hectare" data-en="kilos of grapes per hectare">kilos de raisin par hectare</span></div>
+        <div><b id="r-hl">—</b><span data-fr="hectolitres de vin par hectare" data-en="hectolitres of wine per hectare">hectolitres de vin par hectare</span></div>
+        <div><b id="r-vine">—</b><span data-fr="kilos de raisin par pied" data-en="kilos of grapes per vine">kilos de raisin par pied</span></div>
+        <div class="formula" data-fr="Raisin/ha = densité × yeux × débourrement × grappes par rameau × poids de grappe. Repères : rendement de base de 40 à 60 hL/ha en Bourgogne, 25 hL/ha à Sauternes ; en Champagne, la charge maximale est de 19 700 kg/ha." data-en="Grapes/ha = density × buds × budburst × bunches per shoot × bunch weight. Benchmarks: base yields of 40–60 hL/ha in Burgundy, 25 hL/ha in Sauternes; in Champagne the maximum crop load is 19,700 kg/ha.">Raisin/ha = densité × yeux × débourrement × grappes par rameau × poids de grappe. Repères : rendement de base de 40 à 60 hL/ha en Bourgogne, 25 hL/ha à Sauternes ; en Champagne, la charge maximale est de 19 700 kg/ha.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AOC rules ===== -->
+  <section class="sec" id="regles">
+    <div class="sec-head">
+      <h2 data-fr="Les règles <em>des AOC</em>" data-en="AOC <em>rules</em>">Les règles <em>des AOC</em></h2>
+      <p data-fr="Chaque cahier des charges précise les modes de taille autorisés et le nombre maximal d’« yeux francs ». Extraits de dix appellations." data-en="Each specification lists the permitted pruning systems and the maximum number of “count buds”. Extracts from ten appellations.">Chaque cahier des charges précise les modes de taille autorisés et le nombre maximal d’« yeux francs ». Extraits de dix appellations.</p>
+    </div>
+    <div class="panel rules-wrap"><table class="rules"><thead><tr><th>AOC</th><th data-fr="Modes de taille autorisés" data-en="Permitted pruning systems">Modes de taille autorisés</th><th data-fr="Maximum" data-en="Maximum">Maximum</th></tr></thead><tbody>@@RULES@@</tbody></table></div>
+  </section>
+
+  <section class="sec" id="mots">
+    <div class="sec-head">
+      <h2 data-fr="Les mots <em>de la taille</em>" data-en="Pruning <em>vocabulary</em>">Les mots <em>de la taille</em></h2>
+    </div>
+    <div class="words">@@WORDS@@</div>
+  </section>
+
+  @@CHAPTERS@@
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources">@@SOURCES@@</ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Taille & modes de conduite' : 'Training & pruning';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    calc();
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+
+  /* crop-load calculator */
+  var F = ['c-dens','c-eyes','c-burst','c-fert','c-bw','c-kghl'];
+  function fmt(n, d){ return n.toLocaleString(LANG==='fr' ? 'fr-FR' : 'en-GB', {maximumFractionDigits:d, minimumFractionDigits:d}); }
+  function calc(){
+    var v = {}, bad = null;
+    F.forEach(function(id){ var el = $(id), x = parseFloat(el.value);
+      var ok = isFinite(x) && x >= parseFloat(el.min) && x <= parseFloat(el.max);
+      el.setAttribute('aria-invalid', ok ? 'false' : 'true'); if(!ok && !bad) bad = el; v[id] = x; });
+    if(bad){
+      $('c-err').textContent = (LANG==='fr' ? 'Valeur hors limites : entre ' : 'Value out of range: between ') + bad.min + (LANG==='fr' ? ' et ' : ' and ') + bad.max + '.';
+      ['r-kg','r-hl','r-vine'].forEach(function(id){ $(id).textContent = '—'; }); return;
+    }
+    $('c-err').textContent = '';
+    var perVine = v['c-eyes'] * v['c-burst'] / 100 * v['c-fert'] * v['c-bw'] / 1000;
+    var kg = perVine * v['c-dens'];
+    $('r-vine').textContent = fmt(perVine, 2);
+    $('r-kg').textContent = fmt(Math.round(kg / 10) * 10, 0);
+    $('r-hl').textContent = fmt(kg / v['c-kghl'], 1);
+  }
+  F.forEach(function(id){ $(id).addEventListener('input', calc); });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

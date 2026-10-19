@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Les catégories des vins français" data-en="The Categories of French Wines">Les catégories des vins français</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.72);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.60);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+    --title:#fff;--line:rgba(217,179,107,.62);--chip:rgba(10,1,4,.45);
+    --l0:#9b2235;--l1:#b45a46;--l2:#c9a35a;--l0t:#fff;--l1t:#fff;--l2t:#2a0b10;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.78);--faint:rgba(46,20,25,.52);
+    --glass:rgba(255,253,248,.88);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--line:rgba(142,31,51,.55);--chip:#fff;
+    --l0:#7b1e2b;--l1:#a8533f;--l2:#e2c27f;--l2t:#3a1219;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../Web_Page_Background.png") center top / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  html[data-theme="cream"] body{
+    background:
+      radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;
+  }
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+  section[id]{scroll-margin-top:20px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;
+    font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(18px,3vw,28px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.5em;font-size:clamp(9px,1.3vw,11px);font-weight:600;
+    color:var(--gold);margin:0 0 18px;padding-left:.5em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(38px,7vw,78px);line-height:1;margin:0;color:var(--title);
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:24px auto 18px;}
+  .tagline{font-family:var(--serif);font-style:italic;font-size:clamp(15px,2vw,19px);color:var(--muted);margin:0;}
+  .intro{max-width:820px;margin:22px auto 0;font-size:clamp(14px,1.6vw,16px);line-height:1.75;color:var(--muted);text-align:center;}
+  .toc{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:26px 0 0;}
+  .chip{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;padding:7px 14px;background:var(--chip);transition:border-color .2s;}
+  .chip:hover{border-color:var(--hair-hi);}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);}
+  html[data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,30,40,.10),inset 0 1px 0 #fff;-webkit-backdrop-filter:none;backdrop-filter:none;}
+
+  /* ---------- sections ---------- */
+  .sec{margin-top:clamp(36px,5.5vw,64px);}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--hair);}
+  .sec-ic{flex:0 0 auto;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;
+    border:1px solid var(--hair-hi);color:var(--gold);background:var(--chip);}
+  .sec-ic svg{width:22px;height:22px;}
+  .kick{margin:0 0 3px;font-size:10.5px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(25px,3.4vw,36px);color:var(--title);margin:0;line-height:1.1;}
+
+  /* ---------- the 3-column newspaper body ---------- */
+  .L{display:none;}
+  html[lang="fr"] .L.fr, html[lang="en"] .L.en{display:block;}
+  .cols{column-count:3;column-gap:40px;column-rule:1px solid var(--hair);
+    font-family:var(--serif);font-size:15.5px;line-height:1.68;color:var(--parchment);hyphens:auto;-webkit-hyphens:auto;}
+  .cols.c2{column-count:2;}
+  .cols p{margin:0 0 .85em;text-align:justify;orphans:3;widows:3;}
+  .cols h3{font-family:var(--serif);font-weight:600;font-size:18.5px;line-height:1.25;color:var(--gold-soft);
+    margin:.2em 0 .45em;break-after:avoid;-webkit-column-break-after:avoid;}
+  .cols h3:not(:first-child){margin-top:1.05em;}
+  .cols p.dp::first-letter{float:left;font-size:3.35em;line-height:.86;padding:.06em .09em 0 0;color:var(--gold);font-weight:500;}
+  .cols ul,.cols ol{margin:0 0 .9em;padding-left:1.25em;}
+  .cols li{margin:0 0 .45em;text-align:left;break-inside:avoid;}
+  .cols li::marker{color:var(--gold);}
+  .cols strong{font-weight:650;color:var(--title);}
+  html[data-theme="cream"] .cols strong{color:#5b1522;}
+  .cols em{font-style:italic;}
+  blockquote{margin:.2em 0 1em;padding:12px 16px;border-left:3px solid var(--gold);background:var(--chip);border-radius:0 10px 10px 0;
+    font-style:italic;font-size:15px;line-height:1.6;break-inside:avoid;}
+  sup.ref{font-family:var(--sans);font-size:.62em;line-height:0;vertical-align:super;}
+  sup.ref a{color:var(--gold);text-decoration:none;padding:0 1px;}
+  sup.ref a::before{content:"[";} sup.ref a::after{content:"]";}
+  sup.ref a:hover{text-decoration:underline;}
+  .orn{text-align:center;font-size:28px;color:var(--gold);margin:0 0 18px;}
+  .sig{text-align:right;font-family:var(--serif);font-weight:600;letter-spacing:.06em;color:var(--gold-soft);margin:14px 0 0;}
+
+  /* ---------- pyramid ---------- */
+  .pyr-wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);column-gap:28px;row-gap:6px;
+    padding:clamp(18px,3vw,30px);margin:0 0 26px;}
+  .pyr,.notes{display:contents;}
+  .lvl{grid-column:1;min-height:128px;display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:12px 18%;filter:drop-shadow(0 6px 14px rgba(0,0,0,.25));}
+  .lvl0{grid-row:1;background:var(--l0);color:var(--l0t);clip-path:polygon(39% 0,61% 0,74% 100%,26% 100%);padding-top:34px;}
+  .lvl1{grid-row:2;background:var(--l1);color:var(--l1t);clip-path:polygon(26% 0,74% 0,87% 100%,13% 100%);}
+  .lvl2{grid-row:3;background:var(--l2);color:var(--l2t);clip-path:polygon(13% 0,87% 0,100% 100%,0 100%);}
+  .lvl-in b{display:block;font-family:var(--serif);font-weight:600;font-size:clamp(17px,2.3vw,24px);line-height:1.1;}
+  .lvl-sub{display:block;font-size:clamp(10px,1.2vw,12px);line-height:1.3;opacity:.9;margin-top:4px;font-style:italic;}
+  .lvl0 .lvl-sub{max-width:150px;margin-left:auto;margin-right:auto;}
+  .note{grid-column:2;align-self:center;padding:10px 0 10px 16px;border-left:3px solid var(--l0);}
+  .note:nth-child(1){grid-row:1;} .note:nth-child(2){grid-row:2;border-color:var(--l1);} .note:nth-child(3){grid-row:3;border-color:var(--l2);}
+  .note-h{display:flex;align-items:baseline;gap:10px;}
+  .note-h b{font-family:var(--serif);font-size:18px;color:var(--title);font-weight:600;}
+  .cnt{font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);}
+  .note p{margin:4px 0 8px;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .bars{display:grid;gap:4px;}
+  .bar{display:grid;grid-template-columns:62px 1fr 44px;align-items:center;gap:8px;font-size:11.5px;color:var(--faint);}
+  .bt{height:7px;border-radius:9px;background:var(--hair);overflow:hidden;}
+  .bt i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--gold),var(--gold-soft));}
+  .bv{text-align:right;color:var(--parchment);font-weight:600;}
+  .stats-h{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--gold-soft);margin:0 0 10px;}
+  .stats{overflow-x:auto;margin:0 0 30px;}
+  .stats table{width:100%;border-collapse:collapse;font-size:14px;min-width:560px;}
+  .stats th,.stats td{padding:9px 12px;border-bottom:1px solid var(--hair);text-align:right;}
+  .stats thead th{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .stats th:first-child{text-align:left;font-family:var(--serif);font-size:15px;color:var(--title);}
+  .stats thead th:first-child{font-family:var(--sans);font-size:10.5px;color:var(--gold);}
+  .stats .foot{font-size:12px;line-height:1.55;color:var(--faint);margin:10px 0 0;font-style:italic;}
+
+  /* ---------- hierarchy chart (arrows point upward) ---------- */
+  .tree-wrap{padding:clamp(18px,3vw,32px) clamp(10px,2vw,24px);overflow-x:auto;}
+  .tree{min-width:860px;}
+  .tree ul{display:flex;justify-content:center;margin:0;padding:30px 0 0;position:relative;list-style:none;}
+  .tree > ul{padding-top:0;}
+  .tree li{position:relative;padding:30px 7px 0;flex:1 1 0;display:flex;flex-direction:column;align-items:center;}
+  .tree > ul > li{padding-top:0;}
+  .tree li > ul{align-self:stretch;}
+  .tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:30px;border-top:1.5px solid var(--line);}
+  .tree li::after{right:auto;left:50%;border-left:1.5px solid var(--line);}
+  .tree li:only-child::before{display:none;}
+  .tree li:only-child::after{border-top:0;}
+  .tree li:first-child::before,.tree li:last-child::after{border:0;}
+  .tree li:last-child::before{border-right:1.5px solid var(--line);border-radius:0 8px 0 0;}
+  .tree li:first-child::after{border-radius:8px 0 0 0;}
+  .tree > ul > li::before,.tree > ul > li::after{display:none;}
+  .tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:30px;border-left:1.5px solid var(--line);}
+  .tree ul ul::after{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+    border:6px solid transparent;border-top:0;border-bottom:9px solid var(--line);}
+  .node{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;
+    width:100%;max-width:250px;padding:13px 14px 14px;border-radius:14px;background:var(--chip);border:1px solid var(--hair-hi);}
+  .node.top{max-width:300px;}
+  .node .logo{display:grid;place-items:center;height:52px;min-width:52px;padding:6px 8px;border-radius:10px;background:#fff;}
+  .node .logo img{max-height:40px;max-width:96px;display:block;}
+  .node .logo.wide{height:62px;} .node .logo.wide img{max-width:140px;max-height:50px;}
+  .node .logo.seal{background:transparent;padding:0;height:66px;}
+  .node .logo.seal img{max-height:66px;max-width:66px;border-radius:50%;}
+  .node b{display:block;font-family:var(--serif);font-size:16.5px;font-weight:600;color:var(--title);line-height:1.2;}
+  .node .nt span{display:block;font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:3px;}
+  .node.leaf{max-width:170px;padding:10px 10px 12px;}
+  .node.vdf b{font-size:19px;color:var(--gold-soft);font-style:italic;}
+  .node.vdf{justify-content:center;min-height:118px;}
+  .node.plain{border-style:dashed;}
+  .base{display:flex;flex-direction:column;align-items:center;margin-top:10px;width:33.333%;padding:0 7px;}
+  .base-arrow{display:block;width:0;height:34px;border-left:1.5px dashed var(--line);position:relative;margin-bottom:4px;}
+  .base-arrow::before{content:"";position:absolute;top:-2px;left:-7px;border:6px solid transparent;border-top:0;border-bottom:9px solid var(--line);}
+  .node.ground{max-width:none;background:linear-gradient(180deg,var(--chip),transparent);border-style:solid;}
+  .tree-cap{max-width:720px;margin:18px auto 0;text-align:center;font-size:13px;line-height:1.6;color:var(--faint);font-style:italic;}
+
+  /* ---------- sources ---------- */
+  .src-note{color:var(--faint);font-size:13px;margin:0 0 12px;font-style:italic;}
+  .srcs{list-style:none;margin:0;padding:0;columns:2;column-gap:36px;}
+  .srcs li{break-inside:avoid;display:grid;grid-template-columns:30px 1fr;gap:2px 8px;padding:7px 0;border-bottom:1px solid var(--hair);font-size:13px;line-height:1.5;}
+  .srcs li:target{background:var(--chip);outline:1px solid var(--hair-hi);border-radius:8px;}
+  .srcs .n{grid-row:span 2;font-weight:700;color:var(--gold);text-align:right;}
+  .srcs a{grid-column:2;color:var(--gold);font-size:11.5px;text-decoration:none;word-break:break-all;}
+  .srcs a:hover{text-decoration:underline;}
+  footer{margin-top:48px;text-align:center;font-size:12px;color:var(--faint);}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1020px){ .cols{column-count:2;} }
+  @media (max-width:760px){
+    .pyr-wrap{grid-template-columns:1fr;}
+    .lvl{grid-column:1;min-height:104px;} .lvl0{grid-row:1;} .lvl1{grid-row:2;} .lvl2{grid-row:3;}
+    .note{grid-column:1;grid-row:auto !important;margin-top:10px;}
+    .srcs{columns:1;}
+  }
+  @media (max-width:680px){
+    .cols,.cols.c2{column-count:1;}
+    .cols{font-size:15px;}
+    .cols p{text-align:left;}
+    /* the hierarchy becomes a vertical list, arrows still pointing up */
+    .tree{min-width:0;}
+    .tree ul{display:block;padding:0 0 0 22px;margin-left:12px;border-left:1.5px solid var(--line);}
+    .tree > ul{border-left:0;padding-left:0;margin-left:0;}
+    .tree li{display:block;padding:14px 0 0;}
+    .tree li::before,.tree li::after,.tree ul ul::before{display:none;}
+    .base{width:100%;padding:0;}
+    .tree ul ul::after{left:-1px;top:-2px;}
+    .node,.node.top,.node.leaf{max-width:none;flex-direction:row;text-align:left;align-items:center;min-height:0;}
+    .node .logo{flex:0 0 auto;}
+    .node.vdf{min-height:0;}
+  }
+  @media print{ body{background:#fff;color:#000;} .topbar,.toc{display:none;} }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .chip{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .chip:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 18px 50px rgba(90,40,30,0.15),inset 0 1px 0 rgba(255,255,255,0.30)}
+html[data-theme="cream"][data-theme="cream"] .panel{box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 1px 0 rgba(255,255,255,0.80)}
+html[data-theme="cream"] .sec-head{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .sec-ic{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .cols{column-rule:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl1{background:#fbf6ec;color:#2e1419}
+html[data-theme="cream"] .note{border-left:3px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .note:nth-child(2){border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .note:nth-child(3){border-color:#9a6a1f}
+html[data-theme="cream"] .bt{background:rgba(255,253,248,0.71)}
+html[data-theme="cream"] .stats th,html[data-theme="cream"] .stats td{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tree li::before,html[data-theme="cream"] .tree li::after{border-top:1.5px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tree li::after{border-left:1.5px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tree li:last-child::before{border-right:1.5px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tree ul ul::before{border-left:1.5px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tree ul ul::after{border-bottom:9px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .node{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .base-arrow{border-left:1.5px dashed rgba(90,30,40,0.18)}
+html[data-theme="cream"] .base-arrow::before{border-bottom:9px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .srcs li{border-bottom:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .srcs li:target{outline:1px solid rgba(90,30,40,0.18)}
+@media (max-width:680px){html[data-theme="cream"] .tree ul{border-left:1.5px solid rgba(90,30,40,0.18)}}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Le système des appellations" data-en="How appellations work">Le système des appellations</p>
+    <h1 data-fr="Les catégories <em>des vins français</em>" data-en="The Categories <em>of French Wines</em>">Les catégories <em>des vins français</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="De l’Appellation d’Origine Contrôlée au Vin de France" data-en="From the Appellation d’Origine Contrôlée to Vin de France">De l’Appellation d’Origine Contrôlée au Vin de France</p>
+    <p class="intro L fr" lang="fr">En France, comme dans la plupart des pays de l’Union européenne, le vin est encadré par des organismes publics dont la mission est de protéger à la fois le consommateur et le vigneron : le consommateur, en lui garantissant que ce qui figure sur l’étiquette correspond bien à ce qui se trouve dans la bouteille ; le vigneron, en protégeant le nom et la réputation d’un lieu contre l’imitation.</p>
+    <p class="intro L en" lang="en">In France, as in most of the European Union, wine is regulated by public bodies whose purpose is to protect both the consumer and the winegrower: the consumer, by guaranteeing that what is on the label is what is in the bottle; the winegrower, by protecting the name and reputation of a place against imitation.</p>
+    <nav class="toc"><a class="chip" href="#aoc" data-fr="L’AOC" data-en="The AOC">L’AOC</a><a class="chip" href="#histoire" data-fr="Histoire" data-en="History">Histoire</a><a class="chip" href="#categories" data-fr="Les 3 catégories" data-en="The 3 categories">Les 3 catégories</a><a class="chip" href="#europe" data-fr="L’Europe" data-en="Europe">L’Europe</a><a class="chip" href="#qui" data-fr="Qui encadre ?" data-en="Who regulates?">Qui encadre ?</a><a class="chip" href="#sources" data-fr="Sources" data-en="Sources">Sources</a></nav>
+  </header>
+
+<section class="sec" id="aoc"><div class="sec-head"><span class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7v5c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V7l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span><div><p class="kick" data-fr="Définition" data-en="Definition">Définition</p><h2 data-fr="L’Appellation d’Origine Contrôlée (AOC)" data-en="The Appellation d’Origine Contrôlée (AOC)">L’Appellation d’Origine Contrôlée (AOC)</h2></div></div><div class="cols L fr " lang="fr">
+<p>L’INAO, l’établissement public chargé des appellations françaises, en donne en substance la définition suivante <sup class="ref"><a href="#src-1">1</a></sup> :</p>
+<blockquote>L’Appellation d’Origine Contrôlée désigne un produit qui tire son authenticité et sa typicité de son origine géographique. Elle exprime le lien intime entre le produit et son terroir : les caractéristiques géologiques, agronomiques, climatiques et historiques d’une aire délimitée, ainsi que les disciplines humaines et les conditions de production particulières qui permettent d’en tirer le meilleur. Un tel produit ne peut être reproduit ailleurs.</blockquote>
+<p>Ces conditions de production sont aussi le fruit d’une tradition culturelle et historique — les « usages locaux, loyaux et constants », selon l’expression de la loi — et elles sont inscrites dans le règlement officiel de chaque appellation, le <strong>cahier des charges</strong>. Leur respect est vérifié par des organismes de contrôle indépendants agréés par l’INAO, notamment au moyen d’examens analytiques et organoleptiques (dégustation) des vins.</p>
+<p>Plus simplement, une Appellation d’Origine Contrôlée est un ensemble de règles portant sur de nombreux paramètres : l’aire de production délimitée, les cépages autorisés, la densité de plantation et la taille, les rendements maximaux, la maturité et le degré d’alcool minimaux, le recours (ou l’interdiction) de l’irrigation, les pratiques de vinification, l’élevage et l’étiquetage.</p>
+<p>L’AOC a donc pour but de protéger un nom acquis par un produit précis en raison du lieu où il est élaboré — et de la manière dont il l’est.</p>
+<h3>Et la notion de terroir</h3>
+<p>Le <strong>terroir</strong> n’a pas d’équivalent exact dans d’autres langues. Il désigne la combinaison du sol, du sous-sol, de la pente, de l’exposition et du climat d’un lieu donné, <strong>associée</strong> au savoir-faire humain — choix des cépages, traditions viticoles et œnologiques — qui s’y est développé au fil du temps. Le résultat dans le verre est ce que l’on appelle la <strong>typicité</strong> : le caractère reconnaissable qui fait qu’un vin « goûte » le lieu d’où il vient.</p>
+</div>
+<div class="cols L en " lang="en">
+<p>The INAO, the public body in charge of French appellations, defines the AOC in essence as follows <sup class="ref"><a href="#src-1">1</a></sup>:</p>
+<blockquote>The Appellation d’Origine Contrôlée designates a product which draws its authenticity and its typicity from its geographical origin. It expresses a close link between the product and its terroir: the geological, agronomic, climatic and historical characteristics of a delimited area, together with the human disciplines and specific conditions of production that make the best of them. Such a product cannot be reproduced anywhere else.</blockquote>
+<p>These conditions of production are also the fruit of cultural and historical tradition — “local, loyal and constant” customs (<em>usages locaux, loyaux et constants</em>), in the words of French law — and they are written into each appellation’s official rulebook, the <strong>cahier des charges</strong>. Compliance is checked by independent control bodies approved by the INAO, including analytical and organoleptic (tasting) examinations of the wines.</p>
+<p>In simpler terms, an Appellation d’Origine Contrôlée is a set of rules covering a whole range of parameters: the delimited area of production, the authorised grape varieties, vine density and pruning, maximum yields, minimum ripeness and alcohol levels, the use (or ban) of irrigation, winemaking practices, ageing and labelling.</p>
+<p>The purpose of the AOC is therefore to protect a name that has been earned by a specific product because of where — and how — it is made.</p>
+<h3>And the notion of terroir</h3>
+<p><em>Terroir</em> has no exact equivalent in English. It describes the combination of soil, subsoil, slope, exposure and climate of a given place, <strong>together with</strong> the human know-how — grape varieties chosen, viticulture and winemaking traditions — that has developed there over time. The result in the glass is what the French call <strong>typicité</strong> (typicity): the recognisable character that makes a wine taste of where it comes from.</p>
+</div></section>
+<section class="sec" id="histoire"><div class="sec-head"><span class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><p class="kick" data-fr="1863 – 2009" data-en="1863 – 2009">1863 – 2009</p><h2 data-fr="Un système en construction" data-en="A System in the Making">Un système en construction</h2></div></div><div class="cols L fr " lang="fr">
+<h3>Phylloxéra, fraudes et premières lois</h3>
+<p class="dp">Les origines du système des appellations remontent à la fin du XIX<sup>e</sup> et au début du XX<sup>e</sup> siècle. Le phylloxéra — un minuscule puceron s’attaquant aux racines, importé accidentellement d’Amérique et contre lequel la vigne européenne était sans défense — est signalé pour la première fois en 1863 à Pujaut, dans le Gard, puis identifié par Jules-Émile Planchon en 1868. Il se répand dans toute la France et ravage plus de 40 % du vignoble <sup class="ref"><a href="#src-2">2</a></sup>. La production s’effondre. Pour satisfaire la demande, des vins d’origine douteuse sont vendus sous le nom de régions réputées, au grand dam des acheteurs comme des consommateurs.</p>
+<p>Les progrès de la chimie permettent en outre de fabriquer de faux « vins » à partir de substituts — sucre, raisins secs, acides divers, colorants — adaptés à tous les goûts du marché. La fraude devient une préoccupation majeure pour les producteurs honnêtes, qui réclament l’intervention de l’État :</p>
+<ul><li><strong>1889 — loi Griffe :</strong> première définition légale du vin, réservée au produit de la fermentation des raisins frais <sup class="ref"><a href="#src-3">3</a></sup>.</li><li><strong>1905 — loi du 1<sup>er</sup> août sur les fraudes :</strong> texte fondateur de la protection du consommateur en France, et le premier à prévoir la délimitation officielle des aires ayant droit à une appellation <sup class="ref"><a href="#src-4">4</a></sup>.</li><li><strong>1907 — la révolte du Midi :</strong> ruinés par la surproduction et la fraude, les vignerons du Languedoc se soulèvent derrière Marcelin Albert ; quelque 600 000 personnes défilent à Montpellier le 9 juin 1907 <sup class="ref"><a href="#src-5">5</a></sup>. Les lois et le décret du 3 septembre 1907 qui suivent réaffirment que le vin ne peut provenir que de la fermentation alcoolique de raisins frais ou de jus de raisins frais — une définition qui fonde encore aujourd’hui le droit viticole français et européen <sup class="ref"><a href="#src-6">6</a></sup>.</li></ul>
+<h3>Les troubles d’avant-guerre</h3>
+<p class="dp">À partir de 1908, les premières aires sont délimitées par décret, sur la base des usages locaux et constants : la Champagne en 1908, Cognac en mai 1909, Bordeaux en 1911 <sup class="ref"><a href="#src-4">4</a></sup><sup class="ref"><a href="#src-7">7</a></sup>. Mais tracer des limites sur une carte fait des gagnants et des perdants. En Champagne, le décret de 1908 exclut l’Aube. En janvier 1911, les vignerons de la Marne, qui accusent les maisons de Champagne d’utiliser des raisins et des vins venus d’ailleurs, se soulèvent à Damery et à Hautvillers. En avril, quelque 20 000 vignerons aubois défilent dans Troyes (le 9 avril) pour réclamer leur réintégration <sup class="ref"><a href="#src-9">9</a></sup> ; lorsque Paris semble prêt à céder, la Marne s’embrase les 11 et 12 avril, surtout à Aÿ, où des établissements de négociants sont saccagés, le vin répandu dans les rues et des bâtiments incendiés <sup class="ref"><a href="#src-10">10</a></sup>. Plus de 40 000 soldats sont envoyés pour rétablir l’ordre <sup class="ref"><a href="#src-8">8</a></sup>. Le compromis — une « Champagne deuxième zone » pour l’Aube — ne satisfait personne, et l’Aube ne sera pleinement réintégrée qu’en 1927 <sup class="ref"><a href="#src-11">11</a></sup>.</p>
+<p>Les délimitations administratives ont manifestement échoué ; la Première Guerre mondiale met ensuite toute réforme en suspens.</p>
+<h3>La Première Guerre mondiale</h3>
+<p class="dp">C’est pendant la Grande Guerre que le vin devient véritablement la boisson nationale. Le Nord — pays de la bière — est en partie occupé ou sur la ligne de front, et l’Alsace-Moselle est allemande depuis 1871. L’armée, de son côté, comprend vite que le vin aide les soldats à endurer l’horreur des tranchées : la ration quotidienne de <strong>pinard</strong>, venu surtout du Midi, passe d’un quart de litre en 1914 à un demi-litre en 1916, et peut atteindre un litre par jour en 1918 <sup class="ref"><a href="#src-12">12</a></sup>. Des millions d’hommes rentrent chez eux avec le goût du vin, et la demande d’après-guerre fait monter les prix.</p>
+<h3>Les lois de 1919 et de 1927</h3>
+<p class="dp">La <strong>loi du 6 mai 1919</strong> crée la notion juridique d’<strong>appellation d’origine</strong> : tout producteur peut désormais saisir la justice pour défendre un nom, et ce sont les tribunaux — et non plus l’administration — qui décident qui y a droit. Sa faiblesse est de ne tenir compte que de la géographie : un vin ordinaire, issu d’hybrides à gros rendements, peut encore revendiquer un nom prestigieux. La <strong>loi du 22 juillet 1927</strong>, fruit des efforts de Joseph Capus, exclut les hybrides producteurs directs des vins d’appellation et impose de respecter les cépages et les pratiques consacrés par les usages locaux <sup class="ref"><a href="#src-4">4</a></sup><sup class="ref"><a href="#src-13">13</a></sup>.</p>
+<p>Les vignerons s’organisent aussi eux-mêmes. À Châteauneuf-du-Pape, le <strong>baron Pierre Le Roy de Boiseaumarié</strong> préside le syndicat des vignerons fondé le 4 octobre 1923 et élabore des règles strictes — délimitation selon la nature des sols, liste restreinte de cépages, degré minimal de 12,5 %, tri obligatoire des raisins. Confirmées par la Cour de cassation en 1933, elles deviendront le modèle de tout le système des AOC <sup class="ref"><a href="#src-14">14</a></sup>.</p>
+<h3>La crise des années 1930</h3>
+<p class="dp">La crise économique apporte le changement suivant. Une surproduction massive — gonflée par les énormes récoltes de l’Algérie française — fait s’effondrer les prix, et même de grands millésimes bourguignons comme 1929, 1933 et 1934 restent invendus dans les caves ; c’est pour relancer les ventes qu’est fondée à Nuits-Saint-Georges, le 16 novembre 1934, la Confrérie des Chevaliers du Tastevin <sup class="ref"><a href="#src-15">15</a></sup><sup class="ref"><a href="#src-16">16</a></sup>. L’État répond par les mesures du <strong>Statut viticole</strong> — puis, en 1935, par la réforme des appellations décrite plus bas.</p>
+<p>Le célèbre morcellement de la Bourgogne est plus ancien : les vignes de l’Église ont été confisquées et vendues après la Révolution, et la règle du partage égal entre héritiers du Code Napoléon les divise un peu plus à chaque génération <sup class="ref"><a href="#src-17">17</a></sup>. Le Clos de Vougeot, propriété unique jusqu’en 1889, couvre aujourd’hui une cinquantaine d’hectares partagés entre quelque 80 propriétaires <sup class="ref"><a href="#src-18">18</a></sup>.</p>
+<h3>Un nouveau système : 1935</h3>
+<p>Sous l’impulsion de Joseph Capus — agronome, ancien ministre de l’Agriculture et sénateur de la Gironde — le <strong>décret-loi du 30 juillet 1935</strong> crée l’<strong>Appellation d’Origine Contrôlée</strong> et l’organisme chargé de la gérer, le <strong>Comité national des appellations d’origine des vins et eaux-de-vie</strong>, que Capus préside jusqu’en 1947 <sup class="ref"><a href="#src-13">13</a></sup><sup class="ref"><a href="#src-19">19</a></sup>. Cette fois, les règles sont élaborées par les vignerons eux-mêmes et garanties par l’État. Les six premières AOC sont reconnues par décret le 15 mai 1936 — Arbois, Cassis, Châteauneuf-du-Pape, Cognac, Monbazillac et Tavel — et, avant la fin de l’année, elles sont rejointes par de grands noms comme la Champagne, Chablis, Beaune, Pommard, Saint-Émilion, Sauternes et Sancerre <sup class="ref"><a href="#src-20">20</a></sup>.</p>
+<p>Le comité devient l’<strong>Institut national des appellations d’origine</strong> (INAO) le 16 juillet 1947, présidé pendant vingt ans par le baron Le Roy <sup class="ref"><a href="#src-19">19</a></sup>. Ses missions sont étendues en 1990 à l’ensemble des produits agricoles et alimentaires <sup class="ref"><a href="#src-1">1</a></sup>, puis à d’autres signes de qualité, et le 1<sup>er</sup> janvier 2007 il devient l’<strong>Institut national de l’origine et de la qualité</strong> — en conservant le sigle INAO <sup class="ref"><a href="#src-21">21</a></sup>.</p>
+</div>
+<div class="cols L en " lang="en">
+<h3>Phylloxera, fraud and the first laws</h3>
+<p class="dp">The origins of the appellation system go back to the late 19th and early 20th centuries. Phylloxera — a tiny root-feeding aphid accidentally imported from America, against which European vines had no defence — was first recorded in 1863 at Pujaut in the Gard and identified by Jules-Émile Planchon in 1868. It spread through France and devastated over 40 % of its vineyards <sup class="ref"><a href="#src-2">2</a></sup>. Production collapsed. To satisfy demand, wines of doubtful origin were sold under the names of reputable regions, to the dismay of buyers and consumers alike.</p>
+<p>Progress in chemistry also made it possible to produce counterfeit “wine” from substitutes such as sugar, raisins, various acids and colourings, tailored to whatever style the market wanted. Fraud became a major concern for honest producers, who demanded that the State step in:</p>
+<ul><li><strong>1889 — Loi Griffe:</strong> the first legal definition of wine, reserved for the product of the fermentation of fresh grapes <sup class="ref"><a href="#src-3">3</a></sup>.</li><li><strong>1905 — law of 1 August on fraud:</strong> the founding text of consumer protection in France, and the first to provide for the official delimitation of areas entitled to an appellation <sup class="ref"><a href="#src-4">4</a></sup>.</li><li><strong>1907 — the revolt of the Midi:</strong> ruined by overproduction and fraud, Languedoc growers rose up under Marcelin Albert; some 600,000 people marched in Montpellier on 9 June 1907 <sup class="ref"><a href="#src-5">5</a></sup>. The laws and the decree of 3 September 1907 that followed restated that wine may only come from the alcoholic fermentation of fresh grapes or fresh grape juice — a definition that still underpins French and European wine law today <sup class="ref"><a href="#src-6">6</a></sup>.</li></ul>
+<h3>Pre-war turmoil</h3>
+<p class="dp">From 1908 the first areas were delimited by decree, on the basis of local and constant usage: Champagne in 1908, Cognac in May 1909, Bordeaux in 1911 <sup class="ref"><a href="#src-4">4</a></sup><sup class="ref"><a href="#src-7">7</a></sup>. But drawing lines on a map created winners and losers. In Champagne, the 1908 decree excluded the Aube. In January 1911 Marne growers, who accused the Champagne houses of using grapes and wine from outside the area, rioted in Damery and Hautvillers. In April some 20,000 Aube growers marched through Troyes (9 April) to demand their reinstatement <sup class="ref"><a href="#src-9">9</a></sup>; when Paris seemed ready to give way, the Marne exploded on 11–12 April, above all in Aÿ, where négociants’ premises were sacked, wine poured into the streets and buildings set on fire <sup class="ref"><a href="#src-10">10</a></sup>. More than 40,000 troops were sent to restore order <sup class="ref"><a href="#src-8">8</a></sup>. The compromise — a “Champagne deuxième zone” for the Aube — satisfied no one, and the Aube was only fully reinstated in 1927 <sup class="ref"><a href="#src-11">11</a></sup>.</p>
+<p>The administrative delimitations had clearly failed; the First World War then put any reform on hold.</p>
+<h3>World War I</h3>
+<p class="dp">It was during the Great War that wine truly became France’s national drink. The north — beer country — was partly occupied or on the front line, and Alsace-Moselle had been German since 1871. The army, on the other hand, quickly understood that wine helped soldiers endure the horrors of the trenches: the daily ration of <em>pinard</em>, mostly from the Midi, rose from a quarter-litre in 1914 to half a litre in 1916, and could reach a litre a day by 1918 <sup class="ref"><a href="#src-12">12</a></sup>. Millions of men returned home with a taste for wine, and post-war demand pushed prices up.</p>
+<h3>The 1919 and 1927 laws</h3>
+<p class="dp">The <strong>law of 6 May 1919</strong> created the legal notion of the <em>appellation d’origine</em>: any grower could now go to court to defend a name, and the courts — rather than the administration — would decide who was entitled to it. The weakness was that only geography counted, so ordinary wine from high-yielding hybrid vines could still claim a famous name. The <strong>law of 22 July 1927</strong>, the fruit of Joseph Capus’s efforts, excluded hybrid direct-producer vines from appellation wines and required growers to follow the grape varieties and practices consecrated by local usage <sup class="ref"><a href="#src-4">4</a></sup><sup class="ref"><a href="#src-13">13</a></sup>.</p>
+<p>Growers also organised themselves. In Châteauneuf-du-Pape, <strong>Baron Pierre Le Roy de Boiseaumarié</strong> led the growers’ union founded on 4 October 1923 and drew up strict rules — delimitation by soil type, a restricted list of varieties, a minimum of 12.5 % alcohol, compulsory sorting of the grapes. Upheld by the Cour de Cassation in 1933, they became the model for the whole AOC system <sup class="ref"><a href="#src-14">14</a></sup>.</p>
+<h3>The economic crash of the 1930s</h3>
+<p class="dp">The Depression brought the next great change. Massive overproduction — swollen by the huge harvests of French Algeria — sent prices crashing, and even great Burgundy vintages such as 1929, 1933 and 1934 sat unsold in the cellars; it was to revive sales that the Confrérie des Chevaliers du Tastevin was founded in Nuits-Saint-Georges on 16 November 1934 <sup class="ref"><a href="#src-15">15</a></sup><sup class="ref"><a href="#src-16">16</a></sup>. The State answered with the measures of the <em>Statut viticole</em> — and, in 1935, with the appellation reform described below.</p>
+<p>Burgundy’s famous fragmentation is older: Church vineyards were confiscated and sold off after the Revolution, and the Napoleonic Code’s equal-inheritance rule has divided them further with every generation <sup class="ref"><a href="#src-17">17</a></sup>. The Clos de Vougeot, a single property until 1889, now covers some 50 hectares shared by around 80 owners <sup class="ref"><a href="#src-18">18</a></sup>.</p>
+<h3>A new system in place: 1935</h3>
+<p>Under the leadership of Joseph Capus — agronomist, former Minister of Agriculture and senator for the Gironde — the <strong>decree-law of 30 July 1935</strong> created the <em>Appellation d’Origine Contrôlée</em> and the body to run it, the <strong>Comité National des Appellations d’Origine des vins et eaux-de-vie</strong>, which Capus chaired until 1947 <sup class="ref"><a href="#src-13">13</a></sup><sup class="ref"><a href="#src-19">19</a></sup>. This time the rules were drawn up by the growers themselves and enforced by the State. The first six AOCs were decreed on 15 May 1936 — Arbois, Cassis, Châteauneuf-du-Pape, Cognac, Monbazillac and Tavel — and before the year was out they were joined by great names such as Champagne, Chablis, Beaune, Pommard, Saint-Émilion, Sauternes and Sancerre <sup class="ref"><a href="#src-20">20</a></sup>.</p>
+<p>The committee became the <strong>Institut National des Appellations d’Origine</strong> (INAO) on 16 July 1947, chaired for twenty years by Baron Le Roy <sup class="ref"><a href="#src-19">19</a></sup>. Its remit was widened in 1990 to all agricultural and food products <sup class="ref"><a href="#src-1">1</a></sup>, then to other quality labels, and on 1 January 2007 it was renamed the <strong>Institut National de l’Origine et de la Qualité</strong> — keeping the familiar initials INAO <sup class="ref"><a href="#src-21">21</a></sup>.</p>
+</div></section>
+<section class="sec" id="categories"><div class="sec-head"><span class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 20h18L12 3Z"/><path d="M7.5 12h9M5.2 16h13.6"/></svg></span><div><p class="kick" data-fr="Aujourd’hui" data-en="Today">Aujourd’hui</p><h2 data-fr="Les trois catégories aujourd’hui" data-en="The Three Categories Today">Les trois catégories aujourd’hui</h2></div></div><div class="pyr-wrap panel"><div class="pyr"><div class="lvl lvl0 aoc"><div class="lvl-in"><b>AOC / AOP</b><span class="lvl-sub" data-fr="Appellation d’Origine Contrôlée / Protégée" data-en="Appellation d’Origine Contrôlée / Protégée">Appellation d’Origine Contrôlée / Protégée</span></div></div><div class="lvl lvl1 igp"><div class="lvl-in"><b>IGP</b><span class="lvl-sub" data-fr="Indication Géographique Protégée" data-en="Indication Géographique Protégée">Indication Géographique Protégée</span></div></div><div class="lvl lvl2 vsig"><div class="lvl-in"><b>Vin de France</b><span class="lvl-sub" data-fr="Vin Sans Indication Géographique (VSIG)" data-en="Vin Sans Indication Géographique (VSIG)">Vin Sans Indication Géographique (VSIG)</span></div></div></div><div class="notes"><div class="note aoc"><div class="note-h"><b>AOC / AOP</b><span class="cnt">366 AOP</span></div><p data-fr="Une aire strictement délimitée et un cahier des charges détaillé : cépages, rendements, maturité, viticulture, vinification, dégustation d’agrément." data-en="A strictly delimited area and a detailed cahier des charges: varieties, yields, ripeness, viticulture, winemaking, tasting approval.">Une aire strictement délimitée et un cahier des charges détaillé : cépages, rendements, maturité, viticulture, vinification, dégustation d’agrément.</p><div class="bars"><div class="bar"><span class="bl" data-fr="Surface" data-en="Area">Surface</span><span class="bt"><i style="width:55%"></i></span><span class="bv">55&nbsp;%</span></div><div class="bar"><span class="bl" data-fr="Volume" data-en="Volume">Volume</span><span class="bt"><i style="width:42%"></i></span><span class="bv">42&nbsp;%</span></div></div></div><div class="note igp"><div class="note-h"><b>IGP</b><span class="cnt">≈ 75 IGP</span></div><p data-fr="Une aire définie, des règles plus souples : choix de cépages plus large, rendements plus élevés. Anciens Vins de Pays." data-en="A defined area under broader rules: wider choice of varieties, higher yields. Formerly Vin de Pays.">Une aire définie, des règles plus souples : choix de cépages plus large, rendements plus élevés. Anciens Vins de Pays.</p><div class="bars"><div class="bar"><span class="bl" data-fr="Surface" data-en="Area">Surface</span><span class="bt"><i style="width:27%"></i></span><span class="bv">27&nbsp;%</span></div><div class="bar"><span class="bl" data-fr="Volume" data-en="Volume">Volume</span><span class="bt"><i style="width:29%"></i></span><span class="bv">29&nbsp;%</span></div></div></div><div class="note vsig"><div class="note-h"><b>Vin de France</b></div><p data-fr="Raisins de toute la France, sans cahier des charges. Cépage et millésime peuvent être indiqués. Ancien Vin de Table." data-en="Grapes from anywhere in France, no cahier des charges. Variety and vintage may be shown. Formerly Vin de Table.">Raisins de toute la France, sans cahier des charges. Cépage et millésime peuvent être indiqués. Ancien Vin de Table.</p><div class="bars"><div class="bar"><span class="bl" data-fr="Surface" data-en="Area">Surface</span><span class="bt"><i style="width:5%"></i></span><span class="bv">5&nbsp;%</span></div><div class="bar"><span class="bl" data-fr="Volume" data-en="Volume">Volume</span><span class="bt"><i style="width:5%"></i></span><span class="bv">5&nbsp;%</span></div></div></div></div></div><h4 class="stats-h" data-fr="Le vignoble français en 2024" data-en="The French vineyard in 2024">Le vignoble français en 2024</h4><div class="stats"><table><thead><tr><th data-fr="Catégorie" data-en="Category">Catégorie</th><th data-fr="Surface en production" data-en="Area in production">Surface en production</th><th data-fr="Part de la surface" data-en="Share of area">Part de la surface</th><th data-fr="Volume produit" data-en="Volume produced">Volume produit</th><th data-fr="Part du volume" data-en="Share of volume">Part du volume</th></tr></thead><tbody><tr><th>AOC / AOP</th><td data-fr="404 300 ha" data-en="404,300 ha">404 300 ha</td><td data-fr="55 %" data-en="55 %">55 %</td><td data-fr="15,0 Mhl" data-en="15.0 Mhl">15,0 Mhl</td><td data-fr="42 %" data-en="42 %">42 %</td></tr><tr><th>IGP</th><td data-fr="200 300 ha" data-en="200,300 ha">200 300 ha</td><td data-fr="27 %" data-en="27 %">27 %</td><td data-fr="10,6 Mhl" data-en="10.6 Mhl">10,6 Mhl</td><td data-fr="29 %" data-en="29 %">29 %</td></tr><tr><th>Vin de France (VSIG)</th><td data-fr="38 700 ha" data-en="38,700 ha">38 700 ha</td><td data-fr="5 %" data-en="5 %">5 %</td><td data-fr="1,7 Mhl" data-en="1.7 Mhl">1,7 Mhl</td><td data-fr="5 %" data-en="5 %">5 %</td></tr><tr><th>Cognac &amp; Armagnac *</th><td data-fr="90 300 ha" data-en="90,300 ha">90 300 ha</td><td data-fr="12 %" data-en="12 %">12 %</td><td data-fr="7,8 Mhl" data-en="7.8 Mhl">7,8 Mhl</td><td data-fr="22 %" data-en="22 %">22 %</td></tr></tbody></table><p class="foot" data-fr="* Vins blancs destinés à la distillation en Cognac et en Armagnac. Parts calculées sur ces 4 catégories (≈ 733 600 ha ; ≈ 35 millions d’hl hors usages industriels), arrondies ; elles varient d’une année à l’autre — 2024 fut une petite récolte. Source : FranceAgriMer, Chiffres clés 2025 &lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-31&quot;&gt;31&lt;/a&gt;&lt;/sup&gt;." data-en="* White wines distilled into Cognac and Armagnac. Shares are of these 4 categories (≈ 733,600 ha; ≈ 35 million hl excluding industrial uses), rounded; they vary from year to year — 2024 was a small harvest. Source: FranceAgriMer, Key figures 2025 &lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-31&quot;&gt;31&lt;/a&gt;&lt;/sup&gt;.">* Vins blancs destinés à la distillation en Cognac et en Armagnac. Parts calculées sur ces 4 catégories (≈ 733 600 ha ; ≈ 35 millions d’hl hors usages industriels), arrondies ; elles varient d’une année à l’autre — 2024 fut une petite récolte. Source : FranceAgriMer, Chiffres clés 2025 <sup class="ref"><a href="#src-31">31</a></sup>.</p></div><div class="cols L fr " lang="fr">
+<p>Le succès de l’AOC a naturellement donné naissance à d’autres niveaux, plus larges. Depuis la réforme européenne de 2009 — et la disparition de la catégorie intermédiaire des VDQS fin 2011 — les vins français se répartissent en <strong>trois catégories</strong> <sup class="ref"><a href="#src-22">22</a></sup><sup class="ref"><a href="#src-23">23</a></sup> :</p>
+<ol><li><strong>AOC / AOP</strong> — Appellation d’Origine Contrôlée / Protégée</li><li><strong>IGP</strong> — Indication Géographique Protégée (anciens <em>Vins de Pays</em>)</li><li><strong>VSIG</strong> — Vin Sans Indication Géographique, étiqueté <strong>Vin de France</strong> (anciens <em>Vins de Table</em>)</li></ol>
+<h3>Vin Sans Indication Géographique — Vin de France</h3>
+<p class="dp">Ce sont les vins les moins réglementés. Il n’y a ni aire délimitée ni cahier des charges : les raisins peuvent provenir de toute la France, et le vinificateur choisit librement cépages, assemblages et style, dans le respect des règles générales de la vinification. Depuis le 1<sup>er</sup> août 2009, ils peuvent mentionner un cépage et un millésime sur l’étiquette (au moins 85 % du cépage ou de l’année indiqués) — ce que l’ancien Vin de Table ne pouvait pas faire <sup class="ref"><a href="#src-24">24</a></sup>.</p>
+<p>Selon l’INAO, les VSIG peuvent mentionner des indications de cépage et/ou de millésime, mais ne doivent pas utiliser les mentions d’étiquetage réservées aux vins AOP ou IGP ; et lorsque les raisins sont récoltés et vinifiés en France, la mention <strong>« Vin de France »</strong> doit figurer sur l’étiquette.</p>
+<p>La catégorie regroupe des vins de marque bon marché vendus en bag-in-box ou en briques, mais aussi de très belles bouteilles : les vignerons qui assemblent des raisins de plusieurs régions, ou qui préfèrent travailler hors des règles d’appellation (nombreux vins « nature », cépages non autorisés, styles atypiques), choisissent souvent le Vin de France.</p>
+<h3>Indication Géographique Protégée — IGP</h3>
+<p class="dp">L’IGP trouve son origine dans les <strong>Vins de Pays</strong>, créés par le décret du 13 septembre 1968 <sup class="ref"><a href="#src-25">25</a></sup> pour donner une identité géographique aux meilleurs vins de table. Comme les AOC, ils proviennent d’une aire définie et suivent un cahier des charges (aire, cépages, rendements, degré minimal, pratiques œnologiques), mais les règles sont plus souples : un choix de cépages bien plus large — y compris internationaux —, des rendements plus élevés et des pratiques plus flexibles laissent aux producteurs une plus grande liberté de style. La description officielle de l’INAO :</p>
+<ul><li>les matières premières ou la transformation doivent être liées à une aire géographique définie ;</li><li>les producteurs doivent respecter un cahier des charges, élaboré par la profession et approuvé par l’Union européenne ;</li><li>les produits font l’objet de contrôles réguliers par des organismes indépendants agréés par l’État.</li></ul>
+<p>On compte environ <strong>75 IGP viticoles</strong>, de trois types géographiques <sup class="ref"><a href="#src-26">26</a></sup> :</p>
+<ul><li><strong>régionales</strong> — par ex. Pays d’Oc, Val de Loire, Méditerranée, Comté Tolosan, Atlantique, Comtés Rhodaniens ;</li><li><strong>départementales</strong> — par ex. Gard, Var, Vaucluse, Ardèche, Yonne ;</li><li><strong>locales</strong> — par ex. Côtes de Gascogne, Cévennes, Haute Vallée de l’Orb, Coteaux de l’Ain.</li></ul>
+<p>Les Vins de Pays ont longtemps relevé de l’office du vin, l’ONIVINS (Office national interprofessionnel des vins), fusionné dans Viniflhor en 2006 puis dans FranceAgriMer, l’établissement national des produits de l’agriculture et de la mer, en 2009 <sup class="ref"><a href="#src-27">27</a></sup>. Depuis la réforme de 2009, les IGP sont reconnues et suivies par l’INAO, comme les AOC.</p>
+<h3>Appellation d’Origine Contrôlée / Protégée — AOC / AOP</h3>
+<p class="dp">C’est la catégorie la plus élevée et la plus connue. Ses règles sont les plus strictes, chacune étant fixée dans son propre cahier des charges, et elle réunit les noms les plus prestigieux de France, de Pomerol à Nuits-Saint-Georges. Les règles portent sur la délimitation de l’aire (jusqu’à la parcelle), les cépages autorisés, la densité de plantation et la taille, le rendement maximal à l’hectare, la richesse en sucre et le degré minimaux, et bien d’autres paramètres qui varient d’une appellation à l’autre.</p>
+<p>L’INAO recensait <strong>366 AOP viticoles</strong> en 2024 <sup class="ref"><a href="#src-28">28</a></sup>, réparties dans toutes les régions viticoles françaises, de l’Alsace et de la Champagne à la Provence et à la Corse. Elles s’emboîtent de la plus large à la plus précise — régionale (Bourgogne), sous-régionale (Côte de Nuits-Villages), communale (Gevrey-Chambertin) et, dans certaines régions, au niveau du lieu-dit ou du cru.</p>
+<p>C’est aussi au sein des AOC que l’on trouve les différents <strong>classements</strong> : <em>Grand Cru</em> et <em>Premier Cru</em> en Bourgogne, en Alsace et en Champagne, ou les crus classés de Bordeaux — classement de 1855 et classements de Saint-Émilion et des Graves.</p>
+</div>
+<div class="cols L en " lang="en">
+<p>The success of the AOC naturally gave rise to further, broader tiers. Since the European reform of 2009 — and the disappearance of the intermediate VDQS category at the end of 2011 — French wines fall into <strong>three categories</strong> <sup class="ref"><a href="#src-22">22</a></sup><sup class="ref"><a href="#src-23">23</a></sup>:</p>
+<ol><li><strong>AOC / AOP</strong> — Appellation d’Origine Contrôlée / Protégée</li><li><strong>IGP</strong> — Indication Géographique Protégée (formerly <em>Vin de Pays</em>)</li><li><strong>VSIG</strong> — Vin Sans Indication Géographique, labelled <strong>Vin de France</strong> (formerly <em>Vin de Table</em>)</li></ol>
+<h3>Vin Sans Indication Géographique — Vin de France</h3>
+<p class="dp">These are the least regulated wines. There is no delimited area and no cahier des charges: grapes may come from anywhere in France, and the winemaker is free to choose varieties, blends and style within the general rules of winemaking. Since 1 August 2009 they may show a grape variety and a vintage on the label (at least 85 % of the stated variety or year) — something the old <em>Vin de Table</em> could not do <sup class="ref"><a href="#src-24">24</a></sup>.</p>
+<p>The INAO sums it up: VSIG wines may mention grape varieties and/or a vintage but may not use the labelling terms reserved for AOP or IGP wines, and when the grapes are harvested and made into wine in France the words <strong>« Vin de France »</strong> must appear on the label.</p>
+<p>The category covers inexpensive branded wines sold in bag-in-box or cartons, but also some remarkable bottles: growers who blend across regions, or who prefer to work outside appellation rules (many “natural” wines, unauthorised grape varieties, unconventional styles), often choose Vin de France.</p>
+<h3>Indication Géographique Protégée — IGP</h3>
+<p class="dp">The IGP has its roots in the <em>Vins de Pays</em>, created by the decree of 13 September 1968 <sup class="ref"><a href="#src-25">25</a></sup> to give the best table wines a geographical identity. Like AOC wines they come from a defined area and follow a cahier des charges (area, varieties, yields, minimum alcohol, winemaking practices), but the rules are broader: a much wider choice of grape varieties — including international ones — higher yields and more flexible practices give producers greater freedom of style. The INAO’s official description:</p>
+<ul><li>the raw materials or the processing must be linked to a defined geographical area;</li><li>producers must follow a product specification (cahier des charges), drawn up by the profession and approved by the European Union;</li><li>products are subject to regular controls by independent bodies approved by the State.</li></ul>
+<p>There are some <strong>75 wine IGPs</strong>, of three geographic types <sup class="ref"><a href="#src-26">26</a></sup>:</p>
+<ul><li><strong>regional</strong> — e.g. Pays d’Oc, Val de Loire, Méditerranée, Comté Tolosan, Atlantique, Comtés Rhodaniens;</li><li><strong>departmental</strong> — e.g. Gard, Var, Vaucluse, Ardèche, Yonne;</li><li><strong>local</strong> — e.g. Côtes de Gascogne, Cévennes, Haute Vallée de l’Orb, Coteaux de l’Ain.</li></ul>
+<p>Vins de Pays were long overseen by the wine office, ONIVINS (Office National Interprofessionnel des Vins), which merged into Viniflhor in 2006 and then into FranceAgriMer, the agency for agricultural and sea products, in 2009 <sup class="ref"><a href="#src-27">27</a></sup>. Since the 2009 reform, IGPs are recognised and supervised by the INAO, like the AOCs.</p>
+<h3>Appellation d’Origine Contrôlée / Protégée — AOC / AOP</h3>
+<p class="dp">This is the highest and best-known category. Its rules are the strictest, each one set out in its own cahier des charges, and it is home to France’s most prestigious names, from Pomerol to Nuits-Saint-Georges. The rules cover the delimitation of the area (down to the individual parcel), the authorised grape varieties, vine density and pruning, maximum yield per hectare, minimum natural ripeness and alcohol, and many other parameters that vary from one appellation to the next.</p>
+<p>The INAO counted <strong>366 wine AOPs</strong> in 2024 <sup class="ref"><a href="#src-28">28</a></sup>, spread across all of France’s wine regions, from Alsace and Champagne to Provence and Corsica. They are nested from the broadest to the most precise — regional (Bourgogne), district (Côte de Nuits-Villages), village (Gevrey-Chambertin) and, in some regions, individual vineyards.</p>
+<p>It is also within the AOC that the various <strong>classifications</strong> are found: <em>Grand Cru</em> and <em>Premier Cru</em> in Burgundy, Alsace and Champagne, or the classed growths (<em>crus classés</em>) of Bordeaux — the 1855 classification and those of Saint-Émilion and Graves.</p>
+</div></section>
+<section class="sec" id="europe"><div class="sec-head"><span class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg></span><div><p class="kick" data-fr="AOP · IGP" data-en="PDO · PGI">AOP · IGP</p><h2 data-fr="L’Union européenne et l’AOP" data-en="The European Union and the AOP">L’Union européenne et l’AOP</h2></div></div><div class="cols L fr " lang="fr">
+<p class="dp">Pour harmoniser les systèmes existant en Europe — la DO (<em>Denominación de Origen</em>) espagnole, la DOC (<em>Denominazione di Origine Controllata</em>) italienne, le QbA (<em>Qualitätswein bestimmter Anbaugebiete</em>) allemand et d’autres —, la Communauté européenne crée à partir de 1970 la catégorie commune des <strong>VQPRD</strong> (Vins de Qualité Produits dans une Région Déterminée). La réforme de l’organisation commune du marché viti-vinicole de 2008, en vigueur depuis le 1<sup>er</sup> août 2009, la remplace par les deux signes de qualité européens applicables à toutes les denrées : l’<strong>AOP</strong> (Appellation d’Origine Protégée) et l’<strong>IGP</strong> (Indication Géographique Protégée) <sup class="ref"><a href="#src-23">23</a></sup>.</p>
+<p>Ces dénominations européennes protègent chaque appellation dans toute l’Union — et, grâce aux accords commerciaux, dans de nombreux autres pays — contre les usurpations et les imitations. Pour le vin français, <strong>AOC et AOP désignent la même chose</strong> : l’AOC est le nom français, l’AOP le nom européen, et depuis 2009 les producteurs peuvent utiliser l’un ou l’autre sur l’étiquette, l’AOC étant enregistrée comme mention traditionnelle <sup class="ref"><a href="#src-29">29</a></sup>.</p>
+</div>
+<div class="cols L en " lang="en">
+<p class="dp">To harmonise the systems that existed across Europe — the DO (<em>Denominación de Origen</em>) of Spain, the DOC (<em>Denominazione di Origine Controllata</em>) of Italy, the QbA (<em>Qualitätswein bestimmter Anbaugebiete</em>) of Germany and others — the European Community created, from 1970, the umbrella category of <strong>VQPRD</strong> (<em>Vin de Qualité Produit dans une Région Déterminée</em>). The 2008 reform of the wine market, in force since 1 August 2009, replaced it with the two European quality schemes that apply to all foodstuffs: the <strong>PDO</strong> (Protected Designation of Origin, in French <strong>AOP</strong>) and the <strong>PGI</strong> (Protected Geographical Indication, in French <strong>IGP</strong>) <sup class="ref"><a href="#src-23">23</a></sup>.</p>
+<p>These European names protect each appellation throughout the Union, and through trade agreements in many other countries, against misuse and imitation. For French wine, <strong>AOC and AOP mean the same thing</strong>: the AOC is the French name, the AOP the European one, and since 2009 producers may use either on the label, AOC being registered as a traditional term <sup class="ref"><a href="#src-29">29</a></sup>.</p>
+</div></section>
+<section class="sec" id="qui"><div class="sec-head"><span class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.2"/><circle cx="5" cy="19" r="2.2"/><circle cx="12" cy="19" r="2.2"/><circle cx="19" cy="19" r="2.2"/><path d="M12 7.2v4.3M5 16.8V14h14v2.8M12 11.5v5.3"/></svg></span><div><p class="kick" data-fr="Hiérarchie" data-en="Hierarchy">Hiérarchie</p><h2 data-fr="Qui encadre le vin français ?" data-en="Who Regulates French Wine?">Qui encadre le vin français ?</h2></div></div><div class="tree-wrap panel">
+<div class="tree"><ul><li><div class="node top"><span class="logo "><img src="Categories_img/eu_flag.jpg" alt=""></span><div class="nt"><b data-fr="Union européenne" data-en="European Union">Union européenne</b><span data-fr="Cadre commun AOP / IGP ; enregistre et protège chaque nom dans toute l’UE." data-en="Common PDO / PGI framework; registers and protects each name across the EU.">Cadre commun AOP / IGP ; enregistre et protège chaque nom dans toute l’UE.</span></div></div>
+  <ul><li><div class="node "><span class="logo "><img src="Categories_img/fr_flag.jpg" alt=""></span><div class="nt"><b data-fr="État français" data-en="French State">État français</b><span data-fr="Ministère de l’Agriculture : homologue les cahiers des charges par décret ou arrêté et les transmet à Bruxelles." data-en="Ministry of Agriculture: approves each cahier des charges by decree or order and forwards it to Brussels.">Ministère de l’Agriculture : homologue les cahiers des charges par décret ou arrêté et les transmet à Bruxelles.</span></div></div>
+    <ul>
+      <li><div class="node "><span class="logo wide"><img src="../assets/inao_logo.png" alt=""></span><div class="nt"><b data-fr="INAO" data-en="INAO">INAO</b><span data-fr="Institut national de l’origine et de la qualité : reconnaît et suit AOP et IGP, agrée les organismes de contrôle." data-en="National Institute of Origin and Quality: recognises and supervises AOP and IGP, approves the control bodies.">Institut national de l’origine et de la qualité : reconnaît et suit AOP et IGP, agrée les organismes de contrôle.</span></div></div><ul><li><div class="node leaf"><span class="logo seal"><img src="Categories_img/aop_seal.png" alt=""></span><div class="nt"><b data-fr="AOC / AOP" data-en="AOC / AOP">AOC / AOP</b><span data-fr="≈ 366 appellations" data-en="≈ 366 appellations">≈ 366 appellations</span></div></div></li><li><div class="node leaf"><span class="logo seal"><img src="Categories_img/igp_seal.png" alt=""></span><div class="nt"><b data-fr="IGP" data-en="IGP">IGP</b><span data-fr="≈ 75 indications" data-en="≈ 75 indications">≈ 75 indications</span></div></div></li></ul></li>
+      <li><div class="node "><span class="logo wide"><img src="Categories_img/franceagrimer.jpg" alt=""></span><div class="nt"><b data-fr="FranceAgriMer" data-en="FranceAgriMer">FranceAgriMer</b><span data-fr="Marchés et aides à la filière, autorisations de plantation, statistiques ; certifie cépage et millésime des Vins de France." data-en="Market and sector aid, planting authorisations, statistics; certifies variety and vintage claims on Vin de France.">Marchés et aides à la filière, autorisations de plantation, statistiques ; certifie cépage et millésime des Vins de France.</span></div></div><ul><li><div class="node leaf vdf"><div class="nt"><b data-fr="Vin de France" data-en="Vin de France">Vin de France</b><span data-fr="VSIG — pas de logo européen" data-en="VSIG — no EU logo">VSIG — pas de logo européen</span></div></div></li></ul></li>
+      <li><div class="node plain"><div class="nt"><b data-fr="DGCCRF &amp;amp; Douanes" data-en="DGCCRF &amp;amp; Customs">DGCCRF &amp; Douanes</b><span data-fr="Contrôle des fraudes et de l’étiquetage ; déclarations de récolte et de stocks, accises." data-en="Fraud and labelling controls; harvest and stock declarations, excise.">Contrôle des fraudes et de l’étiquetage ; déclarations de récolte et de stocks, accises.</span></div></div></li>
+    </ul>
+  </li></ul>
+</li></ul>
+<div class="base"><span class="base-arrow" aria-hidden="true"></span><div class="node ground"><div class="nt"><b data-fr="Vignerons &amp;amp; ODG" data-en="Growers &amp;amp; ODGs">Vignerons &amp; ODG</b><span data-fr="Les organismes de défense et de gestion rédigent le cahier des charges de chaque appellation : la démarche part du terrain." data-en="The growers’ bodies (ODG) draft each appellation’s cahier des charges: the process starts in the vineyard.">Les organismes de défense et de gestion rédigent le cahier des charges de chaque appellation : la démarche part du terrain.</span></div></div></div></div>
+<p class="tree-cap" data-fr="Les flèches suivent le parcours d’une appellation, de bas en haut : rédigée par les vignerons, instruite par l’INAO, homologuée par l’État, enregistrée par l’Union européenne &lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-23&quot;&gt;23&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-24&quot;&gt;24&lt;/a&gt;&lt;/sup&gt;." data-en="The arrows follow an appellation’s path, from the bottom up: drafted by the growers, examined by the INAO, approved by the State, registered by the European Union &lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-23&quot;&gt;23&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;ref&quot;&gt;&lt;a href=&quot;#src-24&quot;&gt;24&lt;/a&gt;&lt;/sup&gt;.">Les flèches suivent le parcours d’une appellation, de bas en haut : rédigée par les vignerons, instruite par l’INAO, homologuée par l’État, enregistrée par l’Union européenne <sup class="ref"><a href="#src-1">1</a></sup><sup class="ref"><a href="#src-23">23</a></sup><sup class="ref"><a href="#src-24">24</a></sup>.</p>
+</div></section>
+<section class="sec concl"><div class="orn" aria-hidden="true">❦</div><div class="cols L fr c2" lang="fr">
+<p class="dp">La viticulture française n’a jamais cessé d’évoluer, et c’est probablement l’une de ses plus grandes forces. Les vins français ont joui d’un prestige mondial, de la Maison-Blanche à la cour des tsars ; mais dans un monde moderne où sont apparus de nouveaux pays producteurs, la France a dû se réglementer et se contrôler pour préserver sa réputation et sa place sur le marché international — autrement dit, se réinventer.</p>
+<p>Le système est loin d’être parfait, mais il est l’un des plus élaborés et des plus réussis de son genre, et il a inspiré des dispositifs comparables en Italie, en Espagne, au Portugal et en Allemagne, ainsi que — de manière plus souple — les American Viticultural Areas (AVA) des États-Unis, qui définissent une géographie mais ni cépages ni rendements <sup class="ref"><a href="#src-30">30</a></sup>. C’est sa remise en question permanente — nouvelles appellations, règles révisées, nouveaux classements — qui a maintenu le vin français au niveau de reconnaissance dont il jouit aujourd’hui.</p>
+</div>
+<div class="cols L en c2" lang="en">
+<p class="dp">The French wine industry has never stopped changing, and that has probably been one of its greatest strengths. French wines enjoyed prestige around the world, from the White House to the court of the Tsars; but in a modern world with new producing countries, France has had to regulate and control itself to keep its reputation and its share of the international market — in other words, to reinvent itself.</p>
+<p>The system is far from perfect, but it is one of the most elaborate and successful of its kind, and it inspired similar frameworks in Italy, Spain, Portugal and Germany, as well as — more loosely — the American Viticultural Areas (AVA) of the United States, which define geography but not grape varieties or yields <sup class="ref"><a href="#src-30">30</a></sup>. It is its constant re-evaluation — new appellations, revised rules, new classifications — that has kept French wine at the level of recognition it enjoys today.</p>
+</div><p class="sig">Christophe PAUL</p></section>
+<section class="sec" id="sources"><div class="sec-head"><span class="sec-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><p class="kick" data-fr="Références" data-en="References">Références</p><h2 data-fr="Sources" data-en="Sources">Sources</h2></div></div><p class="src-note" data-fr="Les nombres en exposant dans le texte renvoient à cette liste. Consultée en octobre 2026." data-en="Superscript numbers in the text refer to this list. Accessed October 2026.">Les nombres en exposant dans le texte renvoient à cette liste. Consultée en octobre 2026.</p><ol class="srcs"><li id="src-1"><span class="n">1</span><span data-fr="INAO — L’Institut national de l’origine et de la qualité (définition de l’AOC ; extension de 1990) [en anglais]" data-en="INAO — The National Institute of Origin and Quality (definition of the AOC; 1990 extension)">INAO — L’Institut national de l’origine et de la qualité (définition de l’AOC ; extension de 1990) [en anglais]</span> <a href="https://inao.gouv.fr/eng/The-National-Institute-of-origin-and-quality-Institut-national-de-l-origine-et-de-la-qualite-INAO" target="_blank" rel="noopener">inao.gouv.fr ↗</a></li><li id="src-2"><span class="n">2</span><span data-fr="Wikipédia — Great French Wine Blight (le phylloxéra) [en anglais]" data-en="Wikipedia — Great French Wine Blight (phylloxera)">Wikipédia — Great French Wine Blight (le phylloxéra) [en anglais]</span> <a href="https://en.wikipedia.org/wiki/Great_French_Wine_Blight" target="_blank" rel="noopener">en.wikipedia.org ↗</a></li><li id="src-3"><span class="n">3</span><span data-fr="DGCCRF, ministère de l’Économie — histoire de la répression des fraudes (loi Griffe, 1889)" data-en="DGCCRF, Ministère de l’Économie — history of fraud repression (Loi Griffe, 1889)">DGCCRF, ministère de l’Économie — histoire de la répression des fraudes (loi Griffe, 1889)</span> <a href="https://www.economie.gouv.fr/node/3179358" target="_blank" rel="noopener">economie.gouv.fr ↗</a></li><li id="src-4"><span class="n">4</span><span data-fr="INAO — 1905-1935 : les débuts des appellations d’origine [en anglais]" data-en="INAO — 1905–1935: the beginnings of appellations d’origine">INAO — 1905-1935 : les débuts des appellations d’origine [en anglais]</span> <a href="https://www.inao.gouv.fr/en/history-1905-1935" target="_blank" rel="noopener">inao.gouv.fr ↗</a></li><li id="src-5"><span class="n">5</span><span data-fr="Wikipédia — Revolt of the Languedoc winegrowers (1907) [en anglais]" data-en="Wikipedia — Revolt of the Languedoc winegrowers (1907)">Wikipédia — Revolt of the Languedoc winegrowers (1907) [en anglais]</span> <a href="https://en.wikipedia.org/wiki/Revolt_of_the_Languedoc_winegrowers" target="_blank" rel="noopener">en.wikipedia.org ↗</a></li><li id="src-6"><span class="n">6</span><span data-fr="Études héraultaises — Les vignerons du Midi et la réglementation française du marché des vins (décret du 3 septembre 1907)" data-en="Études Héraultaises — Les vignerons du Midi et la réglementation française du marché des vins (decree of 3 Sept. 1907)">Études héraultaises — Les vignerons du Midi et la réglementation française du marché des vins (décret du 3 septembre 1907)</span> <a href="https://www.etudesheraultaises.fr/wp-content/uploads/2004-2005-13-les-vignerons-du-midi-et-la-reglementation-francaise-du-marche-des-vins.pdf" target="_blank" rel="noopener">etudesheraultaises.fr ↗</a></li><li id="src-7"><span class="n">7</span><span data-fr="Cognac-ton — Histoire de la législation du Cognac (délimitation du 1er mai 1909) [en anglais]" data-en="Cognac-ton — History of Cognac legislation (delimitation of 1 May 1909)">Cognac-ton — Histoire de la législation du Cognac (délimitation du 1er mai 1909) [en anglais]</span> <a href="https://cognac-ton.nl/en/homepage/history/history-of-cognac-legislation/" target="_blank" rel="noopener">cognac-ton.nl ↗</a></li><li id="src-8"><span class="n">8</span><span data-fr="Wikipédia — Champagne Riots (1911) [en anglais]" data-en="Wikipedia — Champagne Riots (1911)">Wikipédia — Champagne Riots (1911) [en anglais]</span> <a href="https://en.wikipedia.org/wiki/Champagne_Riots" target="_blank" rel="noopener">en.wikipedia.org ↗</a></li><li id="src-9"><span class="n">9</span><span data-fr="Wikimedia Commons — 1911 dans l’Aube (manifestation de Troyes, 9 avril 1911)" data-en="Wikimedia Commons — 1911 in Aube (Troyes demonstration, 9 April 1911)">Wikimedia Commons — 1911 dans l’Aube (manifestation de Troyes, 9 avril 1911)</span> <a href="https://commons.wikimedia.org/wiki/Category:1911_in_Aube" target="_blank" rel="noopener">commons.wikimedia.org ↗</a></li><li id="src-10"><span class="n">10</span><span data-fr="Wine with Seth — Le millésime 1911 en Champagne (émeutes des 11 et 12 avril à Aÿ) [en anglais]" data-en="Wine with Seth — 1911 Champagne vintage (riots of 11–12 April in Aÿ)">Wine with Seth — Le millésime 1911 en Champagne (émeutes des 11 et 12 avril à Aÿ) [en anglais]</span> <a href="https://www.winewithseth.com/winewiki/1911-champagne-vintage/" target="_blank" rel="noopener">winewithseth.com ↗</a></li><li id="src-11"><span class="n">11</span><span data-fr="Assemblée nationale — question sur la délimitation de la Champagne (« deuxième zone » de 1911, loi de 1927)" data-en="Assemblée nationale — question on the Champagne delimitation (1911 “deuxième zone”, 1927 law)">Assemblée nationale — question sur la délimitation de la Champagne (« deuxième zone » de 1911, loi de 1927)</span> <a href="https://questions.assemblee-nationale.fr/dyn/12/questions/QANR5L12QOSD1802.pdf" target="_blank" rel="noopener">questions.assemblee-nationale.fr ↗</a></li><li id="src-12"><span class="n">12</span><span data-fr="Geneawiki — L’alcool dans la Première Guerre mondiale (rations de pinard)" data-en="Geneawiki — L’alcool dans la Première Guerre mondiale (pinard rations)">Geneawiki — L’alcool dans la Première Guerre mondiale (rations de pinard)</span> <a href="https://fr.geneawiki.com/wiki/L&#x27;alcool_dans_la_premi%C3%A8re_Guerre_mondiale" target="_blank" rel="noopener">fr.geneawiki.com ↗</a></li><li id="src-13"><span class="n">13</span><span data-fr="Wikipédia — Joseph Capus [en anglais]" data-en="Wikipedia — Joseph Capus">Wikipédia — Joseph Capus [en anglais]</span> <a href="https://en.wikipedia.org/wiki/Joseph_Capus" target="_blank" rel="noopener">en.wikipedia.org ↗</a></li><li id="src-14"><span class="n">14</span><span data-fr="Fédération des producteurs de Châteauneuf-du-Pape — histoire du syndicat des vignerons [en anglais]" data-en="Fédération des Producteurs de Châteauneuf-du-Pape — history of the growers’ association">Fédération des producteurs de Châteauneuf-du-Pape — histoire du syndicat des vignerons [en anglais]</span> <a href="https://en.chateauneuf.com/appellation-chateauneuf-du-pape/history-chateauneuf-du-pape/association-chateauneuf-du-pape/" target="_blank" rel="noopener">en.chateauneuf.com ↗</a></li><li id="src-15"><span class="n">15</span><span data-fr="Vinfolio — A Year in Wine: 1934 (surproduction, Algérie) [en anglais]" data-en="Vinfolio — A Year in Wine: 1934 (overproduction, Algeria)">Vinfolio — A Year in Wine: 1934 (surproduction, Algérie) [en anglais]</span> <a href="https://www.vinfolio.com/editorial/A-Year-In-Wine-1934" target="_blank" rel="noopener">vinfolio.com ↗</a></li><li id="src-16"><span class="n">16</span><span data-fr="Cirkwi — Naissance de la Confrérie des Chevaliers du Tastevin" data-en="Cirkwi — Naissance de la Confrérie des Chevaliers du Tastevin">Cirkwi — Naissance de la Confrérie des Chevaliers du Tastevin</span> <a href="https://www.cirkwi.com/fr/point-interet/352505-naissance-de-la-confrerie-des-chevaliers-du-tastevin" target="_blank" rel="noopener">cirkwi.com ↗</a></li><li id="src-17"><span class="n">17</span><span data-fr="Wine Spectator — Pourquoi les châteaux bordelais sont restés grands et la Bourgogne s’est morcelée [en anglais]" data-en="Wine Spectator — Why Bordeaux châteaux stayed large while Burgundy was divided">Wine Spectator — Pourquoi les châteaux bordelais sont restés grands et la Bourgogne s’est morcelée [en anglais]</span> <a href="https://www.winespectator.com/articles/53046" target="_blank" rel="noopener">winespectator.com ↗</a></li><li id="src-18"><span class="n">18</span><span data-fr="Comptoir des Millésimes — Clos de Vougeot" data-en="Comptoir des Millésimes — Clos de Vougeot">Comptoir des Millésimes — Clos de Vougeot</span> <a href="https://www.comptoirdesmillesimes.com/clos-de-vougeot" target="_blank" rel="noopener">comptoirdesmillesimes.com ↗</a></li><li id="src-19"><span class="n">19</span><span data-fr="INAO — 1935-1970 : l’avènement de l’INAO et la création des AOC [en anglais]" data-en="INAO — 1935–1970: the advent of INAO and the creation of AOCs">INAO — 1935-1970 : l’avènement de l’INAO et la création des AOC [en anglais]</span> <a href="https://www.inao.gouv.fr/en/history-1935-1970" target="_blank" rel="noopener">inao.gouv.fr ↗</a></li><li id="src-20"><span class="n">20</span><span data-fr="INAO — Exposition des 90 ans : les six premières AOC ; Wein.plus — les premières AOP françaises fêtent leurs 90 ans" data-en="INAO — 90 years exhibition: France’s first six AOCs; Wein.plus — First French AOPs celebrate 90th anniversary">INAO — Exposition des 90 ans : les six premières AOC ; Wein.plus — les premières AOP françaises fêtent leurs 90 ans</span> <a href="https://www.inao.gouv.fr/en/expo-90ans/9-six-premieres-aoc" target="_blank" rel="noopener">inao.gouv.fr ↗</a></li><li id="src-21"><span class="n">21</span><span data-fr="Wikipédia — Institut national de l’origine et de la qualité [en anglais]" data-en="Wikipedia — Institut national de l’origine et de la qualité">Wikipédia — Institut national de l’origine et de la qualité [en anglais]</span> <a href="https://en.wikipedia.org/wiki/Institut_national_de_l%27origine_et_de_la_qualit%C3%A9" target="_blank" rel="noopener">en.wikipedia.org ↗</a></li><li id="src-22"><span class="n">22</span><span data-fr="Wikipédia — Vin délimité de qualité supérieure (1949-2011) [en anglais]" data-en="Wikipedia — Vin délimité de qualité supérieure (1949–2011)">Wikipédia — Vin délimité de qualité supérieure (1949-2011) [en anglais]</span> <a href="https://en.wikipedia.org/wiki/Vin_d%C3%A9limit%C3%A9_de_qualit%C3%A9_sup%C3%A9rieure" target="_blank" rel="noopener">en.wikipedia.org ↗</a></li><li id="src-23"><span class="n">23</span><span data-fr="Assemblée nationale — question sur la réforme de l’OCM vin de 2008 (règl. CE 479/2008, en vigueur le 1er août 2009)" data-en="Assemblée nationale — question on the 2008 wine CMO reform (Reg. EC 479/2008, in force 1 Aug. 2009)">Assemblée nationale — question sur la réforme de l’OCM vin de 2008 (règl. CE 479/2008, en vigueur le 1er août 2009)</span> <a href="https://questions.assemblee-nationale.fr/dyn/13/questions/QANR5L13QE41071.pdf" target="_blank" rel="noopener">questions.assemblee-nationale.fr ↗</a></li><li id="src-24"><span class="n">24</span><span data-fr="DGCCRF — Vins sans indication géographique : point sur la réglementation (2025)" data-en="DGCCRF — Vins sans indication géographique : point sur la réglementation (2025)">DGCCRF — Vins sans indication géographique : point sur la réglementation (2025)</span> <a href="https://www.economie.gouv.fr/dgccrf/Publications/Fiche-pratique/vins-sans-indication-geographique-point-sur-reglementation" target="_blank" rel="noopener">economie.gouv.fr ↗</a></li><li id="src-25"><span class="n">25</span><span data-fr="OMPI (WIPO Lex) — Décret n° 68-807 du 13 septembre 1968 (vins de pays)" data-en="WIPO Lex — Décret n° 68-807 du 13 septembre 1968 (vins de pays)">OMPI (WIPO Lex) — Décret n° 68-807 du 13 septembre 1968 (vins de pays)</span> <a href="https://www.wipo.int/wipolex/en/legislation/details/11247" target="_blank" rel="noopener">wipo.int ↗</a></li><li id="src-26"><span class="n">26</span><span data-fr="FranceAgriMer — Carte des IGP viticoles" data-en="FranceAgriMer — Carte des IGP viticoles">FranceAgriMer — Carte des IGP viticoles</span> <a href="https://www-rec.franceagrimer.fr/content/download/14441/document/carteIGP.pdf" target="_blank" rel="noopener">rec.franceagrimer.fr ↗</a></li><li id="src-27"><span class="n">27</span><span data-fr="Franco.wiki — Office national interprofessionnel des vins (ONIVINS)" data-en="Franco.wiki — Office national interprofessionnel des vins (ONIVINS)">Franco.wiki — Office national interprofessionnel des vins (ONIVINS)</span> <a href="https://franco.wiki/fr/Office_national_interprofessionnel_des_vins.html" target="_blank" rel="noopener">franco.wiki ↗</a></li><li id="src-28"><span class="n">28</span><span data-fr="INAO — Chiffres clés AOP viticoles 2024" data-en="INAO — Chiffres clés AOP viticoles 2024">INAO — Chiffres clés AOP viticoles 2024</span> <a href="https://inao.gouv.fr/sites/default/files/2025-02/CAR_AOP-Viti_2024.pdf" target="_blank" rel="noopener">inao.gouv.fr ↗</a></li><li id="src-29"><span class="n">29</span><span data-fr="Wikipédia — Appellation d’origine contrôlée (l’AOC, mention traditionnelle utilisable à la place de l’AOP) [en anglais]" data-en="Wikipedia — Appellation d’origine contrôlée (AOC as a traditional term in place of AOP)">Wikipédia — Appellation d’origine contrôlée (l’AOC, mention traditionnelle utilisable à la place de l’AOP) [en anglais]</span> <a href="https://en.wikipedia.org/wiki/Appellation_d%27origine_contr%C3%B4l%C3%A9e" target="_blank" rel="noopener">en.wikipedia.org ↗</a></li><li id="src-30"><span class="n">30</span><span data-fr="Federal Register (États-Unis) / TTB — définition d’une American Viticultural Area (27 CFR 4.25) [en anglais]" data-en="US Federal Register / TTB — definition of an American Viticultural Area (27 CFR 4.25)">Federal Register (États-Unis) / TTB — définition d’une American Viticultural Area (27 CFR 4.25) [en anglais]</span> <a href="https://www.govinfo.gov/content/pkg/FR-2024-02-05/pdf/2024-01877.pdf" target="_blank" rel="noopener">govinfo.gov ↗</a></li><li id="src-31"><span class="n">31</span><span data-fr="FranceAgriMer — Chiffres clés de la filière viti-vinicole, édition 2025" data-en="FranceAgriMer — Chiffres clés de la filière viti-vinicole, 2025 edition">FranceAgriMer — Chiffres clés de la filière viti-vinicole, édition 2025</span> <a href="https://www.franceagrimer.fr/sites/default/files/2025-12/20251121_CC%20VITI%20VINICOLE%20%202025.pdf" target="_blank" rel="noopener">franceagrimer.fr ↗</a></li></ol></section>
+
+  <footer>Christophe PAUL · <span data-fr="Vins de France" data-en="French Wine">Vins de France</span></footer>
+</div>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var TITLE = {fr:'Les catégories des vins français', en:'The Categories of French Wines'};
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = TITLE[LANG];
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){
+      var v = nodes[i].getAttribute('data-'+LANG);
+      if(v!==null) nodes[i].innerHTML = v;
+    }
+    document.getElementById('langlbl').textContent = (LANG==='fr') ? 'English' : 'Français';
+  }
+  document.getElementById('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+})();
+</script>
+</body>
+</html>

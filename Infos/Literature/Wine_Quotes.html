@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le vin en citations</title>
+<meta name="description" content="Plus de cent citations sur le vin, d’Homère à Colette : un moteur de recherche bilingue par mot, auteur, thème et époque, avec la source de chaque citation.">
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;
+    --muted:rgba(245,239,227,.70);--faint:rgba(245,239,227,.45);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.42);--glass-hi:rgba(38,10,18,.6);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.5);
+    --title:#fff;--paper:#f4ecd8;--paper-edge:#e2d4b4;--track:rgba(245,239,227,.07);
+    --shadow:0 18px 50px rgba(10,1,4,.5);--solid:#2a0a12;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#8e1f33;--parchment:#2e1419;
+    --muted:rgba(46,20,25,.74);--faint:rgba(46,20,25,.5);
+    --glass:rgba(255,253,248,.86);--glass-hi:#fffdf8;
+    --hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--paper:#fbf6ea;--paper-edge:#e8dcc0;--track:rgba(46,20,25,.05);
+    --shadow:0 10px 30px rgba(90,30,40,.10);--solid:#fffdf8;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;}
+  [id]{scroll-margin-top:24px;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("../../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  html[lang="fr"] .L.en,html[lang="en"] .L.fr{display:none;}
+  a{color:inherit;}
+  .wrap{max-width:1240px;margin:0 auto;padding:clamp(24px,4vw,48px) clamp(16px,4vw,44px) 64px;}
+
+  .topbar{display:flex;align-items:center;justify-content:space-between;gap:14px;}
+  .back,.lang{display:inline-flex;align-items:center;gap:8px;text-decoration:none;cursor:pointer;font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair);border-radius:999px;
+    padding:8px 16px;background:var(--glass);font-family:var(--sans);transition:border-color .2s,background .2s;}
+  .back:hover,.lang:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .lang{color:var(--gold-soft);}
+  .lang svg{width:15px;height:15px;}
+
+  header{text-align:center;margin:clamp(26px,4vw,46px) 0 clamp(22px,3vw,34px);}
+  .eyebrow{text-transform:uppercase;letter-spacing:.42em;font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);margin:0 0 18px;padding-left:.42em;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,82px);line-height:.98;margin:0;color:var(--title);letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  html[data-theme="cream"] h1{text-shadow:none;}
+  h1 em,h2 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:26px auto 20px;}
+  .tagline{font-size:clamp(14px,1.7vw,16px);line-height:1.7;font-weight:300;color:var(--muted);max-width:760px;margin:0 auto;}
+
+  .panel{background:var(--glass);-webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:18px;box-shadow:var(--shadow);}
+  html[data-theme="cream"] .panel{-webkit-backdrop-filter:none;backdrop-filter:none;}
+  .sec{margin-top:clamp(44px,6vw,80px);}
+  .sec-head{margin-bottom:18px;}
+  .sec-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.6vw,38px);color:var(--title);margin:0;line-height:1.1;}
+  .sec-head p{margin:8px 0 0;color:var(--muted);font-size:14.5px;line-height:1.6;max-width:720px;}
+
+  .chip{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);
+    border-radius:999px;padding:4px 10px 4px 8px;white-space:nowrap;}
+  .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--c);}
+  html:not([data-theme="cream"]) .chip{color:color-mix(in srgb,var(--c) 55%,#fff);}
+
+  /* intro */
+  .intro{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,36px);padding:clamp(20px,3vw,34px);}
+  .intro p{margin:0 0 12px;line-height:1.7;font-size:15px;}
+  .intro .read{border-left:1px solid var(--hair);padding-left:clamp(16px,2.5vw,30px);}
+  .intro h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:0 0 10px;color:var(--title);}
+  .levels{display:grid;gap:10px;margin:12px 0 16px;}
+  .lvl{display:flex;gap:12px;align-items:flex-start;font-size:13.5px;line-height:1.55;color:var(--muted);}
+  .lvl b{color:var(--parchment);font-weight:600;display:block;}
+  .lvl .ico{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid var(--hair);color:var(--gold);}
+  .lvl .ico svg{width:18px;height:18px;}
+  .legend{display:flex;flex-wrap:wrap;gap:6px;}
+  .note{font-size:12.5px;color:var(--faint);line-height:1.55;margin-top:14px !important;}
+
+  /* index */
+  .index{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:12px;}
+  .idx{position:relative;display:flex;flex-direction:column;gap:3px;text-decoration:none;border-radius:14px;padding:8px 8px 11px;
+    background:var(--glass);border:1px solid var(--hair);transition:transform .2s,border-color .2s;}
+  .idx:hover{transform:translateY(-3px);border-color:var(--c);}
+  .idx-img{display:block;aspect-ratio:4/5;border-radius:9px;background:var(--paper);overflow:hidden;margin-bottom:6px;}
+  .idx-img img{width:100%;height:100%;object-fit:contain;padding:6px;}
+  .idx b{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.15;color:var(--title);}
+  .idx small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .idx small{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .idx-n{position:absolute;top:14px;left:14px;font-size:10px;font-weight:700;color:#6b5a48;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 5px;}
+
+  /* threat cards */
+  .threat{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(18px,3vw,40px);align-items:start;
+    margin-top:clamp(36px,5vw,64px);padding-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair);}
+  .threat.rev .plate{order:2;}
+  .plate{margin:0;position:sticky;top:20px;}
+  .zoom{all:unset;box-sizing:border-box;display:block;position:relative;cursor:zoom-in;width:100%;background:var(--paper);border-radius:16px;
+    border:1px solid var(--paper-edge);box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(10px,2vw,22px);}
+  .zoom:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .zoom img{display:block;width:100%;height:auto;}
+  .zoom-ico{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;
+    background:rgba(255,255,255,.85);color:#5c4a38;opacity:.0;transition:opacity .2s;}
+  .zoom:hover .zoom-ico,.zoom:focus-visible .zoom-ico{opacity:1;}
+  .zoom-ico svg{width:18px;height:18px;}
+  .body .kicker{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .num{font-family:var(--serif);font-size:30px;color:var(--c);opacity:.55;line-height:1;}
+  .body h2{font-family:var(--serif);font-weight:500;font-size:clamp(30px,4.2vw,46px);color:var(--title);margin:12px 0 2px;line-height:1.05;}
+  .latin{font-family:var(--serif);font-style:italic;color:var(--muted);margin:0 0 14px;font-size:16px;}
+  .lead{font-size:clamp(15.5px,1.8vw,17.5px);line-height:1.65;margin:0 0 20px;padding-left:14px;border-left:3px solid var(--c);}
+  .ess-grid{display:grid;gap:10px;}
+  .ess{background:var(--glass);border:1px solid var(--hair);border-radius:14px;padding:13px 16px;}
+  .ess h4,.where h4{margin:0 0 5px;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .ess p{margin:0;font-size:14.5px;line-height:1.6;}
+  .where{margin-top:14px;}
+  .aoc-links{display:flex;flex-wrap:wrap;gap:6px;}
+  .aoc-links a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);transition:border-color .2s;}
+  .aoc-links a:hover{border-color:var(--c);color:var(--gold-soft);}
+  .hint{font-size:11.5px;color:var(--faint);margin:6px 0 0;}
+  details.pro{margin-top:16px;border:1px solid color-mix(in srgb,var(--c) 40%,var(--hair));border-radius:14px;overflow:hidden;
+    background:color-mix(in srgb,var(--c) 7%,var(--glass));}
+  details.pro summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:12px;font-weight:700;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);}
+  details.pro summary::-webkit-details-marker{display:none;}
+  details.pro summary svg{width:18px;height:18px;flex:none;}
+  details.pro .chev{margin-left:auto;font-size:20px;line-height:1;transition:transform .2s;}
+  details.pro[open] .chev{transform:rotate(90deg);}
+  details.pro dl{margin:0;padding:2px 16px 14px;}
+  .pro-item{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:11px 0;border-top:1px solid var(--hair);}
+  .pro-item dt{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.04em;}
+  .pro-item dd{margin:0;font-size:13.8px;line-height:1.62;}
+  .pro-item i{font-family:var(--serif);font-size:1.04em;}
+
+  .sources{font-size:12.5px;color:var(--faint);line-height:1.6;padding-left:18px;margin:0;}
+  footer{margin-top:clamp(40px,5vw,64px);padding-top:20px;border-top:1px solid var(--hair);}
+  footer h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 8px;}
+
+  /* lightbox */
+  dialog.lb{border:none;padding:0;background:transparent;max-width:min(96vw,1000px);max-height:96vh;}
+  dialog.lb::backdrop{background:rgba(12,3,6,.82);}
+  dialog.lb .lb-in{background:#f4ecd8;border-radius:14px;padding:clamp(8px,2vw,20px);position:relative;}
+  dialog.lb img{display:block;max-width:100%;max-height:calc(96vh - 50px);margin:0 auto;}
+  dialog.lb button{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:none;background:#2b2018;color:#f4ecd8;font-size:18px;cursor:pointer;}
+
+  @media (max-width:900px){
+    .intro{grid-template-columns:1fr;}
+    .intro .read{border-left:none;padding-left:0;border-top:1px solid var(--hair);padding-top:18px;}
+    .threat{grid-template-columns:minmax(0,1fr);}
+    .threat.rev .plate{order:0;}
+    .plate{position:static;max-width:520px;margin:0 auto;width:100%;}
+  }
+  @media (max-width:520px){
+    .pro-item{grid-template-columns:1fr;gap:4px;}
+    .index{grid-template-columns:repeat(2,1fr);}
+  }
+  /* chapter strip */
+  .chapters{margin-top:clamp(40px,5vw,64px);}
+  .chapters h3{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px;font-weight:700;}
+  .ch-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;}
+  .ch{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--hair);background:var(--glass);text-decoration:none;font-size:13px;line-height:1.3;transition:border-color .2s;}
+  a.ch:hover{border-color:var(--hair-hi);}
+  .ch-n{font-family:var(--serif);font-size:18px;color:var(--gold);}
+  .ch.cur{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);}
+  .ch.soon{opacity:.55;}
+  .ch small{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);}
+  @media (max-width:900px){.ch-grid{grid-template-columns:repeat(2,1fr);}}
+  /* photo plates (grey studio background): fill the card edge to edge */
+  .plate.photo .zoom{padding:0;overflow:hidden;}
+  /* shared page furniture (chapters 2+) */
+  .toc{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:22px;}
+  .toc a{font-size:12px;text-decoration:none;padding:6px 13px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold-soft);}
+  .toc a:hover{border-color:var(--hair-hi);}
+  .plate.wide{position:static;}
+  .diagram-card{background:var(--paper);border:1px solid var(--paper-edge);border-radius:16px;box-shadow:var(--shadow),inset 0 0 0 6px rgba(255,255,255,.35);padding:clamp(8px,1.6vw,16px);}
+  .diagram{display:block;width:100%;height:auto;}
+  h3.sub{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:24px 0 10px;}
+  .warn{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:13px;line-height:1.55;border:1px solid color-mix(in srgb,#c08a1a 50%,transparent);background:color-mix(in srgb,#c08a1a 10%,transparent);}
+  .warn b{color:var(--gold);}
+
+  /* quotes page */
+  .sect-strip{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px;}
+  .sect-strip a,.sect-strip span{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold);text-decoration:none;}
+  .sect-strip .on{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+  .sect-strip a:hover{border-color:var(--hair-hi);}
+  .sect-strip small{font-size:9.5px;letter-spacing:.1em;font-weight:600;opacity:.85;}
+
+  /* hero: quote of the day */
+  .hero{position:relative;padding:clamp(26px,4vw,48px) clamp(22px,5vw,64px) clamp(22px,3vw,34px);text-align:center;overflow:hidden;}
+  .hero .kick{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 16px;}
+  .hero blockquote{margin:0 auto;max-width:860px;font-family:var(--serif);font-style:italic;font-size:clamp(21px,2.9vw,31px);line-height:1.38;color:var(--title);}
+  .hero .orig{max-width:760px;margin:14px auto 0;font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.5;color:var(--muted);}
+  .hero .who{margin:18px 0 0;font-size:14px;color:var(--muted);}
+  .hero .who b{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--gold-soft);font-style:normal;}
+  .hero .bigq{position:absolute;font-family:var(--serif);font-size:clamp(150px,20vw,260px);line-height:1;color:var(--gold);opacity:.13;pointer-events:none;}
+  .hero .bigq.l{left:clamp(4px,2vw,26px);top:-14px;}
+  .hero .bigq.r{right:clamp(4px,2vw,26px);bottom:-110px;}
+  .hero-act{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:20px;}
+  .btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:8px 15px;border-radius:999px;border:1px solid var(--hair);color:var(--gold);background:var(--glass);transition:border-color .2s,background .2s;}
+  .btn:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .btn svg{width:15px;height:15px;}
+  .btn.solid{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+  #hero-q{transition:opacity .25s;}
+  #hero-q.fade{opacity:0;}
+
+  /* search panel */
+  .search{margin-top:22px;padding:clamp(18px,2.8vw,28px);}
+  .sbox{position:relative;}
+  .sbox svg{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--gold);pointer-events:none;}
+  .sbox input{width:100%;font:inherit;font-size:17px;padding:15px 48px 15px 50px;border-radius:999px;border:1px solid var(--hair-hi);background:var(--glass-hi);color:var(--title);outline:none;}
+  .sbox input::placeholder{color:var(--faint);}
+  .sbox input:focus{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 22%,transparent);}
+  .sbox .clr{all:unset;cursor:pointer;position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--faint);padding:4px 6px;display:none;}
+  .sbox.has .clr{display:block;}
+  .ideas{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:12px 0 4px;font-size:12.5px;color:var(--faint);}
+  .ideas button{all:unset;cursor:pointer;font-family:var(--serif);font-style:italic;font-size:14px;color:var(--gold-soft);padding:2px 9px;border-radius:999px;border:1px dashed var(--hair);}
+  .ideas button:hover,.ideas button:focus-visible{border-color:var(--hair-hi);border-style:solid;}
+  .facets{display:grid;gap:12px;margin-top:16px;}
+  .facet{display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px;align-items:start;}
+  .facet h4{margin:7px 0 0;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;}
+  .fc{all:unset;cursor:pointer;font-size:12.5px;padding:6px 12px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--parchment);transition:border-color .15s,background .15s;}
+  .fc:hover{border-color:var(--hair-hi);}
+  .fc:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .fc i{font-style:normal;font-size:10.5px;color:var(--faint);margin-left:5px;}
+  .fc.on{background:var(--gold);border-color:var(--gold);color:var(--solid);}
+  .fc.on i{color:var(--solid);opacity:.7;}
+  .fc .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:1px;background:var(--c);}
+  .row-tools{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-top:18px;padding-top:14px;border-top:1px solid var(--hair);}
+  .count{font-family:var(--serif);font-size:19px;color:var(--title);margin-right:auto;}
+  .count small{font-family:var(--sans);font-size:12.5px;color:var(--faint);margin-left:4px;}
+  .row-tools label{font-size:12px;color:var(--muted);display:inline-flex;align-items:center;gap:7px;}
+  .row-tools select{font:inherit;font-size:13px;padding:6px 10px;border-radius:10px;border:1px solid var(--hair);background:var(--glass-hi);color:var(--title);}
+
+  /* results */
+  .results{columns:3 330px;column-gap:16px;margin-top:20px;}
+  .qc{break-inside:avoid;display:inline-block;width:100%;margin:0 0 16px;position:relative;padding:20px 20px 14px;border-radius:18px;background:var(--glass);border:1px solid var(--hair);box-shadow:var(--shadow);}
+  html[data-theme="cream"] .qc{box-shadow:0 4px 18px rgba(90,30,40,.07);}
+  .qc.flash{animation:flash 2.2s ease-out;}
+  @keyframes flash{0%,30%{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 35%,transparent);}}
+  .qc::before{content:"“";position:absolute;left:12px;top:-6px;font-family:var(--serif);font-size:70px;line-height:1;color:var(--gold);opacity:.28;}
+  .qc blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:18.5px;line-height:1.48;color:var(--title);position:relative;}
+  .qc .orig{margin:10px 0 0;padding-left:12px;border-left:2px solid var(--hair-hi);font-family:var(--serif);font-style:italic;font-size:14px;line-height:1.5;color:var(--muted);}
+  .qc .orig small,.hero .orig small{display:block;font-family:var(--sans);font-style:normal;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:2px;}
+  .qc .by{margin:14px 0 0;font-size:13px;line-height:1.5;color:var(--muted);}
+  .qc .by .au{all:unset;cursor:pointer;font-family:var(--serif);font-size:17px;color:var(--gold-soft);}
+  .qc .by .au:hover,.qc .by .au:focus-visible{text-decoration:underline;}
+  .qc .by .life{font-size:11.5px;color:var(--faint);margin-left:4px;}
+  .qc .by .nat{display:block;font-size:12px;color:var(--faint);}
+  .qc .wk{display:block;margin-top:3px;font-size:12.8px;color:var(--muted);}
+  .qc .wk i{font-family:var(--serif);}
+  .qc .note{margin:10px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted);padding:8px 10px;border-radius:10px;background:var(--track);}
+  .qc .foot{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid var(--hair);}
+  .tg{all:unset;cursor:pointer;font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;color:var(--gold);border:1px solid var(--hair);}
+  .tg:hover,.tg:focus-visible{border-color:var(--hair-hi);}
+  .st{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);cursor:help;}
+  html:not([data-theme="cream"]) .st{color:color-mix(in srgb,var(--c) 50%,#fff);}
+  .acts{margin-left:auto;display:flex;gap:2px;}
+  .ic{all:unset;cursor:pointer;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;color:var(--gold);}
+  .ic:hover,.ic:focus-visible{background:var(--track);}
+  .ic svg{width:16px;height:16px;}
+  mark{background:color-mix(in srgb,var(--gold) 34%,transparent);color:inherit;border-radius:3px;padding:0 1px;}
+  .empty{text-align:center;padding:40px 20px;color:var(--muted);}
+  .empty b{display:block;font-family:var(--serif);font-weight:500;font-size:24px;color:var(--title);margin-bottom:6px;}
+  .more{display:flex;justify-content:center;margin-top:6px;}
+
+  /* about */
+  .about{padding:clamp(18px,2.8vw,28px);margin-top:clamp(36px,5vw,60px);}
+  .about h3{font-family:var(--serif);font-weight:500;font-size:22px;color:var(--title);margin:0 0 10px;}
+  .about p{margin:0 0 10px;font-size:14px;line-height:1.65;}
+  .legend3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:12px 0 14px;}
+  .legend3 div{padding:12px 14px;border-radius:14px;border:1px solid var(--hair);background:var(--glass);font-size:13.4px;line-height:1.55;}
+  .legend3 .st{display:inline-block;margin-bottom:6px;cursor:default;}
+
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;pointer-events:none;padding:10px 18px;border-radius:999px;background:var(--gold);color:var(--solid);font-size:13px;font-weight:600;transition:opacity .2s,transform .2s;z-index:50;}
+  .toast.on{opacity:1;transform:translate(-50%,0);}
+
+  @media (max-width:760px){
+    .facet{grid-template-columns:1fr;gap:6px;}
+    .facet h4{margin:0;}
+    .legend3{grid-template-columns:1fr;}
+    .hero .bigq{opacity:.08;}
+  }
+  @media (prefers-reduced-motion:reduce){ #hero-q,.qc{transition:none;animation:none;} }
+</style>
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,0.03) 0%,rgba(155,34,53,0) 55%),
+      linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0}
+html[data-theme="cream"] .back,html[data-theme="cream"] .lang{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .back:hover,html[data-theme="cream"] .lang:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .panel{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"] .intro .read{border-left:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .lvl .ico{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .idx{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .threat{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .zoom{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .ess{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .aoc-links a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .pro-item{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] footer{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] dialog.lb::backdrop{background:rgba(255,253,248,0.92)}
+html[data-theme="cream"] dialog.lb button{background:#fbf6ec;color:#2e1419}
+@media (max-width:900px){html[data-theme="cream"] .intro .read{border-top:1px solid rgba(90,30,40,0.18)}}
+html[data-theme="cream"] .ch{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] a.ch:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ch.cur{box-shadow:inset 0 0 0 1px rgba(90,40,30,0.30)}
+html[data-theme="cream"] .toc a{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toc a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .diagram-card{border:1px solid #9a6a1f;box-shadow:0 10px 30px rgba(90,40,30,0.03),inset 0 0 0 6px rgba(255,255,255,0.80)}
+html[data-theme="cream"] .warn{border:1px solid color-mix(in srgb,#9a6a1f 50%,rgba(0,0,0,0))}
+html[data-theme="cream"] .sect-strip a,html[data-theme="cream"] .sect-strip span{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .sect-strip .on{color:#2e1419}
+html[data-theme="cream"] .sect-strip a:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .btn{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .btn:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .btn.solid{color:#2e1419}
+html[data-theme="cream"] .sbox input{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .sbox input:focus{box-shadow:0 0 0 3px color-mix(in srgb,rgba(90,40,30,0.30) 22%,rgba(0,0,0,0))}
+html[data-theme="cream"] .ideas button{border:1px dashed rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ideas button:hover,html[data-theme="cream"] .ideas button:focus-visible{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .fc{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .fc:hover{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .fc.on{color:#2e1419}
+html[data-theme="cream"] .fc.on i{color:#2e1419}
+html[data-theme="cream"] .row-tools{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .row-tools select{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .qc{border:1px solid rgba(90,30,40,0.18);box-shadow:0 10px 30px rgba(90,40,30,0.03)}
+html[data-theme="cream"][data-theme="cream"] .qc{box-shadow:0 4px 18px rgba(90,40,30,0.02)}
+html[data-theme="cream"] .qc .orig{border-left:2px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .qc .note{background:rgba(255,253,248,0.60)}
+html[data-theme="cream"] .qc .foot{border-top:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tg{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .tg:hover,html[data-theme="cream"] .tg:focus-visible{border-color:rgba(90,30,40,0.18)}
+html[data-theme="cream"] .ic:hover,html[data-theme="cream"] .ic:focus-visible{background:rgba(255,253,248,0.60)}
+html[data-theme="cream"] .legend3 div{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .toast{color:#2e1419}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Littérature &amp; jeux" data-en="Literature &amp; games">Littérature &amp; jeux</p>
+    <h1 data-fr="Le vin <em>en citations</em>" data-en="Wine <em>in quotations</em>">Le vin <em>en citations</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" id="tagline"></p>
+    <nav class="sect-strip" aria-label="Littérature &amp; jeux">
+      <span class="on" aria-current="page" data-fr="Citations" data-en="Quotations">Citations</span>
+      <a href="Jeux.html" data-fr="Jeux" data-en="Games">Jeux</a>
+      <a href="Wine_Quiz.html" data-fr="Le grand quiz" data-en="The great quiz">Le grand quiz</a>
+      <a href="Taste_Quiz.html" data-fr="Goûtez votre savoir" data-en="Taste your knowledge">Goûtez votre savoir</a>
+    </nav>
+  </header>
+
+  <section class="panel hero" aria-live="polite">
+    <span class="bigq l" aria-hidden="true">“</span><span class="bigq r" aria-hidden="true">”</span>
+    <p class="kick" id="hero-kick"></p>
+    <div id="hero-q"></div>
+    <div class="hero-act">
+      <button class="btn solid" type="button" id="rnd">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        <span data-fr="Une autre au hasard" data-en="Another at random">Une autre au hasard</span></button>
+      <button class="btn" type="button" id="hero-copy">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg>
+        <span data-fr="Copier" data-en="Copy">Copier</span></button>
+    </div>
+  </section>
+
+  <section class="panel search" id="recherche" role="search">
+    <div class="sbox" id="sbox">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+      <input id="q" type="search" autocomplete="off" spellcheck="false" aria-label="Rechercher une citation">
+      <button class="clr" id="clr" type="button" aria-label="Effacer / Clear">✕</button>
+    </div>
+    <div class="ideas" id="ideas"></div>
+    <div class="facets">
+      <div class="facet"><h4 data-fr="Thèmes" data-en="Themes">Thèmes</h4><div class="chips" id="f-th"></div></div>
+      <div class="facet"><h4 data-fr="Époque" data-en="Period">Époque</h4><div class="chips" id="f-era"></div></div>
+      <div class="facet"><h4 data-fr="Langue d’origine" data-en="Original language">Langue d’origine</h4><div class="chips" id="f-lang"></div></div>
+      <div class="facet"><h4 data-fr="Fiabilité" data-en="Reliability">Fiabilité</h4><div class="chips" id="f-st"></div></div>
+    </div>
+    <div class="row-tools">
+      <div class="count" id="count" aria-live="polite"></div>
+      <label><span data-fr="Trier" data-en="Sort">Trier</span>
+        <select id="sort">
+          <option value="rel" data-fr="par pertinence" data-en="by relevance">par pertinence</option>
+          <option value="chr" data-fr="chronologiquement" data-en="chronologically">chronologiquement</option>
+          <option value="aut" data-fr="par auteur (A→Z)" data-en="by author (A→Z)">par auteur (A→Z)</option>
+          <option value="rnd" data-fr="au hasard" data-en="at random">au hasard</option>
+        </select></label>
+      <button class="btn" type="button" id="reset" data-fr="Tout effacer" data-en="Clear all">Tout effacer</button>
+    </div>
+  </section>
+
+  <div class="results" id="results"></div>
+  <div class="more" id="more"></div>
+
+  <section class="panel about" id="sources">
+    <h3 data-fr="À propos de ces citations" data-en="About these quotations">À propos de ces citations</h3>
+    <p class="L fr">Les citations sur le vin circulent beaucoup… et beaucoup sont fausses ou déformées. Chaque citation porte donc un indice de fiabilité :</p>
+    <p class="L en">Wine quotations travel far… and many are fake or garbled. Each quotation therefore carries a reliability badge:</p>
+    <div class="legend3" id="legend3"></div>
+    <p class="L fr">Le texte est donné dans la langue de la page ; quand l’original est dans une autre langue, il figure en dessous. Les traductions sont les nôtres, sauf la Bible (Louis Segond 1910 ; King James 1611) et Omar Khayyām (version anglaise d’Edward FitzGerald, 1859). Les extraits d’auteurs modernes sont de courtes citations, avec leur source, au titre du droit de citation.</p>
+    <p class="L en">The text is shown in the page language; when the original is in another language, it appears below. Translations are ours, except the Bible (Louis Segond 1910; King James 1611) and Omar Khayyam (Edward FitzGerald’s English version, 1859). Extracts from modern authors are short, sourced quotations, under the right of quotation.</p>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+  var DATA = {"q":[{"id":"alcaeus-of-mytilene-1","a":"Alcée de Mytilène","ae":"Alcaeus of Mytilene","l":"v. 620 – v. 580 av. J.-C.","le":"c. 620 – c. 580 BC","nf":"poète grec","ne":"Greek poet","era":"ant","lang":"grc","o":"οἶνος, ὦ φίλε παῖ, καὶ ἀλάθεα","fr":"Le vin, cher enfant, et la vérité.","en":"Wine, dear boy, and truth.","wf":"Fragment 366 (Voigt)","we":"Fragment 366 (Voigt)","y":-600,"th":["verite"],"st":"src","nof":"La plus ancienne trace écrite de l’idée « in vino veritas ».","noe":"The oldest written trace of the “in vino veritas” idea."},{"id":"homer-1","a":"Homère","ae":"Homer","l":"VIII<sup>e<\/sup> s. av. J.-C.","le":"8th c. BC","nf":"poète grec","ne":"Greek poet","era":"ant","lang":"grc","o":"ἐπὶ οἴνοπα πόντον","fr":"… sur la mer couleur de vin.","en":"… over the wine-dark sea.","wf":"L’Iliade et l’Odyssée (formule récurrente)","we":"The Iliad and the Odyssey (recurring formula)","y":-750,"th":["poesie"],"st":"src","nof":"","noe":""},{"id":"hesiod-1","a":"Hésiode","ae":"Hesiod","l":"VIII<sup>e<\/sup>–VII<sup>e<\/sup> s. av. J.-C.","le":"8th–7th c. BC","nf":"poète grec","ne":"Greek poet","era":"ant","lang":"grc","o":"","fr":"Quand Orion et Sirius arrivent au milieu du ciel, […] cueille toutes les grappes et rapporte-les à la maison.","en":"When Orion and Sirius come into mid-heaven, […] cut off all the grape-clusters and bring them home.","wf":"Les Travaux et les Jours, v. 609-611","we":"Works and Days, ll. 609–611","y":-700,"th":["terroir"],"st":"src","nof":"Le plus ancien « calendrier des vendanges » de la littérature grecque.","noe":"The oldest “harvest calendar” in Greek literature."},{"id":"euripides-1","a":"Euripide","ae":"Euripides","l":"v. 480 – 406 av. J.-C.","le":"c. 480 – 406 BC","nf":"dramaturge grec","ne":"Greek playwright","era":"ant","lang":"grc","o":"οἴνου δὲ μηκέτ᾽ ὄντος οὐκ ἔστιν Κύπρις","fr":"Là où il n’y a plus de vin, il n’y a plus d’amour.","en":"Where there is no more wine, there is no more love.","wf":"Les Bacchantes, v. 773-774","we":"The Bacchae, ll. 773–774","y":-405,"th":["amour","sacre"],"st":"src","nof":"Mot à mot : « il n’y a plus de Cypris » (Aphrodite).","noe":"Literally: “there is no more Cypris” (Aphrodite)."},{"id":"aristophanes-1","a":"Aristophane","ae":"Aristophanes","l":"v. 445 – v. 386 av. J.-C.","le":"c. 445 – c. 386 BC","nf":"poète comique grec","ne":"Greek comic poet","era":"ant","lang":"grc","o":"","fr":"Tu oses médire du vin, qui donne des idées ? Quand les hommes boivent, ils sont riches, ils réussissent, gagnent leurs procès, sont heureux et secourent leurs amis.","en":"You dare to rail at wine, the giver of ideas? When men drink, they are rich, they succeed, they win their lawsuits, they are happy and they help their friends.","wf":"Les Cavaliers, v. 90-94","we":"The Knights, ll. 90–94","y":-424,"th":["humour","joie"],"st":"src","nof":"","noe":""},{"id":"eubulus-1","a":"Eubule","ae":"Eubulus","l":"IV<sup>e<\/sup> s. av. J.-C.","le":"4th c. BC","nf":"poète comique grec","ne":"Greek comic poet","era":"ant","lang":"grc","o":"","fr":"Aux gens sensés je ne mêle que trois cratères : le premier pour la santé, le deuxième pour l’amour et le plaisir, le troisième pour le sommeil. […] Le quatrième n’est plus à nous, mais à la démesure.","en":"For sensible men I mix only three kraters: one for health, the second for love and pleasure, the third for sleep. […] The fourth is no longer ours, but belongs to excess.","wf":"Fragment 93, cité par Athénée, Deipnosophistes II, 36b","we":"Fragment 93, quoted by Athenaeus, Deipnosophists II, 36b","y":-375,"th":["sagesse","sante"],"st":"src","nof":"C’est Dionysos qui parle ; les cratères suivants mènent à l’insulte, au tapage… puis à la folie.","noe":"Dionysus is speaking; the following kraters lead to insults, uproar… and finally madness."},{"id":"plato-1","a":"Platon","ae":"Plato","l":"v. 428 – 348 av. J.-C.","le":"c. 428 – 348 BC","nf":"philosophe grec","ne":"Greek philosopher","era":"ant","lang":"grc","o":"","fr":"Le vin nous a été donné comme un remède, pour inspirer à l’âme la pudeur, et au corps la santé et la force.","en":"Wine was given as a medicine, to instil modesty in the soul, and health and strength in the body.","wf":"Les Lois, II, 672d","we":"Laws, II, 672d","y":-350,"th":["sante","sagesse"],"st":"src","nof":"","noe":""},{"id":"catullus-1","a":"Catulle","ae":"Catullus","l":"v. 84 – v. 54 av. J.-C.","le":"c. 84 – c. 54 BC","nf":"poète latin","ne":"Roman poet","era":"ant","lang":"la","o":"Minister vetuli puer Falerni, / inger mi calices amariores","fr":"Échanson du vieux Falerne, garçon, verse-moi des coupes plus âpres.","en":"Boy who serves the old Falernian, pour me cups of a sharper wine.","wf":"Poèmes, XXVII","we":"Poems, XXVII","y":-55,"th":["degust","temps"],"st":"src","nof":"Le Falerne, cru de Campanie, était le grand vin de garde de Rome.","noe":"Falernian, from Campania, was Rome’s great wine for ageing."},{"id":"virgil-1","a":"Virgile","ae":"Virgil","l":"70 – 19 av. J.-C.","le":"70 – 19 BC","nf":"poète latin","ne":"Roman poet","era":"ant","lang":"la","o":"apertos / Bacchus amat colles","fr":"Bacchus aime les collines ouvertes.","en":"Bacchus loves the open hills.","wf":"Géorgiques, II, 112-113","we":"Georgics, II, 112–113","y":-29,"th":["terroir"],"st":"src","nof":"Première « leçon de terroir » : la vigne préfère les coteaux bien exposés.","noe":"An early “terroir lesson”: the vine prefers well-exposed slopes."},{"id":"horace-1","a":"Horace","ae":"Horace","l":"65 – 8 av. J.-C.","le":"65 – 8 BC","nf":"poète latin","ne":"Roman poet","era":"ant","lang":"la","o":"Nunc est bibendum, nunc pede libero / pulsanda tellus","fr":"C’est maintenant qu’il faut boire, maintenant qu’il faut frapper la terre d’un pied libre.","en":"Now is the time for drinking, now the time to beat the earth with unfettered foot.","wf":"Odes, I, 37","we":"Odes, I, 37","y":-30,"th":["joie"],"st":"src","nof":"Écrit pour célébrer la mort de Cléopâtre.","noe":"Written to celebrate the death of Cleopatra."},{"id":"horace-2","a":"Horace","ae":"Horace","l":"65 – 8 av. J.-C.","le":"65 – 8 BC","nf":"poète latin","ne":"Roman poet","era":"ant","lang":"la","o":"sapias, vina liques, et spatio brevi / spem longam reseces. […] carpe diem","fr":"Sois sage, filtre ton vin et, puisque la vie est brève, taille court les longs espoirs. […] Cueille le jour.","en":"Be wise, strain your wine and, since life is short, cut back long hopes. […] Seize the day.","wf":"Odes, I, 11","we":"Odes, I, 11","y":-23,"th":["temps","sagesse"],"st":"src","nof":"Le célèbre « carpe diem » est précédé d’un conseil de cave : filtrer son vin.","noe":"The famous “carpe diem” follows a cellar tip: strain your wine."},{"id":"ovid-1","a":"Ovide","ae":"Ovid","l":"43 av. J.-C. – v. 17","le":"43 BC – c. AD 17","nf":"poète latin","ne":"Roman poet","era":"ant","lang":"la","o":"Vina parant animos faciuntque caloribus aptos","fr":"Le vin prépare les cœurs et les rend prompts aux ardeurs.","en":"Wine readies the heart and makes it apt for passion.","wf":"L’Art d’aimer, I, 237","we":"The Art of Love, I, 237","y":-2,"th":["amour"],"st":"src","nof":"","noe":""},{"id":"seneca-1","a":"Sénèque","ae":"Seneca","l":"v. 4 av. J.-C. – 65","le":"c. 4 BC – AD 65","nf":"philosophe latin","ne":"Roman philosopher","era":"ant","lang":"la","o":"nihil aliud esse ebrietatem quam voluntariam insaniam","fr":"L’ivresse n’est rien d’autre qu’une folie volontaire.","en":"Drunkenness is nothing but voluntary madness.","wf":"Lettres à Lucilius, 83, 18","we":"Letters to Lucilius, 83, 18","y":64,"th":["sagesse","ivresse"],"st":"src","nof":"","noe":""},{"id":"petronius-1","a":"Pétrone","ae":"Petronius","l":"v. 27 – 66","le":"c. 27 – 66","nf":"écrivain latin","ne":"Roman writer","era":"ant","lang":"la","o":"vita vinum est","fr":"Le vin, c’est la vie.","en":"Wine is life.","wf":"Satiricon, 34 (le festin de Trimalcion)","we":"Satyricon, 34 (Trimalchio’s feast)","y":60,"th":["joie","humour"],"st":"src","nof":"Trimalcion, nouveau riche, présente un Falerne « de cent ans » à ses invités.","noe":"Trimalchio, a nouveau riche, serves his guests a “hundred-year-old” Falernian."},{"id":"pliny-the-elder-1","a":"Pline l’Ancien","ae":"Pliny the Elder","l":"23 – 79","le":"23 – 79","nf":"naturaliste latin","ne":"Roman naturalist","era":"ant","lang":"la","o":"vulgoque veritas iam attributa vino est","fr":"… et l’on attribue désormais communément la vérité au vin.","en":"… and truth is now commonly attributed to wine.","wf":"Histoire naturelle, XIV, 141","we":"Natural History, XIV, 141","y":77,"th":["verite"],"st":"src","nof":"Source latine de l’adage « in vino veritas ».","noe":"The Latin source of the saying “in vino veritas”."},{"id":"bible-1","a":"Bible","ae":"Bible","l":"","le":"","nf":"","ne":"","era":"ant","lang":"he","o":"","fr":"Noé commença à cultiver la terre, et planta de la vigne.","en":"And Noah began to be an husbandman, and he planted a vineyard.","wf":"Genèse 9, 20","we":"Genesis 9:20","y":null,"th":["sacre","terroir"],"st":"src","nof":"Trad. Louis Segond (1910) ; King James Version (1611).","noe":"Louis Segond (1910); King James Version (1611)."},{"id":"bible-2","a":"Bible","ae":"Bible","l":"","le":"","nf":"","ne":"","era":"ant","lang":"he","o":"","fr":"… et le vin qui réjouit le cœur de l’homme.","en":"… and wine that maketh glad the heart of man.","wf":"Psaume 104, 15","we":"Psalm 104:15","y":null,"th":["sacre","joie"],"st":"src","nof":"Trad. Louis Segond (1910) ; King James Version (1611).","noe":"Louis Segond (1910); King James Version (1611)."},{"id":"bible-3","a":"Bible","ae":"Bible","l":"","le":"","nf":"","ne":"","era":"ant","lang":"he","o":"","fr":"Va, mange avec joie ton pain, et bois gaiement ton vin.","en":"Go thy way, eat thy bread with joy, and drink thy wine with a merry heart.","wf":"Ecclésiaste 9, 7","we":"Ecclesiastes 9:7","y":null,"th":["sacre","joie","sagesse"],"st":"src","nof":"Trad. Louis Segond (1910) ; King James Version (1611).","noe":"Louis Segond (1910); King James Version (1611)."},{"id":"bible-4","a":"Bible","ae":"Bible","l":"","le":"","nf":"","ne":"","era":"ant","lang":"he","o":"","fr":"… car ton amour vaut mieux que le vin.","en":"… for thy love is better than wine.","wf":"Cantique des cantiques 1, 2","we":"Song of Songs 1:2","y":null,"th":["sacre","amour"],"st":"src","nof":"Trad. Louis Segond (1910) ; King James Version (1611).","noe":"Louis Segond (1910); King James Version (1611)."},{"id":"bible-5","a":"Bible","ae":"Bible","l":"","le":"","nf":"Évangile selon Jean","ne":"Gospel of John","era":"ant","lang":"grc","o":"","fr":"Tout homme sert d’abord le bon vin […] ; toi, tu as gardé le bon vin jusqu’à présent.","en":"Every man at the beginning doth set forth good wine […]; but thou hast kept the good wine until now.","wf":"Jean 2, 10 (les noces de Cana)","we":"John 2:10 (the wedding at Cana)","y":null,"th":["sacre","joie"],"st":"src","nof":"Trad. Louis Segond (1910) ; King James Version (1611).","noe":"Louis Segond (1910); King James Version (1611)."},{"id":"bible-6","a":"Bible","ae":"Bible","l":"","le":"","nf":"Première épître à Timothée","ne":"First Epistle to Timothy","era":"ant","lang":"grc","o":"","fr":"Ne continue pas à ne boire que de l’eau ; mais fais usage d’un peu de vin, à cause de ton estomac.","en":"Drink no longer water, but use a little wine for thy stomach’s sake.","wf":"1 Timothée 5, 23","we":"1 Timothy 5:23","y":null,"th":["sacre","sante"],"st":"src","nof":"Trad. Louis Segond (1910) ; King James Version (1611).","noe":"Louis Segond (1910); King James Version (1611)."},{"id":"babylonian-talmud-1","a":"Talmud de Babylone","ae":"Babylonian Talmud","l":"","le":"","nf":"texte rabbinique","ne":"rabbinic text","era":"ant","lang":"he","o":"","fr":"En tête de tous les remèdes, c’est moi : le vin.","en":"At the head of all medicines am I: wine.","wf":"Traité Bava Batra, 58b","we":"Tractate Bava Batra, 58b","y":500,"th":["sante","sacre"],"st":"src","nof":"","noe":""},{"id":"li-bai-1","a":"Li Bai","ae":"Li Bai","l":"701 – 762","le":"701 – 762","nf":"poète chinois","ne":"Chinese poet","era":"med","lang":"zh","o":"花間一壺酒，獨酌無相親。舉杯邀明月，對影成三人。","fr":"Parmi les fleurs, une jarre de vin ; je bois seul, sans un ami. Je lève ma coupe pour inviter la lune : avec mon ombre, nous voilà trois.","en":"Among the flowers, a jug of wine; I drink alone, with no friend near. I raise my cup to invite the bright moon: with my shadow, we make three.","wf":"Buvant seul sous la lune","we":"Drinking Alone by Moonlight","y":744,"th":["poesie","amitie"],"st":"src","nof":"Le 酒 (jiu) de Li Bai est un vin de céréales, pas de raisin, mais le poème est devenu un classique universel du vin.","noe":"Li Bai’s 酒 (jiu) is a grain wine, not a grape wine, but the poem has become a universal wine classic."},{"id":"omar-khayyam-1","a":"Omar Khayyām","ae":"Omar Khayyam","l":"1048 – 1131","le":"1048 – 1131","nf":"poète et savant persan","ne":"Persian poet and scholar","era":"med","lang":"fa","o":"","fr":"Ici, sous la ramure, une miche de pain, une gourde de vin, un livre de vers — et toi, chantant près de moi dans le désert : et le désert est un paradis.","en":"Here with a Loaf of Bread beneath the Bough, / A Flask of Wine, a Book of Verse — and Thou / Beside me singing in the Wilderness — / And Wilderness is Paradise enow.","wf":"Rubaïyat, quatrain XI (trad. angl. E. FitzGerald, 1859)","we":"Rubáiyát, quatrain XI (tr. Edward FitzGerald, 1859)","y":1120,"th":["amour","poesie"],"st":"src","nof":"La version anglaise de FitzGerald est une adaptation libre des quatrains persans.","noe":"FitzGerald’s English version is a free adaptation of the Persian quatrains."},{"id":"omar-khayyam-2","a":"Omar Khayyām","ae":"Omar Khayyam","l":"1048 – 1131","le":"1048 – 1131","nf":"poète et savant persan","ne":"Persian poet and scholar","era":"med","lang":"fa","o":"","fr":"Viens, remplis la coupe, et dans le feu du printemps jette le manteau d’hiver du repentir : l’oiseau du Temps n’a plus qu’un court chemin à voler — et voici qu’il a pris son envol.","en":"Come, fill the Cup, and in the Fire of Spring / The Winter Garment of Repentance fling: / The Bird of Time has but a little way / To fly — and Lo! the Bird is on the Wing.","wf":"Rubaïyat, quatrain VII (trad. angl. E. FitzGerald, 1859)","we":"Rubáiyát, quatrain VII (tr. Edward FitzGerald, 1859)","y":1120,"th":["temps","poesie"],"st":"src","nof":"","noe":""},{"id":"dante-alighieri-1","a":"Dante Alighieri","ae":"Dante Alighieri","l":"1265 – 1321","le":"1265 – 1321","nf":"poète italien","ne":"Italian poet","era":"med","lang":"it","o":"Guarda il calor del sol che si fa vino, / giunto a l’omor che de la vite cola.","fr":"Vois la chaleur du soleil qui se fait vin, unie à la sève qui coule de la vigne.","en":"See the sun’s heat that turns to wine when joined to the sap that flows from the vine.","wf":"La Divine Comédie, Purgatoire, XXV, 77-78","we":"Divine Comedy, Purgatorio, XXV, 77–78","y":1315,"th":["terroir","poesie"],"st":"src","nof":"Sans doute l’origine du « vin = lumière du soleil » prêté plus tard à Galilée.","noe":"Probably the origin of the “wine = sunlight” line later credited to Galileo."},{"id":"francois-rabelais-1","a":"François Rabelais","ae":"François Rabelais","l":"v. 1494 – 1553","le":"c. 1494 – 1553","nf":"écrivain français","ne":"French writer","era":"med","lang":"fr","o":"","fr":"Buveurs très illustres, et vous, vérolés très précieux — car c’est à vous, non à d’autres, que sont dédiés mes écrits…","en":"Most illustrious drinkers, and you, most precious poxed ones — for to you and no others are my writings dedicated…","wf":"Gargantua, prologue","we":"Gargantua, prologue","y":1534,"th":["humour"],"st":"src","nof":"Graphie originale : « Beuveurs tresillustres, et vous verolez tresprecieux… »","noe":"Original spelling: “Beuveurs tresillustres, et vous verolez tresprecieux…”"},{"id":"francois-rabelais-2","a":"François Rabelais","ae":"François Rabelais","l":"v. 1494 – 1553","le":"c. 1494 – 1553","nf":"écrivain français","ne":"French writer","era":"med","lang":"fr","o":"","fr":"Je bois pour la soif à venir.","en":"I drink for the thirst to come.","wf":"Gargantua, chap. 5 : « Les propos des bien ivres »","we":"Gargantua, ch. 5: “The talk of the drinkers”","y":1534,"th":["humour","ivresse"],"st":"src","nof":"Graphie originale : « Je boy pour la soif advenir. »","noe":"Original spelling: “Je boy pour la soif advenir.”"},{"id":"francois-rabelais-3","a":"François Rabelais","ae":"François Rabelais","l":"v. 1494 – 1553","le":"c. 1494 – 1553","nf":"écrivain français","ne":"French writer","era":"med","lang":"fr","o":"","fr":"Buvez toujours, vous ne mourrez jamais.","en":"Keep drinking and you will never die.","wf":"Gargantua, chap. 5 : « Les propos des bien ivres »","we":"Gargantua, ch. 5: “The talk of the drinkers”","y":1534,"th":["humour"],"st":"src","nof":"","noe":""},{"id":"francois-rabelais-4","a":"François Rabelais","ae":"François Rabelais","l":"v. 1494 – 1553","le":"c. 1494 – 1553","nf":"écrivain français","ne":"French writer","era":"med","lang":"fr","o":"","fr":"Nous soutenons ici que ce n’est pas rire, mais boire, qui est le propre de l’homme.","en":"We hold here that it is not laughing but drinking that is proper to man.","wf":"Le Cinquième Livre, chap. 45 (l’oracle de la Dive Bouteille : « Trinch ! »)","we":"The Fifth Book, ch. 45 (the oracle of the Holy Bottle: “Trinch!”)","y":1564,"th":["humour","sagesse"],"st":"src","nof":"Réponse au « rire est le propre de l’homme » de Gargantua. Livre posthume, d’attribution discutée.","noe":"An answer to Gargantua’s “laughter is proper to man”. Posthumous book, authorship disputed."},{"id":"michel-de-montaigne-1","a":"Michel de Montaigne","ae":"Michel de Montaigne","l":"1533 – 1592","le":"1533 – 1592","nf":"philosophe français","ne":"French philosopher","era":"med","lang":"fr","o":"","fr":"Les Allemands boivent quasi également de tout vin avec plaisir. Leur fin, c’est l’avaler, plus que le goûter.","en":"The Germans drink almost any wine with equal pleasure. Their aim is to swallow it rather than to taste it.","wf":"Essais, II, 2 : « De l’ivrognerie »","we":"Essays, II, 2: “Of drunkenness”","y":1580,"th":["degust","humour"],"st":"src","nof":"","noe":""},{"id":"william-shakespeare-1","a":"William Shakespeare","ae":"William Shakespeare","l":"1564 – 1616","le":"1564 – 1616","nf":"dramaturge anglais","ne":"English playwright","era":"med","lang":"en","o":"","fr":"Allons, allons, le bon vin est une bonne et familière créature, quand on en use bien.","en":"Come, come, good wine is a good familiar creature, if it be well used.","wf":"Othello, II, 3 (Iago)","we":"Othello, II, 3 (Iago)","y":1604,"th":["sagesse"],"st":"src","nof":"","noe":""},{"id":"william-shakespeare-2","a":"William Shakespeare","ae":"William Shakespeare","l":"1564 – 1616","le":"1564 – 1616","nf":"dramaturge anglais","ne":"English playwright","era":"med","lang":"en","o":"","fr":"Ô toi, invisible esprit du vin, si tu n’as pas de nom par lequel on te connaisse, nous t’appellerons diable !","en":"O thou invisible spirit of wine, if thou hast no name to be known by, let us call thee devil!","wf":"Othello, II, 3 (Cassio)","we":"Othello, II, 3 (Cassio)","y":1604,"th":["ivresse"],"st":"src","nof":"","noe":""},{"id":"william-shakespeare-3","a":"William Shakespeare","ae":"William Shakespeare","l":"1564 – 1616","le":"1564 – 1616","nf":"dramaturge anglais","ne":"English playwright","era":"med","lang":"en","o":"","fr":"Si j’avais mille fils, le premier principe humain que je leur enseignerais serait d’abjurer les boissons fades et de s’adonner au xérès.","en":"If I had a thousand sons, the first humane principle I would teach them should be, to forswear thin potations and to addict themselves to sack.","wf":"Henri IV, 2<sup>e<\/sup> partie, IV, 3 (Falstaff)","we":"Henry IV, Part 2, IV, 3 (Falstaff)","y":1600,"th":["humour"],"st":"src","nof":"Le « sack » était un vin d’Espagne, ancêtre du xérès.","noe":"“Sack” was a Spanish wine, the forerunner of sherry."},{"id":"william-shakespeare-4","a":"William Shakespeare","ae":"William Shakespeare","l":"1564 – 1616","le":"1564 – 1616","nf":"dramaturge anglais","ne":"English playwright","era":"med","lang":"en","o":"","fr":"S’il est vrai qu’à bon vin point d’enseigne, il est vrai aussi qu’à bonne pièce point d’épilogue.","en":"If it be true that good wine needs no bush, ’tis true that a good play needs no epilogue.","wf":"Comme il vous plaira, épilogue","we":"As You Like It, epilogue","y":1599,"th":["humour"],"st":"src","nof":"Le « bush » : la branche de lierre pendue à la porte des tavernes.","noe":"The “bush”: the ivy branch hung over a tavern door."},{"id":"ben-jonson-1","a":"Ben Jonson","ae":"Ben Jonson","l":"1572 – 1637","le":"1572 – 1637","nf":"poète anglais","ne":"English poet","era":"cla","lang":"en","o":"","fr":"Bois à ma santé avec tes seuls yeux, je te répondrai des miens ; ou laisse un baiser dans la coupe, et je n’y chercherai plus de vin.","en":"Drink to me only with thine eyes, / And I will pledge with mine; / Or leave a kiss but in the cup, / And I’ll not look for wine.","wf":"« Song: To Celia », The Forest","we":"“Song: To Celia”, The Forest","y":1616,"th":["amour","poesie"],"st":"src","nof":"","noe":""},{"id":"john-milton-1","a":"John Milton","ae":"John Milton","l":"1608 – 1674","le":"1608 – 1674","nf":"poète anglais","ne":"English poet","era":"cla","lang":"en","o":"","fr":"Bacchus, qui le premier tira du raisin pourpre le doux poison du vin dont on abuse.","en":"Bacchus, that first from out the purple grape / Crush’d the sweet poison of misused wine.","wf":"Comus","we":"Comus","y":1634,"th":["sacre","sagesse"],"st":"src","nof":"","noe":""},{"id":"samuel-pepys-1","a":"Samuel Pepys","ae":"Samuel Pepys","l":"1633 – 1703","le":"1633 – 1703","nf":"mémorialiste anglais","ne":"English diarist","era":"cla","lang":"en","o":"","fr":"… bu une sorte de vin français appelé Ho Bryan, qui a un goût bon et très particulier, que je n’avais jamais rencontré.","en":"… drank a sort of French wine, called Ho Bryan, that hath a good and most particular taste that I never met with.","wf":"Journal, 10 avril 1663","we":"Diary, 10 April 1663","y":1663,"th":["degust","france"],"st":"src","nof":"Première mention écrite connue d’un « cru » bordelais nommé : Haut-Brion.","noe":"The first known written mention of a named Bordeaux “growth”: Haut-Brion."},{"id":"moliere-1","a":"Molière","ae":"Molière","l":"1622 – 1673","le":"1622 – 1673","nf":"dramaturge français","ne":"French playwright","era":"cla","lang":"fr","o":"","fr":"Qu’ils sont doux, bouteille jolie, qu’ils sont doux, vos petits glouglous !","en":"How sweet they are, pretty bottle, how sweet are your little glug-glugs!","wf":"Le Médecin malgré lui, I, 5 (Sganarelle)","we":"The Doctor in Spite of Himself, I, 5 (Sganarelle)","y":1666,"th":["humour","joie"],"st":"src","nof":"","noe":""},{"id":"voltaire-1","a":"Voltaire","ae":"Voltaire","l":"1694 – 1778","le":"1694 – 1778","nf":"écrivain et philosophe français","ne":"French writer and philosopher","era":"cla","lang":"fr","o":"","fr":"De ce vin frais l’écume pétillante / De nos Français est l’image brillante.","en":"The sparkling foam of this fresh wine / Is the brilliant image of us French.","wf":"Le Mondain","we":"Le Mondain (The Man of the World)","y":1736,"th":["champ","france"],"st":"src","nof":"Il s’agit du « vin d’Aÿ », c’est-à-dire du champagne.","noe":"The wine is “vin d’Aÿ”, i.e. Champagne."},{"id":"samuel-johnson-1","a":"Samuel Johnson","ae":"Samuel Johnson","l":"1709 – 1784","le":"1709 – 1784","nf":"lexicographe anglais","ne":"English lexicographer","era":"cla","lang":"en","o":"","fr":"Le bordeaux est la boisson des garçons ; le porto celle des hommes ; mais qui aspire à être un héros doit boire du cognac.","en":"Claret is the liquor for boys; port for men; but he who aspires to be a hero must drink brandy.","wf":"Rapporté par James Boswell, Vie de Samuel Johnson (7 avril 1779)","we":"Reported by James Boswell, Life of Samuel Johnson (7 April 1779)","y":1779,"th":["humour"],"st":"src","nof":"","noe":""},{"id":"benjamin-franklin-1","a":"Benjamin Franklin","ae":"Benjamin Franklin","l":"1706 – 1790","le":"1706 – 1790","nf":"savant et homme d’État américain","ne":"American scientist and statesman","era":"cla","lang":"fr","o":"","fr":"Voyez la pluie qui descend du ciel sur nos vignobles […] et se change en vin : une preuve constante que Dieu nous aime et qu’il aime à nous voir heureux.","en":"Behold the rain which descends from heaven upon our vineyards […] and is changed into wine: a constant proof that God loves us, and loves to see us happy.","wf":"Lettre à l’abbé Morellet (1779)","we":"Letter to the Abbé Morellet (1779)","y":1779,"th":["sacre","joie"],"st":"src","nof":"Lettre écrite en français. La version « la bière est la preuve que Dieu nous aime » est un faux.","noe":"The letter was written in French. The “beer is proof that God loves us” version is a fake."},{"id":"thomas-jefferson-1","a":"Thomas Jefferson","ae":"Thomas Jefferson","l":"1743 – 1826","le":"1743 – 1826","nf":"président des États-Unis","ne":"U.S. President","era":"19","lang":"en","o":"","fr":"Aucune nation n’est ivrogne là où le vin est bon marché, et aucune n’est sobre là où la cherté du vin fait des alcools forts la boisson courante.","en":"No nation is drunken where wine is cheap; and none sober, where the dearness of wine substitutes ardent spirits as its common beverage.","wf":"Lettre à William H. Crawford, 20 juin 1816","we":"Letter to William H. Crawford, 20 June 1816","y":1816,"th":["sagesse"],"st":"src","nof":"","noe":""},{"id":"johann-wolfgang-von-goethe-1","a":"Johann Wolfgang von Goethe","ae":"Johann Wolfgang von Goethe","l":"1749 – 1832","le":"1749 – 1832","nf":"écrivain allemand","ne":"German writer","era":"19","lang":"de","o":"Trunken müssen wir alle sein! / Jugend ist Trunkenheit ohne Wein","fr":"Il nous faut tous être ivres ! La jeunesse est une ivresse sans vin.","en":"Drunk we all must be! Youth is drunkenness without wine.","wf":"Le Divan occidental-oriental, « Livre de l’échanson »","we":"West-Eastern Divan, “Book of the Cupbearer”","y":1819,"th":["ivresse","temps","poesie"],"st":"src","nof":"","noe":""},{"id":"johann-wolfgang-von-goethe-2","a":"Johann Wolfgang von Goethe","ae":"Johann Wolfgang von Goethe","l":"1749 – 1832","le":"1749 – 1832","nf":"écrivain allemand","ne":"German writer","era":"19","lang":"de","o":"Das Leben ist zu kurz, um schlechten Wein zu trinken.","fr":"La vie est trop courte pour boire du mauvais vin.","en":"Life is too short to drink bad wine.","wf":"Sans source connue","we":"No known source","y":null,"th":["temps","degust"],"st":"attr","nof":"Introuvable dans l’œuvre de Goethe ; formule popularisée au XX<sup>e<\/sup> siècle.","noe":"Not found in Goethe’s works; popularised in the 20th century."},{"id":"john-keats-1","a":"John Keats","ae":"John Keats","l":"1795 – 1821","le":"1795 – 1821","nf":"poète anglais","ne":"English poet","era":"19","lang":"en","o":"","fr":"Oh ! une coupe pleine du chaud Midi, pleine de la vraie, de la rougissante Hippocrène, avec des perles de bulles clignant au bord, et la bouche teintée de pourpre !","en":"O for a beaker full of the warm South, / Full of the true, the blushful Hippocrene, / With beaded bubbles winking at the brim, / And purple-stained mouth.","wf":"« Ode à un rossignol »","we":"“Ode to a Nightingale”","y":1819,"th":["poesie"],"st":"src","nof":"","noe":""},{"id":"john-keats-2","a":"John Keats","ae":"John Keats","l":"1795 – 1821","le":"1795 – 1821","nf":"poète anglais","ne":"English poet","era":"19","lang":"en","o":"","fr":"[Le bordeaux] vous emplit la bouche d’une fraîcheur jaillissante, puis descend frais et sans fièvre.","en":"[Claret] fills one’s mouth with a gushing freshness — then goes down cool and feverless.","wf":"Lettre à George et Georgiana Keats, 18 février 1819","we":"Letter to George and Georgiana Keats, 18 February 1819","y":1819,"th":["degust","france"],"st":"src","nof":"","noe":""},{"id":"john-keats-3","a":"John Keats","ae":"John Keats","l":"1795 – 1821","le":"1795 – 1821","nf":"poète anglais","ne":"English poet","era":"19","lang":"en","o":"","fr":"Donnez-moi des livres, du vin de France, des fruits, du beau temps et un peu de musique en plein air, jouée par quelqu’un que je ne connais pas.","en":"Give me books, French wine, fruit, fine weather and a little music out of doors, played by somebody I do not know.","wf":"Lettre à Fanny Keats, 29 août 1819","we":"Letter to Fanny Keats, 29 August 1819","y":1819,"th":["joie","france"],"st":"src","nof":"","noe":""},{"id":"lord-byron-1","a":"Lord Byron","ae":"Lord Byron","l":"1788 – 1824","le":"1788 – 1824","nf":"poète anglais","ne":"English poet","era":"19","lang":"en","o":"","fr":"Ayons du vin et des femmes, de la gaieté et des rires ; les sermons et l’eau de Seltz, ce sera pour le lendemain.","en":"Let us have wine and women, mirth and laughter, / Sermons and soda-water the day after.","wf":"Don Juan, chant II, 178","we":"Don Juan, Canto II, 178","y":1819,"th":["humour","joie","ivresse"],"st":"src","nof":"","noe":""},{"id":"jean-anthelme-brillat-savarin-1","a":"Jean Anthelme Brillat-Savarin","ae":"Jean Anthelme Brillat-Savarin","l":"1755 – 1826","le":"1755 – 1826","nf":"gastronome français","ne":"French gastronome","era":"19","lang":"fr","o":"","fr":"Ceux qui s’indigèrent ou qui s’enivrent ne savent ni boire ni manger.","en":"Those who give themselves indigestion or get drunk know neither how to eat nor how to drink.","wf":"Physiologie du goût, « Aphorismes du professeur »","we":"The Physiology of Taste, “Aphorisms of the Professor”","y":1825,"th":["sagesse","degust"],"st":"src","nof":"","noe":""},{"id":"jean-anthelme-brillat-savarin-2","a":"Jean Anthelme Brillat-Savarin","ae":"Jean Anthelme Brillat-Savarin","l":"1755 – 1826","le":"1755 – 1826","nf":"gastronome français","ne":"French gastronome","era":"19","lang":"fr","o":"","fr":"Prétendre qu’il ne faut pas changer de vins est une hérésie ; la langue se sature ; et, après le troisième verre, le meilleur vin n’éveille plus qu’une sensation obtuse.","en":"To claim one should not change wines is a heresy: the tongue becomes saturated, and after the third glass the best wine arouses only a dull sensation.","wf":"Physiologie du goût, « Aphorismes du professeur »","we":"The Physiology of Taste, “Aphorisms of the Professor”","y":1825,"th":["degust"],"st":"src","nof":"","noe":""},{"id":"jean-anthelme-brillat-savarin-3","a":"Jean Anthelme Brillat-Savarin","ae":"Jean Anthelme Brillat-Savarin","l":"1755 – 1826","le":"1755 – 1826","nf":"gastronome français","ne":"French gastronome","era":"19","lang":"fr","o":"","fr":"L’ordre des boissons est des plus tempérées aux plus fumeuses et aux plus parfumées.","en":"The order of drinks runs from the mildest to the headiest and most fragrant.","wf":"Physiologie du goût, « Aphorismes du professeur »","we":"The Physiology of Taste, “Aphorisms of the Professor”","y":1825,"th":["degust"],"st":"src","nof":"","noe":""},{"id":"alfred-de-musset-1","a":"Alfred de Musset","ae":"Alfred de Musset","l":"1810 – 1857","le":"1810 – 1857","nf":"poète français","ne":"French poet","era":"19","lang":"fr","o":"","fr":"Qu’importe le flacon, pourvu qu’on ait l’ivresse !","en":"What matter the flask, so long as there is the intoxication!","wf":"La Coupe et les Lèvres, dédicace","we":"La Coupe et les Lèvres (The Cup and the Lips), dedication","y":1832,"th":["ivresse","poesie"],"st":"src","nof":"","noe":""},{"id":"edgar-allan-poe-1","a":"Edgar Allan Poe","ae":"Edgar Allan Poe","l":"1809 – 1849","le":"1809 – 1849","nf":"écrivain américain","ne":"American writer","era":"19","lang":"en","o":"","fr":"« Je bois, dit-il, aux morts qui reposent autour de nous. » « Et moi, à votre longue vie. »","en":"“I drink,” he said, “to the buried that repose around us.” “And I to your long life.”","wf":"La Barrique d’amontillado","we":"The Cask of Amontillado","y":1846,"th":["humour"],"st":"src","nof":"Humour très noir : le narrateur s’apprête à emmurer son interlocuteur dans la cave.","noe":"Very dark humour: the narrator is about to wall his companion up in the cellar."},{"id":"charles-baudelaire-1","a":"Charles Baudelaire","ae":"Charles Baudelaire","l":"1821 – 1867","le":"1821 – 1867","nf":"poète français","ne":"French poet","era":"19","lang":"fr","o":"","fr":"Un homme qui ne boit que de l’eau a un secret à cacher à ses semblables.","en":"A man who drinks only water has a secret to hide from his fellow men.","wf":"Du vin et du haschisch","we":"On Wine and Hashish","y":1851,"th":["humour","verite"],"st":"src","nof":"","noe":""},{"id":"charles-baudelaire-2","a":"Charles Baudelaire","ae":"Charles Baudelaire","l":"1821 – 1867","le":"1821 – 1867","nf":"poète français","ne":"French poet","era":"19","lang":"fr","o":"","fr":"Un soir, l’âme du vin chantait dans les bouteilles.","en":"One evening, the soul of wine was singing in the bottles.","wf":"Les Fleurs du mal, « L’Âme du vin »","we":"The Flowers of Evil, “The Soul of Wine”","y":1857,"th":["poesie"],"st":"src","nof":"","noe":""},{"id":"charles-baudelaire-3","a":"Charles Baudelaire","ae":"Charles Baudelaire","l":"1821 – 1867","le":"1821 – 1867","nf":"poète français","ne":"French poet","era":"19","lang":"fr","o":"","fr":"Aujourd’hui l’espace est splendide ! / Sans mors, sans éperons, sans bride, / Partons à cheval sur le vin / Pour un ciel féerique et divin !","en":"Today the sky is splendid! / With no bit, no spurs, no bridle, / Let us ride away on wine / To a fairy, heavenly sky!","wf":"Les Fleurs du mal, « Le Vin des amants »","we":"The Flowers of Evil, “Lovers’ Wine”","y":1857,"th":["amour","poesie","ivresse"],"st":"src","nof":"","noe":""},{"id":"charles-baudelaire-4","a":"Charles Baudelaire","ae":"Charles Baudelaire","l":"1821 – 1867","le":"1821 – 1867","nf":"poète français","ne":"French poet","era":"19","lang":"fr","o":"","fr":"Il faut être toujours ivre. Tout est là […]. Mais de quoi ? De vin, de poésie ou de vertu, à votre guise. Mais enivrez-vous.","en":"One must always be drunk. That is all there is to it […]. But on what? On wine, on poetry or on virtue, as you please. But get drunk.","wf":"Le Spleen de Paris, « Enivrez-vous »","we":"Paris Spleen, “Get Drunk”","y":1864,"th":["ivresse","poesie"],"st":"src","nof":"","noe":""},{"id":"victor-hugo-1","a":"Victor Hugo","ae":"Victor Hugo","l":"1802 – 1885","le":"1802 – 1885","nf":"écrivain français","ne":"French writer","era":"19","lang":"fr","o":"","fr":"Dieu n’avait fait que l’eau, mais l’homme a fait le vin.","en":"God made only water, but man made wine.","wf":"Souvent rattaché aux Contemplations (1856), passage non localisé","we":"Often linked to Les Contemplations (1856); passage not located","y":null,"th":["sacre","humour"],"st":"attr","nof":"","noe":""},{"id":"emily-dickinson-1","a":"Emily Dickinson","ae":"Emily Dickinson","l":"1830 – 1886","le":"1830 – 1886","nf":"poétesse américaine","ne":"American poet","era":"19","lang":"en","o":"","fr":"Je goûte une liqueur jamais brassée, puisée dans des chopes de perle ; toutes les cuves du Rhin ne donneraient pas un tel alcool !","en":"I taste a liquor never brewed – / From Tankards scooped in Pearl – / Not all the Vats upon the Rhine / Yield such an Alcohol!","wf":"« I taste a liquor never brewed »","we":"“I taste a liquor never brewed”","y":1861,"th":["ivresse","poesie"],"st":"src","nof":"L’ivresse dont elle parle est celle de la nature et de l’été.","noe":"The intoxication she means is that of nature and summer."},{"id":"louis-pasteur-1","a":"Louis Pasteur","ae":"Louis Pasteur","l":"1822 – 1895","le":"1822 – 1895","nf":"scientifique français","ne":"French scientist","era":"19","lang":"fr","o":"","fr":"… le vin peut être à bon droit considéré comme la plus saine, la plus hygiénique des boissons.","en":"… wine may rightly be considered the most healthful, the most hygienic of beverages.","wf":"Études sur le vin","we":"Studies on Wine","y":1866,"th":["sante","france"],"st":"src","nof":"À lire dans le contexte de 1866, où l’eau était souvent contaminée.","noe":"To be read in the context of 1866, when water was often contaminated."},{"id":"louis-pasteur-2","a":"Louis Pasteur","ae":"Louis Pasteur","l":"1822 – 1895","le":"1822 – 1895","nf":"scientifique français","ne":"French scientist","era":"19","lang":"fr","o":"","fr":"Il y a plus de philosophie dans une bouteille de vin que dans tous les livres.","en":"There is more philosophy in a bottle of wine than in all the books.","wf":"Sans source connue","we":"No known source","y":null,"th":["sagesse"],"st":"attr","nof":"","noe":""},{"id":"alexandre-dumas-1","a":"Alexandre Dumas","ae":"Alexandre Dumas","l":"1802 – 1870","le":"1802 – 1870","nf":"écrivain français","ne":"French writer","era":"19","lang":"fr","o":"","fr":"Le vin est la partie intellectuelle d’un repas. Les viandes et les légumes n’en sont que la partie matérielle.","en":"Wine is the intellectual part of a meal. Meat and vegetables are merely the material part.","wf":"Souvent rattaché au Grand Dictionnaire de cuisine (1873)","we":"Often linked to the Grand Dictionnaire de cuisine (1873)","y":1873,"th":["degust","france"],"st":"attr","nof":"","noe":""},{"id":"alexandre-dumas-2","a":"Alexandre Dumas","ae":"Alexandre Dumas","l":"1802 – 1870","le":"1802 – 1870","nf":"écrivain français","ne":"French writer","era":"19","lang":"fr","o":"","fr":"Le montrachet doit se boire à genoux et tête découverte.","en":"Montrachet should be drunk kneeling, with head bared.","wf":"Tradition orale","we":"Oral tradition","y":null,"th":["degust","france"],"st":"attr","nof":"Aussi prêté au marquis de Clermont-Montoison, propriétaire du climat.","noe":"Also credited to the Marquis de Clermont-Montoison, who owned the vineyard."},{"id":"gustave-flaubert-1","a":"Gustave Flaubert","ae":"Gustave Flaubert","l":"1821 – 1880","le":"1821 – 1880","nf":"écrivain français","ne":"French writer","era":"19","lang":"fr","o":"","fr":"VIN. Sujet de conversation entre hommes. Le meilleur est le bordeaux, puisque les médecins l’ordonnent. Plus il est mauvais, plus il est naturel.","en":"WINE. A topic of conversation among men. The best is Bordeaux, since doctors prescribe it. The worse it is, the more natural it is.","wf":"Dictionnaire des idées reçues (posthume, 1913)","we":"Dictionary of Received Ideas (posthumous, 1913)","y":1880,"th":["humour","france"],"st":"src","nof":"","noe":""},{"id":"gustave-flaubert-2","a":"Gustave Flaubert","ae":"Gustave Flaubert","l":"1821 – 1880","le":"1821 – 1880","nf":"écrivain français","ne":"French writer","era":"19","lang":"fr","o":"","fr":"CHAMPAGNE. Caractérise le dîner de cérémonie. Faire semblant de le mépriser en disant que « ce n’est pas un vin ».","en":"CHAMPAGNE. The mark of a formal dinner. Pretend to despise it, saying that “it isn’t really wine”.","wf":"Dictionnaire des idées reçues (posthume, 1913)","we":"Dictionary of Received Ideas (posthumous, 1913)","y":1880,"th":["humour","champ"],"st":"src","nof":"","noe":""},{"id":"robert-louis-stevenson-1","a":"Robert Louis Stevenson","ae":"Robert Louis Stevenson","l":"1850 – 1894","le":"1850 – 1894","nf":"écrivain écossais","ne":"Scottish writer","era":"19","lang":"en","o":"","fr":"… et le vin est de la poésie en bouteille.","en":"… and the wine is bottled poetry.","wf":"The Silverado Squatters (sur les vignobles de Napa)","we":"The Silverado Squatters (on the Napa vineyards)","y":1883,"th":["poesie"],"st":"src","nof":"","noe":""},{"id":"dom-perignon-1","a":"Dom Pérignon","ae":"Dom Pérignon","l":"1638 – 1715","le":"1638 – 1715","nf":"moine bénédictin, cellérier d’Hautvillers","ne":"Benedictine monk, cellarer of Hautvillers","era":"cla","lang":"fr","o":"","fr":"Venez vite, je bois des étoiles !","en":"Come quickly, I am drinking the stars!","wf":"Slogan publicitaire de la fin du XIX<sup>e<\/sup> siècle","we":"Late-19th-century advertising slogan","y":null,"th":["champ"],"st":"apo","nof":"Phrase inventée bien après sa mort. Dom Pérignon cherchait au contraire à éviter les bulles, alors considérées comme un défaut.","noe":"Invented long after his death. Dom Pérignon actually tried to avoid bubbles, then considered a fault."},{"id":"galileo-galilei-1","a":"Galilée","ae":"Galileo Galilei","l":"1564 – 1642","le":"1564 – 1642","nf":"savant italien","ne":"Italian scientist","era":"med","lang":"it","o":"","fr":"Le vin est de la lumière du soleil, retenue par l’eau.","en":"Wine is sunlight, held together by water.","wf":"Sans source connue","we":"No known source","y":null,"th":["terroir","poesie"],"st":"attr","nof":"Idée déjà chez Dante (Purgatoire, XXV) ; aucune trace dans les écrits de Galilée.","noe":"The idea is already in Dante (Purgatorio XXV); no trace in Galileo’s writings."},{"id":"martin-luther-1","a":"Martin Luther","ae":"Martin Luther","l":"1483 – 1546","le":"1483 – 1546","nf":"réformateur allemand","ne":"German reformer","era":"med","lang":"de","o":"Wer nicht liebt Wein, Weib und Gesang, / Der bleibt ein Narr sein Leben lang.","fr":"Qui n’aime ni le vin, ni les femmes, ni le chant, reste un sot toute sa vie.","en":"Who loves not wine, women and song remains a fool his whole life long.","wf":"Distique apparu à la fin du XVIII<sup>e<\/sup> siècle","we":"Couplet that appeared in the late 18th century","y":null,"th":["joie","humour"],"st":"apo","nof":"Attribué à Luther à partir de 1775 environ, sans aucune source chez lui.","noe":"Credited to Luther from about 1775 onwards, with no source in his works."},{"id":"talleyrand-1","a":"Talleyrand","ae":"Talleyrand","l":"1754 – 1838","le":"1754 – 1838","nf":"diplomate français","ne":"French diplomat","era":"19","lang":"fr","o":"","fr":"On prend son verre délicatement, on le regarde, on le respire, on le pose… puis on en parle.","en":"You take your glass delicately, you look at it, you breathe it in, you put it down… and then you talk about it.","wf":"Anecdote rapportée, sans source primaire","we":"Reported anecdote, no primary source","y":null,"th":["degust","humour"],"st":"attr","nof":"","noe":""},{"id":"napoleon-bonaparte-1","a":"Napoléon Bonaparte","ae":"Napoleon Bonaparte","l":"1769 – 1821","le":"1769 – 1821","nf":"empereur des Français","ne":"Emperor of the French","era":"19","lang":"fr","o":"","fr":"Le champagne ! Dans la victoire on le mérite, dans la défaite on en a besoin.","en":"Champagne! In victory one deserves it; in defeat one needs it.","wf":"Sans source connue","we":"No known source","y":null,"th":["champ"],"st":"attr","nof":"","noe":""},{"id":"madame-de-pompadour-1","a":"Madame de Pompadour","ae":"Madame de Pompadour","l":"1721 – 1764","le":"1721 – 1764","nf":"favorite de Louis XV","ne":"favourite of Louis XV","era":"cla","lang":"fr","o":"","fr":"Le champagne est le seul vin qui laisse la femme belle après boire.","en":"Champagne is the only wine that leaves a woman beautiful after drinking it.","wf":"Sans source connue","we":"No known source","y":null,"th":["champ"],"st":"attr","nof":"","noe":""},{"id":"ambrose-bierce-1","a":"Ambrose Bierce","ae":"Ambrose Bierce","l":"1842 – v. 1914","le":"1842 – c. 1914","nf":"écrivain américain","ne":"American writer","era":"20","lang":"en","o":"","fr":"VIN, n. Jus de raisin fermenté, que l’Union chrétienne des femmes appelle « liqueur », parfois « rhum ». Le vin, madame, est le second plus beau cadeau de Dieu à l’homme.","en":"WINE, n. Fermented grape-juice known to the Women’s Christian Union as “liquor,” sometimes as “rum.” Wine, madam, is God’s next best gift to man.","wf":"Le Dictionnaire du Diable","we":"The Devil’s Dictionary","y":1911,"th":["humour"],"st":"src","nof":"","noe":""},{"id":"hilaire-belloc-1","a":"Hilaire Belloc","ae":"Hilaire Belloc","l":"1870 – 1953","le":"1870 – 1953","nf":"écrivain franco-britannique","ne":"Anglo-French writer","era":"20","lang":"en","o":"","fr":"Partout où brille le soleil catholique, il y a toujours du rire et du bon vin rouge. Du moins, c’est ce que j’ai toujours constaté. Benedicamus Domino !","en":"Wherever the Catholic sun doth shine, / There’s always laughter and good red wine. / At least I’ve always found it so. / Benedicamus Domino!","wf":"« The Catholic Sun », Verses","we":"“The Catholic Sun”, Verses","y":1910,"th":["joie","humour"],"st":"src","nof":"","noe":""},{"id":"g-k-chesterton-1","a":"G. K. Chesterton","ae":"G. K. Chesterton","l":"1874 – 1936","le":"1874 – 1936","nf":"écrivain anglais","ne":"English writer","era":"20","lang":"en","o":"","fr":"Et Noé disait souvent à sa femme, en se mettant à table : « Peu m’importe où va l’eau, tant qu’elle n’entre pas dans le vin. »","en":"And Noah he often said to his wife when he sat down to dine, / “I don’t care where the water goes if it doesn’t get into the wine.”","wf":"The Flying Inn, « Wine and Water »","we":"The Flying Inn, “Wine and Water”","y":1914,"th":["humour","sacre"],"st":"src","nof":"","noe":""},{"id":"guillaume-apollinaire-1","a":"Guillaume Apollinaire","ae":"Guillaume Apollinaire","l":"1880 – 1918","le":"1880 – 1918","nf":"poète français","ne":"French poet","era":"20","lang":"fr","o":"","fr":"Mon verre est plein d’un vin trembleur comme une flamme.","en":"My glass is full of a wine that trembles like a flame.","wf":"Alcools, « Nuit rhénane »","we":"Alcools, “Rhenish Night”","y":1913,"th":["poesie"],"st":"src","nof":"","noe":""},{"id":"ernest-hemingway-1","a":"Ernest Hemingway","ae":"Ernest Hemingway","l":"1899 – 1961","le":"1899 – 1961","nf":"écrivain américain","ne":"American writer","era":"20","lang":"en","o":"","fr":"Il ne faut pas mêler les émotions à un vin comme celui-là. On en perd le goût.","en":"You should not mix up emotions with a wine like that. You lose the taste.","wf":"Le soleil se lève aussi (le comte Mippipopolous)","we":"The Sun Also Rises (Count Mippipopolous)","y":1926,"th":["degust"],"st":"src","nof":"","noe":""},{"id":"ernest-hemingway-2","a":"Ernest Hemingway","ae":"Ernest Hemingway","l":"1899 – 1961","le":"1899 – 1961","nf":"écrivain américain","ne":"American writer","era":"20","lang":"en","o":"","fr":"Le vin est l’une des choses les plus civilisées du monde, et l’une des choses naturelles qui ont été portées à la plus grande perfection.","en":"Wine is one of the most civilized things in the world and one of the natural things of the world that has been brought to the greatest perfection.","wf":"Mort dans l’après-midi","we":"Death in the Afternoon","y":1932,"th":["degust","sagesse"],"st":"src","nof":"","noe":""},{"id":"colette-1","a":"Colette","ae":"Colette","l":"1873 – 1954","le":"1873 – 1954","nf":"écrivaine française","ne":"French writer","era":"20","lang":"fr","o":"","fr":"La vigne et le vin sont de grands mystères. Seule, dans le règne végétal, la vigne nous rend intelligible ce qu’est la véritable saveur de la terre.","en":"The vine and wine are great mysteries. Alone in the vegetable kingdom, the vine makes intelligible to us the true savour of the earth.","wf":"Prisons et paradis","we":"Prisons et paradis","y":1932,"th":["terroir","france"],"st":"src","nof":"","noe":""},{"id":"paul-claudel-1","a":"Paul Claudel","ae":"Paul Claudel","l":"1868 – 1955","le":"1868 – 1955","nf":"écrivain et diplomate français","ne":"French writer and diplomat","era":"20","lang":"fr","o":"","fr":"Le vin est un professeur de goût et, en nous formant à la pratique de l’attention intérieure, il est le libérateur de l’esprit et l’illuminateur de l’intelligence.","en":"Wine is a teacher of taste; by training us in the practice of inner attention, it frees the mind and enlightens the intelligence.","wf":"Citation largement reprise, source primaire non localisée","we":"Widely quoted; primary source not located","y":null,"th":["degust","sagesse"],"st":"attr","nof":"","noe":""},{"id":"pablo-neruda-1","a":"Pablo Neruda","ae":"Pablo Neruda","l":"1904 – 1973","le":"1904 – 1973","nf":"poète chilien","ne":"Chilean poet","era":"20","lang":"es","o":"Vino color de día, / vino color de noche, / vino con pies de púrpura / o sangre de topacio","fr":"Vin couleur de jour, vin couleur de nuit, vin aux pieds de pourpre ou au sang de topaze.","en":"Wine the colour of day, wine the colour of night, wine with purple feet or topaz blood.","wf":"Odes élémentaires, « Ode au vin »","we":"Elemental Odes, “Ode to Wine”","y":1954,"th":["poesie"],"st":"src","nof":"","noe":""},{"id":"roland-barthes-1","a":"Roland Barthes","ae":"Roland Barthes","l":"1915 – 1980","le":"1915 – 1980","nf":"sémiologue français","ne":"French semiologist","era":"20","lang":"fr","o":"","fr":"Le vin est senti par la nation française comme un bien qui lui est propre […]. C’est une boisson-totem.","en":"Wine is felt by the French nation to be a possession which is its very own […]. It is a totem-drink.","wf":"Mythologies, « Le vin et le lait »","we":"Mythologies, “Wine and Milk”","y":1957,"th":["france"],"st":"src","nof":"","noe":""},{"id":"lily-bollinger-1","a":"Lily Bollinger","ae":"Lily Bollinger","l":"1899 – 1977","le":"1899 – 1977","nf":"dirigeante de la maison Bollinger","ne":"head of the Bollinger house","era":"20","lang":"en","o":"","fr":"J’en bois quand je suis heureuse et quand je suis triste. Parfois quand je suis seule ; en compagnie, je le considère comme obligatoire. Je m’en amuse quand je n’ai pas faim et j’en bois quand j’ai faim. Sinon, je n’y touche jamais — sauf quand j’ai soif.","en":"I drink it when I’m happy and when I’m sad. Sometimes I drink it when I’m alone. When I have company I consider it obligatory. I trifle with it if I’m not hungry and drink it when I am. Otherwise I never touch it — unless I’m thirsty.","wf":"Entretien au Daily Mail, 17 octobre 1961","we":"Interview, Daily Mail, 17 October 1961","y":1961,"th":["champ","humour"],"st":"src","nof":"","noe":""},{"id":"philippe-de-rothschild-1","a":"Philippe de Rothschild","ae":"Philippe de Rothschild","l":"1902 – 1988","le":"1902 – 1988","nf":"propriétaire de Mouton Rothschild","ne":"owner of Mouton Rothschild","era":"20","lang":"fr","o":"","fr":"Premier je suis, second je fus, Mouton ne change.","en":"First I am, second I was, Mouton does not change.","wf":"Devise adoptée en 1973","we":"Motto adopted in 1973","y":1973,"th":["france","humour"],"st":"src","nof":"Après la promotion de Mouton au rang de 1<sup>er<\/sup> grand cru classé. L’ancienne devise : « Premier ne puis, second ne daigne, Mouton suis. »","noe":"After Mouton’s promotion to First Growth. The old motto: “First I cannot be, second I do not deign to be, Mouton I am.”"},{"id":"mario-soldati-1","a":"Mario Soldati","ae":"Mario Soldati","l":"1906 – 1999","le":"1906 – 1999","nf":"écrivain italien","ne":"Italian writer","era":"20","lang":"it","o":"Il vino è la poesia della terra.","fr":"Le vin est la poésie de la terre.","en":"Wine is the poetry of the earth.","wf":"Souvent rattaché à Vino al vino (1969-1975)","we":"Often linked to Vino al vino (1969–1975)","y":null,"th":["terroir","poesie"],"st":"attr","nof":"","noe":""},{"id":"salvador-dali-1","a":"Salvador Dalí","ae":"Salvador Dalí","l":"1904 – 1989","le":"1904 – 1989","nf":"peintre espagnol","ne":"Spanish painter","era":"20","lang":"fr","o":"","fr":"Celui qui sait déguster ne boit plus jamais de vin, mais goûte des secrets.","en":"Those who know how to taste no longer drink wine, but savour secrets.","wf":"Rattaché aux Vins de Gala (1977)","we":"Linked to The Wines of Gala (1977)","y":1977,"th":["degust","poesie"],"st":"attr","nof":"","noe":""},{"id":"winston-churchill-1","a":"Winston Churchill","ae":"Winston Churchill","l":"1874 – 1965","le":"1874 – 1965","nf":"Premier ministre britannique","ne":"British Prime Minister","era":"20","lang":"en","o":"","fr":"Souvenez-vous, messieurs : ce n’est pas seulement pour la France que nous nous battons, c’est pour le champagne !","en":"Remember, gentlemen, it’s not just France we are fighting for, it’s Champagne!","wf":"Sans source connue","we":"No known source","y":null,"th":["champ","humour"],"st":"attr","nof":"","noe":""},{"id":"john-maynard-keynes-1","a":"John Maynard Keynes","ae":"John Maynard Keynes","l":"1883 – 1946","le":"1883 – 1946","nf":"économiste britannique","ne":"British economist","era":"20","lang":"en","o":"","fr":"Mon seul regret dans la vie est de ne pas avoir bu plus de champagne.","en":"My only regret in life is that I did not drink more Champagne.","wf":"Dernières paroles rapportées","we":"Reported last words","y":1946,"th":["champ","temps"],"st":"attr","nof":"","noe":""},{"id":"alexander-fleming-1","a":"Alexander Fleming","ae":"Alexander Fleming","l":"1881 – 1955","le":"1881 – 1955","nf":"biologiste britannique","ne":"British biologist","era":"20","lang":"en","o":"","fr":"La pénicilline guérit les hommes, mais c’est le vin qui les rend heureux.","en":"Penicillin cures, but wine makes people happy.","wf":"Sans source connue","we":"No known source","y":null,"th":["sante","joie"],"st":"attr","nof":"","noe":""},{"id":"coco-chanel-1","a":"Coco Chanel","ae":"Coco Chanel","l":"1883 – 1971","le":"1883 – 1971","nf":"couturière française","ne":"French couturière","era":"20","lang":"fr","o":"","fr":"Je ne bois du champagne qu’en deux occasions : quand je suis amoureuse, et quand je ne le suis pas.","en":"I only drink Champagne on two occasions: when I am in love and when I am not.","wf":"Sans source connue","we":"No known source","y":null,"th":["champ","amour","humour"],"st":"attr","nof":"","noe":""},{"id":"latin-proverb-1","a":"Proverbe latin","ae":"Latin proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"la","o":"In vino veritas.","fr":"Dans le vin, la vérité.","en":"In wine, there is truth.","wf":"D’après Alcée et Pline l’Ancien","we":"After Alcaeus and Pliny the Elder","y":null,"th":["verite"],"st":"src","nof":"","noe":""},{"id":"french-proverb-1","a":"Proverbe français","ae":"French proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"Quand le vin est tiré, il faut le boire.","en":"When the wine is drawn, it must be drunk.","wf":"Se dit d’une affaire engagée qu’on ne peut plus abandonner.","we":"Said of a venture one can no longer back out of.","y":null,"th":["sagesse"],"st":"src","nof":"","noe":""},{"id":"french-proverb-2","a":"Proverbe français","ae":"French proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"Mettre de l’eau dans son vin.","en":"To put water in one’s wine.","wf":"Modérer ses exigences, ses propos.","we":"To tone down one’s demands or words.","y":null,"th":["sagesse"],"st":"src","nof":"","noe":""},{"id":"french-proverb-3","a":"Proverbe français","ae":"French proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"À bon vin point d’enseigne.","en":"Good wine needs no bush.","wf":"Ce qui est bon se fait connaître de soi-même.","we":"What is good makes itself known.","y":null,"th":["sagesse"],"st":"src","nof":"","noe":""},{"id":"french-proverb-4","a":"Proverbe français","ae":"French proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"Il n’est si bon vin qui n’ait sa lie.","en":"There is no wine so good that it has no lees.","wf":"Toute chose a ses défauts.","we":"Everything has its flaws.","y":null,"th":["sagesse"],"st":"src","nof":"","noe":""},{"id":"french-proverb-5","a":"Proverbe français","ae":"French proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"Vin sur lait, c’est souhait ; lait sur vin, c’est venin.","en":"Wine after milk is a wish; milk after wine is venom.","wf":"Vieux dicton de table","we":"Old table saying","y":null,"th":["sante","humour"],"st":"src","nof":"","noe":""},{"id":"french-proverb-6","a":"Proverbe français","ae":"French proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"Un repas sans vin est comme un jour sans soleil.","en":"A meal without wine is like a day without sunshine.","wf":"Souvent prêté, à tort, à Brillat-Savarin","we":"Often wrongly credited to Brillat-Savarin","y":null,"th":["joie","france"],"st":"src","nof":"","noe":""},{"id":"french-proverb-7","a":"Proverbe français","ae":"French proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"Le vin est le lait des vieillards.","en":"Wine is the milk of old men.","wf":"Dicton ancien","we":"Old saying","y":null,"th":["sante","temps"],"st":"src","nof":"","noe":""},{"id":"vine-growers-saying-1","a":"Dicton vigneron","ae":"Vine-grower’s saying","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"Taille tôt, taille tard, rien ne vaut la taille de mars.","en":"Prune early, prune late, nothing beats pruning in March.","wf":"Dicton de la taille de la vigne","we":"Saying about vine pruning","y":null,"th":["terroir"],"st":"src","nof":"","noe":""},{"id":"vine-growers-saying-2","a":"Dicton vigneron","ae":"Vine-grower’s saying","l":"","le":"","nf":"","ne":"","era":"prov","lang":"fr","o":"","fr":"En août et en vendanges, il n’y a ni fêtes ni dimanches.","en":"In August and at harvest time there are neither feast days nor Sundays.","wf":"Dicton des vendanges","we":"Harvest saying","y":null,"th":["terroir"],"st":"src","nof":"","noe":""},{"id":"english-proverb-1","a":"Proverbe anglais","ae":"English proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"en","o":"","fr":"Vieux amis et vieux vin sont les meilleurs.","en":"Old friends and old wine are best.","wf":"Proverbe","we":"Proverb","y":null,"th":["amitie","temps"],"st":"src","nof":"","noe":""},{"id":"italian-proverb-1","a":"Proverbe italien","ae":"Italian proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"it","o":"Buon vino fa buon sangue.","fr":"Bon vin fait bon sang.","en":"Good wine makes good blood.","wf":"Proverbe","we":"Proverb","y":null,"th":["sante"],"st":"src","nof":"","noe":""},{"id":"italian-proverb-2","a":"Proverbe italien","ae":"Italian proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"it","o":"L’acqua fa male, il vino fa cantare.","fr":"L’eau rend malade, le vin fait chanter.","en":"Water makes you ill, wine makes you sing.","wf":"Proverbe","we":"Proverb","y":null,"th":["joie","humour"],"st":"src","nof":"","noe":""},{"id":"spanish-proverb-1","a":"Proverbe espagnol","ae":"Spanish proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"es","o":"Con pan y vino se anda el camino.","fr":"Avec du pain et du vin, on fait son chemin.","en":"With bread and wine, you can walk the road.","wf":"Proverbe","we":"Proverb","y":null,"th":["sagesse","amitie"],"st":"src","nof":"","noe":""},{"id":"german-proverb-1","a":"Proverbe allemand","ae":"German proverb","l":"","le":"","nf":"","ne":"","era":"prov","lang":"de","o":"Wein auf Bier, das rat’ ich dir; Bier auf Wein, das lass sein.","fr":"Le vin après la bière, je te le conseille ; la bière après le vin, abstiens-t’en.","en":"Wine after beer, I advise you; beer after wine, leave it be.","wf":"Proverbe","we":"Proverb","y":null,"th":["sante","humour"],"st":"src","nof":"","noe":""}],"m":{"themes":{"joie":["Joie & fête","Joy & celebration"],"amour":["Amour","Love"],"amitie":["Amitié & partage","Friendship & sharing"],"sagesse":["Sagesse & mesure","Wisdom & moderation"],"verite":["Vérité","Truth"],"sante":["Santé","Health"],"terroir":["Vigne & terroir","Vine & terroir"],"degust":["Dégustation","Tasting"],"ivresse":["Ivresse","Intoxication"],"temps":["Temps qui passe","Time & ageing"],"sacre":["Sacré & mythe","Sacred & myth"],"poesie":["Poésie & art","Poetry & art"],"humour":["Humour","Humour"],"champ":["Champagne","Champagne"],"france":["Le vin & la France","Wine & France"]},"eras":{"ant":["Antiquité","Antiquity"],"med":["Moyen Âge & Renaissance","Middle Ages & Renaissance"],"cla":["XVII<sup>e<\/sup>–XVIII<sup>e<\/sup> s.","17th–18th c."],"19":["XIX<sup>e<\/sup> s.","19th c."],"20":["XX<sup>e<\/sup> s.","20th c."],"prov":["Proverbes & dictons","Proverbs & sayings"]},"langs":{"fr":["français","French"],"en":["anglais","English"],"la":["latin","Latin"],"grc":["grec ancien","Ancient Greek"],"de":["allemand","German"],"it":["italien","Italian"],"es":["espagnol","Spanish"],"zh":["chinois","Chinese"],"fa":["persan","Persian"],"he":["hébreu / araméen","Hebrew / Aramaic"]},"status":{"src":["Source vérifiée","Verified source"],"attr":["Attribuée","Attributed"],"apo":["Apocryphe","Apocryphal"]}}};
+  var Q = DATA.q, M = DATA.m;
+  var $ = function(id){ return document.getElementById(id); };
+  var LANG = (function(){ try{ return localStorage.getItem('fw_lang') || document.documentElement.lang || 'fr'; }catch(e){ return 'fr'; } })();
+  if(LANG!=='en') LANG = 'fr';
+  var L = function(pair){ return LANG==='fr' ? pair[0] : pair[1]; };
+  var ST_C = {src:'#3f8f5a', attr:'#c08a1a', apo:'#b3122e'};
+  var ERA_ORDER = ['ant','med','cla','19','20','prov'];
+  var ERA_MID = {ant:-500, med:1400, cla:1700, '19':1850, '20':1950, prov:3000};
+  var PAGE = 30;
+
+  /* ---------- text helpers ---------- */
+  function fold(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[’‘`]/g,"'").replace(/œ/g,'oe').replace(/æ/g,'ae').toLowerCase(); }
+  function strip(s){ return (s||'').replace(/<[^>]+>/g,''); }
+  function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  /* fold char by char so indexes map back to the original string */
+  function foldMap(s){
+    var out='', map=[];
+    for(var i=0;i<s.length;i++){ var f=fold(s[i]); for(var k=0;k<f.length;k++){ out+=f[k]; map.push(i); } }
+    return {s:out, map:map};
+  }
+  function hl(text, terms){
+    if(!terms.length) return esc(text);
+    var fm = foldMap(text), marks = [];
+    terms.forEach(function(t){
+      var from=0, i;
+      while(t && (i = fm.s.indexOf(t, from)) > -1){ marks.push([fm.map[i], fm.map[i+t.length-1]+1]); from = i + t.length; }
+    });
+    if(!marks.length) return esc(text);
+    marks.sort(function(a,b){ return a[0]-b[0]; });
+    var merged=[marks[0]];
+    for(var j=1;j<marks.length;j++){ var last=merged[merged.length-1]; if(marks[j][0]<=last[1]) last[1]=Math.max(last[1],marks[j][1]); else merged.push(marks[j]); }
+    var out='', pos=0;
+    merged.forEach(function(m){ out += esc(text.slice(pos,m[0])) + '<mark>' + esc(text.slice(m[0],m[1])) + '</mark>'; pos=m[1]; });
+    return out + esc(text.slice(pos));
+  }
+  function author(q){ return LANG==='fr' ? q.a : q.ae; }
+  function work(q){ return LANG==='fr' ? q.wf : q.we; }
+  function yearTxt(y){
+    if(y===null || y===undefined) return '';
+    if(y<0) return LANG==='fr' ? 'v. '+(-y)+' av. J.-C.' : 'c. '+(-y)+' BC';
+    return String(y);
+  }
+  /* search index: both languages, so a French word finds an English-original quote and vice versa */
+  Q.forEach(function(q, i){
+    q.i = i;
+    q.kAu = fold(q.a+' '+q.ae);
+    q.kTx = fold(q.fr+' '+q.en+' '+q.o);
+    q.kWk = fold(strip(q.wf+' '+q.we));
+    q.kNo = fold(strip(q.nof+' '+q.noe+' '+q.nf+' '+q.ne));
+    q.kTh = fold(q.th.map(function(t){ return M.themes[t].join(' '); }).join(' ')+' '+M.eras[q.era].map(strip).join(' '));
+    q.sortY = (q.y===null ? ERA_MID[q.era] : q.y) + ERA_ORDER.indexOf(q.era)*0.001;
+  });
+
+  /* ---------- state ---------- */
+  var S = {q:'', th:{}, era:{}, lang:{}, st:{}, sort:'rel', shown:PAGE, seed:Math.random()};
+  function anyOn(o){ for(var k in o) if(o[k]) return true; return false; }
+  function terms(){ return fold(S.q).split(/[\s,;]+/).filter(function(t){ return t.length>1 || /\d/.test(t); }); }
+  function score(q, ts){
+    var s=0;
+    for(var i=0;i<ts.length;i++){
+      var t=ts[i], hit=0;
+      if(q.kAu.indexOf(t)>-1) hit+=6;
+      if(q.kTx.indexOf(t)>-1) hit+=4;
+      if(q.kTh.indexOf(t)>-1) hit+=3;
+      if(q.kWk.indexOf(t)>-1) hit+=2;
+      if(q.kNo.indexOf(t)>-1) hit+=1;
+      if(!hit) return 0;          /* every word must match somewhere */
+      s+=hit;
+    }
+    return s;
+  }
+  function passFacets(q, skip){
+    if(skip!=='th' && anyOn(S.th) && !q.th.some(function(t){ return S.th[t]; })) return false;
+    if(skip!=='era' && anyOn(S.era) && !S.era[q.era]) return false;
+    if(skip!=='lang' && anyOn(S.lang) && !S.lang[q.lang]) return false;
+    if(skip!=='st' && anyOn(S.st) && !S.st[q.st]) return false;
+    return true;
+  }
+  function hash01(n){ var x=Math.sin(n*9301+S.seed*49297)*233280; return x-Math.floor(x); }
+  function results(){
+    var ts=terms(), out=[];
+    Q.forEach(function(q){
+      if(!passFacets(q)) return;
+      var sc = ts.length ? score(q, ts) : 1;
+      if(sc) out.push({q:q, s:sc});
+    });
+    var mode = S.sort==='rel' && !ts.length ? 'chr' : S.sort;
+    out.sort(function(a,b){
+      if(mode==='rel') return b.s-a.s || a.q.sortY-b.q.sortY;
+      if(mode==='aut') return fold(author(a.q)).localeCompare(fold(author(b.q))) || a.q.sortY-b.q.sortY;
+      if(mode==='rnd') return hash01(a.q.i)-hash01(b.q.i);
+      return a.q.sortY-b.q.sortY;
+    });
+    return out.map(function(r){ return r.q; });
+  }
+
+  /* ---------- rendering ---------- */
+  var ICO_COPY = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V5.5A1.5 1.5 0 0 0 14.5 4h-9A1.5 1.5 0 0 0 4 5.5v9A1.5 1.5 0 0 0 5.5 16H8"/></svg>';
+  var ICO_LINK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1"/><path d="M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1"/></svg>';
+  function origHTML(q, ts){
+    var txt='', lg=q.lang;
+    if(q.o) txt=q.o;
+    else if((lg==='fr'||lg==='en') && lg!==LANG) txt=q[lg];
+    if(!txt) return '';
+    var lbl = (LANG==='fr' ? 'Texte original · ' : 'Original · ') + L(M.langs[lg]);
+    return '<p class="orig"><small>'+lbl+'</small>'+hl(txt, ts)+'</p>';
+  }
+  function stBadge(q){
+    if(q.era==='prov') return '';
+    var tip = q.st==='src' ? (LANG==='fr'?'Texte vérifié dans l’œuvre citée':'Text checked against the work cited')
+            : q.st==='attr' ? (LANG==='fr'?'Attribution traditionnelle, aucune source primaire trouvée':'Traditional attribution, no primary source found')
+            : (LANG==='fr'?'Citation inventée ou faussement attribuée':'Invented or misattributed quotation');
+    return '<span class="st" style="--c:'+ST_C[q.st]+'" title="'+esc(tip)+'">'+L(M.status[q.st])+'</span>';
+  }
+  function card(q, ts){
+    var main = q[LANG], yt = yearTxt(q.y), nat = L([q.nf,q.ne]), note = L([q.nof,q.noe]);
+    var w = work(q);
+    var wk = w ? '<span class="wk"><i>'+w+'</i>'+(yt && w.indexOf(yt)<0 ? ', '+yt : '')+'</span>' : '';
+    var life = LANG==='fr' ? q.l : q.le;
+    var tags = q.th.map(function(t){ return '<button class="tg" type="button" data-th="'+t+'">'+L(M.themes[t])+'</button>'; }).join('');
+    return '<article class="qc" id="'+q.id+'">'
+      + '<blockquote>'+hl(main, ts)+'</blockquote>'
+      + origHTML(q, ts)
+      + '<p class="by"><button class="au" type="button" data-au="'+esc(author(q))+'">'+hl(author(q), ts)+'</button>'
+      + (life ? '<span class="life">('+life+')</span>' : '')
+      + (nat ? '<span class="nat">'+nat+'</span>' : '') + wk + '</p>'
+      + (note ? '<p class="note">'+note+'</p>' : '')
+      + '<div class="foot">'+stBadge(q)+tags
+      + '<span class="acts"><button class="ic" type="button" data-copy="'+q.i+'" title="'+(LANG==='fr'?'Copier la citation':'Copy the quotation')+'">'+ICO_COPY+'</button>'
+      + '<button class="ic" type="button" data-link="'+q.id+'" title="'+(LANG==='fr'?'Copier le lien':'Copy the link')+'">'+ICO_LINK+'</button></span>'
+      + '</div></article>';
+  }
+  function facetChips(){
+    function counts(skip, key){
+      var c={}; Q.forEach(function(q){ if(!passFacets(q, skip)) return; var ts=terms(); if(ts.length && !score(q,ts)) return;
+        (key==='th' ? q.th : [q[key]]).forEach(function(v){ c[v]=(c[v]||0)+1; }); });
+      return c;
+    }
+    function build(el, key, order, label, color){
+      var c = counts(key, key);
+      $(el).innerHTML = order.map(function(k){
+        var on = !!S[key][k], n = c[k]||0;
+        return '<button type="button" class="fc'+(on?' on':'')+'" data-f="'+key+'" data-v="'+k+'" aria-pressed="'+on+'"'+(n||on?'':' style="opacity:.45"')+'>'
+          + (color ? '<span class="dot" style="--c:'+color[k]+'"></span>' : '') + label(k) + '<i>'+n+'</i></button>';
+      }).join('');
+    }
+    build('f-th', 'th', Object.keys(M.themes), function(k){ return L(M.themes[k]); });
+    build('f-era', 'era', ERA_ORDER, function(k){ return L(M.eras[k]); });
+    var langs = Object.keys(M.langs).filter(function(k){ return Q.some(function(q){ return q.lang===k; }); });
+    build('f-lang', 'lang', langs, function(k){ var s=L(M.langs[k]); return s.charAt(0).toUpperCase()+s.slice(1); });
+    build('f-st', 'st', ['src','attr','apo'], function(k){ return L(M.status[k]); }, ST_C);
+  }
+  function render(keepPage){
+    if(!keepPage) S.shown = PAGE;
+    var ts = terms(), list = results();
+    facetChips();
+    var n = list.length;
+    $('count').innerHTML = n + ' ' + (LANG==='fr' ? (n>1?'citations':'citation') : (n===1?'quotation':'quotations'))
+      + (n<Q.length ? '<small>'+(LANG==='fr'?'sur ':'of ')+Q.length+'</small>' : '');
+    $('sbox').classList.toggle('has', !!S.q);
+    if(!n){
+      $('results').innerHTML = '';
+      $('more').innerHTML = '<div class="empty"><b>'+(LANG==='fr'?'Aucune citation trouvée':'No quotation found')+'</b>'
+        + (LANG==='fr'?'Essayez un autre mot, ou retirez un filtre.':'Try another word, or remove a filter.') + '</div>';
+      return;
+    }
+    $('results').innerHTML = list.slice(0, S.shown).map(function(q){ return card(q, ts); }).join('');
+    $('more').innerHTML = n > S.shown
+      ? '<button class="btn" type="button" id="morebtn">'+(LANG==='fr'?'Afficher plus':'Show more')+' ('+(n-S.shown)+')</button>' : '';
+  }
+
+  /* ---------- hero: quote of the day / random ---------- */
+  var heroIdx, heroIsDay = true;
+  var SAFE = Q.filter(function(q){ return q.st==='src' && q.era!=='prov' && q[LANG].length < 260; });
+  function dayIndex(){ var d = Math.floor((Date.now() - new Date().getTimezoneOffset()*6e4)/864e5); return SAFE[d % SAFE.length].i; }
+  function renderHero(){
+    var q = Q[heroIdx], yt = yearTxt(q.y), w = work(q);
+    $('hero-kick').textContent = heroIsDay ? (LANG==='fr'?'La citation du jour':'Quotation of the day') : (LANG==='fr'?'Au hasard':'At random');
+    var o = LANG==='fr' ? '«&nbsp;' : '“', c = LANG==='fr' ? '&nbsp;»' : '”';
+    $('hero-q').innerHTML = '<blockquote>'+o+esc(q[LANG])+c+'</blockquote>'
+      + origHTML(q, [])
+      + '<p class="who"><b>'+esc(author(q))+'</b>'+(w ? ' — <i>'+w+'</i>'+(yt && w.indexOf(yt)<0?', '+yt:'') : '')+'</p>';
+  }
+  $('rnd').addEventListener('click', function(){
+    var pool = results(); if(pool.length<2) pool = Q;
+    var next; do { next = pool[Math.floor(Math.random()*pool.length)].i; } while(next===heroIdx && pool.length>1);
+    var el = $('hero-q'); el.classList.add('fade');
+    setTimeout(function(){ heroIdx = next; heroIsDay = false; renderHero(); el.classList.remove('fade'); }, 200);
+  });
+  $('hero-copy').addEventListener('click', function(){ copy(quoteText(Q[heroIdx])); });
+
+  /* ---------- copy / toast ---------- */
+  function quoteText(q){
+    var yt = yearTxt(q.y), w = strip(work(q));
+    return (LANG==='fr' ? '« '+q.fr+' »' : '“'+q.en+'”') + ' — ' + author(q) + (w ? ', '+w : '') + (yt && w.indexOf(yt)<0 ? ' ('+yt+')' : '');
+  }
+  var tt;
+  function toast(msg){ var t=$('toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){ t.classList.remove('on'); }, 1600); }
+  function copy(txt, msg){
+    var done = function(){ toast(msg || (LANG==='fr'?'Citation copiée':'Quotation copied')); };
+    if(navigator.clipboard && window.isSecureContext){ navigator.clipboard.writeText(txt).then(done, fallback); } else fallback();
+    function fallback(){ var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta); }
+  }
+
+  /* ---------- events ---------- */
+  var tmr;
+  $('q').addEventListener('input', function(){ S.q = this.value; clearTimeout(tmr); tmr = setTimeout(function(){ render(); syncHash(); }, 120); });
+  $('clr').addEventListener('click', function(){ $('q').value=''; S.q=''; render(); syncHash(); $('q').focus(); });
+  $('sort').addEventListener('change', function(){ S.sort = this.value; S.seed = Math.random(); render(); });
+  $('reset').addEventListener('click', function(){ S.q=''; $('q').value=''; S.th={}; S.era={}; S.lang={}; S.st={}; S.sort='rel'; $('sort').value='rel'; render(); syncHash(); });
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('button'); if(!b) return;
+    if(b.hasAttribute('data-f')){ var k=b.getAttribute('data-f'), v=b.getAttribute('data-v'); S[k][v] = !S[k][v]; render(); syncHash(); }
+    else if(b.hasAttribute('data-th')){ S.th = {}; S.th[b.getAttribute('data-th')] = true; render(); syncHash(); $('recherche').scrollIntoView({behavior:'smooth', block:'start'}); }
+    else if(b.hasAttribute('data-au')){ S.q = b.getAttribute('data-au'); $('q').value = S.q; render(); syncHash(); $('recherche').scrollIntoView({behavior:'smooth', block:'start'}); }
+    else if(b.hasAttribute('data-copy')){ copy(quoteText(Q[+b.getAttribute('data-copy')])); }
+    else if(b.hasAttribute('data-link')){ var u = location.href.split('#')[0] + '#q=' + b.getAttribute('data-link'); copy(u, LANG==='fr'?'Lien copié':'Link copied'); }
+    else if(b.id==='morebtn'){ S.shown += PAGE; render(true); }
+    else if(b.hasAttribute('data-idea')){ S.q = b.getAttribute('data-idea'); $('q').value = S.q; render(); syncHash(); }
+  });
+
+  /* ---------- deep links: #s=word  #t=theme  #q=quote-id ---------- */
+  function syncHash(){
+    var th = Object.keys(S.th).filter(function(k){ return S.th[k]; });
+    var h = S.q ? 's='+encodeURIComponent(S.q) : '';
+    if(th.length) h += (h?'&':'') + 't=' + th.join(',');
+    try{ history.replaceState(null, '', h ? '#'+h : location.pathname + location.search); }catch(e){}
+  }
+  function readHash(){
+    var h = location.hash.slice(1); if(!h) return null;
+    var p = {}; h.split('&').forEach(function(kv){ var i=kv.indexOf('='); if(i>0) p[kv.slice(0,i)] = decodeURIComponent(kv.slice(i+1)); });
+    if(p.s){ S.q = p.s; $('q').value = p.s; }
+    if(p.t) p.t.split(',').forEach(function(t){ if(M.themes[t]) S.th[t] = true; });
+    return p.q || null;
+  }
+
+  /* ---------- language ---------- */
+  var IDEAS = {fr:['amour','vérité','terroir','champagne','santé','Baudelaire','Rabelais','Shakespeare','bordeaux'],
+               en:['love','truth','terroir','champagne','health','Baudelaire','Rabelais','Shakespeare','claret']};
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Le vin en citations' : 'Wine in quotations';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    $('q').placeholder = LANG==='fr' ? 'Un mot, un auteur, une œuvre… (ex. : amour, Baudelaire)' : 'A word, an author, a work… (e.g. love, Baudelaire)';
+    $('q').setAttribute('aria-label', LANG==='fr' ? 'Rechercher une citation' : 'Search for a quotation');
+    $('tagline').textContent = LANG==='fr'
+      ? Q.length+' citations sur le vin, d’Homère à Colette, de la Bible aux dictons de vignerons. Cherchez par mot, auteur, thème ou époque : chaque citation est donnée avec sa source, et les fausses attributions sont signalées.'
+      : Q.length+' quotations about wine, from Homer to Colette, from the Bible to vine-growers’ sayings. Search by word, author, theme or period: each quotation comes with its source, and false attributions are flagged.';
+    $('ideas').innerHTML = '<span>'+(LANG==='fr'?'Idées :':'Ideas:')+'</span>' + IDEAS[LANG].map(function(w){ return '<button type="button" data-idea="'+w+'">'+w+'</button>'; }).join('');
+    $('legend3').innerHTML = ['src','attr','apo'].map(function(k){
+      var d = {src:['Le texte a été vérifié dans l’œuvre, la lettre ou l’entretien cité.','The text was checked against the work, letter or interview cited.'],
+               attr:['Attribution traditionnelle : la phrase circule sous ce nom, mais aucune source primaire n’a été trouvée.','Traditional attribution: the line circulates under this name, but no primary source has been found.'],
+               apo:['Citation inventée ou faussement attribuée — gardée ici pour rétablir les faits.','Invented or misattributed quotation — kept here to set the record straight.']}[k];
+      return '<div><span class="st" style="--c:'+ST_C[k]+'">'+L(M.status[k])+'</span><br>'+L(d)+'</div>';
+    }).join('');
+    renderHero();
+    render(true);
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+
+  /* ---------- start ---------- */
+  var target = readHash();
+  heroIdx = dayIndex();
+  applyLang();
+  if(target){
+    var el = $(target);
+    if(!el){ var t = Q.filter(function(q){ return q.id===target; })[0]; if(t){ S.shown = Q.length; render(true); el = $(target); } }
+    if(el){ setTimeout(function(){ el.scrollIntoView({block:'center'}); el.classList.add('flash'); }, 60); }
+  }
+})();
+</script>
+</body>
+</html>

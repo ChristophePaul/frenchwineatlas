@@ -1,0 +1,129 @@
+= Premières Côtes de Bordeaux | Bordeaux | CDC 1eres cotes de bordeaux
+Blanc liquoreux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Côtes de Bourg | Bordeaux | CDC Bourg Cotes de Bourg Bourgeais
+Rouge: cabernet franc N; cabernet-sauvignon N; merlot N; cot N; carmenère N/A ≤10 % (variété d'adaptation); petit verdot N/A ≤10 % (variété d'adaptation)
+Blanc: sauvignon B; sauvignon gris G; sémillon B; muscadelle B; colombard B
+! Aussi « Bourg » et « Bourgeais ».
+
+= Cadillac | Bordeaux | CDC Cadillac
+Blanc liquoreux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Canon-Fronsac | Bordeaux | CDC Canon Fronsac
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; merlot N/P; cot N/P; carmenère N/A ≤10 %; petit verdot N/A ≤10 %
+! Principaux ≥50 % de l'assemblage (≥80 % du vignoble).
+
+= Côtes de Bordeaux | Bordeaux | CDC_Cotes de Bordeaux
+Rouge: cabernet-sauvignon N/P; cabernet franc N/P; cot N/P; merlot N/P; carmenère N/A <10 %; petit verdot N/A <15 %
+Blanc: sauvignon B/P; sauvignon gris G/P; sémillon B/P; muscadelle B/P; colombard B/A; ugni blanc B/A
+! Accessoires ≤15 % ; le cot doit être assemblé avec un autre cépage principal. Dénominations Blaye, Cadillac, Castillon, Francs, Sainte-Foy (les anciennes AOC Blaye, Côtes de Blaye et Sainte-Foy-Bordeaux sont aujourd'hui des dénominations des Côtes de Bordeaux).
+
+= Entre-deux-Mers | Bordeaux | CDC-Entre-deux-Mers
+Blanc: muscadelle B/P; sémillon B/P; sauvignon B/P; sauvignon gris G/P; colombard B/A; ugni blanc B/A
+Rouge: cabernet-sauvignon N/P; cabernet franc N/P; cot N/P; merlot N/P; petit verdot N/P; carmenère N/A
+! Au moins 2 cépages principaux ; aucun >80 % ; accessoires ≤30 % de l'assemblage.
+
+= Fronsac | Bordeaux | CDC Fronsac
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; merlot N/P; cot N/P; carmenère N/A ≤10 %; petit verdot N/A ≤10 %
+! Principaux ≥50 % de l'assemblage (≥80 % du vignoble).
+
+= Graves | Bordeaux | CDC Graves -1
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N
+Blanc: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Graves de Vayres | Bordeaux | CDC Graves de vayres
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N
+Blanc: muscadelle B/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; merlot blanc B/A ≤30 %
+! Blancs : principaux ≥65 % de l'assemblage.
+
+= Lalande-de-Pomerol | Bordeaux | CDC Lalande-De-Pomerol
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; cot N/P; merlot N/P; carmenère N/A; petit verdot N/A
+! Principaux ≥70 % de l'assemblage.
+
+= Listrac-Médoc | Bordeaux | CDC_Listrac-Medoc
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N; arinarnoa N/A (variété d'adaptation); castets N/A (variété d'adaptation); marselan N/A (variété d'adaptation); touriga nacional N/A (variété d'adaptation)
+! Variétés d'adaptation ≤10 % de l'assemblage.
+
+= Loupiac | Bordeaux | CDC Loupiac
+Blanc liquoreux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Lussac-Saint-Émilion | Bordeaux | CDC Lussac Saint-Emilion
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; cot N/P; merlot N/P; carmenère N/A; petit verdot N/A
+! Accessoires ≤10 % de l'assemblage.
+
+= Margaux | Bordeaux | CDC Margaux
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N; castets N/A ≤10 % (variété d'adaptation)
+
+= Pomerol | Bordeaux | CDC Pomerol
+Rouge: cabernet franc N; cabernet-sauvignon N; cot N; merlot N; petit verdot N
+
+= Puisseguin-Saint-Émilion | Bordeaux | CDC Puisseguin Saint Emilion
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; cot N/P; merlot N/P; carmenère N/A; petit verdot N/A
+! Accessoires ≤10 % de l'assemblage.
+
+= Saint-Émilion Grand Cru | Bordeaux | CDC Saint-Emilion grand cru
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; carmenère N/P; cot N/P; merlot N/P; petit verdot N/A ≤10 %
+
+= Saint-Émilion | Bordeaux | CDC Saint-Emilion
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; carmenère N/P; cot N/P; merlot N/P; petit verdot N/A ≤10 %
+
+= Sainte-Croix-du-Mont | Bordeaux | CDC Sainte-Croix-du-Mont
+Blanc liquoreux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Bordeaux | Bordeaux | CDC-Bordeaux-06-2025
+Rouge, Clairet: cabernet-sauvignon N; cabernet franc N; merlot N; cot N; carmenère N; petit verdot N; arinarnoa N/A (variété d'adaptation); castets N/A (variété d'adaptation); marselan N/A (variété d'adaptation); touriga nacional N/A (variété d'adaptation); vidoc N/A (variété d'adaptation)
+Rosé: cabernet-sauvignon N/P; cabernet franc N/P; merlot N/P; cot N/P; carmenère N/P; petit verdot N/P; sémillon B/A; sauvignon B/A ≤10 %; sauvignon gris G/A ≤10 %; arinarnoa N/A (variété d'adaptation); castets N/A (variété d'adaptation); marselan N/A (variété d'adaptation); touriga nacional N/A (variété d'adaptation); vidoc N/A (variété d'adaptation)
+Blanc: sémillon B/P; sauvignon B/P; sauvignon gris G/P; muscadelle B/P; colombard B/A; merlot blanc B/A; ugni blanc B/A; alvarinho B/A (variété d'adaptation); floréal B/A (variété d'adaptation); liliorila B/A (variété d'adaptation); sauvignac B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation)
+! Blancs : accessoires ≤30 %. Rosés : accessoires ≤20 %. Variétés d'adaptation ≤10 % de l'assemblage. Dénomination Haut-Benauge (blancs : sémillon, sauvignons, muscadelle).
+
+= Cérons | Bordeaux | CDC-Cerons
+Blanc liquoreux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Crémant de Bordeaux | Bordeaux | CDC-Cremant-de-Bordeaux
+Blanc effervescent: cabernet franc N/P; cabernet-sauvignon N/P; carmenère N/P; cot N/P; merlot N/P; muscadelle B/P; petit verdot N/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; colombard B/A; merlot blanc B/A; ugni blanc B/A
+Rosé effervescent: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N; muscadelle B; sauvignon B ≤10 %; sauvignon gris G ≤10 %; sémillon B
+! Blancs : principaux ≥70 % de la cuvée. Rosés : cépages noirs ≥70 %.
+
+= Montagne-Saint-Émilion | Bordeaux | CDC-Montagne-St-Emilion-vdef
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; cot N/P; merlot N/P; carmenère N/A; petit verdot N/A
+! Principaux ≥70 % de l'assemblage.
+
+= Sauternes | Bordeaux | CDC-Sauternes-PNO
+Blanc liquoreux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Bordeaux Supérieur | Bordeaux | CDCBordeauxSuperieur-PNO2023
+Rouge: cabernet-sauvignon N; cabernet franc N; carmenère N; cot N; merlot N; petit verdot N; arinarnoa N/A (variété d'adaptation); castets N/A (variété d'adaptation); marselan N/A (variété d'adaptation); touriga nacional N/A (variété d'adaptation); vidoc N/A (variété d'adaptation)
+Blanc: muscadelle B/P; sémillon B/P; sauvignon B/P; sauvignon gris G/P; colombard B/A; merlot blanc B/A; ugni blanc B/A; floréal B/A (variété d'adaptation); liliorila B/A (variété d'adaptation); sauvignac B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation)
+! Accessoires ≤30 % ; variétés d'adaptation <10 % de l'assemblage.
+
+= Barsac | Bordeaux | CDC_Barsac
+Blanc liquoreux: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Côtes de Bordeaux Saint-Macaire | Bordeaux | CDC_CB-Saint-Macaire
+Blanc: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+
+= Haut-Médoc | Bordeaux | CDC_Haut-Médoc
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; merlot N; cot N; petit verdot N; arinarnoa N/A (variété d'adaptation); castets N/A (variété d'adaptation); marselan N/A (variété d'adaptation); touriga nacional N/A (variété d'adaptation)
+
+= Médoc | Bordeaux | CDC_Medoc -
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; merlot N; cot N; petit verdot N; arinarnoa N/A (variété d'adaptation); castets N/A (variété d'adaptation); marselan N/A (variété d'adaptation); touriga nacional N/A (variété d'adaptation)
+Blanc: muscadelle B; sauvignon B; sauvignon gris G; sémillon B; alvarinho B/A (variété d'adaptation); floréal B/A (variété d'adaptation); liliorila B/A (variété d'adaptation); sauvignac B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation)
+
+= Moulis-en-Médoc | Bordeaux | CDC_Moulis-1
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N
+
+= Pessac-Léognan | Bordeaux | CDC_Pessac-Léognan
+Blanc: muscadelle B; sauvignon B; sauvignon gris G; sémillon B
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N
+
+= Pauillac | Bordeaux | PNOCDCPauillac
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N
+
+= Saint-Estèphe | Bordeaux | PNOCDCSaint-Estephe
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N
+
+= Saint-Julien | Bordeaux | PNOCDCSaint-Julien
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N
+
+= Saint-Georges-Saint-Émilion | Bordeaux | saint-georges-saint-emilion
+Rouge: cabernet franc N; cabernet-sauvignon N; carmenère N; cot N; merlot N; petit verdot N

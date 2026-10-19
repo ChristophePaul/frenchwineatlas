@@ -1,0 +1,73 @@
+# AOCs whose CDC was downloaded from INAO on 2026-09-30 (or read in a dénomination of another CDC).
+
+= Pierrevert | Provence | CDC Pierrevert
+Blanc: grenache blanc B ≥50 % avec vermentino; vermentino B; clairette B; roussanne B; ugni blanc B; marsanne B ≤10 %; piquepoul blanc B ≤10 %; viognier B ≤10 %
+Rouge: grenache N/P ≥15 %; syrah N/P ≥30 %; carignan N/A; cinsaut N/A; clairette B/A; grenache blanc B/A; marsanne B/A; mourvèdre N/A ≤10 %; piquepoul blanc B/A; roussanne B/A; téoulier N/A ≤10 %; ugni blanc B/A; vermentino B/A; viognier B/A
+Rosé: cinsaut N/P; grenache N/P; syrah N/P; carignan N/A; clairette B/A; grenache blanc B/A; marsanne B/A; mourvèdre N/A; piquepoul blanc B/A; roussanne B/A; téoulier N/A; ugni blanc B/A; vermentino B/A; viognier B/A
+! Principaux ≥70 % du vignoble ; cépages blancs ≤10 % (rouges), ≤20 % (rosés). (CDC scanné, lu en image.)
+
+= La Clape | Languedoc | CDC Languedoc (dénomination « La Clape »)
+Rouge: grenache N/P ≥20 % (vignoble); mourvèdre N/P; syrah N/P; carignan N/A; cinsaut N/A
+Blanc: bourboulenc B/P ≥40 % (vignoble); clairette B/P; grenache blanc B/P; marsanne B/P; piquepoul blanc B/P; roussanne B/P; vermentino B/P; macabeu B/A; terret blanc B/A; viognier B/A ≤10 %
+! AOC autonome depuis 2015 ; règles reprises de la dénomination « La Clape » du CDC Languedoc.
+
+= Anjou Villages | Val de Loire | CDC Anjou Villages
+Rouge: cabernet franc N; cabernet-sauvignon N
+
+= Anjou Brissac | Val de Loire | CDC Anjou Villages Brissac
+Rouge: cabernet franc N; cabernet-sauvignon N
+! Ancien nom : « Anjou Villages Brissac » (renommée Anjou Brissac).
+
+= Anjou Coteaux de la Loire | Val de Loire | CDC Anjou Coteaux de la Loire
+Blanc moelleux: chenin B
+
+= Coulée de Serrant | Val de Loire | CDC Savennieres Coulee de Serrant
+Blanc: chenin B
+
+= Savennières Roche aux Moines | Val de Loire | CDC Savennieres Roche aux Moines
+Blanc: chenin B
+
+= Touraine Noble Joué | Val de Loire | CDC Touraine Noble Joue
+Rosé (gris): meunier N/P ≥40 % (vignoble), majoritaire; pinot gris G/C ≥20 % (vignoble); pinot noir N/C ≥10 % (vignoble)
+! Assemblage obligatoire des trois cépages.
+
+= Muscadet Coteaux de la Loire | Val de Loire | CDC Muscadet Coteaux de la Loire
+Blanc: melon B
+
+= Banyuls Grand Cru | Roussillon | CDC Banyuls Grand Cru
+VDN: grenache N/P ≥75 %; grenache blanc B/P; grenache gris G/P; macabeu B/P; muscat à petits grains B/P; muscat d'Alexandrie B/P; tourbat B/P; carignan N/A ≤10 %; cinsaut N/A ≤10 %; counoise N/A ≤10 %; mourvèdre N/A ≤10 %; syrah N/A ≤10 %
+
+= Muscat du Cap Corse | Corse | Décret n° 2011-781 (Légifrance)
+Vin doux naturel: muscat à petits grains B
+
+= Côtes de Provence | Provence | CDC Cotes de Provence
+Rouge, Rosé: cinsaut N/P; grenache N/P; mourvèdre N/P; syrah N/P; tibouren N/P; cabernet-sauvignon N/A; caladoc N/A ≤10 %; carignan N/A; clairette B/A ≤10 %; rousseli Rs/A ≤10 %; sémillon B/A ≤10 %; ugni blanc B/A ≤10 %; vermentino B/A ≤20 %; barbaroux Rs/A (vignes antérieures à 1994); calitor N/A (vignes antérieures à 1994); agiorgitiko N/A (variété d'adaptation); calabrese N/A (variété d'adaptation); moschofilero Rs/A (variété d'adaptation); xinomavro N/A (variété d'adaptation); verdejo B/A (variété d'adaptation); floréal B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation); sauvignac B/A (variété d'adaptation)
+Blanc: clairette B; sémillon B; ugni blanc B; vermentino B; verdejo B/A (variété d'adaptation); floréal B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation); sauvignac B/A (variété d'adaptation)
+! Principaux ≥70 % du vignoble, au moins 2 ; ≥50 % de l'assemblage ; blancs dans les rouges/rosés ≤20 % ; variétés d'adaptation ≤10 % de l'assemblage. Dénominations Sainte-Victoire, Fréjus (rouge ≥50 % syrah), La Londe, Pierrefeu, Notre-Dame des Anges.
+
+= Costières de Nîmes | Languedoc | CDC Costieres de Nimes
+Rouge, Rosé: grenache N/P; mourvèdre N/P; syrah N/P; carignan N/A; cinsaut N/A; marselan N/A ≤10 %; montepulciano N/A (variété d'adaptation); morrastel N/A (variété d'adaptation)
+Blanc: grenache blanc B/P; marsanne B/P; roussanne B/P; bourboulenc B/A; clairette B/A; macabeu B/A; vermentino B/A; viognier B/A ≤20 %; piquepoul blanc B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation); tourbat B/A (variété d'adaptation)
+! Rouges et rosés : grenache + mourvèdre + syrah ≥60 % du vignoble, principaux ≥50 % de l'assemblage ; rosés : cépages blancs ≤20 %. Blancs : au moins 2 principaux, ≥60 % de l'assemblage.
+
+= Duché d'Uzès | Languedoc | CDC Duche d'Uzes
+Rouge: syrah N/P ≥40 %; grenache N/P ≥20 %; carignan N/A; cinsaut N/A; mourvèdre N/A
+Rosé: grenache N/P ≥40 %; syrah N/P ≥20 %; carignan N/A; cinsaut N/A; mourvèdre N/A
+Blanc: viognier B/P ≥40 %; grenache blanc B/P ≥20 %; marsanne B/C; roussanne B/C; vermentino B/C; clairette B/A; ugni blanc B/A
+! Aucun cépage >80 % ; principaux majoritaires. (Proportions du projet de modification en cours.)
+
+= Graves Supérieures | Bordeaux | CDC Graves et Graves Superieures
+Blanc moelleux, liquoreux: sémillon B; sauvignon B; sauvignon gris G; muscadelle B
+
+= Côtes de Bergerac | Sud-Ouest | CDC Cotes de Bergerac
+Rouge: cabernet franc N; cabernet-sauvignon N; cot N; merlot N
+Blanc moelleux: muscadelle B/P; sauvignon B/P; sauvignon gris G/P; sémillon B/P; ugni blanc B/C ≤25 %; chenin B/A; ondenc B/A
+! Rouges : au moins 2 cépages. Blancs : principaux ≥50 % de l'assemblage.
+
+= Gaillac Premières Côtes | Sud-Ouest | CDC Gaillac Premieres Cotes
+Blanc: len de l'el B/P; mauzac B/P; mauzac rose Rs/P; muscadelle B/P; ondenc B/A; sauvignon B/A
+! Principaux ≥50 % de l'assemblage.
+
+= Pineau des Charentes | Charentes | CDC Pineau des Charentes
+Vin de liqueur blanc: ugni blanc B; colombard B; folle blanche B; montils B; sémillon B; sauvignon B; merlot blanc B; jurançon blanc B; meslier saint-françois B; cabernet franc N; cabernet-sauvignon N; merlot N; trousseau gris G/A ≤10 %
+Vin de liqueur rouge, rosé: cabernet franc N; cabernet-sauvignon N; cot N; merlot N

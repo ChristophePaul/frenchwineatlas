@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Terroir &amp; site</title>
+<meta name="description" content="Le terroir viticole : climat, relief, exposition et sols ; la Côte d’Or en coupe, les grands types de sols de France, climats, lieux-dits et clos.">
+<style>
+@@BASE_CSS@@
+  /* chapter 3 */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px;}
+  .pillar{padding:14px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);}
+  .pillar svg{width:30px;height:30px;color:var(--c);}
+  html:not([data-theme="cream"]) .pillar svg{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .pillar h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:6px 0 4px;}
+  .pillar p{margin:0;font-size:13.5px;line-height:1.55;color:var(--muted);}
+
+  .zones{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:14px;}
+  .zone{padding:12px 13px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-top:5px solid var(--c);font-size:13px;line-height:1.5;}
+  .zone small{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px;}
+  .zone b{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--title);margin-bottom:4px;line-height:1.2;}
+  .zone .aoc{display:block;margin-top:6px;font-size:11.5px;font-weight:700;color:var(--c);}
+  html:not([data-theme="cream"]) .zone .aoc{color:color-mix(in srgb,var(--c) 50%,#fff);}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+  .chips a{font-size:12.5px;text-decoration:none;padding:5px 11px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);}
+  .chips a:hover{border-color:var(--hair-hi);color:var(--gold-soft);}
+
+  .clims{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  .clim{padding:14px 16px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:4px solid var(--c);}
+  .clim h3{font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);margin:0 0 6px;}
+  .clim p{margin:0;font-size:13.5px;line-height:1.55;}
+  .clim .clim-r{margin-top:8px;font-size:12px;color:var(--c);font-weight:600;}
+  html:not([data-theme="cream"]) .clim .clim-r{color:color-mix(in srgb,var(--c) 50%,#fff);}
+
+  .relief{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:clamp(16px,3vw,32px);align-items:start;}
+  .facts{display:grid;gap:8px;}
+  .fact{padding:11px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14px;line-height:1.55;}
+  .fact b{color:var(--title);}
+
+  .soils{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+  .soil{border-radius:16px;overflow:hidden;background:var(--glass);border:1px solid var(--hair);display:flex;flex-direction:column;}
+  .swatch{display:block;width:100%;height:auto;aspect-ratio:200/120;}
+  .soil-photo{all:unset;cursor:zoom-in;display:block;}
+  .soil-photo img{display:block;width:100%;aspect-ratio:200/120;object-fit:cover;}
+  .soil-block{all:unset;cursor:zoom-in;display:flex;justify-content:center;align-items:center;height:250px;padding:14px 10px 6px;
+    background:radial-gradient(70% 60% at 50% 60%,#fffdf6 0%,var(--paper) 70%);}
+  .soil-block img{display:block;height:100%;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(60,30,10,.22));transition:transform .25s;}
+  .soil-block:hover img{transform:scale(1.03);}
+  .soil-photo img{height:250px;aspect-ratio:auto;}
+  .soil-b{padding:12px 15px 14px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .soil h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:0;}
+  .soil p{margin:0;font-size:13.5px;line-height:1.55;}
+  .soil-w{color:var(--muted);}
+  .soil-w b{color:var(--gold);font-weight:600;}
+  .soil-ex{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:4px;}
+  .soil-ex a,.soil-ex span{font-size:11.5px;text-decoration:none;padding:3px 9px;border-radius:999px;border:1px solid var(--hair);}
+  .soil-ex a:hover{border-color:var(--hair-hi);color:var(--gold-soft);}
+
+  .match-wrap{padding:clamp(10px,2vw,22px);overflow-x:auto;}
+  .match{width:100%;border-collapse:collapse;font-size:14px;}
+  .match th{text-align:left;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
+  .match td{padding:8px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.45;}
+  .match td:first-child{font-family:var(--serif);font-size:15.5px;color:var(--title);}
+  .match td.g{font-weight:600;color:var(--gold-soft);white-space:nowrap;}
+  .match td:last-child{color:var(--muted);}
+
+  .words{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  .word{padding:13px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:13.5px;line-height:1.55;}
+  .word b{display:block;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .word i{display:block;font-size:12px;color:var(--gold);font-style:normal;font-weight:600;margin-bottom:4px;}
+
+  @media (max-width:1000px){ .zones,.words{grid-template-columns:repeat(2,1fr);} .clims,.pillars{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:900px){ .relief{grid-template-columns:minmax(0,1fr);} }
+  @media (max-width:620px){ .relief .diagram-card{overflow-x:auto;} .relief .diagram{min-width:540px;} }
+  @media (max-width:560px){ .zones,.words,.clims,.pillars{grid-template-columns:minmax(0,1fr);} .match td.g{white-space:normal;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 3" data-en="The vine &amp; the vineyard · Chapter 3">La vigne &amp; le vignoble · Chapitre 3</p>
+    <h1 data-fr="Terroir <em>&amp; site</em>" data-en="Terroir <em>&amp; site</em>">Terroir <em>&amp; site</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Pourquoi deux vignes voisines, du même cépage, donnent-elles des vins différents ? Le climat, le relief, le sol et le savoir-faire des hommes : c’est cela, le terroir."
+       data-en="Why do two neighbouring vineyards, planted with the same grape, make different wines? Climate, relief, soil and human know-how: that is terroir.">Pourquoi deux vignes voisines, du même cépage, donnent-elles des vins différents ? Le climat, le relief, le sol et le savoir-faire des hommes : c’est cela, le terroir.</p>
+    <nav class="toc">
+      <a href="#terroir" data-fr="Qu’est-ce que le terroir ?" data-en="What is terroir?">Qu’est-ce que le terroir ?</a>
+      <a href="#cote" data-fr="La Côte d’Or en coupe" data-en="The Côte d’Or in section">La Côte d’Or en coupe</a>
+      <a href="#climat" data-fr="Les climats" data-en="Climates">Les climats</a>
+      <a href="#relief" data-fr="Relief &amp; exposition" data-en="Relief &amp; aspect">Relief &amp; exposition</a>
+      <a href="#sols" data-fr="Les sols" data-en="Soils">Les sols</a>
+      <a href="#cepages" data-fr="Le bon cépage au bon endroit" data-en="The right grape in the right place">Le bon cépage au bon endroit</a>
+      <a href="#lieux" data-fr="Climats, lieux-dits, clos" data-en="Climats, lieux-dits, clos">Climats, lieux-dits, clos</a>
+    </nav>
+  </header>
+
+  <!-- ===== what is terroir ===== -->
+  <section class="panel intro" id="terroir">
+    <div>
+      <p class="L fr">Le mot <b>terroir</b>, intraduisible, est au cœur du système des appellations françaises. Il désigne un lieu délimité dont le milieu naturel et les pratiques humaines, ensemble, donnent au vin une personnalité reconnaissable.</p>
+      <p class="L en">The word <b>terroir</b>, which has no real English equivalent, lies at the heart of the French appellation system. It refers to a defined place whose natural environment and human practices together give the wine a recognisable personality.</p>
+      <p class="L fr">Aucun facteur n’agit seul : un même sol ne donne pas le même vin sous un climat frais ou chaud, et un grand terroir mal travaillé ne donne rien de grand. C’est l’équilibre entre la vigne, son eau, sa chaleur et sa lumière qui compte.</p>
+      <p class="L en">No factor acts alone: the same soil does not give the same wine in a cool or a hot climate, and a great terroir badly farmed gives nothing great. What counts is the balance between the vine, its water, its warmth and its light.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Les grands facteurs du terroir, illustrés par la Côte d’Or et les sols de France." data-en="The main factors of terroir, illustrated by the Côte d’Or and the soils of France.">Les grands facteurs du terroir, illustrés par la Côte d’Or et les sols de France.</span></div></div>
+        <div class="lvl"><span class="ico">@@PRO_ICON@@</span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="Définition de l’OIV, régime hydrique, géologie, calcaire actif, microclimat." data-en="OIV definition, water regime, geology, active lime, microclimate.">Définition de l’OIV, régime hydrique, géologie, calcaire actif, microclimat.</span></div></div>
+      </div>
+    </div>
+  </section>
+  <div class="pillars">
+    <div class="pillar" style="--c:#4f7fae"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3.2"/><path d="M8 1.5v1.6M8 12.9v1.6M1.5 8h1.6M12.9 8h1.6M3.4 3.4l1.1 1.1M11.5 11.5l1.1 1.1M3.4 12.6l1.1-1.1M11.5 4.5l1.1-1.1"/><path d="M10 20h9a3 3 0 0 0 0-6 4.5 4.5 0 0 0-8.6 1.2A2.5 2.5 0 0 0 10 20Z"/></svg>
+      <h3 data-fr="Le climat" data-en="Climate">Le climat</h3><p data-fr="Chaleur, pluie, lumière, vent : il fixe ce qu’on peut cultiver et le style des vins." data-en="Heat, rain, light, wind: it sets what can be grown and the style of the wines.">Chaleur, pluie, lumière, vent : il fixe ce qu’on peut cultiver et le style des vins.</p></div>
+    <div class="pillar" style="--c:#6f8b1e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20 9 7l4 6 3-4 6 11Z"/><path d="M7.5 10.5 9 12l1.5-1.5"/></svg>
+      <h3 data-fr="Le relief" data-en="Relief">Le relief</h3><p data-fr="Pente, exposition, altitude : il module le climat à l’échelle d’une colline, voire d’une parcelle." data-en="Slope, aspect, altitude: it adjusts the climate at the scale of a hill, or even a plot.">Pente, exposition, altitude : il module le climat à l’échelle d’une colline, voire d’une parcelle.</p></div>
+    <div class="pillar" style="--c:#8a5a2b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7h20M2 12h20M2 17h20"/><circle cx="6" cy="9.5" r=".8"/><circle cx="14" cy="14.5" r=".8"/><circle cx="18" cy="9.5" r=".8"/><circle cx="9" cy="19.5" r=".8"/><path d="M12 7V3M10 4.5 12 3l2 1.5"/></svg>
+      <h3 data-fr="Le sol" data-en="Soil">Le sol</h3><p data-fr="Profondeur, cailloux, argile, calcaire : il règle surtout l’alimentation en eau de la vigne." data-en="Depth, stones, clay, lime: above all it controls the vine’s water supply.">Profondeur, cailloux, argile, calcaire : il règle surtout l’alimentation en eau de la vigne.</p></div>
+    <div class="pillar" style="--c:#a0283c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg>
+      <h3 data-fr="L’homme" data-en="People">L’homme</h3><p data-fr="Choix des cépages, des parcelles, de la conduite : des siècles d’observation transmis et codifiés." data-en="Choice of grapes, plots and training: centuries of observation passed on and codified.">Choix des cépages, des parcelles, de la conduite : des siècles d’observation transmis et codifiés.</p></div>
+  </div>
+  @@PRO_DEF@@
+
+  <!-- ===== Côte d'Or ===== -->
+  <section class="sec" id="cote">
+    <div class="sec-head">
+      <h2 data-fr="La Côte d’Or <em>en coupe</em>" data-en="The Côte d’Or <em>in section</em>">La Côte d’Or <em>en coupe</em></h2>
+      <p data-fr="L’exemple le plus célèbre au monde : sur un même coteau, quelques centaines de mètres séparent un vin régional d’un grand cru. Cliquez sur l’illustration pour l’agrandir." data-en="The world’s most famous example: on a single slope, a few hundred metres separate a regional wine from a grand cru. Click the illustration to enlarge it.">L’exemple le plus célèbre au monde : sur un même coteau, quelques centaines de mètres séparent un vin régional d’un grand cru. Cliquez sur l’illustration pour l’agrandir.</p>
+    </div>
+    @@PLATE_COTE@@
+    <div class="zones">
+      <div class="zone" style="--c:#3f6b2e"><small data-fr="Plateau, à l’ouest" data-en="Plateau, to the west">Plateau, à l’ouest</small><b data-fr="Les Hautes-Côtes" data-en="The Hautes-Côtes">Les Hautes-Côtes</b><span data-fr="Forêts et vignes à 300–450 m, plus fraîches, sur calcaire dur." data-en="Forest and vines at 300–450 m, cooler, on hard limestone.">Forêts et vignes à 300–450 m, plus fraîches, sur calcaire dur.</span><span class="aoc">Bourgogne Hautes-Côtes</span></div>
+      <div class="zone" style="--c:#7aa23c"><small data-fr="Haut de coteau" data-en="Upper slope">Haut de coteau</small><b data-fr="Sols minces sur la roche" data-en="Thin soils over rock">Sols minces sur la roche</b><span data-fr="Pente forte, sol pauvre, plus exposé au vent et plus frais." data-en="Steep, poor soil, windier and cooler.">Pente forte, sol pauvre, plus exposé au vent et plus frais.</span><span class="aoc" data-fr="Appellation village" data-en="Village appellation">Appellation village</span></div>
+      <div class="zone" style="--c:#7d3f78"><small data-fr="Mi-coteau" data-en="Mid-slope">Mi-coteau</small><b data-fr="Le cœur des grands vins" data-en="The heart of great wines">Le cœur des grands vins</b><span data-fr="Mélange idéal d’éboulis calcaires et de marnes, drainage parfait, soleil du matin, à l’abri des gelées." data-en="Ideal mix of limestone scree and marl, perfect drainage, morning sun, safe from frost.">Mélange idéal d’éboulis calcaires et de marnes, drainage parfait, soleil du matin, à l’abri des gelées.</span><span class="aoc" data-fr="Premiers crus &amp; grands crus" data-en="Premiers &amp; grands crus">Premiers crus &amp; grands crus</span></div>
+      <div class="zone" style="--c:#9ab84a"><small data-fr="Bas de coteau" data-en="Lower slope">Bas de coteau</small><b data-fr="Sols plus profonds" data-en="Deeper soils">Sols plus profonds</b><span data-fr="Terres descendues de la pente (colluvions), plus riches et plus humides." data-en="Soil washed down the slope (colluvium), richer and damper.">Terres descendues de la pente (colluvions), plus riches et plus humides.</span><span class="aoc" data-fr="Appellation village" data-en="Village appellation">Appellation village</span></div>
+      <div class="zone" style="--c:#c9a227"><small data-fr="Plaine, à l’est" data-en="Plain, to the east">Plaine, à l’est</small><b data-fr="Alluvions de la Saône" data-en="Saône alluvium">Alluvions de la Saône</b><span data-fr="Sols profonds et fertiles, gelées de printemps : vignes vigoureuses et cultures." data-en="Deep, fertile soils, spring frosts: vigorous vines and arable crops.">Sols profonds et fertiles, gelées de printemps : vignes vigoureuses et cultures.</span><span class="aoc" data-fr="Appellations régionales Bourgogne" data-en="Regional Bourgogne appellations">Appellations régionales Bourgogne</span></div>
+    </div>
+    <h3 class="sub" data-fr="Explorer les climats de la Côte d’Or sur nos cartes" data-en="Explore the Côte d’Or climats on our maps">Explorer les climats de la Côte d’Or sur nos cartes</h3>
+    <div class="chips">@@COTE_LINKS@@</div>
+    @@PRO_COTE@@
+  </section>
+
+  <!-- ===== climate ===== -->
+  <section class="sec" id="climat">
+    <div class="sec-head">
+      <h2 data-fr="Les grands <em>climats</em>" data-en="The main <em>climates</em>">Les grands <em>climats</em></h2>
+      <p data-fr="La France viticole s’étend du 43<sup>e</sup> au 49<sup>e</sup> parallèle, à la limite nord de la culture de la vigne. Quatre grandes influences s’y mêlent ; on parle de macroclimat (la région), de mésoclimat (le coteau) et de microclimat (autour du cep)." data-en="French vineyards stretch from the 43rd to the 49th parallel, at the northern limit of vine growing. Four main influences mix there; we speak of macroclimate (the region), mesoclimate (the slope) and microclimate (around the vine).">La France viticole s’étend du 43<sup>e</sup> au 49<sup>e</sup> parallèle, à la limite nord de la culture de la vigne. Quatre grandes influences s’y mêlent ; on parle de macroclimat (la région), de mésoclimat (le coteau) et de microclimat (autour du cep).</p>
+    </div>
+    <div class="clims">@@CLIMATES@@</div>
+    <p class="hint" data-fr="La chaleur cumulée de la saison et les indices de Winkler et de Huglin sont présentés au <a href=&quot;Vine_Cycle.html#chaleur&quot;>chapitre 2</a>." data-en="Seasonal heat accumulation and the Winkler and Huglin indices are covered in <a href=&quot;Vine_Cycle.html#chaleur&quot;>chapter 2</a>.">La chaleur cumulée de la saison et les indices de Winkler et de Huglin sont présentés au <a href="Vine_Cycle.html#chaleur">chapitre 2</a>.</p>
+  </section>
+
+  <!-- ===== relief ===== -->
+  <section class="sec" id="relief">
+    <div class="sec-head">
+      <h2 data-fr="Relief <em>&amp; exposition</em>" data-en="Relief <em>&amp; aspect</em>">Relief <em>&amp; exposition</em></h2>
+      <p data-fr="À l’échelle d’une colline, le relief crée son propre climat : c’est pourquoi les meilleures vignes sont si souvent à flanc de coteau." data-en="At the scale of a hill, relief creates its own climate: that is why the best vineyards are so often on slopes.">À l’échelle d’une colline, le relief crée son propre climat : c’est pourquoi les meilleures vignes sont si souvent à flanc de coteau.</p>
+    </div>
+    <div class="relief">
+      <div class="diagram-card">@@HILLSIDE@@</div>
+      <div class="facts">
+        <div class="fact L fr"><b>L’exposition.</b> Au nord de la France, on cherche le sud, le sud-est ou l’est : le soleil du matin sèche la rosée et réchauffe la vigne tôt. Dans le Midi, on recherche au contraire la fraîcheur.</div>
+        <div class="fact L en"><b>Aspect.</b> In northern France, growers look for south, south-east or east: morning sun dries the dew and warms the vines early. In the South they seek coolness instead.</div>
+        <div class="fact L fr"><b>La pente.</b> Elle évacue l’eau en excès, offre des sols moins profonds et reçoit le soleil plus franchement que la plaine.</div>
+        <div class="fact L en"><b>Slope.</b> It sheds excess water, has shallower soils and catches the sun more directly than flat land.</div>
+        <div class="fact L fr"><b>L’air froid.</b> Plus lourd, il descend la nuit vers les bas-fonds : c’est là que gèle la vigne au printemps.</div>
+        <div class="fact L en"><b>Cold air.</b> Being heavier, it slides down into the hollows at night: that is where vines freeze in spring.</div>
+        <div class="fact L fr"><b>L’eau et la forêt.</b> Fleuves et lacs adoucissent les températures et apportent les brumes ; la forêt abrite du vent.</div>
+        <div class="fact L en"><b>Water and forest.</b> Rivers and lakes soften temperatures and bring mists; forests shelter vines from the wind.</div>
+      </div>
+    </div>
+    @@PRO_SITE@@
+  </section>
+
+  <!-- ===== soils ===== -->
+  <section class="sec" id="sols">
+    <div class="sec-head">
+      <h2 data-fr="Les sols <em>de France</em>" data-en="The soils <em>of France</em>">Les sols <em>de France</em></h2>
+      <p data-fr="La vigne aime les sols pauvres et bien drainés, où elle doit chercher son eau en profondeur. Voici les grandes familles, avec quelques appellations emblématiques : chaque nom ouvre la carte ou le plan cadastral correspondant." data-en="The vine likes poor, well-drained soils where it has to search deep for water. Here are the main families, with a few emblematic appellations: each name opens the matching map or cadastral plan.">La vigne aime les sols pauvres et bien drainés, où elle doit chercher son eau en profondeur. Voici les grandes familles, avec quelques appellations emblématiques : chaque nom ouvre la carte ou le plan cadastral correspondant.</p>
+    </div>
+    <div class="soils">@@SOILS@@</div>
+    @@PRO_SOIL@@
+  </section>
+
+  <!-- ===== grapes ===== -->
+  <section class="sec" id="cepages">
+    <div class="sec-head">
+      <h2 data-fr="Le bon cépage <em>au bon endroit</em>" data-en="The right grape <em>in the right place</em>">Le bon cépage <em>au bon endroit</em></h2>
+      <p data-fr="Des siècles d’essais ont associé chaque terroir aux cépages qui y donnent le meilleur. Les cahiers des charges des AOC ont ensuite fixé ces choix." data-en="Centuries of trial and error matched each terroir with the grapes that do best there. AOC specifications later set these choices in stone.">Des siècles d’essais ont associé chaque terroir aux cépages qui y donnent le meilleur. Les cahiers des charges des AOC ont ensuite fixé ces choix.</p>
+    </div>
+    <div class="panel match-wrap"><table class="match"><thead><tr><th data-fr="Terroir" data-en="Terroir">Terroir</th><th data-fr="Cépage" data-en="Grape">Cépage</th><th data-fr="Pourquoi" data-en="Why">Pourquoi</th></tr></thead><tbody>@@MATCH@@</tbody></table></div>
+    <p class="hint" data-fr="Tous les cépages autorisés dans chaque appellation sont dans notre moteur de recherche <a href=&quot;Cepages/Cepages_et_Appellations.html&quot;>Cépages &amp; appellations</a>." data-en="Every grape permitted in each appellation is in our <a href=&quot;Cepages/Cepages_et_Appellations.html&quot;>Grapes &amp; appellations</a> search engine.">Tous les cépages autorisés dans chaque appellation sont dans notre moteur de recherche <a href="Cepages/Cepages_et_Appellations.html">Cépages &amp; appellations</a>.</p>
+  </section>
+
+  <!-- ===== words ===== -->
+  <section class="sec" id="lieux">
+    <div class="sec-head">
+      <h2 data-fr="Climats, lieux-dits <em>&amp; clos</em>" data-en="Climats, lieux-dits <em>&amp; clos</em>">Climats, lieux-dits <em>&amp; clos</em></h2>
+      <p data-fr="Le vocabulaire français du lieu, du plus petit au plus prestigieux." data-en="The French vocabulary of place, from the smallest to the most prestigious.">Le vocabulaire français du lieu, du plus petit au plus prestigieux.</p>
+    </div>
+    <div class="words">
+      <div class="word"><b data-fr="Parcelle" data-en="Parcelle">Parcelle</b><i data-fr="plot" data-en="plot">plot</i><span data-fr="L’unité cadastrale : un morceau de terre appartenant à un propriétaire." data-en="The land-registry unit: a piece of land with one owner.">L’unité cadastrale : un morceau de terre appartenant à un propriétaire.</span></div>
+      <div class="word"><b>Lieu-dit</b><i data-fr="named place" data-en="named place">named place</i><span data-fr="Un nom de lieu traditionnel, inscrit au cadastre, regroupant plusieurs parcelles." data-en="A traditional place name, recorded in the land registry, covering several plots.">Un nom de lieu traditionnel, inscrit au cadastre, regroupant plusieurs parcelles.</span></div>
+      <div class="word"><b>Climat</b><i data-fr="en Bourgogne" data-en="in Burgundy">en Bourgogne</i><span data-fr="Une parcelle ou un groupe de parcelles délimité avec précision et connu depuis des siècles pour son vin. Les « Climats du vignoble de Bourgogne » sont inscrits au patrimoine mondial de l’UNESCO depuis 2015." data-en="A precisely bounded plot or group of plots known for centuries for its wine. The “Climats of Burgundy” have been on UNESCO’s World Heritage list since 2015.">Une parcelle ou un groupe de parcelles délimité avec précision et connu depuis des siècles pour son vin. Les « Climats du vignoble de Bourgogne » sont inscrits au patrimoine mondial de l’UNESCO depuis 2015.</span></div>
+      <div class="word"><b>Clos</b><i data-fr="walled vineyard" data-en="walled vineyard">walled vineyard</i><span data-fr="Une vigne entourée de murs, souvent d’origine monastique : le <a href=&quot;@@CLIMAT_VOUGEOT@@&quot;>Clos de Vougeot</a>, créé par les moines cisterciens au XII<sup>e</sup> siècle." data-en="A vineyard enclosed by walls, often of monastic origin: the <a href=&quot;@@CLIMAT_VOUGEOT@@&quot;>Clos de Vougeot</a>, created by Cistercian monks in the 12th century.">Une vigne entourée de murs, souvent d’origine monastique : le <a href="@@CLIMAT_VOUGEOT@@">Clos de Vougeot</a>, créé par les moines cisterciens au XII<sup>e</sup> siècle.</span></div>
+      <div class="word"><b>Cru</b><i data-fr="growth" data-en="growth">growth</i><span data-fr="Un vignoble reconnu et classé : grand cru et premier cru en Bourgogne ou en Alsace, cru classé à Bordeaux (où le classement vise le château)." data-en="A recognised, classified vineyard: grand cru and premier cru in Burgundy or Alsace, cru classé in Bordeaux (where the classification applies to the château).">Un vignoble reconnu et classé : grand cru et premier cru en Bourgogne ou en Alsace, cru classé à Bordeaux (où le classement vise le château).</span></div>
+    </div>
+  </section>
+
+  @@CHAPTERS@@
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources">@@SOURCES@@</ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Terroir & site' : 'Terroir & site';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

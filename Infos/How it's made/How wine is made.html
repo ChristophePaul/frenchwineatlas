@@ -1,0 +1,957 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Comment se fait le vin — interactif" data-en="How Wine Is Made — Interactive">Comment se fait le vin — interactif</title>
+<style>
+  :root{
+    --parch:#f4ecd8; --parch2:#efe4c8; --ink:#2b2018; --ink-soft:#5c4a38;
+    --red:#7a1220; --red-lt:#a83247; --red-bg:#f6e2e2;
+    --white:#6f8b1e; --white-lt:#9bb43f; --white-bg:#eef2dd;
+    --sweet:#b8860b; --sweet-lt:#d4a72c; --sweet-bg:#f7eccf;
+    --rose:#c25b6e; --rose-lt:#dd8595; --rose-bg:#fbe6ea;
+    --gold:#b8892b; --line:#c9b98f; --card:#fbf6e9;
+    --shadow:0 2px 6px rgba(60,40,20,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    color:var(--ink); background:var(--parch);
+    background-image:radial-gradient(circle at 20% 10%,rgba(255,255,255,.35),transparent 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,.10),transparent 55%);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  header.top{
+    text-align:center; padding:26px 16px 10px;
+    border-bottom:3px double var(--gold);
+    background:linear-gradient(#fbf6e9,#f4ecd8);
+  }
+  header.top h1{
+    margin:0; font-size:clamp(28px,5vw,46px); font-style:italic; letter-spacing:.5px;
+    font-variant:small-caps; color:var(--ink);
+  }
+  header.top p{margin:6px auto 0; max-width:640px; color:var(--ink-soft); font-size:15px}
+  .wrap{max-width:1180px; margin:0 auto; padding:16px}
+
+  /* toggle bar */
+  .tabs{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:18px 0 6px}
+  .tab{
+    cursor:pointer; border:1px solid var(--line); background:var(--card);
+    padding:9px 18px; border-radius:24px; font-size:15px; font-variant:small-caps;
+    letter-spacing:.4px; color:var(--ink-soft); transition:.15s; user-select:none;
+    font-weight:600;
+  }
+  .tab:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+  .tab[data-k="red"].on{background:var(--red); color:#fff; border-color:var(--red)}
+  .tab[data-k="white"].on{background:var(--white); color:#fff; border-color:var(--white)}
+  .tab[data-k="sweet"].on{background:var(--sweet); color:#fff; border-color:var(--sweet)}
+  .tab[data-k="rose"].on{background:var(--rose); color:#fff; border-color:var(--rose)}
+  .hint{text-align:center; font-size:13px; color:var(--ink-soft); font-style:italic; margin:2px 0 14px}
+
+  /* layout: flows + detail panel */
+  .stage{display:grid; grid-template-columns:1fr 380px; gap:22px; align-items:start}
+  @media(max-width:900px){ .stage{grid-template-columns:1fr} }
+
+  .flows{display:flex; gap:26px; justify-content:center; flex-wrap:wrap}
+  .flow{flex:1 1 300px; min-width:270px; max-width:440px}
+  .flow h2{
+    text-align:center; font-variant:small-caps; letter-spacing:1px; margin:0 0 14px;
+    font-size:22px; padding:8px; border-radius:8px; color:#fff;
+  }
+  .flow.red h2{background:linear-gradient(var(--red-lt),var(--red))}
+  .flow.white h2{background:linear-gradient(var(--white-lt),var(--white))}
+  .flow.sweet h2{background:linear-gradient(var(--sweet-lt),var(--sweet))}
+  .flow.rose h2{background:linear-gradient(var(--rose-lt),var(--rose))}
+
+  .node{
+    position:relative; background:var(--card); border:1.5px solid var(--line);
+    border-left:6px solid var(--nc,#999); border-radius:10px; padding:11px 14px;
+    margin:0 auto; cursor:pointer; box-shadow:var(--shadow); transition:.15s; max-width:360px;
+  }
+  .node:hover{transform:translateX(3px); border-color:var(--nc)}
+  .node.active{outline:3px solid var(--nc); outline-offset:2px}
+  .node .n-title{font-weight:700; font-size:16px; display:flex; align-items:center; gap:8px}
+  .node .n-fr{font-style:italic; color:var(--ink-soft); font-size:13px; margin-top:1px}
+  .node .n-sub{font-size:12.5px; color:var(--ink-soft); margin-top:4px}
+  .badge{
+    font-size:10px; font-variant:small-caps; letter-spacing:.5px; font-weight:700;
+    padding:1px 7px; border-radius:10px; background:var(--parch2); color:var(--ink-soft);
+    border:1px solid var(--line); white-space:nowrap;
+  }
+  .arrow{display:flex; justify-content:center; color:var(--nc,#bbb); font-size:22px; line-height:1; margin:2px 0}
+  .flow.red{--nc:var(--red)} .flow.white{--nc:var(--white)}
+  .flow.sweet{--nc:var(--sweet)} .flow.rose{--nc:var(--rose)}
+
+  /* detail panel */
+  .panel{
+    position:sticky; top:14px; background:var(--card); border:1.5px solid var(--line);
+    border-top:5px solid var(--gold); border-radius:12px; padding:20px; box-shadow:var(--shadow);
+    min-height:220px;
+  }
+  @media(max-width:900px){ .panel{position:static} }
+  .panel .ph{font-variant:small-caps; letter-spacing:.5px; color:var(--gold); font-size:13px; font-weight:700}
+  .panel h3{margin:2px 0 2px; font-size:24px}
+  .panel .fr{font-style:italic; color:var(--ink-soft); margin:0 0 12px; font-size:15px}
+  .panel p{margin:0 0 11px; font-size:15px}
+  .panel .why{background:var(--parch2); border-radius:8px; padding:10px 12px; font-size:14px; margin:0 0 11px}
+  .panel .why b{color:var(--red)}
+  .panel .meta{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px}
+  .panel .empty{color:var(--ink-soft); font-style:italic; text-align:center; padding:40px 10px}
+  .g,.gdemo{color:var(--red); border-bottom:1px dotted var(--red); cursor:help; font-weight:600}
+  .gdemo{cursor:default}
+
+  /* prose + glossary */
+  section.prose{margin-top:40px; border-top:3px double var(--gold); padding-top:20px}
+  section.prose h2{font-variant:small-caps; letter-spacing:.5px; text-align:center; font-size:26px; margin:0 0 6px}
+  details.acc{background:var(--card); border:1px solid var(--line); border-radius:9px; margin:8px 0; overflow:hidden}
+  details.acc>summary{cursor:pointer; padding:12px 16px; font-weight:700; font-size:17px; list-style:none; display:flex; justify-content:space-between; align-items:center}
+  details.acc>summary::-webkit-details-marker{display:none}
+  details.acc>summary::after{content:"+"; color:var(--gold); font-size:22px; font-weight:400}
+  details.acc[open]>summary::after{content:"–"}
+  details.acc .body{padding:0 16px 14px; font-size:15px; color:var(--ink)}
+  details.acc.red>summary{border-left:6px solid var(--red)}
+  details.acc.white>summary{border-left:6px solid var(--white)}
+  details.acc.sweet>summary{border-left:6px solid var(--sweet)}
+
+  .glist{columns:2; column-gap:26px}
+  @media(max-width:640px){ .glist{columns:1} }
+  .glitem{break-inside:avoid; margin:0 0 12px; padding:0 0 0 2px}
+  .glitem dt{font-weight:700; color:var(--red)}
+  .glitem dd{margin:1px 0 0; font-size:14px; color:var(--ink)}
+  .glitem dd .en{color:var(--ink-soft); font-style:italic}
+
+  footer{text-align:center; color:var(--ink-soft); font-size:13px; padding:26px 16px 40px}
+
+  /* tooltip */
+  #tip{position:fixed; z-index:50; max-width:260px; background:#2b2018; color:#f4ecd8;
+    font-size:13px; padding:8px 11px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.35);
+    pointer-events:none; opacity:0; transition:opacity .12s; line-height:1.4}
+  #tip b{color:var(--sweet-lt)}
+</style>
+
+<header class="top">
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+  <h1 data-fr="Comment se fait &lt;em&gt;le vin&lt;/em&gt;" data-en="How Wine Is Made">Comment se fait <em>le vin</em></h1>
+  <p data-fr="De la vigne à la bouteille : le chemin du vigneron pour chaque style de vin. Touchez une étape pour en lire le détail, survolez les &lt;span class=&quot;gdemo&quot;&gt;termes soulignés&lt;/span&gt; pour une définition rapide." data-en="From vine to bottle — the winemaker&#x27;s road for each style of wine.
+     Tap any step to open the details, hover the &lt;span class=&quot;gdemo&quot;&gt;underlined terms&lt;/span&gt; for a quick definition.">De la vigne à la bouteille : le chemin du vigneron pour chaque style de vin. Touchez une étape pour en lire le détail, survolez les <span class="gdemo">termes soulignés</span> pour une définition rapide.</p>
+</header>
+
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <div class="tab" data-k="red" data-fr="Rouge" data-en="Red">Rouge</div>
+    <div class="tab" data-k="white" data-fr="Blanc" data-en="White">Blanc</div>
+    <div class="tab" data-k="sweet" data-fr="Liquoreux &amp;amp; tardifs" data-en="Sweet &amp;amp; Late-Harvest">Liquoreux &amp; tardifs</div>
+    <div class="tab" data-k="rose" data-fr="Rosé" data-en="Rosé">Rosé</div>
+  </div>
+  <div class="hint" data-fr="Affichage : sélectionnez &lt;b&gt;Rouge&lt;/b&gt; et &lt;b&gt;Blanc&lt;/b&gt; ensemble pour la comparaison classique, ou passez aux liquoreux / au rosé." data-en="Showing: click &lt;b&gt;Red&lt;/b&gt; and &lt;b&gt;White&lt;/b&gt; together for the classic side-by-side, or switch to Sweet / Rosé.">Affichage : sélectionnez <b>Rouge</b> et <b>Blanc</b> ensemble pour la comparaison classique, ou passez aux liquoreux / au rosé.</div>
+
+  <div class="stage">
+    <div class="flows" id="flows"></div>
+    <aside class="panel" id="panel">
+      <div class="empty" id="empty" data-fr="Choisissez une étape pour lire ce qui s’y passe, pourquoi c’est important,&lt;br&gt;et son nom en anglais." data-en="Select a step in the flow to read what happens, why it matters,&lt;br&gt;and its French name.">Choisissez une étape pour lire ce qui s’y passe, pourquoi c’est important,<br>et son nom en anglais.</div>
+      <div id="detail" style="display:none"></div>
+    </aside>
+  </div>
+
+  <!-- PROSE -->
+  <section class="prose">
+    <h2 data-fr="Les mots du vigneron" data-en="In the winemaker&#x27;s words">Les mots du vigneron</h2>
+    <details class="acc red"><summary data-fr="Le vin rouge" data-en="Making Red Wine">Le vin rouge</summary>
+      <div class="body" data-fr="
+        &lt;p&gt;Après la vendange, les raisins sont égrappés et triés — à la main ou à la machine — pour écarter les fruits
+        indésirables et les débris. Les baies sont ensuite foulées et le plus souvent éraflées. On peut alors ajouter
+        un peu de &lt;span class=&#x27;g&#x27; data-g=&#x27;sulphur&#x27;&gt;soufre&lt;/span&gt; pour éviter que le &lt;span class=&#x27;g&#x27; data-g=&#x27;must&#x27;&gt;moût&lt;/span&gt; ne s’oxyde trop tôt ; celui-ci est
+        ensuite pompé dans des cuves en inox ou des cuves en bois (&lt;span class=&#x27;g&#x27; data-g=&#x27;foudres&#x27;&gt;foudres&lt;/span&gt;).&lt;/p&gt;
+        &lt;p&gt;Pour le vin rouge, macération et fermentation alcoolique se font &lt;b&gt;ensemble&lt;/b&gt;, dans la même cuve : c’est
+        la &lt;span class=&#x27;g&#x27; data-g=&#x27;cuvaison&#x27;&gt;cuvaison&lt;/span&gt;. Pendant quelques jours à quelques semaines, le chapeau de marc reste au contact du
+        jus, par &lt;span class=&#x27;g&#x27; data-g=&#x27;pigeage&#x27;&gt;pigeage&lt;/span&gt; ou par &lt;span class=&#x27;g&#x27; data-g=&#x27;remontage&#x27;&gt;remontage&lt;/span&gt;, pour extraire couleur et tanins. À la fin de
+        la fermentation, le &lt;span class=&#x27;g&#x27; data-g=&#x27;vin de goutte&#x27;&gt;vin de goutte&lt;/span&gt; est écoulé et le &lt;span class=&#x27;g&#x27; data-g=&#x27;marc&#x27;&gt;marc&lt;/span&gt; restant est pressé pour
+        donner le &lt;span class=&#x27;g&#x27; data-g=&#x27;vin de presse&#x27;&gt;vin de presse&lt;/span&gt;, réassemblé ou non.&lt;/p&gt;
+        &lt;p&gt;Le vin repose ensuite pendant que la &lt;span class=&#x27;g&#x27; data-g=&#x27;malolactic fermentation&#x27;&gt;fermentation malolactique&lt;/span&gt; assouplit son
+        acidité. Un &lt;span class=&#x27;g&#x27; data-g=&#x27;vin de garde&#x27;&gt;vin de garde&lt;/span&gt; peut être élevé en barrique (&lt;span class=&#x27;g&#x27; data-g=&#x27;élevage&#x27;&gt;élevage&lt;/span&gt;) jusqu’à environ
+        24 mois avant d’être collé — souvent au blanc d’œuf (&lt;span class=&#x27;g&#x27; data-g=&#x27;collage&#x27;&gt;collage&lt;/span&gt;) — et/ou filtré, puis mis en bouteille.&lt;/p&gt;
+      " data-en="
+        &lt;p&gt;After the harvest, the grapes are separated from the stalks and sorted — manually or mechanically — to
+        remove unwanted fruit and other material. The fruit is then crushed and usually destemmed. At that point a
+        little &lt;span class=&quot;g&quot;&gt;sulphur&lt;/span&gt; may be added to prevent early oxidation of the &lt;span class=&quot;g&quot;&gt;must&lt;/span&gt;,
+        which is then pumped into stainless-steel tanks or wooden vats (&lt;span class=&quot;g&quot;&gt;foudres&lt;/span&gt;).&lt;/p&gt;
+        &lt;p&gt;For red wine, skin contact and alcoholic fermentation happen &lt;b&gt;together&lt;/b&gt; in the same vat — a stage the
+        French call &lt;span class=&quot;g&quot;&gt;cuvaison&lt;/span&gt;. Over several days to a few weeks the cap of skins is kept in
+        contact with the juice, by &lt;span class=&quot;g&quot;&gt;pigeage&lt;/span&gt; (punching down) or &lt;span class=&quot;g&quot;&gt;remontage&lt;/span&gt;
+        (pumping over), to draw out colour and tannin. When fermentation finishes, the free-run
+        &lt;span class=&quot;g&quot;&gt;vin de goutte&lt;/span&gt; is run off and the leftover &lt;span class=&quot;g&quot;&gt;marc&lt;/span&gt; is pressed to yield
+        &lt;span class=&quot;g&quot;&gt;vin de presse&lt;/span&gt;, which may or may not be blended back.&lt;/p&gt;
+        &lt;p&gt;The wine then rests while &lt;span class=&quot;g&quot;&gt;malolactic fermentation&lt;/span&gt; softens its acidity. A
+        &lt;span class=&quot;g&quot;&gt;vin de garde&lt;/span&gt; may be barrel-aged (&lt;span class=&quot;g&quot;&gt;élevage&lt;/span&gt;) for up to about 24 months
+        before it is fined — often with egg white (&lt;span class=&quot;g&quot;&gt;collage&lt;/span&gt;) — and/or filtered, then bottled.&lt;/p&gt;
+      ">
+        <p>Après la vendange, les raisins sont égrappés et triés — à la main ou à la machine — pour écarter les fruits
+        indésirables et les débris. Les baies sont ensuite foulées et le plus souvent éraflées. On peut alors ajouter
+        un peu de <span class='g' data-g='sulphur'>soufre</span> pour éviter que le <span class='g' data-g='must'>moût</span> ne s’oxyde trop tôt ; celui-ci est
+        ensuite pompé dans des cuves en inox ou des cuves en bois (<span class='g' data-g='foudres'>foudres</span>).</p>
+        <p>Pour le vin rouge, macération et fermentation alcoolique se font <b>ensemble</b>, dans la même cuve : c’est
+        la <span class='g' data-g='cuvaison'>cuvaison</span>. Pendant quelques jours à quelques semaines, le chapeau de marc reste au contact du
+        jus, par <span class='g' data-g='pigeage'>pigeage</span> ou par <span class='g' data-g='remontage'>remontage</span>, pour extraire couleur et tanins. À la fin de
+        la fermentation, le <span class='g' data-g='vin de goutte'>vin de goutte</span> est écoulé et le <span class='g' data-g='marc'>marc</span> restant est pressé pour
+        donner le <span class='g' data-g='vin de presse'>vin de presse</span>, réassemblé ou non.</p>
+        <p>Le vin repose ensuite pendant que la <span class='g' data-g='malolactic fermentation'>fermentation malolactique</span> assouplit son
+        acidité. Un <span class='g' data-g='vin de garde'>vin de garde</span> peut être élevé en barrique (<span class='g' data-g='élevage'>élevage</span>) jusqu’à environ
+        24 mois avant d’être collé — souvent au blanc d’œuf (<span class='g' data-g='collage'>collage</span>) — et/ou filtré, puis mis en bouteille.</p>
+      </div>
+    </details>
+    <details class="acc white"><summary data-fr="Le vin blanc" data-en="Making White Wine">Le vin blanc</summary>
+      <div class="body" data-fr="
+        &lt;p&gt;L’immense variété des vins blancs reflète autant de vinifications, chacune adaptée à un vin. La vinification
+        en blanc diffère du rouge à plusieurs étapes — avant tout, les pellicules sont rarement
+        &lt;span class=&#x27;g&#x27; data-g=&#x27;macerated&#x27;&gt;mises à macérer&lt;/span&gt; avec le jus. Les raisins sont en général pressés tout de suite et seul le jus
+        est mis à fermenter.&lt;/p&gt;
+        &lt;p&gt;Après le pressurage, le jus trouble est laissé au repos pour que les matières solides se déposent — c’est
+        le &lt;span class=&#x27;g&#x27; data-g=&#x27;débourbage&#x27;&gt;débourbage&lt;/span&gt;. La fermentation se fait ensuite plus au frais que pour le rouge, pour protéger
+        les arômes délicats. La plupart des blancs ne sont pas élevés en barrique, sauf certains grands vins — les grands
+        crus de Bourgogne, les crus classés de Bordeaux. La &lt;span class=&#x27;g&#x27; data-g=&#x27;malolactic fermentation&#x27;&gt;fermentation malolactique&lt;/span&gt; n’est
+        pas automatique pour les blancs, mais elle est de plus en plus pratiquée pour les grands vins. Un dernier collage
+        (souvent à la &lt;span class=&#x27;g&#x27; data-g=&#x27;bentonite&#x27;&gt;bentonite&lt;/span&gt;) et une clarification précèdent la mise en bouteille.&lt;/p&gt;
+      " data-en="
+        &lt;p&gt;The huge variety of white wines reflects many different vinifications, each adapted to a particular wine.
+        White winemaking differs from red at several stages — above all, the skins are rarely
+        &lt;span class=&quot;g&quot;&gt;macerated&lt;/span&gt; with the juice. Instead the grapes are usually pressed straight away and only
+        the juice is fermented.&lt;/p&gt;
+        &lt;p&gt;After pressing, the cloudy juice is left to settle so the solids drop out — a clarification step called
+        &lt;span class=&quot;g&quot;&gt;débourbage&lt;/span&gt;. Fermentation then runs cooler than for red, to protect delicate aromas.
+        Most whites are not barrel-aged, though some Grands Vins — the grands crus of Burgundy, the classified wines of
+        Bordeaux — are raised in oak. &lt;span class=&quot;g&quot;&gt;Malolactic fermentation&lt;/span&gt; is not automatic for white wine but
+        is increasingly used for the Grands Vins. A final fining (often with &lt;span class=&quot;g&quot;&gt;bentonite&lt;/span&gt;) and
+        clarification precede bottling.&lt;/p&gt;
+      ">
+        <p>L’immense variété des vins blancs reflète autant de vinifications, chacune adaptée à un vin. La vinification
+        en blanc diffère du rouge à plusieurs étapes — avant tout, les pellicules sont rarement
+        <span class='g' data-g='macerated'>mises à macérer</span> avec le jus. Les raisins sont en général pressés tout de suite et seul le jus
+        est mis à fermenter.</p>
+        <p>Après le pressurage, le jus trouble est laissé au repos pour que les matières solides se déposent — c’est
+        le <span class='g' data-g='débourbage'>débourbage</span>. La fermentation se fait ensuite plus au frais que pour le rouge, pour protéger
+        les arômes délicats. La plupart des blancs ne sont pas élevés en barrique, sauf certains grands vins — les grands
+        crus de Bourgogne, les crus classés de Bordeaux. La <span class='g' data-g='malolactic fermentation'>fermentation malolactique</span> n’est
+        pas automatique pour les blancs, mais elle est de plus en plus pratiquée pour les grands vins. Un dernier collage
+        (souvent à la <span class='g' data-g='bentonite'>bentonite</span>) et une clarification précèdent la mise en bouteille.</p>
+      </div>
+    </details>
+    <details class="acc sweet"><summary data-fr="Les liquoreux &amp; vendanges tardives" data-en="Making Sweet &amp;amp; Late-Harvest Wine">Les liquoreux & vendanges tardives</summary>
+      <div class="body" data-fr="
+        &lt;p&gt;Les vins doux gardent du sucre dans le vin fini : on part de raisins bien plus mûrs et concentrés, puis on
+        arrête la fermentation avant que les levures n’aient consommé tout le sucre. La concentration peut venir du
+        &lt;span class=&#x27;g&#x27; data-g=&#x27;Botrytis cinerea&#x27;&gt;Botrytis cinerea&lt;/span&gt; (pourriture noble), qui flétrit les baies — comme à Sauternes, en
+        Quarts-de-Chaume dans la Loire, en sélection de grains nobles d’Alsace ou à Tokaj —, du séchage sur la souche
+        (&lt;span class=&#x27;g&#x27; data-g=&#x27;passerillage&#x27;&gt;passerillage&lt;/span&gt;) ou du gel (vin de glace, &lt;i&gt;Eiswein&lt;/i&gt;).&lt;/p&gt;
+        &lt;p&gt;La fermentation est arrêtée par le froid, par l’ajout de &lt;span class=&#x27;g&#x27; data-g=&#x27;sulphur&#x27;&gt;dioxyde de soufre&lt;/span&gt; et en éliminant les
+        levures par centrifugation, pasteurisation ou soutirage. Les vins obtenus sont très riches — environ 50 à
+        150 g/L de sucre résiduel. (Une famille voisine, les &lt;i&gt;vins doux naturels&lt;/i&gt; comme le muscat de
+        Beaumes-de-Venise, arrête au contraire la fermentation en ajoutant de l’alcool de raisin : c’est le
+        &lt;span class=&#x27;g&#x27; data-g=&#x27;mutage&#x27;&gt;mutage&lt;/span&gt;.)&lt;/p&gt;
+      " data-en="
+        &lt;p&gt;Sweet wines keep sugar in the finished wine by starting with far riper, more concentrated grapes and then
+        stopping fermentation before the yeast has eaten all the sugar. Concentration can come from
+        &lt;span class=&quot;g&quot;&gt;Botrytis cinerea&lt;/span&gt; (Noble Rot), which shrivels the berries — as in Sauternes, the Loire&#x27;s
+        Quarts-de-Chaume, Alsace Sélection de Grains Nobles, or Tokaji — from drying on the vine
+        (&lt;span class=&quot;g&quot;&gt;passerillage&lt;/span&gt;), or from freezing (ice wine / Eiswein).&lt;/p&gt;
+        &lt;p&gt;Fermentation is halted by chilling, by adding &lt;span class=&quot;g&quot;&gt;sulphur&lt;/span&gt; dioxide, and by removing the
+        yeast through centrifugation, pasteurisation or racking. The resulting wines are extremely rich — roughly
+        50–150 g/L of residual sugar. (A related family, the &lt;i&gt;vins doux naturels&lt;/i&gt; such as Muscat de Beaumes-de-Venise,
+        instead stop fermentation by adding grape spirit — a step called &lt;span class=&quot;g&quot;&gt;mutage&lt;/span&gt;.)&lt;/p&gt;
+      ">
+        <p>Les vins doux gardent du sucre dans le vin fini : on part de raisins bien plus mûrs et concentrés, puis on
+        arrête la fermentation avant que les levures n’aient consommé tout le sucre. La concentration peut venir du
+        <span class='g' data-g='Botrytis cinerea'>Botrytis cinerea</span> (pourriture noble), qui flétrit les baies — comme à Sauternes, en
+        Quarts-de-Chaume dans la Loire, en sélection de grains nobles d’Alsace ou à Tokaj —, du séchage sur la souche
+        (<span class='g' data-g='passerillage'>passerillage</span>) ou du gel (vin de glace, <i>Eiswein</i>).</p>
+        <p>La fermentation est arrêtée par le froid, par l’ajout de <span class='g' data-g='sulphur'>dioxyde de soufre</span> et en éliminant les
+        levures par centrifugation, pasteurisation ou soutirage. Les vins obtenus sont très riches — environ 50 à
+        150 g/L de sucre résiduel. (Une famille voisine, les <i>vins doux naturels</i> comme le muscat de
+        Beaumes-de-Venise, arrête au contraire la fermentation en ajoutant de l’alcool de raisin : c’est le
+        <span class='g' data-g='mutage'>mutage</span>.)</p>
+      </div>
+    </details>
+    <details class="acc rose"><summary data-fr="Le rosé" data-en="Making Rosé">Le rosé</summary>
+      <div class="body" data-fr="
+        &lt;p&gt;Le rosé tient sa couleur d’une courte macération sur les pellicules, et non d’un mélange de rouge et de blanc
+        (interdit pour les vins tranquilles dans l’Union européenne, le champagne étant l’exception notable). Deux
+        méthodes principales : le &lt;b&gt;pressurage direct&lt;/b&gt;, où les raisins noirs sont pressés presque comme des blancs pour
+        une couleur très pâle (le style provençal) ; et la &lt;b&gt;saignée&lt;/b&gt;, où l’on tire un peu de jus rose d’une cuve de
+        rouge après quelques heures de macération, ce qui donne une couleur plus soutenue — et concentre au passage le
+        vin rouge restant. La fermentation et la suite suivent la route du vin blanc.&lt;/p&gt;
+      " data-en="
+        &lt;p&gt;Rosé takes its colour from brief skin contact, not from blending red and white (forbidden for still wine in
+        the EU, with Champagne the notable exception). Two main methods: &lt;b&gt;direct press&lt;/b&gt;, where red grapes are
+        pressed almost like whites for a very pale colour (the Provence style); and &lt;b&gt;saignée&lt;/b&gt; (&quot;bleeding&quot;), where a
+        little pink juice is run off a red-wine vat after a few hours of maceration, giving a deeper colour — and
+        incidentally concentrating the red wine left behind. Fermentation and the rest follow the white-wine road.&lt;/p&gt;
+      ">
+        <p>Le rosé tient sa couleur d’une courte macération sur les pellicules, et non d’un mélange de rouge et de blanc
+        (interdit pour les vins tranquilles dans l’Union européenne, le champagne étant l’exception notable). Deux
+        méthodes principales : le <b>pressurage direct</b>, où les raisins noirs sont pressés presque comme des blancs pour
+        une couleur très pâle (le style provençal) ; et la <b>saignée</b>, où l’on tire un peu de jus rose d’une cuve de
+        rouge après quelques heures de macération, ce qui donne une couleur plus soutenue — et concentre au passage le
+        vin rouge restant. La fermentation et la suite suivent la route du vin blanc.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="prose">
+    <h2 data-fr="Glossaire" data-en="Glossary">Glossaire</h2>
+    <dl class="glist" id="glossary"></dl>
+  </section>
+
+  <footer data-fr="
+    Édition interactive de &lt;i&gt;« Comment se fait le vin »&lt;/i&gt; · A Quick Glance at French Wine · Christophe A. Paul.&lt;br&gt;
+    Fonctionne entièrement hors ligne — un seul fichier autonome.
+  " data-en="
+    Interactive edition of &lt;i&gt;“How Wine Is Made”&lt;/i&gt; · A Quick Glance at French Wine · Chris Paul.&lt;br&gt;
+    Works fully offline — a single self-contained file.
+  ">
+    Édition interactive de <i>« Comment se fait le vin »</i> · A Quick Glance at French Wine · Christophe A. Paul.<br>
+    Fonctionne entièrement hors ligne — un seul fichier autonome.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ---------- GLOSSARY DATA ---------- */
+const GLOSS = {
+  "sulphur":["Sulphur (SO₂)","Sulphur dioxide, the winemaker's main antioxidant and antiseptic. A little protects juice and wine from oxidation and stray microbes; ‘natural’ wines aim to use as little as possible."],
+  "must":["Must — <i>moût</i>","Freshly crushed or pressed grape juice, with (for reds) the skins, pulp and pips, before and during fermentation."],
+  "foudres":["Foudre","A large wooden vat (much bigger than a barrel), used for fermenting or ageing without adding much oak flavour."],
+  "cuvaison":["Cuvaison","The red-wine period when juice, skins and pips macerate together <b>while alcoholic fermentation is happening</b> — this is where colour and tannin are extracted."],
+  "pigeage":["Pigeage","‘Punching down’ — pushing the floating cap of skins back into the juice by hand or paddle to keep colour and tannin extracting."],
+  "remontage":["Remontage","‘Pumping over’ — drawing juice from the bottom of the vat and spraying it over the cap of skins; the mechanical equivalent of pigeage."],
+  "vin de goutte":["Vin de goutte","The ‘free-run’ wine that flows out of the vat under its own weight, before pressing. Usually the finest fraction."],
+  "vin de presse":["Vin de presse","The wine squeezed from the leftover skins (the marc) after the free-run has drained. Darker and more tannic; blended back in part, or kept separate."],
+  "marc":["Marc","The solid cake of skins, pips and pulp left after pressing (the ‘pomace’). Can be distilled into the spirit also called <i>marc</i>."],
+  "malolactic fermentation":["Malolactic fermentation — <i>FML</i>","A second, bacterial fermentation that converts sharp malic acid into softer lactic acid. Standard for reds; optional for whites, where it adds a rounder, ‘buttery’ note."],
+  "malolactique":["Malolactic fermentation","See <i>malolactic fermentation</i>: bacteria convert sharp malic acid into softer lactic acid, rounding the wine."],
+  "macerated":["Maceration","Steeping the juice on the grape skins to extract colour, tannin and flavour. Long for reds, brief or skipped for whites, short for rosés."],
+  "débourbage":["Débourbage","Settling freshly pressed white juice so the coarse solids (‘bourbes’) drop out and clean juice can be racked off before fermentation."],
+  "élevage":["Élevage","Literally ‘raising’ — the ageing/maturation of the wine after fermentation, in barrel, foudre or tank, until it is ready to bottle."],
+  "collage":["Collage — fining","Adding a fining agent (egg white, bentonite clay, gelatine…) that binds to haze and harsh particles and drags them to the bottom, clarifying and softening the wine."],
+  "bentonite":["Bentonite","A natural clay used to fine white wines: it grabs unstable proteins that would otherwise cloud the wine, then settles out."],
+  "vin de garde":["Vin de garde","A wine built to age — with the structure (tannin, acidity, concentration) to improve over years in bottle, as opposed to an early-drinking wine."],
+  "Botrytis cinerea":["Botrytis cinerea — Noble Rot","A benign fungus that, in the right damp-then-dry autumn, shrivels grapes and concentrates their sugar and flavour — the secret of Sauternes, Tokaji and the great sweet wines."],
+  "passerillage":["Passerillage","Drying the grapes to concentrate sugar — left on the vine past ripeness, or on straw mats — without Noble Rot. The basis of many <i>vins de paille</i>."],
+  "mutage":["Mutage","Stopping fermentation by adding neutral grape spirit; it kills the yeast while sugar remains, making fortified <i>vins doux naturels</i> and Port-style wines."],
+  "grand vin":["Grand Vin","A producer's top wine — given the ripest fruit and the most careful (and slowest) élevage."]
+};
+
+/* ---------- STEP DATA ---------- */
+const S = {
+  red:{ label:"Red Wine", cls:"red", steps:[
+    {t:"Harvesting", fr:"Vendange", sub:"Hand- or machine-picked", ph:"Step 1",
+     html:"<p>Grapes are picked either <b>by hand</b> — gentler, and the only option on steep or terraced slopes — or <b>by machine</b>, which is faster and cheaper. Hand-picking allows a first selection of healthy bunches right in the vineyard.</p>",
+     why:"<b>Why it matters:</b> picking date and method set the sugar, acidity and health of the fruit — everything downstream depends on it."},
+    {t:"Sorting", fr:"Triage", sub:"Removing unripe or rotten fruit", ph:"Step 2",
+     html:"<p>On a <b>sorting table</b> (or optical sorter) unripe, raisined or rotten berries and leaves and other debris (MOG) are removed so only sound fruit continues.</p>",
+     why:"<b>Why it matters:</b> a single handful of rot or green fruit can taint a whole vat."},
+    {t:"Crushing & Destemming", fr:"Foulage & Éraflage", sub:"Optional — some keep whole bunches", ph:"Step 3", opt:true,
+     html:"<p>The <b>crusher/destemmer</b> splits the berries to release juice and, usually, strips them off the stalks. Some reds are fermented as <b>whole bunches</b> instead (carbonic maceration in Beaujolais, whole-cluster in the Rhône and Burgundy). A little <span class='g'>sulphur</span> may be added here.</p>",
+     why:"<b>Why it matters:</b> stems add grip and a peppery lift when ripe, but green tannin when not — hence ‘optional’."},
+    {t:"Maceration + Fermentation", fr:"Cuvaison", sub:"Skin contact and alcohol, together", ph:"Step 4",
+     html:"<p>This is the heart of red winemaking. In the vat, yeast turns sugar into alcohol <b>while</b> the juice steeps on the skins — the stage called <span class='g'>cuvaison</span>. The floating cap of skins is worked back in by <span class='g'>pigeage</span> (punching down) or <span class='g'>remontage</span> (pumping over) to extract colour and tannin. Temperature is controlled; it can run 5–21 days.</p>",
+     why:"<b>Why it matters:</b> almost all of a red wine's colour, tannin and structure is built here."},
+    {t:"Pressing", fr:"Pressurage", sub:"Free-run vs press wine", ph:"Step 5", opt:true,
+     html:"<p>The <span class='g'>vin de goutte</span> (free-run) drains off first; the leftover <span class='g'>marc</span> is then pressed to extract the darker, firmer <span class='g'>vin de presse</span>. The winemaker decides how much press wine, if any, to blend back.</p>",
+     why:"<b>Why it matters:</b> press wine adds colour and grip — a little can add depth, too much brings harshness."},
+    {t:"Malolactic Fermentation", fr:"Fermentation malolactique", sub:"Softening the acidity", ph:"Step 6",
+     html:"<p>A second, <b>bacterial</b> fermentation converts sharp malic acid into softer lactic acid. For reds this is essentially always done, and it also stabilises the wine.</p>",
+     why:"<b>Why it matters:</b> it rounds a tart young wine and prevents the change happening later, in bottle."},
+    {t:"Barrel Ageing", fr:"Élevage", sub:"Optional — up to ~24 months", ph:"Step 7", opt:true,
+     html:"<p>A <span class='g'>vin de garde</span> is matured (<span class='g'>élevage</span>) in oak <b>barriques</b> or larger <span class='g'>foudres</span>, sometimes for up to two years. New oak adds spice and tannin; older wood mainly lets the wine breathe and settle.</p>",
+     why:"<b>Why it matters:</b> oak and time knit the tannins together and add complexity — but everyday wines skip it to stay fresh and affordable."},
+    {t:"Fining & Filtering", fr:"Collage & Filtration", sub:"Optional — clarifying the wine", ph:"Step 8", opt:true,
+     html:"<p>To polish the wine before bottling it may be <b>fined</b> — classically with <b>egg white</b> (<span class='g'>collage</span>) — and/or <b>filtered</b>. Both remove haze and harsh particles. Some producers do neither, bottling ‘unfined and unfiltered’.</p>",
+     why:"<b>Why it matters:</b> it makes the wine bright and stable, though heavy filtering can strip a little texture."},
+    {t:"Bottling", fr:"Mise en bouteille", sub:"Ready to sell or cellar", ph:"Step 9",
+     html:"<p>The finished wine is bottled, corked or capped and labelled. Vins de garde may then rest months or years more before release.</p>",
+     why:"<b>Why it matters:</b> the journey from vine to glass is complete — the rest is patience."}
+  ]},
+  white:{ label:"White Wine", cls:"white", steps:[
+    {t:"Harvesting", fr:"Vendange", sub:"Often earlier, to keep acidity", ph:"Step 1",
+     html:"<p>As for red — hand or machine — but whites are frequently picked <b>earlier</b> and in the <b>cool of the morning/night</b> to preserve fresh acidity and aroma.</p>",
+     why:"<b>Why it matters:</b> a white's zip and perfume are easy to lose to over-ripeness or heat."},
+    {t:"Sorting", fr:"Triage", sub:"Removing unwanted fruit", ph:"Step 2",
+     html:"<p>Damaged and unripe berries and debris are removed before pressing.</p>",
+     why:"<b>Why it matters:</b> with no skin-contact to hide behind, faults show quickly in white wine."},
+    {t:"Crushing / Destemming", fr:"Foulage / Éraflage", sub:"Optional — many go straight to press", ph:"Step 3", opt:true,
+     html:"<p>Whites are often <b>whole-bunch pressed</b> with no crushing at all, for the cleanest juice. When crushing is used it is gentle, and skin contact is deliberately brief or skipped.</p>",
+     why:"<b>Why it matters:</b> long skin contact would add colour and phenolic bitterness that most whites don't want."},
+    {t:"Pressing", fr:"Pressurage", sub:"Juice extracted early", ph:"Step 4",
+     html:"<p>Unlike red, whites are <b>pressed before fermentation</b> — the skins are separated straight away and only the juice goes forward. Any leftover <b>residue</b> can be used for basic table wine.</p>",
+     why:"<b>Why it matters:</b> pressing before fermentation is <i>the</i> defining difference between white and red winemaking."},
+    {t:"Débourbage / Clarification", fr:"Débourbage", sub:"Letting the juice settle", ph:"Step 5",
+     html:"<p>The cloudy juice is chilled and left so the coarse solids (‘bourbes’) drop out; the clean juice is racked off the sediment before fermenting. A little <span class='g'>sulphur</span> protects it meanwhile.</p>",
+     why:"<b>Why it matters:</b> fermenting clean juice gives a purer, more precise wine."},
+    {t:"Fermentation", fr:"Fermentation alcoolique", sub:"Cooler than red", ph:"Step 6",
+     html:"<p>Yeast converts sugar to alcohol, usually at <b>cool temperatures</b> (12–18 °C) in tank — or, for the Grands Vins (white Burgundy, top Bordeaux), in oak barrel.</p>",
+     why:"<b>Why it matters:</b> cool, slow fermentation preserves the fragile floral and fruity aromas."},
+    {t:"Malolactic Fermentation", fr:"Fermentation malolactique", sub:"Optional for whites", ph:"Step 7", opt:true,
+     html:"<p>Not automatic for white wine. It is <b>encouraged</b> for richer, oaked styles (white Burgundy) to add a creamy roundness — and <b>blocked</b> for crisp, aromatic styles (Sauvignon, Riesling) to keep them zesty.</p>",
+     why:"<b>Why it matters:</b> the single biggest stylistic choice between a ‘buttery’ and a ‘crisp’ white."},
+    {t:"Fining & Clarification", fr:"Collage", sub:"Often with bentonite", ph:"Step 8", opt:true,
+     html:"<p>Whites are usually fined — commonly with <span class='g'>bentonite</span> clay to remove unstable proteins — and clarified/filtered so they stay bright and won't throw a haze.</p>",
+     why:"<b>Why it matters:</b> a white showing haze on the shelf looks faulty, even if it tastes fine."},
+    {t:"Bottling", fr:"Mise en bouteille", sub:"Usually released young", ph:"Step 9",
+     html:"<p>Most whites are bottled and released young to capture their freshness; a few age-worthy whites are held back.</p>",
+     why:"<b>Why it matters:</b> freshness is the currency of most white wine — speed to bottle protects it."}
+  ]},
+  sweet:{ label:"Sweet & Late-Harvest", cls:"sweet", steps:[
+    {t:"Concentrating the Grapes", fr:"Surmaturité", sub:"Botrytis · drying · freezing", ph:"Step 1",
+     html:"<p>Sweetness starts in the vineyard by super-concentrating the sugar: <span class='g'>Botrytis cinerea</span> (Noble Rot) shrivels the berries (Sauternes, Tokaji, Alsace SGN); <span class='g'>passerillage</span> dries them on the vine or on straw; or the grapes are left to <b>freeze</b> for ice wine.</p>",
+     why:"<b>Why it matters:</b> there is no way to fake this — great sweet wine is made from a fraction of the normal crop."},
+    {t:"Selective Harvest", fr:"Tries successives", sub:"Several passes, berry by berry", ph:"Step 2",
+     html:"<p>Botrytised grapes ripen unevenly, so pickers go through the vineyard <b>several times</b> (<i>tries</i>), taking only the shrivelled berries at their peak. Painstaking and tiny in yield.</p>",
+     why:"<b>Why it matters:</b> this hand labour is why the greatest sweet wines are so rare and costly."},
+    {t:"Pressing", fr:"Pressurage", sub:"Slow — the juice is like syrup", ph:"Step 3",
+     html:"<p>The dehydrated grapes give up very little juice, and slowly. What emerges is intensely sugary must.</p>",
+     why:"<b>Why it matters:</b> yields can be a quarter of a dry wine's — concentration comes at the cost of quantity."},
+    {t:"Fermentation (partial)", fr:"Fermentation partielle", sub:"Stops with sugar remaining", ph:"Step 4",
+     html:"<p>Yeast begins converting sugar to alcohol but <b>cannot finish</b> — the sheer sugar and rising alcohol exhaust it. Fermentation is deliberately <b>stopped</b> by chilling and adding <span class='g'>sulphur</span> while plenty of natural sweetness remains.</p>",
+     why:"<b>Why it matters:</b> the balance of alcohol, sugar and acidity here defines the whole wine."},
+    {t:"Stopping & Stabilising", fr:"Mutage / sulfitage", sub:"Removing the yeast", ph:"Step 5", opt:true,
+     html:"<p>The remaining yeast is removed by chilling, centrifugation, pasteurisation or racking so it can't restart. (For fortified <i>vins doux naturels</i>, fermentation is instead halted by adding grape spirit — <span class='g'>mutage</span>.) Residual sugar typically lands around <b>50–150 g/L</b>.</p>",
+     why:"<b>Why it matters:</b> a bottle that re-ferments would be spoiled — stability is essential for sweet wine."},
+    {t:"Ageing & Bottling", fr:"Élevage & mise", sub:"Often long-lived", ph:"Step 6",
+     html:"<p>Many sweet wines are <span class='g'>élevage</span>-aged (often in barrel) and are famously long-lived, evolving for decades in bottle.</p>",
+     why:"<b>Why it matters:</b> high sugar and acidity act as natural preservatives — these are among the most age-worthy wines of all."}
+  ]},
+  rose:{ label:"Rosé", cls:"rose", steps:[
+    {t:"Harvesting & Sorting", fr:"Vendange & Triage", sub:"Black grapes, picked fresh", ph:"Step 1",
+     html:"<p>Rosé is made from <b>black (red) grapes</b>, usually picked to keep bright acidity, then sorted as for any quality wine.</p>",
+     why:"<b>Why it matters:</b> rosé lives on freshness, so healthy, crisp fruit is key."},
+    {t:"Brief Skin Contact", fr:"Macération courte", sub:"Hours, not days", ph:"Step 2",
+     html:"<p>Colour comes from a <b>short</b> maceration on the skins — just a few hours. Two routes: <b>direct press</b> (pressed almost like a white, very pale — the Provence style) or <b>saignée</b>, where pink juice is ‘bled’ off a red-wine vat.</p>",
+     why:"<b>Why it matters:</b> the length of skin contact is exactly what sets a rosé's colour, from palest pink to vivid."},
+    {t:"Pressing / Running-off", fr:"Pressurage / Saignée", sub:"Separating juice from skins", ph:"Step 3",
+     html:"<p>The lightly-coloured juice is separated from the skins. In the <b>saignée</b> method the red wine left behind is concentrated as a by-product.</p>",
+     why:"<b>Why it matters:</b> note EU rules forbid blending red + white to make still rosé — the colour must come from the skins."},
+    {t:"Cool Fermentation", fr:"Fermentation", sub:"Like a white wine", ph:"Step 4",
+     html:"<p>From here rosé follows the <b>white-wine road</b>: the juice ferments cool in tank to keep its delicate red-fruit and floral aromas.</p>",
+     why:"<b>Why it matters:</b> temperature control protects the fresh, fruity character rosé is loved for."},
+    {t:"Fining & Bottling", fr:"Collage & Mise", sub:"Released young", ph:"Step 5", opt:true,
+     html:"<p>Lightly fined and clarified, then bottled early. The vast majority of rosé is made to be drunk within a year, chilled.</p>",
+     why:"<b>Why it matters:</b> rosé is at its best young and fresh — most isn't meant to age."}
+  ]}
+};
+
+/* ---------- FRENCH DATA (2026-10-19) — same keys; `fr` holds the English name in this set ---------- */
+const GLOSS_FR = {
+ "sulphur": [
+  "Soufre (SO₂) — <i>sulphur</i>",
+  "Le dioxyde de soufre, principal antioxydant et antiseptique du vigneron. Un peu protège le jus et le vin de l’oxydation et des micro-organismes indésirables ; les vins « nature » cherchent à en mettre le moins possible."
+ ],
+ "must": [
+  "Moût — <i>must</i>",
+  "Le jus de raisin fraîchement foulé ou pressé, avec (pour les rouges) les pellicules, la pulpe et les pépins, avant et pendant la fermentation."
+ ],
+ "foudres": [
+  "Foudre",
+  "Une grande cuve en bois (bien plus grande qu’une barrique), utilisée pour fermenter ou élever le vin sans lui donner beaucoup de goût boisé."
+ ],
+ "cuvaison": [
+  "Cuvaison",
+  "La période où, pour un vin rouge, jus, pellicules et pépins macèrent ensemble <b>pendant la fermentation alcoolique</b> : c’est là que s’extraient la couleur et les tanins."
+ ],
+ "pigeage": [
+  "Pigeage — <i>punching down</i>",
+  "Enfoncer le chapeau de marc qui flotte dans le jus, à la main ou au pigeou, pour continuer d’extraire couleur et tanins."
+ ],
+ "remontage": [
+  "Remontage — <i>pumping over</i>",
+  "Tirer le jus du bas de la cuve et l’arroser sur le chapeau de marc : l’équivalent mécanique du pigeage."
+ ],
+ "vin de goutte": [
+  "Vin de goutte — <i>free-run wine</i>",
+  "Le vin qui s’écoule de la cuve par simple gravité, avant tout pressurage. Généralement la fraction la plus fine."
+ ],
+ "vin de presse": [
+  "Vin de presse — <i>press wine</i>",
+  "Le vin extrait en pressant le marc une fois le vin de goutte écoulé. Plus coloré et plus tannique ; assemblé en partie, ou gardé à part."
+ ],
+ "marc": [
+  "Marc — <i>pomace</i>",
+  "Le gâteau de pellicules, pépins et pulpe qui reste après le pressurage. Il peut être distillé pour faire l’eau-de-vie qui porte aussi le nom de <i>marc</i>."
+ ],
+ "malolactic fermentation": [
+  "Fermentation malolactique — <i>FML</i>",
+  "Une seconde fermentation, due à des bactéries, qui transforme l’acide malique, mordant, en acide lactique, plus doux. Systématique pour les rouges ; facultative pour les blancs, à qui elle donne une note plus ronde, « beurrée »."
+ ],
+ "malolactique": [
+  "Fermentation malolactique",
+  "Voir <i>fermentation malolactique</i> : des bactéries transforment l’acide malique, mordant, en acide lactique, plus doux, ce qui arrondit le vin."
+ ],
+ "macerated": [
+  "Macération",
+  "Laisser le jus au contact des pellicules pour en extraire couleur, tanins et arômes. Longue pour les rouges, brève ou absente pour les blancs, courte pour les rosés."
+ ],
+ "débourbage": [
+  "Débourbage",
+  "Laisser reposer le jus blanc fraîchement pressé pour que les grosses particules (les « bourbes ») tombent au fond, puis soutirer le jus clair avant la fermentation."
+ ],
+ "élevage": [
+  "Élevage",
+  "Littéralement « élever » le vin : sa maturation après la fermentation, en barrique, en foudre ou en cuve, jusqu’à ce qu’il soit prêt à être mis en bouteille."
+ ],
+ "collage": [
+  "Collage — <i>fining</i>",
+  "Ajouter une colle (blanc d’œuf, bentonite, gélatine…) qui fixe les troubles et les particules dures et les entraîne au fond : le vin s’éclaircit et s’assouplit."
+ ],
+ "bentonite": [
+  "Bentonite",
+  "Une argile naturelle utilisée pour coller les vins blancs : elle capte les protéines instables qui troubleraient le vin, puis se dépose."
+ ],
+ "vin de garde": [
+  "Vin de garde",
+  "Un vin fait pour vieillir — avec la structure (tanins, acidité, concentration) pour s’améliorer des années en bouteille, par opposition à un vin à boire jeune."
+ ],
+ "Botrytis cinerea": [
+  "Botrytis cinerea — pourriture noble",
+  "Un champignon bienfaisant qui, lors d’un automne humide puis sec, flétrit les raisins et concentre leur sucre et leurs arômes : le secret du sauternes, du tokaji et des grands liquoreux."
+ ],
+ "passerillage": [
+  "Passerillage",
+  "Faire sécher les raisins pour concentrer leur sucre — laissés sur la vigne au-delà de la maturité, ou sur des claies de paille — sans pourriture noble. La base de nombreux <i>vins de paille</i>."
+ ],
+ "mutage": [
+  "Mutage",
+  "Arrêter la fermentation en ajoutant de l’alcool neutre de raisin : il tue les levures alors qu’il reste du sucre, ce qui donne les <i>vins doux naturels</i> et les vins de type porto."
+ ],
+ "grand vin": [
+  "Grand vin",
+  "Le vin le plus prestigieux d’un producteur — issu des raisins les plus mûrs et de l’élevage le plus soigné (et le plus long)."
+ ]
+};
+const S_FR = {
+ "red": {
+  "label": "Vin rouge",
+  "cls": "red",
+  "steps": [
+   {
+    "t": "Vendange",
+    "fr": "Harvesting",
+    "sub": "À la main ou à la machine",
+    "ph": "Étape 1",
+    "html": "<p>Les raisins sont cueillis soit <b>à la main</b> — plus délicatement, et c’est la seule solution sur les coteaux raides ou en terrasses — soit <b>à la machine</b>, plus rapide et moins chère. La vendange manuelle permet un premier tri des grappes saines dès la vigne.</p>",
+    "why": "<b>Pourquoi c’est important :</b> la date et le mode de cueillette fixent le sucre, l’acidité et l’état sanitaire des raisins — tout le reste en dépend."
+   },
+   {
+    "t": "Tri",
+    "fr": "Sorting",
+    "sub": "Écarter les fruits verts ou pourris",
+    "ph": "Étape 2",
+    "html": "<p>Sur une <b>table de tri</b> (ou un trieur optique), on retire les baies vertes, passerillées ou pourries, les feuilles et autres débris, pour ne garder que des fruits sains.</p>",
+    "why": "<b>Pourquoi c’est important :</b> une simple poignée de pourri ou de raisins verts peut gâter toute une cuve."
+   },
+   {
+    "t": "Foulage & éraflage",
+    "fr": "Crushing & Destemming",
+    "sub": "Facultatif — certains gardent les grappes entières",
+    "ph": "Étape 3",
+    "html": "<p>L’<b>érafloir-fouloir</b> fait éclater les baies pour libérer le jus et, le plus souvent, les détache de la rafle. Certains rouges sont vinifiés en <b>grappes entières</b> (macération carbonique dans le Beaujolais, vendange entière dans le Rhône et en Bourgogne). On peut ajouter ici un peu de <span class='g' data-g='sulphur'>soufre</span>.</p>",
+    "why": "<b>Pourquoi c’est important :</b> mûres, les rafles apportent de la tenue et une note poivrée ; vertes, des tanins durs — d’où « facultatif ».",
+    "opt": true
+   },
+   {
+    "t": "Cuvaison",
+    "fr": "Maceration + Fermentation",
+    "sub": "Macération et fermentation, ensemble",
+    "ph": "Étape 4",
+    "html": "<p>C’est le cœur de la vinification en rouge. Dans la cuve, les levures transforment le sucre en alcool <b>pendant</b> que le jus macère avec les pellicules : c’est la <span class='g' data-g='cuvaison'>cuvaison</span>. Le chapeau de marc qui flotte est réincorporé par <span class='g' data-g='pigeage'>pigeage</span> ou par <span class='g' data-g='remontage'>remontage</span> pour extraire couleur et tanins. La température est contrôlée ; l’étape peut durer de quelques jours à plusieurs semaines.</p>",
+    "why": "<b>Pourquoi c’est important :</b> presque toute la couleur, les tanins et la structure d’un vin rouge se construisent ici."
+   },
+   {
+    "t": "Pressurage",
+    "fr": "Pressing",
+    "sub": "Vin de goutte et vin de presse",
+    "ph": "Étape 5",
+    "html": "<p>Le <span class='g' data-g='vin de goutte'>vin de goutte</span> s’écoule d’abord ; le <span class='g' data-g='marc'>marc</span> restant est ensuite pressé pour en tirer le <span class='g' data-g='vin de presse'>vin de presse</span>, plus sombre et plus ferme. Le vigneron décide quelle part de vin de presse réassembler, ou pas.</p>",
+    "why": "<b>Pourquoi c’est important :</b> le vin de presse apporte couleur et mâche — un peu donne de la profondeur, trop rend le vin dur.",
+    "opt": true
+   },
+   {
+    "t": "Fermentation malolactique",
+    "fr": "Malolactic Fermentation",
+    "sub": "Assouplir l’acidité",
+    "ph": "Étape 6",
+    "html": "<p>Une seconde fermentation, due à des <b>bactéries</b>, transforme l’acide malique, mordant, en acide lactique, plus doux. Pour les rouges, elle est pratiquement toujours faite, et elle stabilise aussi le vin.</p>",
+    "why": "<b>Pourquoi c’est important :</b> elle arrondit un vin jeune et acide, et évite que la transformation se fasse plus tard, en bouteille."
+   },
+   {
+    "t": "Élevage en barrique",
+    "fr": "Barrel Ageing",
+    "sub": "Facultatif — jusqu’à ~24 mois",
+    "ph": "Étape 7",
+    "html": "<p>Un <span class='g' data-g='vin de garde'>vin de garde</span> est élevé (<span class='g' data-g='élevage'>élevage</span>) en <b>barriques</b> de chêne ou en <span class='g' data-g='foudres'>foudres</span> plus grands, parfois jusqu’à deux ans. Le bois neuf apporte des notes épicées et des tanins ; le bois plus ancien laisse surtout le vin respirer et se poser.</p>",
+    "why": "<b>Pourquoi c’est important :</b> le bois et le temps fondent les tanins et ajoutent de la complexité — mais les vins de tous les jours s’en passent pour rester frais et abordables.",
+    "opt": true
+   },
+   {
+    "t": "Collage & filtration",
+    "fr": "Fining & Filtering",
+    "sub": "Facultatif — clarifier le vin",
+    "ph": "Étape 8",
+    "html": "<p>Pour polir le vin avant la mise en bouteille, on peut le <b>coller</b> — traditionnellement au <b>blanc d’œuf</b> (<span class='g' data-g='collage'>collage</span>) — et/ou le <b>filtrer</b>. Les deux éliminent les troubles et les particules dures. Certains producteurs ne font ni l’un ni l’autre et mettent en bouteille « non collé, non filtré ».</p>",
+    "why": "<b>Pourquoi c’est important :</b> le vin devient limpide et stable, même si une filtration poussée peut lui enlever un peu de texture.",
+    "opt": true
+   },
+   {
+    "t": "Mise en bouteille",
+    "fr": "Bottling",
+    "sub": "Prêt à vendre ou à garder",
+    "ph": "Étape 9",
+    "html": "<p>Le vin terminé est mis en bouteille, bouché ou capsulé, puis étiqueté. Les vins de garde peuvent encore reposer des mois ou des années avant leur mise en vente.</p>",
+    "why": "<b>Pourquoi c’est important :</b> le voyage de la vigne au verre est achevé — le reste est affaire de patience."
+   }
+  ]
+ },
+ "white": {
+  "label": "Vin blanc",
+  "cls": "white",
+  "steps": [
+   {
+    "t": "Vendange",
+    "fr": "Harvesting",
+    "sub": "Souvent plus tôt, pour garder l’acidité",
+    "ph": "Étape 1",
+    "html": "<p>Comme pour le rouge — à la main ou à la machine — mais les blancs sont souvent cueillis <b>plus tôt</b> et à la <b>fraîcheur du matin ou de la nuit</b>, pour préserver l’acidité et les arômes.</p>",
+    "why": "<b>Pourquoi c’est important :</b> la vivacité et le parfum d’un blanc se perdent vite avec la surmaturité ou la chaleur."
+   },
+   {
+    "t": "Tri",
+    "fr": "Sorting",
+    "sub": "Écarter les fruits indésirables",
+    "ph": "Étape 2",
+    "html": "<p>Les baies abîmées ou vertes et les débris sont retirés avant le pressurage.</p>",
+    "why": "<b>Pourquoi c’est important :</b> sans macération pour les masquer, les défauts se voient vite dans un vin blanc."
+   },
+   {
+    "t": "Foulage / éraflage",
+    "fr": "Crushing / Destemming",
+    "sub": "Facultatif — souvent pressurage direct",
+    "ph": "Étape 3",
+    "html": "<p>Les blancs sont souvent <b>pressés en grappes entières</b>, sans foulage, pour obtenir le jus le plus net. Quand on foule, c’est en douceur, et le contact avec les pellicules est volontairement bref ou absent.</p>",
+    "why": "<b>Pourquoi c’est important :</b> une longue macération donnerait de la couleur et une amertume phénolique que la plupart des blancs ne recherchent pas.",
+    "opt": true
+   },
+   {
+    "t": "Pressurage",
+    "fr": "Pressing",
+    "sub": "Le jus est extrait tout de suite",
+    "ph": "Étape 4",
+    "html": "<p>Contrairement au rouge, les blancs sont <b>pressés avant la fermentation</b> : les pellicules sont séparées tout de suite et seul le jus continue. Le <b>résidu</b> peut servir pour du vin de table ordinaire.</p>",
+    "why": "<b>Pourquoi c’est important :</b> presser avant de fermenter est <i>la</i> différence fondamentale entre vinification en blanc et en rouge."
+   },
+   {
+    "t": "Débourbage",
+    "fr": "Débourbage / Clarification",
+    "sub": "Laisser reposer le jus",
+    "ph": "Étape 5",
+    "html": "<p>Le jus trouble est refroidi et laissé au repos pour que les grosses particules (les « bourbes ») tombent ; le jus clair est soutiré avant la fermentation. Un peu de <span class='g' data-g='sulphur'>soufre</span> le protège entre-temps.</p>",
+    "why": "<b>Pourquoi c’est important :</b> fermenter un jus propre donne un vin plus pur et plus précis."
+   },
+   {
+    "t": "Fermentation alcoolique",
+    "fr": "Fermentation",
+    "sub": "Plus fraîche que pour le rouge",
+    "ph": "Étape 6",
+    "html": "<p>Les levures transforment le sucre en alcool, généralement à <b>basse température</b> (12–18 °C) en cuve — ou, pour les grands vins (blancs de Bourgogne, grands bordeaux), en barrique de chêne.</p>",
+    "why": "<b>Pourquoi c’est important :</b> une fermentation fraîche et lente préserve les arômes fragiles, floraux et fruités."
+   },
+   {
+    "t": "Fermentation malolactique",
+    "fr": "Malolactic Fermentation",
+    "sub": "Facultative pour les blancs",
+    "ph": "Étape 7",
+    "html": "<p>Elle n’est pas automatique pour les blancs. On la <b>favorise</b> pour les styles riches, élevés sous bois (blancs de Bourgogne), pour leur donner une rondeur crémeuse — et on la <b>bloque</b> pour les styles vifs et aromatiques (sauvignon, riesling), pour garder leur fraîcheur.</p>",
+    "why": "<b>Pourquoi c’est important :</b> c’est le choix de style le plus décisif entre un blanc « beurré » et un blanc « vif ».",
+    "opt": true
+   },
+   {
+    "t": "Collage & clarification",
+    "fr": "Fining & Clarification",
+    "sub": "Souvent à la bentonite",
+    "ph": "Étape 8",
+    "html": "<p>Les blancs sont généralement collés — souvent avec de l’argile, la <span class='g' data-g='bentonite'>bentonite</span>, qui retire les protéines instables — puis clarifiés ou filtrés pour rester limpides et ne pas se troubler.</p>",
+    "why": "<b>Pourquoi c’est important :</b> un blanc trouble en rayon paraît défectueux, même s’il est bon.",
+    "opt": true
+   },
+   {
+    "t": "Mise en bouteille",
+    "fr": "Bottling",
+    "sub": "Le plus souvent vendu jeune",
+    "ph": "Étape 9",
+    "html": "<p>La plupart des blancs sont mis en bouteille et vendus jeunes pour saisir leur fraîcheur ; quelques blancs de garde sont gardés plus longtemps.</p>",
+    "why": "<b>Pourquoi c’est important :</b> la fraîcheur est la valeur première de la plupart des blancs — une mise rapide la protège."
+   }
+  ]
+ },
+ "sweet": {
+  "label": "Liquoreux & vendanges tardives",
+  "cls": "sweet",
+  "steps": [
+   {
+    "t": "Concentrer les raisins",
+    "fr": "Concentrating the Grapes",
+    "sub": "Botrytis · séchage · gel",
+    "ph": "Étape 1",
+    "html": "<p>La douceur commence à la vigne, en concentrant le sucre à l’extrême : le <span class='g' data-g='Botrytis cinerea'>Botrytis cinerea</span> (pourriture noble) flétrit les baies (sauternes, tokaji, sélection de grains nobles d’Alsace) ; le <span class='g' data-g='passerillage'>passerillage</span> les sèche sur la souche ou sur la paille ; ou bien on laisse les raisins <b>geler</b> pour le vin de glace.</p>",
+    "why": "<b>Pourquoi c’est important :</b> impossible de tricher — un grand liquoreux se fait avec une fraction de la récolte normale."
+   },
+   {
+    "t": "Tries successives",
+    "fr": "Selective Harvest",
+    "sub": "Plusieurs passages, baie par baie",
+    "ph": "Étape 2",
+    "html": "<p>Les raisins botrytisés mûrissent inégalement : les vendangeurs passent <b>plusieurs fois</b> dans la vigne (les <i>tries</i>), en ne prenant que les baies flétries à leur optimum. Un travail minutieux pour un rendement minuscule.</p>",
+    "why": "<b>Pourquoi c’est important :</b> ce travail manuel explique la rareté et le prix des plus grands liquoreux."
+   },
+   {
+    "t": "Pressurage",
+    "fr": "Pressing",
+    "sub": "Lent — le jus est un sirop",
+    "ph": "Étape 3",
+    "html": "<p>Les raisins déshydratés ne donnent que très peu de jus, et lentement. Il en sort un moût extrêmement sucré.</p>",
+    "why": "<b>Pourquoi c’est important :</b> les rendements peuvent tomber au quart de ceux d’un vin sec — la concentration se paie en quantité."
+   },
+   {
+    "t": "Fermentation partielle",
+    "fr": "Fermentation (partial)",
+    "sub": "S’arrête avec du sucre restant",
+    "ph": "Étape 4",
+    "html": "<p>Les levures commencent à transformer le sucre en alcool mais <b>ne peuvent pas finir</b> : la masse de sucre et l’alcool qui monte les épuisent. La fermentation est volontairement <b>arrêtée</b> par le froid et l’ajout de <span class='g' data-g='sulphur'>soufre</span> alors qu’il reste beaucoup de sucre naturel.</p>",
+    "why": "<b>Pourquoi c’est important :</b> l’équilibre entre alcool, sucre et acidité trouvé ici définit tout le vin."
+   },
+   {
+    "t": "Mutage / sulfitage",
+    "fr": "Stopping & Stabilising",
+    "sub": "Éliminer les levures",
+    "ph": "Étape 5",
+    "html": "<p>Les levures restantes sont éliminées par le froid, la centrifugation, la pasteurisation ou le soutirage, pour qu’elles ne repartent pas. (Pour les <i>vins doux naturels</i>, la fermentation est arrêtée en ajoutant de l’alcool de raisin : le <span class='g' data-g='mutage'>mutage</span>.) Le sucre résiduel se situe le plus souvent vers <b>50–150 g/L</b>.</p>",
+    "why": "<b>Pourquoi c’est important :</b> une bouteille qui refermenterait serait perdue — la stabilité est indispensable pour un vin doux.",
+    "opt": true
+   },
+   {
+    "t": "Élevage & mise",
+    "fr": "Ageing & Bottling",
+    "sub": "Souvent très longue garde",
+    "ph": "Étape 6",
+    "html": "<p>Beaucoup de liquoreux font un long <span class='g' data-g='élevage'>élevage</span> (souvent en barrique) et sont réputés pour leur longévité : ils évoluent pendant des décennies en bouteille.</p>",
+    "why": "<b>Pourquoi c’est important :</b> le sucre et l’acidité sont des conservateurs naturels — ce sont parmi les vins de plus longue garde."
+   }
+  ]
+ },
+ "rose": {
+  "label": "Rosé",
+  "cls": "rose",
+  "steps": [
+   {
+    "t": "Vendange & tri",
+    "fr": "Harvesting & Sorting",
+    "sub": "Raisins noirs, cueillis frais",
+    "ph": "Étape 1",
+    "html": "<p>Le rosé se fait avec des <b>raisins noirs</b>, en général cueillis pour garder une acidité vive, puis triés comme pour tout vin de qualité.</p>",
+    "why": "<b>Pourquoi c’est important :</b> le rosé vit de sa fraîcheur : il faut des raisins sains et croquants."
+   },
+   {
+    "t": "Macération courte",
+    "fr": "Brief Skin Contact",
+    "sub": "Quelques heures, pas des jours",
+    "ph": "Étape 2",
+    "html": "<p>La couleur vient d’une macération <b>courte</b> sur les pellicules — quelques heures seulement. Deux voies : le <b>pressurage direct</b> (pressé presque comme un blanc, très pâle — le style provençal) ou la <b>saignée</b>, où l’on « saigne » du jus rose d’une cuve de rouge.</p>",
+    "why": "<b>Pourquoi c’est important :</b> la durée de macération fixe exactement la couleur d’un rosé, du plus pâle au plus soutenu."
+   },
+   {
+    "t": "Pressurage / saignée",
+    "fr": "Pressing / Running-off",
+    "sub": "Séparer le jus des pellicules",
+    "ph": "Étape 3",
+    "html": "<p>Le jus légèrement coloré est séparé des pellicules. Avec la <b>saignée</b>, le vin rouge resté dans la cuve s’en trouve concentré.</p>",
+    "why": "<b>Pourquoi c’est important :</b> la réglementation européenne interdit de mélanger rouge et blanc pour faire un rosé tranquille — la couleur doit venir des pellicules."
+   },
+   {
+    "t": "Fermentation fraîche",
+    "fr": "Cool Fermentation",
+    "sub": "Comme pour un blanc",
+    "ph": "Étape 4",
+    "html": "<p>À partir d’ici, le rosé suit la <b>route du vin blanc</b> : le jus fermente au frais en cuve pour garder ses arômes délicats de fruits rouges et de fleurs.</p>",
+    "why": "<b>Pourquoi c’est important :</b> la maîtrise de la température protège le caractère frais et fruité qu’on aime dans le rosé."
+   },
+   {
+    "t": "Collage & mise",
+    "fr": "Fining & Bottling",
+    "sub": "Vendu jeune",
+    "ph": "Étape 5",
+    "html": "<p>Légèrement collé et clarifié, puis mis en bouteille tôt. L’immense majorité des rosés est faite pour être bue fraîche dans l’année.</p>",
+    "why": "<b>Pourquoi c’est important :</b> le rosé est à son meilleur jeune et frais — la plupart ne sont pas faits pour vieillir.",
+    "opt": true
+   }
+  ]
+ }
+};
+
+/* ---------- LANGUAGE (2026-10-19): French by default, English via the site menu ---------- */
+const isEN = () => document.documentElement.lang === 'en';
+const SS = () => (isEN() ? S : S_FR);
+const GG = () => (isEN() ? GLOSS : GLOSS_FR);
+const UI = k => ({optional: isEN() ? 'optional' : 'facultatif'})[k];
+
+/* ---------- RENDER ---------- */
+const flowsEl = document.getElementById('flows');
+const detailEl = document.getElementById('detail');
+const emptyEl = document.getElementById('empty');
+let selected = null; // {key, idx}
+
+function buildFlow(key){
+  const d = SS()[key];
+  const f = document.createElement('div');
+  f.className = 'flow '+d.cls;
+  f.innerHTML = '<h2>'+d.label+'</h2>';
+  d.steps.forEach((st,i)=>{
+    if(i>0){ const a=document.createElement('div'); a.className='arrow'; a.textContent='▼'; f.appendChild(a); }
+    const n=document.createElement('div');
+    n.className='node'; n.dataset.key=key; n.dataset.idx=i;
+    n.innerHTML='<div class="n-title">'+st.t+(st.opt?' <span class="badge">'+UI('optional')+'</span>':'')+'</div>'+
+                '<div class="n-fr">'+st.fr+'</div>'+
+                (st.sub?'<div class="n-sub">'+st.sub+'</div>':'');
+    n.addEventListener('click',()=>select(key,i));
+    f.appendChild(n);
+  });
+  return f;
+}
+
+function select(key,i){
+  document.querySelectorAll('.node.active').forEach(n=>n.classList.remove('active'));
+  const node=document.querySelector('.node[data-key="'+key+'"][data-idx="'+i+'"]');
+  if(node) node.classList.add('active');
+  const st=SS()[key].steps[i];
+  emptyEl.style.display='none'; detailEl.style.display='block';
+  detailEl.innerHTML =
+    '<div class="ph">'+SS()[key].label+' · '+st.ph+(st.opt?' · '+UI('optional'):'')+'</div>'+
+    '<h3>'+st.t+'</h3>'+
+    '<p class="fr">'+st.fr+'</p>'+
+    st.html+
+    '<div class="why">'+st.why+'</div>';
+  wireGloss(detailEl);
+  if(window.innerWidth<=900 && node) document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* tabs */
+const shown = new Set(['red','white']);
+function renderTabs(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',shown.has(t.dataset.k)));
+}
+function renderFlows(){
+  flowsEl.innerHTML='';
+  ['red','white','sweet','rose'].forEach(k=>{ if(shown.has(k)) flowsEl.appendChild(buildFlow(k)); });
+  wireGloss(flowsEl);
+  // keep selection valid
+  if(selected && shown.has(selected.key)) select(selected.key,selected.idx);
+  else { detailEl.style.display='none'; emptyEl.style.display='block'; }
+}
+document.getElementById('tabs').addEventListener('click',e=>{
+  const t=e.target.closest('.tab'); if(!t) return;
+  const k=t.dataset.k;
+  if(shown.has(k)){ if(shown.size>1) shown.delete(k); }
+  else shown.add(k);
+  renderTabs(); renderFlows();
+});
+// track selection
+const _select=select;
+select=function(key,i){ selected={key,idx:i}; _select(key,i); };
+
+/* ---------- GLOSSARY LIST ---------- */
+const gEl=document.getElementById('glossary');
+function renderGloss(){
+  const G=GG(); gEl.innerHTML='';
+  Object.keys(G).sort((a,b)=>G[a][0].localeCompare(G[b][0],isEN()?'en':'fr')).forEach(k=>{
+    // avoid duplicate display entries (malolactique/malolactic map to same idea)
+    if(k==='malolactique') return;
+    const d=document.createElement('div'); d.className='glitem';
+    d.innerHTML='<dt>'+G[k][0]+'</dt><dd>'+G[k][1]+'</dd>';
+    gEl.appendChild(d);
+  });
+}
+renderGloss();
+
+/* ---------- TOOLTIPS on .g terms ---------- */
+const tip=document.getElementById('tip');
+function lookup(text){
+  const G=GG();
+  const key=text.toLowerCase().trim().replace(/[.,;:]$/,'');
+  if(G[key]) return G[key];
+  for(const k in G){ if(k.toLowerCase()===key) return G[k]; }
+  // partials
+  if(key.includes('malolactic')) return G['malolactic fermentation'];
+  if(key.includes('botrytis')) return G['Botrytis cinerea'];
+  if(key.includes('foudre')) return G['foudres'];
+  if(key.includes('macerat')) return G['macerated'];
+  if(key.includes('grand vin')) return G['grand vin'];
+  return null;
+}
+function wireGloss(scope){
+  scope.querySelectorAll('.g').forEach(el=>{
+    if(el.dataset.wired) return; el.dataset.wired='1';
+    el.addEventListener('mouseenter',ev=>{
+      const g=lookup(el.dataset.g||el.textContent); if(!g) return;
+      tip.innerHTML='<b>'+g[0]+'</b><br>'+g[1];
+      tip.style.opacity='1'; moveTip(ev);
+    });
+    el.addEventListener('mousemove',moveTip);
+    el.addEventListener('mouseleave',()=>{tip.style.opacity='0';});
+    el.addEventListener('click',()=>{ // jump to glossary on tap (mobile)
+      document.getElementById('glossary').scrollIntoView({behavior:'smooth'});
+    });
+  });
+}
+function moveTip(ev){
+  let x=ev.clientX+14, y=ev.clientY+16;
+  if(x+270>window.innerWidth) x=window.innerWidth-274;
+  if(y+120>window.innerHeight) y=ev.clientY-120;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+
+/* init */
+renderTabs(); renderFlows();
+
+/* redraw the script-built parts when the site menu switches FR/EN (it also swaps the static text) */
+new MutationObserver(() => { renderFlows(); renderGloss(); setTimeout(() => wireGloss(document), 0); })
+  .observe(document.documentElement, {attributes: true, attributeFilter: ['lang']});
+
+</script><!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="dark"] body{color:#ccb4a3;background:#280a11;background-image:radial-gradient(circle at 20% 10%,rgba(58,17,27,0.35),rgba(0,0,0,0) 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,0.10),rgba(0,0,0,0) 55%)}
+html[data-theme="dark"] header.top{background:linear-gradient(#3a111b,#280a11)}
+html[data-theme="dark"] header.top h1{color:#ccb4a3}
+html[data-theme="dark"] header.top p{color:#f1e8d8}
+html[data-theme="dark"] .tab{border:1px solid rgba(217,179,107,0.40);background:#3a111b;color:#f1e8d8}
+html[data-theme="dark"] .tab:hover{box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .hint{color:#f1e8d8}
+html[data-theme="dark"] .node{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .node .n-fr{color:#f1e8d8}
+html[data-theme="dark"] .node .n-sub{color:#f1e8d8}
+html[data-theme="dark"] .badge{background:#280a11;color:#f1e8d8;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] .arrow{color:#d897a3}
+html[data-theme="dark"] .panel{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .panel .ph{color:#e4c68b}
+html[data-theme="dark"] .panel .fr{color:#f1e8d8}
+html[data-theme="dark"] .panel .why{background:#280a11}
+html[data-theme="dark"] .panel .why b{color:#ed8391}
+html[data-theme="dark"] .panel .empty{color:#f1e8d8}
+html[data-theme="dark"] .g,html[data-theme="dark"] .gdemo{color:#ed8391}
+html[data-theme="dark"] details.acc{background:#3a111b;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] details.acc>summary::after{color:#e4c68b}
+html[data-theme="dark"] details.acc .body{color:#ccb4a3}
+html[data-theme="dark"] .glitem dt{color:#ed8391}
+html[data-theme="dark"] .glitem dd{color:#ccb4a3}
+html[data-theme="dark"] .glitem dd .en{color:#f1e8d8}
+html[data-theme="dark"] footer{color:#f1e8d8}
+html[data-theme="dark"] #tip{box-shadow:0 4px 14px rgba(0,0,0,0.56)}
+html[data-theme="dark"] #tip b{color:#e7ce88}
+
+</style><!--fw-theme:end-->
+

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Les ennemis de la vigne</title>
+<meta name="description" content="Maladies, ravageurs et accidents climatiques de la vigne : mildiou, oïdium, black rot, botrytis, esca, flavescence dorée, cicadelles, phylloxéra.">
+<style>
+@@BASE_CSS@@
+  /* calendar */
+  .cal{padding:clamp(14px,2.4vw,26px);overflow-x:auto;}
+  .cal-inner{min-width:640px;}
+  .cal-row{display:grid;grid-template-columns:minmax(150px,1.5fr) repeat(12,minmax(0,1fr));gap:3px;align-items:center;margin-bottom:3px;}
+  .cal-lbl{font-size:13px;display:flex;align-items:center;gap:8px;padding-right:8px;}
+  @media (max-width:700px){.cal-inner{min-width:560px;}.cal-row{grid-template-columns:118px repeat(12,minmax(0,1fr));}
+    .cal{padding-left:0;}.cal-key{padding-left:12px;}
+    .cal-lbl{position:sticky;left:0;z-index:1;background:var(--solid);font-size:12px;align-self:stretch;padding-left:12px;}}
+  .cal-lbl i{width:8px;height:8px;border-radius:50%;background:var(--c);flex:none;}
+  .cal-lbl a{text-decoration:none;border-bottom:1px dotted var(--faint);}
+  .cal-lbl a:hover{color:var(--gold-soft);}
+  .cal-head .cal-m{text-align:center;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:.08em;}
+  .cal-stages{margin:4px 0 10px;}
+  .cal-stages .cal-lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);grid-column:1;}
+  .stage{grid-row:1;font-size:10.5px;text-align:center;padding:5px 2px;border-radius:6px;background:var(--track);color:var(--muted);
+    border:1px dashed var(--hair);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cell{height:20px;border-radius:5px;background:var(--track);}
+  .cell.v1{background:color-mix(in srgb,var(--c) 38%,transparent);}
+  .cell.v2{background:var(--c);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.22) 0 3px,transparent 3px 7px);}
+  .cal-key{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--muted);}
+  .cal-key span{display:inline-flex;align-items:center;gap:7px;}
+  .cal-key .sw{width:26px;height:12px;border-radius:4px;--c:#9a6a1f;}
+
+  /* others */
+  .others{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;}
+  .other{padding:16px 18px;border-radius:16px;background:var(--glass);border:1px solid var(--hair);border-top:3px solid var(--c);}
+  .other h3{font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);margin:10px 0 6px;}
+  .other p{margin:0 0 8px;font-size:14px;line-height:1.6;}
+  .other .how{font-size:13px;color:var(--muted);margin:0;}
+  .other .how b{color:var(--gold);font-weight:600;}
+
+  /* timeline */
+  .tl{list-style:none;margin:0;padding:clamp(18px,3vw,30px);display:grid;grid-template-columns:repeat(5,1fr);gap:22px 16px;position:relative;}
+  .tl li{position:relative;padding-top:18px;border-top:2px solid var(--c);}
+  .tl li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--glass-hi);}
+  .tl .yr{display:block;font-family:var(--serif);font-size:24px;color:var(--title);margin-bottom:4px;}
+  .tl .ev{font-size:13px;line-height:1.5;color:var(--muted);}
+
+  @media (max-width:900px){.tl{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.tl{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 7" data-en="The vine &amp; the vineyard · Chapter 7">La vigne &amp; le vignoble · Chapitre 7</p>
+    <h1 data-fr="Les ennemis <em>de la vigne</em>" data-en="Threats <em>to the vine</em>">Les ennemis <em>de la vigne</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Maladies, insectes et caprices du ciel : neuf planches botaniques pour apprendre à les reconnaître, comprendre comment ils attaquent et comment les vignerons s’en protègent."
+       data-en="Diseases, insects and the whims of the weather: nine botanical plates to learn how to recognise them, how they attack and how growers protect their vines.">Maladies, insectes et caprices du ciel : neuf planches botaniques pour apprendre à les reconnaître, comprendre comment ils attaquent et comment les vignerons s’en protègent.</p>
+  </header>
+
+  <section class="panel intro">
+    <div>
+      <p class="L fr">La vigne est l’une des cultures les plus exposées. Presque tous ses grands fléaux sont arrivés d’Amérique au XIX<sup>e</sup> siècle, dans le sillage des échanges de plants : l’oïdium, le phylloxéra, le mildiou, le black rot. Chacun a profondément transformé la viticulture : c’est à eux que l’on doit le soufrage, la bouillie bordelaise et le greffage de presque toutes les vignes françaises.</p>
+      <p class="L en">The vine is one of the most vulnerable crops. Nearly all of its great plagues arrived from America in the 19th century, carried by the trade in vine cuttings: powdery mildew, phylloxera, downy mildew, black rot. Each one reshaped winegrowing: they are the reason for sulphur dusting, Bordeaux mixture and the grafting of almost every French vine.</p>
+      <p class="L fr">Aujourd’hui, la protection du vignoble est un équilibre délicat entre la santé de la récolte, l’environnement et le coût : la vigne occupe environ 3 % de la surface agricole française, mais reçoit une part bien plus grande des produits phytosanitaires, surtout des fongicides.</p>
+      <p class="L en">Today, protecting the vineyard is a careful balance between crop health, the environment and cost: vines cover around 3 % of French farmland but receive a much larger share of crop-protection products, mostly fungicides.</p>
+      <p class="note L fr">Les planches portent leurs légendes en anglais et en français. Cliquez sur une planche pour l’agrandir.</p>
+      <p class="note L en">Plates are labelled in English and French. Click any plate to enlarge it.</p>
+    </div>
+    <div class="read">
+      <h3 data-fr="Deux niveaux de lecture" data-en="Two levels of reading">Deux niveaux de lecture</h3>
+      <div class="levels">
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4-3-7-6.5-7-10.5a7 7 0 0 1 14 0C19 14.5 16 18 12 21Z"/><path d="M12 8v6M9 11h6"/></svg></span>
+          <div><b data-fr="L’essentiel" data-en="The essentials">L’essentiel</b><span data-fr="Symptômes, période à risque, protection : de quoi reconnaître chaque ennemi au vignoble." data-en="Symptoms, risk period, protection: enough to recognise each threat in the vineyard.">Symptômes, période à risque, protection : de quoi reconnaître chaque ennemi au vignoble.</span></div></div>
+        <div class="lvl"><span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6L4.5 18.5A1.6 1.6 0 0 0 5.9 21h12.2a1.6 1.6 0 0 0 1.4-2.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+          <div><b data-fr="Pour les professionnels" data-en="For professionals">Pour les professionnels</b><span data-fr="À déplier : agent pathogène, cycle biologique, seuils, méthodes de lutte et réglementation." data-en="Fold-out panel: pathogen, life cycle, thresholds, control methods and regulation.">À déplier : agent pathogène, cycle biologique, seuils, méthodes de lutte et réglementation.</span></div></div>
+      </div>
+      <div class="legend">@@LEGEND@@</div>
+    </div>
+  </section>
+
+  <section class="sec" id="planches">
+    <div class="sec-head">
+      <h2 data-fr="Les neuf <em>planches</em>" data-en="The nine <em>plates</em>">Les neuf <em>planches</em></h2>
+      <p data-fr="Cinq maladies du feuillage et des grappes, une maladie du bois, une maladie à phytoplasme et deux insectes ravageurs." data-en="Five diseases of leaves and bunches, one trunk disease, one phytoplasma disease and two insect pests.">Cinq maladies du feuillage et des grappes, une maladie du bois, une maladie à phytoplasme et deux insectes ravageurs.</p>
+    </div>
+    <nav class="index">@@INDEX@@</nav>
+  </section>
+
+  <section class="sec" id="calendrier">
+    <div class="sec-head">
+      <h2 data-fr="Le calendrier <em>des risques</em>" data-en="The risk <em>calendar</em>">Le calendrier <em>des risques</em></h2>
+      <p data-fr="Périodes indicatives pour un vignoble de la moitié nord de la France ; tout se décale de deux à trois semaines plus tôt dans le Midi." data-en="Indicative periods for a vineyard in northern France; everything comes two to three weeks earlier in the South.">Périodes indicatives pour un vignoble de la moitié nord de la France ; tout se décale de deux à trois semaines plus tôt dans le Midi.</p>
+    </div>
+    <div class="panel cal"><div class="cal-inner">@@CALENDAR@@</div>
+      <div class="cal-key">
+        <span><i class="sw" style="background:color-mix(in srgb,var(--c) 38%,transparent)"></i><span data-fr="Période de risque" data-en="Risk period">Période de risque</span></span>
+        <span><i class="sw" style="background:var(--c);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.22) 0 3px,transparent 3px 7px)"></i><span data-fr="Pic de risque ou de symptômes" data-en="Peak risk or symptoms">Pic de risque ou de symptômes</span></span>
+      </div>
+    </div>
+  </section>
+
+  @@THREATS@@
+
+  <section class="sec" id="autres">
+    <div class="sec-head">
+      <h2 data-fr="Autres <em>menaces</em>" data-en="Other <em>threats</em>">Autres <em>menaces</em></h2>
+      <p data-fr="D’autres ravageurs et les accidents climatiques, de plus en plus fréquents avec le réchauffement." data-en="Other pests, and weather hazards that are becoming more frequent as the climate warms.">D’autres ravageurs et les accidents climatiques, de plus en plus fréquents avec le réchauffement.</p>
+    </div>
+    <div class="others">@@OTHERS@@</div>
+  </section>
+
+  <section class="sec" id="histoire">
+    <div class="sec-head">
+      <h2 data-fr="Repères <em>historiques</em>" data-en="Historical <em>milestones</em>">Repères <em>historiques</em></h2>
+    </div>
+    <ol class="panel tl">@@TIMELINE@@</ol>
+  </section>
+
+  @@CHAPTERS@@
+
+  <footer>
+    <h3 data-fr="Sources" data-en="Sources">Sources</h3>
+    <ul class="sources">@@SOURCES@@</ul>
+  </footer>
+</div>
+
+<dialog class="lb" id="lb"><div class="lb-in"><button type="button" id="lbx" aria-label="Fermer / Close">✕</button><img id="lbimg" alt=""></div></dialog>
+
+<script>
+(function(){
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Les ennemis de la vigne' : 'Threats to the vine';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+
+  var lb = $('lb'), img = $('lbimg');
+  document.addEventListener('click', function(e){
+    var z = e.target.closest('.zoom');
+    if(z){ img.src = z.getAttribute('data-full'); img.alt = z.querySelector('img').alt;
+      if(lb.showModal) lb.showModal(); else window.open(img.src); return; }
+    if(e.target===lb || e.target.id==='lbx') lb.close();
+  });
+})();
+</script>
+</body>
+</html>

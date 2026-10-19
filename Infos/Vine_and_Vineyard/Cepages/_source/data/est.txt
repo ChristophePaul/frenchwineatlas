@@ -1,0 +1,136 @@
+= Beaujolais | Beaujolais | CDC Beaujolais
+Rouge, Rosé: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A; pinot gris G/A; pinot noir N/A
+Blanc: chardonnay B
+! Accessoires (hors gamays teinturiers) uniquement en mélange de plants (≤15 % par parcelle).
+
+= Beaujolais-Villages | Beaujolais | CDC Beaujolais:Villages
+Rouge, Rosé: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A; pinot gris G/A; pinot noir N/A
+Blanc: chardonnay B
+
+= Chénas | Beaujolais | CDC Chenas
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+! Accessoires blancs uniquement en mélange de plants (≤15 %).
+
+= Chiroubles | Beaujolais | CDC Chiroubles
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+
+= Côte de Brouilly | Beaujolais | CDC Cote de Brouilly
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+
+= Fleurie | Beaujolais | CDC Fleurie
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+
+= Juliénas | Beaujolais | CDC Julienas
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+
+= Morgon | Beaujolais | CDC Morgon
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+
+= Moulin-à-Vent | Beaujolais | CDC Moulin a Vent
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+
+= Régnié | Beaujolais | CDC Régnié
+Rouge: gamay N/P; aligoté B/A ≤15 %; chardonnay B/A ≤15 %; melon B/A ≤15 %
+
+= Saint-Amour | Beaujolais | CDC Saint Amour
+Rouge: gamay N/P; aligoté B/A; chardonnay B/A; gamay de Bouze N/A ≤10 %; gamay de Chaudenay N/A ≤10 %; melon B/A
+
+= Brouilly | Beaujolais | CDC-AOC Brouilly
+Rouge: gamay N/P; aligoté B/A ≤15 %; chardonnay B/A ≤15 %; melon B/A ≤15 %
+
+= Champagne | Champagne | CDC_Champagne_
+Blanc, Rosé effervescent: chardonnay B; pinot noir N; meunier N; arbane B; chardonnay rose Rs; petit meslier B; pinot blanc B; pinot gris G; voltis B/A (variété d'adaptation)
+! Tous les cépages sont « principaux » ; en pratique pinot noir, meunier et chardonnay couvrent >99 % du vignoble. Voltis ≤5 % du vignoble.
+
+= Coteaux Champenois | Champagne | CDC_Coteauxchampenoix
+Blanc, Rouge, Rosé: chardonnay B; pinot noir N; meunier N; arbane B; chardonnay rose Rs; petit meslier B; pinot blanc B; pinot gris G; voltis B/A (variété d'adaptation)
+
+= Rosé des Riceys | Champagne | CDC_Rosé des Riceys_
+Rosé: pinot noir N
+
+= Arbois | Jura | CDC Arbois
+Blanc: chardonnay B/P; savagnin B/P; pinot noir N/A; poulsard N/A; trousseau N/A
+Rouge, Rosé: pinot noir N/P; poulsard N/P; trousseau N/P; chardonnay B/A; savagnin B/A
+Vin de paille: chardonnay B; poulsard N; savagnin B; trousseau N
+Vin jaune: savagnin B
+! Jamais des seuls accessoires ; principaux majoritaires. Dénomination Pupillin.
+
+= Château-Chalon | Jura | CDC Chateau-Chalon
+Vin jaune: savagnin B
+
+= Côtes du Jura | Jura | CDC Cotes du Jura
+Blanc: chardonnay B/P; savagnin B/P; pinot noir N/A; poulsard N/A; trousseau N/A
+Rouge, Rosé: pinot noir N/P; poulsard N/P; trousseau N/P; chardonnay B/A; savagnin B/A
+Vin de paille: chardonnay B; poulsard N; savagnin B; trousseau N
+Vin jaune: savagnin B
+
+= Crémant du Jura | Jura | CDC Cremant Du Jura
+Blanc effervescent: chardonnay B; pinot noir N; trousseau N; savagnin B; pinot gris G; poulsard N
+Rosé effervescent: pinot gris G; pinot noir N; poulsard N; trousseau N; chardonnay B; savagnin B
+! Blancs : chardonnay + pinot noir + trousseau ≥70 % de la cuvée. Rosés : cépages noirs ou gris ≥50 %.
+
+= L'Étoile | Jura | CDC L'Etoile
+Blanc: chardonnay B/P; savagnin B/P; poulsard N/A
+Vin de paille: chardonnay B; poulsard N; savagnin B
+Vin jaune: savagnin B
+
+= Macvin du Jura | Jura | CDC_Macvin Du Jura
+Vin de liqueur rouge, rosé: pinot noir N; poulsard N; trousseau N; franc noir de Haute-Saône N/A (variété d'adaptation); gamay N/A (variété d'adaptation); béclan N/A (variété d'adaptation); enfariné N/A (variété d'adaptation)
+Vin de liqueur blanc: chardonnay B; savagnin B; aligoté B/A (variété d'adaptation); chenin B/A (variété d'adaptation); marsanne B/A (variété d'adaptation); sacy B/A (variété d'adaptation); roussanne B/A (variété d'adaptation); gringet B/A (variété d'adaptation); enfariné N/A (variété d'adaptation)
+! Variétés d'adaptation <10 % de l'assemblage.
+
+= Bugey | Savoie-Bugey | CDC Bugey
+Blanc: chardonnay B/P ≥70 %; aligoté B/A; altesse B/A; jacquère B/A; mondeuse blanche B/A; pinot gris G/A
+Rouge: gamay N; mondeuse N; pinot noir N
+Rosé: gamay N/P; pinot noir N/P; mondeuse N/A; pinot gris G/A; poulsard N/A
+Mousseux, pétillant blanc: chardonnay B/P; jacquère B/P; molette B/P; aligoté B/A; altesse B/A; gamay N/A; mondeuse blanche B/A; pinot gris G/A; pinot noir N/A; mondeuse N/A; poulsard N/A
+Mousseux, pétillant rosé (dont Cerdon): gamay N/P; pinot noir N/P; mondeuse N/A; pinot gris G/A; poulsard N/A
+! Rouges : un seul cépage. Dénominations Manicle (chardonnay ; pinot noir), Montagnieu (mondeuse ; mousseux altesse-chardonnay-mondeuse), Cerdon (gamay, poulsard).
+
+= Roussette de Savoie | Savoie-Bugey | CDC Roussette de Savoie
+Blanc: altesse B
+
+= Roussette du Bugey | Savoie-Bugey | CDC Roussette du Bugey
+Blanc: altesse B
+
+= Seyssel | Savoie-Bugey | CDC Seyssel
+Blanc tranquille: altesse B
+Blanc tranquille « Molette »: molette B
+Mousseux: molette B/P ≥75 %; altesse B/P ≥10 %; chasselas B/A
+
+= Vin de Savoie | Savoie-Bugey | CDC Vin de Savoie
+Rouge, Rosé: gamay N/P; mondeuse N/P; pinot noir N/P; cabernet franc N/P (Savoie); cabernet-sauvignon N/P (Savoie); persan N/P (Savoie, Isère); étraire de la Dui N/P (Isère); servanin N/P (Isère); joubertin N/P (Isère); corbeau N/A (variété d'adaptation); dousset N/A (variété d'adaptation); hibou noir N/A (variété d'adaptation); mondeuse grise G/A (variété d'adaptation)
+Blanc: jacquère B/P; aligoté B/P; altesse B/P; chardonnay B/P; mondeuse blanche B/P; velteliner rouge précoce Rs/P; chasselas B/P (Haute-Savoie); gringet B/P (Haute-Savoie); roussette d'Ayze B/P (Haute-Savoie); marsanne B/P (Isère); verdesse B/P (Isère); roussanne B (Chignin-Bergeron); bia B/A (variété d'adaptation); mondeuse grise G/A (variété d'adaptation); petite sainte-Marie B/A (variété d'adaptation); pinot gris G/A (variété d'adaptation)
+Mousseux, Crémant: aligoté B; altesse B; chardonnay B; jacquère B; mondeuse blanche B; chasselas B (Haute-Savoie); molette B (Haute-Savoie); gamay N; mondeuse N; pinot noir N; velteliner rouge précoce Rs
+! Seul cépage ou assemblage. Dénominations : Apremont, Abymes, Chignin, Cruet… (jacquère) ; Arbin, Saint-Jean-de-la-Porte (mondeuse seule) ; Chignin-Bergeron (roussanne seule) ; Crépy, Marignan, Marin, Ripaille (chasselas) ; Ayze (gringet).
+
+= Alsace | Alsace-Lorraine | CDC_Alsace_cn240911
+Blanc: riesling B; gewurztraminer Rs; pinot gris G; muscat à petits grains B; muscat à petits grains Rs; muscat ottonel B; sylvaner B; pinot blanc B; auxerrois B; chasselas B; chasselas rose Rs; pinot noir N; savagnin rose Rs (Klevener de Heiligenstein); voltis B/A (variété d'adaptation); opalor B/A (variété d'adaptation); selenor B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation); johanniter B/A (variété d'adaptation); chenin B/A (variété d'adaptation); vermentino B/A (variété d'adaptation)
+Rouge, Rosé: pinot noir N; coliris N/A (variété d'adaptation); nebbiolo N/A (variété d'adaptation); syrah N/A (variété d'adaptation)
+Vendanges tardives, Sélection de grains nobles: gewurztraminer Rs; muscat à petits grains B; muscat à petits grains Rs; muscat ottonel B; pinot gris G; riesling B
+! Vins le plus souvent monocépages, étiquetés du nom du cépage ; « Edelzwicker » = assemblage. Variétés d'adaptation ≤10 % de l'assemblage.
+
+= Alsace Grand Cru | Alsace-Lorraine | CDC Alsace Grand Cru
+Blanc: riesling B; gewurztraminer Rs; pinot gris G; muscat à petits grains B; muscat à petits grains Rs; muscat ottonel B
+Rouge (Hengst, Kirchberg de Barr, Vorbourg): pinot noir N
+Zotzenberg: sylvaner B; riesling B; gewurztraminer Rs; pinot gris G
+Altenberg de Bergheim (assemblage): riesling B/P 50–70 %; gewurztraminer Rs/C 10–25 %; pinot gris G/C 10–25 %; chasselas B/A; muscat à petits grains B/A; muscat à petits grains Rs/A; muscat ottonel B/A; pinot blanc B/A; pinot noir N/A
+Kaefferkopf (assemblage): gewurztraminer Rs/P 60–80 %; riesling B/C 10–40 %; pinot gris G/A ≤30 %; muscat à petits grains B/A ≤10 %; muscat à petits grains Rs/A ≤10 %; muscat ottonel B/A ≤10 %
+Vendanges tardives, Sélection de grains nobles: gewurztraminer Rs; muscat à petits grains B; muscat à petits grains Rs; muscat ottonel B; pinot gris G; riesling B
+! 51 grands crus ; vins blancs issus d'un seul cépage (les muscats peuvent être assemblés entre eux). Assemblages autorisés seulement à Altenberg de Bergheim et Kaefferkopf ; accessoires d'Altenberg réservés aux vignes plantées avant 2005, ≤10 %.
+
+= Crémant d'Alsace | Alsace-Lorraine | CDC Cremant d'Alsace
+Blanc effervescent: auxerrois B; chardonnay B; pinot blanc B; pinot gris G; pinot noir N; riesling B; voltis B/A (variété d'adaptation); opalor B/A (variété d'adaptation); selenor B/A (variété d'adaptation); souvignier gris Rs/A (variété d'adaptation); johanniter B/A (variété d'adaptation); chenin B/A (variété d'adaptation); vermentino B/A (variété d'adaptation)
+Rosé effervescent: pinot noir N; coliris N/A (variété d'adaptation); nebbiolo N/A (variété d'adaptation); syrah N/A (variété d'adaptation)
+! Variétés d'adaptation ≤5 % du vignoble, ≤10 % de l'assemblage.
+
+= Moselle | Alsace-Lorraine | CDC_MOSELLE
+Blanc: auxerrois B/P; müller-thurgau B/P; pinot gris G/P; gewurztraminer Rs/A ≤10 %; pinot blanc B/A; riesling B/A
+Rosé: pinot noir N/P ≥70 %; gamay N/A
+Rouge: pinot noir N
+
+= Côtes de Toul | Alsace-Lorraine | pno-cdc-AOC-Cotes-de-Toul-cn250612
+Blanc: aubin B; auxerrois B
+Rouge: pinot noir N
+Gris: gamay N/P ≤85 %; pinot noir N/P ≥10 %; aubin B/A; auxerrois B/A; meunier N/A; pinot gris G/A
+! Vin gris : les 2 principaux obligatoires, ≥85 % de l'assemblage.

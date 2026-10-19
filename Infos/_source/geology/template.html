@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="La géologie des vignobles de France" data-en="The Geology of France’s Wine Regions">La géologie des vignobles de France</title>
+<meta name="description" content="Carte géologique simplifiée de la France et des 25 régions viticoles : granite, schiste, calcaire, craie, marnes… et ce qu’ils donnent au vin.">
+@@LEAFLET_CSS@@
+<style>
+@@BASE_CSS@@
+  /* ---------- map block ---------- */
+  .mapcard{display:grid;grid-template-columns:minmax(0,1fr) 370px;overflow:hidden;padding:0;}
+  .mapwrap{position:relative;min-height:470px;}
+  #map{position:absolute;inset:0;background:#c9dbe7;}
+  #map.leaflet-container{font-family:var(--sans);}
+  .mtools{position:absolute;top:10px;left:10px;z-index:800;display:flex;flex-direction:column;gap:6px;}
+  .mtool{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(255,253,246,.94);color:#5a1a26;border:1px solid #d4c39d;box-shadow:0 2px 8px rgba(60,30,20,.15);}
+  .mtool:hover{background:#fff;}
+  .mtool.on{background:#6a1426;color:#f6ecd6;border-color:#6a1426;}
+  .mtool svg{width:15px;height:15px;}
+  .mapcol{display:flex;flex-direction:column;min-width:0;}
+  .mapcol .mapwrap{flex:1;}
+  .legend{padding:12px 16px 10px;border-top:1px solid var(--hair);background:var(--glass-hi);}
+  .legend h4{margin:0 0 8px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+  .legend ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:4px 6px;}
+  .legend li button{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:4px 10px 4px 6px;border-radius:999px;border:1px solid var(--hair);font-size:12.3px;line-height:1.3;color:var(--parchment);}
+  .legend li button:hover{border-color:var(--hair-hi);}
+  .legend li button.on{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 16%,transparent);font-weight:600;}
+  .legend li button.off{opacity:.45;}
+  .legend li.ln > span{display:inline-flex;align-items:center;gap:7px;padding:4px 6px;font-size:12px;color:var(--muted);}
+  .legend .sw{flex:none;width:18px;height:13px;border-radius:3px;border:1px solid rgba(0,0,0,.18);}
+  .legend .sw.reg{background:none;border:2px solid #c08a1a;border-radius:3px;}
+  .legend .sw.line{height:2px;border:none;border-radius:1px;}
+  .legend .hint{margin:8px 0 0;font-size:11px;color:var(--faint);line-height:1.4;}
+  .rnum{display:grid;place-items:center;width:22px;height:22px;margin:-11px 0 0 -11px;border-radius:50%;background:#5a1020;color:#fff7e6;font:700 11px/1 var(--sans);border:2px solid #fff7e6;box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer;}
+  .rnum.sel{background:#ff1a1a;color:#fff;transform:scale(1.18);}
+  .rtip{background:#2a0a12;color:#f6ecd6;border:none;border-radius:8px;padding:4px 10px;font-family:var(--serif);font-size:13.5px;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+  .rtip::before{display:none;}
+  .ftip{background:rgba(255,253,246,.96);color:#3a2a22;border:1px solid #d4c39d;border-radius:8px;padding:3px 9px;font-size:12px;box-shadow:0 2px 6px rgba(0,0,0,.15);}
+  .ftip::before{display:none;}
+  .leaflet-control-zoom a{color:#5a1a26!important;}
+  .leaflet-control-scale-line{background:rgba(255,253,246,.85);border-color:#6a5a4a;color:#3a2a22;}
+  .credit{position:absolute;right:8px;bottom:4px;z-index:790;font-size:10px;color:#5b4a3e;background:rgba(255,253,246,.75);padding:1px 6px;border-radius:6px;}
+
+  /* side panel */
+  .side{border-left:1px solid var(--hair);display:flex;flex-direction:column;max-height:clamp(560px,calc(100svh - 120px),860px);min-height:560px;}
+  .side-head{padding:16px 18px 10px;border-bottom:1px solid var(--hair);}
+  .side-head h3{margin:0;font-family:var(--serif);font-weight:500;font-size:21px;color:var(--title);}
+  .side-head p{margin:4px 0 0;font-size:12.5px;color:var(--faint);line-height:1.45;}
+  .side-body{overflow:auto;padding:6px 10px 14px;flex:1;}
+  .grp{margin:12px 8px 4px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+  .rrow{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;gap:10px;width:100%;padding:7px 8px;border-radius:10px;}
+  .rrow:hover,.rrow:focus-visible{background:var(--glass-hi);}
+  .rrow:focus-visible{outline:2px solid var(--gold);outline-offset:-2px;}
+  .rrow .n{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:#5a1020;color:#fff7e6;font:700 10.5px/1 var(--sans);}
+  .rrow .t{font-family:var(--serif);font-size:15.5px;color:var(--title);line-height:1.2;}
+  .rrow .t small{display:block;font-family:var(--sans);font-size:11.5px;color:var(--faint);margin-top:1px;}
+  .dots{display:flex;gap:3px;}
+  .dots i{width:9px;height:9px;border-radius:50%;border:1px solid rgba(0,0,0,.2);}
+  .rrow.dim{opacity:.35;}
+  .detail .back2{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;margin:8px 8px 4px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);}
+  .detail .back2:hover{color:var(--gold-soft);}
+  .detail .dh{display:flex;align-items:center;gap:10px;margin:6px 8px 2px;}
+  .detail .dh .n{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#ff1a1a;color:#fff;font:700 13px/1 var(--sans);}
+  .detail h4{margin:0;font-family:var(--serif);font-weight:500;font-size:24px;color:var(--title);line-height:1.1;}
+  .detail .short{margin:4px 8px 10px;font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold-soft);}
+  .detail .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 8px 12px;}
+  .detail .chips .chip{cursor:pointer;text-transform:none;letter-spacing:.02em;font-size:11.5px;}
+  .detail p.txt{margin:0 8px 12px;font-size:14px;line-height:1.62;}
+  .detail h5{margin:14px 8px 6px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+  .detail dl{margin:0 8px;display:grid;gap:8px;}
+  .detail dt{font-family:var(--serif);font-size:15px;color:var(--title);}
+  .detail dd{margin:1px 0 0;font-size:13px;line-height:1.5;color:var(--muted);}
+  .detail .qnote{margin:12px 8px 0;padding:9px 12px;border-radius:10px;border:1px dashed var(--hair-hi);font-size:12.5px;line-height:1.5;color:var(--muted);}
+  .detail .go{display:flex;align-items:center;justify-content:center;gap:8px;margin:16px 8px 4px;padding:10px 14px;border-radius:999px;background:#6a1426;color:#f6ecd6;border:1px solid #c9a24b;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;}
+  .detail .go:hover{background:#7c1a2e;}
+  .detail .nav2{display:flex;justify-content:space-between;margin:12px 8px 0;}
+  .detail .nav2 button{all:unset;cursor:pointer;font-size:12px;color:var(--faint);}
+  .detail .nav2 button:hover{color:var(--gold);}
+
+  /* ---------- families ---------- */
+  .fams{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;}
+  .fam{position:relative;overflow:hidden;padding:24px 18px 14px;display:flex;flex-direction:column;gap:8px;}
+  .fam::before{content:"";position:absolute;left:0;right:0;top:0;height:7px;background:var(--c);}
+  .fam .sw{display:none;}
+  .fam h3{margin:0;font-family:var(--serif);font-weight:500;font-size:20px;color:var(--title);line-height:1.2;}
+  .fam .age{font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--gold);}
+  .fam p{margin:0;font-size:13.6px;line-height:1.58;}
+  .fam p.w{color:var(--muted);}
+  .fam .ex{font-size:12.5px;color:var(--faint);line-height:1.5;}
+  .fam .ex b{color:var(--gold-soft);font-weight:600;}
+  .fam .show{all:unset;cursor:pointer;margin-top:auto;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);padding:6px 12px;border:1px solid var(--hair);border-radius:999px;}
+  .fam .show:hover{border-color:var(--hair-hi);}
+  .fam.quat::before{background:repeating-linear-gradient(135deg,#b9a98c 0 6px,#e8dcc4 6px 12px);}
+
+  /* ---------- time strip ---------- */
+  .time{padding:22px clamp(16px,3vw,28px);}
+  .strip{display:grid;grid-template-columns:2.4fr 1.2fr 1fr 1.3fr 1.4fr .8fr;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.12);}
+  .strip div{padding:12px 10px;color:#2a1a14;min-height:74px;}
+  .strip b{display:block;font-family:var(--serif);font-weight:600;font-size:15.5px;}
+  .strip small{font-size:11.5px;opacity:.8;}
+  .events{display:grid;grid-template-columns:2.4fr 1.2fr 1fr 1.3fr 1.4fr .8fr;gap:0;margin-top:10px;}
+  .events p{margin:0;padding:0 10px;font-size:12.6px;line-height:1.5;color:var(--muted);border-left:1px solid var(--hair);}
+  .q-sw{background:repeating-linear-gradient(135deg,#d8ccb4 0 6px,#efe6d3 6px 12px);}
+
+  /* ---------- ideas ---------- */
+  .ideas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;}
+  .idea{padding:18px;}
+  .idea h3{margin:0 0 6px;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);}
+  .idea p{margin:0;font-size:13.6px;line-height:1.6;color:var(--muted);}
+  .idea .ic{width:34px;height:34px;color:var(--gold);margin-bottom:8px;}
+
+  .srcs{padding:18px 22px;font-size:12.8px;line-height:1.6;color:var(--muted);}
+  .srcs h3{margin:0 0 6px;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--title);}
+  .srcs ol{margin:0;padding-left:20px;}
+  .srcs a{color:var(--gold);}
+  .more{margin-top:12px;font-size:13.5px;}
+
+  @media (max-width:980px){
+    .mapcard{grid-template-columns:1fr;}
+    .mapwrap{min-height:0;height:min(62svh,580px);}
+    .mapcol .mapwrap{flex:none;}
+    .side{border-left:none;border-top:1px solid var(--hair);max-height:none;min-height:0;}
+    .ideas{grid-template-columns:1fr 1fr;}
+    .strip,.events{grid-template-columns:repeat(3,1fr);}
+    .events p{padding:6px 10px;}
+  }
+  @media (max-width:620px){
+    .mtool span{display:none;} .mtool{padding:8px;}
+    .legend li button{font-size:11.5px;}
+    .ideas{grid-template-columns:1fr;}
+    .strip,.events{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Accueil" data-en="← Home">← Accueil</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+  <header>
+    <p class="eyebrow" data-fr="Terroir · la roche sous la vigne" data-en="Terroir · the rock beneath the vine">Terroir · la roche sous la vigne</p>
+    <h1 data-fr="La géologie <em>des vignobles</em>" data-en="The geology <em>of the vineyards</em>">La géologie <em>des vignobles</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Granite, schiste, calcaire, craie, marne… Sous chaque vignoble se cache une roche qui façonne le vin. Voici la France simplifiée en sept grandes familles de roches, et les 25 régions viticoles posées dessus. Cliquez sur une région pour découvrir son sous-sol."
+       data-en="Granite, schist, limestone, chalk, marl… Beneath every vineyard lies a rock that shapes the wine. Here is France simplified into seven major rock families, with the 25 wine regions laid on top. Click a region to discover what lies beneath.">Granite, schiste, calcaire, craie, marne… Sous chaque vignoble se cache une roche qui façonne le vin. Voici la France simplifiée en sept grandes familles de roches, et les 25 régions viticoles posées dessus. Cliquez sur une région pour découvrir son sous-sol.</p>
+  </header>
+
+  <section class="panel mapcard" aria-label="Carte">
+    <div class="mapcol">
+    <div class="mapwrap">
+      <div id="map" role="application" aria-label="Carte géologique de la France"></div>
+      <div class="mtools">
+        <button class="mtool" type="button" id="t-france"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9 9 4l6 2 5 5-2 7-6 3-7-3-2-5Z"/></svg><span data-fr="France entière" data-en="Whole France">France entière</span></button>
+        <button class="mtool on" type="button" id="t-reg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M5 5h14v14H5z" stroke-dasharray="3 2"/></svg><span data-fr="Régions viticoles" data-en="Wine regions">Régions viticoles</span></button>
+      </div>
+    </div>
+    <div class="legend" id="legend"></div>
+    </div>
+    <aside class="side" id="side" aria-live="polite"></aside>
+  </section>
+
+  <section class="sec" id="familles">
+    <div class="sec-head">
+      <h2 data-fr="Sept familles <em>de roches</em>" data-en="Seven rock <em>families</em>">Sept familles <em>de roches</em></h2>
+      <p data-fr="Les couleurs sont celles qu’utilisent les géologues : rose pour le granite, bleu pour le Jurassique, vert pour le Crétacé, jaune pour le Tertiaire…" data-en="The colours are the ones geologists use: pink for granite, blue for the Jurassic, green for the Cretaceous, yellow for the Tertiary…">Les couleurs sont celles qu’utilisent les géologues : rose pour le granite, bleu pour le Jurassique, vert pour le Crétacé, jaune pour le Tertiaire…</p>
+    </div>
+    <div class="fams">@@FAMILIES@@</div>
+  </section>
+
+  <section class="sec" id="temps">
+    <div class="sec-head">
+      <h2 data-fr="500 millions d’années <em>en une ligne</em>" data-en="500 million years <em>in one line</em>">500 millions d’années <em>en une ligne</em></h2>
+      <p data-fr="Les roches les plus anciennes sont à gauche. Les durées ne sont pas à l’échelle : le Primaire a duré presque trois fois plus longtemps que tout le reste." data-en="The oldest rocks are on the left. Durations are not to scale: the Palaeozoic lasted almost three times as long as everything since.">Les roches les plus anciennes sont à gauche. Les durées ne sont pas à l’échelle : le Primaire a duré presque trois fois plus longtemps que tout le reste.</p>
+    </div>
+    <div class="panel time">@@TIME@@</div>
+  </section>
+
+  <section class="sec" id="idees">
+    <div class="sec-head">
+      <h2 data-fr="Du sol <em>au verre</em>" data-en="From soil <em>to glass</em>">Du sol <em>au verre</em></h2>
+      <p data-fr="Quatre idées simples pour comprendre ce que la roche change au vin — en gardant en tête que le climat, le cépage et le vigneron comptent tout autant." data-en="Four simple ideas to understand what rock changes in wine — keeping in mind that climate, grape and grower matter just as much.">Quatre idées simples pour comprendre ce que la roche change au vin — en gardant en tête que le climat, le cépage et le vigneron comptent tout autant.</p>
+    </div>
+    <div class="ideas">@@IDEAS@@</div>
+  </section>
+
+  <section class="sec">
+    <div class="panel srcs">@@SOURCES@@</div>
+  </section>
+</div>
+
+@@LEAFLET_JS@@
+<script src="geology_data.js"></script>
+<script>
+var CONTENT = @@CONTENT@@;
+(function(){
+  var D = window.GEODATA, C = CONTENT, $ = function(id){ return document.getElementById(id); };
+  var LANG = (function(){ try{ return localStorage.getItem('fw_lang') || 'fr'; }catch(e){ return 'fr'; } })();
+  if(LANG!=='en') LANG = 'fr';
+  var T = function(p){ return p ? (LANG==='fr' ? p[0] : p[1]) : ''; };
+  var esc = function(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
+  var FAM = {}; C.families.forEach(function(f){ FAM[f.key] = f; });
+  var REG = {}, ORDER = [];
+  C.groups.forEach(function(g){ C.regions.forEach(function(r){ if(r.group===g[0]) ORDER.push(r); }); });
+  ORDER.forEach(function(r, i){ r.num = i+1; REG[r.key] = r; });
+  var ll = function(r){ return r.map(function(p){ return [p[1], p[0]]; }); };
+  function bboxOf(rings){
+    var b = [[90,180],[-90,-180]];
+    rings.forEach(function(r){ r.forEach(function(p){ b[0][0]=Math.min(b[0][0],p[1]); b[0][1]=Math.min(b[0][1],p[0]); b[1][0]=Math.max(b[1][0],p[1]); b[1][1]=Math.max(b[1][1],p[0]); }); });
+    return L.latLngBounds(b);
+  }
+
+  /* ---------------------------------------------------------------- map */
+  var FR_BOUNDS = L.latLngBounds([[41.3,-5.2],[51.1,9.6]]);
+  var map = L.map('map', {renderer:L.canvas({padding:.4}), zoomSnap:0, zoomDelta:.5, minZoom:4.6, maxZoom:10,
+                          attributionControl:false, maxBounds:FR_BOUNDS.pad(.4), zoomControl:true});
+  map.zoomControl.setPosition('bottomright');
+  L.control.scale({imperial:false, position:'bottomright'}).addTo(map);
+  map.createPane('landPane'); map.getPane('landPane').style.zIndex = 350;
+  map.createPane('geoPane'); map.getPane('geoPane').style.zIndex = 360;
+  map.createPane('linePane'); map.getPane('linePane').style.zIndex = 390;
+  map.createPane('regPane'); map.getPane('regPane').style.zIndex = 410;
+  var landR = L.canvas({pane:'landPane', padding:.4}), geoR = L.canvas({pane:'geoPane', padding:.4}),
+      lineR = L.canvas({pane:'linePane', padding:.4}), regR = L.canvas({pane:'regPane', padding:.4, tolerance:3});
+  L.polygon(D.neighbours.map(function(r){ return [ll(r)]; }), {renderer:landR, stroke:false, fillColor:'#e9e4d8', fillOpacity:1, interactive:false}).addTo(map);
+  L.polyline(D.nbcoast.map(ll), {renderer:landR, color:'#7d9bb3', weight:.9, interactive:false}).addTo(map);
+  L.polygon(D.france.map(function(r){ return [ll(r)]; }), {renderer:landR, stroke:false, fillColor:'#f6f0e2', fillOpacity:1, interactive:false}).addTo(map);
+
+  var geoLayers = {}, focusFam = null;
+  C.families.forEach(function(f){
+    var rings = D.geo[f.key]; if(!rings || !rings.length) return;
+    geoLayers[f.key] = L.polygon(rings.map(ll), {renderer:geoR, stroke:true, color:f.color, weight:.4, fillColor:f.color, fillOpacity:.88, interactive:true})
+      .bindTooltip(function(){ return esc(T(FAM[f.key].name)); }, {sticky:true, className:'ftip', direction:'top', offset:[0,-6]})
+      .on('click', function(){ if(!selected) setFocus(focusFam===f.key ? null : f.key); })
+      .addTo(map);
+  });
+  L.polygon(D.depts.map(ll), {renderer:lineR, color:'#6b5a44', weight:.5, opacity:.35, fill:false, interactive:false}).addTo(map);
+  Object.keys(D.rivers).forEach(function(n){ var rv = D.rivers[n];
+    L.polyline(rv.lines.map(ll), {renderer:lineR, color:'#3f78a8', weight:rv.rank===1?1.6:.9, opacity:.85, interactive:false, lineCap:'round'}).addTo(map);
+  });
+  L.polyline(D.coast.map(ll), {renderer:lineR, color:'#2f5f86', weight:1.4, opacity:.95, interactive:false, lineJoin:'round'}).addTo(map);
+  L.polyline(D.border.map(ll), {renderer:lineR, color:'#6b5a44', weight:1.3, dashArray:'5 4', opacity:.9, interactive:false}).addTo(map);
+
+  /* regions */
+  var regLayer = L.layerGroup().addTo(map), numLayer = L.layerGroup().addTo(map), regPoly = {}, regNum = {}, selected = null, showReg = true, halo = null;
+  var RS = {base:{color:'#4a0c19', weight:1.8, opacity:.95, fillColor:'#fff8ec', fillOpacity:.12, dashArray:null},
+            hover:{color:'#4a0c19', weight:2.8, opacity:1, fillColor:'#fff8ec', fillOpacity:.3},
+            sel:{color:'#ff1a1a', weight:3.6, opacity:1, fillColor:'#ff1a1a', fillOpacity:.08},
+            dim:{color:'#4a0c19', weight:1.2, opacity:.35, fillColor:'#fff8ec', fillOpacity:0}};
+  C.regions.forEach(function(r){
+    var rings = D.regions[r.key]; if(!rings) return;
+    var p = L.polygon(rings.map(ll), L.extend({renderer:regR}, RS.base))
+      .bindTooltip(function(){ return r.num+'. '+esc(T(r.name)); }, {sticky:true, className:'rtip', direction:'top', offset:[0,-8]})
+      .on('mouseover', function(){ if(selected!==r.key) p.setStyle(RS.hover); })
+      .on('mouseout', function(){ styleRegions(); })
+      .on('click', function(e){ L.DomEvent.stop(e); select(r.key); })
+      .addTo(regLayer);
+    regPoly[r.key] = p;
+    var lab = D.labels[r.key];
+    regNum[r.key] = L.marker([lab[1], lab[0]], {icon:L.divIcon({className:'', html:'<div class="rnum">'+r.num+'</div>', iconSize:[0,0]}), keyboard:false, zIndexOffset:500})
+      .on('click', function(){ select(r.key); })
+      .bindTooltip(function(){ return esc(T(r.name)); }, {className:'rtip', direction:'top', offset:[0,-12]})
+      .addTo(numLayer);
+  });
+  function styleRegions(){
+    Object.keys(regPoly).forEach(function(k){
+      regPoly[k].setStyle(selected ? (k===selected ? RS.sel : RS.dim) : RS.base);
+      var el = regNum[k].getElement(); if(el && el.firstChild) el.firstChild.classList.toggle('sel', k===selected);
+    });
+    if(halo){ map.removeLayer(halo); halo = null; }
+    if(selected && showReg){   /* white casing under the red outline so it reads on every rock colour */
+      halo = L.polygon(D.regions[selected].map(ll), {renderer:regR, color:'#ffffff', weight:7.5, opacity:.85, fill:false, interactive:false}).addTo(map);
+      regPoly[selected].bringToFront();
+    }
+  }
+  function framePad(){ return {padding:[10, 10]}; }
+  function fitFrance(){ map.flyToBounds(FR_BOUNDS, L.extend({duration:.6}, framePad())); }
+  setTimeout(function(){ map.invalidateSize(); map.fitBounds(FR_BOUNDS, framePad()); }, 0);
+  map.on('click', function(){ if(selected) select(null); });
+
+  /* family focus (legend) */
+  function setFocus(k){
+    focusFam = k;
+    Object.keys(geoLayers).forEach(function(f){
+      geoLayers[f].setStyle({fillOpacity: !k || f===k ? .88 : .12, opacity: !k || f===k ? 1 : .15});
+    });
+    renderLegend();
+    if(!selected) renderList();
+  }
+  function renderLegend(){
+    var lg = $('legend');
+    lg.innerHTML = '<h4>'+(LANG==='fr'?'Le sous-sol — cliquez une couleur pour la repérer':'Bedrock — click a colour to find it')+'</h4><ul>'
+      + C.families.map(function(f){
+          var cls = focusFam ? (focusFam===f.key ? 'on' : 'off') : '';
+          return '<li><button type="button" class="'+cls+'" data-fam="'+f.key+'"><span class="sw" style="background:'+f.color+'"></span>'+esc(T(f.name))+'</button></li>';
+        }).join('')
+      + '<li><button type="button" data-fam="__reg"><span class="sw reg" style="border-color:#4a0c19"></span>'+(LANG==='fr'?'Région viticole (n° = fiche)':'Wine region (no. = card)')+'</button></li>'
+      + '<li class="ln"><span><span class="sw line" style="background:#2f5f86"></span>'+(LANG==='fr'?'Côte':'Coastline')+'</span></li>'
+      + '<li class="ln"><span><span class="sw line" style="background:repeating-linear-gradient(90deg,#6b5a44 0 5px,transparent 5px 8px)"></span>'+(LANG==='fr'?'Frontière':'Border')+'</span></li></ul>'
+      + '<p class="hint">'+(LANG==='fr'?'Géologie : BGR, IGME 5000 (simplifiée) · Aires : INAO · Fond : Natural Earth':'Geology: BGR, IGME 5000 (simplified) · Areas: INAO · Base: Natural Earth')+'</p>';
+    lg.querySelectorAll('[data-fam]').forEach(function(b){
+      b.onclick = function(){ var k = b.getAttribute('data-fam'); if(k==='__reg'){ toggleReg(); return; } setFocus(focusFam===k ? null : k); };
+    });
+  }
+  function toggleReg(){
+    showReg = !showReg;
+    $('t-reg').classList.toggle('on', showReg);
+    if(showReg){ regLayer.addTo(map); numLayer.addTo(map); styleRegions(); } else { map.removeLayer(regLayer); map.removeLayer(numLayer); styleRegions(); }
+  }
+  $('t-reg').onclick = toggleReg;
+  $('t-france').onclick = function(){ if(selected) select(null); else fitFrance(); };
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape'){ if(selected) select(null); else if(focusFam) setFocus(null); } });
+
+  /* ---------------------------------------------------------------- side panel */
+  function dots(r){ return '<span class="dots">'+r.fam.map(function(f){ return '<i style="background:'+FAM[f].color+'" title="'+esc(T(FAM[f].name))+'"></i>'; }).join('')+'</span>'; }
+  function renderList(){
+    var h = '<div class="side-head"><h3>'+(LANG==='fr'?'Les 25 régions':'The 25 regions')+'</h3><p>'
+      + (focusFam ? (LANG==='fr'?'Régions où domine : ':'Regions where this dominates: ')+'<b>'+esc(T(FAM[focusFam].name))+'</b>'
+                  : (LANG==='fr'?'Les pastilles indiquent les roches principales, de la plus à la moins présente.':'The dots show the main rocks, from most to least present.'))
+      + '</p></div><div class="side-body">';
+    C.groups.forEach(function(g){
+      var rs = C.regions.filter(function(r){ return r.group===g[0]; }); if(!rs.length) return;
+      h += '<div class="grp">'+esc(T(g[1]))+'</div>';
+      rs.forEach(function(r){
+        var dim = focusFam && r.fam.slice(0,2).indexOf(focusFam) < 0;
+        h += '<button type="button" class="rrow'+(dim?' dim':'')+'" data-k="'+r.key+'"><span class="n">'+r.num+'</span><span class="t">'+esc(T(r.name))+'<small>'+esc(T(r.short))+'</small></span>'+dots(r)+'</button>';
+      });
+    });
+    $('side').innerHTML = h + '</div>';
+    $('side').querySelectorAll('.rrow').forEach(function(b){
+      b.onclick = function(){ select(b.getAttribute('data-k')); };
+      b.onmouseenter = function(){ var k = b.getAttribute('data-k'); if(regPoly[k] && showReg) regPoly[k].setStyle(RS.hover); };
+      b.onmouseleave = function(){ styleRegions(); };
+    });
+  }
+  function renderDetail(r){
+    var i = ORDER.indexOf(r), prev = ORDER[(i+ORDER.length-1)%ORDER.length], next = ORDER[(i+1)%ORDER.length];
+    var h = '<div class="side-body detail">'
+      + '<button type="button" class="back2" id="dback">← '+(LANG==='fr'?'Toutes les régions':'All regions')+'</button>'
+      + '<div class="dh"><span class="n">'+r.num+'</span><h4>'+esc(T(r.name))+'</h4></div>'
+      + '<p class="short">'+esc(T(r.short))+'</p>'
+      + '<div class="chips">'+r.fam.map(function(f){ return '<span class="chip" style="--c:'+FAM[f].color+'" data-fam="'+f+'">'+esc(T(FAM[f].name))+'</span>'; }).join('')+'</div>'
+      + '<p class="txt">'+esc(T(r.text))+'</p>'
+      + '<h5>'+(LANG==='fr'?'Terroirs à retenir':'Key terroirs')+'</h5><dl>'
+      + r.keys.map(function(k){ return '<div><dt>'+esc(T(k[0]))+'</dt><dd>'+esc(T(k[1]))+'</dd></div>'; }).join('')+'</dl>'
+      + (r.q ? '<p class="qnote">'+(LANG==='fr'
+          ? '⚠︎ Ici, graves, galets ou alluvions récents (Quaternaire) recouvrent souvent la roche : ils ne figurent pas sur la carte du sous-sol.'
+          : '⚠︎ Here, recent gravels, pebbles or alluvium (Quaternary) often cover the rock: they are not shown on the bedrock map.')+'</p>' : '')
+      + '<a class="go" href="'+esc(r.href)+'">'+(LANG==='fr'?'Carte des appellations':'Appellation map')+' →</a>'
+      + '<div class="nav2"><button type="button" data-k="'+prev.key+'">← '+esc(T(prev.name))+'</button><button type="button" data-k="'+next.key+'">'+esc(T(next.name))+' →</button></div>'
+      + '</div>';
+    $('side').innerHTML = h;
+    $('dback').onclick = function(){ select(null); };
+    $('side').querySelectorAll('.nav2 button').forEach(function(b){ b.onclick = function(){ select(b.getAttribute('data-k')); }; });
+    $('side').querySelectorAll('.chip[data-fam]').forEach(function(c){ c.onclick = function(){ var k = c.getAttribute('data-fam'); setFocus(focusFam===k ? null : k); }; });
+    $('side').scrollTop = 0;
+  }
+  function select(k){
+    selected = k;
+    if(k && !showReg) toggleReg();
+    styleRegions();
+    if(k){
+      renderDetail(REG[k]);
+      var b = bboxOf(D.regions[k]);
+      map.flyToBounds(b, {padding:[40,40], maxZoom:8.2, duration:.7});
+      if(window.matchMedia('(max-width:980px)').matches) $('side').scrollIntoView({behavior:'smooth', block:'start'});
+    } else {
+      renderList(); fitFrance();
+    }
+    try{ history.replaceState(null, '', k ? '#r='+k : location.pathname); }catch(e){}
+  }
+
+  /* family cards → map */
+  document.querySelectorAll('.fam .show').forEach(function(b){
+    b.onclick = function(){ var k = b.getAttribute('data-fam'); if(selected) select(null); setFocus(k); document.querySelector('.mapcard').scrollIntoView({behavior:'smooth', block:'start'}); };
+  });
+
+  /* ---------------------------------------------------------------- language */
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    var n = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<n.length;i++){ var v = n[i].getAttribute('data-'+LANG); if(v!==null){ if(n[i].tagName==='TITLE') document.title = v.replace(/&amp;/g,'&'); else n[i].innerHTML = v; } }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    renderLegend();
+    if(selected) renderDetail(REG[selected]); else renderList();
+  }
+  $('langbtn').addEventListener('click', function(){ LANG = LANG==='fr' ? 'en' : 'fr'; try{ localStorage.setItem('fw_lang', LANG); }catch(e){} applyLang(); });
+  document.addEventListener('fw:lang', function(e){ var l = (e.detail && e.detail.lang) || document.documentElement.lang; if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); } });
+  applyLang();
+  var m = /^#r=([a-z]+)$/.exec(location.hash); if(m && REG[m[1]]) setTimeout(function(){ select(m[1]); }, 50);
+})();
+</script>
+</body>
+</html>

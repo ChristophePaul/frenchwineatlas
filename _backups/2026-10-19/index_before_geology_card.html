@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="assets/theme.js"></script><!--fw-theme:end-->
+<script src="assets/theme.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Vins de France" data-en="Wines of France">Vins de France</title>
+<style>
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--bordeaux:#9b2235;
+    --parchment:#f5efe3;--muted:rgba(245,239,227,.62);--faint:rgba(245,239,227,.42);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.34);--glass-hi:rgba(38,10,18,.5);
+    --hair:rgba(217,179,107,.16);--hair-hi:rgba(217,179,107,.55);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  html,body{margin:0;min-height:100%;}
+  body{
+    color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+    background:
+      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
+      url("assets/page_bg_names_dark.png?v=20261018225015") center top / cover fixed no-repeat,
+      linear-gradient(rgba(77,13,24,.62),rgba(77,13,24,.62)) fixed,
+      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
+      #4d0d18;
+    min-height:100vh;
+  }
+  /* 2026-10-18 trial (user): vine-leaf photo behind the wall of AOC names (assets/_source/home_leaf_bg.py).
+     Previous dark background: url("Web_Page_Background.png") — backup _backups/2026-10-18/index_before_leaf_bg.html */
+  /* cream theme: same wall of appellation names as the dark background (assets/page_bg_cream_wall.png, made from
+     Web_Page_Background.png), veiled by a translucent cream layer. :root selector outranks the generated fw-theme-css rule. */
+  :root[data-theme="cream"] body{
+    background:
+      radial-gradient(120% 70% at 50% -10%,rgba(120,82,40,.10) 0%,rgba(120,82,40,0) 55%),
+      url("assets/page_bg_names_cream.png?v=20261018225015") center top / cover fixed no-repeat,
+      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
+      #f5eee0;}
+  .wrap{max-width:1160px;margin:0 auto;padding:clamp(40px,7vw,100px) clamp(16px,4vw,44px) 64px;}
+
+  /* ---------- hero ---------- */
+  header{text-align:center;margin-bottom:clamp(38px,6vw,70px);}
+  .eyebrow{font-family:var(--sans);text-transform:uppercase;letter-spacing:.5em;
+    font-size:clamp(9px,1.3vw,11px);font-weight:600;color:var(--gold);
+    margin:0 0 22px;padding-left:.5em;opacity:.9;}
+  h1{font-family:var(--serif);font-weight:500;
+    font-size:clamp(46px,9vw,104px);line-height:.96;margin:0;color:#fff;
+    letter-spacing:-.01em;text-shadow:0 4px 40px rgba(0,0,0,.5);}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .rule{width:64px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    margin:30px auto 24px;}
+  .subtitle{font-size:clamp(19px,2.6vw,25px);line-height:1.4;font-weight:500;margin:18px 0 0;font-style:italic;
+    color:var(--gold-soft);text-shadow:0 1px 10px rgba(0,0,0,.5);}
+  .tagline{font-size:clamp(16px,2.2vw,21px);line-height:1.6;font-weight:500;
+    color:rgba(245,239,227,.92);max-width:720px;margin:0 auto;
+    text-shadow:0 1px 10px rgba(0,0,0,.5);}
+
+  /* 2026-10-18 (user): outline ("stroke") highlight on the title and sub-title so they stand out from the photo
+     background; text-shadow rings rather than -webkit-text-stroke, which would eat into the thin serif strokes.
+     !important: the generated fw-theme-css rules (text-shadow:none) are more specific. */
+  :root:not([data-theme="cream"]) h1{text-shadow:2.00px 0.00px 0 rgba(28,4,10,.92),1.85px 0.77px 0 rgba(28,4,10,.92),1.41px 1.41px 0 rgba(28,4,10,.92),0.77px 1.85px 0 rgba(28,4,10,.92),0.00px 2.00px 0 rgba(28,4,10,.92),-0.77px 1.85px 0 rgba(28,4,10,.92),-1.41px 1.41px 0 rgba(28,4,10,.92),-1.85px 0.77px 0 rgba(28,4,10,.92),-2.00px 0.00px 0 rgba(28,4,10,.92),-1.85px -0.77px 0 rgba(28,4,10,.92),-1.41px -1.41px 0 rgba(28,4,10,.92),-0.77px -1.85px 0 rgba(28,4,10,.92),-0.00px -2.00px 0 rgba(28,4,10,.92),0.77px -1.85px 0 rgba(28,4,10,.92),1.41px -1.41px 0 rgba(28,4,10,.92),1.85px -0.77px 0 rgba(28,4,10,.92),0 4px 40px rgba(0,0,0,.55) !important}
+  :root:not([data-theme="cream"]) .subtitle{text-shadow:1.60px 0.00px 0 rgba(28,4,10,.92),1.48px 0.61px 0 rgba(28,4,10,.92),1.13px 1.13px 0 rgba(28,4,10,.92),0.61px 1.48px 0 rgba(28,4,10,.92),0.00px 1.60px 0 rgba(28,4,10,.92),-0.61px 1.48px 0 rgba(28,4,10,.92),-1.13px 1.13px 0 rgba(28,4,10,.92),-1.48px 0.61px 0 rgba(28,4,10,.92),-1.60px 0.00px 0 rgba(28,4,10,.92),-1.48px -0.61px 0 rgba(28,4,10,.92),-1.13px -1.13px 0 rgba(28,4,10,.92),-0.61px -1.48px 0 rgba(28,4,10,.92),-0.00px -1.60px 0 rgba(28,4,10,.92),0.61px -1.48px 0 rgba(28,4,10,.92),1.13px -1.13px 0 rgba(28,4,10,.92),1.48px -0.61px 0 rgba(28,4,10,.92),0 1px 10px rgba(0,0,0,.5) !important}
+  :root[data-theme="cream"] h1{text-shadow:2.00px 0.00px 0 rgba(255,250,240,.96),1.85px 0.77px 0 rgba(255,250,240,.96),1.41px 1.41px 0 rgba(255,250,240,.96),0.77px 1.85px 0 rgba(255,250,240,.96),0.00px 2.00px 0 rgba(255,250,240,.96),-0.77px 1.85px 0 rgba(255,250,240,.96),-1.41px 1.41px 0 rgba(255,250,240,.96),-1.85px 0.77px 0 rgba(255,250,240,.96),-2.00px 0.00px 0 rgba(255,250,240,.96),-1.85px -0.77px 0 rgba(255,250,240,.96),-1.41px -1.41px 0 rgba(255,250,240,.96),-0.77px -1.85px 0 rgba(255,250,240,.96),-0.00px -2.00px 0 rgba(255,250,240,.96),0.77px -1.85px 0 rgba(255,250,240,.96),1.41px -1.41px 0 rgba(255,250,240,.96),1.85px -0.77px 0 rgba(255,250,240,.96),0 0 26px rgba(255,250,240,.7) !important}
+  /* tagline on a cream panel — 2026-10-18 (user): readable over the photo background, both themes */
+  .tagline,:root[data-theme="cream"] .tagline{background:rgba(250,244,232,.9) !important;color:#2e1419 !important;text-shadow:none !important;
+    padding:14px 26px !important;border-radius:16px;box-shadow:0 8px 28px rgba(40,10,15,.18);border:1px solid rgba(154,106,31,.25);}
+  /* title colour — 2026-10-18 (user): whole title « Vins de France », both words, both themes; #993333 then 25 % darker → #732626 */
+  h1,h1 em,:root[data-theme="cream"] h1,:root[data-theme="cream"] h1 em{color:#732626 !important;}
+  :root[data-theme="cream"] .subtitle{text-shadow:1.60px 0.00px 0 rgba(255,250,240,.96),1.48px 0.61px 0 rgba(255,250,240,.96),1.13px 1.13px 0 rgba(255,250,240,.96),0.61px 1.48px 0 rgba(255,250,240,.96),0.00px 1.60px 0 rgba(255,250,240,.96),-0.61px 1.48px 0 rgba(255,250,240,.96),-1.13px 1.13px 0 rgba(255,250,240,.96),-1.48px 0.61px 0 rgba(255,250,240,.96),-1.60px 0.00px 0 rgba(255,250,240,.96),-1.48px -0.61px 0 rgba(255,250,240,.96),-1.13px -1.13px 0 rgba(255,250,240,.96),-0.61px -1.48px 0 rgba(255,250,240,.96),-0.00px -1.60px 0 rgba(255,250,240,.96),0.61px -1.48px 0 rgba(255,250,240,.96),1.13px -1.13px 0 rgba(255,250,240,.96),1.48px -0.61px 0 rgba(255,250,240,.96),0 0 14px rgba(255,250,240,.75) !important}
+
+  /* ---------- card grid : 6 columns → line 1 = 2 cards, lines 2-4 = full width, line 5 = 3 cards ---------- */
+  .grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:44px;padding:13px;}
+  .half{grid-column:span 3;} .full{grid-column:1 / -1;} .third{grid-column:span 2;}
+  .two3{grid-column:span 4;} .one3{grid-column:span 2;}
+  .card{
+    position:relative;display:flex;flex-direction:column;gap:14px;overflow:hidden;
+    background:var(--glass);
+    -webkit-backdrop-filter:blur(16px) saturate(1.15);backdrop-filter:blur(16px) saturate(1.15);
+    border:1px solid var(--hair);border-radius:16px;
+    padding:26px 24px 24px;text-decoration:none;color:var(--parchment);
+    box-shadow:0 18px 50px rgba(10,1,4,.5),inset 0 1px 0 rgba(255,255,255,.05);
+    transition:transform .22s cubic-bezier(.2,.7,.3,1),border-color .22s,background .22s,box-shadow .22s;
+  }
+  /* gold accent line that grows on hover */
+  .card::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;z-index:2;
+    background:linear-gradient(180deg,var(--gold),rgba(217,179,107,0));
+    transform:scaleY(0);transform-origin:top;transition:transform .28s ease;}
+  .card:hover{transform:translateY(-6px);background:var(--glass-hi);border-color:var(--hair-hi);
+    box-shadow:0 28px 64px rgba(10,1,4,.62),inset 0 1px 0 rgba(255,255,255,.08);}
+  .card:hover::before{transform:scaleY(1);}
+  /* 10px #992b28 frame, 3px gap from the card (outline follows the 16px radius) */
+  .card,.card:focus-within{outline:10px solid #992b28;outline-offset:3px;}
+  /* cream-theme frame opacity: see assets/home_overrides.css (kept out of theme_apply.py's reach) */
+  .card:focus-within{box-shadow:0 0 0 2px var(--gold),0 18px 50px rgba(10,1,4,.5);}
+  /* the main link covers the whole card; sub-links sit above it */
+  .main{color:inherit;text-decoration:none;outline:none;}
+  .main::after{content:"";position:absolute;inset:0;z-index:1;}
+  .card > *{position:relative;}
+  .card > .main{position:static;}
+
+  .top{display:flex;gap:16px;align-items:flex-start;}
+  .ic-wrap{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:rgba(217,179,107,.12);border:1px solid rgba(217,179,107,.22);
+    transition:background .22s,border-color .22s;}
+  .card:hover .ic-wrap{background:rgba(217,179,107,.2);border-color:rgba(217,179,107,.4);}
+  .ic{width:24px;height:24px;color:var(--gold-soft);}
+  .txt{flex:1;min-width:0;}
+  .kick{font-family:var(--sans);text-transform:uppercase;letter-spacing:.22em;
+    font-size:9.5px;font-weight:600;color:var(--gold);margin:0 0 6px;opacity:.85;}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.08;
+    color:#fff;margin:0 0 9px;letter-spacing:-.005em;}
+  .card p{font-size:12.5px;line-height:1.55;color:var(--muted);margin:0;font-weight:300;}
+  .full .txt p,.two3 .txt p{max-width:640px;}
+  .go{display:inline-flex;align-items:center;gap:7px;margin-top:auto;
+    font-size:10.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);opacity:0;transform:translateX(-6px);transition:opacity .22s,transform .22s;}
+  .card:hover .go{opacity:1;transform:none;}
+  .go .ar{font-size:14px;line-height:1;transition:transform .22s;}
+  .card:hover .go .ar{transform:translateX(3px);}
+
+  /* ---------- sub-links ---------- */
+  .subs{z-index:3;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .sub{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;
+    font-size:11.5px;font-weight:500;letter-spacing:.02em;text-decoration:none;
+    color:var(--gold-soft);background:rgba(217,179,107,.08);border:1px solid rgba(217,179,107,.24);
+    transition:background .18s,border-color .18s,color .18s;}
+  .sub:hover,.sub:focus-visible{background:rgba(217,179,107,.2);border-color:rgba(217,179,107,.6);color:#fff;outline:none;}
+  .sub .ar{font-size:12px;opacity:.7;}
+  .sub-lbl{width:100%;font-size:9.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--faint);margin:2px 0 -2px;}
+
+  /* region directory inside the AOC Maps card */
+  .regions{z-index:3;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px 22px;
+    padding-top:16px;border-top:1px solid var(--hair);}
+  .rg h4{margin:0 0 8px;font-family:var(--sans);font-size:9.5px;font-weight:600;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--gold);}
+  .rg ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;}
+  .rg a{display:inline-block;padding:5px 11px;border-radius:999px;font-size:12px;text-decoration:none;
+    color:var(--parchment);background:rgba(16,3,7,.32);border:1px solid rgba(217,179,107,.18);
+    transition:background .18s,border-color .18s,color .18s;}
+  .rg a:hover,.rg a:focus-visible{background:rgba(217,179,107,.18);border-color:rgba(217,179,107,.6);color:#fff;outline:none;}
+
+
+  /* IGP & IG map card (1/3 beside the AOC-AOP maps) */
+  .igp-links{z-index:3;list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--hair);display:flex;flex-direction:column;gap:8px;}
+  .igp-links a{display:flex;align-items:center;gap:10px;padding:9px 13px;border-radius:12px;font-size:13px;text-decoration:none;
+    color:var(--parchment);background:rgba(16,3,7,.32);border:1px solid rgba(217,179,107,.18);
+    transition:background .18s,border-color .18s,color .18s;}
+  .igp-links a:hover,.igp-links a:focus-visible{background:rgba(217,179,107,.18);border-color:rgba(217,179,107,.6);color:#fff;outline:none;}
+  .igp-links .sw{flex:none;width:12px;height:12px;border-radius:3px;border:1px solid rgba(0,0,0,.3);}
+  .igp-links .n{margin-left:auto;font-family:var(--sans);font-size:10.5px;opacity:.6;}
+  .igp-links .ar{font-size:12px;opacity:.7;}
+  .igp-card .subs{margin-top:auto;}
+  /* the « Toutes les IGP et IG » chip sits over the seal: opaque fill (card colour + the usual gold tint) so the seal stays behind it */
+  .igp-card .subs .sub{background:linear-gradient(rgba(217,179,107,.1),rgba(217,179,107,.1)),rgba(44,9,17,.94);
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+  .igp-card .subs .sub:hover{background:linear-gradient(rgba(217,179,107,.22),rgba(217,179,107,.22)),rgba(44,9,17,.96);}
+  html[data-theme="cream"] .igp-card .subs .sub{background:linear-gradient(rgba(154,106,31,.08),rgba(154,106,31,.08)),#fdfaf4;}
+  html[data-theme="cream"] .igp-card .subs .sub:hover{background:linear-gradient(rgba(154,106,31,.18),rgba(154,106,31,.18)),#fdfaf4;}
+  html[data-theme="cream"] .igp-links a{color:#2e1419;background:rgba(255,253,248,.7);border-color:rgba(154,106,31,.25);}
+  html[data-theme="cream"] .igp-links a:hover{background:rgba(154,106,31,.18);border-color:rgba(154,106,31,.71);}
+
+  /* ---------- watermarks ---------- */
+  /* EU « Indication géographique protégée » seal (assets/igp_seal.svg, redrawn vector) on the IGP card */
+  .wm-igp{right:6px;bottom:20px;width:min(225px,60%);aspect-ratio:1;
+    background:url("assets/igp_seal.svg") center / contain no-repeat;opacity:.44;transform:rotate(-15deg);
+    filter:saturate(.8) drop-shadow(0 6px 16px rgba(0,0,0,.25));}
+  html[data-theme="cream"] .wm-igp{opacity:.4;filter:saturate(.75);}
+  .wm{position:absolute !important;pointer-events:none;z-index:0;}
+  .wm-map{right:-10px;top:6px;bottom:6px;width:auto;max-width:72%;aspect-ratio:2200/2060;
+    /* the real Carte de France (regions in their map colours), faded towards the text */
+    background:url("assets/aoc_map_bg.svg") right center / contain no-repeat;opacity:.36;
+    -webkit-mask:linear-gradient(90deg,transparent 0%,#000 38%) ;
+            mask:linear-gradient(90deg,transparent 0%,#000 38%);}
+  html[data-theme="cream"] .wm-map{opacity:.42;}
+  html[data-theme="cream"] .two3 .rg a,html[data-theme="cream"] .full .rg a{background:rgba(255,253,248,.55);}
+  /* grape-bunch illustration on the right of the grape search card */
+  .wm-grapes{right:clamp(16px,4vw,56px);top:14px;bottom:14px;width:34%;
+    background:url("assets/grapes.png") right center / contain no-repeat;opacity:.55;filter:contrast(.8) saturate(.75) drop-shadow(0 8px 22px rgba(0,0,0,.25));}
+  html[data-theme="cream"] .wm-grapes{opacity:.6;filter:contrast(.8) saturate(.75);}
+  /* purple grape-vine icon on « La vigne & le vignoble » */
+  .wm-vine{right:clamp(16px,4vw,56px);top:12px;bottom:12px;width:17%;
+    background:url("assets/vine_icon.webp") right center / contain no-repeat;opacity:.6;filter:saturate(.8) drop-shadow(0 8px 22px rgba(0,0,0,.25));}
+  html[data-theme="cream"] .wm-vine{opacity:.7;filter:saturate(.8);}
+  .vine-subs{max-width:74%;}
+  /* « 1855 » in big serif numerals + a 5-step podium, behind the classifications card */
+  .wm-cru{right:clamp(16px,4vw,56px);top:10px;bottom:10px;width:30%;opacity:.22;
+    background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 200%22%3E%3Cg fill=%22%23d9b36b%22%3E%3Ctext x=%22150%22 y=%2286%22 text-anchor=%22middle%22 font-family=%22Georgia,serif%22 font-size=%2290%22 font-style=%22italic%22%3E1855%3C/text%3E%3Crect x=%2230%22 y=%22150%22 width=%2244%22 height=%2244%22 rx=%223%22/%3E%3Crect x=%2280%22 y=%22132%22 width=%2244%22 height=%2262%22 rx=%223%22/%3E%3Crect x=%22130%22 y=%22110%22 width=%2244%22 height=%2284%22 rx=%223%22/%3E%3Crect x=%22180%22 y=%22132%22 width=%2244%22 height=%2262%22 rx=%223%22/%3E%3Crect x=%22230%22 y=%22150%22 width=%2244%22 height=%2244%22 rx=%223%22/%3E%3C/g%3E%3C/svg%3E") right center / contain no-repeat;}
+  html[data-theme="cream"] .wm-cru{opacity:.2;filter:sepia(1) saturate(2.2) brightness(.6);}
+  .cru-subs{max-width:72%;}
+  /* wine-balance triangle behind « Déguster le vin » */
+  .wm-taste{right:clamp(16px,4vw,56px);top:10px;bottom:10px;width:24%;opacity:.3;background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 260%22%3E%3Cg fill=%22none%22 stroke=%22%23d9b36b%22 stroke-width=%223%22%3E%3Ccircle cx=%22150%22 cy=%22140%22 r=%22104%22 stroke-dasharray=%224 6%22/%3E%3Ccircle cx=%22150%22 cy=%22140%22 r=%2270%22 fill=%22%23d9b36b%22 fill-opacity=%22.18%22/%3E%3Cpath d=%22M150 36 60 192h180Z%22/%3E%3Cpath d=%22M150 140V20M150 140 46 200M150 140l104 60%22 stroke-width=%222%22/%3E%3C/g%3E%3Cg fill=%22%23d9b36b%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 text-anchor=%22middle%22%3E%3Ctext x=%22150%22 y=%2214%22 font-size=%2220%22%3ETanins%3C/text%3E%3Ctext x=%2240%22 y=%22226%22 font-size=%2220%22%3EAcidit%C3%A9%3C/text%3E%3Ctext x=%22262%22 y=%22226%22 font-size=%2220%22%3EMoelleux%3C/text%3E%3C/g%3E%3Ccircle cx=%22150%22 cy=%22140%22 r=%228%22 fill=%22%239b2235%22 stroke=%22%23d9b36b%22 stroke-width=%222%22/%3E%3C/svg%3E") right center / contain no-repeat;}
+  html[lang="en"] .wm-taste{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 300 260%22%3E%3Cg fill=%22none%22 stroke=%22%23d9b36b%22 stroke-width=%223%22%3E%3Ccircle cx=%22150%22 cy=%22140%22 r=%22104%22 stroke-dasharray=%224 6%22/%3E%3Ccircle cx=%22150%22 cy=%22140%22 r=%2270%22 fill=%22%23d9b36b%22 fill-opacity=%22.18%22/%3E%3Cpath d=%22M150 36 60 192h180Z%22/%3E%3Cpath d=%22M150 140V20M150 140 46 200M150 140l104 60%22 stroke-width=%222%22/%3E%3C/g%3E%3Cg fill=%22%23d9b36b%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 text-anchor=%22middle%22%3E%3Ctext x=%22150%22 y=%2214%22 font-size=%2220%22%3ETannin%3C/text%3E%3Ctext x=%2240%22 y=%22226%22 font-size=%2220%22%3EAcidity%3C/text%3E%3Ctext x=%22262%22 y=%22226%22 font-size=%2220%22%3ESoftness%3C/text%3E%3C/g%3E%3Ccircle cx=%22150%22 cy=%22140%22 r=%228%22 fill=%22%239b2235%22 stroke=%22%23d9b36b%22 stroke-width=%222%22/%3E%3C/svg%3E");}
+  /* « Apprendre à lire… une étiquette » : the Coullenot Beaune label from the page, tilted like a card on the table */
+  .wm-label{right:clamp(20px,4.5vw,64px);top:50%;width:min(21%,240px);aspect-ratio:1536/1024;transform:translateY(-50%) rotate(-6deg);
+    background:url("Infos/Wine_Label/img/label_bourgogne_coullenot.webp") center / cover no-repeat;border-radius:6px;opacity:.42;
+    box-shadow:0 14px 34px rgba(0,0,0,.35);}
+  html[data-theme="cream"] .wm-label{opacity:.5;box-shadow:0 12px 28px rgba(90,40,30,.18);}
+  .label-subs{max-width:68%;}
+  /* sundial behind « Histoire du vin » (assets/sundial.svg, drawn by assets/_source/sundial_svg.py) */
+  .wm-hist{right:clamp(26px,4vw,60px);top:50%;transform:translateY(-50%) rotate(-20deg);width:21%;aspect-ratio:400/210;opacity:.3;
+    background:url("assets/sundial.svg") right center / contain no-repeat;}
+  html[data-theme="cream"] .wm-hist{opacity:.32;filter:sepia(1) saturate(2.2) brightness(.6);}
+  .hist-subs{max-width:68%;} .hist-card .txt p{max-width:min(640px,64%);}
+  html[data-theme="cream"] .wm-taste{opacity:.32;filter:sepia(1) saturate(2.2) brightness(.6);}
+  .taste-subs{max-width:72%;}
+  .wm-quote{right:clamp(20px,5vw,70px);top:50%;transform:translateY(-50%);font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(140px,16vw,230px);line-height:.6;color:#d9b36b;opacity:.22;padding-top:.32em;}
+  html[data-theme="cream"] .wm-quote{color:#8e1f33;opacity:.16;}
+  .quote-subs{max-width:76%;}
+  .wm-games{right:clamp(16px,4vw,56px);top:6px;height:46%;width:22%;opacity:.3;background:url("assets/games_wm.webp") right center / contain no-repeat;}
+  html[data-theme="cream"] .wm-games{opacity:.32;filter:sepia(1) saturate(2.2) brightness(.6);}
+  .games{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:16px;max-width:78%;}
+  .game{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;text-decoration:none;color:inherit;
+    background:rgba(217,179,107,.07);border:1px solid rgba(217,179,107,.28);transition:background .2s,border-color .2s,transform .2s;}
+  a.game:hover{background:rgba(217,179,107,.16);border-color:rgba(217,179,107,.6);transform:translateY(-2px);}
+  .game .gn{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:16px;
+    color:#d9b36b;border:1px solid rgba(217,179,107,.45);}
+  .game .gt{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1;}
+  .game b{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.15;}
+  .game .gt span{font-size:11.5px;line-height:1.35;opacity:.7;font-weight:300;}
+  .game .ar{color:#d9b36b;transition:transform .2s;} a.game:hover .ar{transform:translateX(3px);}
+  .game.soon{border-style:dashed;background:transparent;opacity:.75;}
+  html[data-theme="cream"] .game{background:rgba(154,106,31,.06);border-color:rgba(154,106,31,.3);}
+  html[data-theme="cream"] a.game:hover{background:rgba(154,106,31,.13);border-color:rgba(154,106,31,.6);}
+  html[data-theme="cream"] .game.soon{background:transparent;}
+  html[data-theme="cream"] .game .gn,html[data-theme="cream"] .game .ar{color:#8a5d17;border-color:rgba(154,106,31,.45);}
+  .sub.soon{opacity:.6;pointer-events:none;}
+  .ic-photo .ic-img{width:auto;height:38px;display:block;opacity:.85;filter:saturate(.55) brightness(1.05) drop-shadow(0 2px 4px rgba(0,0,0,.2));transition:opacity .22s,filter .22s;}
+  .card:hover .ic-photo .ic-img{opacity:1;filter:saturate(.75) brightness(1.05) drop-shadow(0 2px 4px rgba(0,0,0,.2));}
+  /* calendar illustration on the vintage chart card (inline; sources assets/calendar_fr.svg « MILLÉSIME », assets/calendar.svg "VINTAGE" for html[lang=en]) */
+  .wm-cal{right:clamp(16px,4vw,56px);top:12px;bottom:12px;width:30%;
+    background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 320 280%22%3E %3Cdefs%3E %3ClinearGradient id=%22pg%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23fffaf0%22/%3E%3Cstop offset=%221%22 stop-color=%22%23efe3cb%22/%3E%3C/linearGradient%3E %3ClinearGradient id=%22hd%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23a8283f%22/%3E%3Cstop offset=%221%22 stop-color=%22%236e1426%22/%3E%3C/linearGradient%3E %3ClinearGradient id=%22rg%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%220%22%3E%3Cstop offset=%220%22 stop-color=%22%238a6420%22/%3E%3Cstop offset=%22.5%22 stop-color=%22%23f3d68a%22/%3E%3Cstop offset=%221%22 stop-color=%22%238a6420%22/%3E%3C/linearGradient%3E %3C/defs%3E %3Cg transform=%22rotate(7 200 150)%22%3E%3Crect x=%2278%22 y=%2240%22 width=%22200%22 height=%22214%22 rx=%2216%22 fill=%22%23d9c7a3%22/%3E%3C/g%3E %3Cg transform=%22rotate(3 190 150)%22%3E%3Crect x=%2270%22 y=%2238%22 width=%22200%22 height=%22214%22 rx=%2216%22 fill=%22%23e8dabd%22/%3E%3C/g%3E %3Crect x=%2256%22 y=%2236%22 width=%22200%22 height=%22214%22 rx=%2216%22 fill=%22url(%23pg)%22 stroke=%22%23c9b48a%22 stroke-width=%221.5%22/%3E %3Cpath d=%22M56 52a16 16 0 0 1 16-16h168a16 16 0 0 1 16 16v38H56z%22 fill=%22url(%23hd)%22/%3E %3Ctext x=%22156%22 y=%2276%22 text-anchor=%22middle%22 font-family=%22Georgia,'Times New Roman',serif%22 font-size=%2217%22 letter-spacing=%223%22 fill=%22%23f3d68a%22%3EMILL%C3%89SIME%3C/text%3E %3Cg fill=%22url(%23rg)%22 stroke=%22%235a3d0c%22 stroke-width=%221.2%22%3E %3Crect x=%2294%22 y=%2218%22 width=%2212%22 height=%2236%22 rx=%226%22/%3E%3Crect x=%22206%22 y=%2218%22 width=%2212%22 height=%2236%22 rx=%226%22/%3E%3C/g%3E %3Ctext x=%22156%22 y=%22170%22 text-anchor=%22middle%22 font-family=%22Georgia,'Times New Roman',serif%22 font-size=%2266%22 font-weight=%22bold%22 fill=%22%236e1426%22%3E2025%3C/text%3E %3Cg fill=%22%23d4a23a%22 stroke=%22%238a6420%22 stroke-width=%221%22%3E %3Cpath id=%22s%22 d=%22M0-11l3.2 6.6 7.3 1-5.3 5.1 1.3 7.2L0 5.5l-6.5 3.4 1.3-7.2-5.3-5.1 7.3-1z%22 transform=%22translate(100 212)%22/%3E %3Cuse href=%22%23s%22 x=%2228%22/%3E%3Cuse href=%22%23s%22 x=%2256%22/%3E%3Cuse href=%22%23s%22 x=%2284%22/%3E %3C/g%3E %3Cpath d=%22M0-11l3.2 6.6 7.3 1-5.3 5.1 1.3 7.2L0 5.5l-6.5 3.4 1.3-7.2-5.3-5.1 7.3-1z%22 transform=%22translate(212 212)%22 fill=%22none%22 stroke=%22%23b8935a%22 stroke-width=%221.4%22/%3E %3Cpath d=%22M256 214v20a16 16 0 0 1-16 16h-22z%22 fill=%22%23e2d3b4%22/%3E %3C/svg%3E") right center / contain no-repeat;opacity:.5;filter:contrast(.8) saturate(.7) drop-shadow(0 8px 22px rgba(0,0,0,.25));}
+  html[lang="en"] .wm-cal{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 320 280%22%3E %3Cdefs%3E %3ClinearGradient id=%22pg%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23fffaf0%22/%3E%3Cstop offset=%221%22 stop-color=%22%23efe3cb%22/%3E%3C/linearGradient%3E %3ClinearGradient id=%22hd%22 x1=%220%22 y1=%220%22 x2=%220%22 y2=%221%22%3E%3Cstop offset=%220%22 stop-color=%22%23a8283f%22/%3E%3Cstop offset=%221%22 stop-color=%22%236e1426%22/%3E%3C/linearGradient%3E %3ClinearGradient id=%22rg%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%220%22%3E%3Cstop offset=%220%22 stop-color=%22%238a6420%22/%3E%3Cstop offset=%22.5%22 stop-color=%22%23f3d68a%22/%3E%3Cstop offset=%221%22 stop-color=%22%238a6420%22/%3E%3C/linearGradient%3E %3C/defs%3E %3Cg transform=%22rotate(7 200 150)%22%3E%3Crect x=%2278%22 y=%2240%22 width=%22200%22 height=%22214%22 rx=%2216%22 fill=%22%23d9c7a3%22/%3E%3C/g%3E %3Cg transform=%22rotate(3 190 150)%22%3E%3Crect x=%2270%22 y=%2238%22 width=%22200%22 height=%22214%22 rx=%2216%22 fill=%22%23e8dabd%22/%3E%3C/g%3E %3Crect x=%2256%22 y=%2236%22 width=%22200%22 height=%22214%22 rx=%2216%22 fill=%22url(%23pg)%22 stroke=%22%23c9b48a%22 stroke-width=%221.5%22/%3E %3Cpath d=%22M56 52a16 16 0 0 1 16-16h168a16 16 0 0 1 16 16v38H56z%22 fill=%22url(%23hd)%22/%3E %3Ctext x=%22156%22 y=%2276%22 text-anchor=%22middle%22 font-family=%22Georgia,'Times New Roman',serif%22 font-size=%2217%22 letter-spacing=%225%22 fill=%22%23f3d68a%22%3EVINTAGE%3C/text%3E %3Cg fill=%22url(%23rg)%22 stroke=%22%235a3d0c%22 stroke-width=%221.2%22%3E %3Crect x=%2294%22 y=%2218%22 width=%2212%22 height=%2236%22 rx=%226%22/%3E%3Crect x=%22206%22 y=%2218%22 width=%2212%22 height=%2236%22 rx=%226%22/%3E%3C/g%3E %3Ctext x=%22156%22 y=%22170%22 text-anchor=%22middle%22 font-family=%22Georgia,'Times New Roman',serif%22 font-size=%2266%22 font-weight=%22bold%22 fill=%22%236e1426%22%3E2025%3C/text%3E %3Cg fill=%22%23d4a23a%22 stroke=%22%238a6420%22 stroke-width=%221%22%3E %3Cpath id=%22s%22 d=%22M0-11l3.2 6.6 7.3 1-5.3 5.1 1.3 7.2L0 5.5l-6.5 3.4 1.3-7.2-5.3-5.1 7.3-1z%22 transform=%22translate(100 212)%22/%3E %3Cuse href=%22%23s%22 x=%2228%22/%3E%3Cuse href=%22%23s%22 x=%2256%22/%3E%3Cuse href=%22%23s%22 x=%2284%22/%3E %3C/g%3E %3Cpath d=%22M0-11l3.2 6.6 7.3 1-5.3 5.1 1.3 7.2L0 5.5l-6.5 3.4 1.3-7.2-5.3-5.1 7.3-1z%22 transform=%22translate(212 212)%22 fill=%22none%22 stroke=%22%23b8935a%22 stroke-width=%221.4%22/%3E %3Cpath d=%22M256 214v20a16 16 0 0 1-16 16h-22z%22 fill=%22%23e2d3b4%22/%3E %3C/svg%3E");}
+  html[data-theme="cream"] .wm-cal{opacity:.6;filter:contrast(.8) saturate(.7);}
+  /* scattered numbers behind "French Wines in Numbers" — inline background-image (svg source: assets/numbers_bg*.svg), not a url() mask: masks are blocked on file:// */
+  .wm-nums{inset:0;opacity:.2;
+    background:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 860 240%22%3E%3Cg font-family=%22'Arial Black','Helvetica Neue',Arial,Helvetica,sans-serif%22 font-weight=%22900%22 fill=%22%23d9b36b%22 text-anchor=%22middle%22%3E%3Ctext x=%2240%22 y=%2296%22 font-size=%2292%22 transform=%22rotate%28-8 40 96%29%22%3E75%3C/text%3E%3Ctext x=%22170%22 y=%2260%22 font-size=%2254%22 transform=%22rotate%286 170 60%29%22%3E1855%3C/text%3E%3Ctext x=%22330%22 y=%22120%22 font-size=%22120%22 transform=%22rotate%28-4 330 120%29%22%3E12%3C/text%3E%3Ctext x=%22470%22 y=%2270%22 font-size=%2270%22 transform=%22rotate%2810 470 70%29%22%3E6%3C/text%3E%3Ctext x=%22560%22 y=%22140%22 font-size=%2264%22 transform=%22rotate%28-12 560 140%29%22%3E225%3C/text%3E%3Ctext x=%22120%22 y=%22190%22 font-size=%2258%22 transform=%22rotate%289 120 190%29%22%3E363%3C/text%3E%3Ctext x=%22250%22 y=%22180%22 font-size=%2244%22 transform=%22rotate%28-14 250 180%29%22%3E3%3C/text%3E%3Ctext x=%22420%22 y=%22205%22 font-size=%2246%22 transform=%22rotate%28-6 420 205%29%22%3E1936%3C/text%3E%3Ctext x=%22620%22 y=%2260%22 font-size=%2240%22 transform=%22rotate%288 620 60%29%22%3E750%3C/text%3E%3Ctext x=%22705%22 y=%22120%22 font-size=%2258%22 transform=%22rotate%28-10 705 120%29%22%3E17%3C/text%3E%3Ctext x=%2220%22 y=%22205%22 font-size=%2250%22 transform=%22rotate%2812 20 205%29%22%3E9%3C/text%3E%3Ctext x=%22560%22 y=%22225%22 font-size=%2234%22 transform=%22rotate%284 560 225%29%22%3E2025%3C/text%3E%3Ctext x=%22690%22 y=%22215%22 font-size=%2252%22 transform=%22rotate%2814 690 215%29%22%3E13%3C/text%3E%3Ctext x=%22395%22 y=%2255%22 font-size=%2238%22 transform=%22rotate%28-16 395 55%29%22%3E31%3C/text%3E%3Ctext x=%22770%22 y=%2260%22 font-size=%2246%22 transform=%22rotate%286 770 60%29%22%3E4%3C/text%3E%3Ctext x=%22290%22 y=%2240%22 font-size=%2240%22 transform=%22rotate%2810 290 40%29%22%3E1%3C/text%3E%3Ctext x=%22810%22 y=%22185%22 font-size=%2260%22 transform=%22rotate%28-8 810 185%29%22%3E5%3C/text%3E%3Ctext x=%22235%22 y=%22110%22 font-size=%2240%22 transform=%22rotate%2812 235 110%29%22%3E28%3C/text%3E%3C/g%3E%3C/svg%3E") right center / auto 112% no-repeat;
+    -webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.25) 0%,#000 40%);
+            mask-image:linear-gradient(90deg,rgba(0,0,0,.25) 0%,#000 40%);}
+  html[data-theme="cream"] .wm-nums{background-image:url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 860 240%22%3E%3Cg font-family=%22'Arial Black','Helvetica Neue',Arial,Helvetica,sans-serif%22 font-weight=%22900%22 fill=%22%238a5d17%22 text-anchor=%22middle%22%3E%3Ctext x=%2240%22 y=%2296%22 font-size=%2292%22 transform=%22rotate%28-8 40 96%29%22%3E75%3C/text%3E%3Ctext x=%22170%22 y=%2260%22 font-size=%2254%22 transform=%22rotate%286 170 60%29%22%3E1855%3C/text%3E%3Ctext x=%22330%22 y=%22120%22 font-size=%22120%22 transform=%22rotate%28-4 330 120%29%22%3E12%3C/text%3E%3Ctext x=%22470%22 y=%2270%22 font-size=%2270%22 transform=%22rotate%2810 470 70%29%22%3E6%3C/text%3E%3Ctext x=%22560%22 y=%22140%22 font-size=%2264%22 transform=%22rotate%28-12 560 140%29%22%3E225%3C/text%3E%3Ctext x=%22120%22 y=%22190%22 font-size=%2258%22 transform=%22rotate%289 120 190%29%22%3E363%3C/text%3E%3Ctext x=%22250%22 y=%22180%22 font-size=%2244%22 transform=%22rotate%28-14 250 180%29%22%3E3%3C/text%3E%3Ctext x=%22420%22 y=%22205%22 font-size=%2246%22 transform=%22rotate%28-6 420 205%29%22%3E1936%3C/text%3E%3Ctext x=%22620%22 y=%2260%22 font-size=%2240%22 transform=%22rotate%288 620 60%29%22%3E750%3C/text%3E%3Ctext x=%22705%22 y=%22120%22 font-size=%2258%22 transform=%22rotate%28-10 705 120%29%22%3E17%3C/text%3E%3Ctext x=%2220%22 y=%22205%22 font-size=%2250%22 transform=%22rotate%2812 20 205%29%22%3E9%3C/text%3E%3Ctext x=%22560%22 y=%22225%22 font-size=%2234%22 transform=%22rotate%284 560 225%29%22%3E2025%3C/text%3E%3Ctext x=%22690%22 y=%22215%22 font-size=%2252%22 transform=%22rotate%2814 690 215%29%22%3E13%3C/text%3E%3Ctext x=%22395%22 y=%2255%22 font-size=%2238%22 transform=%22rotate%28-16 395 55%29%22%3E31%3C/text%3E%3Ctext x=%22770%22 y=%2260%22 font-size=%2246%22 transform=%22rotate%286 770 60%29%22%3E4%3C/text%3E%3Ctext x=%22290%22 y=%2240%22 font-size=%2240%22 transform=%22rotate%2810 290 40%29%22%3E1%3C/text%3E%3Ctext x=%22810%22 y=%22185%22 font-size=%2260%22 transform=%22rotate%28-8 810 185%29%22%3E5%3C/text%3E%3Ctext x=%22235%22 y=%22110%22 font-size=%2240%22 transform=%22rotate%2812 235 110%29%22%3E28%3C/text%3E%3C/g%3E%3C/svg%3E");opacity:.16;}
+  /* INAO logo (inao.gouv.fr / Wikimedia Commons), sits at the end of the sub-link row */
+  .inao-logo{margin-left:auto;align-self:flex-end;height:64px;width:auto;display:block;
+    filter:drop-shadow(0 4px 14px rgba(0,0,0,.35));}
+  html[data-theme="cream"] .inao-logo{filter:drop-shadow(0 3px 8px rgba(90,30,40,.15));}
+
+  footer{margin-top:64px;padding-top:26px;text-align:center;font-family:var(--sans);
+    font-size:11px;line-height:1.8;color:var(--faint);
+    border-top:1px solid var(--hair);}
+  footer .lang-link{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(217,179,107,.5);}
+  footer .lang-link:hover{color:var(--gold);}
+  footer b{color:rgba(231,207,156,.85);font-weight:600;letter-spacing:.04em;}
+
+  @media (max-width:900px){.third{grid-column:span 3;} .third.end{grid-column:1 / -1;} .two3,.one3{grid-column:1 / -1;}}
+  @media (max-width:620px){
+    .grid{grid-template-columns:1fr;} .half,.third,.third.end,.full,.two3,.one3{grid-column:auto;}
+    .card{padding:22px 18px 20px;}
+    .inao-logo{height:52px;}
+    .wm-grapes{opacity:.18;width:70%;right:-8%;filter:none;}
+    .wm-cal{opacity:.16;width:64%;right:-6%;filter:none;}
+    .wm-vine{opacity:.18;width:52%;right:-6%;filter:none;} .vine-subs{max-width:none;}
+    .wm-cru{opacity:.12;width:70%;right:-6%;} .cru-subs{max-width:none;} .wm-taste{opacity:.12;width:70%;right:-6%;} .taste-subs{max-width:none;} .wm-label{opacity:.16;width:58%;right:-8%;} .label-subs{max-width:none;} .wm-hist{opacity:.13;width:80%;right:-10%;} .hist-subs{max-width:none;} .hist-card .txt p{max-width:none;} .wm-quote{opacity:.1;} .quote-subs{max-width:none;} .wm-games{opacity:.12;width:70%;right:-6%;top:10px;height:auto;bottom:10px;} .games{max-width:none;}
+    .wm-map{top:-10px;bottom:auto;width:92%;max-width:none;right:-22%;} .wm-igp{width:165px;opacity:.22;}
+    .regions{grid-template-columns:1fr;}
+  }
+</style>
+<link rel="stylesheet" href="assets/home_overrides.css?v=3">
+<!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="cream"] body{color:#2e1419;background:linear-gradient(180deg,rgba(255,253,248,0.92) 0%,rgba(255,253,248,0.69) 26%,rgba(255,253,248,0.92) 100%),
+      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(255,253,248,0.92) 100%),
+      url("assets/page_bg_names_dark.png?v=20261018225015") center top / cover fixed no-repeat,
+      linear-gradient(rgba(255,253,248,0.92),rgba(255,253,248,0.92)) fixed,
+      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
+      #fbf6ec}
+html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(154,106,31,0.10) 0%,rgba(120,82,40,0) 55%),
+      url("assets/page_bg_names_cream.png?v=20261018225015") center top / cover fixed no-repeat,
+      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
+      #f5eee0}
+html[data-theme="cream"] .eyebrow{color:#8a5d17}
+html[data-theme="cream"] h1{color:#2e1419;text-shadow:none}
+html[data-theme="cream"] h1 em{color:#8a5d17}
+html[data-theme="cream"] .subtitle{color:#8a5d17;text-shadow:none}
+html[data-theme="cream"] .tagline{color:rgba(46,20,25,0.92);text-shadow:none}
+html[data-theme="cream"]:not([data-theme="cream"]) h1{text-shadow:none}
+html[data-theme="cream"]:not([data-theme="cream"]) .subtitle{text-shadow:none}
+html[data-theme="cream"][data-theme="cream"] h1{text-shadow:none}
+html[data-theme="cream"] .tagline,html[data-theme="cream"][data-theme="cream"] .tagline{box-shadow:0 8px 28px rgba(90,40,30,0.05);border:1px solid rgba(154,106,31,0.33)}
+html[data-theme="cream"][data-theme="cream"] .subtitle{text-shadow:none}
+html[data-theme="cream"] .card{background:rgba(255,253,248,0.89);border:1px solid rgba(154,106,31,0.23);color:#2e1419;box-shadow:0 18px 50px rgba(90,40,30,0.15),inset 0 1px 0 rgba(255,255,255,0.30)}
+html[data-theme="cream"] .card:hover{background:rgba(255,253,248,0.92);border-color:rgba(154,106,31,0.66);box-shadow:0 28px 64px rgba(90,40,30,0.19),inset 0 1px 0 rgba(255,255,255,0.48)}
+html[data-theme="cream"] .card,html[data-theme="cream"] .card:focus-within{outline:10px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"] .card:focus-within{box-shadow:0 0 0 2px rgba(255,255,255,0.80),0 18px 50px rgba(90,40,30,0.15)}
+html[data-theme="cream"] .ic-wrap{background:rgba(154,106,31,0.12);border:1px solid rgba(154,106,31,0.29)}
+html[data-theme="cream"] .card:hover .ic-wrap{background:rgba(154,106,31,0.20);border-color:rgba(154,106,31,0.49)}
+html[data-theme="cream"] .ic{color:#8a5d17}
+html[data-theme="cream"] .kick{color:#8a5d17}
+html[data-theme="cream"] .card h3{color:#2e1419}
+html[data-theme="cream"] .card p{color:rgba(46,20,25,0.62)}
+html[data-theme="cream"] .go{color:#8a5d17}
+html[data-theme="cream"] .sub{color:#8a5d17;background:rgba(154,106,31,0.08);border:1px solid rgba(154,106,31,0.31)}
+html[data-theme="cream"] .sub:hover,html[data-theme="cream"] .sub:focus-visible{background:rgba(154,106,31,0.20);border-color:rgba(154,106,31,0.71);color:#2e1419}
+html[data-theme="cream"] .sub-lbl{color:rgba(46,20,25,0.50)}
+html[data-theme="cream"] .regions{border-top:1px solid rgba(154,106,31,0.23)}
+html[data-theme="cream"] .rg h4{color:#8a5d17}
+html[data-theme="cream"] .rg a{color:#2e1419;background:rgba(255,253,248,0.87);border:1px solid rgba(154,106,31,0.25)}
+html[data-theme="cream"] .rg a:hover,html[data-theme="cream"] .rg a:focus-visible{background:rgba(154,106,31,0.18);border-color:rgba(154,106,31,0.71);color:#2e1419}
+html[data-theme="cream"] .igp-links{border-top:1px solid rgba(154,106,31,0.23)}
+html[data-theme="cream"] .igp-links a{color:#2e1419;background:rgba(255,253,248,0.87);border:1px solid rgba(154,106,31,0.25)}
+html[data-theme="cream"] .igp-links a:hover,html[data-theme="cream"] .igp-links a:focus-visible{background:rgba(154,106,31,0.18);border-color:rgba(154,106,31,0.71);color:#2e1419}
+html[data-theme="cream"] .igp-links .sw{border:1px solid rgba(90,30,40,0.18)}
+html[data-theme="cream"][data-theme="cream"] .igp-links a{border-color:rgba(154,106,31,0.33)}
+html[data-theme="cream"][data-theme="cream"] .igp-links a:hover{border-color:rgba(154,106,31,0.83)}
+html[data-theme="cream"] .wm-label{box-shadow:0 14px 34px rgba(90,40,30,0.10)}
+html[data-theme="cream"][data-theme="cream"] .wm-label{box-shadow:0 12px 28px rgba(90,40,30,0.05)}
+html[data-theme="cream"] .wm-quote{color:#8a5d17}
+html[data-theme="cream"] .game{background:rgba(154,106,31,0.07);border:1px solid rgba(154,106,31,0.36)}
+html[data-theme="cream"] a.game:hover{background:rgba(154,106,31,0.16);border-color:rgba(154,106,31,0.71)}
+html[data-theme="cream"] .game .gn{color:#8a5d17;border:1px solid rgba(154,106,31,0.55)}
+html[data-theme="cream"] .game .ar{color:#8a5d17}
+html[data-theme="cream"][data-theme="cream"] .game{border-color:rgba(154,106,31,0.38)}
+html[data-theme="cream"][data-theme="cream"] a.game:hover{border-color:rgba(154,106,31,0.71)}
+html[data-theme="cream"][data-theme="cream"] .game .gn,html[data-theme="cream"][data-theme="cream"] .game .ar{border-color:rgba(154,106,31,0.55)}
+html[data-theme="cream"] footer{color:rgba(46,20,25,0.50);border-top:1px solid rgba(154,106,31,0.23)}
+html[data-theme="cream"] footer .lang-link{text-decoration-color:rgba(138,93,23,0.50)}
+html[data-theme="cream"] footer .lang-link:hover{color:#8a5d17}
+html[data-theme="cream"] footer b{color:rgba(138,93,23,0.85)}
+
+</style><!--fw-theme:end-->
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow" data-fr="Cartographie &amp; Documentation" data-en="Maps &amp; Documentation">Cartographie &amp; Documentation</p>
+    <h1 data-fr="Vins <em>de France</em>" data-en="Wines <em>of France</em>">Vins <em>de France</em></h1>
+    <p class="subtitle" data-fr="Un tour complet des vins de France." data-en="A complete tour of the wines of France.">Un tour complet des vins de France.</p>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Les cartes des vignobles, la science du vin, la vinification, le système des appellations et bien plus encore." data-en="Vineyard maps, wine science, winemaking, the appellation system and much more.">Les cartes des vignobles, la science du vin, la vinification, le système des appellations et bien plus encore.</p>
+  </header>
+
+  <div class="grid">
+
+    <!-- ===== LINE 1 ===== -->
+    <!-- INAO appellation system -->
+    <div class="card half">
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M12 5.5 13 8h2.5l-2 1.6.8 2.4L12 10.6 9.7 12l.8-2.4-2-1.6H11l1-2.5Z"/><path d="M8.5 14 6.5 22l5.5-2.6L17.5 22l-2-8"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Le Système des Appellations" data-en="How appellations work">Le Système des Appellations</p>
+          <h3><a class="main" href="Infos/AOC_Decree/AOC_Decree.html" data-fr="L’INAO et les appellations d’origine" data-en="The I.N.A.O Appellation System">L’INAO et les appellations d’origine</a></h3>
+          <p data-fr="AOC, IGP et Vin de France : histoire et hiérarchie des catégories, décrets AOC, INAO et cahiers des charges — le texte officiel derrière une appellation." data-en="AOC, IGP and Vin de France: the history and hierarchy of the categories, AOC decrees, the INAO and the cahiers des charges — the official text behind an appellation.">AOC, IGP et Vin de France : histoire et hiérarchie des catégories, décrets AOC, INAO et cahiers des charges — le texte officiel derrière une appellation.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <a class="sub" href="Infos/Categories_of_French_Wines.html" data-fr="Comprendre l’AOC-AOP <span class=&quot;ar&quot;>→</span>" data-en="Understanding AOC-AOP <span class=&quot;ar&quot;>→</span>">Comprendre l’AOC-AOP <span class="ar">→</span></a>
+        <a class="sub" href="Infos/AOC_Decree/AOC_Decree.html" data-fr="Anatomie d'un décret <span class=&quot;ar&quot;>→</span>" data-en="Anatomy of a decree <span class=&quot;ar&quot;>→</span>">Anatomie d'un décret <span class="ar">→</span></a>
+        <a class="sub" href="Infos/AOC_Decree/AOC_Library.html" data-fr="Bibliothèque des décrets <span class=&quot;ar&quot;>→</span>" data-en="Decree library <span class=&quot;ar&quot;>→</span>">Bibliothèque des décrets <span class="ar">→</span></a>
+        <img class="inao-logo" src="assets/inao_logo.png" width="126" height="64" alt="INAO">
+      </div>
+    </div>
+
+    <!-- French wine in numbers -->
+    <div class="card half">
+      <span class="wm wm-nums" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V4"/><path d="M4 21h16"/><path d="m6 15 3.5-4 3 2.5L20 6"/><circle cx="20" cy="6" r="1"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Statistiques &amp; convertisseurs" data-en="Statistics &amp; converters">Statistiques &amp; convertisseurs</p>
+          <h3><a class="main" href="Infos/French_Wine_in_Numbers.html" data-fr="Les vins de France en chiffres" data-en="French Wines in Numbers">Les vins de France en chiffres</a></h3>
+          <p data-fr="Surfaces, appellations, coopératives, commerce et rang mondial — plus des calculateurs de rendement (t/acre ↔ hl/ha), volume et fûts. Sources INAO &amp; gouvernementales." data-en="Vineyard area, appellations, co-operatives, trade and world rank — plus yield (t/acre ↔ hl/ha), volume and barrel calculators. INAO &amp; government sources.">Surfaces, appellations, coopératives, commerce et rang mondial — plus des calculateurs de rendement (t/acre ↔ hl/ha), volume et fûts. Sources INAO &amp; gouvernementales.</p>
+        </div>
+      </div>
+      <span class="go"><span data-fr="Ouvrir" data-en="Open">Ouvrir</span> <span class="ar">→</span></span>
+    </div>
+
+    <!-- ===== LINE 2 : AOC-AOP maps (2/3) + IGP & IG maps (1/3) ===== -->
+    <div class="card two3">
+      <span class="wm wm-map" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3 3 5v16l6-2 6 2 6-2V3l-6 2-6-2Z"/><path d="M9 3v16M15 5v16"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Cartes des Vignobles" data-en="Vineyard maps">Cartes des Vignobles</p>
+          <h3><a class="main" href="Vignobles%20de%20France%20%E2%80%94%20Carte%20de%20France.html" data-fr="Cartes des AOC-AOP" data-en="AOC-AOP Maps">Cartes des AOC-AOP</a></h3>
+          <p data-fr="Cartes interactives des appellations de chaque région viticole française : communes, aires AOC, reliefs et rivières. Commencez par la carte de France, ou allez directement à une région." data-en="Interactive appellation maps for every French wine region: communes, AOC areas, relief and rivers. Start from the map of France, or jump straight to a region.">Cartes interactives des appellations de chaque région viticole française : communes, aires AOC, reliefs et rivières. Commencez par la carte de France, ou allez directement à une région.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <a class="sub" href="Vignobles%20de%20France%20%E2%80%94%20Carte%20de%20France.html" data-fr="Carte de France <span class=&quot;ar&quot;>→</span>" data-en="Map of France <span class=&quot;ar&quot;>→</span>">Carte de France <span class="ar">→</span></a>
+      </div>
+      <div class="regions">
+        <div class="rg"><h4 data-fr="Nord-Est" data-en="North-East">Nord-Est</h4><ul>
+          <li><a href="Alsace.html">Alsace</a></li>
+          <li><a href="Lorraine.html">Lorraine</a></li>
+          <li><a href="Champagne.html">Champagne</a></li></ul></div>
+        <div class="rg"><h4 data-fr="Bourgogne, Beaujolais &amp; Lyonnais" data-en="Burgundy, Beaujolais &amp; Lyonnais">Bourgogne, Beaujolais &amp; Lyonnais</h4><ul>
+          <li><a href="Bourgogne%20Regions/Chablis_et_de_l_Auxerrois.html">Chablis &amp; Auxerrois</a></li>
+          <li><a href="Bourgogne%20Regions/Cote-d_Or.html">Côte-d'Or</a></li>
+          <li><a href="Bourgogne%20Regions/Saone-et-Loire.html">Saône-et-Loire</a></li>
+          <li><a href="Bourgogne%20Regions/Beaujolais.html">Beaujolais &amp; Lyonnais</a></li></ul></div>
+        <div class="rg"><h4>Jura &amp; Savoie</h4><ul>
+          <li><a href="Jura.html">Jura</a></li>
+          <li><a href="Savoie_et_du_Bugey.html">Savoie &amp; Bugey</a></li></ul></div>
+        <div class="rg"><h4 data-fr="Val de Loire" data-en="Loire Valley">Val de Loire</h4><ul>
+          <li><a href="Pays_Nantais.html">Pays Nantais</a></li>
+          <li><a href="Anjou_et_de_Touraine.html">Anjou, Saumur &amp; Touraine</a></li>
+          <li><a href="Centre-Loire.html">Centre-Loire</a></li>
+          <li><a href="Auvergne_et_du_Haut_Val_de_Loire.html" data-fr="Auvergne &amp; Haut Val de Loire" data-en="Auvergne &amp; Upper Loire">Auvergne &amp; Haut Val de Loire</a></li></ul></div>
+        <div class="rg"><h4 data-fr="Vallée du Rhône" data-en="Rhône Valley">Vallée du Rhône</h4><ul>
+          <li><a href="Rhone-septentrional.html" data-fr="Rhône septentrional" data-en="Northern Rhône">Rhône septentrional</a></li>
+          <li><a href="Rhone-meridional.html" data-fr="Rhône méridional" data-en="Southern Rhône">Rhône méridional</a></li></ul></div>
+        <div class="rg"><h4 data-fr="Provence &amp; Corse" data-en="Provence &amp; Corsica">Provence &amp; Corse</h4><ul>
+          <li><a href="Provence-Cote-d-Azur.html">Provence &amp; Côte d'Azur</a></li>
+          <li><a href="Corse.html" data-fr="Corse" data-en="Corsica">Corse</a></li></ul></div>
+        <div class="rg"><h4>Languedoc-Roussillon</h4><ul>
+          <li><a href="Languedoc.html">Languedoc</a></li>
+          <li><a href="Malepere-et-Limoux.html">Malepère &amp; Limoux</a></li>
+          <li><a href="Roussillon.html">Roussillon</a></li></ul></div>
+        <div class="rg"><h4 data-fr="Bordeaux &amp; Sud-Ouest" data-en="Bordeaux &amp; South-West">Bordeaux &amp; Sud-Ouest</h4><ul>
+          <li><a href="Bordeaux.html">Bordeaux</a></li>
+          <li><a href="South%20West%20Bergerac.html" data-fr="Sud-Ouest · Bergerac" data-en="South-West · Bergerac">Sud-Ouest · Bergerac</a></li>
+          <li><a href="South-West%20Toulouse.html" data-fr="Sud-Ouest · Toulouse" data-en="South-West · Toulouse">Sud-Ouest · Toulouse</a></li>
+          <li><a href="Landes_et_Pyrenees_Occidentales.html" data-fr="Landes &amp; Pyrénées" data-en="Landes &amp; Pyrenees">Landes &amp; Pyrénées</a></li>
+          <li><a href="Cognac.html">Cognac</a></li></ul></div>
+      </div>
+    </div>
+
+    <div class="card one3 igp-card">
+      <span class="wm wm-igp" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-6.2-6.5-11.2a6.5 6.5 0 0 1 13 0C18.5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.8" r="2.4"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Indications géographiques" data-en="Geographical indications">Indications géographiques</p>
+          <h3><a class="main" href="Vignobles%20de%20France%20%E2%80%94%20Carte%20des%20IGP.html" data-fr="Carte des IGP et IG" data-en="IGP &amp; IG Map">Carte des IGP et IG</a></h3>
+          <p data-fr="Les anciens vins de pays et les eaux-de-vie et marcs à indication géographique, sur une même carte de France." data-en="The former vins de pays, plus the geographically indicated brandies and marcs, on one map of France.">Les anciens vins de pays et les eaux-de-vie et marcs à indication géographique, sur une même carte de France.</p>
+        </div>
+      </div>
+      <ul class="igp-links">
+          <li><a href="Vignobles%20de%20France%20%E2%80%94%20Carte%20des%20IGP.html#cat=reg"><span class="sw" style="background:#a2364a"></span><span data-fr="IGP Régionales" data-en="Regional IGPs">IGP Régionales</span><span class="n">7</span><span class="ar">→</span></a></li>
+          <li><a href="Vignobles%20de%20France%20%E2%80%94%20Carte%20des%20IGP.html#cat=dep"><span class="sw" style="background:#3f6fae"></span><span data-fr="IGP Départementales" data-en="Département IGPs">IGP Départementales</span><span class="n">29</span><span class="ar">→</span></a></li>
+          <li><a href="Vignobles%20de%20France%20%E2%80%94%20Carte%20des%20IGP.html#cat=zone"><span class="sw" style="background:#4f9a52"></span><span data-fr="IGP de Zones et Terroirs" data-en="Zone &amp; Terroir IGPs">IGP de Zones et Terroirs</span><span class="n">39</span><span class="ar">→</span></a></li>
+          <li><a href="Vignobles%20de%20France%20%E2%80%94%20Carte%20des%20IGP.html#cat=spir"><span class="sw" style="background:#b57a2f"></span><span data-fr="IG Eaux-de-vie et Marcs" data-en="Spirits &amp; Marcs IGs">IG Eaux-de-vie et Marcs</span><span class="n">10</span><span class="ar">→</span></a></li>
+      </ul>
+      <div class="subs">
+        <a class="sub" href="Vignobles%20de%20France%20%E2%80%94%20Carte%20des%20IGP.html" data-fr="Toutes les IGP et IG <span class=&quot;ar&quot;>→</span>" data-en="All IGPs &amp; IGs <span class=&quot;ar&quot;>→</span>">Toutes les IGP et IG <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 3 : grape search engine ===== -->
+    <div class="card full">
+      <span class="wm wm-grapes" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="10" r="2.6"/><circle cx="15" cy="10" r="2.6"/><circle cx="12" cy="14.5" r="2.6"/><circle cx="9" cy="19" r="2.2"/><circle cx="15" cy="19" r="2.2"/><path d="M12 7.4V3.5c1.8 0 3.2-.6 4-1.5"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Cépages &amp; Appellations" data-en="Grapes &amp; appellations">Cépages &amp; Appellations</p>
+          <h3><a class="main" href="Infos/Vine_and_Vineyard/Cepages/Cepages_et_Appellations.html" data-fr="Moteur de recherche des cépages" data-en="Grape Varietal Search Engine">Moteur de recherche des cépages</a></h3>
+          <p data-fr="Les cépages autorisés dans chaque AOC, et les AOC où l'on trouve chaque cépage — principal, accessoire ou monocépage, d'après les cahiers des charges INAO." data-en="The grapes allowed in each AOC, and the AOCs where each grape is found — principal, accessory or single-varietal, from the INAO cahiers des charges.">Les cépages autorisés dans chaque AOC, et les AOC où l'on trouve chaque cépage — principal, accessoire ou monocépage, d'après les cahiers des charges INAO.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <span class="sub-lbl" data-fr="Rechercher" data-en="Search">Rechercher</span>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Cepages/Cepages_et_Appellations.html#view=grape" data-fr="Par cépage <span class=&quot;ar&quot;>→</span>" data-en="By varietal <span class=&quot;ar&quot;>→</span>">Par cépage <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Cepages/Cepages_et_Appellations.html#view=aoc" data-fr="Par appellation <span class=&quot;ar&quot;>→</span>" data-en="By appellation <span class=&quot;ar&quot;>→</span>">Par appellation <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Cepages/Cepages_et_Appellations.html#view=color" data-fr="Par couleur <span class=&quot;ar&quot;>→</span>" data-en="By color <span class=&quot;ar&quot;>→</span>">Par couleur <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4 : vintage chart ===== -->
+    <div class="card full">
+      <span class="wm wm-cal" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8-4.3-4.1 5.9-.9L12 3Z"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Guide des Millésimes" data-en="Vintage guide">Guide des Millésimes</p>
+          <h3><a class="main" href="Infos/Vintages/Vintage_Chart.html" data-fr="Tableau des millésimes" data-en="Vintage Chart">Tableau des millésimes</a></h3>
+          <p data-fr="La qualité de chaque millésime, région par région et couleur par couleur, sur cinq étoiles — de 2025 aux millésimes légendaires du XIXᵉ siècle." data-en="The quality of every vintage, region by region and style by style, on a five-star scale — from 2025 back to the legendary 19th-century vintages.">La qualité de chaque millésime, région par région et couleur par couleur, sur cinq étoiles — de 2025 aux millésimes légendaires du XIXᵉ siècle.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <span class="sub-lbl" data-fr="Rechercher" data-en="Search">Rechercher</span>
+        <a class="sub" href="Infos/Vintages/Vintage_Chart.html#by=year" data-fr="Par année <span class=&quot;ar&quot;>→</span>" data-en="By year <span class=&quot;ar&quot;>→</span>">Par année <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vintages/Vintage_Chart.html#by=region" data-fr="Par région <span class=&quot;ar&quot;>→</span>" data-en="By region <span class=&quot;ar&quot;>→</span>">Par région <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vintages/Vintage_Chart.html#s=5&amp;m=ge&amp;p=5" data-fr="Millésimes exceptionnels ★★★★★ <span class=&quot;ar&quot;>→</span>" data-en="Classic vintages ★★★★★ <span class=&quot;ar&quot;>→</span>">Millésimes exceptionnels ★★★★★ <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4a : crus & grands crus classifications ===== -->
+    <div class="card full">
+      <span class="wm wm-cru" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M6 20v-5h3v5M10.5 20V9h3v11M15 20v-8h3v8"/><path d="m12 3 .9 1.9 2 .3-1.5 1.4.4 2L12 7.6l-1.8 1 .4-2-1.5-1.4 2-.3L12 3Z"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Crus &amp; grands crus classés" data-en="Crus &amp; grands crus classés">Crus &amp; grands crus classés</p>
+          <h3><a class="main" href="Infos/Crus_Classifications.html" data-fr="Les classifications des crus" data-en="Crus &amp; Grands Crus Classifications">Les classifications des crus</a></h3>
+          <p data-fr="Le classement de 1855 et ses trois changements, les crus classés de Graves, Saint-Émilion 2022, les Crus Bourgeois 2025 et les Crus Artisans ; les climats de Bourgogne, les 51 grands crus d’Alsace, l’échelle des crus de Champagne et les nouveaux classements des autres régions." data-en="The 1855 Classification and its three changes, the Graves classified growths, Saint-Émilion 2022, the 2025 Crus Bourgeois and the Crus Artisans; Burgundy’s climats, the 51 Alsace grands crus, Champagne’s échelle des crus and the newer classifications of the other regions.">Le classement de 1855 et ses trois changements, les crus classés de Graves, Saint-Émilion 2022, les Crus Bourgeois 2025 et les Crus Artisans ; les climats de Bourgogne, les 51 grands crus d’Alsace, l’échelle des crus de Champagne et les nouveaux classements des autres régions.</p>
+        </div>
+      </div>
+      <div class="subs cru-subs">
+        <span class="sub-lbl">Bordeaux</span>
+        <a class="sub" href="Infos/Crus_Classifications.html#medoc-1855" data-fr="1855 · Médoc <span class=&quot;ar&quot;>→</span>" data-en="1855 · Médoc <span class=&quot;ar&quot;>→</span>">1855 · Médoc <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#sauternes-1855" data-fr="1855 · Sauternes <span class=&quot;ar&quot;>→</span>" data-en="1855 · Sauternes <span class=&quot;ar&quot;>→</span>">1855 · Sauternes <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#graves-1959" data-fr="Graves <span class=&quot;ar&quot;>→</span>" data-en="Graves <span class=&quot;ar&quot;>→</span>">Graves <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#saint-emilion" data-fr="Saint-Émilion <span class=&quot;ar&quot;>→</span>" data-en="Saint-Émilion <span class=&quot;ar&quot;>→</span>">Saint-Émilion <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#crus-bourgeois" data-fr="Crus Bourgeois <span class=&quot;ar&quot;>→</span>" data-en="Crus Bourgeois <span class=&quot;ar&quot;>→</span>">Crus Bourgeois <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#crus-artisans" data-fr="Crus Artisans <span class=&quot;ar&quot;>→</span>" data-en="Crus Artisans <span class=&quot;ar&quot;>→</span>">Crus Artisans <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#pomerol" data-fr="Pomerol <span class=&quot;ar&quot;>→</span>" data-en="Pomerol <span class=&quot;ar&quot;>→</span>">Pomerol <span class="ar">→</span></a>
+        <span class="sub-lbl" data-fr="Les autres régions" data-en="Other regions">Les autres régions</span>
+        <a class="sub" href="Infos/Crus_Classifications.html#bourgogne" data-fr="Bourgogne <span class=&quot;ar&quot;>→</span>" data-en="Burgundy <span class=&quot;ar&quot;>→</span>">Bourgogne <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#premiers-crus" data-fr="🔍 667 premiers crus de Bourgogne <span class=&quot;ar&quot;>→</span>" data-en="🔍 667 Burgundy premiers crus <span class=&quot;ar&quot;>→</span>">🔍 667 premiers crus de Bourgogne <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#alsace" data-fr="Alsace <span class=&quot;ar&quot;>→</span>" data-en="Alsace <span class=&quot;ar&quot;>→</span>">Alsace <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#champagne" data-fr="Champagne <span class=&quot;ar&quot;>→</span>" data-en="Champagne <span class=&quot;ar&quot;>→</span>">Champagne <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Crus_Classifications.html#autres" data-fr="Les nouveaux classements <span class=&quot;ar&quot;>→</span>" data-en="The newer classifications <span class=&quot;ar&quot;>→</span>">Les nouveaux classements <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4b : the vine & the vineyard (10 chapters) ===== -->
+    <div class="card full vine">
+      <span class="wm wm-vine" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap ic-photo"><img class="ic-img" src="assets/vine_icon.png" alt="" width="36" height="45"></span>
+        <div class="txt">
+          <p class="kick" data-fr="Viticulture en dix chapitres" data-en="Viticulture in ten chapters">Viticulture en dix chapitres</p>
+          <h3><a class="main" href="Infos/Vine_and_Vineyard/Vine_Plant.html" data-fr="La vigne &amp; le vignoble" data-en="The Vine &amp; the Vineyard">La vigne &amp; le vignoble</a></h3>
+          <p data-fr="De la plante à la vendange : anatomie de la vigne, cycle annuel, terroir, plantation, taille, travaux en vert, maladies, modes de culture et vendanges, illustrés et appuyés sur les cahiers des charges des AOC. Avec un glossaire français-anglais de 172 termes." data-en="From the plant to the harvest: vine anatomy, the yearly cycle, terroir, planting, pruning, canopy work, diseases, farming approaches and harvest, illustrated and grounded in the AOC specifications. With a 172-term French-English glossary.">De la plante à la vendange : anatomie de la vigne, cycle annuel, terroir, plantation, taille, travaux en vert, maladies, modes de culture et vendanges, illustrés et appuyés sur les cahiers des charges des AOC. Avec un glossaire français-anglais de 172 termes.</p>
+        </div>
+      </div>
+      <div class="subs vine-subs">
+        <span class="sub-lbl" data-fr="Les chapitres" data-en="Chapters">Les chapitres</span>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Plant.html" data-fr="1 · La plante <span class=&quot;ar&quot;>→</span>" data-en="1 · The plant <span class=&quot;ar&quot;>→</span>">1 · La plante <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Cycle.html" data-fr="2 · Le cycle <span class=&quot;ar&quot;>→</span>" data-en="2 · The year <span class=&quot;ar&quot;>→</span>">2 · Le cycle <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Terroir.html" data-fr="3 · Terroir <span class=&quot;ar&quot;>→</span>" data-en="3 · Terroir <span class=&quot;ar&quot;>→</span>">3 · Terroir <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Planting.html" data-fr="4 · Plantation <span class=&quot;ar&quot;>→</span>" data-en="4 · Planting <span class=&quot;ar&quot;>→</span>">4 · Plantation <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Pruning.html" data-fr="5 · Taille <span class=&quot;ar&quot;>→</span>" data-en="5 · Pruning <span class=&quot;ar&quot;>→</span>">5 · Taille <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Canopy.html" data-fr="6 · Travaux en vert <span class=&quot;ar&quot;>→</span>" data-en="6 · Canopy &amp; soil <span class=&quot;ar&quot;>→</span>">6 · Travaux en vert <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Threats.html" data-fr="7 · Ennemis <span class=&quot;ar&quot;>→</span>" data-en="7 · Threats <span class=&quot;ar&quot;>→</span>">7 · Ennemis <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Farming.html" data-fr="8 · Modes de culture <span class=&quot;ar&quot;>→</span>" data-en="8 · Farming <span class=&quot;ar&quot;>→</span>">8 · Modes de culture <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Harvest.html" data-fr="9 · Vendanges <span class=&quot;ar&quot;>→</span>" data-en="9 · Harvest <span class=&quot;ar&quot;>→</span>">9 · Vendanges <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Vine_and_Vineyard/Vine_Glossary.html" data-fr="10 · Glossaire <span class=&quot;ar&quot;>→</span>" data-en="10 · Glossary <span class=&quot;ar&quot;>→</span>">10 · Glossaire <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4b2 : how to read a wine label ===== -->
+    <div class="card full">
+      <span class="wm wm-label" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><path d="M7 9h10M8.5 12h7M10 15h4"/><circle cx="18.5" cy="5.5" r="2.2" fill="currentColor" fill-opacity=".25"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Le vin en bouteille" data-en="Wine in the bottle">Le vin en bouteille</p>
+          <h3><a class="main" href="Infos/Wine_Label/Wine_Label.html" data-fr="Apprendre à lire… une étiquette" data-en="Learning to read… a wine label">Apprendre à lire… une étiquette</a></h3>
+          <p data-fr="Trois étiquettes commentées — Bordeaux, Bourgogne et Champagne — pour comprendre ce que dit chaque ligne ; puis ce que la loi impose et permet aujourd’hui, les mentions de sucre, les codes de Champagne et le vocabulaire à connaître." data-en="Three annotated labels — Bordeaux, Burgundy and Champagne — to understand what each line says; then what the law requires and allows today, the sugar terms, Champagne codes and the words worth knowing.">Trois étiquettes commentées — Bordeaux, Bourgogne et Champagne — pour comprendre ce que dit chaque ligne ; puis ce que la loi impose et permet aujourd’hui, les mentions de sucre, les codes de Champagne et le vocabulaire à connaître.</p>
+        </div>
+      </div>
+      <div class="subs label-subs">
+        <a class="sub" href="Infos/Wine_Label/Wine_Label.html#bordeaux" data-fr="Bordeaux <span class=&quot;ar&quot;>→</span>" data-en="Bordeaux <span class=&quot;ar&quot;>→</span>">Bordeaux <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Wine_Label/Wine_Label.html#bourgogne" data-fr="Bourgogne <span class=&quot;ar&quot;>→</span>" data-en="Burgundy <span class=&quot;ar&quot;>→</span>">Bourgogne <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Wine_Label/Wine_Label.html#champagne" data-fr="Champagne <span class=&quot;ar&quot;>→</span>" data-en="Champagne <span class=&quot;ar&quot;>→</span>">Champagne <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Wine_Label/Wine_Label.html#mentions" data-fr="Obligatoire ou facultatif <span class=&quot;ar&quot;>→</span>" data-en="Compulsory or optional <span class=&quot;ar&quot;>→</span>">Obligatoire ou facultatif <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Wine_Label/Wine_Label.html#vocabulaire" data-fr="Le vocabulaire <span class=&quot;ar&quot;>→</span>" data-en="The vocabulary <span class=&quot;ar&quot;>→</span>">Le vocabulaire <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4c : tasting & balance ===== -->
+    <div class="card full">
+      <span class="wm wm-taste" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2.5h10l.6 5.2A5.6 5.6 0 0 1 12 14a5.6 5.6 0 0 1-5.6-6.3L7 2.5Z"/><path d="M6.6 7h10.8"/><path d="M12 14v7M8 21.5h8"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="L’analyse sensorielle" data-en="Sensory analysis">L’analyse sensorielle</p>
+          <h3><a class="main" href="Infos/Tasting/Wine_Tasting.html" data-fr="Déguster le vin" data-en="Tasting Wine">Déguster le vin</a></h3>
+          <p data-fr="La vue, l’odorat, le goût, puis l’équilibre : une méthode claire pour l’amateur, des volets détaillés pour le professionnel, un nuancier, la langue sans ses mythes et un schéma interactif de l’équilibre — chaque point appuyé sur ses sources." data-en="Sight, smell, taste, then balance: a clear method for wine lovers, detailed panels for professionals, a colour chart, the tongue without its myths and an interactive balance diagram — every point backed by its sources.">La vue, l’odorat, le goût, puis l’équilibre : une méthode claire pour l’amateur, des volets détaillés pour le professionnel, un nuancier, la langue sans ses mythes et un schéma interactif de l’équilibre — chaque point appuyé sur ses sources.</p>
+        </div>
+      </div>
+      <div class="subs taste-subs">
+        <a class="sub" href="Infos/Tasting/Wine_Tasting.html#vue" data-fr="La vue <span class=&quot;ar&quot;>→</span>" data-en="Sight <span class=&quot;ar&quot;>→</span>">La vue <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Tasting/Wine_Tasting.html#odorat" data-fr="L’odorat <span class=&quot;ar&quot;>→</span>" data-en="Smell <span class=&quot;ar&quot;>→</span>">L’odorat <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Tasting/Wine_Tasting.html#gout" data-fr="Le goût <span class=&quot;ar&quot;>→</span>" data-en="Taste <span class=&quot;ar&quot;>→</span>">Le goût <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Tasting/Wine_Tasting.html#equilibre" data-fr="L’équilibre <span class=&quot;ar&quot;>→</span>" data-en="Balance <span class=&quot;ar&quot;>→</span>">L’équilibre <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4c2 : history of wine ===== -->
+    <div class="card full hist-card">
+      <span class="wm wm-hist" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5h4M10.5 2.5v2.2c0 .6-.4 1-.9 1.2C7 7 5.5 9.6 5.5 12.6c0 3.4 2.2 6.3 5.3 7.4l-.3 1.5h3l-.3-1.5c3.1-1.1 5.3-4 5.3-7.4 0-3-1.5-5.6-4.1-6.7-.5-.2-.9-.6-.9-1.2V2.5"/><path d="M8 7.2C6.2 6.8 4.6 7.6 4.3 9.2M16 7.2c1.8-.4 3.4.4 3.7 2"/><path d="M7 12.5h10"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="11&nbsp;000 ans d’histoire" data-en="11,000 years of history">11&nbsp;000 ans d’histoire</p>
+          <h3><a class="main" href="Infos/History/History_of_Wine.html" data-fr="Histoire du vin" data-en="A History of Wine">Histoire du vin</a></h3>
+          <p data-fr="De la vigne sauvage domestiquée il y a ≈&nbsp;11&nbsp;000 ans aux premières AOC de 1936 : la Chine et ses ≈&nbsp;9&nbsp;000 ans de boissons fermentées, le plus ancien vin de Géorgie, l’Égypte, Rome, les moines, le phylloxéra et les cépages ancestraux — uniquement des faits, chacun avec sa source." data-en="From the wild vine domesticated ≈&nbsp;11,000 years ago to the first AOCs of 1936: China and its ≈&nbsp;9,000 years of fermented drinks, Georgia’s oldest wine, Egypt, Rome, the monks, phylloxera and the ancestral grapes — facts only, each with its source.">De la vigne sauvage domestiquée il y a ≈&nbsp;11&nbsp;000 ans aux premières AOC de 1936 : la Chine et ses ≈&nbsp;9&nbsp;000 ans de boissons fermentées, le plus ancien vin de Géorgie, l’Égypte, Rome, les moines, le phylloxéra et les cépages ancestraux — uniquement des faits, chacun avec sa source.</p>
+        </div>
+      </div>
+      <div class="subs hist-subs">
+        <a class="sub" href="Infos/History/History_of_Wine.html#chine" data-fr="La Chine <span class=&quot;ar&quot;>→</span>" data-en="China <span class=&quot;ar&quot;>→</span>">La Chine <span class="ar">→</span></a>
+        <a class="sub" href="Infos/History/History_of_Wine.html#premier-vin" data-fr="Qui a fait du vin le premier ? <span class=&quot;ar&quot;>→</span>" data-en="Who made wine first? <span class=&quot;ar&quot;>→</span>">Qui a fait du vin le premier ? <span class="ar">→</span></a>
+        <a class="sub" href="Infos/History/History_of_Wine.html#mediterranee" data-fr="Grèce, Rome &amp; Gaule <span class=&quot;ar&quot;>→</span>" data-en="Greece, Rome &amp; Gaul <span class=&quot;ar&quot;>→</span>">Grèce, Rome &amp; Gaule <span class="ar">→</span></a>
+        <a class="sub" href="Infos/History/History_of_Wine.html#moyen-age" data-fr="Moyen Âge <span class=&quot;ar&quot;>→</span>" data-en="Middle Ages <span class=&quot;ar&quot;>→</span>">Moyen Âge <span class="ar">→</span></a>
+        <a class="sub" href="Infos/History/History_of_Wine.html#crises" data-fr="Phylloxéra &amp; AOC <span class=&quot;ar&quot;>→</span>" data-en="Phylloxera &amp; AOC <span class=&quot;ar&quot;>→</span>">Phylloxéra &amp; AOC <span class="ar">→</span></a>
+        <a class="sub" href="Infos/History/History_of_Wine.html#cepages" data-fr="Cépages ancestraux <span class=&quot;ar&quot;>→</span>" data-en="Ancestral grapes <span class=&quot;ar&quot;>→</span>">Cépages ancestraux <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4d : literature ===== -->
+    <div class="card full">
+      <span class="wm wm-quote" aria-hidden="true">“</span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5Z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5Z"/><path d="M6.5 8h2.5M6.5 11h2.5M15 8h2.5M15 11h2.5"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Littérature" data-en="Literature">Littérature</p>
+          <h3><a class="main" href="Infos/Literature/Wine_Quotes.html" data-fr="Le vin en citations" data-en="Wine in Quotations">Le vin en citations</a></h3>
+          <p data-fr="Plus de cent citations sur le vin, d’Homère à Colette, avec leur source — et les fausses attributions démasquées. Cherchez par mot, auteur ou thème." data-en="Over a hundred quotations about wine, from Homer to Colette, each with its source — and false attributions unmasked. Search by word, author or theme.">Plus de cent citations sur le vin, d’Homère à Colette, avec leur source — et les fausses attributions démasquées. Cherchez par mot, auteur ou thème.</p>
+        </div>
+      </div>
+      <div class="subs quote-subs">
+        <a class="sub" href="Infos/Literature/Wine_Quotes.html#t=amour" data-fr="Amour <span class=&quot;ar&quot;>→</span>" data-en="Love <span class=&quot;ar&quot;>→</span>">Amour <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Literature/Wine_Quotes.html#t=verite" data-fr="Vérité <span class=&quot;ar&quot;>→</span>" data-en="Truth <span class=&quot;ar&quot;>→</span>">Vérité <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Literature/Wine_Quotes.html#t=terroir" data-fr="Vigne &amp; terroir <span class=&quot;ar&quot;>→</span>" data-en="Vine &amp; terroir <span class=&quot;ar&quot;>→</span>">Vigne &amp; terroir <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Literature/Wine_Quotes.html#t=champ" data-fr="Champagne <span class=&quot;ar&quot;>→</span>" data-en="Champagne <span class=&quot;ar&quot;>→</span>">Champagne <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Literature/Wine_Quotes.html#t=humour" data-fr="Humour <span class=&quot;ar&quot;>→</span>" data-en="Humour <span class=&quot;ar&quot;>→</span>">Humour <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 4e : games (add a new <a class="game"> tile per game) ===== -->
+    <div class="card full games-card">
+      <span class="wm wm-games" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="3.5"/><circle cx="8.5" cy="8.5" r="1.1" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.1" fill="currentColor"/><circle cx="12" cy="12" r="1.1" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.1" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.1" fill="currentColor"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Jeux" data-en="Games">Jeux</p>
+          <h3><a class="main" href="Infos/Literature/Jeux.html" data-fr="Les jeux du vin" data-en="Wine Games">Les jeux du vin</a></h3>
+          <p data-fr="Testez ce que vous avez appris sur le site : chaque réponse renvoie à la page où tout est expliqué. Trois niveaux, de « Je peux encore conduire » à « On a voulu donner mon nom à une AOC »." data-en="Test what you have learnt on the site: every answer links to the page where it is all explained. Three levels, from “I can still drive” to “They offered to name an AOC after me”.">Testez ce que vous avez appris sur le site : chaque réponse renvoie à la page où tout est expliqué. Trois niveaux, de « Je peux encore conduire » à « On a voulu donner mon nom à une AOC ».</p>
+        </div>
+      </div>
+      <div class="games">
+        <a class="game" href="Infos/Literature/Wine_Quiz.html"><span class="gn">1</span><span class="gt"><b data-fr="Le grand quiz du vin" data-en="The great wine quiz">Le grand quiz du vin</b><span data-fr="1 533 questions : appellations, cépages, crus, Cognac…" data-en="1,533 questions: appellations, grapes, crus, Cognac…">1 533 questions : appellations, cépages, crus, Cognac…</span></span><span class="ar">→</span></a>
+        <a class="game" href="Infos/Literature/Taste_Quiz.html"><span class="gn">2</span><span class="gt"><b data-fr="Goûtez votre savoir" data-en="Taste your knowledge">Goûtez votre savoir</b><span data-fr="263 notes de dégustation : trouvez l’AOC" data-en="263 tasting notes: name the AOC">263 notes de dégustation : trouvez l’AOC</span></span><span class="ar">→</span></a>
+        <a class="game" href="Infos/Literature/Map_Game.html"><span class="gn">3</span><span class="gt"><b data-fr="Placez l’AOC" data-en="Pin the AOC">Placez l’AOC</b><span data-fr="Situez les appellations sur la carte de France" data-en="Pin the appellations on the map of France">Situez les appellations sur la carte de France</span></span><span class="ar">→</span></a>
+        <a class="game" href="Infos/Literature/Bon_Cep.html"><span class="gn">4</span><span class="gt"><b data-fr="Le bon cep" data-en="Grape Expectations">Le bon cep</b><span data-fr="3 525 questions : quel cépage pour quelle AOC ?" data-en="3,525 questions: which grape for which AOC?">3 525 questions : quel cépage pour quelle AOC ?</span></span><span class="ar">→</span></a>
+        <a class="game" href="Infos/Literature/IGP_Game.html"><span class="gn">5</span><span class="gt"><b data-fr="Au pays des IGP" data-en="Lost in the Pays">Au pays des IGP</b><span data-fr="353 questions sur les anciens vins de pays" data-en="353 questions on the former vins de pays">353 questions sur les anciens vins de pays</span></span><span class="ar">→</span></a>
+        <span class="game soon"><span class="gn">+</span><span class="gt"><b data-fr="D’autres jeux arrivent…" data-en="More games coming…">D’autres jeux arrivent…</b><span data-fr="Revenez bientôt" data-en="Check back soon">Revenez bientôt</span></span></span>
+      </div>
+    </div>
+
+    <!-- ===== LINE 5 ===== -->
+    <!-- Wine making -->
+    <div class="card third">
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8l-1 5a4 4 0 0 1-2 3.2V16h2v5H9v-5h2v-4.8A4 4 0 0 1 9 8L8 3Z"/><path d="M7.5 3h9"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="La Vinification" data-en="Winemaking">La Vinification</p>
+          <h3><a class="main" href="Infos/How%20it's%20made/How%20wine%20is%20made.html" data-fr="L’élaboration du vin" data-en="Wine Making">L’élaboration du vin</a></h3>
+          <p data-fr="De la vendange à la mise en bouteille : rouge, blanc, rosé et effervescents." data-en="From harvest to bottling: red, white, rosé and sparkling.">De la vendange à la mise en bouteille : rouge, blanc, rosé et effervescents.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <a class="sub" href="Infos/How%20it's%20made/How%20wine%20is%20made%20-%20Illustrated.html" data-fr="Illustrée <span class=&quot;ar&quot;>→</span>" data-en="Illustrated <span class=&quot;ar&quot;>→</span>">Illustrée <span class="ar">→</span></a>
+        <a class="sub" href="Infos/How%20it's%20made/How%20sparkling%20wine%20is%20made.html" data-fr="Effervescents <span class=&quot;ar&quot;>→</span>" data-en="Sparkling <span class=&quot;ar&quot;>→</span>">Effervescents <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- Spirits & eaux-de-vie -->
+    <div class="card third">
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8c0 4 2.5 6 6 6s6-2 6-6"/><path d="M6 8h12"/><path d="M12 14v5"/><path d="M8.5 19h7"/><path d="M9 5c.6.7.6 1.3 0 2M12 4c.6.7.6 1.3 0 2M15 5c.6.7.6 1.3 0 2"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Les Eaux-de-Vie" data-en="Distillation">Les Eaux-de-Vie</p>
+          <h3><a class="main" href="Infos/How%20it's%20made/How%20brandy%20is%20made.html" data-fr="Spiritueux &amp; eaux&#8209;de&#8209;vie" data-en="Spirits &amp; Eaux&#8209;de&#8209;Vie Making">Spiritueux &amp; eaux&#8209;de&#8209;vie</a></h3>
+          <p data-fr="Distillation et vieillissement : du vin à l'eau-de-vie, Cognac &amp; Armagnac." data-en="Distillation and ageing: from wine to brandy, Cognac &amp; Armagnac.">Distillation et vieillissement : du vin à l'eau-de-vie, Cognac &amp; Armagnac.</p>
+        </div>
+      </div>
+      <span class="go"><span data-fr="Ouvrir" data-en="Open">Ouvrir</span> <span class="ar">→</span></span>
+    </div>
+
+    <!-- Wine chemistry -->
+    <div class="card third end">
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 8.5A2 2 0 0 0 6.7 21h10.6a2 2 0 0 0 1.7-3.5L14 9V3"/><path d="M7.5 15h9"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="La Science du Vin" data-en="Wine science">La Science du Vin</p>
+          <h3><a class="main" href="Infos/wine_chemistry_html/wine_chemistry_web.html" data-fr="Chimie du vin" data-en="Wine Chemistry">Chimie du vin</a></h3>
+          <p data-fr="Acides, tanins, sucres, arômes : les composés qui font le vin et ce qu'ils deviennent au vieillissement." data-en="Acids, tannins, sugars, aromas: the compounds that make wine and what becomes of them with age.">Acides, tanins, sucres, arômes : les composés qui font le vin et ce qu'ils deviennent au vieillissement.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <a class="sub" href="Infos/wine_chemistry_html/wine_compound_count_web.html" data-fr="Les composés en chiffres <span class=&quot;ar&quot;>→</span>" data-en="Compounds in numbers <span class=&quot;ar&quot;>→</span>">Les composés en chiffres <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- ===== LINE 6 ===== -->
+    <!-- Bottle sizes + barrel making (halves) -->
+    <div class="card half">
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5h4M10.3 2.5v4.3c0 1.6-3.3 3-3.3 6.2V20a1.5 1.5 0 0 0 1.5 1.5h7A1.5 1.5 0 0 0 17 20v-7c0-3.2-3.3-4.6-3.3-6.2V2.5"/><path d="M10.3 5h3.4"/><path d="M4 21.5v-4.2c0-1 .9-1.6.9-2.4V13M20 21.5v-3c0-.7-.6-1.1-.6-1.7V15.6"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Du Piccolo au Melchizédech" data-en="From piccolo to melchizedek">Du Piccolo au Melchizédech</p>
+          <h3><a class="main" href="Infos/Bottle_Sizes.html" data-fr="Formats de bouteilles" data-en="Bottle Sizes">Formats de bouteilles</a></h3>
+          <p data-fr="Du piccolo (18,75&nbsp;cl) au melchizédech (30&nbsp;L) : les quatorze formats à l’échelle, l’origine biblique de leurs noms, pourquoi 75&nbsp;cl, et les bouteilles à part — clavelin, flûte d’Alsace, pot lyonnais, dame-jeanne." data-en="From piccolo (18.75&nbsp;cl) to melchizedek (30&nbsp;L): all fourteen sizes to scale, the biblical origins of their names, why 750&nbsp;ml, and the special bottles — clavelin, Alsace flute, pot lyonnais, demijohn.">Du piccolo (18,75&nbsp;cl) au melchizédech (30&nbsp;L) : les quatorze formats à l’échelle, l’origine biblique de leurs noms, pourquoi 75&nbsp;cl, et les bouteilles à part — clavelin, flûte d’Alsace, pot lyonnais, dame-jeanne.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <a class="sub" href="Infos/Bottle_Sizes.html#gamme" data-fr="La gamme <span class=&quot;ar&quot;>→</span>" data-en="The line-up <span class=&quot;ar&quot;>→</span>">La gamme <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Bottle_Sizes.html#pourquoi-75cl" data-fr="Pourquoi 75 cl ? <span class=&quot;ar&quot;>→</span>" data-en="Why 750 ml? <span class=&quot;ar&quot;>→</span>">Pourquoi 75 cl ? <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Bottle_Sizes.html#autres" data-fr="Bouteilles remarquables <span class=&quot;ar&quot;>→</span>" data-en="Noteworthy bottles <span class=&quot;ar&quot;>→</span>">Bouteilles remarquables <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Bottle_Sizes.html#demesures" data-fr="Les démesurés <span class=&quot;ar&quot;>→</span>" data-en="The giants <span class=&quot;ar&quot;>→</span>">Les démesurés <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Bottle_Sizes.html#histoire" data-fr="Histoire de la bouteille <span class=&quot;ar&quot;>→</span>" data-en="History of the bottle <span class=&quot;ar&quot;>→</span>">Histoire de la bouteille <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Bottle_Sizes.html#tastevin" data-fr="Le tastevin <span class=&quot;ar&quot;>→</span>" data-en="The tastevin <span class=&quot;ar&quot;>→</span>">Le tastevin <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Bottle_Sizes.html#tire-bouchon" data-fr="Le tire-bouchon <span class=&quot;ar&quot;>→</span>" data-en="The corkscrew <span class=&quot;ar&quot;>→</span>">Le tire-bouchon <span class="ar">→</span></a>
+      </div>
+    </div>
+
+    <!-- Barrel making -->
+    <div class="card half">
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2.5h10c1.5 2.7 2.3 6 2.3 9.5s-.8 6.8-2.3 9.5H7C5.5 18.8 4.7 15.5 4.7 12S5.5 5.2 7 2.5z"/><path d="M5.6 6.5h12.8M5.6 17.5h12.8M4.8 10.5h14.4M4.8 13.5h14.4"/><circle cx="12" cy="12" r=".9"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="La tonnellerie" data-en="Cooperage">La tonnellerie</p>
+          <h3><a class="main" href="Infos/Barrel_Making/Barrel_Making.html" data-fr="Comment naît une barrique" data-en="Birth of a Wine Barrel">Comment naît une barrique</a></h3>
+          <p data-fr="Du chêne abattu en forêt au fût marqué au laser : fendage, séchage, douelles, cintrage au feu, bousinage, fonds et cercles — dix étapes en photos chez un tonnelier de Bourgogne." data-en="From an oak felled in the forest to a laser-marked cask: splitting, seasoning, staves, bending over fire, toasting, heads and hoops — ten steps in pictures at a Burgundy cooperage.">Du chêne abattu en forêt au fût marqué au laser : fendage, séchage, douelles, cintrage au feu, bousinage, fonds et cercles — dix étapes en photos chez un tonnelier de Bourgogne.</p>
+        </div>
+      </div>
+      <div class="subs">
+        <a class="sub" href="Infos/Barrel_Making/Barrel_Making.html#chene" data-fr="Le chêne <span class=&quot;ar&quot;>→</span>" data-en="The oak <span class=&quot;ar&quot;>→</span>">Le chêne <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Barrel_Making/Barrel_Making.html#cintrage" data-fr="Cintrer au feu <span class=&quot;ar&quot;>→</span>" data-en="Bending over fire <span class=&quot;ar&quot;>→</span>">Cintrer au feu <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Barrel_Making/Barrel_Making.html#bousinage" data-fr="Le bousinage <span class=&quot;ar&quot;>→</span>" data-en="Toasting <span class=&quot;ar&quot;>→</span>">Le bousinage <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Barrel_Making/Barrel_Making.html#anatomie" data-fr="Anatomie d’une barrique <span class=&quot;ar&quot;>→</span>" data-en="Barrel anatomy <span class=&quot;ar&quot;>→</span>">Anatomie d’une barrique <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Barrel_Making/Barrel_Making.html#formats" data-fr="Les formats de fûts <span class=&quot;ar&quot;>→</span>" data-en="Cask sizes <span class=&quot;ar&quot;>→</span>">Les formats de fûts <span class="ar">→</span></a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <b data-fr="Vins de France" data-en="Wines of France">Vins de France</b> — <span data-fr="cartographie &amp; documentation" data-en="maps &amp; documentation">cartographie &amp; documentation</span><br>
+    IGN BD Carthage · SRTM · INAO · © 2026<br>
+    <a class="lang-link" href="#lang" data-fr="Changer de langue · Change language" data-en="Change language · Changer de langue">Changer de langue · Change language</a>
+  </footer>
+
+</div>
+</body>
+</html>

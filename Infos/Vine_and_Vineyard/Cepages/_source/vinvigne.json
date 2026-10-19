@@ -1,0 +1,1218 @@
+{
+"abouriou-n": {
+"name": "Abouriou noir",
+"syn": "Gamay Saint-Laurent Noir",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Loire, Rhône, Provence-Corse, Armagnac, Languedoc-Roussillon",
+"origin": "France (Lot-et-Garonne)",
+"cls": "««"
+},
+"aleatico-n": {
+"name": "Aléatico noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "Italy",
+"cls": "I.G.P"
+},
+"aligote-b": {
+"name": "Aligoté blanc",
+"syn": "Alligotay, alligoté, blanc de Troyes, carcairone blanc, carcarone, carchierone, chaudenet gras, giboudot blanc, griset blanc, mukhranuli, pistone, plant de trois raisins, plant de trois, plant gris, troyen blanc, vert blanc",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Bourgogne, Rhône, Jura, Champagne, Loire, Beaujolais, Savoie, Provence-Corse, Languedoc-Roussillon",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"altesse-b": {
+"name": "Altesse blanc",
+"syn": "Roussette, Roussette de Montagnieu, Fusette d’Ambérieu, Prin blanc",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Languedoc-Roussillon, Provence-Corse, Rhône",
+"origin": "France (Savoie)",
+"cls": null
+},
+"alvarinho-b": {
+"name": "Alvarinho blanc",
+"syn": "Albariño",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône",
+"origin": "Spain",
+"cls": "I.G.P"
+},
+"arbane-b": {
+"name": "Arbane blanc",
+"syn": "Albane, arbane blanc, arbane du Bachet, arbanne, arbanne blanche, arbenne, arbenne blanc, arbone, arbonne, crène, crénillat, darban",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Champagne, Jura, Provence-Corse, Rhône",
+"origin": "France (Aube)",
+"cls": null
+},
+"arinarnoa-n": {
+"name": "Arinarnoa noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Languedoc)",
+"cls": "I.G.P"
+},
+"arrufiac-b": {
+"name": "Arrufiac blanc",
+"syn": "Arrufiat Blanc",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Rhône, Provence-Corse",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"aubin-b": {
+"name": "Aubin blanc",
+"syn": "Blanc de Creüe",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Lorraine, Provence-Corse, Rhône, Languedoc-Roussillon",
+"origin": "France (Lorraine)",
+"cls": null
+},
+"auxerrois-b": {
+"name": "Auxerrois blanc",
+"syn": "Auxerrois Blanc, Pinot Auxerrois",
+"color": "White",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Loire, Bourgogne, Lorraine, Jura, Champagne, Beaujolais, Provence-Corse, Languedoc-Roussillon, Savoie, Rhône",
+"origin": "France (Lorraine)",
+"cls": null
+},
+"barbaroux-rs": {
+"name": "Barbaroux rosé",
+"syn": "Barbarossa",
+"color": "Rosé",
+"regions": "Provence-Corse, South-West, Cognac, Bordeaux, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": null
+},
+"baroque-b": {
+"name": "Baroque blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Armagnac, Provence-Corse, Languedoc-Roussillon, Rhône",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"beclan-n": {
+"name": "Béclan noir",
+"syn": "Petit Béclan Noir",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Framche-Comté)",
+"cls": "I.G.P"
+},
+"biancu-gentile-b": {
+"name": "Biancu Gentile blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Corse)",
+"cls": "««"
+},
+"blanqueiron-b": {
+"name": "Blanqueiron blanc",
+"syn": "",
+"color": "White",
+"regions": "Provence-Corse",
+"origin": "",
+"cls": null
+},
+"bourboulenc-b": {
+"name": "Bourboulenc blanc",
+"syn": "Doucillon blanc",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Languedoc-Roussillon, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": null
+},
+"brun-argente-n": {
+"name": "Brun Argenté noir",
+"syn": "Camarèse, Vaccarèse",
+"color": "Black",
+"regions": "Provence",
+"origin": "France (Provence)",
+"cls": null
+},
+"brun-fourca-n": {
+"name": "Brun Fourca noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Provence)",
+"cls": "««"
+},
+"cabernet-franc-n": {
+"name": "Cabernet-Franc",
+"syn": "achéria, arrouya pro parte, bidure, boubet, bouchet, bouchy, breton, cabernet blanc, cabernet d'Aunis, cabernet franco, cabernet gris, capbreton rouge, carbenet, carbouet, carmenet, couahort pro parte, gamay de Ricenay, gros bouchet, gros cabernet, grosse vidure, kaberne frank, messanges rouge, noir dur, petite vigne dure, plant breton, plant de l'abbé Breton, plant des sables, trouchet noir, véron, véronais",
+"color": "Black",
+"regions": "South-West, Loire, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Rhône, Savoie, Provence-Corse, Beaujolais",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"cabernet-sauvignon-n": {
+"name": "Cabernet-Sauvignon",
+"syn": "bidure, burdeos tinto, bordeaux, bouchet, bouchet sauvignon, cabernet petit, carmenet, castet, kaberne sovinjon, lafet, lafite, navarre, petit bouchet, petit-cabernet, petite parde, petite vidure, sauvignon rouge, sauvignonne, vaucluse, veron, vidure",
+"color": "Black",
+"regions": "South-West, Loire, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Rhône, Savoie, Provence-Corse, Beaujolais",
+"origin": "France (Bordeaux)",
+"cls": null
+},
+"caladoc-n": {
+"name": "Caladoc noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc)",
+"cls": "I.G.P"
+},
+"calitor-n": {
+"name": "Calitor noir",
+"syn": "Pecoui-touar",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": "««"
+},
+"camaralet-b": {
+"name": "Camaralet blanc",
+"syn": "Camaralet de Lasseube B",
+"color": "White",
+"regions": "France (Pyrénées-Atlantiques)",
+"origin": "France (Pyrénées-Atlantiques)",
+"cls": "I.G.P"
+},
+"carcajolo-n": {
+"name": "Carcajolo noir",
+"syn": "Carcagiolu",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "Italy",
+"cls": "I.G.P"
+},
+"carignan-blanc-b": {
+"name": "Carignan blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "",
+"cls": "««"
+},
+"carignan-n": {
+"name": "Carignan noir",
+"syn": "carignan noir, carignane noire, carignane, carignane Mouilla, carignane Violette, carignano, carignano di Carmignano, carinena, catalan, Crujillón, Crusillo, Crusillo y Samso, girarde, grenache du Bois dur",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Languedoc-Roussillon, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "Spain",
+"cls": null
+},
+"carmenere-n": {
+"name": "Carmenère noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Savoie",
+"origin": "France (Bordeaux)",
+"cls": null
+},
+"castets-n": {
+"name": "Castets noir",
+"syn": "Engrunat, machouquet",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Sud-Ouest)",
+"cls": "««"
+},
+"cesar-n": {
+"name": "César noir",
+"syn": "césar noir, gros monsieur, gros noir, hureau, lombard, picargneau, picargniol, picargniot, picarniau, picorneau, ronçain romain",
+"color": "Black",
+"regions": "Bourgogne, South-West, Cognac, Bordeaux, Beaujolais, Provence-Corse, Savoie, Rhône",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"chardonnay-b": {
+"name": "Chardonnay blanc",
+"syn": "Merillon, Melon d’Arbois, Moular ou Gamay blanc",
+"color": "White",
+"regions": "South-West, Bourgogne, Jura, Languedoc-Roussillon, Cognac, Bordeaux, Beaujolais, Savoie, Loire, Champagne, Rhône, Armagnac, Lorraine, Alsace, Provence-Corse",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"chasselas-b": {
+"name": "Chasselas blanc",
+"syn": "Bon Blanc, Fendant, Crépy, Greffoux, Blanchette",
+"color": "White",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Loire, Bourgogne, Beaujolais, Savoie, Rhône, Languedoc-Roussillon, Provence-Corse",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"chasselas-rose-rs": {
+"name": "Chasselas rosé",
+"syn": "",
+"color": "Rosé",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Loire, Rhône, Languedoc-Roussillon, Provence-Corse, Savoie, Beaujolais",
+"origin": "France",
+"cls": null
+},
+"chenin-b": {
+"name": "Chenin blanc",
+"syn": "Pineau de la Loire, blanc d´Aunis, capbreton blanc, confort, coué fort, cruchinet, cugnette, fehér Chenin, franc Blanc, franche, Gamet blanc, gout fort, luarskoe, pineau d´Anjou, pineau de Briollay, pineau de la Loire, pineau de Savennières, pineau Gros, pineau Gros de Vouvray, pineau Nantais, plant de Brézé, plant de Salces, plant de Salles, plant du Clair de Lune, quefort, ajoulin, rouchalin, rougelin, steen, stein, tête de Crabe, vaalblaar Stein, verdurant",
+"color": "White",
+"regions": "Loire, South-West, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Bourgogne, Rhône, Beaujolais, Provence-Corse, Savoie",
+"origin": "France (Loire)",
+"cls": null
+},
+"cinsaut-n": {
+"name": "Cinsaut noir",
+"syn": "Cinsault Noir, black Malvoisie, blue Imperial, boudalès, bourdalès, bourdelas, calabre, chainette, cincout, cinsanet, cinquien, cinq-Sao, cinqsaut, œillade, espagnol, froutignan, gros de Lacaze, gros Marocain, hermitage, picardan Noir, piquepoul d’Uzés, pis de Chèvre rouge, plant d’Arles, poupo de Crabe, pousse de Chèvre, prunaley, prunella, prunellas, samsó, senso, ulliaou, ulliade Noire",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Languedoc-Roussillon, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Provence)",
+"cls": null
+},
+"clairette-b": {
+"name": "Clairette",
+"syn": "Clairette Blanche, blanc Laffite, blanquette, Bou Afrara, branquete, cibade, clairette blanche, clairette de Limoux, clairette pointue, colle Musquette, cotticour, Fehér Clairette, gaillard blanc, granolata, kleret, kleret Belyi, muscade, ondenic, osianka, ovsyanka, petit blanc, petit kleret, poupe de Gate, pti blan d’Obena, Seidentraube, uva Gijona, Vivsyanka",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Languedoc-Roussillon, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Provence)",
+"cls": null
+},
+"clairette-rose-rs": {
+"name": "Clairette rosé",
+"syn": "Blanquette Rose",
+"color": "Rosé",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Provence-Corse, Languedoc-Roussillon, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Provence)",
+"cls": null
+},
+"codivarta-b": {
+"name": "Codivarta blanc",
+"syn": "codivarte blanc, codivertola blanc, cudiverta",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Corse)",
+"cls": "««"
+},
+"colombard-b": {
+"name": "Colombard blanc",
+"syn": "colombar, french colombard, blanc emery, bon blanc",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Armagnac, Loire, Provence-Corse, Rhône, Savoie, Beaujolais",
+"origin": "France (Charentes)",
+"cls": null
+},
+"corbeau-n": {
+"name": "Corbeau noir",
+"syn": "Douce noire",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Loire, Provence-Corse, Rhône",
+"origin": "France (Savoie)",
+"cls": "I.G.P"
+},
+"cot-n": {
+"name": "Cot noir",
+"syn": "Côt, Cot, Malbec Noir,  Auxerrois",
+"color": "Black",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Loire, Armagnac, Provence-Corse, Rhône, Savoie, Beaujolais",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"counoise-n": {
+"name": "Counoise noir",
+"syn": "Moustardier",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Provence-Corse, Languedoc-Roussillon, Loire, Savoie, Beaujolais",
+"origin": "France (Vaucluse)",
+"cls": null
+},
+"courbu-b": {
+"name": "Courbu blanc",
+"syn": "Gros Courbu Blanc, Bordeleza zuria, Cougnet, Courbu Blanc, Courbu Petit, Courtoisie, Vieux Pacherenc, Xuri Cerratia",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Provence-Corse, Rhône, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"courbu-noir-n": {
+"name": "Courbu noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": "««"
+},
+"duras-n": {
+"name": "Duras noir",
+"syn": "Durazé",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Armagnac, Provence-Corse, Rhône, Languedoc-Roussillon",
+"origin": "France (Tarn)",
+"cls": null
+},
+"durif-n": {
+"name": "Durif noir",
+"syn": "bas plant, dure, duret, dureza, duriff, dyurif, gros noir, Kek Durif, nérin, pareux noir, petit duret, petite serine, petite sirah, petite syrah, pinot de l'Ermitage, pinot de Romans, plant durif, plant fourchu, serine, serine des Mauves, sirane fourchue, sirane de Tain, syrah forchue",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Dauphiné)",
+"cls": "««"
+},
+"etraire-de-la-dui-n": {
+"name": "Etraire de la Dui noir",
+"syn": "Beccu de l'adui, betu, étraire, étraire de l'Adny, étraire de l'Adui, étraire de la Dot, étraire de la Du, étraire de la Duy, gros persan, gros étraire",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône",
+"origin": "France (Dauphiné)",
+"cls": "««"
+},
+"folle-blanche-b": {
+"name": "Folle Blanche blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Loire, Armagnac, Provence-Corse, Savoie, Rhône, Languedoc-Roussillon",
+"origin": "France (Charente)",
+"cls": null
+},
+"franc-noir-de-haute-saone-n": {
+"name": "Franc noir de Haute-Saône",
+"syn": "franc noir de Cendrecourt, plant jacquot, franc noir de Venère, franc noir de Gy, franc noir de Jussey, gougenot",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Haute-Saône)",
+"cls": "I.G.P"
+},
+"fuella-nera-n": {
+"name": "Fuella nera noir",
+"syn": "Folle noire de Nice",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Provence)",
+"cls": null
+},
+"furmint-b": {
+"name": "Furmint blanc",
+"syn": "Allgemeiner, Alte Sestrebe, Arany Furmint, Beregi Furmint, Bieli Moslavac, Biharboros, Bihari Boros, Bihari Boros, Budai Goher, Cimigera, Csapfner, Csillagviraga Furmint, Damzemy, Demjen, Domjen, Edelweißer Tokayer, Edler weißer Furmint, Féher Furmint, Formint, Formont, Fourminte, Furmint bianco, Furmint de Minis, Furmint Féher, Furmint Szagos, Furmint Valtozo, Gelber Moster, Gemeiner, Görgeny, Görin, Goher Féher, Gorin, Grasa de Kotnar, Holyagos Furmint, Jardanszki Furmint, Keknyelü, Keresztesevelu Furmint, Kiraly Furmint, Krhkopetec, Ligetes Furmint, Luttenberger, Madarkas Furmint, Mainak, Maljak, Malmsey, Malnik, Malvasia verde, Malvoisie verte, malzak, Mehlweiss, Moscavac bijeli, Moslavac, Moslavac bijeli, Moslavac zuti, Moslavina, Mosler, Mosler gelb, Mosler gelber, Moslertraube, Moslovac, Moslovez, Nemes Furmint, Poam Grasa, Poma Grasa, Poshipon, Pošip, Pošipbijeli, Pošipveliki, Pošip Vrgonski, Posipel, Posipon, Pospisel, Rongyos Furmint, Salver, Sari Furmint, Sauvignon Vert, Schimiger, Schmiger, Seestock, Seeweinrebe, Shipo, Shipon, Shiponski, Sipelj, Šipon, Som, Som shipo, Somszölö, Szala, Szalai, Szalai janos, Szalay Göreny, Szegszolo, Szegzölö, Szigethy Szöllö, Szigeti, Toca, Toca Tokai, Tokai Krupnyi, Tokaiskii, Tokaisky, Tokaijer, Tokay, Tokayer, Ungarische, Weisslabler, Weisslauber, Zapfete, Zapfner, Zilavka bekannt",
+"color": "White",
+"regions": "South Ouest, Cognac, Bordeaux, Provence, Corse, Savoie, Rhône, Languedoc",
+"origin": "Austria",
+"cls": "««"
+},
+"gamay-de-bouze-n": {
+"name": "Gamay de Bouze noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Loire, Bourgogne, Jura, Champagne, Beaujolais, Provence-Corse, Rhône, Savoie, Languedoc-Roussillon",
+"origin": "France (Bourgogne)",
+"cls": "««"
+},
+"gamay-de-chaudenay-n": {
+"name": "Gamay de Chaudenay noir",
+"syn": "Gamay teinturier de Chaudenay",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Loire, Bourgogne, Beaujolais, Rhône, Provence-Corse, Languedoc-Roussillon, Savoie, Armagnac",
+"origin": "France",
+"cls": "««"
+},
+"gamay-n": {
+"name": "Gamay noir",
+"syn": "Gamay Noir à jus blanc, gamay d'Arcenant, gamay de Caudoz, gamay de Sainte-Foix",
+"color": "Black",
+"regions": "South-West, Loire, Languedoc-Roussillon, Cognac, Bordeaux, Beaujolais, Bourgogne, Savoie, Rhône, Armagnac, Lorraine, Jura, Champagne, Provence-Corse",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"genovese-b": {
+"name": "Genovèse blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Corse)",
+"cls": "««"
+},
+"gewurztraminer-rs": {
+"name": "Gewurztraminer rosé",
+"syn": "Savagnin rose aromatique, Christkindeltraube, Christkindlestraube, Clevener, Clevner, Crevena Ruziva, Crovena Ruzica, Diše?i Traminec, Dreimaenner, Dreimannen, Dreipfennigholz, Drumin, Drumin Ljbora, Duret Rouge, Edeltraube, Fermentin Rouge, Fleischroth, Fleischweiner, Formentin Rouge, Fourmenteau Rouge, Frencher, Fromente, Fromenteau, F?szeres, F?szeres Tramini, Gentil Rose Aromatique, Gentil-duret Rouge, Gentile Blanc, Gertie, Gewuerztraminer, Gringet, Gris Rouge, Haiden, Kirmizi Traminer, Klaebinger, Klaevner, Kleinbraun, Kleinwiener, Livora, Livora Cervena, Mala Dinka, Marzimmer, Mirisavi Traminac, Nature, Nature Rose, Noble Rose, Nuernberger Rot, Pinat Cervena, Piros Tramini, Plant Paien, Princ Cerveny, Princt Cervena, Princt Cerveny, Ranfoliza, Rosentraminer, Rotclevner, Rotedel, Roter Nuerberger, Roter Nuernberger, Roter Traminer, Rotfranken, Rothklauser, Rothweiner, Rothwiener, Rotklaevler, Rotklaevner, Rotklevner, Rousselet, Runziva, Rusa, Ruska, Ryvola, Salvagnin, Sauvagnin, Savagnin, Savagnin Jaune, Savagnin Rosa Aromatique, Savagnin Rose, Savagnin Rose Aromatique, Savagnin Rose Musque, St. Klauser, Termeno Aromatico, Tramin Cerveny, Tramin Korenny, Traminac Crveni, Traminac Diseci, Traminac mirisavi, Traminac Mirisavi Crveni, Traminac Sivi, Traminec, Traminer, Traminer Aromatico, Traminer Epice, Traminer Musque, Traminer Parfume, Traminer Rosa, Traminer Rose Aromatique, Traminer Rot, Traminer Rozovyi, Tramini Piros, Trammener",
+"color": "Rosé",
+"regions": "Alsace, Loire, Languedoc-Roussillon, Jura, Champagne, Lorraine, Provence-Corse, Rhône, Savoie, Beaujolais, South-West",
+"origin": "France",
+"cls": null
+},
+"grenache-blanc-b": {
+"name": "Grenache blanc",
+"syn": "garnacha blanca, garnatxa blanca, grenash beli, silla blanc",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "Spain",
+"cls": null
+},
+"grenache-gris-g": {
+"name": "Grenache gris",
+"syn": "",
+"color": "Gray",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "Spain",
+"cls": null
+},
+"grenache-n": {
+"name": "Grenache noir",
+"syn": "alicante, alicante de Pays, alicante Grenache, alicantina, aragonais, aragonés, bois jaune, cannonaddu, cannonau, cannonao, cannono, carignane Rousse, gironet, granacha, granacha del País, granacha Negra, granacha Tinta, granacho, granaxa, granaxo, grenache Rouge, guarnaccia en Italie, lladoner, mencida, navarra, navarre de la Dordogne, ranconnat, redondal, retagliadu Nieddu, rivesaltes, rivos-Altos, roussillon, roussillon Tinto, rouvaillard, Sans Pareil, Santa Maria de Alcantara, Tinta, Tinta Menuda, Tinto, Tinto de Navalcarnero, Tintore di Spagna, Tocai Rosso",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Languedoc-Roussillon, Rhône, Loire, Savoie, Beaujolais",
+"origin": "Spain",
+"cls": null
+},
+"gringet-b": {
+"name": "Gringet blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône",
+"origin": "France (Savoie)",
+"cls": null
+},
+"grolleau-gris-g": {
+"name": "Grolleau gris gris",
+"syn": "",
+"color": "Gray",
+"regions": "Loire, South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France",
+"cls": null
+},
+"grolleau-n": {
+"name": "Grolleau noir",
+"syn": "Bourdalès, Gamay groslot, Grolleau de Cinq-Mars, Grolleau de Tourraine, Grolleau des Mahé, Grolleau de Tours, Groslot, Moinard, Pineau de Saumur, Plant boisnard, Plant mini",
+"color": "Black",
+"regions": "Loire, South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Armagnac, Languedoc-Roussillon",
+"origin": "France (Loire)",
+"cls": null
+},
+"gros-manseng-b": {
+"name": "Gros Manseng blanc",
+"syn": "Gros Mansenc",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Pays-Bas)",
+"cls": null
+},
+"jacquere-b": {
+"name": "Jacquère blanc",
+"syn": "Cugnète, Molette de Montmelian, Martin cot blanc, Redin, Blanc des Ecoutoux",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Rhône, Provence-Corse, Languedoc-Roussillon",
+"origin": "France (Savoie)",
+"cls": null
+},
+"joubertin-n": {
+"name": "Joubertin noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône",
+"origin": "France (Dauphiné)",
+"cls": "I.G.P"
+},
+"jurancon-blanc-b": {
+"name": "Jurançon blanc",
+"syn": "braquet, dame blanche, notre-dame de Guilan, plant debout, plant dressé, plant quillat, quillat, quillard, sans-pareil",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Languedoc-Roussillon, Rhône",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"jurancon-noir-n": {
+"name": "Jurançon noir",
+"syn": "folle noire, chalosse, chalosse noire, dame noire, enrageat, fola belcha, gamay-moutot, grand noir, gouni, gouny, jalosse, luxuriant (en Aveyron), moutot, plant de dame",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Languedoc-Roussillon, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": "I.G.P"
+},
+"lauzet-b": {
+"name": "Lauzet blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "France (Sud-Ouest)",
+"cls": "««"
+},
+"len-de-l-el-b": {
+"name": "Len de l’El blanc",
+"syn": "Loin de l’OEil Blanc",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Armagnac, Rhône, Provence-Corse",
+"origin": "France (Tarn)",
+"cls": null
+},
+"liliorila-b": {
+"name": "Liliorila blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Languedoc-Roussillon, Rhône, Armagnac",
+"origin": "France (Bordeaux)",
+"cls": "I.G.P"
+},
+"lledoner-pelut-n": {
+"name": "Lledoner Pelut noir",
+"syn": "",
+"color": "Black",
+"regions": "Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, South-West",
+"origin": "Espagne",
+"cls": null
+},
+"macabeu-b": {
+"name": "Macabeu blanc",
+"syn": "macaban, macabeu, maccabeu, macabeo, maccabeo, maccabeou, makkobeo, alcanol, alcanon, blanca de Daroca, charas, forcalla, gredelin, lardot, listan andaluschii, listan andaluzkii, lloza, malvoisie, provençal, queue de renard, rossan, subirat, verdigell, viuna, viura, xarello",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc-Roussillon)",
+"cls": null
+},
+"manseng-noir-n": {
+"name": "Manseng noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Languedoc-Roussillon",
+"origin": "France (Sud-Ouest)",
+"cls": "««"
+},
+"marsanne-b": {
+"name": "Marsanne blanc",
+"syn": "Ermitage",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Provence-Corse, Languedoc-Roussillon, Loire, Savoie, Beaujolais",
+"origin": "France (Rhône)",
+"cls": null
+},
+"marselan-n": {
+"name": "Marselan noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc)",
+"cls": "««"
+},
+"mauzac-b": {
+"name": "Mauzac blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Rhône, Provence-Corse",
+"origin": "France (Tarn)",
+"cls": null
+},
+"mauzac-rose-rs": {
+"name": "Mauzac rosé",
+"syn": "",
+"color": "Rosé",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Languedoc-Roussillon, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"mayorquin-b": {
+"name": "Mayorquin blanc",
+"syn": "Plant de Marseille",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône",
+"origin": "North-Africa",
+"cls": "««"
+},
+"melon-b": {
+"name": "Melon blanc",
+"syn": "biaune, bourgogne blanche, bourgogne vert, bourguignon blanc, feuille ronde, gamay blanc, gros auxerrois, grosse Sainte-Marie, malin blanc, melon, melon Blanc, melon de Bourgogne, muscadet, perry, petit muscadet, petite bourgogne, pétoin, pétouin, pourrisseux, roussette basse",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Loire, Bourgogne, Beaujolais, Provence-Corse, Rhône, Savoie, Languedoc-Roussillon",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"merille-n": {
+"name": "Mérille noir",
+"syn": "Bordelais, vesparo, vesparo à longue queue",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Languedoc-Roussillon, Rhône, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": "««"
+},
+"merlot-blanc-b": {
+"name": "Merlot blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, Languedoc-Roussillon, Armagnac",
+"origin": "France (Bordeaux)",
+"cls": null
+},
+"merlot-n": {
+"name": "Merlot noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Loire, Armagnac, Bourgogne, Jura, Champagne, Rhône,",
+"origin": "France (Bordeaux)",
+"cls": null
+},
+"meunier-n": {
+"name": "Meunier noir",
+"syn": "auvernat gris, auvernat meunier, blanc meunier, blanche feuille, carpinet, cerny mancujk, crédinet, farineux noir, fernaise, frésillon, fromenté, Frühe blaue Müllerrebe, goujeau, gris meunier, meunier, meunier gris, pinot meunier",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Loire, Champagne, Bourgogne, Jura, Languedoc-Roussillon, Beaujolais, Lorraine, Provence-Corse, Rhône, Savoie",
+"origin": "France (Champagne)",
+"cls": null
+},
+"molette-b": {
+"name": "Molette",
+"syn": "Molette blanche, molette de Seyssel",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône",
+"origin": "France (Savoie)",
+"cls": null
+},
+"mondeuse-blanche-b": {
+"name": "Mondeuse blanche blanc",
+"syn": "Aigre blanc, blanc aigre, blanche, blanchette, couilleri, dongine, donjin, jongin, persagne, savouette",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône, Loire, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Savoie)",
+"cls": null
+},
+"mondeuse-n": {
+"name": "Mondeuse noir",
+"syn": "persaigne, mandouze, molette noire, tournarin, gros plant, Argilliers, Begeain, Begean, Chétuan, Chintuan, Cotillon des dames, Gascon, Grand Chétuan, Grand Picot, Gris Picot, Gros Chétuan, Gros Plant, Gros Rouge du Pays, Grosse Syrah, Gueyne, Languedoc, Maldoux, Mandouze, Marcelin, Margilien, Marlanche noire, Marsanne ronde, Marve, Maudoux, Meximieux, Molette noire, Morlanche, Mouteuse, Parcense, Persagne, Persaigne, Persanne, Pinot vache, Prossaigne, Rouget, Salanaise, Savoète, Savoyanche, Savoyange, Anne Savoie, Savoie, Savoyet, Tournarin, Tournerin, Vache tresseau",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Languedoc-Roussillon, Loire, Provence-Corse, Rhône, Beaujolais",
+"origin": "France (Savoie)",
+"cls": null
+},
+"montils-b": {
+"name": "Montils blanc",
+"syn": "chalosse, ancarot, ancerot",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Loire, Provence-Corse, Rhône, Savoie, Beaujolais",
+"origin": "France (Charente)",
+"cls": null
+},
+"morrastel-n": {
+"name": "Morrastel noir",
+"syn": "Minustello",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "Spain",
+"cls": "««"
+},
+"mourvaison-n": {
+"name": "Mourvaison noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": "I.G.P"
+},
+"mourvedre-n": {
+"name": "Mourvèdre noir",
+"syn": "Balzac noir, Balthazar, Balzar, Beausset, Beneda, Benadu, Béni Carlo",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence, Rhône, Languedoc-Roussillon, Loire, Savoie, Beaujolais",
+"origin": "Espagne",
+"cls": null
+},
+"mouyssagues-n": {
+"name": "Mouyssaguès noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Sud-Ouest)",
+"cls": "««"
+},
+"muller-thurgau-b": {
+"name": "Müller-Thurgau blanc",
+"syn": "Riesling-Sylvaner, Müller, Müllerka, Müllerovo",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Loire, Lorraine, Provence-Corse, Rhône, Savoie, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Alsace)",
+"cls": null
+},
+"muscadelle-b": {
+"name": "Muscadelle blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Armagnac, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Bergerac)",
+"cls": null
+},
+"muscardin-n": {
+"name": "Muscardin noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Provence-Corse, Loire, Savoie, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Vaucluse)",
+"cls": null
+},
+"muscat-a-petits-grains-b": {
+"name": "Muscat à petits grains blanc",
+"syn": "Muscat blanc ou muscat de Frontignan",
+"color": "White",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Languedoc-Roussillon, Loire, Rhône, Jura, Champagne, Provence-Corse, Savoie, Beaujolais",
+"origin": "Greece",
+"cls": null
+},
+"muscat-a-petits-grains-rs": {
+"name": "Muscat à petits grains rosé",
+"syn": "",
+"color": "Rosé",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Loire, Jura, Champagne, Provence-Corse, Rhône, Languedoc-Roussillon, Savoie, Beaujolais",
+"origin": "Greece",
+"cls": null
+},
+"muscat-d-alexandrie-b": {
+"name": "Muscat d’Alexandrie blanc",
+"syn": "Muscat romain ou muscat à gros grains",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "North-Africa",
+"cls": null
+},
+"muscat-de-hambourg-n": {
+"name": "Muscat de Hambourg noir",
+"syn": "Muscat du Ventoux, Black Hamburg (États-Unis), Black Muscat, Black Muscat of Alexandria, Blauer Hamburger Muskat, Frankental, Frankenthal, Golden Hamburg, Hambourg musqué, Hambro, Hamburg, Hamburg Moschato, Hamburgii muskotály, Hamburgskii misket, Hamburski Misket, Hampton Court Wine, Malaga rouge, Moscatel de Hamburgo, Moscatel Negro, Moscatel Prato, Moscatel preto, Moscato d’Amburgo, Moscato di Amburgo, Moscato Nero, Moscato Nero di Amburgo, Moscato Preto, Moschato amvourgou, Moschato tyrnavou, Muscat Albertient's, Muscat cernii aleksandriiskii, Muscat gamburgskii, Muscat Hamburg, Muskat Hamburg crni, Muskat-Trollinger (en Allemagne), Œillade musqué, Queen’s Arbor, Red Muscat of Alexandria, Siyah misket, Snow’s Seedling ou Snow’s muscat hamburgh (du nom du multiplicateur britannique Snow), Tamaîioasa hanburg, Tamaîioasa neagra, Zibibbo Nero",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "N/A",
+"cls": "««"
+},
+"muscat-ottonel-b": {
+"name": "Muscat Ottonel blanc",
+"syn": "Muscat de Craciunel tîrnave, muscat ottone, mushcat otonel, muskat otonel, Muskat-Ottonel, ottonel muskotály, tamîiosa ottonel",
+"color": "White",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Loire, Jura, Provence-Corse, Rhône, Savoie, Beaujolais, Champagne",
+"origin": "France (Loire)",
+"cls": null
+},
+"negret-de-banhars-n": {
+"name": "Négret de Banhars noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Aveyron)",
+"cls": "««"
+},
+"negrette-n": {
+"name": "Négrette noir",
+"syn": "Ragoûtant, Folle Noire, Petit noir, Cap de more, Chalosse noire, Morelet, Morillon, Mourrelet, Négralet, Négret de Gaillac, Négret du Tarn",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Loire, Armagnac, Languedoc-Roussillon, Provence-Corse, Rhône, Savoie, Beaujolais",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"nielluccio-n": {
+"name": "Nielluccio noir",
+"syn": "Niellucciu Noir, Sangiovese",
+"color": "Black",
+"regions": "Provence-Corse, South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône, Loire, Savoie, Beaujolais",
+"origin": "Italy",
+"cls": null
+},
+"ondenc-b": {
+"name": "Ondenc blanc",
+"syn": "Béquin, Blanc sélection carrière, Blanquette, Chaloche, Chalosse, dourec, dourech, Irvine's white, oustenc, Picquepoul de Moissac, prentiou, pripaic, primard, sable blanc, semis blanc, sentit blanc, sercial",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"orbois-b": {
+"name": "Orbois blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Loire, Provence-Corse, Rhône, Savoie, Beaujolais",
+"origin": "France (Loire)",
+"cls": null
+},
+"panse-muscade-b": {
+"name": "Panse muscade blanc",
+"syn": "Panse du Roy René",
+"color": "White",
+"regions": "Provence-Corse",
+"origin": "France (Provence)",
+"cls": null
+},
+"pascal-b": {
+"name": "Pascal blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": "««"
+},
+"persan-n": {
+"name": "Persan noir",
+"syn": "Princens, becuette, petit-becquet",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône, Loire, Beaujolais",
+"origin": "France (Savoie)",
+"cls": "««"
+},
+"petit-brun-n": {
+"name": "Petit brun noir",
+"syn": "",
+"color": "Black",
+"regions": "Provence",
+"origin": "France (Provence)",
+"cls": null
+},
+"petit-courbu-b": {
+"name": "Petit Courbu blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Pyrénées)",
+"cls": null
+},
+"petit-manseng-b": {
+"name": "Petit Manseng blanc",
+"syn": "Escriberou, ichiriota zuria tipia, manseing, manseng blanc, mansengou, mansic, mausec, mausenc blanc, miot, petit mansenc",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Pyrénées-Atlantiques)",
+"cls": null
+},
+"petit-meslier-b": {
+"name": "Petit Meslier blanc",
+"syn": "Arbonne, barnay, bernais, bernet, crêne, co de France, feuille d´Ozerolle, hennequin, lepine, maillé, mayé, melier, mélié, meslier de Champagne, petit meslier doré, petit meslier à queue rouge, meslier vert, meslier petit, mornain blanc, orbois, queue rouge, Saint Lye",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Champagne, Jura, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Champagne)",
+"cls": null
+},
+"petit-verdot-n": {
+"name": "Petit Verdot noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Rhône, Provence-Corse, Loire, Savoie, Beaujolais, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"picardan-b": {
+"name": "Picardan blanc",
+"syn": "Aragnan, Aragnan Blanc, Araignan, Araignan Blanc, Gallet, Gallet Blanc, Grosse Clairette, Milhaud Blanc, Oeillade Blanche, Papadoux, Picardan, Picardan Blanc, Piquardan, Piquardant",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Provence-Corse, Loire, Savoie, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Provence)",
+"cls": null
+},
+"pineau-d-aunis-n": {
+"name": "Pineau d'Aunis noir",
+"syn": "Chenin Noir",
+"color": "Black",
+"regions": "Loire, South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Savoie, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Loire)",
+"cls": null
+},
+"pinot-blanc-b": {
+"name": "Pinot blanc",
+"syn": "klevner, pinot bianco, pinot branco, rulandsky bile, rulandské biele, weisser burgunder, Weißburgunder",
+"color": "White",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Bourgogne, Loire, Champagne, Languedoc-Roussillon, Lorraine, Jura, Beaujolais, Rhône, Provence-Corse, Savoie",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"pinot-gris-g": {
+"name": "Pinot gris",
+"syn": "tokay pinot gris, affumé, arnoison gris, auvergnas gris, auvernat gris, auxerrat, auxerrois gris, auxois, burgundske sede, burot,druser, fauvet, friset, fromenteau gris, fromentot, Grauburgunder, Grauclevner, Grauer Mönch, gris cordelier, gris de Dornot, griset, levraut, malvoisie, malvoisien, Mauserl, moréote gris, moréote gris rouge, muscade, ouche cendrée, petit gris, pinot Beurot, pinot cendré, Pinot grigio, roter Burgunder, ruhlandi, rulandac sivi, ruländer, szürkebarát, Speyrer, tokay d'Alsace, Viliboner",
+"color": "Gray",
+"regions": "Alsace, South-West, Languedoc-Roussillon, Cognac, Bordeaux, Loire, Champagne, Bourgogne, Lorraine, Jura, Savoie, Beaujolais, Provence-Corse, Rhône",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"pinot-noir-n": {
+"name": "Pinot noir",
+"syn": "",
+"color": "Black",
+"regions": "Bourgogne, Alsace, Jura, South-West, Languedoc-Roussillon, Cognac, Bordeaux, Savoie, Loire, Champagne, Armagnac, Lorraine, Beaujolais, Rhône, Provence-Corse",
+"origin": "France (Bourgogne)",
+"cls": null
+},
+"piquepoul-blanc-b": {
+"name": "Piquepoul blanc",
+"syn": "Picapoll blanco",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Languedoc-Roussillon, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "France (Sud-Est)",
+"cls": null
+},
+"piquepoul-gris-g": {
+"name": "Piquepoul gris",
+"syn": "",
+"color": "Gray",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Provence-Corse, Languedoc-Roussillon, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": null
+},
+"piquepoul-noir-n": {
+"name": "Piquepoul noir",
+"syn": "pical negro, pical pôlho, picapoll, picapoll negro, picapouia, picapulla, picpouille, picpoul, picpoule, picquepoul, piquerette noire",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Languedoc-Roussillon, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc)",
+"cls": null
+},
+"poulsard-n": {
+"name": "Poulsard noir",
+"syn": "Ploussard Noir,  pulsard, plousse, mescle, peloussard, polozard",
+"color": "Black",
+"regions": "Jura, South-West, Cognac, Bordeaux, Savoie, Loire, Rhône, Beaujolais, Languedoc-Roussillon, Provence-Corse",
+"origin": "France (Jura)",
+"cls": null
+},
+"prunelard-n": {
+"name": "Prunelard noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Tarn)",
+"cls": "««"
+},
+"raffiat-de-moncade-b": {
+"name": "Raffiat de Moncade blanc",
+"syn": "rousselet, arréfiat, portugal, raffiat",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, Languedoc-Roussillon, Armagnac",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"riesling-b": {
+"name": "Riesling blanc",
+"syn": "Gräfenberger, Hochheimer, Johannisberger, Karbacher Riesling, Kastellberger, Kleinriesler, Kleinriesling, Klingenberger, Moselriesling, Niederländer, petit rhin, petit riesling, Pfefferl, raisin du Rhin, Reno, Reynai,Riesler, Riesling blanc, Riesling renano, Riesling renano bianco, Rieslinger, Risling rejnski, Rizling, rohac, Rössling, Rösslinger, Weißer Riesling, White Riesling",
+"color": "White",
+"regions": "Alsace, Loire, Languedoc-Roussillon, Lorraine, Provence-Corse, Rhône, Savoie, Beaujolais, South-West",
+"origin": "France (Alsace)",
+"cls": null
+},
+"rivairenc-n": {
+"name": "Rivairenc noir",
+"syn": "Aspiran Noir",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc)",
+"cls": "I.G.P"
+},
+"romorantin-b": {
+"name": "Romorantin blanc",
+"syn": "Bury, dameri, daneri, dannery, framboise, gros blanc de Ville-Franche, gros plant, lyonnaise blanche, maclon, petit dannezy, petit maconnais, plant de Brézé, raisin de Grave, ramorantin",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Loire, Rhône, Savoie, Beaujolais, Provence-Corse",
+"origin": "France (Centre)",
+"cls": null
+},
+"roussanne-b": {
+"name": "Roussanne blanc",
+"syn": "Barbin, Bergeron, Courtoisie, Fromental, Fromental Jaune, Fromenteal, Fromenteau, Greffon, Greffou, Martin Cot, Petite Rousette, Picotin Blanc, Plant de Seyssel, Rabellot, Rabelot, Ramoulette, Rebellot, Rebolot, Remoulette, Roussane, Roussette, Rusan Belyi, Rusan Blan",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Languedoc-Roussillon, Savoie, Provence-Corse, Loire, Beaujolais",
+"origin": "France (Rhône)",
+"cls": null
+},
+"roussette-d-ayze-b": {
+"name": "Roussette d'Ayze blanc",
+"syn": "Chasselas d'Ayze",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône, Loire, Beaujolais",
+"origin": "France (Haute-Savoie)",
+"cls": null
+},
+"sacy-b": {
+"name": "Sacy blanc",
+"syn": "Aligoté vert, blanc de Pays, blanc moulin, blanc vert, fairené, fariné, farinier blanc, ferné, fernet, ferney, gros blanc, menu blanc, peut blanc, pivoine, plant de Sacy, plant d´Essert, sassy, souche, weissklemmer",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Loire, Bourgogne, Provence-Corse, Rhône, Savoie, Beaujolais",
+"origin": "France (Auvergne)",
+"cls": null
+},
+"saint-come-b": {
+"name": "Saint-Côme blanc",
+"syn": "Rousselou",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Aveyron)",
+"cls": "I.G.P"
+},
+"sauvignon-b": {
+"name": "Sauvignon blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Loire, Armagnac, Bourgogne, Jura, Rhône, Beaujolais, Provence-Corse, Savoie",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"sauvignon-gris-g": {
+"name": "Sauvignon gris",
+"syn": "",
+"color": "Gray",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Loire, Bourgogne, Jura, Beaujolais, Armagnac, Provence-Corse, Savoie",
+"origin": "France (Sud-Ouest)",
+"cls": null
+},
+"savagnin-b": {
+"name": "Savagnin blanc",
+"syn": "",
+"color": "White",
+"regions": "Jura, South-West, Cognac, Bordeaux, Loire, Bourgogne, Beaujolais, Provence-Corse, Rhône, Savoie, Languedoc-Roussillon",
+"origin": "France (Franche-Comté)",
+"cls": null
+},
+"savagnin-rose-rs": {
+"name": "Savagnin rosé",
+"syn": "",
+"color": "Rosé",
+"regions": "Alsace, South-West, Cognac, Bordeaux, Loire, Provence-Corse, Rhône, Savoie, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Franche-Comté)",
+"cls": null
+},
+"sciaccarello-n": {
+"name": "Sciaccarello noir",
+"syn": "Sciaccarellu Noir, Montanaccio, Muntanaccio, Schiorello, Schiuchetadiuru, Schiuchitajolo, Sciaccarello nero, Sciaccarellu, Sciucchitghjolu, Sciuccuttaghjolo, Sciuchitajolo",
+"color": "Black",
+"regions": "Provence-Corse, South-West, Cognac, Bordeaux, Rhône, Languedoc-Roussillon, Loire, Savoie, Beaujolais",
+"origin": "Italy",
+"cls": null
+},
+"semillon-b": {
+"name": "Sémillon blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Provence-Corse, Loire, Rhône, Savoie, Beaujolais",
+"origin": "France (Bordeaux)",
+"cls": null
+},
+"servanin-n": {
+"name": "Servanin noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône, Loire, Beaujolais",
+"origin": "France (Isère)",
+"cls": "I.G.P"
+},
+"sylvaner-b": {
+"name": "Sylvaner blanc",
+"syn": "Arvine, arvine grande, augustiner weiss, beregi szilvani, bötzinger, clozier, cynifadl zeleny, cynifal, fliegentraube, frankenriesling, frankentraube, füszeres szilvani, gamay blanc, gentil vert, Gros-Rhin, grünedel, grünfränkisch, Grüner Silvaner, Häusler Schwarz, mishka, momavaka, monterey riesling, moravka, movavka, muschka, mushza, musza, nemetskii Rizling, Österreicher, Pepltraube, picardon blanc, picardou blanc, plant du Rhin, Rhin, Rundblatt, salfin, salfine bely, salvaner, salviner, scharvaner, scherwaner, schönfeilner, schwäbler, schwübler, sedmogradka, sedmogradska zelena, selenzhiz, selivan, silvanske zelene, sonoma riesling, Sylvaner Verde, sylvan zeleny, szilvani feher, Juhannish, tschafahnler, yesil Silvaner, zelencic, zeleny, zierfandl, zierfandler, zierifandel, zinifal, zöld szilvani, zöldsilvani",
+"color": "White",
+"regions": "Alsace, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais, South-West",
+"origin": "France (Alsace)",
+"cls": null
+},
+"syrah-n": {
+"name": "Syrah noir",
+"syn": "Shiraz Noir, Serine Noir, Marsanne noire, Plant de la Biaun, Schiras, Schiraz, Damas noir du Puy de Dôme, Marzane noire",
+"color": "Black",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Rhône, Armagnac, Provence-Corse, Jura, Champagne, Savoie, Loire, Beaujolais, Bourgogne",
+"origin": "France (Rhône)",
+"cls": null
+},
+"tannat-n": {
+"name": "Tannat noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Armagnac, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Pyrénées)",
+"cls": null
+},
+"tempranillo-n": {
+"name": "Tempranillo noir",
+"syn": "Aldepenas, Aragones, Aragonêz, Aragonez Da Ferra, Aragonez de Elvas, Arganda, Arinto Tinto, Cencibel , Cencibera, Chinchillana , Chinchillano, Chinchilyano, Cupani, Escobera, Garnacho Foño, Grenache de Logrono, Jacibiera, Jacivera, Juan Garcia, Negra de Mesa, Ojo de Liebre, Olho de Lebre, Sensibel, Tempranilla, Tempranillo de la Rioja, Tempranillo de Perralta, Tempranillo de Rioja, Tempranillo de Rioza, Tinta Aragones, Tinta de Santiago, Tinta de Toro, Tinta Do Inacio, Tinta Monteira, Tinta Monteiro, Tinta Roriz, Tinta Roriz de Penajola, Tinta Santiago, Tinto Aragon, Tinto Aragonez, Tinto de la Ribera, Tinto de Madrid, Tinto del País, Tinto de Rioja, Tinto de Toro, Tinto del Toro, Tinto Fino, Tinto Madrid, Tinto Pais, Tinto Ribiera, Tinto Riojano, Ull de Llebre, Valdepeñas, Verdiell, Vid de Aranda, Tinta Santiago, Tinta Montereiro",
+"color": "Black",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Rhône, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "Spain",
+"cls": "I.G.P"
+},
+"teoulier-n": {
+"name": "Téoulier noir",
+"syn": "Manosquin Noir",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": "««"
+},
+"terret-blanc-b": {
+"name": "Terret blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc)",
+"cls": null
+},
+"terret-gris-g": {
+"name": "Terret gris",
+"syn": "Terret bourret",
+"color": "Gray",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc)",
+"cls": "««"
+},
+"terret-noir-n": {
+"name": "Terret noir",
+"syn": "Terre Chernyi, Terret Bourret, Terret du pays",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Rhône, Languedoc-Roussillon, Provence-Corse, Loire, Savoie, Beaujolais",
+"origin": "France (Languedoc)",
+"cls": null
+},
+"tibouren-n": {
+"name": "Tibouren noir",
+"syn": "",
+"color": "Black",
+"regions": "South-West, Cognac, Bordeaux, Provence, Rhône, Loire, Savoie, Beaujolais, Languedoc-Roussillon",
+"origin": "France (Provence)",
+"cls": null
+},
+"tourbat-b": {
+"name": "Tourbat blanc",
+"syn": "Malvoisie du Roussillon",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Languedoc-Roussillon, Provence-Corse, Rhône, Loire, Savoie, Beaujolais",
+"origin": "Spain",
+"cls": null
+},
+"trousseau-n": {
+"name": "Trousseau noir",
+"syn": "bastardinho, bastardo, bastardo dos Frados, bolonio, capbreton rouge, chauche noir, cruchenton rouge, donzelino de Castille, gros cabernet, malvoisie noire, Maria Ardoña, brancellao, merenzao, maturana tinta, merenzao, pardinho, pinot gris de Rio Negro, sémillon rouge, tresseau, tressot, triffault, troussé, troussot, trusseau",
+"color": "Black",
+"regions": "Jura, South-West, Cognac, Bordeaux, Rhône, Loire, Savoie, Beaujolais, Provence-Corse, Languedoc-Roussillon",
+"origin": "France (Jura)",
+"cls": null
+},
+"ugni-blanc-b": {
+"name": "Ugni blanc",
+"syn": "Trebbiano, Saint-Emilion, Roussan, Rossola",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Provence-Corse, Rhône, Languedoc-Roussillon, Armagnac, Loire, Savoie, Beaujolais",
+"origin": "France (Bordeaux)",
+"cls": null
+},
+"velteliner-rouge-precoce-rs": {
+"name": "Velteliner rouge précoce rosé",
+"syn": "",
+"color": "Rosé",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône, Loire, Beaujolais",
+"origin": "Italy",
+"cls": null
+},
+"verdesse-b": {
+"name": "Verdesse blanc",
+"syn": "",
+"color": "White",
+"regions": "South-West, Cognac, Bordeaux, Savoie, Provence-Corse, Rhône, Loire, Beaujolais",
+"origin": "France (Isère)",
+"cls": "I.G.P"
+},
+"vermentino-b": {
+"name": "Vermentino blanc",
+"syn": "Rolle, Malvoisie de Corse, Garbesso Blanc",
+"color": "White",
+"regions": "Provence-Corse, South-West, Cognac, Bordeaux, Languedoc-Roussillon, Rhône, Loire, Savoie, Beaujolais",
+"origin": "France (Provence)",
+"cls": null
+},
+"viognier-b": {
+"name": "Viognier blanc",
+"syn": "Barbin, Rebolot, Greffou, Picotin Blanc, Vionnier, Petit Vionnier, Viogne, Galopine, Vugava bijela.",
+"color": "White",
+"regions": "South-West, Languedoc-Roussillon, Cognac, Bordeaux, Rhône, Bourgogne, Jura, Champagne, Savoie, Provence-Corse, Loire, Beaujolais",
+"origin": "France (Rhône)",
+"cls": null
+}
+}

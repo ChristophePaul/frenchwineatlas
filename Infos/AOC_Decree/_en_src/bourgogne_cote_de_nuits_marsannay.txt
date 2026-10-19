@@ -1,0 +1,259 @@
+@include bourgogne_common
+@h1 National opposition procedure following the opinion of the standing committee of the INAO national committee of 09/09/2010
+@h2 Proposed amended specification – “Marsannay”
+@title Specification of the controlled designation of origin “MARSANNAY”
+# CHAPTER I
+## I. – Name of the designation
+Only wines meeting the specific provisions set out below may claim the controlled designation of origin “Marsannay”, initially recognised by the decree of 19 May 1987.
+## II. – Geographical denominations and complementary terms
+The name of the controlled designation of origin may be followed by the term “rosé” for wines meeting the production conditions set for this term in the present specification.
+## III. – Colour and types of product
+The controlled designation of origin “Marsannay” is reserved for still white or red wines.
+The term “rosé” is reserved for still rosé wines.
+## IV. – Areas and zones in which the various operations are carried out
+### 1° – Geographical area
+The harvesting of the grapes, the vinification, the elaboration and the ageing of the wines are carried out within the territory of the following communes of the Côte-d’Or department: Chenôve, Couchey and Marsannay-la-Côte.
+### 2° – Delimited parcel area
+White and red wines come exclusively from vines situated within the delimited parcel production area as approved by the National Institute of Origin and Quality at the sessions of the competent national committee of 17 and 18 February 1987.
+The National Institute of Origin and Quality lodges with the town halls of the communes referred to in 1° the graphic documents establishing the parcel boundaries of the production area thus approved.
+Rosé wines come exclusively from vines situated within the specific delimited parcel production area as approved by the National Institute of Origin and Quality at the sessions of the competent national committee of 17 and 18 February 1987.
+The National Institute of Origin and Quality lodges with the town halls of the communes referred to in 1° the graphic documents establishing the parcel boundaries of the production area thus approved.
+### 3° – Immediate proximity area
+The immediate proximity area, defined by derogation for the vinification, the elaboration and the ageing of the wines, is made up of the territory of the following communes:
+@listop BG_PROX_CO | -Chenôve | -Couchey | -Marsannay-la-Côte | +Gevrey-Chambertin
+@@BG_PROX_RH
+@@BG_PROX_SL
+@@BG_PROX_YO
+## V. – Grape varieties
+### 1° – Grape varieties
+a) – The white wines come from the following varieties:
+- main varieties: chardonnay B, pinot blanc B;
+- accessory variety: pinot gris G.
+b) – The red wines come from the following varieties:
+- main variety: pinot noir N;
+- accessory varieties: chardonnay B, pinot blanc B, pinot gris G.
+c) – The rosé wines come from the following varieties:
+- main varieties: pinot noir N, pinot gris G;
+- accessory varieties: chardonnay B, pinot blanc B.
+### 2° – Proportion rules on the holding
+Compliance of the planting is assessed, for the colour concerned, over all the parcels of the holding producing the wine of the appellation.
+a) – White wines: the proportion of the pinot gris G variety is less than or equal to 10 % of the planting.
+b) – Red and rosé wines: the accessory varieties are authorised only as mixed plantings within the vines. Their total proportion is limited to 15 % within each parcel.
+## VI. – Management of the vineyard
+### 1° – Training methods
+a) – Planting density
+The vines have a minimum planting density of 9,000 plants per hectare, with a spacing between rows that may not exceed 1.25 metres and a spacing between plants within the same row that may not be less than 0.50 metre.
+The vines may be planted “en foule” (randomly, without rows), provided that the minimum planting density is respected and the spacing between plants is greater than 0.50 metre.
+b) – Pruning rules
+The red and rosé wines come from vines pruned according to the following techniques:
+- either short pruning (vines trained as Royat cordon, bilateral cordon, gobelet and fan), with a number of free eyes per plant less than or equal to 8;
+- or single Guyot long pruning, with a number of free eyes per plant less than or equal to 8.
+The white wines come from vines pruned according to the following techniques:
+- either short pruning (vines trained as Royat cordon and bilateral cordon), with a number of free eyes per plant less than or equal to 10;
+- or single Guyot long pruning, with a number of free eyes per plant less than or equal to 8.
+Whatever the pruning method, the vines may be pruned with additional free eyes provided that, at the phenological stage corresponding to 11 or 12 leaves, the number of fruit-bearing shoots of the year per plant is less than or equal to the number of free eyes defined in the pruning rules.
+c) – Trellising and foliage height rules
+The height of trellised foliage must be at least equal to 0.6 times the spacing between rows, the height of trellised foliage being measured between the lower limit of the foliage, set at least 0.30 metre above the ground, and the upper trimming limit.
+When the vines are not pruned in gobelet, they must be raised on a stake or trellised; the trellising must be maintained.
+When the vines are planted “en foule”, they are trained on stakes.
+d) – Average maximum load per parcel
+The average maximum load per parcel is set at 9,000 kilograms per hectare for red wines and 10,500 kilograms per hectare for white or rosé wines.
+e) – Threshold of missing vines
+The percentage of dead or missing vine plants referred to in Article D. 644-22 of the Rural Code is set at 20 %.
+f) – Cultivation condition of the vine
+The parcels must be managed so as to ensure a good overall cultivation condition of the vine, reflected in particular by:
+- control of a good sanitary condition, making it possible to obtain healthy foliage and healthy berries;
+- upkeep of the soil, namely control of grass cover by a grass height of less than half the trellising height (height between the ground and the upper trellising wire), and control of erosion through the absence of visible roots.
+### 2° – Other cultivation practices
+a) – In order to preserve the characteristics of the soils, which constitute a fundamental element of the terroir:
+- Permanent grass cover of the headlands is compulsory.
+- Any substantial modification of the morphology, the subsoil, the arable layer or the structuring elements of the landscape of a parcel intended for the production of the controlled designation of origin is prohibited, with the exception of classic deep-ploughing works.
+b) – Vine plantings and replacements may only be made with healthy plant material that has undergone hot-water treatment or any other method making it possible to combat flavescence dorée.
+### 3° – Irrigation
+Irrigation is prohibited.
+## VII. – Harvest, transport and ripeness of the grapes
+### 1° – Harvest
+a) – The wines come from grapes harvested at good ripeness.
+b) – Particular harvesting provisions
+No particular provision.
+c) – Particular provisions for transport of the harvest
+The harvest is protected from rain during its transport and on its reception.
+### 2° – Ripeness of the grapes
+The sugar content of the grapes and the natural alcoholic strengths by volume of the wines meet the following characteristics:
+| | MINIMUM SUGAR CONTENT OF THE GRAPES (grams per litre of must) | MINIMUM NATURAL ALCOHOLIC STRENGTH BY VOLUME |
+| White wines | 178 | 11 % vol. |
+| Red and rosé wines | 180 | 10.5 % vol. |
+## VIII. – Yields – Entry into production
+### 1° – Yield
+The yield referred to in Article D. 644-25 of the Rural Code is set at 50 hectolitres per hectare for red wines, 60 hectolitres per hectare for rosé wines and 57 hectolitres per hectare for white wines.
+### 2° – Limit yield
+a) – The limit yield referred to in Article D. 644-25 of the Rural Code is set, for white wines, at 64 hectolitres per hectare.
+b) – The limit yield referred to in Article D. 644-25 of the Rural Code is set, for rosé wines, at 65 hectolitres per hectare.
+c) – The limit yield referred to in Article D. 644-25 of the Rural Code is set, for red wines, at 58 hectolitres per hectare.
+### 3° – Maximum production yield
+No particular provision.
+### 4° – Entry into production of young vines
+The benefit of the controlled designation of origin may only be granted to wines coming from:
+- parcels of young vines only from the 2nd year following that in the course of which planting was carried out in place before 31 July;
+- parcels of young vines only from the 1st year following that in the course of which grafting in place was carried out before 31 July;
+- parcels of vines that have been top-grafted, at the earliest in the 1st year following that in the course of which the top-grafting was carried out before 31 July, and once the parcels no longer contain any varieties other than those permitted for the appellation. By derogation, in the year following that in the course of which the top-grafting was carried out before 31 July, the varieties permitted for the appellation may represent only 80 % of the planting of each parcel concerned.
+### 5° – Particular provisions
+No particular provision.
+## IX. – Processing, elaboration, ageing, packaging, storage
+### 1° – General provisions
+The wines are vinified in accordance with local, fair and constant usages.
+a) – Reception and pressing
+No particular provision.
+b) – Blending of varieties
+The proportion of pinot gris G is less than or equal to 30 % in the blend of white wines.
+Red and rosé wines produced from parcels with mixed plantings are vinified by blending the grapes.
+c) – Malolactic fermentation
+At the packaging stage, red wines have a maximum malic acid content of 0.4 gram per litre.
+d) – Analytical standards
+Finished wines ready to be released for consumption within the meaning of Article D. 644-36-1 of the Rural Code have a maximum fermentable sugar content (glucose + fructose) of:
+- for white and rosé wines, 3 grams per litre, or 4 grams per litre if the total acidity, expressed as H2SO4, is greater than or equal to 2.7 grams per litre;
+- for red wines, 2 grams per litre.
+e) – Oenological practices and physical treatments
+- Subtractive enrichment techniques (TSE) are authorised for red wines within the limit of a maximum concentration rate of 10 %. The equipment used is fitted with a meter allowing the volume of water removed to be declared.
+- For the elaboration of rosé wines, the use of oenological charcoal, alone or mixed in preparations, is prohibited.
+- The use of pieces of wood is prohibited.
+- After enrichment, the wines do not exceed a total alcoholic strength by volume of 13.5 % for red and white wines and 13 % for rosé wines.
+f) – Prohibited equipment
+Continuous presses are prohibited.
+g) – Overall vat capacity
+Every operator must have an overall vat capacity (vinification and storage) equivalent to at least:
+- for white and rosé wines, the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration;
+- for red wines, 150 % of the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration.
+h) – Good overall state of upkeep of the cellar (floor and walls) and of the equipment (hygiene)
+The cellar and the equipment are well maintained; this is reflected in particular by:
+- general hygiene of the elaboration premises, with general cleanliness, well-maintained floors, adequate drainage and a surface avoiding stagnation;
+- harmlessness of the equipment and products coming into contact with the wine;
+- separation and specificity of the premises: premises without the same functions must be separated, such as storage areas for plant-protection products, cleaning products or hydrocarbons, from the premises for vinification, ageing and storage of dry goods (corks, cartons);
+- management of wine effluents: effluents must be removed as quickly as possible from foodstuff premises and deposited in well-maintained containers that are easy to clean and can be closed. Waste storage areas must be kept clean; waste must be disposed of hygienically and in an environmentally friendly manner; a waste storage and removal area must be provided;
+- absence of hazardous or odorous substances in the vinification, ageing and storage premises (odour).
+i) – Ageing
+- White wines and red wines are aged at least until 15 June of the year following that of the harvest.
+- The temperature of the containers during the ageing phase must be controlled and less than or equal to 25 °C.
+### 2° – Provisions by type of product
+No particular provision.
+### 3° – Provisions relating to packaging
+For every packaged lot, the operator keeps available for the approved control body:
+- the information appearing in the register of handling operations referred to in Article D. 644-36 of the Rural Code;
+- the reports of analyses carried out before packaging allowing analytical monitoring of the packaged lots. These reports are kept for a period of six months from the date of packaging.
+### 4° – Provisions relating to storage
+The operator provides evidence of a protected storage place for products packaged in unlabelled bottles, meeting the following conditions:
+- temperature: between 5 °C and 22 °C.
+### 5° – Provisions relating to the circulation of products and placing on the market for the consumer
+a) – Date of placing on the market for the consumer
+At the end of the ageing period, white wines and red wines are only placed on the market for the consumer after 30 June of the year following that of the harvest.
+Rosé wines are placed on the market for the consumer in accordance with the provisions of Article D. 644-35 of the Rural Code.
+b) – Period during which the wines may not circulate between authorised warehousekeepers
+No particular provision.
+## X. – Link with the origin
+*(No text in this version.)*
+## XI. – Transitional measures
+2° – Training method
+Vine parcels in place before 1980, situated outside the delimited vineyard of the controlled designation of origin “Bourgogne” followed by the geographical denominations “Hautes Côtes de Beaune” and “Hautes Côtes de Nuits”, which do not comply with the provisions relating to planting density set out in the present specification and are trained on a “single-plane” trellis, continue to benefit, for their harvest, from the right to the controlled designation of origin until the 2010 harvest, provided that they:
+- have a planting density greater than 3,000 plants per hectare;
+- are pruned with a maximum of 6 free eyes per square metre;
+- have a trellised foliage height at least equal to 1.50 metres, the height of trellised foliage being measured between the lower limit of the foliage, set at least 0.30 metre above the ground, and the upper trimming limit.
+The volume that may be claimed under the controlled designation of origin is calculated on the basis of the yield authorised for the controlled designation of origin multiplied by a coefficient of 0.80.
+## XII. – Rules of presentation and labelling
+### 1° – General provisions
+Wines for which, under the terms of the present specification, the controlled designation of origin “Marsannay” is claimed and which are presented under the said appellation may not be declared after the harvest, offered to the public, dispatched, put up for sale or sold unless, in the harvest declaration, in advertisements, on leaflets, labels, invoices and any containers whatsoever, the aforesaid controlled designation of origin is entered, accompanied by the words “Appellation d’origine contrôlée”, the whole in very conspicuous characters.
+### 2° – Particular provisions
+No particular provision.
+# CHAPTER II
+## I. – Declaration obligations
+#### 1. Claim declaration
+The claim declaration must be sent to the defence and management body at least fifteen days before circulation between authorised warehousekeepers and at the latest on 1 December of the year of harvest.
+It indicates in particular:
+- the designation claimed;
+- the volume of the wine;
+- the EVV or SIRET number;
+- the name and address of the applicant;
+- the place of storage of the wine.
+It is accompanied in particular by a copy of the harvest declaration and, as the case may be, a copy of the production declaration or an extract of the stock accounts for buyers of grapes and musts.
+#### 2. Declaration prior to transaction and collections
+Every operator wishing to sell in bulk a wine benefiting from the controlled designation of origin must make a transaction declaration for the lot concerned to the approved control body within time limits set in the control or inspection plan of between six and fifteen working days before any collection.
+This declaration, accompanied where applicable by a copy of the purchase contract, specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the identification of the containers;
+- the identity of the buyer.
+If collections are made for volumes smaller than those set out in the transaction declaration, the operator must inform the control body in writing.
+#### 3. Declaration of release for consumption
+Each lot of wine intended to be released for consumption within the meaning of Article D. 644-36-I of the Rural Code must be the subject of a declaration of release for consumption to the approved control body within minimum time limits set in the control or inspection plan of between six and fifteen working days before release for consumption.
+This declaration may also be drawn up for lots already packaged, within minimum time limits set in the control or inspection plan of between six and fifteen working days before the lots concerned are dispatched from the operator’s cellars.
+It specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the lot number for wines already packaged;
+- the identification of the containers for non-packaged wines.
+#### 4. Declaration relating to the dispatch outside the national territory of a non-packaged wine
+Every operator wishing to dispatch outside the national territory a non-packaged wine benefiting from the controlled designation of origin must declare it to the approved control body within time limits set in the control or inspection plan of between six and fifteen working days before any dispatch.
+#### 5. Fallback declaration
+Every operator marketing a wine benefiting from the controlled designation of origin under a more general appellation must declare it to the defence and management body and to the approved control body:
+- at the same time as the declaration prior to transaction, if the wine is the subject of a bulk transaction after the fallback;
+- at the same time as the packaging declaration, if the wine is packaged after the fallback;
+- within time limits set in the control or inspection plan of between six and fifteen working days following the recording of the fallback in the wine register, if the wine is the subject of a fallback after packaging.
+The defence and management body and the approved control body inform, respectively and without delay, the defence and management body of the more general appellation concerned and the approved control body for the more general appellation concerned.
+#### 6. Downgrading declaration
+Every operator carrying out a downgrading of wines benefiting from the controlled designation of origin sends the defence and management body and the approved control body a quarterly summary.
+#### 7. Declaration of equipment for TSE
+Every operator holding a concentration apparatus must declare it upon purchase to the defence and management body, specifying its specifications. The defence and management body keeps an up-to-date list of operators holding such equipment and sends it each year to the National Institute of Origin and Quality at the latest on 1 September.
+Every operator using a service provider declares it to the defence and management body, which draws up the list of these operators and sends it each year to the National Institute of Origin and Quality at the latest on 1 September.
+#### 8. Reworking of parcels
+Before any development or any works liable to modify the morphology, the subsoil, the arable layer (including any addition of exogenous soil) or the structuring elements of the landscape of a parcel intended for the production of the controlled designation of origin, with the exception of classic deep-ploughing works, a declaration must be sent by the operator to the defence and management body at least 4 weeks before the planned start date of the works. The defence and management body transmits, without delay, a copy of this declaration to the services of the National Institute of Origin and Quality.
+#### 9. Derogatory system
+Operators carrying out at least five transactions per week and/or at least forty-two preparations for release for consumption within the meaning of Article D. 644-36-I of the Rural Code per year may group their transaction, release-for-consumption and fallback declarations. In this case, they must provide the approved control body with their forecast of transactions, releases for consumption and fallbacks, then send the quarterly summary of all the declarations referred to in points 2, 3 and 5 above.
+## II. – Keeping of registers
+#### 1. General plan of the storage and vinification places
+Every vinifying operator must keep up to date and available for the approved control body a general plan of the storage and vinification places, allowing in particular the number, designation and capacity of the containers to be identified.
+#### 2. TSE register
+Every operator carrying out partial concentration of musts must keep an up-to-date TSE register including in particular:
+- the initial volume;
+- the volume of water evaporated;
+- the identification of the lot after concentration (volume and potential alcoholic strength).
+# CHAPTER III
+## I. – Main points to be checked and evaluation methods
+| MAIN POINTS TO BE CHECKED | EVALUATION METHODS |
+| **A – STRUCTURAL RULES** | < |
+| A1 – Location of operators within the immediate proximity area | Documentary check |
+| A2 – Belonging of the planted parcels to the delimited area | Documentary check (up-to-date CVI parcel record); visit in the field |
+| A3 – Claimable production potential (grape varieties and proportion rules, monitoring of derogatory measures, planting density, plant material) | Documentary check and field visits (details in the inspection plan) |
+| A4 – Processing, ageing, packaging and storage facilities | < |
+| Vat capacity | Documentary check: general plan of the storage places; on-site visit |
+| Ageing (temperature control and length of ageing) | Documentary check: temperature records and packaging declaration; on-site visit |
+| State of upkeep of the cellar and equipment (hygiene) | On-site visit |
+| Protected storage place and storage conditions (T °C) | Documentary check: temperature records; on-site visit |
+| **B – RULES LINKED TO THE PRODUCTION CYCLE** | < |
+| B1 – Management of the vineyard | < |
+| Pruning | Visit in the field |
+| Average maximum load per parcel | Visit in the field |
+| Cultivation and sanitary condition of the vine (sanitary condition of foliage and berries, upkeep of the soil, upkeep of the trellising) | Visit in the field |
+| B2 – Harvest, transport and ripeness of the grapes | < |
+| Ripeness of the grapes | Documentary check: must analysis report; visit in the field |
+| B3 – Processing, elaboration, ageing, packaging, storage | < |
+| Oenological practices or treatments (enrichment, prohibited practices…) | Documentary check: declaration of equipment and TSE register, enrichment, acidification and de-acidification register; on-site visit |
+| Stock accounts, analytical traceability | Documentary check: keeping of registers by operators, analysis reports |
+| B4 – Harvest declaration and claim declaration | < |
+| Missing vines | Documentary check (declaration obligations); visit in the field |
+| Authorised yield | Documentary check (check of declarations, monitoring of authorisations granted by the INAO services after their investigation of the operator’s individual request) |
+| VSI, volumes harvested in excess of the authorised yield | Documentary check: monitoring of destruction certificates |
+| Claim declaration | Documentary check and on-site visit: compliance with procedures and time limits, consistency with the harvest and production declarations; check of the release of products into circulation |
+| **C – CHECKS ON THE PRODUCTS** | < |
+| Packaged wines | Analytical and organoleptic examination before or after packaging |
+| Non-packaged wines | Analytical and organoleptic examination at transaction |
+| Non-packaged wines intended for dispatch outside the national territory | Analytical and organoleptic examination of all lots |
+| **D – PRESENTATION OF THE PRODUCTS** | < |
+| Labelling | On-site visit |
+## II. – References concerning the control structure
+Institut National de l’Origine et de la Qualité (INAO)
+51, rue d’Anjou, 75008 PARIS
+Tel.: (33) (0)1.53.89.80.00 – Fax: (33) (0)1.42.25.57.97 – Email: info@inao.gouv.fr
+The INAO is the control authority ensuring compliance with the provisions of the present specification for products benefiting from the controlled designation of origin.

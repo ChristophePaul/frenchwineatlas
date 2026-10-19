@@ -1,0 +1,103 @@
+= Boutenac | Languedoc | CDC Boutenac
+Rouge: carignan N ≥30 %; grenache N; mourvèdre N; syrah N
+! Au moins 2 cépages ; carignan + grenache + mourvèdre ≥70 % ; aucun cépage >80 % de l'assemblage.
+
+= Cabardès | Languedoc | CDC Cabardes
+Rouge, Rosé: cabernet franc N/P; cabernet-sauvignon N/P; grenache N/P; merlot N/P; syrah N/P; cinsaut N/A; cot N/A; fer N/A
+! Cabernets + merlot ≥40 % et grenache + syrah ≥40 % de l'assemblage (alliance « atlantique-méditerranée »).
+
+= Clairette de Bellegarde | Languedoc | CDC Clairette de Bellegarde
+Blanc: clairette B
+
+= Clairette du Languedoc | Languedoc | CDC Clairette du Langudoc
+Blanc, Vin de liqueur: clairette B
+
+= Corbières | Languedoc | CDC Corbieres
+Rouge: carignan N/P; grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; cinsaut N/A ≤20 %; grenache gris G/A; piquepoul noir N/A; terret noir N/A; marselan N/A ≤10 %
+Rosé: carignan N/P; cinsaut N/P; grenache N/P; lledoner pelut N/P; mourvèdre N/P; piquepoul noir N/P; syrah N/P; bourboulenc B/A; carignan blanc B/A; clairette B/A; grenache blanc B/A; grenache gris G/A ≤10 %; macabeu B/A; marsanne B/A; muscat à petits grains B/A; piquepoul blanc B/A; roussanne B/A; terret blanc B/A; terret noir N/A; vermentino B/A; viognier B/A ≤5 %
+Blanc: bourboulenc B/P; grenache blanc B/P; macabeu B/P; marsanne B/P; roussanne B/P; vermentino B/P; carignan blanc B/A ≤30 %; clairette B/A; muscat à petits grains B/A ≤5 %; piquepoul blanc B/A; terret blanc B/A; viognier B/A ≤5 %
+! Au moins 2 cépages ; principaux ≥40 % de l'assemblage ; aucun cépage >80 %.
+
+= Crémant de Limoux | Languedoc | CDC Cremant de Limoux
+Blanc, Rosé effervescent: chardonnay B/P ≥30 %; chenin B/C ≥10 %; mauzac B/C ≤20 %; pinot noir N/C ≤40 % (≥15 % en rosé)
+! Chardonnay + chenin : 60–90 % de la cuvée.
+
+= Faugères | Languedoc | CDC Faugeres
+Rouge, Rosé: grenache N/P; lledoner pelut N/P; mourvèdre N/P ≥5 % (vignoble); syrah N/P ≥15 % (vignoble); carignan N/C 10–40 % (vignoble); cinsaut N/A ≤20 %
+Blanc: roussanne B/P (obligatoire, ≥30 % vignoble); grenache blanc B/P; marsanne B/P; vermentino B/P; clairette B/A; viognier B/A
+! Au moins 2 cépages ; aucun >80 % de l'assemblage.
+
+= Fitou | Languedoc | CDC Fitou
+Rouge: carignan N/P ≥20 % (vignoble); grenache N/P ≥20 % (vignoble); mourvèdre N/C; syrah N/C
+! Cépages principaux majoritaires ; aucun cépage >80 %.
+
+= La Livinière | Languedoc | CDC La Livinière
+Rouge: grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; carignan N/A; cinsaut N/A; piquepoul noir N/A; rivairenc N/A; terret noir N/A
+! Au moins 2 cépages ; principaux ≥40 % de l'assemblage ; mourvèdre + syrah ≥40 % du vignoble ; aucun cépage >80 %.
+
+= Languedoc | Languedoc | CDC Languedoc
+Rouge: grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; carignan N/A ≤40 %; cinsaut N/A ≤40 %; counoise N/A; grenache gris G/A; morrastel N/A; piquepoul noir N/A; rivairenc N/A; terret noir N/A
+Rosé: grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; bourboulenc B/A; carignan blanc B/A; carignan N/A; cinsaut N/A; clairette B/A; counoise N/A; grenache blanc B/A; grenache gris G/A; macabeu B/A; marsanne B/A; morrastel N/A; piquepoul blanc B/A; piquepoul noir N/A; rivairenc N/A; roussanne B/A; terret blanc B/A; terret noir N/A; tourbat B/A; vermentino B/A; viognier B/A
+Blanc: bourboulenc B/P; clairette B/P; grenache blanc B/P; marsanne B/P; piquepoul blanc B/P; roussanne B/P; tourbat B/P; vermentino B/P; carignan blanc B/A; macabeu B/A; terret blanc B/A; viognier B/A ≤10 %
+! Au moins 2 cépages, aucun >80 % ; rouges : grenache + lledoner + mourvèdre + syrah ≥40 % de l'assemblage. Dénominations : Cabrières, Grès de Montpellier, La Méjanelle, Montpeyroux, Pézenas, Quatourze, Saint-Christol, Saint-Drézéry, Saint-Georges-d'Orques, Saint-Saturnin, Sommières.
+
+= Limoux | Languedoc | CDC Limoux
+Rouge: merlot N/P ≥50 % (vignoble); cot N/C; grenache N/C; syrah N/C; cabernet franc N/A; cabernet-sauvignon N/A
+Blanc: chardonnay B; chenin B; mauzac B
+
+= Blanquette de Limoux | Languedoc | CDC Limoux
+Blanc effervescent: mauzac B/P ≥90 %; chardonnay B/A; chenin B/A
+
+= Blanquette méthode ancestrale | Languedoc | CDC Limoux
+Blanc effervescent: mauzac B
+
+= Malepère | Languedoc | CDC Malepère
+Rouge: merlot N/P ≥40 %; cabernet franc N/C; cot N/C; cabernet-sauvignon N/A; cinsaut N/A; grenache N/A; lledoner pelut N/A
+Rosé: cabernet franc N/P ≥40 %; cabernet-sauvignon N/C; cinsaut N/C; cot N/C; grenache N/C; merlot N/C
+! Au moins 2 cépages ; complémentaires ≥20 % de l'assemblage.
+
+= Minervois | Languedoc | CDC Minervois
+Rouge: grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; carignan N/A; cinsaut N/A; piquepoul noir N/A; rivairenc N/A; terret noir N/A
+Rosé: grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; bourboulenc B/A; carignan N/A; cinsaut N/A; clairette B/A; grenache blanc B/A; grenache gris G/A; macabeu B/A; marsanne B/A; piquepoul blanc B/A; piquepoul noir N/A; rivairenc N/A; roussanne B/A; terret blanc B/A; terret noir N/A; vermentino B/A
+Blanc: bourboulenc B/P; grenache blanc B/P; macabeu B/P; marsanne B/P; roussanne B/P; vermentino B/P; clairette B/A; grenache gris G/A; muscat à petits grains B/A ≤10 %; piquepoul blanc B/A; terret blanc B/A; viognier B/A
+! Rouges, rosés : au moins 2 cépages, aucun >80 % ; blancs : principaux ≥80 % ; cépages blancs ≤10 % dans les rosés.
+
+= Muscat de Frontignan | Languedoc | CDC Muscat de Frontignan
+Vin doux naturel, Vin de liqueur (blanc): muscat à petits grains B
+Vin doux naturel, Vin de liqueur (rouge): muscat à petits grains Rg
+
+= Muscat de Lunel | Languedoc | CDC Muscat de Lunel
+Vin doux naturel: muscat à petits grains B
+
+= Muscat de Mireval | Languedoc | CDC Muscat de Mireval
+Vin doux naturel: muscat à petits grains B
+
+= Muscat de Saint-Jean-de-Minervois | Languedoc | CDC Muscat-de-St-Jean-de-Minervois
+Vin doux naturel: muscat à petits grains B
+
+= Pic Saint-Loup | Languedoc | CDC Pic St Loup
+Rouge: syrah N/P ≥50 %; grenache N/P; mourvèdre N/P; carignan N/A; cinsaut N/A; counoise N/A; morrastel N/A
+Rosé: syrah N/P ≥30 %; grenache N/P; mourvèdre N/P; cinsaut N/A ≤30 %; counoise N/A; grenache gris G/A; morrastel N/A
+! Au moins 2 cépages ; accessoires ≤10 % (hors cinsaut en rosé).
+
+= Picpoul de Pinet | Languedoc | CDC Picpoul de Pinet
+Blanc: piquepoul blanc B
+
+= Sable de Camargue | Languedoc | CDC Sable de Camargue
+Gris: cabernet franc N/P; cabernet-sauvignon N/P; carignan N/P; cinsaut N/P; grenache N/P; grenache gris G/P; merlot N/P; chardonnay B/A; clairette B/A; grenache blanc B/A; marselan N/A ≤10 %; muscat d'Alexandrie B/A; roussanne B/A; sauvignon B/A; syrah N/A ≤15 %; ugni blanc B/A; vermentino B/A; viognier B/A
+Gris de gris: grenache gris G
+! Vins gris : principaux ≥70 % ; peuvent aussi être issus du seul grenache N ou grenache gris.
+
+= Saint-Chinian | Languedoc | CDC SaintChinian
+Rouge: carignan N/P; cinsaut N/P; grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; piquepoul noir N/A; rivairenc N/A; counoise N/A (variété d'adaptation); marselan N/A (variété d'adaptation); morrastel N/A (variété d'adaptation); œillade N/A (variété d'adaptation); terret noir N/A (variété d'adaptation)
+Rosé: carignan N/P; cinsaut N/P; grenache N/P; lledoner pelut N/P; mourvèdre N/P; syrah N/P; piquepoul noir N/A; rivairenc N/A; grenache blanc B/A; grenache gris G/A; marsanne B/A; roussanne B/A; vermentino B/A; bourboulenc B/A; carignan blanc B/A; clairette B/A; viognier B/A
+Blanc: grenache blanc B/P; marsanne B/P; roussanne B/P; vermentino B/P; bourboulenc B/A; carignan blanc B/A; clairette B/A; grenache gris G/A; viognier B/A; piquepoul blanc B/A (variété d'adaptation); terret blanc B/A (variété d'adaptation)
+! Au moins 2 cépages, principaux majoritaires ; carignan + cinsaut ≤50 % ; grenache/lledoner ≥20 % et mourvèdre/syrah ≥20 % du vignoble. Dénominations Berlou (carignan complémentaire) et Roquebrun.
+
+= Terrasses du Larzac | Languedoc | CDC Terrasses du Larzac
+Rouge: grenache N/P; mourvèdre N/P; syrah N/P; carignan N/P ≤50 %; cinsaut N/A ≤25 %; counoise N/A; lledoner pelut N/A; morrastel N/A; terret noir N/A
+! Au moins 3 cépages dont 2 principaux ; principaux ≥75 % ; aucun cépage >70 %.
+
+= Grés de Montpellier | Languedoc | CDC Gres de Montpellier
+Rouge: grenache N/P; mourvèdre N/P; syrah N/P; carignan N/A; cinsaut N/A; morrastel N/A
+! AOC autonome depuis 2024 (auparavant dénomination de l'AOC Languedoc) ; rouges uniquement. Au moins 2 cépages principaux ; principaux ≥60 % du vignoble et ≥50 % de l'assemblage ; aucun cépage >80 %.

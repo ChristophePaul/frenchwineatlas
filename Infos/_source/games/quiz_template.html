@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Le grand quiz du vin</title>
+<meta name="description" content="Le grand quiz du vin : 10 questions sur les appellations, les cépages, les crus, la vigne et l’histoire du vin, en trois niveaux de difficulté. Toutes les réponses se trouvent sur le site.">
+<style>
+@@BASE_CSS@@
+  .sect-strip{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px;}
+  .sect-strip a,.sect-strip span{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:8px 16px;border-radius:999px;border:1px solid var(--hair);background:var(--glass);color:var(--gold);text-decoration:none;}
+  .sect-strip a:hover{border-color:var(--hair-hi);}
+  .sect-strip .on{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+
+  .screen{display:none;}
+  .screen.on{display:block;animation:rise .35s ease-out;}
+  @keyframes rise{from{opacity:0;transform:translateY(8px);}}
+  @media (prefers-reduced-motion:reduce){.screen.on{animation:none;}}
+
+  /* level picker */
+  .levels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:8px;}
+  .lvl{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:10px;padding:24px 22px 20px;border-radius:20px;background:var(--glass);border:1px solid var(--hair);box-shadow:var(--shadow);transition:transform .2s,border-color .2s;}
+  .lvl:hover,.lvl:focus-visible{transform:translateY(-3px);border-color:var(--c);}
+  .lvl:focus-visible{outline:2px solid var(--c);outline-offset:3px;}
+  .lvl .ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--c);}
+  html:not([data-theme="cream"]) .lvl .ico{color:color-mix(in srgb,var(--c) 45%,#fff);}
+  .lvl .ico svg{width:34px;height:34px;}
+  .lvl .n{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+  .lvl b{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.22;color:var(--title);font-style:italic;}
+  .lvl small{font-size:13px;line-height:1.5;color:var(--muted);}
+  .lvl .best{margin-top:auto;padding-top:10px;border-top:1px solid var(--hair);font-size:12px;color:var(--faint);display:flex;justify-content:space-between;}
+  .lvl .best i{font-style:normal;color:var(--gold-soft);font-weight:600;}
+  .lvl .dots{display:flex;gap:4px;}
+  .lvl .dots span{width:9px;height:9px;border-radius:50%;background:var(--c);}
+  .lvl .dots span.off{background:var(--track);border:1px solid var(--hair);}
+  .how{margin-top:20px;padding:18px 22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+  .how div{display:flex;gap:12px;align-items:flex-start;font-size:13.6px;line-height:1.55;}
+  .how .k{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gold);color:var(--gold);font-family:var(--serif);font-size:16px;}
+
+  /* question */
+  .qhead{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+  .qhead .lvname{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold-soft);}
+  .qhead .score{margin-left:auto;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+  .qhead .score b{font-family:var(--serif);font-size:22px;letter-spacing:0;color:var(--title);margin-left:6px;}
+  .quit{all:unset;cursor:pointer;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--faint);padding:6px 10px;border-radius:999px;border:1px solid var(--hair);}
+  .quit:hover{color:var(--gold);border-color:var(--hair-hi);}
+  .prog{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-bottom:18px;}
+  .prog span{height:6px;border-radius:3px;background:var(--track);border:1px solid var(--hair);}
+  .prog span.ok{background:#3f8f5a;border-color:#3f8f5a;}
+  .prog span.ko{background:#b3122e;border-color:#b3122e;}
+  .prog span.cur{background:var(--gold);border-color:var(--gold);}
+  .card{padding:clamp(22px,3.4vw,38px);}
+  .cat{display:inline-flex;align-items:center;gap:7px;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--c);border:1px solid color-mix(in srgb,var(--c) 45%,transparent);background:color-mix(in srgb,var(--c) 12%,transparent);border-radius:999px;padding:4px 11px;}
+  html:not([data-theme="cream"]) .cat{color:color-mix(in srgb,var(--c) 50%,#fff);}
+  .cat .qn{color:var(--faint);font-weight:600;letter-spacing:.06em;}
+  .qtext{font-family:var(--serif);font-size:clamp(22px,2.8vw,30px);line-height:1.3;color:var(--title);margin:16px 0 22px;}
+  .qtext b{color:var(--gold-soft);font-weight:500;}
+  .opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .opt{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:16px;border:1px solid var(--hair);background:var(--glass-hi);font-size:15.5px;line-height:1.45;color:var(--parchment);transition:border-color .15s,background .15s,transform .15s;}
+  .opt:hover:not([disabled]),.opt:focus-visible{border-color:var(--hair-hi);transform:translateY(-1px);}
+  .opt:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .opt .lt{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:13px;border:1px solid var(--hair-hi);color:var(--gold);}
+  .opt[disabled]{cursor:default;}
+  .opt.ok{border-color:#3f8f5a;background:color-mix(in srgb,#3f8f5a 16%,transparent);}
+  .opt.ok .lt{background:#3f8f5a;border-color:#3f8f5a;color:#fff;}
+  .opt.ko{border-color:#b3122e;background:color-mix(in srgb,#b3122e 14%,transparent);}
+  .opt.ko .lt{background:#b3122e;border-color:#b3122e;color:#fff;}
+  .opt.dim{opacity:.55;}
+  .fb{display:none;margin-top:18px;padding:16px 18px;border-radius:16px;border:1px solid var(--hair-hi);background:var(--glass-hi);}
+  .fb.on{display:block;animation:rise .25s ease-out;}
+  .fb h4{margin:0 0 6px;font-family:var(--serif);font-weight:500;font-size:21px;}
+  .fb.good h4{color:#3f8f5a;}
+  .fb.bad h4{color:#d9667a;}
+  html[data-theme="cream"] .fb.bad h4{color:#b3122e;}
+  .fb p{margin:0 0 10px;font-size:14.5px;line-height:1.6;}
+  .fb .row{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;}
+  .fb a.more{font-size:13px;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--hair-hi);}
+  .fb a.more:hover{border-bottom-color:var(--gold);}
+  .btn{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px;border-radius:999px;border:1px solid var(--hair);color:var(--gold);background:var(--glass);transition:border-color .2s,background .2s;}
+  .btn:hover{border-color:var(--hair-hi);background:var(--glass-hi);}
+  .btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+  .btn.solid{background:var(--gold);color:var(--solid);border-color:var(--gold);}
+  .fb .btn{margin-left:auto;}
+  .keys{margin:12px 0 0;font-size:11.5px;color:var(--faint);text-align:right;}
+  .keys kbd{font:inherit;font-size:10.5px;padding:1px 6px;border-radius:5px;border:1px solid var(--hair);}
+
+  /* result */
+  .res{text-align:center;padding:clamp(26px,4vw,46px) clamp(20px,4vw,48px);}
+  .res .kick{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:700;margin:0 0 6px;}
+  .res .big{font-family:var(--serif);font-size:clamp(70px,11vw,120px);line-height:1;color:var(--title);}
+  .res .big small{font-size:.4em;color:var(--faint);}
+  .res .verdict{font-family:var(--serif);font-style:italic;font-size:clamp(20px,2.6vw,27px);color:var(--gold-soft);margin:10px auto 6px;max-width:680px;line-height:1.35;}
+  .res .bestline{font-size:13px;color:var(--muted);margin:0 0 18px;}
+  .res .acts{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .recap{margin-top:20px;display:grid;gap:8px;}
+  .rc{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;padding:12px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);font-size:14px;line-height:1.5;}
+  .rc .m{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:13px;}
+  .rc.ok .m{background:#3f8f5a;} .rc.ko .m{background:#b3122e;}
+  .rc .q{color:var(--title);}
+  .rc .q b{font-weight:600;}
+  .rc .a{font-size:13px;color:var(--muted);}
+  .rc .a s{color:#d9667a;} html[data-theme="cream"] .rc .a s{color:#b3122e;}
+  .rc a{color:var(--gold);font-size:12.5px;}
+  .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,30px);opacity:0;pointer-events:none;padding:10px 18px;border-radius:999px;background:var(--gold);color:var(--solid);font-size:13px;font-weight:600;transition:opacity .2s,transform .2s;z-index:50;}
+  .toast.on{opacity:1;transform:translate(-50%,0);}
+  .note{font-size:12.5px;color:var(--faint);text-align:center;margin-top:26px;line-height:1.6;}
+
+  @media (max-width:860px){ .levels,.how{grid-template-columns:1fr;} }
+  @media (max-width:620px){ .opts{grid-template-columns:1fr;} .keys{display:none;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="Jeux.html" data-fr="← Les jeux" data-en="← Games">← Les jeux</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="Littérature &amp; jeux" data-en="Literature &amp; games">Littérature &amp; jeux</p>
+    <h1 data-fr="Le grand <em>quiz du vin</em>" data-en="The great <em>wine quiz</em>">Le grand <em>quiz du vin</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="Dix questions tirées au hasard parmi @@NQ@@ : appellations, cépages, crus, vigne, bouteilles, histoire… Choisissez votre niveau — et rassurez-vous, toutes les réponses se trouvent quelque part sur ce site."
+       data-en="Ten questions drawn at random from @@NQ@@: appellations, grapes, crus, the vine, bottles, history… Pick your level — and don’t worry, every answer can be found somewhere on this site.">Dix questions tirées au hasard parmi @@NQ@@ : appellations, cépages, crus, vigne, bouteilles, histoire… Choisissez votre niveau — et rassurez-vous, toutes les réponses se trouvent quelque part sur ce site.</p>
+    <nav class="sect-strip" aria-label="Littérature &amp; jeux">
+      <a href="Wine_Quotes.html" data-fr="Citations" data-en="Quotations">Citations</a>
+      <a href="Jeux.html" data-fr="Jeux" data-en="Games">Jeux</a>
+      <span class="on" aria-current="page" data-fr="Le grand quiz" data-en="The great quiz">Le grand quiz</span>
+      <a href="Taste_Quiz.html" data-fr="Goûtez votre savoir" data-en="Taste your knowledge">Goûtez votre savoir</a>
+      <a href="Map_Game.html" data-fr="Placez l’AOC" data-en="Pin the AOC">Placez l’AOC</a>
+      <a href="Bon_Cep.html" data-fr="Le bon cep" data-en="Grape Expectations">Le bon cep</a>
+      <a href="IGP_Game.html" data-fr="Au pays des IGP" data-en="Lost in the Pays">Au pays des IGP</a>
+    </nav>
+  </header>
+
+  <!-- ============ start ============ -->
+  <section class="screen on" id="s-start" aria-labelledby="pick">
+    <h2 id="pick" class="sr" style="position:absolute;left:-9999px" data-fr="Choisissez votre niveau" data-en="Choose your level">Choisissez votre niveau</h2>
+    <div class="levels" id="levels"></div>
+    <div class="panel how">
+      <div><span class="k">1</span><span class="L fr"><b>10 questions</b>, quatre réponses possibles, une seule bonne.</span><span class="L en"><b>10 questions</b>, four possible answers, only one right.</span></div>
+      <div><span class="k">2</span><span class="L fr">Après chaque réponse, l’explication et un lien vers la page du site où tout est expliqué.</span><span class="L en">After each answer, an explanation and a link to the page of the site where it is all explained.</span></div>
+      <div><span class="k">3</span><span class="L fr">Votre meilleur score est gardé pour chaque niveau. Les questions déjà vues reviennent moins souvent.</span><span class="L en">Your best score is kept for each level. Questions you have already seen come back less often.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ question ============ -->
+  <section class="screen" id="s-play" aria-live="polite">
+    <div class="qhead">
+      <button class="quit" type="button" id="quit" data-fr="✕ Abandonner" data-en="✕ Quit">✕ Abandonner</button>
+      <span class="lvname" id="lvname"></span>
+      <span class="score"><span data-fr="Score" data-en="Score">Score</span><b id="score">0</b></span>
+    </div>
+    <div class="prog" id="prog"></div>
+    <div class="panel card">
+      <span class="cat" id="cat"></span>
+      <div class="qtext" id="qtext"></div>
+      <div class="opts" id="opts"></div>
+      <div class="fb" id="fb">
+        <h4 id="fbh"></h4>
+        <p id="fbx"></p>
+        <div class="row"><a class="more" id="fbl" target="_blank" rel="noopener"></a><button class="btn solid" type="button" id="next"></button></div>
+      </div>
+      <p class="keys"><span data-fr="Clavier :" data-en="Keyboard:">Clavier :</span> <kbd>1</kbd>–<kbd>4</kbd> · <kbd>↵</kbd></p>
+    </div>
+  </section>
+
+  <!-- ============ result ============ -->
+  <section class="screen" id="s-end">
+    <div class="panel res">
+      <p class="kick" id="endlv"></p>
+      <div class="big" id="endscore"></div>
+      <p class="verdict" id="verdict"></p>
+      <p class="bestline" id="bestline"></p>
+      <div class="acts">
+        <button class="btn solid" type="button" id="again" data-fr="Rejouer ce niveau" data-en="Play this level again">Rejouer ce niveau</button>
+        <button class="btn" type="button" id="other" data-fr="Changer de niveau" data-en="Change level">Changer de niveau</button>
+        <button class="btn" type="button" id="share" data-fr="Copier mon score" data-en="Copy my score">Copier mon score</button>
+      </div>
+    </div>
+    <h3 class="sub" data-fr="Vos réponses" data-en="Your answers" style="font-family:var(--serif);font-weight:500;font-size:22px;color:var(--title);margin:28px 0 0">Vos réponses</h3>
+    <div class="recap" id="recap"></div>
+  </section>
+
+  <p class="note L fr">Les questions sont construites à partir des pages du site : fiches des appellations et des cépages, classements des crus, glossaire de la vigne, carte des IGP, formats de bouteilles, chiffres du vignoble, dégustation, citations, et pour le Cognac son cahier des charges, la carte des crus et « Comment naît une eau-de-vie ».</p>
+  <p class="note L en">Questions are built from the site’s own pages: appellation and grape cards, crus classifications, vine glossary, IGP map, bottle sizes, vineyard figures, tasting, quotations — and for Cognac its rulebook, the crus map and “How brandy is made”.</p>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script src="quiz_data.js"></script>
+<script>
+(function(){
+  var D = window.QUIZ_DATA, $ = function(id){ return document.getElementById(id); };
+  var LANG = (function(){ try{ return localStorage.getItem('fw_lang') || document.documentElement.lang || 'fr'; }catch(e){ return 'fr'; } })();
+  if(LANG!=='en') LANG = 'fr';
+  var L = function(p){ return LANG==='fr' ? p[0] : p[1]; };
+  var QM = function(t){ return LANG==='fr' ? '«\u00a0'+t+'\u00a0»' : '“'+t+'”'; };
+  var store = {
+    get: function(k, d){ try{ var v = localStorage.getItem(k); return v===null ? d : JSON.parse(v); }catch(e){ return d; } },
+    set: function(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  };
+
+  var LEVELS = [
+    {n:1, c:'#3f8f5a', name:['Je peux encore conduire', 'I can still drive'],
+     sub:['Les grands classiques : on reste sobre.', 'The great classics: staying sober.'],
+     ico:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 25v-5l3.5-7.5A3 3 0 0 1 13.2 11h13.6a3 3 0 0 1 2.7 1.5L33 20v5"/><path d="M5 25h30v5H5z"/><circle cx="12" cy="30.5" r="2.5"/><circle cx="28" cy="30.5" r="2.5"/><path d="M9.5 20h21"/></svg>',
+     verdicts:[['Garez-vous. Et laissez les clés à quelqu’un d’autre.', 'Pull over. And hand the keys to someone else.'],
+               ['Ça roule… mais en première.', 'Rolling along… in first gear.'],
+               ['Permis de déguster validé.', 'Tasting licence granted.'],
+               ['Sans faute ! Passez au niveau supérieur (mais ne prenez pas le volant).', 'Flawless! Move up a level (but don’t take the wheel).']]},
+    {n:2, c:'#c08a1a', name:['On dit que je bois en société, mais je ne sais plus qui l’a dit', 'They say I’m a social drinker, but I don’t remember who said that'],
+     sub:['Pour l’amateur éclairé : les crus, les cépages, l’histoire.', 'For the keen wine lover: crus, grapes, history.'],
+     ico:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h8l.5 6a4.5 4.5 0 0 1-9 0Z"/><path d="M13 16.5V27M9.5 27.5h7"/><path d="M23 6h8l.5 6a4.5 4.5 0 0 1-9 0Z"/><path d="M27 16.5V27M23.5 27.5h7"/><path d="M17.6 9.5l4.8 0" stroke-dasharray="1 2.4"/><path d="M15 33c3 1.5 7 1.5 10 0"/></svg>',
+     verdicts:[['Vous étiez peut-être un peu trop social.', 'Perhaps a little too social.'],
+               ['Bonne compagnie, mémoire vacillante.', 'Good company, wobbly memory.'],
+               ['On se souviendra de vous. Vous, peut-être pas.', 'People will remember you. You may not.'],
+               ['L’invité que tout le monde veut à sa table.', 'The guest everyone wants at their table.']]},
+    {n:3, c:'#8e1f33', name:['On a voulu donner mon nom à une AOC', 'They offered to name an AOC after me'],
+     sub:['Premiers crus, grands crus, décrets : pour les pros.', 'Premiers crus, grands crus, decrees: for the pros.'],
+     ico:'<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h8v6c0 2 3 3 3 7v17a2 2 0 0 1-2 2H15a2 2 0 0 1-2-2V17c0-4 3-5 3-7Z"/><path d="M13 20h14v9H13z"/><path d="M16.5 24.5h7M17.5 27h5"/><path d="M17 13.5l3-2 3 2"/></svg>',
+     verdicts:[['L’INAO a égaré votre dossier.', 'The INAO has mislaid your file.'],
+               ['Votre AOC est à l’étude… depuis 1936.', 'Your AOC is under review… since 1936.'],
+               ['Cahier des charges presque validé.', 'Rulebook almost approved.'],
+               ['AOC accordée. Le décret porte votre nom.', 'AOC granted. The decree bears your name.']]}
+  ];
+  var N = 10;
+  var S = null;   /* current game */
+
+  /* ---------- picking 10 questions: unseen first, categories mixed ---------- */
+  function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)), t=a[i]; a[i]=a[j]; a[j]=t; } return a; }
+  function draw(lv){
+    var seenKey = 'fw_quiz_seen_'+lv, seen = store.get(seenKey, []);
+    var pool = D.q.filter(function(r){ return r[1]===lv; });
+    var fresh = pool.filter(function(r){ return seen.indexOf(r[0])<0; });
+    if(fresh.length < N){ seen = []; fresh = pool; }
+    var byCat = {};
+    shuffle(fresh).forEach(function(r){ (byCat[r[2]] = byCat[r[2]] || []).push(r); });
+    var cats = shuffle(Object.keys(byCat)), out = [];
+    while(out.length < N){
+      var added = false;
+      for(var i=0;i<cats.length && out.length<N;i++){ var c = byCat[cats[i]]; if(c.length){ out.push(c.shift()); added = true; } }
+      if(!added) break;
+    }
+    store.set(seenKey, seen.concat(out.map(function(r){ return r[0]; })));
+    return shuffle(out);
+  }
+
+  /* ---------- screens ---------- */
+  function show(id){ ['s-start','s-play','s-end'].forEach(function(s){ $(s).classList.toggle('on', s===id); }); var t = $(id).getBoundingClientRect().top; if(t < 0 || t > window.innerHeight*0.6) $(id).scrollIntoView({block:'start', behavior:'smooth'}); }
+  function renderLevels(){
+    $('levels').innerHTML = LEVELS.map(function(l){
+      var best = store.get('fw_quiz_best_'+l.n, null), dots = '';
+      for(var i=1;i<=3;i++) dots += '<span'+(i>l.n?' class="off"':'')+'></span>';
+      return '<button class="lvl" type="button" data-lv="'+l.n+'" style="--c:'+l.c+'">'
+        + '<span class="ico">'+l.ico+'</span>'
+        + '<span class="n">'+(LANG==='fr'?'Niveau ':'Level ')+l.n+'</span><span class="dots">'+dots+'</span>'
+        + '<b>'+QM(L(l.name))+'</b><small>'+L(l.sub)+'</small>'
+        + '<span class="best"><span>'+(LANG==='fr'?'Meilleur score':'Best score')+'</span><i>'+(best===null?'—':best+' / '+N)+'</i></span></button>';
+    }).join('');
+  }
+  function start(lv){
+    S = {lv:lv, qs:draw(lv), i:0, score:0, answers:[]};
+    show('s-play'); renderQ();
+  }
+  function renderQ(){
+    var r = S.qs[S.i], cat = D.cats[r[2]], lvl = LEVELS[S.lv-1];
+    $('lvname').textContent = QM(L(lvl.name));
+    $('score').textContent = S.score;
+    var p = '';
+    for(var k=0;k<N;k++){ var a = S.answers[k]; p += '<span class="'+(a ? (a.ok?'ok':'ko') : (k===S.i?'cur':''))+'"></span>'; }
+    $('prog').innerHTML = p;
+    $('cat').style.setProperty('--c', cat[2]);
+    $('cat').innerHTML = '<span class="qn">'+(S.i+1)+' / '+N+'</span> · '+(LANG==='fr'?cat[0]:cat[1]);
+    $('qtext').innerHTML = L(r[3]);
+    if(!S.order || S.order.q !== S.i){
+      S.order = {q:S.i, list: shuffle([{t:r[4], ok:true}].concat(r[5].map(function(d){ return {t:d, ok:false}; })))};
+    }
+    var answered = S.answers[S.i];
+    $('opts').innerHTML = S.order.list.map(function(o, k){
+      var cls = '';
+      if(answered){ cls = o.ok ? ' ok' : (answered.pick===k ? ' ko' : ' dim'); }
+      return '<button class="opt'+cls+'" type="button" data-k="'+k+'"'+(answered?' disabled':'')+'><span class="lt">'+'ABCD'[k]+'</span><span>'+L(o.t)+'</span></button>';
+    }).join('');
+    if(answered) feedback(); else $('fb').className = 'fb';
+  }
+  function answer(k){
+    if(S.answers[S.i]) return;
+    var ok = S.order.list[k].ok;
+    S.answers[S.i] = {pick:k, ok:ok, r:S.qs[S.i], picked:S.order.list[k].t};
+    if(ok) S.score++;
+    renderQ();
+    setTimeout(function(){ $('next').focus({preventScroll:true}); }, 30);
+  }
+  function feedback(){
+    var a = S.answers[S.i], r = a.r;
+    $('fb').className = 'fb on '+(a.ok?'good':'bad');
+    $('fbh').textContent = a.ok ? (LANG==='fr'?'Bonne réponse !':'Correct!') : (LANG==='fr'?'Raté…':'Not quite…');
+    $('fbx').innerHTML = (a.ok ? '' : (LANG==='fr'?'La bonne réponse : ':'The right answer: ')+'<b>'+L(r[4])+'</b>. ') + L(r[6]);
+    $('fbl').href = D.links[r[7]];
+    $('fbl').textContent = '→ ' + L(D.lks[r[8]]);
+    $('next').textContent = S.i < N-1 ? (LANG==='fr'?'Question suivante →':'Next question →') : (LANG==='fr'?'Voir mon score':'See my score');
+  }
+  function next(){
+    if(!S.answers[S.i]) return;
+    if(S.i < N-1){ S.i++; S.order = null; renderQ(); $('opts').querySelector('.opt').focus({preventScroll:true}); }
+    else finish();
+  }
+  function band(s){ return s===N ? 3 : s>=7 ? 2 : s>=4 ? 1 : 0; }
+  function finish(){
+    var key = 'fw_quiz_best_'+S.lv, best = store.get(key, null), isBest = best===null || S.score > best;
+    if(isBest) store.set(key, S.score);
+    S.done = true; S.newBest = isBest; S.prevBest = best;
+    renderEnd();
+    show('s-end');
+  }
+  function renderEnd(){
+    var lvl = LEVELS[S.lv-1];
+    $('endlv').textContent = (LANG==='fr'?'Niveau ':'Level ')+S.lv+' · '+QM(L(lvl.name));
+    $('endscore').innerHTML = S.score+'<small> / '+N+'</small>';
+    $('verdict').textContent = L(lvl.verdicts[band(S.score)]);
+    var best = store.get('fw_quiz_best_'+S.lv, S.score);
+    $('bestline').textContent = S.newBest && S.prevBest!==null ? (LANG==='fr'?'Nouveau record ! (ancien : ':'New record! (previous: ')+S.prevBest+' / '+N+')'
+      : (LANG==='fr'?'Votre meilleur score à ce niveau : ':'Your best score at this level: ')+best+' / '+N;
+    $('recap').innerHTML = S.answers.map(function(a, k){
+      var r = a.r;
+      return '<div class="rc '+(a.ok?'ok':'ko')+'"><span class="m">'+(a.ok?'✓':'✗')+'</span><div>'
+        + '<div class="q">'+(k+1)+'. '+L(r[3])+'</div>'
+        + '<div class="a">'+(a.ok ? '<b>'+L(r[4])+'</b>' : '<s>'+L(a.picked)+'</s> → <b>'+L(r[4])+'</b>')
+        + ' · <a href="'+D.links[r[7]]+'" target="_blank" rel="noopener">'+L(D.lks[r[8]])+'</a></div></div></div>';
+    }).join('');
+  }
+
+  /* ---------- events ---------- */
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('button'); if(!b) return;
+    if(b.hasAttribute('data-lv')) start(+b.getAttribute('data-lv'));
+    else if(b.hasAttribute('data-k')) answer(+b.getAttribute('data-k'));
+  });
+  $('next').addEventListener('click', next);
+  $('quit').addEventListener('click', function(){ S = null; renderLevels(); show('s-start'); });
+  $('again').addEventListener('click', function(){ start(S.lv); });
+  $('other').addEventListener('click', function(){ renderLevels(); show('s-start'); });
+  $('share').addEventListener('click', function(){
+    var lvl = LEVELS[S.lv-1];
+    var txt = (LANG==='fr' ? 'Grand quiz du vin — niveau « '+lvl.name[0]+' » : '+S.score+'/'+N+'. '+lvl.verdicts[band(S.score)][0]
+                           : 'The great wine quiz — level “'+lvl.name[1]+'”: '+S.score+'/'+N+'. '+lvl.verdicts[band(S.score)][1]) + ' ' + location.href.split('#')[0];
+    var done = function(){ toast(LANG==='fr'?'Score copié':'Score copied'); };
+    if(navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(done, fb); else fb();
+    function fb(){ var ta=document.createElement('textarea'); ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); done(); }catch(e){} document.body.removeChild(ta); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(!S || !$('s-play').classList.contains('on') || e.metaKey || e.ctrlKey || e.altKey) return;
+    if(e.key>='1' && e.key<='4'){ answer(+e.key-1); e.preventDefault(); }
+    else if(e.key==='Enter' && S.answers[S.i] && document.activeElement && !document.activeElement.classList.contains('more')){ next(); e.preventDefault(); }
+  });
+  var tt;
+  function toast(m){ var t=$('toast'); t.textContent=m; t.classList.add('on'); clearTimeout(tt); tt=setTimeout(function(){ t.classList.remove('on'); }, 1600); }
+
+  /* ---------- language ---------- */
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Le grand quiz du vin' : 'The great wine quiz';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    renderLevels();
+    if(S && $('s-play').classList.contains('on')) renderQ();
+    if(S && S.done && $('s-end').classList.contains('on')) renderEnd();
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+  var m = /^#niveau=([123])$/.exec(location.hash) || /^#level=([123])$/.exec(location.hash);
+  if(m) start(+m[1]);
+})();
+</script>
+</body>
+</html>

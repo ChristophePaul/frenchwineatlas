@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossaire de la vigne</title>
+<meta name="description" content="Glossaire français-anglais de la vigne et du vignoble : plus de 170 termes de viticulture définis, avec un lien vers le chapitre qui les explique.">
+<style>
+@@BASE_CSS@@
+  /* chapter 10 */
+  .tools{position:sticky;top:0;z-index:5;padding:14px clamp(14px,2.4vw,22px);margin-top:18px;}
+  html[data-theme="cream"] .tools{background:rgba(251,246,234,.97);}
+  html:not([data-theme="cream"]) .tools{background:rgba(42,10,18,.96);}
+  .search{display:flex;gap:10px;align-items:center;}
+  .search input{flex:1;font:500 16px var(--sans);padding:11px 14px 11px 40px;border-radius:12px;border:1px solid var(--hair-hi);background:var(--glass-hi);color:var(--parchment);
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239a6a1f' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:12px center;background-size:18px;}
+  .search input:focus{outline:2px solid var(--gold);outline-offset:1px;}
+  .search .count{font-size:12.5px;color:var(--muted);white-space:nowrap;}
+  .cats{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .cats button{font:600 11.5px var(--sans);letter-spacing:.04em;padding:6px 11px;border-radius:999px;cursor:pointer;border:1px solid color-mix(in srgb,var(--c) 45%,transparent);
+    background:transparent;color:var(--parchment);}
+  .cats button::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--c);margin-right:6px;vertical-align:1px;}
+  .cats button[aria-pressed="true"]{background:var(--c);border-color:var(--c);color:#fff;}
+  .cats button[aria-pressed="true"]::before{background:#fff;}
+  .az{display:flex;flex-wrap:wrap;gap:2px;margin-top:10px;}
+  .az a,.az span{font:700 12px var(--sans);width:24px;height:24px;display:grid;place-items:center;border-radius:6px;text-decoration:none;}
+  .az a{color:var(--gold-soft);} .az a:hover{background:var(--glass-hi);}
+  .az span{color:var(--faint);opacity:.45;}
+
+  .letter{font-family:var(--serif);font-size:30px;color:var(--gold);margin:26px 0 8px;padding-bottom:4px;border-bottom:1px solid var(--hair-hi);scroll-margin-top:200px;}
+  .terms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+  .term{padding:12px 15px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);border-left:4px solid var(--c);}
+  .term h3{margin:0;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);line-height:1.2;}
+  .term .tr{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold-soft);margin:1px 0 5px;}
+  .term p{margin:0;font-size:13.8px;line-height:1.55;}
+  .term .go{display:inline-flex;align-items:center;gap:6px;margin-top:7px;font-size:11.5px;font-weight:600;color:var(--c);text-decoration:none;}
+  html:not([data-theme="cream"]) .term .go{color:color-mix(in srgb,var(--c) 55%,#fff);}
+  .term .go:hover{text-decoration:underline;}
+  .term mark{background:color-mix(in srgb,#f2c14e 55%,transparent);color:inherit;border-radius:3px;padding:0 1px;}
+  .empty{padding:26px;text-align:center;color:var(--muted);font-size:15px;}
+
+  @media (max-width:760px){ .terms{grid-template-columns:minmax(0,1fr);} .tools{position:static;} .letter{scroll-margin-top:20px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <a class="back" href="../../index.html" data-fr="← Retour" data-en="← Back">← Retour</a>
+    <button class="lang" id="langbtn" type="button" aria-label="Language">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.8 5.8 3.8 9S14.5 18.5 12 21C9.5 18.5 8.2 15.2 8.2 12S9.5 5.5 12 3Z"/></svg>
+      <span id="langlbl">English</span>
+    </button>
+  </div>
+
+  <header>
+    <p class="eyebrow" data-fr="La vigne &amp; le vignoble · Chapitre 10" data-en="The vine &amp; the vineyard · Chapter 10">La vigne &amp; le vignoble · Chapitre 10</p>
+    <h1 data-fr="Glossaire <em>de la vigne</em>" data-en="Vineyard <em>glossary</em>">Glossaire <em>de la vigne</em></h1>
+    <div class="rule"></div>
+    <p class="tagline" data-fr="@@COUNT@@ mots du vigneron, en français et en anglais, avec leur définition et un lien vers le chapitre qui les explique. Changez de langue pour classer le glossaire en anglais."
+       data-en="@@COUNT@@ vineyard words, in French and English, with their definition and a link to the chapter that explains them. Switch language to sort the glossary in English.">@@COUNT@@ mots du vigneron, en français et en anglais, avec leur définition et un lien vers le chapitre qui les explique. Changez de langue pour classer le glossaire en anglais.</p>
+  </header>
+
+  <div class="panel tools" role="search">
+    <div class="search">
+      <label for="q" class="sr" style="position:absolute;left:-9999px" data-fr="Rechercher un terme" data-en="Search for a term">Rechercher un terme</label>
+      <input id="q" type="search" autocomplete="off" spellcheck="false">
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div class="cats" id="cats"></div>
+    <nav class="az" id="az" aria-label="A–Z"></nav>
+  </div>
+
+  <section id="list" aria-live="polite"></section>
+  <noscript><p class="empty">Ce glossaire nécessite JavaScript. / This glossary requires JavaScript.</p></noscript>
+
+  @@CHAPTERS@@
+</div>
+
+<script>
+(function(){
+  var DATA = @@DATA@@;
+  var CATS = @@CATS@@;
+  var LANG = 'fr';
+  try{ var s = localStorage.getItem('fw_lang'); if(s==='fr'||s==='en') LANG = s; }catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  var active = {};            /* selected categories; empty = all */
+  var norm = function(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(); };
+  var esc = function(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+  DATA.forEach(function(d){ d.k = norm(d.fr + ' ' + d.en + ' ' + d.dfr + ' ' + d.den); });
+
+  function highlight(text, q){
+    if(!q) return esc(text);
+    var n = Array.from(text).map(function(ch){ var x = norm(ch); return x.length === 1 ? x : ch.toLowerCase(); }).join(''), i = n.indexOf(q);
+    if(i < 0) return esc(text);
+    return esc(text.slice(0, i)) + '<mark>' + esc(text.slice(i, i + q.length)) + '</mark>' + esc(text.slice(i + q.length));
+  }
+  function letterOf(w){ var c = norm(w).charAt(0).toUpperCase(); return /[A-Z]/.test(c) ? c : '#'; }
+
+  function buildCats(){
+    var html = '';
+    Object.keys(CATS).forEach(function(k){
+      var c = CATS[k];
+      html += '<button type="button" data-k="' + k + '" style="--c:' + c.col + '" aria-pressed="' + (active[k] ? 'true' : 'false') + '">' + esc(LANG==='fr' ? c.fr : c.en) + '</button>';
+    });
+    $('cats').innerHTML = html;
+  }
+  $('cats').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if(!b) return;
+    var k = b.getAttribute('data-k');
+    if(active[k]) delete active[k]; else active[k] = true;
+    b.setAttribute('aria-pressed', active[k] ? 'true' : 'false');
+    render();
+  });
+
+  function render(){
+    var q = norm($('q').value.trim());
+    var any = Object.keys(active).length > 0;
+    var head = LANG==='fr' ? 'fr' : 'en', other = LANG==='fr' ? 'en' : 'fr', def = LANG==='fr' ? 'dfr' : 'den';
+    var list = DATA.filter(function(d){ return (!any || active[d.c]) && (!q || d.k.indexOf(q) >= 0); });
+    list.sort(function(a, b){ return a[head].localeCompare(b[head], LANG, {sensitivity:'base'}); });
+    var groups = {}, order = [];
+    list.forEach(function(d){ var L = letterOf(d[head]); if(!groups[L]){ groups[L] = []; order.push(L); } groups[L].push(d); });
+    var html = '';
+    order.forEach(function(L){
+      html += '<h2 class="letter" id="l-' + L + '">' + L + '</h2><div class="terms">';
+      groups[L].forEach(function(d){
+        var c = CATS[d.c];
+        var where = c.n ? (LANG==='fr' ? 'Chapitre ' + c.n + ' · ' + c.fr : 'Chapter ' + c.n + ' · ' + c.en) : (LANG==='fr' ? c.fr : c.en);
+        html += '<article class="term" style="--c:' + c.col + '"><h3>' + highlight(d[head], q) + '</h3>'
+             + (d[other] !== d[head] ? '<div class="tr">' + highlight(d[other], q) + '</div>' : '<div class="tr">' + (LANG==='fr' ? 'même mot en anglais' : 'same word in French') + '</div>')
+             + '<p>' + highlight(d[def], q) + '</p>'
+             + '<a class="go" href="' + d.h + '">→ ' + esc(where) + '</a></article>';
+      });
+      html += '</div>';
+    });
+    if(!list.length) html = '<p class="empty">' + (LANG==='fr' ? 'Aucun terme ne correspond à votre recherche.' : 'No term matches your search.') + '</p>';
+    $('list').innerHTML = html;
+    var n = list.length;
+    $('count').textContent = LANG==='fr' ? (n + (n > 1 ? ' termes' : ' terme')) : (n + (n === 1 ? ' term' : ' terms'));
+    var az = '';
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(function(L){
+      az += groups[L] ? '<a href="#l-' + L + '">' + L + '</a>' : '<span>' + L + '</span>';
+    });
+    $('az').innerHTML = az;
+  }
+  $('q').addEventListener('input', render);
+
+  function applyLang(){
+    document.documentElement.lang = LANG;
+    document.title = LANG==='fr' ? 'Glossaire de la vigne' : 'Vineyard glossary';
+    var nodes = document.querySelectorAll('[data-fr]');
+    for(var i=0;i<nodes.length;i++){ var v = nodes[i].getAttribute('data-'+LANG); if(v!==null) nodes[i].innerHTML = v; }
+    $('langlbl').textContent = LANG==='fr' ? 'English' : 'Français';
+    $('q').placeholder = LANG==='fr' ? 'Rechercher en français ou en anglais (ex. : véraison, cane, porte-greffe)…' : 'Search in English or French (e.g. véraison, cane, rootstock)…';
+    buildCats(); render();
+  }
+  $('langbtn').addEventListener('click', function(){
+    LANG = LANG==='fr' ? 'en' : 'fr';
+    try{ localStorage.setItem('fw_lang', LANG); }catch(e){}
+    applyLang();
+  });
+  document.addEventListener('fw:lang', function(e){
+    var l = (e.detail && e.detail.lang) || document.documentElement.lang;
+    if((l==='fr'||l==='en') && l!==LANG){ LANG = l; applyLang(); }
+  });
+  applyLang();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+@include bourgogne_common
+@h1 National opposition procedure following the opinion of the standing committee of the INAO national committee of 9 September 2010
+@h2 Proposed amended specification – “Mâcon”
+@title Specification of the controlled designation of origin “MÂCON”
+# CHAPTER I
+## I. – Name of the designation
+Only wines meeting the specific provisions set out below may claim the controlled designation of origin “Mâcon”, initially recognised by the decree of 31 July 1937.
+## II. – Geographical denominations and complementary terms
+1° – The name of the controlled designation of origin may be followed by one of the following geographical denominations, for wines meeting the production conditions laid down for these geographical denominations in the present specification:
+- “Azé”,
+- “Bray”,
+- “Burgy”,
+- “Bussières”,
+- “Chaintré”,
+- “Chardonnay”,
+- “Charnay-lès-Mâcon”,
+- “Cruzille”,
+- “Davayé”,
+- “Fuissé”,
+- “Igé”,
+- “Lugny”,
+- “Loché”,
+- “Mancey”,
+- “Milly-Lamartine”,
+- “Montbellet”,
+- “Péronne”,
+- “Pierreclos”,
+- “Prissé”,
+- “La Roche-Vineuse”,
+- “Serrières”,
+- “Solutré-Pouilly”,
+- “Saint-Gengoux-le-National”,
+- “Uchizy”,
+- “Vergisson”,
+- “Verzé”,
+- “Vinzelles”.
+2° – The name of the controlled designation of origin may be followed by the term “Villages”, for wines meeting the production conditions laid down for this term in the present specification.
+3° – The name of the controlled designation of origin, whether or not followed by the term “Villages”, may be supplemented by the term “primeur” or “nouveau” for wines meeting the conditions laid down for this term in the present specification.
+## III. – Colour and types of product
+| CONTROLLED DESIGNATION OF ORIGIN, GEOGRAPHICAL DENOMINATIONS, TERM | COLOUR AND TYPE OF PRODUCT |
+| AOC “Mâcon” | Still white, red and rosé wines |
+| Geographical denominations “Azé”, “Bray”, “Burgy”, “Bussières”, “Chaintré”, “Chardonnay”, “Charnay-lès-Mâcon”, “Cruzille”, “Davayé”, “Igé”, “Lugny”, “Mancey”, “Milly-Lamartine”, “Péronne”, “Pierreclos”, “Prissé”, “La Roche-Vineuse”, “Saint-Gengoux-le-National”, “Verzé” | Still white, red and rosé wines |
+| Geographical denomination “Serrières” | Still red and rosé wines |
+| Geographical denominations “Fuissé”, “Loché”, “Montbellet”, “Solutré-Pouilly”, “Uchizy”, “Vergisson”, “Vinzelles” | Still white wines |
+| Term “Villages” | Still white wines |
+| Term “primeur” or “nouveau” | Still white and rosé wines |
+## IV. – Areas and zones in which the various operations are carried out
+### 1° – Geographical area
+a) – The harvesting of the grapes, the vinification and the elaboration of the wines are carried out within the territory of the following communes of the Saône-et-Loire department: Ameugny, Azé, Berzé-la-Ville, Berzé-le-Châtel, Bissy-la-Mâconnaise, Bissy-sous-Uxelles, Blanot, Bonnay, Boyer, Bray, Bresse-sur-Grosne, Burgy, Burnand, Bussières, Chaintré, Champagny-sous-Uxelles, Chânes, Chapaize, La Chapelle-de-Guinchay, La Chapelle-sous-Brancion, Charbonnières, Chardonnay, Charnay-lès-Mâcon, Chasselas, Château, Chevagny-lès-Chevrières, Chissey-lès-Mâcon, Clessé, Cortambert, Cortevaix, Crèches-sur-Saône, Cruzille, Curtil-sous-Burnand, Davayé, Donzy-le-National, Etrigny, Farges-lès-Mâcon, Fleurville, Fuissé, Grevilly, Hurigny, Igè, Jalogny, Jugy, Lacrost, Laives, Laizé, Leynes, Lournand, Lugny, Mâcon, Malay, Mancey, Martailly-lès-Brancion, Massy, Milly-Lamartine, Montbellet, Montceaux-Ragny, Nanton, Ozenay, Péronne, Pierreclos, Plottes, Préty, Prissé, Pruzilly, La Roche-Vineuse, Romanèche-Thorins, Royer, Saint-Albain, Saint-Amour-Bellevue, Saint-Gengoux-de-Scissé, Saint-Gengoux-le-National, Saint-Martin-Belle-Roche, Saint-Maurice-de-Satonnay, Saint-Symphorien-d’Ancelles, Saint-Vérand, Saint-Ythaire, La Salle, Salornay-sur-Guye, Savigny-sur-Grosne, Sennecey-le-Grand, Senozan, Serrières, Sigy-le-Châtel, Sologny, Solutré-Pouilly, Tournus, Uchizy, Vergisson, Vers, Verzé, Le Villars, La Vineuse, Vinzelles and Viré.
+b) – For the term “Villages”, the harvesting of the grapes, the vinification and the elaboration of the wines are carried out within the territory of the following communes of the Saône-et-Loire department: Ameugny, Azé, Berzé-la-Ville, Berzé-le-Châtel, Bissy-la-Mâconnaise, Bissy-sous-Uxelles, Blanot, Bonnay, Boyer, Bray, Bresse-sur-Grosne, Burgy, Burnand, Bussières, Chaintré, Champagny-sous-Uxelles, Chânes, Chapaize, La Chapelle-sous-Brancion, Charbonnières, Chardonnay, Charnay-lès-Mâcon, Chasselas, Chevagny-les-Chevrières, Chissey-lès-Mâcon, Clessé, Cortambert, Cortevaix, Crèches-sur-Saône, Cruzille, Curtil-sous-Burnand, Davayé, Etrigny, Farges-lès-Mâcon, Fuissé, Grevilly, Hurigny, Igè, Jugy, Laives, Laizé, Leynes, Lournand, Lugny, Mâcon, Malay, Mancey, Martailly-lès-Brancion, Massy, Milly-Lamartine, Montbellet, Montceaux-Ragny, Ozenay, Péronne, Pierreclos, Plottes, Prissé, La Roche-Vineuse, Royer, Saint-Albain, Saint-Gengoux-de-Scissé, Saint-Gengoux-le-National, Saint-Martin-Belle-Roche, Saint-Maurice-de-Satonnay, Saint-Vérand, Saint-Ythaire, La Salle, Savigny-sur-Grosne, Sennecey-le-Grand, Senozan, Sologny, Solutré-Pouilly, Tournus, Uchizy, Vergisson, Vers, Verzé, La Vineuse, Vinzelles and Viré.
+c) – For wines eligible for a geographical denomination, the geographical production area as approved by the National Institute of Origin and Quality at the session of the competent national committee of 9 and 10 March 2005, for the harvesting of the grapes, the vinification and the elaboration of the wines, is made up of the territory of the following communes of the Saône-et-Loire department:
+| GEOGRAPHICAL DENOMINATIONS | COMMUNES |
+| “Azé” | Azé |
+| “Bray” | Blanot, Bray, Chissey-lès-Mâcon, Cortambert |
+| “Burgy” | Burgy |
+| “Bussières” | Bussières |
+| “Chaintré” | Chaintré, Chânes, Crêches-sur-Saône |
+| “Chardonnay” | Chardonnay, Ozenay, Plottes, and Tournus in part |
+| “Charnay-lès-Mâcon” | Charnay-lès-Mâcon |
+| “Cruzille” | Grevilly, Martailly-lès-Brancion, and Cruzille in part |
+| “Davayé” | Davayé |
+| “Fuissé” | Fuissé |
+| “Igé” | Igé |
+| “Lugny” | Bissy-la-Mâconnaise, Lugny, Saint-Gengoux-de-Scissé, and Cruzille in part |
+| “Loché” | Mâcon |
+| “Mancey” | Boyer, La Chapelle-sous-Brancion, Etrigny, Jugy, Laives, Mancey, Montceaux-Ragny, Nanton, Royer, Sennecey-le-Grand, Vers, and Tournus in part |
+| “Milly-Lamartine” | Berzé-la-Ville, Berzé-le-Châtel, Milly-Lamartine, Sologny |
+| “Montbellet” | Montbellet |
+| “Péronne” | Péronne, Saint-Maurice-de-Satonnay, and Clessé in part |
+| “Pierreclos” | Pierreclos |
+| “Prissé” | Prissé |
+| “La Roche-Vineuse” | Chevagny-lès-Chevrières, Hurigny, La Roche-Vineuse |
+| “Serrières” | Serrières |
+| “Solutré-Pouilly” | Solutré-Pouilly |
+| “Saint-Gengoux-le-National” | Ameugny, Bissy-sous-Uxelles, Bonnay, Bresse-sur-Grosne, Burnand, Champagny-sous-Uxelles, Chapaize, Cortevaix, Curtil-sous-Burnand, Lournand, Malay, Massy, Saint-Gengoux-le-National, Saint-Ythaire, Salornay-sur-Guye, Savigny-sur-Grosne, Sigy-le-Châtel, La Vineuse |
+| “Uchizy” | Uchizy |
+| “Vergisson” | Vergisson |
+| “Verzé” | Verzé |
+| “Vinzelles” | Vinzelles |
+The National Institute of Origin and Quality lodges with the town halls of the communes concerned the graphic documents establishing the boundaries of the production area thus approved.
+### 2° – Delimited parcel area
+The wines come exclusively from vines situated within the delimited parcel production area as approved by the National Institute of Origin and Quality at the sessions of the competent national committee of 27 and 28 May 1998, of 27 and 28 May 2004, of 6 and 7 September 2006, of 28 May 2008 and of 3 November 2009. The National Institute of Origin and Quality lodges with the town halls of the communes referred to in 1° the graphic documents establishing the parcel boundaries of the production area thus approved.
+### 3° – Immediate proximity area
+a) – The immediate proximity area, defined by derogation for the vinification and the elaboration of the wines, is made up of the territory of the following communes:
+- Côte-d’Or department: Agencourt, Aloxe-Corton, Ancey, Arcenant, Argilly, Autricourt, Auxey-Duresses, Baubigny, Beaune, Belan-sur-Ource, Bévy, Bissey-la-Côte, Bligny-lès-Beaune, Boncourt-le-Bois, Bouix, Bouze-lès-Beaune, Brion-sur-Ource, Brochon, Cérilly, Chamboeuf, Chambolle-Musigny, Channay, Charrey-sur-Seine, Chassagne-Montrachet, Châtillon-sur-Seine, Chaumont-le-Bois, Chaux, Chenôve, Chevannes, Chorey-lès-Beaune, Clémencey, Collonges-lès-Bévy, Combertault, Comblanchien, Corcelles-les-Arts, Corcelles-les-Monts, Corgoloin, Cormot-le-Grand, Corpeau, Couchey, Curley, Curtil-Vergy, Daix, Dijon, Ebaty, Echevronne, Epernay-sous-Gevrey, L’Etang-Vergy, Etrochey, Fixin, Flagey-Echézeaux, Flavignerot, Fleurey-sur-Ouche, Fussey, Gerland, Gevrey-Chambertin, Gilly-lès-Cîteaux, Gomméville, Grancey-sur-Ource, Griselles, Ladoix-Serrigny, Lantenay, Larrey, Levernois, Magny-lès-Villers, Mâlain, Marcenay, Marey-lès-Fussey, Marsannay-la-Côte, Massingy, Mavilly-Mandelot, Meloisey, Merceuil, Messanges, Meuilley, Meursanges, Meursault, Molesme, Montagny-lès-Beaune, Monthelie, Montliot-et-Courcelles, Morey-Saint-Denis, Mosson, Nantoux, Nicey, Noiron-sur-Seine, Nolay, Nuits-Saint-Georges, Obtrée, Pernand-Vergelesses, Perrigny-lès-Dijon, Plombières-lès-Dijon, Poinçon-lès-Larrey, Pommard, Pothières, Premeaux-Prissey, Prusly-sur-Ource, Puligny-Montrachet, Quincey, Reulle-Vergy, La Rochepot, Ruffey-lès-Beaune, Saint-Aubin, Saint-Bernard, Saint-Philibert, Saint-Romain, Sainte-Colombe-sur-Seine, Sainte-Marie-la-Blanche, Santenay, Savigny-lès-Beaune, Segrois, Tailly, Talant, Thoires, Vannaire, Vauchignon, Velars-sur-Ouche, Vertault, Vignoles, Villars-Fontaine, Villebichot, Villedieu, Villers-la-Faye, Villers-Patras, Villy-le-Moutier, Vix, Volnay, Vosne-Romanée and Vougeot;
+- Rhône department: Alix, Anse, L’Arbresle, Les Ardillats, Arnas, Bagnols, Beaujeu, Belleville, Belmont d’Azergues, Blacé, Le Bois-d’Oingt, Le Breuil, Bully, Cercié, Chambost-Allières, Chamelet, Charentay, Charnay, Châtillon, Chazay-d’Azergues, Chénas, Chessy, Chiroubles, Cogny, Corcelles-en-Beaujolais, Dareizé, Denicé, Dracé, Emeringes, Fleurie, Frontenas, Gleizé, Jarnioux, Juliénas, Jullié, Lacenas, Lachassagne, Lancié, Lantignié, Légny, Létra, Liergues, Limas, Lozanne, Lucenay, Marchampt, Marcy, Moiré, Montmelas-Saint-Sorlin, Morancé, Nuelles, Odenas, Oingt, Les Olmes, Le Perréon, Pommiers, Pouilly-le-Monial, Quincié-en-Beaujolais, Régnié-Durette, Rivolet, Saint-Clément-sur-Valsonne, Saint-Cyr-le-Chatoux, Saint-Didier-sur-Beaujeu, Saint-Etienne-des-Oullières, Saint-Etienne-la-Varenne, Saint-Georges-de-Reneins, Saint-Germain-sur-l’Arbresle, Saint-Jeand’Ardières, Saint-Jean-des-Vignes, Saint-Julien, Saint-Just-d’Avray, Saint-Lager, Saint-Laurent-d’Oingt, Saint-Loup, Saint-Romain-de-Popey, Saint-Vérand, Sainte-Paule, Salles-Arbuissonnas-en-Beaujolais, Sarcey, Taponas, Ternand, Theizé, Vaux-en-Beaujolais, Vauxrenard, Vernay, Villefranche-sur-Saône, Ville-sur-Jarnioux and Villié-Morgon;
+- Saône-et-Loire department: Aluze, Barizey, Beaumont-sur-Grosne, Bissey-sous-Cruchaud, Bissy-sur-Fley, Bouzeron, Buxy, Cersot, Chagny, Chalon-sur-Saône, Chamilly, Champforgeuil, Change, La Chapelle-de-Bragny, La Charmée, Charrecey, Chassey-le-Camp, Châtenoy-le-Royal, Chaudenay, Cheilly-lès-Maranges, Chenôves, Cluny, Cormatin, Couches, Créot, Culles-les-Roches, Demigny, Dennevy, Dezize-lès-Maranges, Donzy-le-Pertuis, Dracy-le-Fort, Dracy-lès-Couches, Epertully, Farges-lès-Chalon, Flagy, Fley, Fontaines, Genouilly, Germagny, Givry, Granges, Jambles, Jully-lès-Buxy, Lalheue, La Loyère, Massilly, Mellecey, Mercurey, Messey-sur-Grosne, Montagny-lès-Buxy, Moroges, Paris-l’Hôpital, Remigny, Rosey, Rully, Saint-Ambreuil, Saint-Boil, Saint-Clément-sur-Guye, Saint-Denis-de-Vaux, Saint-Désert, Saint-Germain-lès-Buxy, Saint-Gervais-sur-Couches, Saint-Gilles, Saint-Jean-de-Trézy, Saint-Jean-de-Vaux, Saint-Léger-sur-Dheune, Saint-Mard-de-Vaux, Saint-Martin-du-Tartre, Saint-Martin-sous-Montaigu, Saint-Maurice-des-Champs, Saint-Maurice-lès-Couches, Saint-Pierre-de-Varennes, Saint-Rémy, Saint-Sernin-du-Plain, Saint-Vallerin, Saisy, Sampigny-lès-Maranges, Sancé, Santilly, Sassangy, Saules, Sercy, Taizé, Varennes-lès-Mâcon, Vaux-en-Pré and Vers;
+- Yonne department: Accolay, Aigremont, Annay-sur-Serin, Arcy-sur-Cure, Asquins, Augy, Auxerre, Avallon, Bazarnes, Beine, Bernouil, Béru, Bessy-sur-Cure, Bleigny-le-Carreau, Censy, Chablis, Champlay, Champs-sur-Yonne, Champvallon, Chamvres, La Chapelle-Vaupelteigne, Charentenay, Châtel-Gérard, Chemilly-sur-Serein, Cheney, Chevannes, Chichée, Chitry, Collan, Coulangeron, Coulanges-la-Vineuse, Courgis, Cravant, Cruzy-le-Châtel, Dannemoine, Dyé, Epineuil, Escamps, Escolives-Sainte-Camille, Fleys, Fontenay-près-Chablis, Gy-l’Evêque, Héry, Irancy, Island, Joigny, Jouancy, Junay, Jussy, Lichères-près-Aigremont, Lignorelles, Ligny-le-Châtel, Lucy-sur-Cure, Maligny, Mélisey, Merry-Sec, Migé, Molay, Molosmes, Montigny-la-Resle, Mouffy, Moulins-en-Tonnerois, Nitry, Noyers, Ouanne, Paroy-sur-Tholon, Pasilly, Pierre-Perthuis, Poilly-sur-Serein, Pontigny, Préhy, Quenne, Roffey, Rouvray, Sacy, Saint-Bris-le-Vineux, Saint-Cyr-les-Colons, Saint-Père, Sainte-Pallaye, Sainte-Vertu, Sarry, Senan, Serrigny, Tharoiseau, Tissey, Tonnerre, Tronchoy, Val-de-Mercy, Vallan, Venouse, Venoy, Vermenton, Vézannes, Vézelay, Vézinnes, Villeneuve-Saint-Salves, Villiers-sur-Tholon, Villy, Vincelles, Vincelottes, Viviers, Volgré and Yrouerre.
+b) – For the term “Villages”, the immediate proximity area, defined by derogation for the vinification and the elaboration of the wines, is made up of the territory of the communes listed in point IV 1°, a) and in point IV 3°, a), excluding the communes listed in point IV 1°, b).
+c) – For wines eligible for a geographical denomination, the immediate proximity area, defined by derogation for the vinification and the elaboration, is made up of the territory of the communes listed in point IV 1°, a) and in point IV 3°, a), excluding the communes listed in point IV 1°, c) whose territory constitutes the geographical area of each of the geographical denominations respectively.
+## V. – Grape varieties
+### 1° – Grape varieties
+| CONTROLLED DESIGNATION OF ORIGIN, GEOGRAPHICAL DENOMINATIONS, TERM, COLOUR OF THE WINES | GRAPE VARIETIES |
+| **AOC “Mâcon”** | < |
+| Red and rosé wines | gamay N, pinot noir N |
+| White wines | chardonnay B |
+| **Geographical denominations** | < |
+| Red and rosé wines | gamay N |
+| White wines | chardonnay B |
+| **Term “Villages”** | < |
+| White wines | chardonnay B |
+### 2° – Proportion rules on the holding
+No particular provision.
+## VI. – Management of the vineyard
+### 1° – Training methods
+a) – Planting density
+| **GENERAL PROVISIONS** | < |
+| The vines have a minimum planting density of 7,000 plants per hectare. These vines have a spacing between rows less than or equal to 1.80 metres and a spacing between plants within the same row greater than or equal to 0.80 metre. | < |
+| **PARTICULAR PROVISIONS** | < |
+| Vines planted on sandy slopes: – parcels with an average slope greater than or equal to 15 %; – soil with a sand content greater than or equal to 30 %. Vines planted on slopes other than sandy ones: parcels with an average slope greater than or equal to 25 %. | The vines have a minimum planting density of 5,000 plants per hectare. These vines have a spacing between rows less than or equal to 2.20 metres and a spacing between plants within the same row greater than or equal to 0.80 metre. |
+b) – Pruning rules
+The vines are pruned according to the following techniques:
+| COLOUR OF THE WINES | PRUNING RULES |
+| Red and rosé wines | Either short pruning (vines trained as Royat cordon and fan), with a maximum per plant of 8 free eyes and of 4 spurs each bearing a maximum of 2 free eyes. When cordons are rejuvenated, the maximum number of free eyes per plant is 8. Or single Guyot long pruning, with a maximum per plant of 8 free eyes, of which 6 free eyes on the cane and 1 spur with 2 free eyes. |
+| White wines | Either short pruning (vines trained as Royat cordon), with a maximum per plant of 10 free eyes and of 5 spurs each bearing a maximum of 2 free eyes. When cordons are rejuvenated, the maximum number of free eyes per plant is 10. Or single Guyot long pruning, with a maximum of 10 free eyes per plant, namely a cane bearing a maximum of 6 free eyes and 2 spurs with a maximum of 2 free eyes, or a cane bearing a maximum of 8 free eyes and 1 spur with a maximum of 2 free eyes. Or the so-called “taille à queue du Mâconnais”, with a maximum of 14 free eyes per plant, including a cane bearing a maximum of 12 free eyes and 1 spur with 2 free eyes. The tip of the cane is tied to the lower trellising wire. |
+| Whatever the pruning method, the vines may be pruned with 4 additional free eyes per plant provided that, at the phenological stage corresponding to 11 or 12 leaves, the number of fruit-bearing shoots of the year per plant is less than or equal to the number of free eyes defined in the pruning rules. | < |
+c) – Trellising and foliage height rules
+- When the vines are not trained in gobelet, they must be trellised and the trellising must be maintained.
+- The height of trellised foliage must be at least equal to 0.6 times the spacing between rows, the height of trellised foliage being measured between the lower limit of the foliage, set at least 0.30 metre above the ground, and the upper trimming limit, set at least 0.20 metre above the upper trellising wire.
+d) – Average maximum load per parcel
+The average maximum load per parcel is set at:
+- 10,000 kilograms per hectare for red and rosé wines;
+- 11,000 kilograms per hectare for white wines.
+e) – Thresholds of missing vines
+The percentage of dead or missing vine plants referred to in Article D. 644-22 of the Rural Code is set at 20 %.
+f) – Cultivation condition of the vine
+The parcels must be managed so as to ensure a good overall cultivation condition of the vine, reflected in particular by:
+- control of a good sanitary condition, making it possible to obtain healthy foliage and healthy berries;
+- upkeep of the soil and control of grass cover by a grass height of less than half the trellising height (height between the ground and the upper trellising wire), and of erosion through the absence of visible roots.
+### 2° – Other cultivation practices
+a) – In order to preserve the characteristics of the soils, which constitute a fundamental element of the terroir:
+- Permanent grass cover of the headlands is compulsory.
+- Any substantial modification of the morphology, the subsoil, the arable layer or the structuring elements of the landscape of a parcel intended for the production of the controlled designation of origin is prohibited, with the exception of classic deep-ploughing works.
+b) – Vine plantings and replacements may only be made with healthy plant material that has undergone hot-water treatment or any other method making it possible to combat flavescence dorée.
+### 3° – Irrigation
+Irrigation is prohibited.
+## VII. – Harvest, transport and ripeness of the grapes
+### 1° – Harvest
+a) – The wines come from grapes harvested at good ripeness.
+b) – Particular harvesting provisions
+No particular provision.
+c) – Particular provisions for transport of the harvest
+The harvest is protected from rain during its transport and on its reception.
+### 2° – Ripeness of the grapes
+The sugar contents of the grapes and the natural alcoholic strengths by volume meet the following characteristics:
+| CONTROLLED DESIGNATION OF ORIGIN, GEOGRAPHICAL DENOMINATIONS, TERM, COLOUR OF THE WINES | MINIMUM SUGAR CONTENT OF THE GRAPES (grams per litre of must) | MINIMUM NATURAL ALCOHOLIC STRENGTH BY VOLUME |
+| **AOC “Mâcon”** | < | < |
+| Red and rosé wines | 171 | 10.0 % |
+| White wines | 162 | 10.0 % |
+| **Geographical denominations** | < | < |
+| Red and rosé wines | 180 | 10.5 % |
+| White wines | 178 | 11.0 % |
+| **Term “Villages”** | < | < |
+| White wines | 170 | 10.5 % |
+## VIII. – Yields – Entry into production
+### 1° – Yield
+The yield referred to in Article D. 644-25 of the Rural Code is set at:
+| CONTROLLED DESIGNATION OF ORIGIN, GEOGRAPHICAL DENOMINATIONS, TERM, COLOUR OF THE WINES | YIELD (hectolitres per hectare) |
+| **AOC “Mâcon”** | < |
+| Red and rosé wines | 64 |
+| White wines | 70 |
+| **Geographical denominations** | < |
+| Red and rosé wines | 58 |
+| White wines | 66 |
+| **Term “Villages”** | < |
+| White wines | 68 |
+### 2° – Limit yield
+The limit yield referred to in Article D. 644-25 of the Rural Code is set as follows:
+| CONTROLLED DESIGNATION OF ORIGIN, GEOGRAPHICAL DENOMINATIONS, TERM, COLOUR OF THE WINES | LIMIT YIELD (hectolitres per hectare) |
+| **AOC “Mâcon”** | < |
+| Red and rosé wines | 69 |
+| White wines | 75 |
+| **Geographical denominations** | < |
+| Red and rosé wines | 65 |
+| White wines | 73 |
+| **Term “Villages”** | < |
+| White wines | 75 |
+### 3° – Entry into production of young vines
+The benefit of the controlled designation of origin may only be granted to wines coming from:
+- parcels of young vines only from the 2nd year following that in the course of which planting was carried out in place before 31 July;
+- parcels of young vines only from the 1st year following that in the course of which grafting in place was carried out before 31 July;
+- parcels of vines that have been top-grafted, at the earliest in the 1st year following that in the course of which the top-grafting was carried out before 31 July, and once the parcels no longer contain any varieties other than those permitted for the appellation. By derogation, in the year following that in the course of which the top-grafting was carried out before 31 July, the varieties permitted for the appellation may represent only 80 % of the planting of each parcel concerned.
+## IX. – Processing, elaboration, ageing, packaging, storage
+### 1° – General provisions
+The wines are vinified in accordance with local, fair and constant usages.
+a) – Reception and pressing
+No particular provision.
+b) – Blending of varieties
+No particular provision.
+c) – Malolactic fermentation
+At the packaging stage, red wines have a maximum malic acid content of 0.4 gram per litre.
+d) – Analytical standards
+- Finished wines ready to be released for consumption within the meaning of Article D. 644-36-I of the Rural Code have the following maximum fermentable sugar contents (glucose + fructose):
+| COLOUR OF THE WINES | MAXIMUM FERMENTABLE SUGAR CONTENT (glucose and fructose) (grams per litre) |
+| Red wines | 2 |
+| Rosé wines | 3 |
+| White wines | 3, or 4 if the total acidity, expressed as H2SO4, is greater than or equal to 2.7 grams per litre |
+- Non-packaged wines eligible for the term “primeur” or “nouveau” have a maximum volatile acidity of 10.2 milliequivalents per litre.
+e) – Oenological practices and physical treatments
+- Subtractive enrichment techniques (TSE) are authorised for red wines within the limit of a maximum concentration rate of 10 %.
+- For the production of rosé wines, the use of oenological charcoal, alone or mixed in preparations, is prohibited.
+- The use of pieces of wood is prohibited.
+- After enrichment, the total alcoholic strength by volume of the wines meets the following characteristics:
+| CONTROLLED DESIGNATION OF ORIGIN, GEOGRAPHICAL DENOMINATIONS, TERM, COLOUR OF THE WINES | TOTAL ALCOHOLIC STRENGTH BY VOLUME |
+| **AOC “Mâcon”** | < |
+| Red and rosé wines | 12.5 % |
+| White wines | 12.5 % |
+| **Geographical denominations** | < |
+| Red and rosé wines | 13 % |
+| White wines | 13.5 % |
+| **Term “Villages”** | < |
+| White wines | 13 % |
+f) – Prohibited equipment
+Continuous presses are prohibited.
+g) – Capacity of the vinification vats
+Every operator has a vinification vat capacity equivalent to at least:
+- for white wines, the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration;
+- for red wines, 80 % of the volume of wine vinified for the previous year’s harvest, as entered either on the harvest declaration, pro rata to the change in the holding’s area in production, or on the production declaration.
+h) – Good overall state of upkeep of the cellar and the equipment
+The cellar and the vinification equipment must be well maintained; this is reflected in particular by:
+- general hygiene of the elaboration premises, with general cleanliness, well-maintained floors, adequate drainage and a surface avoiding stagnation;
+- harmlessness of the equipment and products coming into contact with the wine;
+- separation and specificity of the premises: premises without the same functions must be separated, such as storage areas for plant-protection products, cleaning products or hydrocarbons, from the premises for vinification, ageing and storage of dry goods (corks, cartons);
+- management of wine effluents: effluents must be removed as quickly as possible from foodstuff premises and deposited in well-maintained containers that are easy to clean and can be closed. Waste storage areas must be kept clean; waste must be disposed of hygienically and in an environmentally friendly manner; a waste storage and removal area must be provided;
+- absence of hazardous or odorous substances in the vinification, ageing and storage premises (odour).
+i) – Ageing
+Where the wines are aged, the temperature of the containers during the ageing phase must be controlled and less than or equal to 25 °C.
+### 2° – Provisions by type of product
+Wines eligible for the term “primeur” or “nouveau” come exclusively from grapes harvested in the same year.
+### 3° – Provisions relating to packaging
+For every packaged lot, the operator keeps available for the approved control body:
+- the information appearing in the register of handling operations referred to in Article D. 644-36 of the Rural Code;
+- the reports of analyses carried out before packaging allowing analytical monitoring of the packaged lots. These reports are kept for a period of 6 months from the date of packaging.
+### 4° – Provisions relating to storage
+The operator provides evidence of a protected storage place for wines packaged in unlabelled bottles, with a temperature of between 5 °C and 22 °C.
+### 5° – Provisions relating to the circulation of products and placing on the market for the consumer
+a) – Date of placing on the market for the consumer
+The wines are placed on the market for the consumer in accordance with the provisions of Article D. 644-35 of the Rural Code.
+b) – Period during which the wines may not circulate between authorised warehousekeepers
+Wines eligible for the term “nouveau” or “primeur” may only circulate between authorised warehousekeepers from the thirty-eighth day preceding the third Thursday of November of the year of harvest.
+## X. – Link with the geographical area
+*(No text in this version.)*
+## XI. – Transitional measures
+### 1° – Delimited parcel area
+In the following communes of the Saône-et-Loire department: Azé, Bissy-la-Mâconnaise, Bussières, Chardonnay, Charnay-lès-Mâcon, Clessé, Cruzille, Fuissé, Lugny, Mâcon-Loché, Milly-Lamartine, Montbellet, Péronne, Pierreclos, Prissé, La Roche-Vineuse, Sologny, Solutré-Pouilly, Uchizy, Vergisson, Vinzelles and Viré, parcels planted with vines that are excluded from the delimited parcel area of the controlled designation of origin “Mâcon” followed by the term “Villages” continue to benefit, for their harvest, from the right to the controlled designation of origin “Mâcon” followed by the term “Villages” or “Mâcon” followed by a geographical denomination until they are grubbed up and at the latest up to and including the 2020 harvest, provided that they meet the conditions laid down in the present specification. These parcels are identified by their cadastral references, their area and their planting on a list approved by the competent national committee of the National Institute of Origin and Quality at its sessions of 6 and 7 September 2006, 29 May 2008 and 3 November 2009.
+### 2° – Grape varieties and blending rules
+a) – Red and rosé wines eligible for the controlled designation of origin, whether or not followed by a geographical denomination, may come from the gamay de Bouze N and gamay de Chaudenay N varieties, for vine parcels in place on 31 July 2009 and until those parcels are grubbed up.
+b) – The proportion of the gamay de Bouze N and gamay de Chaudenay N varieties, together or separately, in the blend of red and rosé wines eligible for the controlled designation of origin, whether or not followed by a geographical denomination, is less than or equal to 10 % of the blend.
+### 3° – Training methods
+a) – Planting density
+Vine parcels in place on 31 July 2009 with a planting density of between 5,000 and 7,000 plants per hectare continue to benefit, for their harvest, from the right to the controlled designation of origin until they are grubbed up.
+b) – Pruning rules
+Vine parcels in place before 31 August 1975 and pruned in the so-called “taille à queue du Mâconnais” may be pruned in such a way that, at the phenological stage corresponding to 11 or 12 leaves, each plant bears a maximum of 28 fruit-bearing shoots of the year, including 2 canes each bearing a maximum of 12 fruit-bearing shoots of the year and 2 spurs with 2 free eyes.
+### 4° – Analytical standards
+By derogation from point IX 1° of the present specification, white wines may have, after fermentation, a fermentable sugar content (glucose + fructose) greater than 4 grams per litre, up to and including the 2012 harvest.
+## XII. – Rules of presentation and labelling
+### 1° – General provisions
+Wines for which, under the terms of the present specification, the controlled designations of origin “Mâcon”, “Mâcon” followed by the term “Villages”, or “Mâcon” followed by a geographical denomination are claimed and which are presented under the said appellation may not be declared after the harvest, offered to the public, dispatched, put up for sale or sold unless, in the harvest declaration, in advertisements, on leaflets, labels, invoices and any containers whatsoever, the aforesaid controlled designations of origin are entered, accompanied by the words “Appellation d’origine contrôlée”, the whole in very conspicuous characters.
+### 2° – Particular provisions
+a) – The name of the geographical denomination follows the name of the controlled designation of origin and is written on the labels in characters whose dimensions are identical to those of the characters of the name of the controlled designation of origin.
+b) – Wines eligible for the term “primeur” or “nouveau” must be presented with the indication of the vintage.
+# CHAPTER II
+## I. – Declaration obligations
+#### 1. Prior declaration of parcel assignment
+Each operator declares to the defence and management body the list of parcels assigned to the production of the controlled designation of origin “Mâcon” followed by a geographical denomination before 31 March preceding the harvest. This declaration is renewed by tacit renewal unless the operator reports changes before 31 March preceding each harvest.
+This declaration specifies:
+- the identity of the operator;
+- its EVV or SIRET number;
+- the cooperative cellar(s) to which it may deliver;
+- for each parcel: the cadastral reference, the area and the grape variety.
+#### 2. Declaration of renunciation to produce
+Before 15 May preceding the harvest, the operator declares to the defence and management body the parcels for which it renounces producing the controlled designation of origin. The defence and management body transmits this declaration as soon as possible to the approved control body.
+#### 3. Claim declaration
+The claim declaration must be sent to the defence and management body at least fifteen days before circulation between authorised warehousekeepers or packaging, and at the latest on 1 December of the year of harvest.
+This declaration specifies in particular:
+- the designation claimed;
+- the term “primeur” or “nouveau”, or “Villages”, or the name of the geographical denomination, where applicable;
+- the volume of the wine;
+- the EVV or SIRET number;
+- the name and address of the applicant;
+- the place of storage of the wine.
+It is accompanied in particular by a copy of the harvest declaration and, as the case may be, a copy of the production declaration or an extract of the stock accounts for buyers of grapes and musts.
+#### 4. Declaration prior to transaction and collections
+Every operator wishing to sell in bulk a wine benefiting from the controlled designation of origin must make a transaction declaration for the lot concerned to the approved control body within time limits set in the control or inspection plan of between six and fifteen working days before any collection.
+This declaration, accompanied where applicable by a copy of the purchase contract, specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the identification of the containers;
+- the identity of the buyer.
+If collections are made for volumes smaller than those set out in the transaction declaration, the operator must inform the control body in writing.
+#### 5. Declaration of release for consumption
+Each lot of wine intended to be released for consumption within the meaning of Article D. 644-36-I of the Rural Code must be the subject of a declaration of release for consumption to the approved control body within minimum time limits set in the control or inspection plan of between six and fifteen working days before release for consumption.
+This declaration may also be drawn up for lots already packaged, within minimum time limits set in the control or inspection plan of between six and fifteen working days before the lots concerned are dispatched from the operator’s cellars.
+It specifies in particular:
+- the identity of the operator;
+- the EVV or SIRET number;
+- the identification of the lot;
+- the volume of the lot;
+- the lot number for wines already packaged;
+- the identification of the containers for non-packaged wines.
+#### 6. Declaration relating to the dispatch outside the national territory of a non-packaged wine
+Every operator wishing to dispatch outside the national territory a non-packaged wine benefiting from the controlled designation of origin must declare it to the approved control body within time limits set in the control or inspection plan of between six and fifteen working days before any dispatch.
+#### 7. Fallback declaration
+Every operator marketing a wine benefiting from the controlled designation of origin under a more general appellation must declare it to the defence and management body and to the approved control body:
+- at the same time as the declaration prior to transaction, if the wine is the subject of a bulk transaction after the fallback;
+- at the same time as the packaging declaration, if the wine is packaged after the fallback;
+- within time limits set in the control or inspection plan of between six and fifteen working days following the recording of the fallback in the wine register, if the wine is the subject of a fallback after packaging.
+The defence and management body and the approved control body inform, respectively and without delay, the defence and management body of the more general appellation concerned and the approved control body for the more general appellation concerned.
+#### 8. Downgrading declaration
+Every operator carrying out a downgrading of wines benefiting from the controlled designation of origin sends the defence and management body and the approved control body a quarterly summary.
+#### 9. Declaration of equipment for TSE
+Every operator holding a concentration apparatus must declare it upon purchase to the defence and management body, specifying its specifications. The defence and management body keeps an up-to-date list of operators holding such equipment and sends it each year to the National Institute of Origin and Quality at the latest on 1 September.
+Every operator using a service provider declares it to the defence and management body, which draws up the list of these operators and sends it each year to the National Institute of Origin and Quality at the latest on 1 September.
+#### 10. Planting or replanting of vine parcels on slopes at a minimum density of 5,000 plants per hectare
+Before any planting or replanting, on slopes, of vine parcels at a minimum density of 5,000 plants per hectare, a declaration must be sent by the operator to the defence and management body at least four weeks before the planned start date of the works. The defence and management body transmits, without delay, a copy of this declaration to the approved control body.
+#### 11. Reworking of parcels
+Before any development or any works liable to modify the morphology, the subsoil, the arable layer (including any addition of exogenous soil) or the structuring elements of the landscape of a parcel intended for the production of the controlled designation of origin, with the exception of classic deep-ploughing works, a declaration must be sent by the operator to the defence and management body at least 4 weeks before the planned start date of the works. The defence and management body transmits, without delay, a copy of this declaration to the services of the National Institute of Origin and Quality.
+#### 12. Derogatory system
+Operators carrying out at least five transactions per week and/or at least forty-two preparations for release for consumption within the meaning of Article D. 644-36-I of the Rural Code per year may group their transaction, release-for-consumption and fallback declarations. In this case, they must provide the approved control body with their forecast of transactions, releases for consumption and fallbacks, then send the quarterly summary of all the declarations referred to in points 4, 5 and 7 above.
+## II. – Keeping of registers
+#### 1. General plan of the storage and vinification places
+Every vinifying operator must keep up to date and available for the approved control body a general plan of the storage and vinification places, allowing in particular the number, designation and capacity of the containers to be identified.
+#### 2. TSE register
+Every operator carrying out partial concentration of musts must keep an up-to-date TSE register including in particular:
+- the identification of the initial lot (volume and potential alcoholic strength);
+- the volume of water evaporated;
+- the identification of the lot after concentration (volume and potential alcoholic strength).
+# CHAPTER III
+## I. – Main points to be checked and evaluation methods
+| MAIN POINTS TO BE CHECKED | EVALUATION METHODS |
+| **A – STRUCTURAL RULES** | < |
+| A1 – Location of operators within the immediate proximity area | Documentary check |
+| A2 – Belonging of the planted parcels to the delimited area | Documentary check (up-to-date CVI parcel record); visit in the field |
+| A3 – Claimable production potential (grape varieties and proportion rules, monitoring of derogatory measures, planting density, plant material) | Documentary check and field visits (details in the inspection plan) |
+| A4 – Processing, ageing, packaging and storage facilities | < |
+| Vat capacity | Documentary check: general plan of the storage places; on-site visit |
+| Ageing (temperature control and length of ageing) | Documentary check: temperature records and packaging declaration; on-site visit |
+| State of upkeep of the cellar and equipment (hygiene) | On-site visit |
+| Protected storage place and storage conditions (T °C) | Documentary check: temperature records; on-site visit |
+| **B – RULES LINKED TO THE PRODUCTION CYCLE** | < |
+| B1 – Management of the vineyard | < |
+| Pruning | Visit in the field |
+| Average maximum load per parcel | Visit in the field |
+| Cultivation and sanitary condition of the vine (sanitary condition of foliage and berries, upkeep of the soil, upkeep of the trellising) | Visit in the field |
+| B2 – Harvest, transport and ripeness of the grapes | < |
+| Ripeness of the grapes | Documentary check: must analysis report; visit in the field |
+| B3 – Processing, elaboration, ageing, packaging, storage | < |
+| Oenological practices or treatments (enrichment, prohibited practices…) | Documentary check: declaration of equipment and TSE register, enrichment, acidification and de-acidification register; on-site visit |
+| Stock accounts, analytical traceability | Documentary check: keeping of registers by operators, analysis reports |
+| B4 – Harvest declaration and claim declaration | < |
+| Missing vines | Documentary check (declaration obligations); visit in the field |
+| Authorised yield | Documentary check (check of declarations, monitoring of authorisations granted by the INAO services after their investigation of the operator’s individual request) |
+| VSI, volumes harvested in excess of the authorised yield | Documentary check: monitoring of destruction certificates |
+| Claim declaration | Documentary check and on-site visit: compliance with procedures and time limits, consistency with the harvest and production declarations; check of the release of products into circulation |
+| **C – CHECKS ON THE PRODUCTS** | < |
+| Packaged wines | Analytical and organoleptic examination before or after packaging |
+| Non-packaged wines | Analytical and organoleptic examination at transaction |
+| Non-packaged wines intended for dispatch outside the national territory | Analytical and organoleptic examination of all lots |
+| **D – PRESENTATION OF THE PRODUCTS** | < |
+| Labelling | On-site visit |
+## II. – References concerning the control structure
+Institut National de l’Origine et de la Qualité (INAO)
+TSA 30003, 93555 MONTREUIL-SOUS-BOIS Cedex
+Tel.: (33) (0)1.73.30.38.00 – Fax: (33) (0)1.73.30.38.04 – Email: info@inao.gouv.fr
+The INAO is the control authority ensuring compliance with the provisions of the present specification for products benefiting from the controlled designation of origin.

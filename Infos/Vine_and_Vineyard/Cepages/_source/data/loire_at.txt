@@ -1,0 +1,97 @@
+= Anjou | Val de Loire | CDC Anjou : Cabernet d'Anjou
+Blanc: chenin B/P; chardonnay B/A ≤20 %; sauvignon B/A ≤20 %
+Rouge: cabernet franc N/P; cabernet-sauvignon N/P; grolleau N/A ≤20 %; pineau d'Aunis N/A ≤10 %
+Anjou Gamay: gamay N
+Mousseux blanc: chenin B/P ≥70 %; cabernet franc N/A; cabernet-sauvignon N/A; chardonnay B/A ≤10 %; gamay N/A; grolleau N/A; grolleau gris G/A; pineau d'Aunis N/A
+Mousseux rosé: cabernet franc N; cabernet-sauvignon N; gamay N; grolleau N; grolleau gris G; pineau d'Aunis N
+
+= Cabernet d'Anjou | Val de Loire | CDC Anjou : Cabernet d'Anjou
+Rosé demi-sec: cabernet franc N; cabernet-sauvignon N
+
+= Rosé d'Anjou | Val de Loire | CDC Anjou : Cabernet d'Anjou
+Rosé: cabernet franc N; cabernet-sauvignon N; cot N; gamay N; grolleau N; grolleau gris G; pineau d'Aunis N
+
+= Bonnezeaux | Val de Loire | CDC Bonnezeaux
+Blanc liquoreux: chenin B
+
+= Bourgueil | Val de Loire | CDC Bourgueil
+Rouge, Rosé: cabernet franc N/P majoritaire; cabernet-sauvignon N/A ≤10 %
+
+= Cheverny | Val de Loire | CDC Cheverny
+Blanc: sauvignon B/P; sauvignon gris G/P; chardonnay B/C ≥16 %; chenin B/C; orbois B/C
+Rouge, Rosé: pinot noir N/P ≥50 %; gamay N/C ≥16 %; cabernet franc N/A; cot N/A
+! Toujours un assemblage : principaux ≥50 % + complémentaires ≥16 %.
+
+= Chinon | Val de Loire | CDC Chinon
+Rouge, Rosé: cabernet franc N/P majoritaire; cabernet-sauvignon N/A ≤10 %
+Blanc: chenin B
+
+= Coteaux du Loir | Val de Loire | CDC Coteaux du Loir
+Rouge: pineau d'Aunis N/P ≥65 % (vignoble); cabernet franc N/A; cot N/A; gamay N/A
+Rosé: pineau d'Aunis N/P ≥65 % (vignoble); cot N/A; gamay N/A; grolleau N/A
+Blanc: chenin B
+
+= Coteaux du Vendômois | Val de Loire | CDC Coteaux du Vendomois
+Blanc: chenin B/P; chardonnay B/A <20 %
+Rouge: pineau d'Aunis N/P >50 %; cabernet franc N/C 10–40 %; pinot noir N/C 10–40 %; gamay N/A <20 %
+Gris: pineau d'Aunis N
+
+= Coteaux de Saumur | Val de Loire | CDC Coteaux-de-Saumur
+Blanc moelleux: chenin B
+
+= Coteaux de l'Aubance | Val de Loire | CDC Coteaux-de-l-Aubance
+Blanc moelleux: chenin B
+
+= Coteaux du Layon | Val de Loire | CDC Coteaux-du-Layon
+Blanc moelleux, liquoreux: chenin B
+
+= Cour-Cheverny | Val de Loire | CDC Cour-Cheverny
+Blanc: romorantin B
+
+= Crémant de Loire | Val de Loire | CDC Crémant-de-Loire
+Blanc, Rosé effervescent: chardonnay B; chenin B; orbois B; cabernet franc N; grolleau N; grolleau gris G; pinot noir N; cabernet-sauvignon N ≤30 %; pineau d'Aunis N ≤30 %
+
+= Jasnières | Val de Loire | CDC Jasnières
+Blanc: chenin B
+
+= Montlouis-sur-Loire | Val de Loire | CDC Montlouis sur Loire
+Blanc tranquille et mousseux: chenin B
+
+= Quarts de Chaume | Val de Loire | CDC Quarts-de-Chaume
+Blanc liquoreux: chenin B
+
+= Rosé de Loire | Val de Loire | CDC Rosé-de-Loire
+Rosé: cabernet franc N; cabernet-sauvignon N; gamay N; grolleau N; grolleau gris G; pineau d'Aunis N; pinot noir N
+
+= Saint-Nicolas-de-Bourgueil | Val de Loire | CDC Saint-Nicolas de Bourgueil
+Rouge, Rosé: cabernet franc N/P majoritaire; cabernet-sauvignon N/A ≤10 %
+
+= Saumur-Champigny | Val de Loire | CDC Saumur Champigny
+Rouge: cabernet franc N/P; cabernet-sauvignon N/A ≤15 %; pineau d'Aunis N/A ≤15 %
+
+= Saumur | Val de Loire | CDC Saumur
+Blanc: chenin B
+Rouge: cabernet franc N/P; cabernet-sauvignon N/A ≤30 %; pineau d'Aunis N/A ≤30 %
+Rosé: cabernet franc N; cabernet-sauvignon N
+Mousseux blanc, rosé: chenin B ≥60 % (blanc); cabernet franc N ≥60 % (rosé); chardonnay B; sauvignon B ≤10 %; cabernet-sauvignon N; gamay N; grolleau gris G; grolleau N; pineau d'Aunis N; pinot noir N
+! Dénomination Puy-Notre-Dame (rouge) : cabernet franc + cabernet-sauvignon ≤15 %.
+
+= Savennières | Val de Loire | CDC Savennières
+Blanc: chenin B
+
+= Touraine | Val de Loire | CDC Touraine
+Blanc: sauvignon B/P majoritaire; sauvignon gris G/A ≤20 %
+Rouge: cabernet franc N/P; cot N/P; cabernet-sauvignon N/A; gamay N/A; pinot noir N/A
+Touraine Gamay, Primeur: gamay N/P ≥85 %; cabernet franc N/A; cabernet-sauvignon N/A; cot N/A; pinot noir N/A
+Rosé: cabernet franc N; cabernet-sauvignon N; cot N; gamay N; grolleau N; grolleau gris G; meunier N; pineau d'Aunis N; pinot gris G; pinot noir N
+Mousseux, pétillant: chardonnay B; chenin B; orbois B; cabernet franc N; cabernet-sauvignon N; cot N; gamay N; grolleau N; grolleau gris G; meunier N; pineau d'Aunis N; pinot gris G; pinot noir N
+! Rosés : au moins 2 cépages, aucun >70 %. Dénominations Amboise, Azay-le-Rideau, Chenonceaux, Mesland, Oisly.
+
+= Valençay | Val de Loire | CDC Valençay
+Blanc: sauvignon B/P ≥70 %; chardonnay B/A; orbois B/A; sauvignon gris G/A
+Rouge: cot N/P ≥10 %; gamay N/P 30–60 %; pinot noir N/P ≥10 %; cabernet franc N/A ≤20 %
+Rosé: cot N/P; gamay N/P; pinot noir N/P; cabernet franc N/A ≤20 %; pineau d'Aunis N/A ≤30 %
+! Rouges et rosés : les 3 cépages principaux obligatoires.
+
+= Vouvray | Val de Loire | CDC Vouvray
+Blanc tranquille et mousseux: chenin B/P; orbois B/A ≤5 %

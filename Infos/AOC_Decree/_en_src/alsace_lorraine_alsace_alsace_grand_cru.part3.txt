@@ -1,0 +1,255 @@
+@define NATA
+The controlled designation of origin “Alsace grand cru {1}” forms an integral part of the Alsace vineyard, its geographical area being set in the heart of it. It is delimited within the area of the controlled designation of origin “Alsace”.
+@enddef
+@define NATC
+The controlled designation of origin “Alsace grand cru {1}” is characterised by soils belonging to a single geo-pedological unit associated with a most favourable mesoclimate.
+@enddef
+@define CAU1M
+Drawing on the favourable mesoclimatic conditions that characterise the Alsace vineyard, the controlled designation of origin “Alsace grand cru {1}” exploits one of its best locations. Nestled within the picturesque Alsace landscape, the vineyard allows the production of wines of high expression, with a thousand nuances, a marked character and a unique personality.
+@enddef
+@define CAU2A
+The excellent late-season climatic conditions, favourable to concentration on the vine and to the development of noble rot, allow the production of wines from overripe harvests. The ageing provided for in the specification allows the wines to improve.
+@enddef
+@define CAU2B
+By adopting rigorous production rules, such as maintaining a large leaf area and manual harvesting, Alsace wine-growers preserve the assertive character of wines recognised for their complexity and their aptitude for long keeping. They constitute the top of the range of this region. They are wines that command higher prices than the wines of the controlled designation of origin “Alsace”.
+@enddef
+@define BARTH
+The work by Médard Barth, “Der Rebbau des Elsass und die Absatzgebieten seiner Weine”, written in 1958, already praises this lieu-dit, recognised today.
+@enddef
+@define STD
+@@HUM1
+@@HUM2 {1} | {2} | riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+@@QUAL Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling
+#### 3° – Causal interactions
+@enddef
+@define H1
+### “Alsace grand cru {1}”
+#### 1° – Information on the geographical area
+a) – Description of the natural factors contributing to the link
+@enddef
+@define HB
+b) – Description of the human factors contributing to the link
+@enddef
+@@H1 Froehn
+@@NATA Froehn
+The Vosges massif offering protection against the humid, cool north-westerly winds, the vineyard finds its ideal conditions of establishment here. The Froehn is a terroir unique of its kind, since it spreads over 180°, from south-west to east, at the foot of the small medieval village of Zellenberg (“cell on the mountain”). The delimitation therefore refers to this typical landscape.
+@@NATC Froehn
+The grand cru is well ventilated, with significant temperature variations in spring and autumn. Situated right in a fault zone, its geology is predominantly calcareous (marls, sandy limestone, carbonated sandstone), giving rich, deep soils that do not suffer from drought. These types of soil, combined with the climate, allow early and even ripening of the grapes.
+@@HB
+@@HUM1
+@@HUM2 Froehn | 1992 | riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+White wines for laying down par excellence, they are characterised by a marked freshness based on a dominant tartaric acidity linked to good ripeness of the grapes. The name of the appellation may be supplemented by customary denominations, provided that the wines come exclusively from the varieties that may be designated under the denomination concerned. They show great substance, much complexity and strong aromatic power with various nuances. Of great length on the palate, they gain in complexity over time.
+Four types of wine can be distinguished:
+- dry, mineral wines: often golden yellow with green highlights, they have a charming fruitiness while provoking strong salivation, marked by a long and complex acidity;
+- aromatic, fruity, rich, full-bodied wines: often of high ripeness and golden in colour, they frequently prove rich in sugar while retaining an airy, digestible character;
+- wines benefiting from the term “vendanges tardives” often display very exotic aromas of candied fruit, with a fresh finish;
+- wines benefiting from the term “sélection de grains nobles” are more concentrated, powerful wines, often showing aromas of fruit paste.
+These two types of wine show a deep colour intensity ranging up to amber yellow. Wines benefiting from these last two terms are sweet wines of very long keeping. They are of remarkable concentration and great aromatic persistence. The terms “vendanges tardives” and “sélection de grains nobles” are systematically followed by the denominations Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling, and the indication of the vintage is compulsory.
+#### 3° – Causal interactions
+@@CAU1 Froehn
+The calcareous dominance and the depth of the soils give aromatic, fruity, rich and complex wines with the same expression of acidity followed by a significant minerality that increases with ageing, whatever the level of sweetness. The Liassic marls over ferruginous sandy limestones, which are the particular feature of the Froehn grand cru, give breadth and generosity to the wines in their youth and minerality as they age. The attack is tight and centred, then opens up with amplitude, its substance enveloping the acidity. The powerful character of the marls gives a powerful, enveloping structure to the rich wines, accompanied by a slight bitterness that supports the length of the wine. Wines of great ripeness take a long time to open up. Full of subtlety, their palates are often marked by a fine salinity.
+@@CAU2
+@@BARTH
+@@H1 Furstentum
+@@NAT Furstentum
+Its amphitheatre-like situation protects this lieu-dit from the winds. The marl-limestone-sandstone soils accumulate heat, creating a Mediterranean-type mesoclimate.
+@@HB
+@@STD Furstentum | 1992
+@@CAU1 Furstentum
+The protected situation of the grand cru and the type of soil give the wines a great aromatic diversity with spicy and floral notes, before allowing more mineral touches to come through. The citrus-type acidity is accompanied by a tannic structure that gives the wines their great ageing potential.
+@@CAU2
+@@H1 Geisberg
+@@NATA Geisberg
+The Vosges massif offering protection against the humid, cool north-westerly winds, the vineyard finds its ideal conditions of establishment on the well-exposed, steeply sloping hillsides of the sub-Vosgian hills. The delimitation therefore refers to this typical landscape.
+@@NATC Geisberg
+Perfectly homogeneous geologically, the grand cru stems from a substratum formed essentially of dolomites and dolomitic marls, overlain by variegated sandy marls with gypsum at the top. The soils are clayey and stony. The vineyard is situated on steep slopes, magnificently exposed to the sun (full south) and marked by the presence of numerous low walls. The cool night winds (“Tahlwendala”) coming out of the valley bring cool summer temperatures that allow slow ripening of the harvest.
+@@HB
+@@STD Geisberg | 1983
+@@CAU1 Geisberg
+The pedological characteristics linked to the situation at the mouth of the valley favour the salinity and the acid backbone of the wines, leading to balanced, racy wines that are long on the palate and bring great finesse. The years bring them minerality and complexity.
+@@CAU2
+@@BARTH
+@@H1 Gloeckelberg
+@@NAT Gloeckelberg
+Within a narrow, closed valley and on acid brown soils that are coarse, sandy and naturally free-draining, sometimes more clayey, the grand cru combines conditions conducive to early ripening, favoured by the rapid warming of the soils and its position sheltered from the winds.
+@@HB
+@@STD Gloeckelberg | 1983
+@@CAU1 Gloeckelberg
+The early ripening conditions mean that the wines are ample, rich and complex, made from overripe and sometimes botrytised grapes. The fine harmony between sugars and acids, which asserts itself over time, should be emphasised.
+@@CAU2
+@@H1 Goldert
+@@NAT Goldert
+The geological substratum consists of oolitic limestone in the upper part, and of conglomerates covered by soliflucted Quaternary deposits in the lower part of the slope, where debris of limestone and sandstone is embedded in a clay matrix. The nature of the soil, which ensures good drainage, combined with the mesoclimate, preserves the sanitary condition of the grapes late into the season.
+@@HB
+@@HUM1
+@@HUM2 Goldert | 1983 | riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+White wines for laying down par excellence, they are characterised by a marked freshness based on a dominant tartaric acidity linked to good ripeness of the grapes. The name of the appellation may be supplemented by customary denominations, provided that the wines come exclusively from the varieties that may be designated under the denomination concerned. They show great substance, much complexity and strong aromatic power with various nuances. Of great length on the palate, they gain in complexity over time.
+Three types of wine can be distinguished:
+- aromatic, fruity, rich, full-bodied wines. These types of wine show a deep colour intensity ranging up to golden yellow.
+- wines benefiting from the term “vendanges tardives” often display very exotic aromas of candied fruit, with a fresh finish;
+- wines benefiting from the term “sélection de grains nobles” are more concentrated, powerful wines, often showing aromas of fruit paste.
+These two types of wine show a deep colour intensity ranging up to amber yellow. Wines benefiting from these last two terms are sweet wines of very long keeping. They are of remarkable concentration and great aromatic persistence. The terms “vendanges tardives” and “sélection de grains nobles” are systematically followed by the denominations Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling, and the indication of the vintage is compulsory.
+#### 3° – Causal interactions
+@@CAU1 Goldert
+The mesoclimate allows the wines to be built on a structuring acidity. They are fruity, rich, voluminous and complex.
+@@CAU2
+@@H1 Hatschbourg
+@@NAT Hatschbourg
+Situated on a hillside, the grand cru rests on a soil with a marl-limestone substratum containing abundant gravel, which ensures excellent drainage.
+@@HB
+@@STD Hatschbourg | 1983
+@@CAU1 Hatschbourg
+The rich, free-draining soils give the wines an aromatic, fruity character. They are full-bodied, rich, complex and opulent, with good ageing potential.
+@@CAU2
+@@H1 Hengst
+@@NAT Hengst
+The grand cru is established on a slender ridge in the commune of Wintzenheim. The deep, stony soil consists essentially of Oligocene conglomerates and calcareous marls.
+@@HB
+@@HUM1
+As a translation of this usage, the controlled designation of origin “Alsace grand cru Hengst” was recognised in 1983 for white wines and then in 2022 for red wines. The wines come from parcels that have been the subject of a rigorous and precise delimitation inspired by the historical cores of production. For white wines, the only varieties selected are the following: riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B. They may be vinified and marketed under their respective denomination. For red wines, only pinot noir N is authorised.
+Since the law of 5 July 1972, the wines must be bottled within the Bas-Rhin and Haut-Rhin departments, traditionally in the “Vin du Rhin”-type flute described in the decree of 1955.
+The vineyard, trained on high trellises in order to benefit from an optimal leaf area, is subject to more restrictive production conditions than the controlled designation of origin “Alsace”. The minimum planting density is 4,500 plants per hectare for the production of white wine and 5,500 plants per hectare for the production of red wine. The grapes are harvested by hand. Wines benefiting from the terms “vendanges tardives” and “sélection de grains nobles” come from overripe and fragile grapes, also harvested by hand. These wines must undergo a minimum ageing period of 18 months. The red wines, for their part, are not enriched in any way. They must undergo a minimum ageing period of 11 months.
+#### 2° – Information on the quality and characteristics of the products
+*The white wines:*
+@@QUAL Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling
+*The red wines:*
+The red wines are characterised by their power and depth; they are racy and of very long keeping. With a fine ruby-red colour, the wines stand out on the nose for their complexity, with notes of red fruit and spices. On the palate their texture is rich and elegant, with silky tannins. Of great structure, the red wines of the “Hengst” grand cru have a long, fine finish and gain in expression over time.
+#### 3° – Causal interactions
+@@CAU1 Hengst
+The soil and climate situation gives the wines a solid, well-built character, conducive to ageing. The wines are powerful, complex and dense, with a finish marked by a ripe acidity. This marl-limestone terroir, combined with a unique microclimate, allows perfect ripeness of the grapes, giving racy red wines with silky tannins.
+@@CAU2
+@@BARTH
+@@H1 Kaefferkopf
+@@NATA Kaefferkopf
+The Vosges massif offering protection against the humid, cool north-westerly winds, the vineyard finds its ideal conditions of establishment on the well-exposed (east to south-west), sloping hillsides of the sub-Vosgian hills. The delimitation therefore refers to this typical landscape.
+The controlled designation of origin “Alsace grand cru Kaefferkopf” is characterised by soils associated with a most favourable mesoclimate. Facing south-east and established on the six hills (“Kopf”) overlooking the commune of Ammerschwihr, the lieu-dit is cool, with slow ripening of the grapes. The brown soils, derived from various parent rocks, are mostly deep and saturated in calcium and magnesium.
+@@HB
+@@HUM1
+The name Kaefferkopf appears in 1338 in the land register (urbarium) of the abbey of Pairis. Several works and theses cite it during the 19th and 20th centuries. In 1932, the Kaefferkopf was the first lieu-dit to be recognised by a judicial delimitation. The Confrérie des Amis d’Ammerschwihr et du Kaefferkopf, which holds a large wine library, has ensured its renown since 1984.
+As a translation of this usage, the controlled designation of origin “Alsace grand cru Kaefferkopf” was recognised in 2007. The wines come from parcels that have been the subject of a rigorous and precise delimitation inspired by the historical cores of production. This recognition was built around the white varieties. The varieties selected are the following: riesling B, gewurztraminer Rs, pinot gris G and, as accessory varieties, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B. The historical usage of the Kaefferkopf is a harmonious blend of the different varieties selected. They may also be vinified and marketed under their respective denomination.
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+White wines for laying down par excellence, they are characterised by a marked freshness based on a dominant tartaric acidity linked to good ripeness of the grapes. The name of the appellation may be supplemented by customary denominations, provided that the wines come exclusively from the varieties that may be designated under the denomination concerned. They show great substance, much complexity and strong aromatic power with various nuances. Of great length on the palate, they gain in complexity over time.
+Four types of wine can be distinguished:
+- dry, mineral wines;
+- aromatic, fruity, rich, full-bodied wines.
+These two types of wine show a deep colour intensity ranging up to golden yellow.
+- Wines benefiting from the term “vendanges tardives” often display very exotic aromas of candied fruit, with a fresh finish.
+- Wines benefiting from the term “sélection de grains nobles” are more concentrated, powerful wines, often showing aromas of fruit paste.
+These two types of wine show a deep colour intensity ranging up to amber yellow. Wines benefiting from these last two terms are sweet wines of very long keeping. They are of remarkable concentration and great aromatic persistence. The terms “vendanges tardives” and “sélection de grains nobles” are systematically followed by the name of one of the complementary denominations, and the indication of the vintage is compulsory.
+#### 3° – Causal interactions
+@@CAU1 Kaefferkopf
+Protection from cold winds and from excessive sun exposure, owing to its unique situation, and the saturation of its soils in calcium and magnesium give powerful, well-structured, complex and rich wines with a fine freshness on the palate. These characters, particularly perceptible in the blended wines, express themselves remarkably after a few years of ageing. The wines then give way to a strong personality underlined by fine aromatic and saline length.
+@@CAU2
+@@BARTH
+@@H1 Kanzlerberg
+@@NAT Kanzlerberg
+The grand cru is situated at the edge of the closed valley of the Bergenbach and protected to the west by the Taennchel massif. Rainfall is low. The fairly steep slopes of the Kanzlerberg, at the foot of which flows the Bergenbach stream, face south and south-west. They become gentler in the upper part, forming a small plateau on the southern side at an average altitude of 250 metres. The grey marl-limestone soil is strongly marked by its particular composition of grey and black Keuper marls with gypsum, over a rock of silicified limestone made up of crystals of fluorite and baryte, the finest in Alsace. These characteristics make it a late-ripening lieu-dit with a long ripening period.
+@@HB
+@@HUM1
+Historically, the cultivation of the vine is already mentioned here in 1312, the date of the suppression of the Order of the Templars, which at this spot owned the commandery of the Tempelhof. This estate was taken over by the Knights of St John of Jerusalem of the Order of Malta, whence the name of the lieu-dit, “Mont St Jean”. The work by Médard Barth, “Der Rebbau des Elsass und die Absatzgebieten seiner Weine”, written in 1958, already praises this lieu-dit, recognised today.
+As a translation of this usage, the controlled designation of origin “Alsace grand cru Kanzlerberg” was recognised in 1983. The Kanzlerberg grand cru has the smallest area (3.40 ha) of the Alsace grands crus. The wines come from parcels that have been the subject of a rigorous and precise delimitation inspired by the historical cores of production. This recognition was built around the white varieties. The only varieties selected are the following: riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B. They may be vinified and marketed under their respective denomination.
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+@@QUAL Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling
+#### 3° – Causal interactions
+@@CAU1 Kanzlerberg
+The vines of the Kanzlerberg follow the incline of the land, exposing their fruit to the summer heat, tempered by the coolness of the Bergenbach stream and the light breeze from the valley floor. The yield is regular. Physiological ripeness is reached at a minimum degree, and the site is regularly capable of great ripeness. This late situation of the Kanzlerberg grand cru and the exceptional geology of the site – gypsum-bearing marl at the surface over a base of sedimentary rocks with multiple crystals in the subsoil – make the wines very powerful, with a foundational, broad, complex and mineral acidity. They remain discreet and elegant in their youth, and reveal all their complexity and freshness after a few years of ageing.
+@@CAU2A
+By adopting rigorous production rules, such as maintaining a large leaf area and manual harvesting, Alsace wine-growers preserve the assertive character of wines recognised for their complexity and their aptitude for long keeping. These wines, with a unique and very high ageing potential, develop qualitatively over several decades while retaining fine vitality, the energy of the terroir. They constitute the top of the range of this region. The wines of the Kanzlerberg are among the most highly valued wines of the Alsace vineyard.
+@@H1 Kessler
+@@NAT Kessler
+The “Kessler”, situated on the east-facing flank of the “Unterlinger” hill, forms at its centre an amphitheatre that shelters it from north winds and from the cold air currents brought down by the Guebwiller valley. This grand cru rests on a Vosges sandstone substratum of the Buntsandstein, which has given reddish sandy-clay soils. At its base appears a linear outcrop of shelly limestone (Muschelkalk) covered by sandstone colluvium. The landscape is marked by the cultivation of vines on terraces and a succession of stone walls.
+@@HB
+@@STD Kessler | 1983
+@@CAU1 Kessler
+The homogeneity of the substratum allows the different varieties to express all their specific features, with wines that are dry and mineral, marked by liveliness and by floral and fruity aromas that are persistent and harmonious.
+@@CAU2
+@@BARTH
+@@H1 Kirchberg de Ribeauvillé
+@@NAT Kirchberg de Ribeauvillé
+Developed on a substratum made up, lower down, of Triassic dolomitic marls and dolomites of the lower shelly limestone (Muschelkalk) and, higher up, of variegated sandy and gypsiferous marls of the middle shelly limestone (Muschelkalk), the soils are clayey and generally very stony. Despite the very good sunshine and the slope, ripening of the grapes remains late, given the cool night valley winds (“Tahlwendala”) coming from the valley behind Ribeauvillé and descending from the Vosges. The relatively long ripening of the grapes occasionally allows noble rot to develop and favours the aromatic complexity of the wines.
+@@HB
+@@STD Kirchberg de Ribeauvillé | 1983
+@@CAU1M Kirchberg de Ribeauvillé
+Marked by strong sunshine and by a slow, long ripening due to the Tahlwendala, the wines are mostly aromatic, balanced, rich and complex on the palate, with fine salinity and marked by a firm acid backbone giving them balance and length. Spicy notes are quite frequently present on the nose. The years bring them minerality and complexity.
+@@CAU2
+@@BARTH
+@@H1 Kitterlé
+@@NAT Kitterlé
+At the outlet of the Lauch valley and north of Guebwiller, the Kitterlé forms a spur on the Unterlinger massif overlooking the Alsace plain. This grand cru offers various exposures: south, south-east and south-west. Its substratum is essentially formed of coarse Vosges sandstone and quartzite conglomerate of the middle Buntsandstein, as well as sandstone-volcanic ground belonging to the Carboniferous greywacke at the western end. The landscape is marked by the cultivation of vines on terraces and a succession of stone walls.
+@@HB
+@@STD Kitterlé | 1983
+@@CAU1 Kitterlé
+The sandstone and the very good exposure mark the wines with finesse of aroma and great concentration.
+@@CAU2
+@@BARTH
+@@H1 Mambourg
+@@NAT Mambourg
+Situated at the outlet of the Kaysersberg valley, on one of the hillsides projecting furthest into the plain, this lieu-dit thus benefits from a mesoclimate marked by small temperature ranges, far from the influence of the Vosges massif and enjoying maximum sunshine. It is one of the earliest-ripening hillsides in Alsace, with the particular feature of a small temperature range. The small parcels, generally planted in the direction of the slope, are interspersed with dry-stone walls. The calcium-magnesium soils, derived from Oligocene calcareous conglomerates and marls, are favourable to deep rooting and not conducive to very high yields. Production is regular and not very sensitive to the vintage effect. Drought risks are very rare.
+@@HB
+@@HUM1
+The work by Médard Barth, “Der Rebbau des Elsass und die Absatzgebieten seiner Weine”, written in 1958, already praises this lieu-dit, recognised today. History reveals that the wines of the Mambourg were renowned as early as 783. The first altar wine mentioned in Alsace at that time is said to have come from the Mambourg. The divine character of the terroir indeed appears as early as the Carolingian era, in view of the interest shown in it by churchmen. In the 10th century, seven abbeys, three of them non-Alsatian, claimed possessions in the present-day Mambourg.
+@@HUM2 Mambourg | 1983 | riesling B, gewurztraminer Rs, pinot gris G, muscat à petits grains blancs B, muscat à petits grains roses Rs, muscat ottonel B
+@@HUM3 4,500
+#### 2° – Information on the quality and characteristics of the products
+White wines for laying down par excellence, they are characterised by a marked freshness based on a dominant tartaric acidity linked to good ripeness of the grapes. The name of the appellation may be supplemented by customary denominations, provided that the wines come exclusively from the varieties that may be designated under the denomination concerned. They show great substance, much complexity and strong aromatic power with various nuances. Of great length on the palate, they gain in complexity over time.
+Four types of wine can be distinguished:
+- dry, mineral wines;
+- aromatic, fruity, rich, full-bodied wines, sometimes tannic.
+These two types of wine show a deep colour intensity ranging up to golden yellow.
+- Wines benefiting from the term “vendanges tardives” often display very exotic aromas of candied fruit, with a fresh finish.
+- Wines benefiting from the term “sélection de grains nobles” are more concentrated, powerful wines, often showing aromas of fruit paste.
+These two types of wine show a deep colour intensity ranging up to amber yellow. Wines benefiting from these last two terms are sweet wines of very long keeping. They are of remarkable concentration and great aromatic persistence. The terms “vendanges tardives” and “sélection de grains nobles” are systematically followed by the denominations Gewurztraminer, Muscat, Muscat Ottonel, Pinot gris and Riesling, and the indication of the vintage is compulsory.
+#### 3° – Causal interactions
+@@CAU1 Mambourg
+The sunny, warm character of the grand cru, the calcareous power of the soils and the regular water supply give the wines power and great expression, with a tannic dimension. These characters need a few years of ageing to find their balance. The wines are then intensely aromatic and marked by notes of ripe fruit and flowers, rich and opulent.
+@@CAU2
+@@H1 Mandelberg
+@@NAT Mandelberg
+The soil is marl-limestone, overlying conglomerates of the Tertiary edge of the Rhine Graben. These conglomerates include dolomite pebbles, enriching the soil with magnesium.
+@@HB
+@@STD Mandelberg | 1992
+@@CAU1M Mandelberg
+The wines develop a pronounced fruitiness and great finesse, characteristic of a calcium-magnesium soil. Their ageing potential relies on a rich, full-bodied character.
+@@CAU2
+@@BARTH
+@@H1 Marckrain
+@@NAT Marckrain
+This grand cru is situated at the tip of the long promontory bounded by the valleys of Kaysersberg and Riquewihr. Gently sloping, it is subject to a considerable temperature range. The marl-limestone soil is rich in red clay associated with sand and a high proportion of pebbles. This deep soil favours the onset of noble rot.
+@@HB
+@@STD Marckrain | 1992
+@@CAU1 Marckrain
+The deep soils, marked by limestone, make it possible to obtain powerful, fruity wines with spicy notes. The marked, ripe acidity contributes to the balance and good keeping of the wines over time.
+@@CAU2
+@@H1 Ollwiller
+@@NAT Ollwiller
+The soils, derived from conglomerates and marls, are sandy-clay to clayey, but much sandier on the colluvium. The texture of the soil is sandy, and the mesoclimate is particularly dry owing to the protection of the Freunstein and the Vieil-Armand (rainfall of 450 mm per year).
+@@HB
+@@STD Ollwiller | 1983
+@@CAU1M Ollwiller
+The clayey characteristics of the soil and the low rainfall favour wines with a supple, complex, ample structure and a marked acidity, expressing their fullness after a few years of ageing.
+@@CAU2
+@@H1 Osterberg
+@@NAT Osterberg
+The soils are marly and stony, derived from the upper shelly limestone (Muschelkalk), variegated marls and dolomitic limestones. The vineyard is fairly late-ripening as it is under the influence of winds from the Aubure valley. The often long ripening of the grapes allows the presence of noble rot.
+@@HB
+@@STD Osterberg | 1992
+@@CAU1 Osterberg
+The late situation of the grand cru contributes to obtaining a complex and well-present acidity and salinity. These characteristics make it possible to produce balanced, powerful wines without heaviness. The ageing potential of these wines is remarkable.
+@@CAU2
+@@BARTH
+@@H1 Pfersigberg
+@@NAT Pfersigberg
+The marl-limestone-sandstone soil consists of a base of hard limestone rock, covered with pebbles of varied nature but predominantly marl-limestone. Sheltered from oceanic influences by the screen of the Vosges and their forests, the grand cru occupies three hillsides. The grapes easily reach great ripeness.
+@@HB
+@@STD Pfersigberg | 1992
+@@CAU1M Pfersigberg
+The homogeneous marl-limestone soils produce rich wines with power and opulence, while retaining the fine acid backbone of their calcareous soil.
+@@CAU2

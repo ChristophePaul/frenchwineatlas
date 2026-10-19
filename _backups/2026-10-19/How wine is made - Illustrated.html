@@ -1,0 +1,738 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Wine Is Made — Illustrated</title>
+<style>
+  :root{
+    --parch:#f4ecd8; --parch2:#efe4c8; --ink:#2b2018; --ink-soft:#5c4a38;
+    --red:#7a1220; --red-lt:#a83247; --red-bg:#f6e2e2;
+    --white:#6f8b1e; --white-lt:#9bb43f; --white-bg:#eef2dd;
+    --sweet:#b8860b; --sweet-lt:#d4a72c; --sweet-bg:#f7eccf;
+    --rose:#c25b6e; --rose-lt:#dd8595; --rose-bg:#fbe6ea;
+    --brandy:#96551b; --brandy-lt:#bd7a2a; --brandy-bg:#f4e6ce;
+    --gold:#b8892b; --line:#c9b98f; --card:#fbf6e9;
+    --shadow:0 2px 6px rgba(60,40,20,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    color:var(--ink); background:var(--parch);
+    background-image:radial-gradient(circle at 20% 10%,rgba(255,255,255,.35),transparent 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,.10),transparent 55%);
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  header.top{
+    text-align:center; padding:26px 16px 10px;
+    border-bottom:3px double var(--gold);
+    background:linear-gradient(#fbf6e9,#f4ecd8);
+  }
+  .titlerow{display:flex; align-items:center; justify-content:center; gap:20px}
+  .tdeco{flex:0 0 auto; width:48px; height:56px; color:var(--gold); opacity:.9}
+  .tdeco.flip{transform:scaleX(-1)}
+  .tdeco svg{width:100%; height:100%; display:block}
+  @media(max-width:560px){ .tdeco{display:none} }
+  header.top h1{
+    margin:0; font-size:clamp(28px,5vw,46px); font-style:italic; letter-spacing:.5px;
+    font-variant:small-caps; color:var(--ink);
+  }
+  header.top p{margin:6px auto 0; max-width:640px; color:var(--ink-soft); font-size:15px}
+  .wrap{max-width:1180px; margin:0 auto; padding:16px}
+
+  /* toggle bar */
+  .tabs{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:18px 0 6px}
+  .tab{
+    cursor:pointer; border:1px solid var(--line); background:var(--card);
+    padding:9px 18px; border-radius:24px; font-size:15px; font-variant:small-caps;
+    letter-spacing:.4px; color:var(--ink-soft); transition:.15s; user-select:none;
+    font-weight:600;
+  }
+  .tab:hover{transform:translateY(-1px); box-shadow:var(--shadow)}
+  .tab[data-k="red"].on{background:var(--red); color:#fff; border-color:var(--red)}
+  .tab[data-k="white"].on{background:var(--white); color:#fff; border-color:var(--white)}
+  .tab[data-k="sweet"].on{background:var(--sweet); color:#fff; border-color:var(--sweet)}
+  .tab[data-k="rose"].on{background:var(--rose); color:#fff; border-color:var(--rose)}
+  .tab[data-k="brandy"].on{background:var(--brandy); color:#fff; border-color:var(--brandy)}
+  .hint{text-align:center; font-size:13px; color:var(--ink-soft); font-style:italic; margin:2px 0 14px}
+
+  /* layout: flows + detail panel */
+  .stage{display:grid; grid-template-columns:1fr 380px; gap:22px; align-items:start}
+  @media(max-width:900px){ .stage{grid-template-columns:1fr} }
+
+  .flows{display:flex; gap:26px; justify-content:center; flex-wrap:wrap}
+  .flow{flex:1 1 300px; min-width:270px; max-width:440px}
+  .flow h2{
+    text-align:center; font-variant:small-caps; letter-spacing:1px; margin:0 0 14px;
+    font-size:22px; padding:8px; border-radius:8px; color:#fff;
+  }
+  .flow.red h2{background:linear-gradient(var(--red-lt),var(--red))}
+  .flow.white h2{background:linear-gradient(var(--white-lt),var(--white))}
+  .flow.sweet h2{background:linear-gradient(var(--sweet-lt),var(--sweet))}
+  .flow.rose h2{background:linear-gradient(var(--rose-lt),var(--rose))}
+  .flow.brandy h2{background:linear-gradient(var(--brandy-lt),var(--brandy))}
+
+  .node{
+    position:relative; background:var(--card); border:1.5px solid var(--line);
+    border-left:6px solid var(--nc,#999); border-radius:10px; padding:10px 14px;
+    margin:0 auto; cursor:pointer; box-shadow:var(--shadow); transition:.15s; max-width:360px;
+    display:flex; align-items:center; gap:13px; text-align:left;
+  }
+  .node:hover{transform:translateX(3px); border-color:var(--nc)}
+  .node:hover .icon{transform:scale(1.08) rotate(-3deg)}
+  .node.active{outline:3px solid var(--nc); outline-offset:2px}
+  .node .icon{flex:0 0 46px; width:46px; height:46px; color:var(--nc); transition:.15s}
+  .node .icon svg{width:100%; height:100%; display:block}
+  .node .n-body{flex:1 1 auto; min-width:0}
+  .node .n-title{font-weight:700; font-size:16px; display:flex; align-items:center; gap:8px}
+  .node .n-fr{font-style:italic; color:var(--ink-soft); font-size:13px; margin-top:1px}
+  .node .n-sub{font-size:12.5px; color:var(--ink-soft); margin-top:4px}
+  .badge{
+    font-size:10px; font-variant:small-caps; letter-spacing:.5px; font-weight:700;
+    padding:1px 7px; border-radius:10px; background:var(--parch2); color:var(--ink-soft);
+    border:1px solid var(--line); white-space:nowrap;
+  }
+  .arrow{display:flex; justify-content:center; color:var(--nc,#bbb); font-size:22px; line-height:1; margin:2px 0}
+  .flow.red{--nc:var(--red)} .flow.white{--nc:var(--white)}
+  .flow.sweet{--nc:var(--sweet)} .flow.rose{--nc:var(--rose)}
+  .flow.brandy{--nc:var(--brandy)}
+
+  /* detail panel */
+  .side{position:sticky; top:14px}
+  .panel{
+    background:var(--card); border:1.5px solid var(--line);
+    border-top:5px solid var(--gold); border-radius:12px; padding:20px; box-shadow:var(--shadow);
+    min-height:220px;
+  }
+  @media(max-width:900px){ .side{position:static} }
+  .panel .d-head{display:flex; gap:15px; align-items:center; margin-bottom:8px}
+  .panel .hero{flex:0 0 62px; width:62px; height:62px}
+  .panel .hero svg{width:100%; height:100%; display:block}
+  .panel .ph{font-variant:small-caps; letter-spacing:.5px; color:var(--gold); font-size:13px; font-weight:700}
+  .panel h3{margin:2px 0 2px; font-size:24px}
+  .panel .fr{font-style:italic; color:var(--ink-soft); margin:0 0 12px; font-size:15px}
+  .panel p{margin:0 0 11px; font-size:15px}
+  .panel .why{background:var(--parch2); border-radius:8px; padding:10px 12px; font-size:14px; margin:0 0 11px}
+  .panel .why b{color:var(--red)}
+  .panel .meta{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:6px}
+  .panel .empty{color:var(--ink-soft); font-style:italic; text-align:center; padding:40px 10px}
+  .g,.gdemo{color:var(--red); border-bottom:1px dotted var(--red); cursor:help; font-weight:600}
+  .gdemo{cursor:default}
+
+  /* hover preview picture (below the detail panel) */
+  #hoverpic{
+    margin:14px 0 0; display:none; text-align:center;
+    background:var(--card); border:1.5px solid var(--line);
+    border-top:5px solid var(--red); border-radius:12px; padding:12px;
+    box-shadow:var(--shadow);
+  }
+  #hoverpic img{max-width:100%; height:auto; border-radius:8px; display:block; margin:0 auto; cursor:zoom-in}
+  #hoverpic figcaption{
+    margin-top:8px; font-variant:small-caps; letter-spacing:.5px;
+    font-size:13px; color:var(--ink-soft);
+  }
+
+  /* enlarged picture (lightbox) */
+  #bigpic{
+    position:fixed; inset:0; z-index:100; display:none;
+    align-items:center; justify-content:center; padding:24px;
+    background:rgba(20,12,6,.72);
+  }
+  #bigpic.show{display:flex}
+  .bigpic-inner{position:relative; max-width:92vw; max-height:92vh}
+  .bigpic-inner img{
+    max-width:92vw; max-height:92vh; width:auto; height:auto; display:block;
+    border-radius:10px; border:3px solid var(--card); box-shadow:0 10px 40px rgba(0,0,0,.5);
+  }
+  #bigpic-close{
+    position:absolute; top:-16px; right:-16px; width:40px; height:40px; padding:0;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%; border:2px solid var(--card); background:var(--red); color:#fff;
+    font-size:24px; line-height:1; cursor:pointer; box-shadow:var(--shadow);
+  }
+  #bigpic-close:hover{background:var(--red-lt)}
+
+  /* prose + glossary */
+  section.prose{margin-top:40px; border-top:3px double var(--gold); padding-top:20px}
+  section.prose h2{font-variant:small-caps; letter-spacing:.5px; text-align:center; font-size:26px; margin:0 0 6px}
+  details.acc{background:var(--card); border:1px solid var(--line); border-radius:9px; margin:8px 0; overflow:hidden}
+  details.acc>summary{cursor:pointer; padding:12px 16px; font-weight:700; font-size:17px; list-style:none; display:flex; justify-content:space-between; align-items:center}
+  details.acc>summary::-webkit-details-marker{display:none}
+  details.acc>summary::after{content:"+"; color:var(--gold); font-size:22px; font-weight:400}
+  details.acc[open]>summary::after{content:"–"}
+  details.acc .body{padding:0 16px 14px; font-size:15px; color:var(--ink)}
+  details.acc.red>summary{border-left:6px solid var(--red)}
+  details.acc.white>summary{border-left:6px solid var(--white)}
+  details.acc.sweet>summary{border-left:6px solid var(--sweet)}
+
+  .glist{columns:2; column-gap:26px}
+  @media(max-width:640px){ .glist{columns:1} }
+  .glitem{break-inside:avoid; margin:0 0 12px; padding:0 0 0 2px}
+  .glitem dt{font-weight:700; color:var(--red)}
+  .glitem dd{margin:1px 0 0; font-size:14px; color:var(--ink)}
+  .glitem dd .en{color:var(--ink-soft); font-style:italic}
+
+  footer{text-align:center; color:var(--ink-soft); font-size:13px; padding:26px 16px 40px}
+
+  /* tooltip */
+  #tip{position:fixed; z-index:50; max-width:260px; background:#2b2018; color:#f4ecd8;
+    font-size:13px; padding:8px 11px; border-radius:8px; box-shadow:0 4px 14px rgba(0,0,0,.35);
+    pointer-events:none; opacity:0; transition:opacity .12s; line-height:1.4}
+  #tip b{color:var(--sweet-lt)}
+</style>
+
+<header class="top">
+<!--fw-theme:start--><script src="../../assets/theme.js"></script><!--fw-theme:end-->
+  <div class="titlerow">
+    <span class="tdeco" id="deco1"></span>
+    <h1>How Wine Is Made</h1>
+    <span class="tdeco flip" id="deco2"></span>
+  </div>
+  <p>From vine to bottle — the winemaker's road for each style of wine.
+     Tap any step to open the details, hover the <span class="gdemo">underlined terms</span> for a quick definition.</p>
+</header>
+
+<div class="wrap">
+  <div class="tabs" id="tabs">
+    <div class="tab" data-k="red">Red</div>
+    <div class="tab" data-k="white">White</div>
+    <div class="tab" data-k="sweet">Sweet &amp; Late-Harvest</div>
+    <div class="tab" data-k="rose">Rosé</div>
+    <div class="tab" data-k="brandy">Brandy</div>
+  </div>
+  <div class="hint">Showing: click <b>Red</b> and <b>White</b> together for the classic side-by-side, or switch to Sweet / Rosé.</div>
+
+  <div class="stage">
+    <div class="flows" id="flows"></div>
+    <div class="side">
+      <aside class="panel" id="panel">
+        <div class="empty" id="empty">Select a step in the flow to read what happens, why it matters,<br>and its French name.</div>
+        <div id="detail" style="display:none"></div>
+      </aside>
+      <figure id="hoverpic">
+        <img src="Images/Red%20Wine/Harvesting.png" alt="Harvesting the grapes">
+        <figcaption>Harvesting — <i>Vendange</i></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- PROSE -->
+  <section class="prose">
+    <h2>In the winemaker's words</h2>
+    <details class="acc red"><summary>Making Red Wine</summary>
+      <div class="body">
+        <p>After the harvest, the grapes are separated from the stalks and sorted — manually or mechanically — to
+        remove unwanted fruit and other material. The fruit is then crushed and usually destemmed. At that point a
+        little <span class="g">sulphur</span> may be added to prevent early oxidation of the <span class="g">must</span>,
+        which is then pumped into stainless-steel tanks or wooden vats (<span class="g">foudres</span>).</p>
+        <p>For red wine, skin contact and alcoholic fermentation happen <b>together</b> in the same vat — a stage the
+        French call <span class="g">cuvaison</span>. Over several days to a few weeks the cap of skins is kept in
+        contact with the juice, by <span class="g">pigeage</span> (punching down) or <span class="g">remontage</span>
+        (pumping over), to draw out colour and tannin. When fermentation finishes, the free-run
+        <span class="g">vin de goutte</span> is run off and the leftover <span class="g">marc</span> is pressed to yield
+        <span class="g">vin de presse</span>, which may or may not be blended back.</p>
+        <p>The wine then rests while <span class="g">malolactic fermentation</span> softens its acidity. A
+        <span class="g">vin de garde</span> may be barrel-aged (<span class="g">élevage</span>) for up to about 24 months
+        before it is fined — often with egg white (<span class="g">collage</span>) — and/or filtered, then bottled.</p>
+      </div>
+    </details>
+    <details class="acc white"><summary>Making White Wine</summary>
+      <div class="body">
+        <p>The huge variety of white wines reflects many different vinifications, each adapted to a particular wine.
+        White winemaking differs from red at several stages — above all, the skins are rarely
+        <span class="g">macerated</span> with the juice. Instead the grapes are usually pressed straight away and only
+        the juice is fermented.</p>
+        <p>After pressing, the cloudy juice is left to settle so the solids drop out — a clarification step called
+        <span class="g">débourbage</span>. Fermentation then runs cooler than for red, to protect delicate aromas.
+        Most whites are not barrel-aged, though some Grands Vins — the grands crus of Burgundy, the classified wines of
+        Bordeaux — are raised in oak. <span class="g">Malolactic fermentation</span> is not automatic for white wine but
+        is increasingly used for the Grands Vins. A final fining (often with <span class="g">bentonite</span>) and
+        clarification precede bottling.</p>
+      </div>
+    </details>
+    <details class="acc sweet"><summary>Making Sweet &amp; Late-Harvest Wine</summary>
+      <div class="body">
+        <p>Sweet wines keep sugar in the finished wine by starting with far riper, more concentrated grapes and then
+        stopping fermentation before the yeast has eaten all the sugar. Concentration can come from
+        <span class="g">Botrytis cinerea</span> (Noble Rot), which shrivels the berries — as in Sauternes, the Loire's
+        Quarts-de-Chaume, Alsace Sélection de Grains Nobles, or Tokaji — from drying on the vine
+        (<span class="g">passerillage</span>), or from freezing (ice wine / Eiswein).</p>
+        <p>Fermentation is halted by chilling, by adding <span class="g">sulphur</span> dioxide, and by removing the
+        yeast through centrifugation, pasteurisation or racking. The resulting wines are extremely rich — roughly
+        50–150 g/L of residual sugar. (A related family, the <i>vins doux naturels</i> such as Muscat de Beaumes-de-Venise,
+        instead stop fermentation by adding grape spirit — a step called <span class="g">mutage</span>.)</p>
+      </div>
+    </details>
+    <details class="acc rose"><summary>Making Rosé</summary>
+      <div class="body">
+        <p>Rosé takes its colour from brief skin contact, not from blending red and white (forbidden for still wine in
+        the EU, with Champagne the notable exception). Two main methods: <b>direct press</b>, where red grapes are
+        pressed almost like whites for a very pale colour (the Provence style); and <b>saignée</b> ("bleeding"), where a
+        little pink juice is run off a red-wine vat after a few hours of maceration, giving a deeper colour — and
+        incidentally concentrating the red wine left behind. Fermentation and the rest follow the white-wine road.</p>
+      </div>
+    </details>
+  </section>
+
+  <!-- GLOSSARY -->
+  <section class="prose">
+    <h2>Glossary</h2>
+    <dl class="glist" id="glossary"></dl>
+  </section>
+
+  <footer>
+    Interactive edition of <i>“How Wine Is Made”</i> · A Quick Glance at French Wine · Chris Paul.<br>
+    Works fully offline — a single self-contained file.
+  </footer>
+</div>
+
+<div id="bigpic" role="dialog" aria-modal="true" aria-label="Harvesting — Vendange">
+  <div class="bigpic-inner">
+    <button type="button" id="bigpic-close" aria-label="Close">&times;</button>
+    <img src="Images/Red%20Wine/Harvesting.png" alt="Harvesting the grapes">
+  </div>
+</div>
+
+<div id="tip"></div>
+
+<script>
+/* ---------- GLOSSARY DATA ---------- */
+const GLOSS = {
+  "sulphur":["Sulphur (SO₂)","Sulphur dioxide, the winemaker's main antioxidant and antiseptic. A little protects juice and wine from oxidation and stray microbes; ‘natural’ wines aim to use as little as possible."],
+  "must":["Must — <i>moût</i>","Freshly crushed or pressed grape juice, with (for reds) the skins, pulp and pips, before and during fermentation."],
+  "foudres":["Foudre","A large wooden vat (much bigger than a barrel), used for fermenting or ageing without adding much oak flavour."],
+  "cuvaison":["Cuvaison","The red-wine period when juice, skins and pips macerate together <b>while alcoholic fermentation is happening</b> — this is where colour and tannin are extracted."],
+  "pigeage":["Pigeage","‘Punching down’ — pushing the floating cap of skins back into the juice by hand or paddle to keep colour and tannin extracting."],
+  "remontage":["Remontage","‘Pumping over’ — drawing juice from the bottom of the vat and spraying it over the cap of skins; the mechanical equivalent of pigeage."],
+  "vin de goutte":["Vin de goutte","The ‘free-run’ wine that flows out of the vat under its own weight, before pressing. Usually the finest fraction."],
+  "vin de presse":["Vin de presse","The wine squeezed from the leftover skins (the marc) after the free-run has drained. Darker and more tannic; blended back in part, or kept separate."],
+  "marc":["Marc","The solid cake of skins, pips and pulp left after pressing (the ‘pomace’). Can be distilled into the spirit also called <i>marc</i>."],
+  "malolactic fermentation":["Malolactic fermentation — <i>FML</i>","A second, bacterial fermentation that converts sharp malic acid into softer lactic acid. Standard for reds; optional for whites, where it adds a rounder, ‘buttery’ note."],
+  "malolactique":["Malolactic fermentation","See <i>malolactic fermentation</i>: bacteria convert sharp malic acid into softer lactic acid, rounding the wine."],
+  "macerated":["Maceration","Steeping the juice on the grape skins to extract colour, tannin and flavour. Long for reds, brief or skipped for whites, short for rosés."],
+  "débourbage":["Débourbage","Settling freshly pressed white juice so the coarse solids (‘bourbes’) drop out and clean juice can be racked off before fermentation."],
+  "élevage":["Élevage","Literally ‘raising’ — the ageing/maturation of the wine after fermentation, in barrel, foudre or tank, until it is ready to bottle."],
+  "collage":["Collage — fining","Adding a fining agent (egg white, bentonite clay, gelatine…) that binds to haze and harsh particles and drags them to the bottom, clarifying and softening the wine."],
+  "bentonite":["Bentonite","A natural clay used to fine white wines: it grabs unstable proteins that would otherwise cloud the wine, then settles out."],
+  "vin de garde":["Vin de garde","A wine built to age — with the structure (tannin, acidity, concentration) to improve over years in bottle, as opposed to an early-drinking wine."],
+  "Botrytis cinerea":["Botrytis cinerea — Noble Rot","A benign fungus that, in the right damp-then-dry autumn, shrivels grapes and concentrates their sugar and flavour — the secret of Sauternes, Tokaji and the great sweet wines."],
+  "passerillage":["Passerillage","Drying the grapes to concentrate sugar — left on the vine past ripeness, or on straw mats — without Noble Rot. The basis of many <i>vins de paille</i>."],
+  "mutage":["Mutage","Stopping fermentation by adding neutral grape spirit; it kills the yeast while sugar remains, making fortified <i>vins doux naturels</i> and Port-style wines."],
+  "grand vin":["Grand Vin","A producer's top wine — given the ripest fruit and the most careful (and slowest) élevage."]
+};
+
+/* ---------- ICONS (inline SVG, monochrome, adopt flow colour) ---------- */
+const ICONS = {
+  still:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M9 40c0-11 6-17 13-17s13 6 13 17v2a6 6 0 0 1-6 6H15a6 6 0 0 1-6-6z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M22 23c0-4 0-7 4-7 9 0 10 8 10 15v4" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M36 35h8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="44" y="30" width="12" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><path d="M48 33v18M52 33v18" stroke="currentColor" stroke-width="1.8" opacity=".45"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".7"><line x1="15" y1="34" x2="15" y2="30"/><line x1="22" y1="35" x2="22" y2="30"/><line x1="29" y1="34" x2="29" y2="30"/></g><path d="M52 54l2 6M46 54l-2 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" opacity=".6"/></svg>',
+  blend:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M12 15l10 9M52 15l-10 9M32 12v12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M18 25h28l-4 25a5 5 0 0 1-5 4.3H27a5 5 0 0 1-5-4.3z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M23 34c4 3 14 3 18 0" fill="none" stroke="currentColor" stroke-width="2.4" opacity=".6"/><rect x="22" y="40" width="20" height="8" opacity=".4"/></svg>',
+  grape:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M33 26V12c0-4 3-7 8-7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M41 6c5-3 10-1 10-1-2 4-6 6-10 4z" opacity=".5"/><circle cx="26" cy="26" r="6"/><circle cx="38" cy="26" r="6"/><circle cx="20" cy="35" r="6"/><circle cx="32" cy="35" r="6"/><circle cx="44" cy="35" r="6"/><circle cx="26" cy="45" r="6"/><circle cx="38" cy="45" r="6"/><circle cx="32" cy="55" r="6"/></svg>',
+  sort:'<svg viewBox="0 0 64 64" fill="currentColor"><circle cx="18" cy="26" r="5" opacity=".45"/><circle cx="30" cy="20" r="5" opacity=".45"/><circle cx="24" cy="37" r="5" opacity=".45"/><circle cx="40" cy="33" r="12" fill="none" stroke="currentColor" stroke-width="4"/><line x1="49" y1="42" x2="58" y2="51" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><path d="M35 33l4 4 7-8" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  crush:'<svg viewBox="0 0 64 64" fill="currentColor"><circle cx="32" cy="12" r="5" opacity=".6"/><rect x="9" y="26" width="20" height="13" rx="6.5"/><rect x="35" y="26" width="20" height="13" rx="6.5"/><circle cx="19" cy="32.5" r="2.5" fill="#fbf6e9"/><circle cx="45" cy="32.5" r="2.5" fill="#fbf6e9"/><path d="M22 46l3 8M40 46l-3 8M32 47l0 9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>',
+  vat:'<svg viewBox="0 0 64 64" fill="currentColor"><line x1="32" y1="5" x2="32" y2="30" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="24" y="5" width="16" height="4.5" rx="2"/><path d="M15 20h34v27a9 9 0 0 1-9 9H24a9 9 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="3"/><rect x="15" y="30" width="34" height="7" opacity=".5"/><circle cx="23" cy="47" r="2.2" opacity=".7"/><circle cx="34" cy="51" r="2.2" opacity=".7"/><circle cx="41" cy="45" r="2.2" opacity=".7"/></svg>',
+  press:'<svg viewBox="0 0 64 64" fill="currentColor"><line x1="32" y1="5" x2="32" y2="15" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="26" y="4" width="12" height="4" rx="2"/><rect x="16" y="14" width="32" height="6" rx="3"/><rect x="13" y="24" width="38" height="31" rx="4" fill="none" stroke="currentColor" stroke-width="3"/><g stroke="currentColor" stroke-width="2.6"><line x1="22" y1="27" x2="22" y2="52"/><line x1="30" y1="27" x2="30" y2="52"/><line x1="38" y1="27" x2="38" y2="52"/><line x1="46" y1="27" x2="46" y2="52" opacity=".6"/></g></svg>',
+  malo:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M26 7h12v3l-2 2v11l11 21a6.5 6.5 0 0 1-5.7 9.6H22.7A6.5 6.5 0 0 1 17 43l11-21V12l-2-2z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M23 41h18l4.5 8.5A5 5 0 0 1 41 57H23a5 5 0 0 1-4.5-7.5z" opacity=".45"/><circle cx="29" cy="49" r="2.2" fill="#fbf6e9"/><circle cx="36" cy="45" r="1.7" fill="#fbf6e9"/><circle cx="34" cy="52" r="1.5" fill="#fbf6e9"/></svg>',
+  barrel:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M22 9c6-2.5 14-2.5 20 0 3.5 8 3.5 38 0 46-6 2.5-14 2.5-20 0-3.5-8-3.5-38 0-46z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M18 21c9 3 19 3 28 0M18 43c9 3 19 3 28 0" fill="none" stroke="currentColor" stroke-width="3" opacity=".65"/><line x1="32" y1="7" x2="32" y2="57" stroke="currentColor" stroke-width="2" opacity=".45"/><line x1="24" y1="8.5" x2="24" y2="55.5" stroke="currentColor" stroke-width="1.6" opacity=".3"/><line x1="40" y1="8.5" x2="40" y2="55.5" stroke="currentColor" stroke-width="1.6" opacity=".3"/></svg>',
+  filter:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M13 13h38L37 31v17l-10 5V31z" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"/><path d="M16 20h32" stroke="currentColor" stroke-width="2.4" opacity=".5"/><path d="M32 51c3.2 4.2 3.2 8.5 0 8.5s-3.2-4.3 0-8.5z" opacity=".75"/></svg>',
+  bottle:'<svg viewBox="0 0 64 64" fill="currentColor"><rect x="27" y="3" width="10" height="6" rx="1.5"/><path d="M28 9h8v8c0 3 6 6 6 14v21a5 5 0 0 1-5 5H27a5 5 0 0 1-5-5V31c0-8 6-11 6-14z" fill="none" stroke="currentColor" stroke-width="3"/><rect x="22" y="38" width="20" height="12" opacity=".45"/></svg>',
+  clarify:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M17 11h30v35a9 9 0 0 1-9 9H26a9 9 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M17 41h30v5a9 9 0 0 1-9 9H26a9 9 0 0 1-9-9z" opacity=".55"/><path d="M17 18h30" stroke="currentColor" stroke-width="2" opacity=".45"/><circle cx="27" cy="47" r="1.8" opacity=".8"/><circle cx="36" cy="49" r="1.6" opacity=".8"/></svg>',
+  ferment:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M17 13h30v33a9 9 0 0 1-9 9H26a9 9 0 0 1-9-9z" fill="none" stroke="currentColor" stroke-width="3"/><g opacity=".7"><circle cx="26" cy="45" r="2.6"/><circle cx="36" cy="41" r="2.1"/><circle cx="30" cy="35" r="1.8"/><circle cx="38" cy="30" r="1.5"/><circle cx="24" cy="33" r="1.4"/></g></svg>',
+  shrivel:'<svg viewBox="0 0 64 64" fill="currentColor"><g opacity=".85"><circle cx="49" cy="15" r="6"/><g stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="49" y1="3" x2="49" y2="6"/><line x1="49" y1="24" x2="49" y2="27"/><line x1="37" y1="15" x2="40" y2="15"/><line x1="58" y1="15" x2="61" y2="15"/><line x1="41" y1="7" x2="43" y2="9"/><line x1="55" y1="21" x2="57" y2="23"/></g></g><path d="M22 26V16" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><circle cx="17" cy="34" r="5"/><circle cx="27" cy="33" r="5"/><circle cx="14" cy="44" r="5"/><circle cx="24" cy="43" r="5"/><circle cx="34" cy="42" r="5"/><circle cx="20" cy="53" r="5"/><circle cx="30" cy="52" r="5"/></svg>',
+  basket:'<svg viewBox="0 0 64 64" fill="currentColor"><g opacity=".5"><circle cx="24" cy="19" r="4.5"/><circle cx="33" cy="15" r="4.5"/><circle cx="41" cy="20" r="4.5"/></g><path d="M11 27h42l-4.5 25a5 5 0 0 1-5 4.2H20.5a5 5 0 0 1-5-4.2z" fill="none" stroke="currentColor" stroke-width="3"/><path d="M13 27c5-11 33-11 38 0" fill="none" stroke="currentColor" stroke-width="3"/><g stroke="currentColor" stroke-width="2" opacity=".5"><line x1="21" y1="34" x2="23" y2="52"/><line x1="32" y1="34" x2="32" y2="52"/><line x1="43" y1="34" x2="41" y2="52"/></g></svg>',
+  thermo:'<svg viewBox="0 0 64 64" fill="currentColor"><path d="M27 12a5 5 0 0 1 10 0v22a9 9 0 1 1-10 0z" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="32" cy="45" r="6.5"/><rect x="29.6" y="20" width="4.8" height="22" rx="2.4"/><g stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".6"><line x1="40" y1="18" x2="45" y2="18"/><line x1="40" y1="26" x2="44" y2="26"/><line x1="40" y1="34" x2="45" y2="34"/></g></svg>'
+};
+function iconFor(t){
+  const s=t.toLowerCase();
+  const k = s.includes('malolactic') ? 'malo'
+    : (s.includes('distillation')||s.includes('still')||s.includes('eaux-de-vie')||s.includes('eau-de-vie')) ? 'still'
+    : (s.includes('blending')||s.includes('reduction')) ? 'blend'
+    : (s.includes('maceration')||s.includes('skin contact')) ? 'vat'
+    : s.includes('concentrating') ? 'shrivel'
+    : s.includes('selective') ? 'basket'
+    : s.includes('stopping') ? 'thermo'
+    : s.includes('harvest') ? 'grape'
+    : s.includes('sorting') ? 'sort'
+    : s.includes('crushing') ? 'crush'
+    : s.includes('bottling') ? 'bottle'
+    : (s.includes('barrel')||s.includes('ageing')) ? 'barrel'
+    : s.includes('fining') ? 'filter'
+    : (s.includes('bourbage')||s.includes('clarification')) ? 'clarify'
+    : s.includes('fermentation') ? 'ferment'
+    : s.includes('pressing') ? 'press'
+    : 'grape';
+  return ICONS[k]||'';
+}
+
+/* ---------- STEP DATA ---------- */
+const S = {
+  red:{ label:"Red Wine", cls:"red", steps:[
+    {t:"Harvesting", fr:"Vendange", sub:"Hand- or machine-picked", ph:"Step 1",
+     html:"<p>Grapes are picked either <b>by hand</b> — gentler, and the only option on steep or terraced slopes — or <b>by machine</b>, which is faster and cheaper. Hand-picking allows a first selection of healthy bunches right in the vineyard.</p>",
+     why:"<b>Why it matters:</b> picking date and method set the sugar, acidity and health of the fruit — everything downstream depends on it."},
+    {t:"Sorting", fr:"Triage", sub:"Removing unripe or rotten fruit", ph:"Step 2",
+     html:"<p>On a <b>sorting table</b> (or optical sorter) unripe, raisined or rotten berries and leaves and other debris (MOG) are removed so only sound fruit continues.</p>",
+     why:"<b>Why it matters:</b> a single handful of rot or green fruit can taint a whole vat."},
+    {t:"Crushing & Destemming", fr:"Foulage & Éraflage", sub:"Optional — some keep whole bunches", ph:"Step 3", opt:true,
+     html:"<p>The <b>crusher/destemmer</b> splits the berries to release juice and, usually, strips them off the stalks. Some reds are fermented as <b>whole bunches</b> instead (carbonic maceration in Beaujolais, whole-cluster in the Rhône and Burgundy). A little <span class='g'>sulphur</span> may be added here.</p>",
+     why:"<b>Why it matters:</b> stems add grip and a peppery lift when ripe, but green tannin when not — hence ‘optional’."},
+    {t:"Maceration + Fermentation", fr:"Cuvaison", sub:"Skin contact and alcohol, together", ph:"Step 4",
+     html:"<p>This is the heart of red winemaking. In the vat, yeast turns sugar into alcohol <b>while</b> the juice steeps on the skins — the stage called <span class='g'>cuvaison</span>. The floating cap of skins is worked back in by <span class='g'>pigeage</span> (punching down) or <span class='g'>remontage</span> (pumping over) to extract colour and tannin. Temperature is controlled; it can run 5–21 days.</p>",
+     why:"<b>Why it matters:</b> almost all of a red wine's colour, tannin and structure is built here."},
+    {t:"Pressing", fr:"Pressurage", sub:"Free-run vs press wine", ph:"Step 5", opt:true,
+     html:"<p>The <span class='g'>vin de goutte</span> (free-run) drains off first; the leftover <span class='g'>marc</span> is then pressed to extract the darker, firmer <span class='g'>vin de presse</span>. The winemaker decides how much press wine, if any, to blend back.</p>",
+     why:"<b>Why it matters:</b> press wine adds colour and grip — a little can add depth, too much brings harshness."},
+    {t:"Malolactic Fermentation", fr:"Fermentation malolactique", sub:"Softening the acidity", ph:"Step 6",
+     html:"<p>A second, <b>bacterial</b> fermentation converts sharp malic acid into softer lactic acid. For reds this is essentially always done, and it also stabilises the wine.</p>",
+     why:"<b>Why it matters:</b> it rounds a tart young wine and prevents the change happening later, in bottle."},
+    {t:"Barrel Ageing", fr:"Élevage", sub:"Optional — up to ~24 months", ph:"Step 7", opt:true,
+     html:"<p>A <span class='g'>vin de garde</span> is matured (<span class='g'>élevage</span>) in oak <b>barriques</b> or larger <span class='g'>foudres</span>, sometimes for up to two years. New oak adds spice and tannin; older wood mainly lets the wine breathe and settle.</p>",
+     why:"<b>Why it matters:</b> oak and time knit the tannins together and add complexity — but everyday wines skip it to stay fresh and affordable."},
+    {t:"Fining & Filtering", fr:"Collage & Filtration", sub:"Optional — clarifying the wine", ph:"Step 8", opt:true,
+     html:"<p>To polish the wine before bottling it may be <b>fined</b> — classically with <b>egg white</b> (<span class='g'>collage</span>) — and/or <b>filtered</b>. Both remove haze and harsh particles. Some producers do neither, bottling ‘unfined and unfiltered’.</p>",
+     why:"<b>Why it matters:</b> it makes the wine bright and stable, though heavy filtering can strip a little texture."},
+    {t:"Bottling", fr:"Mise en bouteille", sub:"Ready to sell or cellar", ph:"Step 9",
+     html:"<p>The finished wine is bottled, corked or capped and labelled. Vins de garde may then rest months or years more before release.</p>",
+     why:"<b>Why it matters:</b> the journey from vine to glass is complete — the rest is patience."}
+  ]},
+  white:{ label:"White Wine", cls:"white", steps:[
+    {t:"Harvesting", fr:"Vendange", sub:"Often earlier, to keep acidity", ph:"Step 1",
+     html:"<p>As for red — hand or machine — but whites are frequently picked <b>earlier</b> and in the <b>cool of the morning/night</b> to preserve fresh acidity and aroma.</p>",
+     why:"<b>Why it matters:</b> a white's zip and perfume are easy to lose to over-ripeness or heat."},
+    {t:"Sorting", fr:"Triage", sub:"Removing unwanted fruit", ph:"Step 2",
+     html:"<p>Damaged and unripe berries and debris are removed before pressing.</p>",
+     why:"<b>Why it matters:</b> with no skin-contact to hide behind, faults show quickly in white wine."},
+    {t:"Crushing / Destemming", fr:"Foulage / Éraflage", sub:"Optional — many go straight to press", ph:"Step 3", opt:true,
+     html:"<p>Whites are often <b>whole-bunch pressed</b> with no crushing at all, for the cleanest juice. When crushing is used it is gentle, and skin contact is deliberately brief or skipped.</p>",
+     why:"<b>Why it matters:</b> long skin contact would add colour and phenolic bitterness that most whites don't want."},
+    {t:"Pressing", fr:"Pressurage", sub:"Juice extracted early", ph:"Step 4",
+     html:"<p>Unlike red, whites are <b>pressed before fermentation</b> — the skins are separated straight away and only the juice goes forward. Any leftover <b>residue</b> can be used for basic table wine.</p>",
+     why:"<b>Why it matters:</b> pressing before fermentation is <i>the</i> defining difference between white and red winemaking."},
+    {t:"Débourbage / Clarification", fr:"Débourbage", sub:"Letting the juice settle", ph:"Step 5",
+     html:"<p>The cloudy juice is chilled and left so the coarse solids (‘bourbes’) drop out; the clean juice is racked off the sediment before fermenting. A little <span class='g'>sulphur</span> protects it meanwhile.</p>",
+     why:"<b>Why it matters:</b> fermenting clean juice gives a purer, more precise wine."},
+    {t:"Fermentation", fr:"Fermentation alcoolique", sub:"Cooler than red", ph:"Step 6",
+     html:"<p>Yeast converts sugar to alcohol, usually at <b>cool temperatures</b> (12–18 °C) in tank — or, for the Grands Vins (white Burgundy, top Bordeaux), in oak barrel.</p>",
+     why:"<b>Why it matters:</b> cool, slow fermentation preserves the fragile floral and fruity aromas."},
+    {t:"Malolactic Fermentation", fr:"Fermentation malolactique", sub:"Optional for whites", ph:"Step 7", opt:true,
+     html:"<p>Not automatic for white wine. It is <b>encouraged</b> for richer, oaked styles (white Burgundy) to add a creamy roundness — and <b>blocked</b> for crisp, aromatic styles (Sauvignon, Riesling) to keep them zesty.</p>",
+     why:"<b>Why it matters:</b> the single biggest stylistic choice between a ‘buttery’ and a ‘crisp’ white."},
+    {t:"Fining & Clarification", fr:"Collage", sub:"Often with bentonite", ph:"Step 8", opt:true,
+     html:"<p>Whites are usually fined — commonly with <span class='g'>bentonite</span> clay to remove unstable proteins — and clarified/filtered so they stay bright and won't throw a haze.</p>",
+     why:"<b>Why it matters:</b> a white showing haze on the shelf looks faulty, even if it tastes fine."},
+    {t:"Bottling", fr:"Mise en bouteille", sub:"Usually released young", ph:"Step 9",
+     html:"<p>Most whites are bottled and released young to capture their freshness; a few age-worthy whites are held back.</p>",
+     why:"<b>Why it matters:</b> freshness is the currency of most white wine — speed to bottle protects it."}
+  ]},
+  sweet:{ label:"Sweet & Late-Harvest", cls:"sweet", steps:[
+    {t:"Concentrating the Grapes", fr:"Surmaturité", sub:"Botrytis · drying · freezing", ph:"Step 1",
+     html:"<p>Sweetness starts in the vineyard by super-concentrating the sugar: <span class='g'>Botrytis cinerea</span> (Noble Rot) shrivels the berries (Sauternes, Tokaji, Alsace SGN); <span class='g'>passerillage</span> dries them on the vine or on straw; or the grapes are left to <b>freeze</b> for ice wine.</p>",
+     why:"<b>Why it matters:</b> there is no way to fake this — great sweet wine is made from a fraction of the normal crop."},
+    {t:"Selective Harvest", fr:"Tries successives", sub:"Several passes, berry by berry", ph:"Step 2",
+     html:"<p>Botrytised grapes ripen unevenly, so pickers go through the vineyard <b>several times</b> (<i>tries</i>), taking only the shrivelled berries at their peak. Painstaking and tiny in yield.</p>",
+     why:"<b>Why it matters:</b> this hand labour is why the greatest sweet wines are so rare and costly."},
+    {t:"Pressing", fr:"Pressurage", sub:"Slow — the juice is like syrup", ph:"Step 3",
+     html:"<p>The dehydrated grapes give up very little juice, and slowly. What emerges is intensely sugary must.</p>",
+     why:"<b>Why it matters:</b> yields can be a quarter of a dry wine's — concentration comes at the cost of quantity."},
+    {t:"Fermentation (partial)", fr:"Fermentation partielle", sub:"Stops with sugar remaining", ph:"Step 4",
+     html:"<p>Yeast begins converting sugar to alcohol but <b>cannot finish</b> — the sheer sugar and rising alcohol exhaust it. Fermentation is deliberately <b>stopped</b> by chilling and adding <span class='g'>sulphur</span> while plenty of natural sweetness remains.</p>",
+     why:"<b>Why it matters:</b> the balance of alcohol, sugar and acidity here defines the whole wine."},
+    {t:"Stopping & Stabilising", fr:"Mutage / sulfitage", sub:"Removing the yeast", ph:"Step 5", opt:true,
+     html:"<p>The remaining yeast is removed by chilling, centrifugation, pasteurisation or racking so it can't restart. (For fortified <i>vins doux naturels</i>, fermentation is instead halted by adding grape spirit — <span class='g'>mutage</span>.) Residual sugar typically lands around <b>50–150 g/L</b>.</p>",
+     why:"<b>Why it matters:</b> a bottle that re-ferments would be spoiled — stability is essential for sweet wine."},
+    {t:"Ageing & Bottling", fr:"Élevage & mise", sub:"Often long-lived", ph:"Step 6",
+     html:"<p>Many sweet wines are <span class='g'>élevage</span>-aged (often in barrel) and are famously long-lived, evolving for decades in bottle.</p>",
+     why:"<b>Why it matters:</b> high sugar and acidity act as natural preservatives — these are among the most age-worthy wines of all."}
+  ]},
+  rose:{ label:"Rosé", cls:"rose", steps:[
+    {t:"Harvesting & Sorting", fr:"Vendange & Triage", sub:"Black grapes, picked fresh", ph:"Step 1",
+     html:"<p>Rosé is made from <b>black (red) grapes</b>, usually picked to keep bright acidity, then sorted as for any quality wine.</p>",
+     why:"<b>Why it matters:</b> rosé lives on freshness, so healthy, crisp fruit is key."},
+    {t:"Brief Skin Contact", fr:"Macération courte", sub:"Hours, not days", ph:"Step 2",
+     html:"<p>Colour comes from a <b>short</b> maceration on the skins — just a few hours. Two routes: <b>direct press</b> (pressed almost like a white, very pale — the Provence style) or <b>saignée</b>, where pink juice is ‘bled’ off a red-wine vat.</p>",
+     why:"<b>Why it matters:</b> the length of skin contact is exactly what sets a rosé's colour, from palest pink to vivid."},
+    {t:"Pressing / Running-off", fr:"Pressurage / Saignée", sub:"Separating juice from skins", ph:"Step 3",
+     html:"<p>The lightly-coloured juice is separated from the skins. In the <b>saignée</b> method the red wine left behind is concentrated as a by-product.</p>",
+     why:"<b>Why it matters:</b> note EU rules forbid blending red + white to make still rosé — the colour must come from the skins."},
+    {t:"Cool Fermentation", fr:"Fermentation", sub:"Like a white wine", ph:"Step 4",
+     html:"<p>From here rosé follows the <b>white-wine road</b>: the juice ferments cool in tank to keep its delicate red-fruit and floral aromas.</p>",
+     why:"<b>Why it matters:</b> temperature control protects the fresh, fruity character rosé is loved for."},
+    {t:"Fining & Bottling", fr:"Collage & Mise", sub:"Released young", ph:"Step 5", opt:true,
+     html:"<p>Lightly fined and clarified, then bottled early. The vast majority of rosé is made to be drunk within a year, chilled.</p>",
+     why:"<b>Why it matters:</b> rosé is at its best young and fresh — most isn't meant to age."}
+  ]},
+  brandy:{ label:"Brandy", cls:"brandy", steps:[
+    {t:"Base Wine & Raw Material", fr:"Vin, marc ou fruits", sub:"Wine · marc · whole fruit", ph:"Step 1",
+     html:"<p>Brandy is distilled from something already fermented. <b>Cognac</b> and <b>Armagnac</b> distil a thin, tart white wine (mostly Ugni Blanc); a <i>fine</i> or <span class='g'>marc</span> distils the pressed grape pomace; and fruit <i>eaux-de-vie</i> distil whole fermented fruit — plum, pear, cherry, raspberry.</p>",
+     why:"<b>Why it matters:</b> a still concentrates whatever it is given, flaws included — so the base must be clean, low in alcohol and sulphur, and high in acidity."},
+    {t:"First Distillation", fr:"Première chauffe", sub:"Wine → brouillis (~28%)", ph:"Step 2",
+     html:"<p>In the copper <i>alambic charentais</i>, the wine is heated over a flame. Alcohol vapours rise through the <i>chapiteau</i> and the swan neck (<i>col de cygne</i>), then condense in the coil to give a cloudy low-wine — the <i>brouillis</i>, around 28% vol.</p>",
+     why:"<b>Why it matters:</b> this first pass roughly separates alcohol from water, setting up the crucial second distillation."},
+    {t:"Second Distillation", fr:"Bonne chauffe", sub:"Cutting the heart (~70%)", ph:"Step 3",
+     html:"<p>The brouillis is redistilled. The distiller makes the <b>cut</b> (<i>la coupe</i>): the <i>têtes</i> (heads) and <i>secondes / queues</i> (tails) are set aside, and only the <i>cœur</i> (heart) is kept — a clean eau-de-vie at about 70% vol.</p>",
+     why:"<b>Why it matters:</b> only the heart carries pure, fine aromas; heads and tails hold harsh, volatile compounds that would spoil the spirit."},
+    {t:"The Charentais Still", fr:"Alambic charentais", sub:"Cognac's copper pot still", ph:"Step 4",
+     html:"<p>Cognac is made in the <i>alambic charentais</i>: a copper pot still with its onion-domed <i>chapiteau</i>, swan neck and coil condenser. By law Cognac is distilled <b>twice</b> in this batch still, and the spirit must be off the still by 31 March following the harvest.</p>",
+     why:"<b>Why it matters:</b> the copper, the still's shape and the double pass are what give Cognac its finesse."},
+    {t:"The Armagnac Still", fr:"Alambic armagnaçais", sub:"A continuous column still", ph:"Step 5",
+     html:"<p>Armagnac, from Gascony, traditionally uses its own <i>alambic armagnaçais</i> — a <b>continuous</b> column still. Wine flows in at the top and meets rising vapours across a series of plates, distilling in a <b>single pass</b> to a lower strength (~52–72% vol.).</p>",
+     why:"<b>Why it matters:</b> single, lower-proof distillation leaves more flavour in the spirit — Armagnac is typically richer and more rustic than Cognac."},
+    {t:"Fruit Eaux-de-Vie", fr:"Eaux-de-vie de fruits", sub:"Pure spirit from whole fruit", ph:"Step 6",
+     html:"<p>Beyond grapes, France distils <i>eaux-de-vie</i> from whole fermented fruit in small pot stills — Mirabelle and Quetsche plum, Poire Williams, Kirsch (cherry), framboise (raspberry). These are usually <b>unaged</b>, bottled crystal-clear to capture the pure fruit.</p>",
+     why:"<b>Why it matters:</b> with no oak to hide behind, an eau-de-vie is a naked snapshot of the fruit — and it takes kilos of fruit for a single bottle."},
+    {t:"Oak Ageing", fr:"Élevage en fût de chêne", sub:"Years in French oak", ph:"Step 7",
+     html:"<p>Grape brandies are aged for years — often decades — in French oak (Limousin, Tronçais). The clear spirit slowly gains colour, aroma and roundness, while 1–3% evaporates each year: the <i>part des anges</i>, the angel's share.</p>",
+     why:"<b>Why it matters:</b> oak and slow oxidation turn a fiery spirit into a mellow amber brandy; the age marks (VS, VSOP, XO) count from the youngest spirit in the blend."},
+    {t:"Blending & Reduction", fr:"Assemblage & réduction", sub:"The cellar master's art", ph:"Step 8",
+     html:"<p>The <i>maître de chai</i> marries eaux-de-vie of different crus, ages and casks to build a consistent house style, then gently <b>reduces</b> the strength to about 40% vol. by adding <i>petites eaux</i> (distilled water) in small stages over weeks or months.</p>",
+     why:"<b>Why it matters:</b> blending gives consistency year after year; slow reduction avoids shocking the spirit and keeps it harmonious."},
+    {t:"Bottling", fr:"Mise en bouteille", sub:"Filtered, filled, sealed", ph:"Step 9",
+     html:"<p>The brandy is given a final light filtration, then bottled, corked, capsuled and labelled with its quality mark (VS, VSOP, XO — or a vintage <i>millésime</i> for Armagnac).</p>",
+     why:"<b>Why it matters:</b> unlike wine, a spirit no longer evolves once bottled — what leaves the cellar is exactly what reaches the glass."}
+  ]}
+};
+
+/* ---------- RENDER ---------- */
+const flowsEl = document.getElementById('flows');
+const detailEl = document.getElementById('detail');
+const emptyEl = document.getElementById('empty');
+let selected = null; // {key, idx}
+
+function buildFlow(key){
+  const d = S[key];
+  const f = document.createElement('div');
+  f.className = 'flow '+d.cls;
+  f.innerHTML = '<h2>'+d.label+'</h2>';
+  d.steps.forEach((st,i)=>{
+    if(i>0){ const a=document.createElement('div'); a.className='arrow'; a.textContent='▼'; f.appendChild(a); }
+    const n=document.createElement('div');
+    n.className='node'; n.dataset.key=key; n.dataset.idx=i;
+    n.innerHTML='<div class="icon">'+iconFor(st.t)+'</div>'+
+                '<div class="n-body">'+
+                  '<div class="n-title">'+st.t+(st.opt?' <span class="badge">optional</span>':'')+'</div>'+
+                  '<div class="n-fr">'+st.fr+'</div>'+
+                  (st.sub?'<div class="n-sub">'+st.sub+'</div>':'')+
+                '</div>';
+    n.addEventListener('click',()=>select(key,i));
+    f.appendChild(n);
+  });
+  return f;
+}
+
+function select(key,i){
+  document.querySelectorAll('.node.active').forEach(n=>n.classList.remove('active'));
+  const node=document.querySelector('.node[data-key="'+key+'"][data-idx="'+i+'"]');
+  if(node) node.classList.add('active');
+  const st=S[key].steps[i];
+  emptyEl.style.display='none'; detailEl.style.display='block';
+  const col={red:'var(--red)',white:'var(--white)',sweet:'var(--sweet)',rose:'var(--rose)',brandy:'var(--brandy)'}[key]||'var(--red)';
+  detailEl.innerHTML =
+    '<div class="d-head">'+
+      '<div class="hero" style="color:'+col+'">'+iconFor(st.t)+'</div>'+
+      '<div><div class="ph">'+S[key].label+' · '+st.ph+(st.opt?' · optional':'')+'</div>'+
+      '<h3>'+st.t+'</h3><p class="fr">'+st.fr+'</p></div>'+
+    '</div>'+
+    st.html+
+    '<div class="why">'+st.why+'</div>';
+  wireGloss(detailEl);
+  if(window.innerWidth<=900 && node) document.getElementById('panel').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+/* tabs */
+const shown = new Set(['red','white']);
+function renderTabs(){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('on',shown.has(t.dataset.k)));
+}
+/* one picture per step, keyed by style (index matches S[key].steps).
+   An empty string "" means "no picture yet" — that step simply won't pop one.
+   To add Sweet or Rosé later: drop the images in a folder and fill in a block. */
+const PICS = {
+  red: { dir:"Images/Red Wine/", files:[
+    "Harvesting.png",              // 0 Harvesting
+    "Sorting Grapes.png",          // 1 Sorting
+    "Crushing Destemming.png",     // 2 Crushing & Destemming
+    "Maceration : Fermentation.png",// 3 Maceration + Fermentation
+    "Crushing : Pressing.png",     // 4 Pressing
+    "Malolactic Fermentation.png", // 5 Malolactic Fermentation
+    "Barrel Ageing.png",           // 6 Barrel Ageing
+    "Fining : Filtering.png",      // 7 Fining & Filtering
+    "Bottling Red.png"             // 8 Bottling
+  ]},
+  white: { dir:"Images/White Wine/", files:[
+    "Harvesting White.png",              // 0 Harvesting
+    "Sorting White.png",                 // 1 Sorting
+    "Crushing : Destemming.png",         // 2 Crushing / Destemming
+    "Pressing White.png",                // 3 Pressing
+    "Debourbage : Clarification.png",    // 4 Débourbage / Clarification
+    "Maceration :. Fermentation White.png",// 5 Fermentation
+    "Malolactic Fermentation White.png", // 6 Malolactic Fermentation
+    "Fining : Filtering White.png",      // 7 Fining & Clarification
+    "Bottling White.png"                 // 8 Bottling
+  ]},
+  sweet: { dir:"Images/Dessert Wines/", files:[
+    "Botrytis Clusters.png",   // 0 Concentrating the Grapes
+    "Harvesting.png",          // 1 Selective Harvest
+    "Crushing.png",            // 2 Pressing
+    "Fermentation.png",        // 3 Fermentation (partial)
+    "Mutage.png",              // 4 Stopping & Stabilising
+    "ageing : Bottling.png"    // 5 Ageing & Bottling
+  ]},
+  rose:  null,   // no images yet — add { dir:"Images/Rosé/",       files:[...] }
+  brandy: { dir:"Images/Brandy/", files:[
+    "Eau de Vie Marc : Fruit.png",         // 0 Base Wine & Raw Material
+    "First Distillation.png",              // 1 First Distillation
+    "Second Distillation.png",             // 2 Second Distillation
+    "Alambic Charentais.png",              // 3 The Charentais Still
+    "Amagnac Continuous Distillation.png", // 4 The Armagnac Still
+    "Eau de Vie Distillation.png",         // 5 Fruit Eaux-de-Vie
+    "Ageing.png",                          // 6 Oak Ageing
+    "Blending.png",                        // 7 Blending & Reduction
+    "Bottling.png"                         // 8 Bottling
+  ]}
+};
+
+function wireHoverPic(){
+  const pic=document.getElementById('hoverpic');
+  const thumb=pic&&pic.querySelector('img');
+  const cap=pic&&pic.querySelector('figcaption');
+  if(!pic||!thumb) return;
+  pic.style.display='none';
+  // hovering any step (of any style that has pictures) shows it in the thumbnail — and it stays
+  document.querySelectorAll('.flow .node').forEach(node=>{
+    const key=node.dataset.key, i=+node.dataset.idx;
+    const set=PICS[key]; if(!set) return;
+    const name=set.files[i]; if(!name) return;
+    node.addEventListener('mouseenter',()=>{
+      const st=S[key].steps[i];
+      thumb.src=set.dir+name;          // browser encodes spaces/colons for us
+      thumb.alt=st.t;
+      if(cap) cap.innerHTML=st.t+' — <i>'+st.fr+'</i>';
+      pic.style.display='block';
+    });
+  });
+}
+
+/* enlarge on hovering the thumbnail; close with the × button, backdrop or Esc */
+function wireBigPic(){
+  const thumb=document.querySelector('#hoverpic img');
+  const big=document.getElementById('bigpic');
+  const bigImg=big&&big.querySelector('img');
+  const closeBtn=document.getElementById('bigpic-close');
+  if(!thumb||!big||!bigImg) return;
+  const hide=()=>big.classList.remove('show');
+  thumb.addEventListener('mouseenter',()=>{
+    bigImg.src=thumb.src;             // show whatever the thumbnail is currently showing
+    bigImg.alt=thumb.alt;
+    big.setAttribute('aria-label',thumb.alt||'Wine step');
+    big.classList.add('show');
+  });
+  if(closeBtn) closeBtn.addEventListener('click',hide);
+  big.addEventListener('click',e=>{ if(e.target===big) hide(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') hide(); });
+}
+wireBigPic();
+function renderFlows(){
+  flowsEl.innerHTML='';
+  ['red','white','sweet','rose','brandy'].forEach(k=>{ if(shown.has(k)) flowsEl.appendChild(buildFlow(k)); });
+  wireGloss(flowsEl);
+  wireHoverPic();
+  // keep selection valid
+  if(selected && shown.has(selected.key)) select(selected.key,selected.idx);
+  else { detailEl.style.display='none'; emptyEl.style.display='block'; }
+}
+document.getElementById('tabs').addEventListener('click',e=>{
+  const t=e.target.closest('.tab'); if(!t) return;
+  const k=t.dataset.k;
+  if(shown.has(k)){ if(shown.size>1) shown.delete(k); }
+  else shown.add(k);
+  renderTabs(); renderFlows();
+});
+// track selection
+const _select=select;
+select=function(key,i){ selected={key,idx:i}; _select(key,i); };
+
+/* ---------- GLOSSARY LIST ---------- */
+const gEl=document.getElementById('glossary');
+Object.keys(GLOSS).sort((a,b)=>GLOSS[a][0].localeCompare(GLOSS[b][0])).forEach(k=>{
+  // avoid duplicate display entries (malolactique/malolactic map to same idea)
+  if(k==='malolactique') return;
+  const d=document.createElement('div'); d.className='glitem';
+  d.innerHTML='<dt>'+GLOSS[k][0]+'</dt><dd>'+GLOSS[k][1]+'</dd>';
+  gEl.appendChild(d);
+});
+
+/* ---------- TOOLTIPS on .g terms ---------- */
+const tip=document.getElementById('tip');
+function lookup(text){
+  const key=text.toLowerCase().trim().replace(/[.,;:]$/,'');
+  if(GLOSS[key]) return GLOSS[key];
+  for(const k in GLOSS){ if(k.toLowerCase()===key) return GLOSS[k]; }
+  // partials
+  if(key.includes('malolactic')) return GLOSS['malolactic fermentation'];
+  if(key.includes('botrytis')) return GLOSS['Botrytis cinerea'];
+  if(key.includes('foudre')) return GLOSS['foudres'];
+  if(key.includes('macerat')) return GLOSS['macerated'];
+  if(key.includes('grand vin')) return GLOSS['grand vin'];
+  return null;
+}
+function wireGloss(scope){
+  scope.querySelectorAll('.g').forEach(el=>{
+    if(el.dataset.wired) return; el.dataset.wired='1';
+    el.addEventListener('mouseenter',ev=>{
+      const g=lookup(el.textContent); if(!g) return;
+      tip.innerHTML='<b>'+g[0]+'</b><br>'+g[1];
+      tip.style.opacity='1'; moveTip(ev);
+    });
+    el.addEventListener('mousemove',moveTip);
+    el.addEventListener('mouseleave',()=>{tip.style.opacity='0';});
+    el.addEventListener('click',()=>{ // jump to glossary on tap (mobile)
+      document.getElementById('glossary').scrollIntoView({behavior:'smooth'});
+    });
+  });
+}
+function moveTip(ev){
+  let x=ev.clientX+14, y=ev.clientY+16;
+  if(x+270>window.innerWidth) x=window.innerWidth-274;
+  if(y+120>window.innerHeight) y=ev.clientY-120;
+  tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+
+/* init */
+document.getElementById('deco1').innerHTML=ICONS.grape;
+document.getElementById('deco2').innerHTML=ICONS.grape;
+renderTabs(); renderFlows();
+</script><!--fw-theme:start--><style id="fw-theme-css">
+html[data-theme="dark"] body{color:#ccb4a3;background:#280a11;background-image:radial-gradient(circle at 20% 10%,rgba(58,17,27,0.35),rgba(0,0,0,0) 60%),
+                     radial-gradient(circle at 85% 90%,rgba(180,140,60,0.10),rgba(0,0,0,0) 55%)}
+html[data-theme="dark"] header.top{background:linear-gradient(#3a111b,#280a11)}
+html[data-theme="dark"] .tdeco{color:#e4c68b}
+html[data-theme="dark"] header.top h1{color:#ccb4a3}
+html[data-theme="dark"] header.top p{color:#f1e8d8}
+html[data-theme="dark"] .tab{border:1px solid rgba(217,179,107,0.40);background:#3a111b;color:#f1e8d8}
+html[data-theme="dark"] .tab:hover{box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .hint{color:#f1e8d8}
+html[data-theme="dark"] .node{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .node .icon{color:#e9b586}
+html[data-theme="dark"] .node .n-fr{color:#f1e8d8}
+html[data-theme="dark"] .node .n-sub{color:#f1e8d8}
+html[data-theme="dark"] .badge{background:#280a11;color:#f1e8d8;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] .arrow{color:#e9b586}
+html[data-theme="dark"] .panel{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] .panel .ph{color:#e4c68b}
+html[data-theme="dark"] .panel .fr{color:#f1e8d8}
+html[data-theme="dark"] .panel .why{background:#280a11}
+html[data-theme="dark"] .panel .why b{color:#ed8391}
+html[data-theme="dark"] .panel .empty{color:#f1e8d8}
+html[data-theme="dark"] .g,html[data-theme="dark"] .gdemo{color:#ed8391}
+html[data-theme="dark"] #hoverpic{background:#3a111b;border:1.5px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] #hoverpic figcaption{color:#f1e8d8}
+html[data-theme="dark"] .bigpic-inner img{border:3px solid rgba(217,179,107,0.40);box-shadow:0 10px 40px rgba(0,0,0,0.70)}
+html[data-theme="dark"] #bigpic-close{border:2px solid rgba(217,179,107,0.40);box-shadow:0 2px 6px rgba(0,0,0,0.29)}
+html[data-theme="dark"] details.acc{background:#3a111b;border:1px solid rgba(217,179,107,0.40)}
+html[data-theme="dark"] details.acc>summary::after{color:#e4c68b}
+html[data-theme="dark"] details.acc .body{color:#ccb4a3}
+html[data-theme="dark"] .glitem dt{color:#ed8391}
+html[data-theme="dark"] .glitem dd{color:#ccb4a3}
+html[data-theme="dark"] .glitem dd .en{color:#f1e8d8}
+html[data-theme="dark"] footer{color:#f1e8d8}
+html[data-theme="dark"] #tip{box-shadow:0 4px 14px rgba(0,0,0,0.56)}
+html[data-theme="dark"] #tip b{color:#e7ce88}
+
+</style><!--fw-theme:end-->
+

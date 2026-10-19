@@ -1,0 +1,27 @@
+= Bourgogne Mousseux | Bourgogne | CDC Bourgogne Mousseux
+Rouge effervescent: gamay N/P; pinot noir N/P; césar N/P (Yonne); aligoté B/A; chardonnay B/A; gamay de Bouze N/A; gamay de Chaudenay N/A; melon B/A; pinot blanc B/A; pinot gris G/A
+! Accessoires ≤49 % de la cuvée (≤10 % du vignoble).
+
+= Bourgogne Passe-Tout-Grains | Bourgogne | CDC Bourgogne Passe Tout Grains
+Rouge, Rosé: pinot noir N/P >30 %; gamay N/P >15 %; chardonnay B/A; pinot blanc B/A; pinot gris G/A
+! Pinot noir et gamay obligatoirement assemblés ; accessoires uniquement en mélange de plants (≤15 % par parcelle).
+
+= Bourgogne Aligoté | Bourgogne | CDC Bourgogne aligoté
+Blanc: aligoté B
+
+= Coteaux Bourguignons | Bourgogne | CDC Coteaux Bourguignons
+Blanc: aligoté B; chardonnay B; melon B; pinot blanc B; pinot gris G
+Rouge: gamay N/P; pinot noir N/P; césar N/P (Yonne); aligoté B/A; chardonnay B/A; gamay de Bouze N/A; gamay de Chaudenay N/A; melon B/A; pinot blanc B/A; pinot gris G/A
+Rosé: gamay N/P; pinot gris G/P; pinot noir N/P; césar N/P (Yonne); aligoté B/A; chardonnay B/A; melon B/A; pinot blanc B/A
+! Accessoires ≤10 % de l'assemblage.
+
+= Crémant de Bourgogne | Bourgogne | CDC Cremant De Bourgogne
+Blanc, Rosé effervescent: chardonnay B; pinot blanc B; pinot gris G; pinot noir N; aligoté B; melon B; sacy B; gamay N ≤20 %
+! Chardonnay + pinot blanc + pinot gris + pinot noir ≥30 % de la cuvée.
+
+= Bourgogne | Bourgogne | CDC_Bourgogne
+Blanc: chardonnay B/P; pinot blanc B/P; pinot gris G/A ≤30 %
+Rouge: pinot noir N/P; chardonnay B/A; pinot blanc B/A; pinot gris G/A; césar N/A ≤10 % (Yonne); gamay N/A ≤30 % (crus du Beaujolais)
+Rosé: pinot noir N/P; pinot gris G/P; pinot blanc B/A; chardonnay B/A; césar N/A ≤10 % (Yonne)
+Bourgogne Gamay: gamay N/P ≥85 %
+! Accessoires blancs uniquement en mélange de plants (≤15 % par parcelle). Nombreuses dénominations (Côte d'Or, Côte Chalonnaise, Hautes-Côtes, Tonnerre, Épineuil, Chitry…).
