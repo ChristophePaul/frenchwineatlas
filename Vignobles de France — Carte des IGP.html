@@ -117,6 +117,7 @@ html[data-theme="cream"] #filtNote{border-color:rgba(154,106,31,.45);background:
 @media (max-width:700px){#allIgp{top:auto;bottom:12px;left:auto;right:12px;font-size:12px;padding:6px 10px}}
 </style><!--fw-igpfilter:end-->
 <!--fw-svgperf:start--><style id="fw-svgperf-css">#france{filter:none !important}.zmove #igp,.zmove #regions,.zmove #labels{pointer-events:none}</style><!--fw-svgperf:end-->
+<!--fw-svgpinch:start--><style id="fw-svgpinch-css">#stage svg{touch-action:none}</style><!--fw-svgpinch:end-->
 </head><body>
 <div id="app">
  <div id="side">
@@ -220,6 +221,7 @@ window.addEventListener('pointermove',ev=>{if(!drag)return;const dx=ev.clientX-d
   if(Math.abs(dx)+Math.abs(dy)>3)drag.moved=true;const k=1/geo().u;
   tx=tTx=drag.tx+dx*k;ty=tTy=drag.ty+dy*k;apply();});
 window.addEventListener('pointerup',()=>{if(drag){svg.classList.remove('drag');drag=null;if(!raf)later();}});
+/*fw-svgpinch*/(()=>{const pts=new Map();let pin=null,noClick=false;const two=()=>{const a=[...pts.values()];return {d:Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y)||1,m:toVB((a[0].x+a[1].x)/2,(a[0].y+a[1].y)/2)};};svg.addEventListener('pointerdown',ev=>{pts.set(ev.pointerId,{x:ev.clientX,y:ev.clientY});if(pts.size===2){drag=null;svg.classList.remove('drag');if(raf){cancelAnimationFrame(raf);raf=null;}const t=two();pin={d:t.d,px:(t.m.x-tx)/scale,py:(t.m.y-ty)/scale,s:scale};noClick=true;}});window.addEventListener('pointermove',ev=>{if(!pts.has(ev.pointerId))return;pts.set(ev.pointerId,{x:ev.clientX,y:ev.clientY});if(!pin||pts.size<2)return;const t=two(),ns=Math.max(1,Math.min(pin.s*t.d/pin.d,10));scale=tScale=ns;tx=tTx=t.m.x-pin.px*ns;ty=tTy=t.m.y-pin.py*ns;apply();},{passive:true});const up=ev=>{if(!pts.delete(ev.pointerId))return;if(pin&&pts.size<2){pin=null;if(scale<=1.0001){scale=tScale=1;tx=tTx=0;ty=tTy=0;apply();}const r=[...pts.values()][0];if(r){drag={x:r.x,y:r.y,tx,ty,moved:true};}else later();}if(!pts.size)setTimeout(()=>{noClick=false;},0);};window.addEventListener('pointerup',up);window.addEventListener('pointercancel',up);svg.addEventListener('click',ev=>{if(noClick){ev.stopPropagation();ev.preventDefault();}},true);})();
 function viewCenter(){const r=svg.getBoundingClientRect();return toVB(r.left+r.width/2,r.top+r.height/2);}
 document.getElementById('zin').onclick=()=>{const c=viewCenter();zoomTo(c.x,c.y,1.5);};
 document.getElementById('zout').onclick=()=>{const c=viewCenter();zoomTo(c.x,c.y,1/1.5);};

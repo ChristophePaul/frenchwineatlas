@@ -220,7 +220,7 @@
   if (me) { var ns = document.createElement('script'); ns.src = me.replace(/theme\.js(\?.*)?$/, 'nav.js'); document.head.appendChild(ns); }
 
   // phones: full-screen map + bottom sheet on the region maps & cadastral plans (assets/mobile_maps.js)
-  if (me) { var mm = document.createElement('script'); mm.src = me.replace(/theme\.js(\?.*)?$/, 'mobile_maps.js?v=1'); document.head.appendChild(mm); }
+  if (me) { var mm = document.createElement('script'); mm.src = me.replace(/theme\.js(\?.*)?$/, 'mobile_maps.js?v=2'); document.head.appendChild(mm); }
 
   // free member access (assets/access.js): set visitor / member state before first paint, then load the popup + locks
   try { root.classList.add(localStorage.getItem('fw_member') ? 'fw-member' : 'fw-guest'); } catch (e) { root.classList.add('fw-guest'); }

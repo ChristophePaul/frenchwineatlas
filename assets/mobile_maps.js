@@ -1,4 +1,5 @@
-/* Region maps on phones (loaded by theme.js on every page; only acts on pages laid out as #app > aside + main > #map).
+/* Region maps on phones (loaded by theme.js on every page; only acts on pages laid out as #app > aside + main > #map,
+ * or — Carte de France / Carte des IGP — #app > #side + #stage).
  * ≤760 px wide (or a phone held sideways): the map fills the whole screen and the sidebar becomes a bottom sheet
  * with three tabs — Appellations (the list), Calques / Layers (checkboxes), Légende / Legend (the legend cards that
  * floated over the map). Drag or tap the sheet's head to open/close it. The title card, hover hint and compass are
@@ -14,37 +15,43 @@
   var CSS = [
     'html.fw-ms,html.fw-ms body{overscroll-behavior:none;}',
     'html.fw-ms #app{position:fixed!important;inset:0!important;display:block!important;height:auto!important;max-height:none!important;}',
-    'html.fw-ms #app>main{position:absolute!important;inset:0!important;height:auto!important;}',
+    'html.fw-ms #app>main,html.fw-ms .fw-ms-main{position:absolute!important;inset:0!important;height:auto!important;width:auto!important;}',
     /* the sheet */
-    'html.fw-ms #app>aside{position:absolute!important;left:0;right:0;bottom:0;z-index:800;height:var(--ms-h,84px)!important;max-height:none!important;',
+    'html.fw-ms #app>aside,html.fw-ms .fw-ms-sheet{position:absolute!important;left:0;right:0;bottom:0;z-index:800;height:var(--ms-h,84px)!important;max-height:none!important;',
+    '  width:auto!important;flex:none!important;border-bottom:0!important;',
     '  border-right:0!important;border-top:3px solid #c9a24b;border-radius:14px 14px 0 0;box-shadow:0 -8px 28px rgba(43,19,22,.28);',
     '  display:flex!important;flex-direction:column;overflow:hidden!important;transition:height .26s cubic-bezier(.2,.8,.2,1);}',
-    'html.fw-ms #app>aside.ms-drag,html.fw-ms #app>aside.ms-now{transition:none;}',
+    'html.fw-ms .fw-ms-sheet.ms-drag,html.fw-ms .fw-ms-sheet.ms-now{transition:none;}',
     '.fw-ms-head{flex:none;padding:6px 12px 8px;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none;}',
     '.fw-ms-grip{width:42px;height:5px;border-radius:3px;background:rgba(201,162,75,.75);margin:0 auto 6px;}',
     '.fw-ms-row{display:flex;align-items:center;gap:8px;}',
     '.fw-ms-title{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:16px;font-weight:600;line-height:1.25;}',
     '.fw-ms-chev{flex:none;width:30px;height:26px;border:0;background:none;color:#c9a24b;font-size:16px;line-height:1;cursor:pointer;padding:0;transition:transform .2s;}',
-    'aside.ms-open .fw-ms-chev{transform:rotate(180deg);}',
+    '.ms-open .fw-ms-chev{transform:rotate(180deg);}',
     '.fw-ms-tabs{display:flex;gap:6px;margin-top:7px;}',
     '.fw-ms-tab{flex:1;min-width:0;font:700 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;',
     '  padding:9px 4px;border-radius:999px;border:1px solid rgba(201,162,75,.55);background:transparent;color:inherit;cursor:pointer;',
     '  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
-    'aside.ms-open .fw-ms-tab.on{background:#c9a24b;border-color:#c9a24b;color:#3a0a14;}',
+    '.ms-open .fw-ms-tab.on{background:#c9a24b;border-color:#c9a24b;color:#3a0a14;}',
     '.fw-ms-body{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;',
     '  padding-bottom:calc(14px + env(safe-area-inset-bottom,0px));}',
     /* everything inside the sheet scrolls as one: no nested scroll boxes */
     '.fw-ms-body>:not(.fw-ms-legend),.fw-ms-body .listwrap,.fw-ms-body .side-scroll{flex:none!important;overflow:visible!important;max-height:none!important;height:auto!important;}',
-    '.fw-ms-body .brand{display:none!important;}',
+    '.fw-ms-body .brand,.fw-ms-body>h1,.fw-ms-body>.sub{display:none!important;}',
+    '.fw-ms-body input[type="text"],.fw-ms-body input:not([type]),.fw-ms-body input[type="search"]{font-size:16px!important;}',
+    '.fw-ms-body .row{padding-top:8px!important;padding-bottom:8px!important;font-size:14px!important;}',
+    '.fw-ms-body .grp>.gh{padding-top:11px!important;padding-bottom:11px!important;}',
     '.fw-ms-body .layers{border-top:0!important;}',
     '.fw-ms-body .layer-row{padding:8px 4px!important;font-size:14px!important;}',
     '.fw-ms-body .layer-row input{width:18px!important;height:18px!important;}',
     /* tabs: show only the chosen part */
-    'aside[data-ms-tab="list"] .fw-ms-layers,aside[data-ms-tab="list"] .fw-ms-legend{display:none!important;}',
-    'aside[data-ms-tab="layers"] .fw-ms-body>:not(.fw-ms-layers):not(:has(.fw-ms-layers)),',
-    'aside[data-ms-tab="layers"] .fw-ms-body :has(>.fw-ms-layers)>:not(.fw-ms-layers):not(:has(.fw-ms-layers)){display:none!important;}',
-    'aside[data-ms-tab="legend"] .fw-ms-body>:not(.fw-ms-legend){display:none!important;}',
+    '[data-ms-tab="list"] .fw-ms-layers,[data-ms-tab="list"] .fw-ms-legend{display:none!important;}',
+    '[data-ms-tab="layers"] .fw-ms-body>:not(.fw-ms-layers):not(:has(.fw-ms-layers)),',
+    '[data-ms-tab="layers"] .fw-ms-body :has(>.fw-ms-layers)>:not(.fw-ms-layers):not(:has(.fw-ms-layers)){display:none!important;}',
+    '[data-ms-tab="legend"] .fw-ms-body>:not(.fw-ms-legend){display:none!important;}',
     '.fw-ms-legend{padding:12px 16px;display:flex;flex-direction:column;gap:12px;}',
+    '.fw-ms-legend #legend{padding:10px 12px!important;font-size:14px!important;}',
+    '.fw-ms-legend #legend .li{padding:6px 4px!important;}',
     '.fw-ms-legend>*{position:static!important;inset:auto!important;transform:none!important;max-width:none!important;width:auto!important;',
     '  max-height:none!important;margin:0!important;display:block;box-shadow:none!important;}',
     '.fw-ms-legend>[style*="display: none"],.fw-ms-legend>[style*="display:none"]{display:none!important;}',
@@ -52,11 +59,15 @@
     /* map overlays: hide the desktop cards, keep Leaflet controls above the sheet */
     'html.fw-ms #app #title-card,html.fw-ms #app .hint,html.fw-ms #app #hint,html.fw-ms #app #compass{display:none!important;}',
     'html.fw-ms #app .leaflet-bottom{bottom:var(--ms-h,84px);transition:bottom .26s cubic-bezier(.2,.8,.2,1);}',
+    'html.fw-ms #app #allIgp{top:auto!important;bottom:calc(var(--ms-h,84px) + 30px)!important;right:10px!important;left:auto!important;transition:bottom .26s cubic-bezier(.2,.8,.2,1);}',
+    'html.fw-ms .fw-copy-tag{bottom:calc(var(--ms-h,84px) + 6px)!important;left:8px!important;right:auto!important;font-size:9px!important;transition:bottom .26s cubic-bezier(.2,.8,.2,1);}',
     'html.fw-ms #app .leaflet-control-attribution{font-size:9px;max-width:60vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}',
     /* info cards (hover tip, detail card, readout) open full-width under the toolbar, above the sheet */
-    'html.fw-ms #app .info-tip,html.fw-ms #app .info-detail,html.fw-ms #app #readout{position:fixed!important;left:8px!important;right:8px!important;',
+    'html.fw-ms #app .info-tip,html.fw-ms #app .info-detail,html.fw-ms #app #readout,html.fw-ms #app #info,html.fw-ms #app #aocPopup{position:fixed!important;left:8px!important;right:8px!important;',
     '  top:var(--fw-bar-b,64px)!important;bottom:auto!important;width:auto!important;max-width:none!important;z-index:1001!important;',
-    '  max-height:calc(100% - var(--fw-bar-b,64px) - var(--ms-h,84px) - 12px)!important;}'
+    '  max-height:calc(100% - var(--fw-bar-b,64px) - var(--ms-h,84px) - 12px)!important;}',
+    /* SVG maps: the IGP / region card keeps the lower half of the map visible (it scrolls) */
+    'html.fw-ms #app #info,html.fw-ms #app #aocPopup{max-height:min(44%, calc(100% - var(--fw-bar-b,64px) - var(--ms-h,84px) - 12px))!important;overflow-y:auto!important;}'
   ].join('\n');
 
   function addCss() {
@@ -65,14 +76,16 @@
     (document.head || root).appendChild(st);
   }
 
-  var app, aside, head, body, legendBox, title, tabs = {}, moved = [], state = 'peek', tab = 'list', built = false;
+  var app, aside, main, head, body, legendBox, title, tabs = {}, moved = [], state = 'peek', tab = 'list', built = false;
   var isEN = function () { return (root.getAttribute('lang') || '').slice(0, 2) === 'en'; };
-  var LABELS = { list: ['Appellations', 'Appellations'], info: ['Infos', 'Info'], layers: ['Calques', 'Layers'], legend: ['Légende', 'Legend'] };
+  var LABELS = { list: ['Appellations', 'Appellations'], igp: ['IGP & IG', 'IGPs & IGs'], regions: ['Régions', 'Regions'], info: ['Infos', 'Info'], layers: ['Calques', 'Layers'], legend: ['Légende', 'Legend'] };
 
   function pageOk() {
     app = document.getElementById('app');
-    aside = app && app.querySelector(':scope>aside');
-    return !!(aside && app.querySelector(':scope>main #map'));
+    aside = app && app.querySelector(':scope>aside'); main = app && app.querySelector(':scope>main');
+    if (aside && main && main.querySelector('#map')) return true;
+    aside = app && app.querySelector(':scope>#side'); main = app && app.querySelector(':scope>#stage');   // SVG maps
+    return !!(aside && main && main.querySelector('svg'));
   }
 
   function peekH() { return head ? head.offsetHeight : 84; }
@@ -97,8 +110,10 @@
   }
   function labels() {
     var en = isEN();
-    Object.keys(tabs).forEach(function (k) { tabs[k].textContent = LABELS[k === 'list' && !aside.querySelector('.listwrap') ? 'info' : k][en ? 1 : 0]; });
-    var h1 = aside.querySelector('.brand h1');
+    var svgPage = aside.id === 'side', listKey = svgPage ? (document.getElementById('igp') ? 'igp' : 'regions') :
+      aside.querySelector('.listwrap') ? 'list' : 'info';
+    Object.keys(tabs).forEach(function (k) { tabs[k].textContent = LABELS[k === 'list' ? listKey : k][en ? 1 : 0]; });
+    var h1 = aside.querySelector('.brand h1') || aside.querySelector('h1');
     if (title && h1) {                                   // the name only (plan pages add a <small> subtitle)
       var t = ''; h1.childNodes.forEach(function (n) { if (n.nodeType === 3 || (n.nodeType === 1 && !/^(SMALL|BR)$/.test(n.tagName))) t += n.textContent; });
       title.textContent = t.trim() || h1.textContent.trim();
@@ -113,7 +128,8 @@
       var t = el.querySelector('.panel-title');
       return t && /^(calques|layers)$/i.test(t.textContent.trim());
     });
-    var all = Array.prototype.slice.call(app.querySelectorAll('aside .legend, main>.legend, main>[id$="legend"]'));
+    var all = Array.prototype.slice.call(aside.querySelectorAll('.legend')).concat(
+      Array.prototype.filter.call(main.children, function (el) { return el.classList.contains('legend') || /legend$/.test(el.id); }));
     var legends = all.filter(function (el) { return !all.some(function (o) { return o !== el && o.contains(el); }); });
 
     head = document.createElement('div'); head.className = 'fw-ms-head';
@@ -123,6 +139,7 @@
     body = document.createElement('div'); body.className = 'fw-ms-body';
     while (aside.firstChild) body.appendChild(aside.firstChild);
     aside.appendChild(head); aside.appendChild(body);
+    aside.classList.add('fw-ms-sheet'); main.classList.add('fw-ms-main');
 
     layers.forEach(function (el) { el.classList.add('fw-ms-layers'); });
     legendBox = document.createElement('div'); legendBox.className = 'fw-ms-legend';
@@ -162,7 +179,8 @@
     while (body.firstChild) aside.insertBefore(body.firstChild, head);
     head.remove(); body.remove();
     Array.prototype.forEach.call(aside.querySelectorAll('.fw-ms-layers'), function (el) { el.classList.remove('fw-ms-layers'); });
-    aside.classList.remove('ms-open', 'ms-drag', 'ms-now'); aside.removeAttribute('data-ms-tab');
+    aside.classList.remove('ms-open', 'ms-drag', 'ms-now', 'fw-ms-sheet'); aside.removeAttribute('data-ms-tab');
+    main.classList.remove('fw-ms-main');
     root.classList.remove('fw-ms'); root.style.removeProperty('--ms-h');
     tabs = {};
     refit();
@@ -170,7 +188,10 @@
 
   // Leaflet must re-measure the map box after the layout switches
   function refit() {
-    setTimeout(function () { (window.__fwMaps || []).forEach(function (m) { try { m.invalidateSize(false); } catch (e) {} }); }, 60);
+    setTimeout(function () {
+      (window.__fwMaps || []).forEach(function (m) { try { m.invalidateSize(false); } catch (e) {} });
+      if (aside && aside.id === 'side') window.dispatchEvent(new Event('resize'));   // SVG maps re-measure their box on resize
+    }, 60);
   }
 
   // drag the head: follow the finger, snap to peek / half / full; a plain tap toggles
@@ -216,7 +237,11 @@
     if (MQ.addEventListener) MQ.addEventListener('change', check); else MQ.addListener(check);
     window.addEventListener('resize', function () { if (built) setState(state, true); });
     new MutationObserver(function () { if (built) labels(); }).observe(root, { attributes: true, attributeFilter: ['lang'] });
-    var h1 = aside.querySelector('.brand h1');
+    // SVG maps: picking an IGP / region in the list closes the sheet so its area shows on the map
+    aside.addEventListener('click', function (e) { if (built && aside.id === 'side' && e.target.closest('.row')) setState('peek'); });
+    // a row scrolled into view by the page must scroll the list, never the sheet itself (that would hide its head)
+    aside.addEventListener('scroll', function () { if (built && aside.scrollTop) aside.scrollTop = 0; });
+    var h1 = aside.querySelector('.brand h1') || aside.querySelector('h1');
     if (h1) new MutationObserver(function () { if (built) labels(); }).observe(h1, { childList: true, characterData: true, subtree: true });
   }
 
