@@ -28,7 +28,12 @@
   })();
 
   /* ---------------- language ---------------- */
-  function stored() { try { var s = localStorage.getItem('fw_lang'); return s === 'en' || s === 'fr' ? s : ''; } catch (e) { return ''; } }
+  // the choice: localStorage fw_lang, or the fw_lang cookie kept by theme.js (survives a change of address)
+  function stored() {
+    var s = ''; try { s = localStorage.getItem('fw_lang') || ''; } catch (e) {}
+    if (s !== 'en' && s !== 'fr') s = window.fwLangCookie ? window.fwLangCookie.get() : '';
+    return s === 'en' || s === 'fr' ? s : '';
+  }
   function lang() { return (stored() || root.lang || 'fr').slice(0, 2) === 'en' ? 'en' : 'fr'; }
   var OWN_LANG = null;               // the page's own FR/EN button, if any
   function T(fr, en) { return lang() === 'en' ? en : fr; }
@@ -42,6 +47,7 @@
   }
   function setLang(l) {
     try { localStorage.setItem('fw_lang', l); } catch (e) {}
+    if (window.fwLangCookie) window.fwLangCookie.set(l);
     if (document.querySelector('[data-fr][data-en]')) root.lang = l;   // only claim the page is EN when it can show EN
     applyDataLang(l);
     refresh();
@@ -471,16 +477,16 @@
   }
 
   /* ---------------- first visit: choose a language ---------------- */
-  // Shown on the home page at its first load of each browser session. The choice is saved in fw_lang like
-  // the EN/FR button, so every page then opens in that language.
+  // Shown automatically only on the home page, and only until a language has been chosen (fw_lang in
+  // localStorage or its cookie, see theme.js). The choice is saved like the EN/FR button, so every page
+  // then opens in that language, on later visits too.
   // A link to #lang (e.g. the home page footer « Changer de langue ») reopens it at any time.
   function firstVisitLang() {
     window.addEventListener('hashchange', function () { if (location.hash === '#lang') langChooser(true); });
     if (location.hash === '#lang') return langChooser(true);
-    // automatic: only on the home page, once per browser session (sessionStorage flag)
     if (!/^(index\.html)?$/.test(here)) return;
-    try { if (sessionStorage.getItem('fw_lang_asked')) return; sessionStorage.setItem('fw_lang_asked', '1'); } catch (e) { return; }
-    langChooser(!!stored());                                   // a language already chosen = the highlighted button
+    if (stored()) return;
+    langChooser(false);
   }
   function langChooser(reopen) {
     if (document.querySelector('.fw-lang-ov')) return;

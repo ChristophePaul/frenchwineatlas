@@ -14,9 +14,31 @@
   } catch (e) {}
   root.setAttribute('data-theme', t);
 
+  // Language memory. Every page reads the FR/EN choice from localStorage fw_lang; it is also kept in a
+  // 1-year cookie, shared by vinopedia.wine, www. and http/https (localStorage is not), so the choice
+  // follows the visitor whatever address they use. Runs before any page script reads fw_lang.
+  (function () {
+    function cookie() { var m = document.cookie.match(/(?:^|;\s*)fw_lang=(en|fr)\b/); return m ? m[1] : ''; }
+    function write(l) {
+      if (l !== 'en' && l !== 'fr') return;
+      var dom = /(^|\.)vinopedia\.wine$/i.test(location.hostname) ? '; domain=vinopedia.wine' : '';
+      try { document.cookie = 'fw_lang=' + l + '; max-age=31536000; path=/; SameSite=Lax' + dom; } catch (e) {}
+    }
+    function local() { try { var s = localStorage.getItem('fw_lang'); return s === 'en' || s === 'fr' ? s : ''; } catch (e) { return ''; } }
+    var s = local(), c = cookie();
+    if (!s && c) { try { localStorage.setItem('fw_lang', c); } catch (e) {} }
+    else if (s && s !== c) write(s);
+    // pages with their own FR/EN button only write localStorage: copy the latest choice to the cookie on leaving
+    function flush() { var l = local(); if (l && l !== cookie()) write(l); }
+    window.addEventListener('pagehide', flush);
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') flush(); });
+    window.fwLangCookie = { get: cookie, set: write };
+  })();
+
   function lang() {
     var l = '';
     try { l = localStorage.getItem('fw_lang') || ''; } catch (e) {}
+    if (!l && window.fwLangCookie) l = window.fwLangCookie.get();
     return (l || root.lang || 'fr').slice(0, 2) === 'en' ? 'en' : 'fr';
   }
   function label() {
