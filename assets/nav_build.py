@@ -30,7 +30,7 @@ def fold(s):
 
 
 # pages kept out of the menu: drafts not published yet, and the search results page (reached from 🔍)
-HIDDEN = {'Infos/Sweet_Wines/Douce_France.html', 'Infos/Recherche.html'}
+HIDDEN = {'Infos/Recherche.html'}
 pages = sorted(str(p.relative_to(SITE)) for p in SITE.rglob('*.html')
                if '_source' not in p.parts and '_backups' not in p.parts and not p.name.startswith('_')
                and str(p.relative_to(SITE)) not in HIDDEN)
@@ -188,7 +188,8 @@ infos = grp('Comprendre le vin', 'Wine knowledge', groups=[
         item(I + "How it's made/How wine is made - Illustrated.html", 'Vinification illustrée', 'How wine is made (illustrated)'),
         item(I + "How it's made/How sparkling wine is made.html", 'Vins effervescents', 'Sparkling wine'),
         item(I + "How it's made/How brandy is made.html", 'Eaux-de-vie', 'Brandy'),
-        item(I + 'Barrel_Making/Barrel_Making.html', 'Comment naît une barrique', 'Birth of a wine barrel')]),
+        item(I + 'Barrel_Making/Barrel_Making.html', 'Comment naît une barrique', 'Birth of a wine barrel'),
+        item(I + 'Sweet_Wines/Douce_France.html', 'Douce France… (vins doux & vin jaune)', 'Sweet France… (sweet wines & vin jaune)')]),
     grp('Littérature', 'Literature', [
         item(I + 'Literature/Wine_Quotes.html', 'Le vin en citations', 'Wine in quotations')]),
     grp('Jeux', 'Games', [

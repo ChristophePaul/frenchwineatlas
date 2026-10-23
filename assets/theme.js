@@ -236,7 +236,7 @@
     '/Vine_Glossary.html', '/Wine_Label.html', '/Wine_Tasting.html', '/History_of_Wine.html', '/Wine_Quotes.html',
     '/Jeux.html', '/Wine_Quiz.html', '/Taste_Quiz.html', '/Map_Game.html', '/Bon_Cep.html', '/IGP_Game.html',
     '/wine_chemistry_web.html', '/wine_compound_count_web.html', '/How brandy is made.html', '/How wine is made.html',
-    '/How wine is made - Illustrated.html', '/How sparkling wine is made.html', '/Bottle_Sizes.html', '/Barrel_Making.html', '/Geology_Map.html'];
+    '/How wine is made - Illustrated.html', '/How sparkling wine is made.html', '/Bottle_Sizes.html', '/Barrel_Making.html', '/Geology_Map.html', '/Douce_France.html'];
   var here = '';
   try { here = decodeURIComponent(location.pathname); } catch (e) { here = location.pathname; }
   if (me && WATERMARK_PAGES.some(function (p) { return here.slice(-p.length) === p; })) {
