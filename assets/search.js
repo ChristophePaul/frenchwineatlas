@@ -10,7 +10,7 @@
      a section result scrolls to the words and highlights them for a few seconds. */
 (function () {
   if (window.fwSearch) return;
-  var INDEX_V = '202610231425';                       // stamped by search_build.py (cache-buster for the index)
+  var INDEX_V = '202610231900';                       // stamped by search_build.py (cache-buster for the index)
   var root = document.documentElement;
   var me = document.currentScript && document.currentScript.src;
   if (!me) { var ss = document.getElementsByTagName('script'); for (var i = ss.length - 1; i >= 0; i--) if (/assets\/search\.js/.test(ss[i].src)) { me = ss[i].src; break; } }

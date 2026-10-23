@@ -165,7 +165,7 @@ infos = grp('Comprendre le vin', 'Wine knowledge', groups=[
         item(I + 'AOC_Decree/AOC_Library.html', 'Bibliothèque des décrets AOC', 'AOC decree library'),
         item(I + 'Vintages/Vintage_Chart.html', 'Millésimes', 'Vintage chart'),
         item(I + 'French_Wine_in_Numbers.html', 'La France viticole en chiffres', 'French wine in numbers'),
-        item(I + 'Bottle_Sizes.html', 'Formats de bouteilles', 'Bottle sizes'),
+        item(I + 'Bottle_Sizes.html', 'De la bouteille au tastevin', 'From the bottle to the tastevin'),
         item(I + 'Crus_Classifications.html', 'Les classifications des crus', 'Crus & grands crus classifications'),
         item(I + 'Wine_Label/Wine_Label.html', 'Apprendre à lire… une étiquette', 'Learning to read… a wine label'),
         item(I + 'Tasting/Wine_Tasting.html', 'Déguster le vin', 'Tasting wine'),
