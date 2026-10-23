@@ -93,7 +93,9 @@
     '.fw-grp-inline .fw-pill{box-shadow:none;}',
     '.fw-pill svg{width:15px;height:15px;flex:none;}',
     '@media (max-width:560px){html.fw-has-dock body{padding-bottom:72px;} .fw-dock{top:auto;bottom:14px;right:14px;} .fw-dock .fw-pill .fw-ml{display:none;} .fw-dock .fw-pill{padding:9px;}',
-    '  .fw-bar .fw-ml{display:none;}}',
+    '  .fw-bar .fw-ml,.fw-bar .fw-sl,.fw-dock .fw-pill .fw-sl{display:none;}}',
+    '.fw-bar>button .fw-sl{display:none;} @media (min-width:1100px){.fw-bar>button .fw-sl{display:inline;}}',
+    '@media (max-width:640px){.fw-pill .fw-sl{display:none;} .fw-pill:has(.fw-sl){padding-left:11px!important;padding-right:11px!important;gap:0!important;}}',
     /* dropdown panel */
     '.fw-menu{position:fixed;z-index:100001;width:min(390px,calc(100vw - 16px));max-height:min(80vh,760px);display:flex;flex-direction:column;',
     '  background:#fbf6ea;color:#2e1419;border:1px solid rgba(154,106,31,.5);border-top:3px solid #8e1f33;border-radius:10px;box-shadow:0 18px 50px rgba(40,10,15,.35);',
@@ -141,6 +143,7 @@
   ].join('\n');
 
   var IC_MENU = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  var IC_SEARCH = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg>';
   var IC_GLOBE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.6 5.4 3.6 8.5s-1.2 5.9-3.6 8.5c-2.4-2.6-3.6-5.4-3.6-8.5s1.2-5.9 3.6-8.5Z"/></svg>';
 
   /* ---------------- menu panel ---------------- */
@@ -280,6 +283,52 @@
     menuBtns.push(b);
     return b;
   }
+  /* ---------------- site search (assets/search.js, loaded on first use) ---------------- */
+  // No search button on the cadastral plans, the games, or where the page asks not to have one.
+  var NO_SEARCH = /^(Plan Cadastraux\/|Infos\/Literature\/(Jeux|Wine_Quiz|Taste_Quiz|Map_Game|Bon_Cep|IGP_Game)\.html$)/;
+  var SEARCH_V = /*@SV@*/'202610231425';         // search.js version, stamped by search_build.py / nav_build.py
+  var searchBtn = null, searchJs = null;
+  function hasSearch() { return !NO_SEARCH.test(here) && !document.querySelector('meta[name="fw-no-search"]'); }
+  function loadSearch() {
+    if (window.fwSearch) return Promise.resolve(window.fwSearch);
+    if (searchJs) return searchJs;
+    searchJs = new Promise(function (ok, ko) {
+      var s = document.createElement('script');
+      s.src = BASE + 'assets/search.js?v=' + SEARCH_V;
+      s.onload = function () { ok(window.fwSearch); }; s.onerror = function () { searchJs = null; ko(); };
+      document.head.appendChild(s);
+    });
+    return searchJs;
+  }
+  function openSearch(btn) {
+    close();
+    // keys typed while search.js is still loading are passed on to the search field
+    var early = '', grab = function (e) { if (e.key.length === 1 && !e.metaKey && !e.ctrlKey) { early += e.key; e.preventDefault(); } };
+    if (!window.fwSearch) document.addEventListener('keydown', grab, true);
+    loadSearch().then(function (fs) {
+      document.removeEventListener('keydown', grab, true);
+      fs.toggle(btn || searchBtn);
+      if (early) fs.type(early);
+    });
+  }
+  function searchButton(cls) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = cls;
+    b.setAttribute('aria-haspopup', 'dialog'); b.setAttribute('aria-expanded', 'false');
+    b.innerHTML = IC_SEARCH + '<span class="fw-sl"></span>';
+    b.addEventListener('click', function (e) { e.preventDefault(); e.stopPropagation(); openSearch(b); });
+    b.addEventListener('mousedown', function (e) { e.stopPropagation(); });
+    searchBtn = b;
+    return b;
+  }
+  function searchKeys() {
+    document.addEventListener('keydown', function (e) {
+      var t = e.target, typing = t && (t.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(t.nodeName));
+      if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey) && !e.altKey) { e.preventDefault(); openSearch(); }
+      else if (e.key === '/' && !typing && !e.metaKey && !e.ctrlKey && !e.altKey) { e.preventDefault(); openSearch(); }
+    });
+  }
+
   function languageButton(cls) {
     var b = document.createElement('button');
     b.type = 'button'; b.className = cls;
@@ -294,6 +343,11 @@
       b.querySelector('.fw-ml').textContent = 'Menu';
       b.title = T('Toutes les pages du site', 'All pages of the site');
     });
+    if (searchBtn) {
+      searchBtn.querySelector('.fw-sl').textContent = T('Rechercher', 'Search');
+      searchBtn.title = T('Rechercher dans tout le site  ( / )', 'Search the whole site  ( / )');
+      searchBtn.setAttribute('aria-label', T('Rechercher', 'Search'));
+    }
     if (langBtn) {
       langBtn.querySelector('.fw-ll').textContent = lang() === 'en' ? 'FR' : 'EN';
       langBtn.title = T('English version', 'Version française');
@@ -312,6 +366,7 @@
   function mapBar(zoomEl) {
     var bar = document.createElement('div'); bar.className = 'fw-bar';
     bar.appendChild(menuButton(''));
+    if (hasSearch()) bar.appendChild(searchButton(''));
     if (!OWN_LANG) bar.appendChild(languageButton(''));
     var th = themeBtn();
     if (th) { th.classList.remove('fw-float'); bar.appendChild(th); }
@@ -415,11 +470,13 @@
     if (anchor && anchor.parentNode) {
       if (!anchor.classList.contains('fw-theme-btn')) pill.className = anchor.className + ' fw-pill';   // page's own button style
       anchor.parentNode.insertBefore(pill, anchor);
+      if (hasSearch()) anchor.parentNode.insertBefore(searchButton(pill.className), anchor);
       anchor.parentNode.classList.add('fw-grp-inline');
       return;
     }
     var dock = document.createElement('div'); dock.className = 'fw-dock';
     dock.appendChild(pill);
+    if (hasSearch()) dock.appendChild(searchButton('fw-theme-btn fw-pill'));
     if (!OWN_LANG) dock.appendChild(languageButton('fw-theme-btn fw-pill'));
     if (th) { th.classList.remove('fw-float'); dock.appendChild(th); }
     document.body.appendChild(dock);
@@ -459,7 +516,13 @@
   // Start only once theme.js has built its button: a script injected at runtime can run after parsing
   // but before DOMContentLoaded, i.e. before the theme button exists (it would then float over the bar).
   var started = false;
-  function start() { if (started) return; started = true; mount(); adoptLateThemeButtons(); firstVisitLang(); }
+  function start() {
+    if (started) return; started = true; mount(); adoptLateThemeButtons(); firstVisitLang();
+    if (hasSearch()) searchKeys();
+    // arriving from a search result: #aoc= / #igp= on a map, or words to highlight, or the results page itself
+    var hl = ''; try { hl = sessionStorage.getItem('fw_hl') || ''; } catch (e) {}
+    if (hl || /^#(aoc|igp)=/.test(location.hash) || document.getElementById('fw-results')) loadSearch();
+  }
   if (window.__fwThemeMounted) start();
   else {
     document.addEventListener('fw:theme-mounted', start);
@@ -540,5 +603,5 @@
     var f = ov.querySelector('button[data-l="' + guess + '"]'); try { f.focus({ preventScroll: true }); } catch (e) {}
   }
 
-  window.fwNav = { setLang: setLang, lang: lang, chooseLang: function () { langChooser(true); }, open: function () { if (menuBtns[0]) open(menuBtns[0]); } };
+  window.fwNav = { search: openSearch, setLang: setLang, lang: lang, chooseLang: function () { langChooser(true); }, open: function () { if (menuBtns[0]) open(menuBtns[0]); } };
 })();

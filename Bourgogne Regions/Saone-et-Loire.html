@@ -1563,7 +1563,7 @@ function climatHref(p){var k=_ckey(p&&p.appellation);if(k&&CLIMAT_LINKS[k])retur
     if(y+tip.offsetHeight>mb.height-10) y=Math.max(8, mb.height-tip.offsetHeight-10);
     tip.style.left=x+'px'; tip.style.top=y+'px';
   }
-  function showDetail(appel){
+  /*fw-search-hook*/window.fwOpenAppel=function(n){selectAppel(n);return true;};/*fw-search-hook:end*/function showDetail(appel){
     detail.innerHTML='<div class="ro-card">'+tipHTML(appel)+'</div>'+fwPlanLink(appel);
     detail.style.display='block';
     var mb=mainEl.getBoundingClientRect(), tr=tip.getBoundingClientRect();

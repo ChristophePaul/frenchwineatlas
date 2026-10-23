@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!--fw-theme:start--><script src="../assets/theme.js"></script><!--fw-theme:end-->
+<!--fw-favicon:start--><link rel="icon" href="../favicon.ico" sizes="48x48"><link rel="icon" type="image/png" href="../assets/favicon.png" sizes="192x192"><link rel="apple-touch-icon" href="../apple-touch-icon.png"><!--fw-favicon:end-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-fr="Recherche · Vins de France" data-en="Search · Wines of France">Recherche · Vins de France</title>
+<meta name="description" content="Rechercher dans tout le site : appellations, cépages, IGP, climats, articles, citations, cahiers des charges.">
+<meta name="robots" content="noindex">
+<style>
+  /* The results list itself is drawn by assets/search.js (#fw-results). */
+  :root{
+    --gold:#d9b36b;--gold-soft:#e7cf9c;--parchment:#f5efe3;--muted:rgba(245,239,227,.72);--faint:rgba(245,239,227,.5);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI","Helvetica Neue",Arial,sans-serif;
+    --glass:rgba(24,5,11,.5);--hair:rgba(217,179,107,.18);--hair-hi:rgba(217,179,107,.55);
+    --title:#fff;--link:#f3dca6;--link-v:#e2b9c4;--accent:#c9a24b;--chip-on:#c9a24b;--chip-on-ink:#1f080e;
+  }
+  html[data-theme="cream"]{
+    --gold:#9a6a1f;--gold-soft:#7b1e2b;--parchment:#2e1419;--muted:rgba(46,20,25,.78);--faint:rgba(46,20,25,.55);
+    --glass:#fffdf8;--hair:rgba(142,31,51,.16);--hair-hi:rgba(142,31,51,.45);
+    --title:#3a1219;--link:#8e1f33;--link-v:#6a2a5a;--accent:#8e1f33;--chip-on:#8e1f33;--chip-on-ink:#fff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;min-height:100%;}
+  body{color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;min-height:100vh;
+    background:linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+      url("../Web_Page_Background.png") center top / cover fixed no-repeat,#4d0d18;}
+  html[data-theme="cream"] body{background:linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,#f5eee0;}
+  .wrap{max-width:860px;margin:0 auto;padding:clamp(22px,4vw,44px) 16px 64px;}
+  .home{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--gold);border:1px solid var(--hair);border-radius:999px;padding:8px 16px;background:var(--glass);}
+  .home:hover{border-color:var(--hair-hi);}
+  header{margin:clamp(18px,3vw,30px) 0 18px;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,5vw,46px);line-height:1.05;margin:0 0 4px;color:var(--title);}
+  h1 em{font-style:italic;color:var(--gold-soft);}
+  .sub{margin:0;font-size:14px;color:var(--muted);}
+
+  /* search field (shares .fs-field / .fs-in / .fs-mic with the panel) */
+  .fr-field{height:52px!important;padding:0 8px 0 18px!important;box-shadow:0 10px 30px rgba(10,1,4,.25);}
+  html[data-theme="cream"] .fr-field{box-shadow:0 8px 24px rgba(90,30,40,.10);}
+  .fr-field .fs-in{font-size:17px!important;}
+  .fr-field .fs-mic{width:40px;height:40px;} .fr-field .fs-mic svg{width:21px;height:21px;}
+
+  .fr-chips{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 6px;}
+  .fr-chips button{all:unset;cursor:pointer;box-sizing:border-box;padding:6px 12px;border-radius:999px;border:1px solid var(--hair-hi);
+    font-size:12.5px;font-weight:600;color:var(--gold-soft);background:var(--glass);}
+  .fr-chips button span{opacity:.6;font-weight:500;margin-left:2px;}
+  .fr-chips button:hover{border-color:var(--accent);}
+  .fr-chips button.on{background:var(--chip-on);border-color:var(--chip-on);color:var(--chip-on-ink);}
+  .fr-chips button.on span{opacity:.8;}
+  .fr-meta{font-size:12.5px;color:var(--faint);margin:6px 2px 14px;min-height:1em;}
+  .fr-meta b{color:var(--muted);}
+
+  .fr-r{margin:0 0 22px;max-width:700px;}
+  .fr-path{font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;line-height:1.3;}
+  .fr-k{font-size:9.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--gold);border:1px solid var(--hair-hi);border-radius:999px;padding:2px 7px;}
+  .fr-t{display:inline-block;margin:4px 0 3px;font-family:var(--serif);font-size:21px;line-height:1.25;color:var(--link);text-decoration:none;}
+  .fr-t:hover{text-decoration:underline;} .fr-t:visited{color:var(--link-v);}
+  .fr-t b{font-weight:600;}
+  .fr-s{margin:0;font-size:14px;line-height:1.6;color:var(--muted);}
+  .fr-s b{color:var(--parchment);font-weight:700;}
+  .fr-links{margin-top:8px;display:flex!important;}
+  .fr-more{all:unset;cursor:pointer;display:block;margin:10px auto 0;padding:11px 22px;border-radius:999px;border:1px solid var(--hair-hi);
+    font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-soft);background:var(--glass);}
+  .fr-more:hover{border-color:var(--accent);}
+  .fr-empty{color:var(--muted);font-size:15px;line-height:1.6;}
+  .fr-empty .fs-chips{margin-top:12px;}
+  #fw-results .fs-best{max-width:700px;margin:0 0 26px;}
+  #fw-results .fs-best .f{font-size:13.5px;line-height:1.55;}
+  .privacy{margin-top:40px;font-size:12px;color:var(--faint);line-height:1.6;max-width:700px;}
+  .privacy a{color:var(--gold);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="../index.html" data-fr="‹ Accueil" data-en="‹ Home">‹ Accueil</a>
+  <header>
+    <h1 data-fr="Rechercher <em>dans le site</em>" data-en="Search <em>the site</em>">Rechercher <em>dans le site</em></h1>
+    <p class="sub" data-fr="Appellations, cépages, IGP, climats de Bourgogne, articles, citations, cahiers des charges."
+       data-en="Appellations, grapes, IGPs, Burgundy climats, articles, quotes, specifications.">Appellations, cépages, IGP, climats de Bourgogne, articles, citations, cahiers des charges.</p>
+  </header>
+  <div id="fw-results"></div>
+  <p class="privacy" data-fr="La recherche se fait entièrement dans votre navigateur : rien n’est envoyé à un serveur. La dictée 🎤 utilise la reconnaissance vocale du navigateur ; dans Chrome et Edge, le son est transcrit par les serveurs de Google ou de Microsoft (voir la page <a href=&quot;Confidentialite.html&quot;>Confidentialité</a>)."
+     data-en="Search runs entirely in your browser: nothing is sent to a server. 🎤 Dictation uses the browser’s speech recognition; in Chrome and Edge, the audio is transcribed by Google’s or Microsoft’s servers (see the <a href=&quot;Confidentialite.html&quot;>Privacy</a> page).">La recherche se fait entièrement dans votre navigateur : rien n’est envoyé à un serveur. La dictée 🎤 utilise la reconnaissance vocale du navigateur ; dans Chrome et Edge, le son est transcrit par les serveurs de Google ou de Microsoft (voir la page <a href="Confidentialite.html">Confidentialité</a>).</p>
+</div>
+</body>
+</html>

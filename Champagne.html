@@ -1197,7 +1197,7 @@ html[data-theme="cream"] [style^="color:#c9a24b"],html[data-theme="cream"] [styl
     if(x+tip.offsetWidth>mb.width-10) x=Math.max(8,e.originalEvent.clientX-mb.left-tip.offsetWidth-18);
     if(y+tip.offsetHeight>mb.height-10) y=Math.max(8,mb.height-tip.offsetHeight-10);
     tip.style.left=x+'px'; tip.style.top=y+'px'; }
-  function showDetail(appel){ detail.innerHTML='<div class="ro-card">'+tipHTML(appel)+'</div>'+fwPlanLink(appel); detail.style.display='block';
+  /*fw-search-hook*/window.fwOpenAppel=function(n){if(typeof APPEL_CODES==='undefined'||!APPEL_CODES[n])return false;highlightAppel(n);try{showDetail(n);}catch(e){}return true;};/*fw-search-hook:end*/function showDetail(appel){ detail.innerHTML='<div class="ro-card">'+tipHTML(appel)+'</div>'+fwPlanLink(appel); detail.style.display='block';
     var mb=mainEl.getBoundingClientRect(), tr=tip.getBoundingClientRect();
     var dx=(tr.right-mb.left)+10, dy=(tr.top-mb.top);
     if(dx+detail.offsetWidth>mb.width-8) dx=(tr.left-mb.left)-detail.offsetWidth-10;

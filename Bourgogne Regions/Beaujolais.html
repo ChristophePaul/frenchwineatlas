@@ -1618,7 +1618,7 @@ html[data-theme="cream"] [style^="color:#c9a24b"],html[data-theme="cream"] [styl
   }
   // detail side-panel that appears next to the list
   const detail=document.createElement('div'); detail.className='info-detail'; document.querySelector('main').appendChild(detail);
-  function showDetail(appel){
+  /*fw-search-hook*/window.fwOpenAppel=function(n){selectAppel(n);return true;};/*fw-search-hook:end*/function showDetail(appel){
     const inner=(appel==='__IGP__')?igpDetailHTML():tipHTML(appel);
     detail.innerHTML='<div class="tip-card">'+inner+'</div>'+fwPlanLink(appel);
     detail.style.display='block';
