@@ -1,7 +1,7 @@
 """Builds Infos/Wine_Label/Wine_Label.html — « Apprendre à lire… une étiquette » / "Learning to read… a wine label".
 
 Source: the user's « How to Read a French Wine Label.pdf » (2010, A quick Glance at French Wine/): two annotated labels
-(Château Figeac 1988 = Bordeaux & most French labels — replaced 2026-10-15 by the user's imaginary « Château Blabla 1989 » label, img/label_bordeaux_blabla.webp, to avoid rights issues; Aloxe-Corton likewise replaced by « Domaine N. Coullenot, Beaune 1er Cru Les Grèves 2019 », img/label_bourgogne_coullenot.webp; Aloxe-Corton 1er Cru Les Vercots = Burgundy & the rest).
+(Château Figeac 1988 = Bordeaux & most French labels — replaced 2026-10-15 by the user's imaginary « Château Blabla 1989 » label, img/label_bordeaux_blabla.webp, to avoid rights issues; Aloxe-Corton likewise replaced by « Domaine Coullenot, Beaune 1er Cru Les Grèves 2019 », img/label_bourgogne_coullenot.webp; Aloxe-Corton 1er Cru Les Vercots = Burgundy & the rest).
 Kept: the two labels and their call-outs (now numbered hotspots). Added: what a label must / may carry today,
 the 85 % rules, sweetness terms, Champagne producer codes and a small glossary — each with its source.
 Shared look = Vine & Vineyard base.css. Run:  python3 gen_page.py   (then assets/theme_apply.py on the output)
@@ -113,19 +113,19 @@ BG = [
     (67, 22, 'R', 'Illustration', 'Illustration',
      'Des armoiries — ici fantaisistes : un verre, un tire-bouchon et un bouffon. Purement décoratif, et entièrement libre.',
      'A coat of arms — a whimsical one here: a glass, a corkscrew and a jester. Purely decorative, and entirely up to the producer.', 0),
-    (10.5, 47, 'L', 'Nom du domaine', 'Name of the domaine',
-     '« Domaine N. Coullenot » : en Bourgogne on parle de domaine plutôt que de château — l’ensemble des vignes d’un même producteur, souvent au nom de la famille.',
-     '“Domaine N. Coullenot”: in Burgundy one speaks of a domaine rather than a château — all the vines of a single producer, often under the family name.', 0),
-    (18, 60.5, 'L', 'Nom de l’appellation', 'Name of the appellation',
+    (14.5, 73.3, 'L', 'Nom du domaine', 'Name of the domaine',
+     '« Domaine Coullenot » : en Bourgogne on parle de domaine plutôt que de château — l’ensemble des vignes d’un même producteur, souvent au nom de la famille. Il est placé ici sous l’appellation : en Bourgogne, l’étiquette met volontiers le lieu en avant.',
+     '“Domaine Coullenot”: in Burgundy one speaks of a domaine rather than a château — all the vines of a single producer, often under the family name. Here it sits below the appellation: Burgundy labels like to put the place first.', 0),
+    (18, 49, 'L', 'Nom de l’appellation', 'Name of the appellation',
      'En Bourgogne, c’est souvent le village qui donne son nom au vin : ici Beaune. La hiérarchie va des appellations régionales (Bourgogne) aux villages, puis aux premiers crus et aux grands crus.' + r('bivb'),
      'In Burgundy the village often gives the wine its name: here Beaune. The hierarchy runs from regional appellations (Bourgogne) to villages, then premiers crus and grands crus.' + r('bivb'), 1),
-    (57.3, 55.2, 'R@52', 'Classement', 'Classification',
+    (57.3, 43.8, 'R@41', 'Classement', 'Classification',
      '« 1er Cru » : le vin vient d’un climat classé premier cru de Beaune ; l’appellation complète est « Beaune Premier Cru ». Beaune n’a pas de grand cru : le premier cru est le sommet de la commune.' + r('bivb'),
      '“1er Cru”: the wine comes from a climat classified as a Beaune premier cru; the full appellation is “Beaune Premier Cru”. Beaune has no grand cru: premier cru is the top of the commune.' + r('bivb'), 0),
-    (64.5, 69, 'R@61', 'Nom du « climat »', 'Name of the “climat”',
+    (64.5, 57.4, 'R@50', 'Nom du « climat »', 'Name of the “climat”',
      '« Les Grèves » est un climat — une parcelle nommée, délimitée depuis des siècles — classé premier cru de Beaune. Les Climats de Bourgogne sont inscrits au patrimoine mondial de l’UNESCO depuis 2015.' + r('bivb'),
      '“Les Grèves” is a climat — a named plot, mapped for centuries — classified as a Beaune premier cru. The Climats of Burgundy have been on UNESCO’s World Heritage list since 2015.' + r('bivb'), 0),
-    (81.5, 74, 'R@70', 'Mention d’appellation', 'Appellation statement',
+    (81.5, 62.2, 'R@59', 'Mention d’appellation', 'Appellation statement',
      '« Appellation Beaune 1er Cru Contrôlée » : la mention légale, qui donne le nom exact de l’AOC. Aujourd’hui on peut aussi écrire « Appellation d’Origine Protégée ».' + r('r1308'),
      '“Appellation Beaune 1er Cru Contrôlée”: the legal statement, giving the exact name of the AOC. Today the label may also say “Appellation d’Origine Protégée”.' + r('r1308'), 1),
     (57, 82, 'R@79', 'Millésime', 'Vintage',
@@ -134,12 +134,12 @@ BG = [
     (27, 87, 'L@76', 'Lieu de mise en bouteille', 'Place of bottling',
      '« Mis en bouteille au Domaine » : la version bourguignonne de « mis en bouteille au château » — le vin a été mis en bouteille par le domaine qui a fait le vin.' + r('decret'),
      '“Mis en bouteille au Domaine” (domaine bottled): the Burgundy version of “mis en bouteille au château” — the wine was bottled by the domaine that made it.' + r('decret'), 0),
-    (26, 90.8, 'L@86', 'Statut du producteur', 'Producer’s status',
-     '« Propriétaire » : le vin vient des vignes du signataire. Un « négociant-éleveur » achète raisins, moûts ou vins pour les élever et les vendre sous son nom.',
-     '“Propriétaire” (owner): the wine comes from the signatory’s own vines. A “négociant-éleveur” buys grapes, musts or wines to age and sell them under its own name.', 0),
-    (73.5, 90.8, 'R@88', 'Adresse de l’embouteilleur', 'Bottler’s address',
-     '« à Beaune “La Montagne” » : la commune (et ici le lieu-dit) de l’embouteilleur. Avec le nom du domaine, elle identifie l’embouteilleur : mention obligatoire.' + r('r2019'),
-     '“à Beaune ‘La Montagne’”: the bottler’s town (and here its locality). Together with the domaine name, it identifies the bottler: compulsory.' + r('r2019'), 1),
+    (17.5, 90.8, 'L@86', 'Nom et statut du producteur', 'Producer’s name and status',
+     '« N. Coullenot, Propriétaire » : le nom de l’exploitant, suivi de son statut. « Propriétaire » : le vin vient des vignes du signataire. Un « négociant-éleveur » achète raisins, moûts ou vins pour les élever et les vendre sous son nom.',
+     '“N. Coullenot, Propriétaire”: the grower’s name, followed by their status. “Propriétaire” (owner): the wine comes from the signatory’s own vines. A “négociant-éleveur” buys grapes, musts or wines to age and sell them under its own name.', 0),
+    (82.4, 90.8, 'R@88', 'Adresse de l’embouteilleur', 'Bottler’s address',
+     '« à Beaune “La Montagne” » : la commune (et ici le lieu-dit) de l’embouteilleur. Avec le nom « N. Coullenot », elle identifie l’embouteilleur : mention obligatoire.' + r('r2019'),
+     '“à Beaune ‘La Montagne’”: the bottler’s town (and here its locality). Together with the name “N. Coullenot”, it identifies the bottler: compulsory.' + r('r2019'), 1),
     (34.5, 94.5, 'B', 'Pays d’origine', 'Country of origin',
      '« Produce of France » : la provenance est obligatoire (« Produit de France » ; pour l’export, souvent en anglais).' + r('r1308'),
      '“Produce of France”: the provenance is compulsory (“Produit de France”; often in English for export).' + r('r1308'), 1),
@@ -455,8 +455,8 @@ PAGE = r'''<!DOCTYPE html>
     <div class="sec-head">
       <p class="kick" data-fr="02 · Bourgogne" data-en="02 · Burgundy">02 · Bourgogne</p>
       <h2 data-fr="La Bourgogne <em>et les autres</em>" data-en="Burgundy <em>and the rest</em>">La Bourgogne <em>et les autres</em></h2>
-      <p data-fr="Ici, l’étiquette met en avant le lieu : le village, son classement, puis le climat — le nom du domaine est souvent bien en vue lui aussi. Domaine N. Coullenot, Beaune Premier Cru « Les Grèves », millésime 2019 — une étiquette imaginaire, créée pour ce site."
-         data-en="Here the label puts the place first: the village, its classification, then the climat — the domaine name is often prominent too. Domaine N. Coullenot, Beaune Premier Cru “Les Grèves”, 2019 vintage — an imaginary label, created for this site.">Ici, l’étiquette met en avant le lieu : le village, son classement, puis le climat — le nom du domaine est souvent bien en vue lui aussi. Domaine N. Coullenot, Beaune Premier Cru « Les Grèves », millésime 2019 — une étiquette imaginaire, créée pour ce site.</p>
+      <p data-fr="Ici, l’étiquette met en avant le lieu : le village, son classement, puis le climat — le nom du domaine est souvent bien en vue lui aussi. Domaine Coullenot, Beaune Premier Cru « Les Grèves », millésime 2019 — une étiquette imaginaire, créée pour ce site."
+         data-en="Here the label puts the place first: the village, its classification, then the climat — the domaine name is often prominent too. Domaine Coullenot, Beaune Premier Cru “Les Grèves”, 2019 vintage — an imaginary label, created for this site.">Ici, l’étiquette met en avant le lieu : le village, son classement, puis le climat — le nom du domaine est souvent bien en vue lui aussi. Domaine Coullenot, Beaune Premier Cru « Les Grèves », millésime 2019 — une étiquette imaginaire, créée pour ce site.</p>
     </div>
     <div class="legend"><span><i style="background:#9b2235"></i>@@MUST@@</span><span><i style="background:#3a6b8f"></i>@@OPT@@</span></div>
     @@ALOXE@@
@@ -606,7 +606,7 @@ def main():
         '@@BASE_CSS@@': base_css(), '@@CSS@@': CSS,
         '@@MUST@@': dl('mention obligatoire', 'compulsory statement'), '@@OPT@@': dl('mention facultative', 'optional statement'),
         '@@FIGEAC@@': label_block('f', 'label_bordeaux_blabla.webp', 1430, 1100, BX, 'Étiquette imaginaire Château Blabla 1989 / Imaginary Château Blabla 1989 label'),
-        '@@ALOXE@@': label_block('a', 'label_bourgogne_coullenot.webp', 1536, 1024, BG, 'Étiquette imaginaire Domaine N. Coullenot, Beaune 1er Cru Les Grèves 2019 / Imaginary Domaine N. Coullenot, Beaune 1er Cru Les Grèves 2019 label'),
+        '@@ALOXE@@': label_block('a', 'label_bourgogne_coullenot.webp?v=20261023', 1536, 1024, BG, 'Étiquette imaginaire Domaine Coullenot, Beaune 1er Cru Les Grèves 2019 / Imaginary Domaine Coullenot, Beaune 1er Cru Les Grèves 2019 label'),
         '@@NOTE88@@': LL('<b>Une étiquette « millésime 1989 ».</b> Comme une vraie étiquette de l’époque, il lui manque ce qu’exige une étiquette d’aujourd’hui : « contient des sulfites » (depuis 2005), le logo femme enceinte (2007), le numéro de lot et, pour les vins produits depuis décembre 2023, la valeur énergétique et le QR code des ingrédients.' + r('r1169', 'csp', 'd2011', 'r2117'),
                          '<b>A “1989 vintage” label.</b> Like a real label of the time, it lacks what a label needs today: “contains sulphites” (since 2005), the pregnancy logo (2007), the lot number and, for wines produced since December 2023, the energy value and the ingredients QR code.' + r('r1169', 'csp', 'd2011', 'r2117')),
         '@@NOTENECK@@': LL('<b>Et le reste&nbsp;?</b> « Contient des sulfites », le logo femme enceinte et le numéro de lot figurent le plus souvent sur la contre-étiquette, au dos de la bouteille. Un millésime 2019 n’a pas à porter de valeur énergétique : elle n’est obligatoire que pour les vins produits depuis le 8 décembre 2023.' + r('r1169', 'csp', 'd2011', 'r2117'),
@@ -624,8 +624,8 @@ def main():
         '@@CHAMP@@': champ_table(),
         '@@GLOSS@@': card_grid(GLOSS, 'gcard'),
         '@@SOURCES@@': sources_html(),
-        '@@CREDIT@@': dl('D’après la fiche « How to Read a French Wine Label » de Christophe A. Paul (2010), mise à jour et augmentée. Étiquettes imaginaires créées pour ce site : Château Blabla 1989 ; Domaine N. Coullenot, Beaune 1er Cru « Les Grèves » 2019 ; Champagne Bubulle, Brut Blanc de Blancs 2002.',
-                         'Based on the “How to Read a French Wine Label” sheet by Christophe A. Paul (2010), updated and expanded. Imaginary labels created for this site: Château Blabla 1989; Domaine N. Coullenot, Beaune 1er Cru “Les Grèves” 2019; Champagne Bubulle, Brut Blanc de Blancs 2002.'),
+        '@@CREDIT@@': dl('D’après la fiche « How to Read a French Wine Label » de Christophe A. Paul (2010), mise à jour et augmentée. Étiquettes imaginaires créées pour ce site : Château Blabla 1989 ; Domaine Coullenot, Beaune 1er Cru « Les Grèves » 2019 ; Champagne Bubulle, Brut Blanc de Blancs 2002.',
+                         'Based on the “How to Read a French Wine Label” sheet by Christophe A. Paul (2010), updated and expanded. Imaginary labels created for this site: Château Blabla 1989; Domaine Coullenot, Beaune 1er Cru “Les Grèves” 2019; Champagne Bubulle, Brut Blanc de Blancs 2002.'),
     }
     html = PAGE
     for k, v in rep.items():
