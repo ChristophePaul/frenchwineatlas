@@ -7,6 +7,9 @@
 (function () {
   if (window.__fwCopy) return; window.__fwCopy = true;
   var HOLDER = 'Christophe A. Paul', YEAR = '2026';
+  // « Crédits et licences » section of the privacy page, found from this script's own URL (assets/ → Infos/)
+  var me = document.currentScript && document.currentScript.src;
+  var CREDITS = me ? me.replace(/assets\/copyright\.js(\?.*)?$/, 'Infos/Confidentialite.html#credits') : '';
   var root = document.documentElement;
 
   function lang() {
@@ -20,6 +23,7 @@
     'color:rgba(245,239,227,.55);pointer-events:auto;}' +
     'html[data-theme="cream"] .fw-copy{color:rgba(46,20,25,.58);}' +
     '.fw-copy b{font-weight:600;}' +
+    '.fw-copy a{color:inherit;text-decoration:underline;text-underline-offset:2px;pointer-events:auto;}' +
     '.fw-copy-foot{display:block;clear:both;text-align:center;padding:18px 16px 22px;margin:0;}' +
     '.fw-copy-tag{position:fixed;right:8px;bottom:6px;z-index:9000;font-size:10px;padding:2px 8px;border-radius:999px;' +
     'background:rgba(24,5,11,.45);pointer-events:none;}' +
@@ -32,9 +36,15 @@
     '@media print{.fw-copy-tag,.fw-copy-map{position:static;}}';
 
   var el = null;
+  function credits(short) {
+    if (!CREDITS || /Confidentialite\.html/.test(location.pathname)) return '';
+    var t = lang() === 'en' ? (short ? 'Credits' : 'Credits & licences') : (short ? 'Cr\u00E9dits' : 'Cr\u00E9dits et licences');
+    return ' \u00B7 <a href="' + CREDITS + '">' + t.replace('&', '&amp;') + '</a>';
+  }
   function render() {
-    if (el && el.classList.contains('fw-copy-attr')) { el.innerHTML = ' \u00B7 \u00A9\u00A0' + YEAR + ' <b>' + HOLDER + '</b>'; return; }
-    if (el) el.innerHTML = '\u00A9\u00A0' + YEAR + ' <b>' + HOLDER + '</b> \u00B7 ' + (lang() === 'en' ? 'All rights reserved' : 'Tous droits r\u00E9serv\u00E9s');
+    if (el && el.classList.contains('fw-copy-attr')) { el.innerHTML = ' \u00B7 \u00A9\u00A0' + YEAR + ' <b>' + HOLDER + '</b>' + credits(true); return; }
+    if (el) el.innerHTML = '\u00A9\u00A0' + YEAR + ' <b>' + HOLDER + '</b> \u00B7 ' + (lang() === 'en' ? 'All rights reserved' : 'Tous droits r\u00E9serv\u00E9s') +
+      credits(el.classList.contains('fw-copy-tag') || el.classList.contains('fw-copy-map'));
   }
 
   function bigMap() {
