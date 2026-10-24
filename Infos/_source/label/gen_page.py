@@ -81,6 +81,19 @@ def r(*keys):
 # ------------------------------------------------------------------ the two labels
 # call-out = (tip x %, tip y %, side L/R/B (optionally '@y' = preferred box height in %), short FR, short EN, long FR, long EN, mandatory?)
 # the tip is a point in blank space right next to the text (measured on a grid), never on the writing
+def lot_spot(x, y, side, fr_here, en_here):
+    """The lot number call-out, the same « L0001-01 » on the three labels; fr_here/en_here = where it sits on that bottle."""
+    return (x, y, side, 'Numéro de lot', 'Lot number',
+            '« L0001-01 » : le numéro de lot, obligatoire. Il désigne l’ensemble des bouteilles produites et mises en bouteille dans les mêmes conditions — souvent la même cuve, le même jour de tirage. '
+            'Sa raison d’être est la traçabilité : en cas de défaut ou de rappel, on retrouve et retire exactement les bouteilles concernées, et le producteur remonte jusqu’à la cuve et à la date de mise en bouteille. '
+            'Il est en général précédé d’un « L » ; le reste du code est libre (année, jour, cuve…). '
+            'Où le trouver : sur l’étiquette ou la contre-étiquette, mais très souvent aussi imprimé ou gravé directement sur le verre, en bas de la bouteille ou près du col. Il n’a pas à figurer dans le même champ visuel que les autres mentions. ' + fr_here + r('d2011'),
+            '“L0001-01”: the lot number, compulsory. It identifies all the bottles produced and bottled under the same conditions — often the same vat, the same bottling day. '
+            'Its purpose is traceability: if there is a fault or a recall, exactly the bottles concerned can be found and withdrawn, and the producer can trace them back to the vat and the bottling date. '
+            'It usually starts with an “L”; the rest of the code is up to the producer (year, day, vat…). '
+            'Where to find it: on the label or the back label, but very often printed or etched straight onto the glass, at the bottom of the bottle or near the neck. It need not be in the same field of vision as the other statements. ' + en_here + r('d2011'), 1)
+
+
 BX = [
     (86.5, 5.9, 'R', 'Unité géographique plus grande', 'Larger geographical unit',
      '« Grand Vin de Bordeaux » : beaucoup de cahiers des charges bordelais (celui de Pomerol, par exemple) autorisent « Vin de Bordeaux » ou « Grand Vin de Bordeaux », en caractères pas plus grands que les deux tiers de ceux du nom de l’appellation — c’est le cas ici. Malgré le mot « grand », ce n’est pas un gage de qualité.' + r('pomerol'),
@@ -112,12 +125,14 @@ BX = [
     (38.8, 94.6, 'B', 'Pays d’origine', 'Country of origin',
      '« Produce of France » : la provenance est obligatoire (« Produit de France » ; pour l’export, souvent en anglais).' + r('r1308'),
      '“Produce of France”: the provenance is compulsory (“Produit de France”; often in English for export).' + r('r1308'), 1),
-    (9, 95.5, 'B', 'Teneur en alcool', 'Alcohol content',
+    (9, 89.6, 'L@92', 'Teneur en alcool', 'Alcohol content',
      'Le titre alcoométrique en « % vol ». Obligatoire, à ±0,5 % vol près.' + r('r2019'),
      'The alcoholic strength, in “% vol”. Compulsory, accurate to within ±0.5 % vol.' + r('r2019'), 1),
     (91.8, 95.5, 'B', 'Contenance', 'Bottle size',
      'Le volume nominal (750 ml = 75 cl, la bouteille standard). Obligatoire.' + r('r1308'),
      'The nominal volume (750 ml = 75 cl, the standard bottle). Compulsory.' + r('r1308'), 1),
+    lot_spot(12.2, 94.6, 'B', 'Ici, il est imprimé sous le degré d’alcool. Sur une vraie bouteille de 1989, il n’y serait sans doute pas : il n’est devenu obligatoire qu’au début des années 1990 (directive 89/396/CEE).',
+             'Here it is printed under the alcohol content. A real 1989 bottle would probably not have one: it only became compulsory in the early 1990s (Directive 89/396/EEC).'),
 ]
 BG = [
     (67, 22, 'R', 'Illustration', 'Illustration',
@@ -144,7 +159,7 @@ BG = [
     (27, 87, 'L@76', 'Lieu de mise en bouteille', 'Place of bottling',
      '« Mis en bouteille au Domaine » : la version bourguignonne de « mis en bouteille au château » — le vin a été mis en bouteille par le domaine qui a fait le vin.' + r('decret'),
      '“Mis en bouteille au Domaine” (domaine bottled): the Burgundy version of “mis en bouteille au château” — the wine was bottled by the domaine that made it.' + r('decret'), 0),
-    (17.5, 90.8, 'L@86', 'Nom et statut du producteur', 'Producer’s name and status',
+    (17.5, 90.8, 'B', 'Nom et statut du producteur', 'Producer’s name and status',
      '« N. Coullenot, Propriétaire » : le nom de l’exploitant, suivi de son statut. « Propriétaire » : le vin vient des vignes du signataire. Un « négociant-éleveur » achète raisins, moûts ou vins pour les élever et les vendre sous son nom.',
      '“N. Coullenot, Propriétaire”: the grower’s name, followed by their status. “Propriétaire” (owner): the wine comes from the signatory’s own vines. A “négociant-éleveur” buys grapes, musts or wines to age and sell them under its own name.', 0),
     (82.4, 90.8, 'R@88', 'Adresse de l’embouteilleur', 'Bottler’s address',
@@ -153,12 +168,13 @@ BG = [
     (34.5, 94.5, 'B', 'Pays d’origine', 'Country of origin',
      '« Produce of France » : la provenance est obligatoire (« Produit de France » ; pour l’export, souvent en anglais).' + r('r1308'),
      '“Produce of France”: the provenance is compulsory (“Produit de France”; often in English for export).' + r('r1308'), 1),
-    (9.5, 95.2, 'B', 'Contenance', 'Bottle size',
+    (5.5, 91.4, 'B', 'Contenance', 'Bottle size',
      'Le volume nominal (750 ml = 75 cl, la bouteille standard). Obligatoire.' + r('r1308'),
      'The nominal volume (750 ml = 75 cl, the standard bottle). Compulsory.' + r('r1308'), 1),
     (89, 95.2, 'B', 'Teneur en alcool', 'Alcohol content',
      'Le titre alcoométrique en « % vol ». Obligatoire, à ±0,5 % vol près.' + r('r2019'),
      'The alcoholic strength, in “% vol”. Compulsory, accurate to within ±0.5 % vol.' + r('r2019'), 1),
+    lot_spot(12.8, 94.4, 'B', 'Ici, il est imprimé sous la contenance.', 'Here it is printed under the bottle size.'),
 ]
 
 CH = [
@@ -192,6 +208,8 @@ CH = [
     (90.5, 95.2, 'B', 'Contenance', 'Bottle size',
      'Le volume nominal (750 ml = 75 cl, la bouteille standard). Obligatoire.' + r('r1308'),
      'The nominal volume (750 ml = 75 cl, the standard bottle). Compulsory.' + r('r1308'), 1),
+    lot_spot(54.2, 95.1, 'B', 'Ici, il est imprimé au bas de l’étiquette ; en Champagne, on le trouve aussi souvent sur la contre-étiquette ou sur le verre, près du col.',
+             'Here it is printed at the foot of the label; in Champagne it is also often found on the back label or on the glass, near the neck.'),
 ]
 
 
@@ -236,8 +254,8 @@ MUST = [
      '« Contient des sulfites » dès 10 mg/L — c’est-à-dire presque toujours — et, le cas échéant, les protéines d’œuf ou de lait utilisées pour le collage.' + r('r1169'),
      '“Contains sulphites” from 10 mg/L — that is, almost always — and, where relevant, egg or milk proteins used for fining.' + r('r1169')),
     ('Le numéro de lot', 'The lot number',
-     'Souvent une courte référence précédée de « L », parfois gravée sur le verre.' + r('d2011'),
-     'Often a short code starting with “L”, sometimes etched on the glass.' + r('d2011')),
+     'Souvent une courte référence précédée de « L », parfois gravée sur le verre — comme « L0001-01 » sur les trois étiquettes ci-dessus. Il sert à retrouver les bouteilles d’un même lot en cas de rappel.' + r('d2011'),
+     'Often a short code starting with “L”, sometimes etched on the glass — like “L0001-01” on the three labels above. It is used to trace the bottles of one batch in case of a recall.' + r('d2011')),
     ('Le logo « femme enceinte »', 'The pregnancy logo',
      'Obligatoire en France depuis 2007 (ou la phrase équivalente).' + r('csp'), 'Compulsory in France since 2007 (or the equivalent sentence).' + r('csp')),
     ('La valeur énergétique', 'The energy value',
@@ -777,15 +795,15 @@ def main():
     rep = {
         '@@BASE_CSS@@': base_css(), '@@CSS@@': CSS,
         '@@MUST@@': dl('mention obligatoire', 'compulsory statement'), '@@OPT@@': dl('mention facultative', 'optional statement'),
-        '@@FIGEAC@@': label_block('f', 'label_bordeaux_blabla.webp', 1430, 1100, BX, 'Étiquette imaginaire Château Blabla 1989 / Imaginary Château Blabla 1989 label'),
-        '@@ALOXE@@': label_block('a', 'label_bourgogne_coullenot.webp?v=20261023', 1536, 1024, BG, 'Étiquette imaginaire Domaine Coullenot, Beaune 1er Cru Les Grèves 2019 / Imaginary Domaine Coullenot, Beaune 1er Cru Les Grèves 2019 label'),
-        '@@NOTE88@@': LL('<b>Une étiquette « millésime 1989 ».</b> Comme une vraie étiquette de l’époque, il lui manque ce qu’exige une étiquette d’aujourd’hui : « contient des sulfites » (depuis 2005), le logo femme enceinte (2007), le numéro de lot et, pour les vins produits depuis décembre 2023, la valeur énergétique et le QR code des ingrédients.' + r('r1169', 'csp', 'd2011', 'r2117'),
-                         '<b>A “1989 vintage” label.</b> Like a real label of the time, it lacks what a label needs today: “contains sulphites” (since 2005), the pregnancy logo (2007), the lot number and, for wines produced since December 2023, the energy value and the ingredients QR code.' + r('r1169', 'csp', 'd2011', 'r2117')),
-        '@@NOTENECK@@': LL('<b>Et le reste&nbsp;?</b> « Contient des sulfites », le logo femme enceinte et le numéro de lot figurent le plus souvent sur la contre-étiquette, au dos de la bouteille. Un millésime 2019 n’a pas à porter de valeur énergétique : elle n’est obligatoire que pour les vins produits depuis le 8 décembre 2023.' + r('r1169', 'csp', 'd2011', 'r2117'),
-                           '<b>And the rest?</b> “Contains sulphites”, the pregnancy logo and the lot number usually appear on the back label. A 2019 vintage need not show an energy value: it is only compulsory for wines produced since 8 December 2023.' + r('r1169', 'csp', 'd2011', 'r2117')),
-        '@@CHAMPLABEL@@': label_block('c', 'label_champagne_bubulle.webp', 1536, 1024, CH, 'Étiquette imaginaire Champagne Bubulle Brut Blanc de Blancs 2002 / Imaginary Champagne Bubulle Brut Blanc de Blancs 2002 label'),
-        '@@NOTECH@@': LL('<b>Regardez aussi le bouchon.</b> Il porte le nom de l’appellation et, pour un champagne millésimé, l’année. Comme ailleurs, « contient des sulfites », le logo femme enceinte et le numéro de lot sont le plus souvent sur la contre-étiquette.' + r('champ', 'r1169', 'csp', 'd2011'),
-                         '<b>Look at the cork too.</b> It bears the name of the appellation and, for a vintage champagne, the year. As elsewhere, “contains sulphites”, the pregnancy logo and the lot number are usually on the back label.' + r('champ', 'r1169', 'csp', 'd2011')),
+        '@@FIGEAC@@': label_block('f', 'label_bordeaux_blabla.webp?v=20261024b', 1430, 1100, BX, 'Étiquette imaginaire Château Blabla 1989 / Imaginary Château Blabla 1989 label'),
+        '@@ALOXE@@': label_block('a', 'label_bourgogne_coullenot.webp?v=20261024', 1536, 1024, BG, 'Étiquette imaginaire Domaine Coullenot, Beaune 1er Cru Les Grèves 2019 / Imaginary Domaine Coullenot, Beaune 1er Cru Les Grèves 2019 label'),
+        '@@NOTE88@@': LL('<b>Une étiquette « millésime 1989 ».</b> Comme une vraie étiquette de l’époque, il lui manque ce qu’exige une étiquette d’aujourd’hui : « contient des sulfites » (depuis 2005), le logo femme enceinte (2007) et, pour les vins produits depuis décembre 2023, la valeur énergétique et le QR code des ingrédients. Le numéro de lot a été ajouté pour l’exemple.' + r('r1169', 'csp', 'd2011', 'r2117'),
+                         '<b>A “1989 vintage” label.</b> Like a real label of the time, it lacks what a label needs today: “contains sulphites” (since 2005), the pregnancy logo (2007) and, for wines produced since December 2023, the energy value and the ingredients QR code. The lot number has been added for the example.' + r('r1169', 'csp', 'd2011', 'r2117')),
+        '@@NOTENECK@@': LL('<b>Et le reste&nbsp;?</b> « Contient des sulfites » et le logo femme enceinte figurent le plus souvent sur la contre-étiquette, au dos de la bouteille ; le numéro de lot aussi, quand il n’est pas sur l’étiquette ou sur le verre. Un millésime 2019 n’a pas à porter de valeur énergétique : elle n’est obligatoire que pour les vins produits depuis le 8 décembre 2023.' + r('r1169', 'csp', 'd2011', 'r2117'),
+                           '<b>And the rest?</b> “Contains sulphites” and the pregnancy logo usually appear on the back label; so does the lot number, when it is not on the label or on the glass. A 2019 vintage need not show an energy value: it is only compulsory for wines produced since 8 December 2023.' + r('r1169', 'csp', 'd2011', 'r2117')),
+        '@@CHAMPLABEL@@': label_block('c', 'label_champagne_bubulle.webp?v=20261024', 1536, 1024, CH, 'Étiquette imaginaire Champagne Bubulle Brut Blanc de Blancs 2002 / Imaginary Champagne Bubulle Brut Blanc de Blancs 2002 label'),
+        '@@NOTECH@@': LL('<b>Regardez aussi le bouchon.</b> Il porte le nom de l’appellation et, pour un champagne millésimé, l’année. Comme ailleurs, « contient des sulfites » et le logo femme enceinte sont le plus souvent sur la contre-étiquette.' + r('champ', 'r1169', 'csp', 'd2011'),
+                         '<b>Look at the cork too.</b> It bears the name of the appellation and, for a vintage champagne, the year. As elsewhere, “contains sulphites” and the pregnancy logo are usually on the back label.' + r('champ', 'r1169', 'csp', 'd2011')),
         '@@MUST_H@@': dl('Obligatoire', 'Compulsory'), '@@MAY_H@@': dl('Facultatif', 'Optional'),
         '@@MUSTCARDS@@': card_grid(MUST, 'fcard" style="--c:#9b2235'), '@@MAYCARDS@@': card_grid(MAY, 'fcard" style="--c:#3a6b8f'),
         '@@STILL@@': table(STILL, [('Mention', 'Term'), ('Sucres', 'Sugar')]),
