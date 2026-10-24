@@ -402,9 +402,11 @@ BIO = [
      'Depuis le millésime 2012, la vinification est encadrée elle aussi. Certaines pratiques sont interdites (désalcoolisation partielle, électrodialyse, concentration par le froid, désulfitation), d’autres limitées (chauffage à 70 °C au plus, filtration à 0,2 µm au minimum), et les sulfites sont plafonnés plus bas, comme le montre le tableau ci-dessous.' + r('bio2'),
      'Since the 2012 vintage, winemaking is regulated too. Some practices are forbidden (partial dealcoholisation, electrodialysis, concentration by cooling, desulphiting), others restricted (heating to 70 °C at most, filtration at 0.2 µm minimum), and sulphites are capped lower, as shown in the table below.' + r('bio2')),
 ]
-SO2 = [('Vin rouge sec', 'Dry red wine', '150 mg/L', '100 mg/L'),
-       ('Vin blanc ou rosé sec', 'Dry white or rosé wine', '200 mg/L', '150 mg/L'),
-       ('Vins plus sucrés', 'Sweeter wines', 'selon le type de vin', 'according to the type of wine', '30 mg/L de moins', '30 mg/L less')]
+# (wine FR, EN, conventional, organic) — a cell is (FR, EN); the % in brackets = share of the wine (mg/L ÷ 10 000)
+SO2 = [('Vin rouge sec', 'Dry red wine', ('150 mg/L (0,015 %)', '150 mg/L (0.015 %)'), ('100 mg/L (0,01 %)', '100 mg/L (0.01 %)')),
+       ('Vin blanc ou rosé sec', 'Dry white or rosé wine', ('200 mg/L (0,02 %)', '200 mg/L (0.02 %)'), ('150 mg/L (0,015 %)', '150 mg/L (0.015 %)')),
+       ('Vins plus sucrés', 'Sweeter wines', ('200 à 400 mg/L (0,02 à 0,04 %) selon le type de vin', '200 to 400 mg/L (0.02 to 0.04 %) depending on the type of wine'),
+        ('30 mg/L (0,003 %) de moins', '30 mg/L (0.003 %) less'))]
 NOTBIO = [
     ('Biodynamie', 'Biodynamics',
      'Une agriculture bio qui ajoute des préparations à base de plantes et de minéraux et suit un calendrier lunaire. Pas de définition légale : on la reconnaît aux logos privés Demeter ou Biodyvin, qui supposent d’abord la certification bio.',
@@ -423,17 +425,13 @@ def bio_block():
     for hfr, hen, tfr, ten, cls, pfr, pen in BIO:
         tag = dl(tfr, ten, 'span', f'tag {cls}') if tfr else ''
         cards.append(f'<div class="mt"><h4>{dl(hfr, hen)} {tag}</h4>{LL(pfr, pen)}</div>')
-    th = ''.join(f'<th>{dl(a, b)}</th>' for a, b in (('Vin', 'Wine'), ('Conventionnel', 'Conventional'), ('Bio', 'Organic')))
-    rows = []
-    for row in SO2:
-        if len(row) == 4:
-            a, b, c, d = row
-            rows.append(f'<tr><td><b>{dl(a, b)}</b></td><td>{c}</td><td>{d}</td></tr>')
-        else:
-            a, b, c, d, e, f = row
-            rows.append(f'<tr><td><b>{dl(a, b)}</b></td><td>{dl(c, d)}</td><td>{dl(e, f)}</td></tr>')
-    so2 = (f'<table class="tbl so2"><thead><tr>{th}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
-           f'<p class="credit" style="margin-top:6px">{dl("Teneur maximale en sulfites (anhydride sulfureux total). « Sec » : moins de 2 g/L de sucre pour le bio.", "Maximum sulphite content (total sulphur dioxide). “Dry”: less than 2 g/L of sugar for organic wine.")}{r("bio2")}</p>')
+    heads = (('Vin', 'Wine'), ('Conventionnel', 'Conventional'), ('Bio', 'Organic'))
+    th = ''.join(f'<th>{dl(a, b)}</th>' for a, b in heads)
+    lbl = [dl(a, b, 'span', 'lbl') for a, b in heads[1:]]   # column name repeated in the cell, shown only when rows stack
+    rows = [f'<tr><td><b>{dl(a, b)}</b></td><td>{lbl[0]}{dl(*c)}</td><td>{lbl[1]}{dl(*d)}</td></tr>'
+            for a, b, c, d in SO2]
+    so2 = (f'<div class="so2wrap"><table class="tbl so2"><thead><tr>{th}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
+           f'<p class="credit" style="margin-top:6px">{dl("Teneur maximale en sulfites (anhydride sulfureux total). « Sec » : moins de 2 g/L de sucre pour le bio. Entre parenthèses, la part dans le vin : 150 mg/L = 0,15 g par litre, soit 0,015 %.", "Maximum sulphite content (total sulphur dioxide). “Dry”: less than 2 g/L of sugar for organic wine. In brackets, the share of the wine: 150 mg/L = 0.15 g per litre, i.e. 0.015 %.")}{r("bio2")}</p>')
     nb = ''.join(f'<div class="gcard"><h4>{dl(a, b)}</h4>{LL(c, d)}</div>' for a, b, c, d in NOTBIO)
     return (f'<div class="mtgrid">{"".join(cards)}</div>{so2}'
             f'<h4 class="sub">{dl("À ne pas confondre avec le bio", "Not to be confused with organic")}{r("nature")}</h4>'
@@ -532,7 +530,16 @@ CSS = r'''
   .mt p{margin:0;font-size:13.6px;line-height:1.58;}
   .tpanel > p.L{margin:0 0 4px;font-size:14.5px;line-height:1.65;}
   .tpanel .sub{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);margin:20px 0 10px;}
-  .so2{margin-top:14px;max-width:640px;}
+  .so2wrap{margin-top:14px;max-width:780px;overflow-x:auto;}
+  .so2 .lbl{display:none;}
+  @media (max-width:560px){
+    .tbl.so2,.tbl.so2 tbody{display:block;}
+    .tbl.so2 thead{display:none;}
+    .tbl.so2 tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:12px;padding:10px 0;border-bottom:1px solid var(--hair);}
+    .tbl.so2 td,html[data-theme="cream"] .tbl.so2 td{border:0;padding:2px 0;min-width:0;}
+    .tbl.so2 td:first-child{grid-column:1 / -1;margin-bottom:4px;}
+    .tbl.so2 .lbl{display:block;font-size:9px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);font-weight:700;}
+  }
   .tbl{width:100%;border-collapse:collapse;font-size:14px;}
   .tbl th{text-align:left;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
   .tbl td{padding:8px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5;}
