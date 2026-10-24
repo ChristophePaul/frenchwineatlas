@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import json, os
-DEST=r"/Users/chris/Library/CloudStorage/Dropbox/Wines Files InfoComplete/Wine List/A quick Glance at French Wine/2023 Wines Complete/2026 To finish or fucking die/WEB Site/Infos/AOC_Decree"
+DEST=os.path.dirname(os.path.abspath(__file__))   # the AOC_Decree folder this script lives in
 data=json.load(open(os.path.join(DEST,"manifest.json")))
 
 # ---- regions = the 8 groups of the home page, sub-regions = the 25 regional maps (same names, same order) ----
