@@ -48,8 +48,8 @@ SOURCES = [
             'French Public Health Code, Art. L. 3322-2, and order of 2 October 2006: health warning for pregnant women (pictogram), compulsory since October 2007.'),
     ('decret', 'Décret n° 2012-655 du 4 mai 2012 relatif à l’étiquetage et à la traçabilité des produits vitivinicoles (termes « château », « clos », « cru » ; mise en bouteille à la propriété), codifié au code rural et de la pêche maritime.',
                'French Decree No. 2012-655 of 4 May 2012 on the labelling and traceability of wine products (the terms “château”, “clos”, “cru”; estate bottling), codified in the Rural and Maritime Fishing Code.'),
-    ('bio', 'Règlement (UE) 2018/848 relatif à la production biologique : logo de production biologique de l’Union européenne.',
-            'Regulation (EU) 2018/848 on organic production: the EU organic production logo.'),
+    ('bio', 'Règlement (UE) 2018/848 relatif à la production biologique, art. 30 à 33 : termes « bio », logo de production biologique de l’Union européenne, numéro de code de l’organisme certificateur et lieu de production des matières premières.',
+            'Regulation (EU) 2018/848 on organic production, Art. 30 to 33: the “organic” terms, the EU organic production logo, the code number of the control body and the place where the raw materials were farmed.'),
     ('stemi', 'INAO, classement des vins de l’appellation « Saint-Émilion Grand Cru » (1955, révisé ; classement 2022, homologué le 7 septembre 2022). Voir aussi la page « Les classements » du site.',
               'INAO, classification of the wines of the “Saint-Émilion Grand Cru” appellation (1955, revised; 2022 classification, approved on 7 September 2022). See also this site’s “Classifications” page.'),
     ('pomerol', 'Cahier des charges de l’AOC « Pomerol », homologué par l’arrêté du 12 octobre 2021, chapitre I, XII b (unité géographique plus grande « Vin de Bordeaux » / « Grand Vin de Bordeaux »). Voir la bibliothèque des décrets du site.',
@@ -58,6 +58,16 @@ SOURCES = [
               'Specification of the “Champagne” AOC, approved by order of 31 July 2025: colours and blanc de blancs, release after 15 months (36 months for vintage wines), vintage on the cork, producer named in full, Comité Champagne registration codes. See this site’s decree library.'),
     ('bivb', 'Bureau interprofessionnel des vins de Bourgogne (BIVB), la hiérarchie des appellations (régionales, villages, premiers crus, grands crus) ; UNESCO (2015), « Les Climats du vignoble de Bourgogne », patrimoine mondial.',
              'Bourgogne Wine Board (BIVB), the hierarchy of appellations (regional, village, premier cru, grand cru); UNESCO (2015), “The Climats, terroirs of Burgundy”, World Heritage.'),
+    ('tt', 'Règlement (UE) n° 1308/2013, art. 112 et 113 : les mentions traditionnelles, termes protégés réservés aux vins AOP et IGP ; registre européen eAmbrosia. <a href="https://ec.europa.eu/agriculture/eambrosia/" target="_blank" rel="noopener">eAmbrosia</a>',
+           'Regulation (EU) No 1308/2013, Art. 112 and 113: traditional terms, protected terms reserved for PDO and PGI wines; EU eAmbrosia register. <a href="https://ec.europa.eu/agriculture/eambrosia/" target="_blank" rel="noopener">eAmbrosia</a>'),
+    ('cdcmt', 'Cahiers des charges des AOC « Muscadet », « Muscadet Sèvre et Maine », « Muscadet Côtes de Grandlieu » et « Gros Plant du Pays nantais » (sur lie) ; « Beaujolais », « Touraine », « Mâcon » (primeur) ; « Alsace », « Alsace grand cru », « Jurançon », « Gaillac » (vendanges tardives) ; « Coteaux du Layon », « Coteaux de l’Aubance », « Monbazillac » (sélection de grains nobles) ; « Bordeaux » (version 2025) et « Bourgogne » (clairet). Voir la bibliothèque des décrets du site.',
+              'Specifications of the “Muscadet”, “Muscadet Sèvre et Maine”, “Muscadet Côtes de Grandlieu” and “Gros Plant du Pays nantais” AOCs (sur lie); “Beaujolais”, “Touraine”, “Mâcon” (primeur); “Alsace”, “Alsace grand cru”, “Jurançon”, “Gaillac” (vendanges tardives); “Coteaux du Layon”, “Coteaux de l’Aubance”, “Monbazillac” (sélection de grains nobles); “Bordeaux” (2025 version) and “Bourgogne” (clairet). See this site’s decree library.'),
+    ('bio2', 'Règlement (UE) 2018/848, annexe II, partie VI (règles de production du vin biologique : pratiques interdites ou limitées, teneurs maximales en anhydride sulfureux) ; règlement d’exécution (UE) 2021/1165 (produits et substances autorisés). Le « vin biologique » existe depuis le millésime 2012 (règlement d’exécution (UE) n° 203/2012) ; auparavant, on ne pouvait écrire que « vin issu de raisins de l’agriculture biologique ».',
+             'Regulation (EU) 2018/848, Annex II, Part VI (production rules for organic wine: prohibited or restricted practices, maximum sulphur dioxide levels); Implementing Regulation (EU) 2021/1165 (authorised products and substances). “Organic wine” has existed since the 2012 vintage (Implementing Regulation (EU) No 203/2012); before that, labels could only say “wine made from organically grown grapes”.'),
+    ('ab', 'Ministère de l’Agriculture et Agence Bio : la marque « AB – Agriculture biologique », propriété de l’État, d’usage facultatif, soumise aux mêmes règles que le logo européen. <a href="https://www.agencebio.org" target="_blank" rel="noopener">Agence Bio</a>',
+           'French Ministry of Agriculture and Agence Bio: the “AB – Agriculture biologique” mark, owned by the State, optional, subject to the same rules as the EU logo. <a href="https://www.agencebio.org" target="_blank" rel="noopener">Agence Bio</a>'),
+    ('nature', 'Syndicat de défense des vins nature’l, charte « Vin méthode nature » (2020) ; certification environnementale des exploitations « Haute Valeur Environnementale » (HVE), ministère de l’Agriculture ; Demeter et Biodyvin, cahiers des charges privés de la biodynamie.',
+               'Syndicat de défense des vins nature’l, “Vin méthode nature” charter (2020); “Haute Valeur Environnementale” (HVE) farm environmental certification, French Ministry of Agriculture; Demeter and Biodyvin, private biodynamic standards.'),
     ('civc', 'Comité Champagne : immatriculation professionnelle portée sur l’étiquette (NM, RM, CM, RC, SR, ND, MA).',
              'Comité Champagne: the professional registration code printed on the label (NM, RM, CM, RC, SR, ND, MA).'),
 ]
@@ -254,11 +264,11 @@ MAY = [
     ('La mise à la propriété', 'Estate bottling',
      '« Mis en bouteille au château / au domaine / à la propriété ».' + r('decret'), '“Mis en bouteille au château / au domaine / à la propriété”.' + r('decret')),
     ('Les mentions traditionnelles', 'Traditional terms',
-     '« Sur lie » (Muscadet), « Vendanges tardives », « Sélection de grains nobles », « Primeur », « Clairet »… chacune encadrée par les textes.',
-     '“Sur lie” (Muscadet), “Vendanges tardives”, “Sélection de grains nobles”, “Primeur”, “Clairet”… each one regulated.'),
+     '« Sur lie » (Muscadet), « Vendanges tardives », « Sélection de grains nobles », « Primeur », « Clairet »… chacune encadrée par les textes. <a href="#mentions-trad">Le détail plus bas&nbsp;→</a>' + r('tt'),
+     '“Sur lie” (Muscadet), “Vendanges tardives”, “Sélection de grains nobles”, “Primeur”, “Clairet”… each one regulated. <a href="#mentions-trad">Details below&nbsp;→</a>' + r('tt')),
     ('Le bio', 'Organic',
-     'Si le vin est certifié biologique et l’indique, le logo bio européen est obligatoire ; le logo français AB est facultatif.' + r('bio'),
-     'If the wine is certified organic and says so, the EU organic logo is compulsory; the French AB logo is optional.' + r('bio')),
+     'Si le vin est certifié biologique et l’indique, le logo bio européen est obligatoire ; le logo français AB est facultatif. <a href="#bio">Le détail plus bas&nbsp;→</a>' + r('bio'),
+     'If the wine is certified organic and says so, the EU organic logo is compulsory; the French AB logo is optional. <a href="#bio">Details below&nbsp;→</a>' + r('bio')),
     ('Les mots sans définition légale', 'Words with no legal definition',
      '« Vieilles vignes », « Grand vin », « Réserve », « Cuvée prestige »… n’engagent que le producteur.',
      '“Vieilles vignes” (old vines), “Grand vin”, “Réserve”, “Cuvée prestige”… commit no one but the producer.'),
@@ -283,6 +293,76 @@ CHAMP = [('NM', 'Négociant-manipulant', 'une maison qui achète raisins ou vins
          ('ND', 'Négociant distributeur', 'un distributeur qui achète des champagnes finis et les vend sous son étiquette', 'a distributor buying finished champagnes and selling them under its label'),
          ('MA', 'Marque auxiliaire / d’acheteur', 'une marque appartenant à l’acheteur (enseigne, restaurant…)', 'a brand owned by the buyer (retailer, restaurant…)')]
 
+# traditional terms: (name FR, name EN, where FR, where EN, [(bullet FR, bullet EN)…], source keys)
+TRAD = [
+    ('« Sur lie »', '“Sur lie”',
+     'Muscadet, Muscadet Sèvre et Maine, Muscadet Côtes de Grandlieu, Gros Plant du Pays nantais — vins blancs.',
+     'Muscadet, Muscadet Sèvre et Maine, Muscadet Côtes de Grandlieu, Gros Plant du Pays nantais — white wines.',
+     [('Les lies fines sont le dépôt de levures qui tombe au fond de la cuve après la fermentation. Le vin « sur lie » reste au contact de ces lies, sans soutirage, jusqu’à la mise en bouteille.',
+       'The fine lees are the deposit of yeasts that settles at the bottom of the vat after fermentation. A “sur lie” wine stays on these lees, without racking, until bottling.'),
+      ('Il ne passe qu’un hiver en cuve ou en fût et se trouve encore sur ses lies au moment du conditionnement.',
+       'It spends only one winter in vat or cask and is still on its lees when it is bottled.'),
+      ('Il est mis en bouteille dans le chai où il a été vinifié, entre le 1er mars et le 30 novembre de l’année qui suit la récolte.',
+       'It is bottled in the cellar where it was made, between 1 March and 30 November of the year after the harvest.'),
+      ('Les vignes sont moins chargées : 10 000 kg de raisin par hectare au plus, contre 12 000 pour le Muscadet sans mention.',
+       'The vines carry less fruit: at most 10,000 kg of grapes per hectare, against 12,000 for Muscadet without the term.'),
+      ('Dans le verre : plus de gras et d’arômes, et souvent un léger perlant dû au gaz carbonique naturel du vin.',
+       'In the glass: more texture and aroma, and often a slight prickle from the wine’s natural carbon dioxide.')],
+     ('cdcmt',)),
+    ('« Primeur » ou « Nouveau »', '“Primeur” or “Nouveau”',
+     'Beaujolais et Beaujolais-Villages surtout, mais aussi Mâcon, Touraine, Gaillac, Muscadet, Côtes du Rhône et d’autres AOC dont le cahier des charges le prévoit.',
+     'Beaujolais and Beaujolais-Villages above all, but also Mâcon, Touraine, Gaillac, Muscadet, Côtes du Rhône and other AOCs whose specification provides for it.',
+     [('Les deux mots sont synonymes : un vin de l’année, mis en vente quelques semaines après les vendanges.',
+       'The two words mean the same thing: a wine of the year, released a few weeks after the harvest.'),
+      ('Il est vendu au consommateur à partir du troisième jeudi de novembre de l’année de la récolte — la date du « Beaujolais nouveau » depuis 1985.',
+       'It goes on sale to consumers from the third Thursday of November of the harvest year — the “Beaujolais nouveau” date since 1985.'),
+      ('En Beaujolais : vins rouges ou rosés uniquement, raisins de l’année seulement, cuvaison de 10 jours au plus.',
+       'In Beaujolais: red or rosé wines only, grapes of that year only, at most 10 days on the skins.'),
+      ('Un vin frais et fruité, fait pour être bu dans les mois qui suivent.',
+       'A fresh, fruity wine, made to be drunk within the following months.')],
+     ('cdcmt',)),
+    ('« Vendanges tardives »', '“Vendanges tardives” (late harvest)',
+     'Alsace et Alsace grand cru, Jurançon, Gaillac — vins blancs.',
+     'Alsace and Alsace grand cru, Jurançon, Gaillac — white wines.',
+     [('Les raisins sont cueillis tard, en surmaturité, à la main : ils se sont concentrés sur la souche, par passerillage (ils se dessèchent) ou sous l’effet de la pourriture noble.',
+       'The grapes are picked late, overripe, by hand: they have concentrated on the vine, by passerillage (drying out) or through noble rot.'),
+      ('En Alsace, seulement quatre cépages, dont le nom doit figurer sur l’étiquette : gewurztraminer et pinot gris (270 g de sucre par litre de moût au minimum), riesling et muscat (244 g/L).',
+       'In Alsace, only four varieties, whose name must be on the label: gewurztraminer and pinot gris (at least 270 g of sugar per litre of must), riesling and muscat (244 g/L).'),
+      ('Aucun enrichissement : tout le sucre vient du raisin, la chaptalisation est interdite.',
+       'No enrichment: all the sugar comes from the grape; chaptalisation is forbidden.'),
+      ('Les parcelles sont déclarées avant le 1er mars de l’année de la récolte, et le vin est élevé au moins jusqu’au 1er juin de la deuxième année qui suit (Alsace, Jurançon).',
+       'The plots are declared before 1 March of the harvest year, and the wine is aged at least until 1 June of the second year after it (Alsace, Jurançon).'),
+      ('À Jurançon : petit et gros manseng seulement, 281 g/L de sucre dans le moût et plus de 55 g/L de sucre restant dans le vin.',
+       'In Jurançon: petit and gros manseng only, 281 g/L of sugar in the must and more than 55 g/L of sugar left in the wine.')],
+     ('cdcmt',)),
+    ('« Sélection de grains nobles »', '“Sélection de grains nobles”',
+     'Alsace et Alsace grand cru, Coteaux du Layon, Coteaux de l’Aubance, Monbazillac — vins blancs liquoreux.',
+     'Alsace and Alsace grand cru, Coteaux du Layon, Coteaux de l’Aubance, Monbazillac — sweet white wines.',
+     [('Le degré au-dessus des vendanges tardives : les raisins sont atteints de pourriture noble (le champignon Botrytis cinerea), qui les dessèche et en concentre le sucre et l’acidité.',
+       'One step above vendanges tardives: the grapes are touched by noble rot (the fungus Botrytis cinerea), which dries them and concentrates their sugar and acidity.'),
+      ('On les récolte à la main par tries successives : les vendangeurs passent plusieurs fois dans la même vigne pour ne cueillir que les grains « rôtis ».',
+       'They are picked by hand in successive passes: the pickers go through the same vineyard several times, taking only the “roasted” berries.'),
+      ('En Alsace : 306 g de sucre par litre de moût pour le gewurztraminer et le pinot gris, 276 g/L pour le riesling et le muscat.',
+       'In Alsace: 306 g of sugar per litre of must for gewurztraminer and pinot gris, 276 g/L for riesling and muscat.'),
+      ('À Monbazillac : 255 g/L dans le moût et au moins 85 g/L de sucre restant dans le vin (45 g/L sans la mention).',
+       'In Monbazillac: 255 g/L in the must and at least 85 g/L of sugar left in the wine (45 g/L without the term).'),
+      ('Aucun enrichissement. Ces vins ne se font que les années où la pourriture noble s’est bien installée.',
+       'No enrichment. These wines are made only in years when noble rot has set in well.')],
+     ('cdcmt',)),
+    ('« Clairet »', '“Clairet”',
+     'Bordeaux, Bourgogne.',
+     'Bordeaux, Bourgogne.',
+     [('Un rosé foncé, entre le rosé et le rouge : le cahier des charges de Bordeaux réserve la mention aux « vins rosés foncés ».',
+       'A dark rosé, between rosé and red: the Bordeaux specification reserves the term for “dark rosé wines”.'),
+      ('Il naît de raisins rouges laissés en macération un peu plus longtemps qu’un rosé ordinaire, mais bien moins qu’un rouge.',
+       'It comes from red grapes left to macerate a little longer than for an ordinary rosé, but much less than for a red.'),
+      ('Robe framboise intense, bouche plus vineuse que les autres rosés ; à boire dans les un à trois ans.',
+       'Intense raspberry colour, a winier palate than other rosés; to drink within one to three years.'),
+      ('C’est l’ancêtre du mot anglais « claret ». Depuis 2025, le cahier des charges de Bordeaux admet aussi la mention « claret », réservée aux vins rouge clair.',
+       'It is the ancestor of the English word “claret”. Since 2025 the Bordeaux specification also allows the term “claret”, reserved for light red wines.')],
+     ('cdcmt',)),
+]
+
 GLOSS = [
     ('Château', 'Château', 'Une exploitation viticole d’appellation, surtout dans le Bordelais — il n’y a pas toujours de château au sens du bâtiment.', 'An appellation wine estate, mostly in Bordeaux — there is not always a castle-like building.'),
     ('Domaine', 'Domaine', 'L’équivalent bourguignon (et général) : l’ensemble des vignes d’un même producteur.', 'The Burgundian (and general) equivalent: all the vines of a single producer.'),
@@ -295,6 +375,69 @@ GLOSS = [
     ('Cave coopérative', 'Co-operative cellar', 'Les vignerons adhérents apportent leurs raisins ; le vin est fait et vendu en commun (« Les Vignerons de… »).', 'Member growers bring in their grapes; the wine is made and sold jointly (“Les Vignerons de…”).'),
     ('Élevé en fût de chêne', 'Aged in oak barrels', 'Le vin a séjourné en barriques ou en foudres avant la mise en bouteille.', 'The wine spent time in barrels or large casks before bottling.'),
 ]
+
+
+def trad_cards():
+    out = []
+    for nfr, nen, wfr, wen, bullets, refs in TRAD:
+        lis_fr = ''.join(f'<li>{a}</li>' for a, _ in bullets)
+        lis_en = ''.join(f'<li>{b}</li>' for _, b in bullets)
+        out.append(f'<div class="mt"><h4>{dl(nfr, nen)}{r(*refs)}</h4>'
+                   f'<p class="where"><b>{dl("Où ?", "Where?")}</b> {dl(wfr, wen)}</p>'
+                   f'{LL(lis_fr, lis_en, "ul")}</div>')
+    return ''.join(out)
+
+
+BIO = [
+    ('Le logo européen', 'The EU logo', 'obligatoire', 'compulsory', 'must',
+     'Une feuille dessinée par des étoiles blanches sur fond vert. Dès qu’un vin se dit « bio » ou « biologique », il doit le porter. À côté figurent le numéro de l’organisme certificateur (par exemple « FR-BIO-01 ») et l’origine des raisins : « Agriculture UE », « Agriculture non UE », ou le nom du pays, comme « Agriculture France ».' + r('bio'),
+     'A leaf drawn with white stars on a green background. As soon as a wine calls itself “bio” or “biologique” (organic), it must carry it. Next to it come the code number of the control body (for example “FR-BIO-01”) and the origin of the grapes: “Agriculture UE”, “Agriculture non UE”, or the country name, such as “Agriculture France”.' + r('bio')),
+    ('Le logo AB', 'The AB logo', 'facultatif', 'optional', 'opt',
+     'Les lettres « AB » (Agriculture biologique) en blanc sur fond vert : une marque française, propriété de l’État. Elle s’ajoute au logo européen, ne le remplace jamais, et suit les mêmes règles.' + r('ab'),
+     'The letters “AB” (Agriculture biologique) in white on a green background: a French mark owned by the State. It is added to the EU logo, never replaces it, and follows the same rules.' + r('ab')),
+    ('Dans la vigne', 'In the vineyard', '', '', '',
+     'Les raisins viennent de vignes certifiées : pas d’herbicides ni d’engrais ou de pesticides de synthèse (le cuivre et le soufre restent permis). Il faut trois ans de conversion avant de pouvoir écrire « bio » ; un organisme agréé contrôle l’exploitation chaque année.' + r('bio2'),
+     'The grapes come from certified vineyards: no herbicides and no synthetic fertilisers or pesticides (copper and sulphur remain allowed). Three years of conversion are needed before “organic” may be written; an approved body inspects the estate every year.' + r('bio2')),
+    ('Dans le chai', 'In the cellar', '', '', '',
+     'Depuis le millésime 2012, la vinification est encadrée elle aussi. Certaines pratiques sont interdites (désalcoolisation partielle, électrodialyse, concentration par le froid, désulfitation), d’autres limitées (chauffage à 70 °C au plus, filtration à 0,2 µm au minimum), et les sulfites sont plafonnés plus bas, comme le montre le tableau ci-dessous.' + r('bio2'),
+     'Since the 2012 vintage, winemaking is regulated too. Some practices are forbidden (partial dealcoholisation, electrodialysis, concentration by cooling, desulphiting), others restricted (heating to 70 °C at most, filtration at 0.2 µm minimum), and sulphites are capped lower, as shown in the table below.' + r('bio2')),
+]
+SO2 = [('Vin rouge sec', 'Dry red wine', '150 mg/L', '100 mg/L'),
+       ('Vin blanc ou rosé sec', 'Dry white or rosé wine', '200 mg/L', '150 mg/L'),
+       ('Vins plus sucrés', 'Sweeter wines', 'selon le type de vin', 'according to the type of wine', '30 mg/L de moins', '30 mg/L less')]
+NOTBIO = [
+    ('Biodynamie', 'Biodynamics',
+     'Une agriculture bio qui ajoute des préparations à base de plantes et de minéraux et suit un calendrier lunaire. Pas de définition légale : on la reconnaît aux logos privés Demeter ou Biodyvin, qui supposent d’abord la certification bio.',
+     'Organic farming with added plant- and mineral-based preparations and a lunar calendar. No legal definition: it is recognised by the private Demeter or Biodyvin logos, which require organic certification first.'),
+    ('Vin nature', 'Natural wine',
+     '« Vin naturel » n’a pas de définition légale. Depuis 2020, la charte privée « Vin méthode nature » impose des raisins bio vendangés à la main, des levures indigènes, aucun intrant, et pas de sulfites ajoutés (ou 30 mg/L au plus, avec un logo distinct).',
+     '“Natural wine” has no legal definition. Since 2020 the private “Vin méthode nature” charter requires organic hand-picked grapes, indigenous yeasts, no additives, and no added sulphites (or 30 mg/L at most, with a separate logo).'),
+    ('HVE', 'HVE',
+     '« Haute Valeur Environnementale » : une certification de l’exploitation par l’État (biodiversité, produits phytosanitaires, fertilisation, eau). Ce n’est pas du bio : les produits de synthèse ne sont pas interdits.',
+     '“Haute Valeur Environnementale” (High Environmental Value): a State certification of the farm (biodiversity, plant-protection products, fertilisation, water). It is not organic: synthetic products are not banned.'),
+]
+
+
+def bio_block():
+    cards = []
+    for hfr, hen, tfr, ten, cls, pfr, pen in BIO:
+        tag = dl(tfr, ten, 'span', f'tag {cls}') if tfr else ''
+        cards.append(f'<div class="mt"><h4>{dl(hfr, hen)} {tag}</h4>{LL(pfr, pen)}</div>')
+    th = ''.join(f'<th>{dl(a, b)}</th>' for a, b in (('Vin', 'Wine'), ('Conventionnel', 'Conventional'), ('Bio', 'Organic')))
+    rows = []
+    for row in SO2:
+        if len(row) == 4:
+            a, b, c, d = row
+            rows.append(f'<tr><td><b>{dl(a, b)}</b></td><td>{c}</td><td>{d}</td></tr>')
+        else:
+            a, b, c, d, e, f = row
+            rows.append(f'<tr><td><b>{dl(a, b)}</b></td><td>{dl(c, d)}</td><td>{dl(e, f)}</td></tr>')
+    so2 = (f'<table class="tbl so2"><thead><tr>{th}</tr></thead><tbody>{"".join(rows)}</tbody></table>'
+           f'<p class="credit" style="margin-top:6px">{dl("Teneur maximale en sulfites (anhydride sulfureux total). « Sec » : moins de 2 g/L de sucre pour le bio.", "Maximum sulphite content (total sulphur dioxide). “Dry”: less than 2 g/L of sugar for organic wine.")}{r("bio2")}</p>')
+    nb = ''.join(f'<div class="gcard"><h4>{dl(a, b)}</h4>{LL(c, d)}</div>' for a, b, c, d in NOTBIO)
+    return (f'<div class="mtgrid">{"".join(cards)}</div>{so2}'
+            f'<h4 class="sub">{dl("À ne pas confondre avec le bio", "Not to be confused with organic")}{r("nature")}</h4>'
+            f'<div class="ggrid">{nb}</div>')
 
 
 def card_grid(items, cls):
@@ -378,6 +521,18 @@ CSS = r'''
   .gcard h4{margin:0 0 4px;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--gold-soft);}
   html[data-theme="cream"] .gcard h4{color:#8a5d17;}
   .gcard p{margin:0;font-size:13.6px;line-height:1.55;}
+  .mtgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin-top:12px;}
+  .mt{padding:14px 16px;border-radius:14px;background:var(--glass);border:1px solid var(--hair);}
+  .mt h4{margin:0 0 6px;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--gold-soft);}
+  html[data-theme="cream"] .mt h4{color:#8a5d17;}
+  .mt .where{margin:0 0 8px;font-size:13px;line-height:1.5;color:var(--muted);}
+  .mt .where b{color:var(--title);font-weight:600;}
+  .mt ul{margin:0;padding-left:18px;font-size:13.6px;line-height:1.55;}
+  .mt li{margin-bottom:5px;}
+  .mt p{margin:0;font-size:13.6px;line-height:1.58;}
+  .tpanel > p.L{margin:0 0 4px;font-size:14.5px;line-height:1.65;}
+  .tpanel .sub{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);margin:20px 0 10px;}
+  .so2{margin-top:14px;max-width:640px;}
   .tbl{width:100%;border-collapse:collapse;font-size:14px;}
   .tbl th{text-align:left;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--hair-hi);}
   .tbl td{padding:8px 10px;border-bottom:1px solid var(--hair);vertical-align:top;line-height:1.5;}
@@ -435,7 +590,7 @@ PAGE = r'''<!DOCTYPE html>
       <a class="step" href="#bourgogne"><span class="sn">02</span><b data-fr="Bourgogne" data-en="Burgundy">Bourgogne</b><small data-fr="et les autres" data-en="and the rest">et les autres</small></a>
       <a class="step" href="#champagne"><span class="sn">03</span><b data-fr="Champagne" data-en="Champagne">Champagne</b><small data-fr="une étiquette à part" data-en="a label of its own">une étiquette à part</small></a>
       <a class="step" href="#mentions"><span class="sn">04</span><b data-fr="Obligatoire ou facultatif" data-en="Compulsory or optional">Obligatoire ou facultatif</b><small data-fr="ce que dit la loi en 2026" data-en="what the law says in 2026">ce que dit la loi en 2026</small></a>
-      <a class="step" href="#vocabulaire"><span class="sn">05</span><b data-fr="Le vocabulaire" data-en="The vocabulary">Le vocabulaire</b><small data-fr="sucre, Champagne, mots-clés" data-en="sugar, Champagne, key words">sucre, Champagne, mots-clés</small></a>
+      <a class="step" href="#vocabulaire"><span class="sn">05</span><b data-fr="Le vocabulaire" data-en="The vocabulary">Le vocabulaire</b><small data-fr="sucre, Champagne, mentions, bio" data-en="sugar, Champagne, terms, organic">sucre, Champagne, mentions, bio</small></a>
     </nav>
   </header>
 
@@ -502,6 +657,16 @@ PAGE = r'''<!DOCTYPE html>
       <h3 data-fr="Champagne : le code du producteur" data-en="Champagne: the producer code">Champagne : le code du producteur</h3>
       @@CHAMPNOTE@@
       @@CHAMP@@
+    </div>
+    <div class="panel tpanel" id="mentions-trad" style="margin-top:16px">
+      <h3 data-fr="Les mentions traditionnelles" data-en="Traditional terms">Les mentions traditionnelles</h3>
+      @@TRADINTRO@@
+      <div class="mtgrid">@@TRAD@@</div>
+    </div>
+    <div class="panel tpanel" id="bio" style="margin-top:16px">
+      <h3 data-fr="Le bio" data-en="Organic wine">Le bio</h3>
+      @@BIOINTRO@@
+      @@BIO@@
     </div>
     <div class="ggrid" style="margin-top:16px">@@GLOSS@@</div>
   </section>
@@ -623,6 +788,12 @@ def main():
                             'Two letters and a number, in small print: they tell you who made the champagne.' + r('civc'), 'p', 'dimp'),
         '@@CHAMP@@': champ_table(),
         '@@GLOSS@@': card_grid(GLOSS, 'gcard'),
+        '@@TRADINTRO@@': LL('Une mention traditionnelle est un terme protégé par l’Union européenne, utilisé de longue date pour désigner une méthode de production ou d’élevage, une qualité, une couleur ou un type de vin. Elle est réservée aux vins AOP et IGP, et seulement si le cahier des charges de l’appellation l’autorise, aux conditions qu’il fixe. « Appellation d’origine contrôlée » est elle-même une mention traditionnelle, comme « château », « clos », « cru classé », « vin jaune » ou « rancio ». Voici les plus courantes sur une étiquette.' + r('tt'),
+                            'A traditional term is a term protected by the European Union, long used to describe a method of production or ageing, a quality, a colour or a type of wine. It is reserved for PDO and PGI wines, and only when the appellation’s specification allows it, under the conditions it sets. “Appellation d’origine contrôlée” is itself a traditional term, like “château”, “clos”, “cru classé”, “vin jaune” or “rancio”. Here are the most common ones on a label.' + r('tt')),
+        '@@TRAD@@': trad_cards(),
+        '@@BIOINTRO@@': LL('Écrire « bio » sur une étiquette n’est jamais obligatoire : c’est le choix du producteur. Mais s’il l’écrit, tout le vin doit être certifié, de la vigne à la bouteille, et l’étiquette doit alors porter certaines mentions.',
+                           'Writing “organic” on a label is never compulsory: it is the producer’s choice. But if they write it, the whole wine must be certified, from vine to bottle, and the label must then carry certain statements.'),
+        '@@BIO@@': bio_block(),
         '@@SOURCES@@': sources_html(),
         '@@CREDIT@@': dl('D’après la fiche « How to Read a French Wine Label » de Christophe A. Paul (2010), mise à jour et augmentée. Étiquettes imaginaires créées pour ce site : Château Blabla 1989 ; Domaine Coullenot, Beaune 1er Cru « Les Grèves » 2019 ; Champagne Bubulle, Brut Blanc de Blancs 2002.',
                          'Based on the “How to Read a French Wine Label” sheet by Christophe A. Paul (2010), updated and expanded. Imaginary labels created for this site: Château Blabla 1989; Domaine Coullenot, Beaune 1er Cru “Les Grèves” 2019; Champagne Bubulle, Brut Blanc de Blancs 2002.'),
