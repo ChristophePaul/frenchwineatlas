@@ -438,11 +438,20 @@ NOTBIO = [
 ]
 
 
+# logos shown in the first two BIO cards (cropped from the user's screenshot, 2026-10-25)
+BIO_LOGOS = {0: ('logo_bio_eu.webp', 594, 402, 'Logo bio de l’Union européenne (Eurofeuille) / EU organic logo'),
+             1: ('logo_bio_ab.webp', 327, 396, 'Logo AB – Agriculture biologique / AB organic logo')}
+
+
 def bio_block():
     cards = []
-    for hfr, hen, tfr, ten, cls, pfr, pen in BIO:
+    for i, (hfr, hen, tfr, ten, cls, pfr, pen) in enumerate(BIO):
         tag = dl(tfr, ten, 'span', f'tag {cls}') if tfr else ''
-        cards.append(f'<div class="mt"><h4>{dl(hfr, hen)} {tag}</h4>{LL(pfr, pen)}</div>')
+        logo = ''
+        if i in BIO_LOGOS:
+            f, w, h, alt = BIO_LOGOS[i]
+            logo = f'<img class="biologo" src="img/{f}" width="{w}" height="{h}" alt="{alt}" loading="lazy">'
+        cards.append(f'<div class="mt">{logo}<h4>{dl(hfr, hen)} {tag}</h4>{LL(pfr, pen)}</div>')
     heads = (('Vin', 'Wine'), ('Conventionnel', 'Conventional'), ('Bio', 'Organic'))
     th = ''.join(f'<th>{dl(a, b)}</th>' for a, b in heads)
     lbl = [dl(a, b, 'span', 'lbl') for a, b in heads[1:]]   # column name repeated in the cell, shown only when rows stack
@@ -546,6 +555,7 @@ CSS = r'''
   .mt ul{margin:0;padding-left:18px;font-size:13.6px;line-height:1.55;}
   .mt li{margin-bottom:5px;}
   .mt p{margin:0;font-size:13.6px;line-height:1.58;}
+  .mt .biologo{float:right;height:64px;width:auto;margin:2px 0 6px 12px;border-radius:2px;}
   .tpanel > p.L{margin:0 0 4px;font-size:14.5px;line-height:1.65;}
   .tpanel .sub{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--title);margin:20px 0 10px;}
   .so2wrap{margin-top:14px;max-width:780px;overflow-x:auto;}
