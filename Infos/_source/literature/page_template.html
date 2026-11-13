@@ -65,8 +65,9 @@
   .row-tools select{font:inherit;font-size:13px;padding:6px 10px;border-radius:10px;border:1px solid var(--hair);background:var(--glass-hi);color:var(--title);}
 
   /* results */
-  .results{columns:3 330px;column-gap:16px;margin-top:20px;}
-  .qc{break-inside:avoid;display:inline-block;width:100%;margin:0 0 16px;position:relative;padding:20px 20px 14px;border-radius:18px;background:var(--glass);border:1px solid var(--hair);box-shadow:var(--shadow);}
+  .results{display:flex;align-items:flex-start;gap:16px;margin-top:20px;}
+  .results .rcol{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:16px;}
+  .qc{display:block;width:100%;margin:0;position:relative;padding:20px 20px 14px;border-radius:18px;background:var(--glass);border:1px solid var(--hair);box-shadow:var(--shadow);}
   html[data-theme="cream"] .qc{box-shadow:0 4px 18px rgba(90,30,40,.07);}
   .qc.flash{animation:flash 2.2s ease-out;}
   @keyframes flash{0%,30%{border-color:var(--gold);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 35%,transparent);}}
@@ -350,6 +351,9 @@
     build('f-lang', 'lang', langs, function(k){ var s=L(M.langs[k]); return s.charAt(0).toUpperCase()+s.slice(1); });
     build('f-st', 'st', ['src','attr','apo'], function(k){ return L(M.status[k]); }, ST_C);
   }
+  var LAST_COLS = 0;
+  function nCols(){ var w = $('results').clientWidth || window.innerWidth; return w >= 1030 ? 3 : w >= 680 ? 2 : 1; }
+  window.addEventListener('resize', function(){ if(LAST_COLS && nCols() !== LAST_COLS) render(true); });
   function render(keepPage){
     if(!keepPage) S.shown = PAGE;
     var ts = terms(), list = results();
@@ -364,7 +368,12 @@
         + (LANG==='fr'?'Essayez un autre mot, ou retirez un filtre.':'Try another word, or remove a filter.') + '</div>';
       return;
     }
-    $('results').innerHTML = list.slice(0, S.shown).map(function(q){ return card(q, ts); }).join('');
+    /* cards dealt into JS-built columns (CSS multi-column hid the cards in Safari) */
+    var nc = nCols(), cols = [];
+    for(var c=0;c<nc;c++) cols.push([]);
+    list.slice(0, S.shown).forEach(function(q, i){ cols[i % nc].push(card(q, ts)); });
+    LAST_COLS = nc;
+    $('results').innerHTML = cols.map(function(cc){ return '<div class="rcol">'+cc.join('')+'</div>'; }).join('');
     $('more').innerHTML = n > S.shown
       ? '<button class="btn" type="button" id="morebtn">'+(LANG==='fr'?'Afficher plus':'Show more')+' ('+(n-S.shown)+')</button>' : '';
   }
