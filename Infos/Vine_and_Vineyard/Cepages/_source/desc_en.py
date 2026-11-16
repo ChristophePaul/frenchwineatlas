@@ -13,6 +13,7 @@ E = {
 "assyrtiko-b": "Santorini's great white, very mineral and acidic, keeping freshness in the heat. Adaptation variety in Bandol.",
 "aubin-b": "Rare Lorraine grape related to savagnin, used in the whites and gris of Côtes de Toul.",
 "auxerrois-b": "Early white grape, round and low in acidity, grown in Alsace and Lorraine; often blended with pinot blanc.",
+"baco-blanc-b": "Hybrid bred in the Landes by François Baco (1898), a cross of folle blanche and noah. A historic Armagnac grape giving round, fruity brandies; for a long time it was the only hybrid allowed in an AOC.",
 "barbaroux-rs": "Old pink-berried grape of Provence and Corsica (barbarossa), giving finesse and lightness to rosés.",
 "baroque-b": "White grape of the Landes, rich and aromatic; the signature of Tursan whites.",
 "beclan-n": "Old Jura red, light and peppery, reintroduced in Macvin as an adaptation variety.",

@@ -78,6 +78,20 @@ for gid_, g in grapes.items():
     G.append({"id": gid_, "n": display(g["key"], g["code"]), "c": g["code"],
               "fr": D.get(gid_, ""), "en": E.get(gid_, ""), "syn": syn.strip(", "),
               "orig": info.get("origin", ""), "ha": HA.get(gid_)})
+# Grapes allowed in no AOC wine, shown with the IGPs that name them (checked against the local IGP CDCs).
+NON_AOC = [
+    {"id": "baco-blanc-b", "key": "baco blanc", "code": "B", "syn": "Baco 22 A",
+     "orig": "France (Landes), folle blanche × noah, 1898",
+     "igp": ["Coteaux d'Ensérune", "Côtes de Thau", "Côtes de Thongue", "Pays d'Hérault", "Terres du Midi", "Vicomté d'Aumelas"],
+     "xfr": "Aucune AOC de vin ne l'autorise. Il est nommément admis dans six IGP du Languedoc (« Baco B » dans celui des Côtes de Thau) et, pour les eaux-de-vie, dans l'AOC Armagnac. Le cahier des charges du Floc de Gascogne le cite dans son historique mais ne l'admet pas.",
+     "xen": "No AOC wine allows it. It is named in six Languedoc IGPs (written « Baco B » in the Côtes de Thau rules) and, for brandy, in the Armagnac AOC. The Floc de Gascogne specification mentions it in its history section but does not allow it."},
+]
+for x in NON_AOC:
+    assert x["id"] not in grapes, x["id"]
+    if x["id"] not in D or x["id"] not in E:
+        print("NO DESC", x["id"])
+    G.append({"id": x["id"], "n": display(x["key"], x["code"]), "c": x["code"], "fr": D.get(x["id"], ""), "en": E.get(x["id"], ""),
+              "syn": x["syn"], "orig": x["orig"], "ha": None, "igp": x["igp"], "xfr": x["xfr"], "xen": x["xen"]})
 G.sort(key=lambda x: strip_acc(x["n"]).lower())
 
 A = []
@@ -92,6 +106,13 @@ assert len({a["id"] for a in A}) == len(A), "duplicate AOC ids"
 data = {"grapes": G, "aocs": A, "regions": REGION_ORDER}
 tpl = open(os.path.join(HERE, "template.html"), encoding="utf-8").read()
 html = tpl.replace("/*__DATA__*/null", json.dumps(data, ensure_ascii=False, separators=(",", ":")))
+# grape map « Les cépages de France » above the search (built by Infos/_source/geography/gen_grapes.py)
+FRAG = os.path.join(HERE, "grape_map_fragment.json")
+if os.path.exists(FRAG):
+    F = json.load(open(FRAG, encoding="utf-8"))
+    html = (html.replace("</style>", F["css"] + "\n</style>", 1)
+                .replace('<div class="panel search-panel">', F["html"] + '\n\n  <div class="panel search-panel">', 1)
+                .replace("</body>", "<script>" + F["js"] + "</script>\n</body>", 1))
 open(OUT, "w", encoding="utf-8").write(html)
 print(len(G), "grapes,", len(A), "AOCs ->", OUT, f"{len(html)//1024} KB")
 print("single-varietal AOCs:", sum(a["one"] for a in A))

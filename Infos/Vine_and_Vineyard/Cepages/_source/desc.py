@@ -14,6 +14,7 @@ D = {
 "assyrtiko-b": "Grand blanc de Santorin, très minéral et acide, qui garde sa fraîcheur sous la chaleur. Variété d'adaptation à Bandol.",
 "aubin-b": "Cépage lorrain rare, proche du savagnin, qui entre dans les blancs et gris des Côtes de Toul.",
 "auxerrois-b": "Cépage blanc précoce, rond et peu acide, cultivé en Alsace et en Lorraine ; souvent assemblé au pinot blanc.",
+"baco-blanc-b": "Hybride créé dans les Landes par François Baco (1898), croisement de folle blanche et de noah. Cépage historique de l'Armagnac, auquel il donne des eaux-de-vie rondes et fruitées ; il fut longtemps le seul hybride admis dans une AOC.",
 "barbaroux-rs": "Vieux cépage à baies roses de Provence et de Corse (barbarossa), apportant finesse et légèreté aux rosés.",
 "baroque-b": "Cépage blanc des Landes, gras et aromatique ; il fait l'identité des blancs du Tursan.",
 "beclan-n": "Vieux cépage rouge jurassien, léger et poivré, réintroduit dans le Macvin comme variété d'adaptation.",
