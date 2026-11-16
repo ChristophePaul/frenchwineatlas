@@ -158,6 +158,8 @@ cadastre = grp('Plans cadastraux', 'Cadastral maps', groups=[
 # ---------- learning pages ----------
 I = 'Infos/'
 infos = grp('Comprendre le vin', 'Wine knowledge', groups=[
+    grp('Pour commencer', 'Getting started', [
+        item(I + 'Geography/French_Wines_The_Basics.html', 'Vins de France : les bases', 'French wines: the basics')]),
     grp('Appellations & cépages', 'Appellations & grapes', [
         item(I + 'Vine_and_Vineyard/Cepages/Cepages_et_Appellations.html', 'Cépages & appellations', 'Grapes & appellations'),
         item(I + 'Categories_of_French_Wines.html', 'Comprendre l’AOC-AOP', 'Understanding AOC-AOP'),

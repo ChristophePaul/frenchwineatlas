@@ -200,6 +200,12 @@
     background:url("assets/strata_user.webp?v=1") center / contain no-repeat;}
   html[data-theme="cream"] .wm-geo{opacity:.65;}
   .geo-subs{max-width:70%;}
+  /* « Vins de France : les bases » — the river film's own relief map (Infos/Geography/img/map_relief.webp) */
+  .wm-basics{right:clamp(16px,4vw,56px);top:50%;transform:translateY(-50%);width:min(24%,260px);aspect-ratio:1;opacity:.5;
+    background:url("Infos/Geography/img/map_relief.webp") center / contain no-repeat;}
+  html[data-theme="cream"] .wm-basics{opacity:.62;}
+  .basics-subs{max-width:72%;}
+  .basics-card .txt p{max-width:72%;}
   .geo-card .txt p{max-width:min(640px,70%);}
   /* « Apprendre à lire… une étiquette » : the Coullenot Beaune label from the page, tilted like a card on the table */
   .wm-label{right:clamp(20px,4.5vw,64px);top:50%;width:min(21%,240px);aspect-ratio:1536/1024;transform:translateY(-50%) rotate(-6deg);
@@ -273,7 +279,7 @@
     .wm-grapes{opacity:.18;width:70%;right:-8%;filter:none;}
     .wm-cal{opacity:.16;width:64%;right:-6%;filter:none;}
     .wm-vine{opacity:.18;width:52%;right:-6%;filter:none;} .vine-subs{max-width:none;}
-    .wm-cru{opacity:.12;width:70%;right:-6%;} .cru-subs{max-width:none;} .wm-taste{opacity:.12;width:70%;right:-6%;} .taste-subs{max-width:none;} .wm-label{opacity:.16;width:58%;right:-8%;} .label-subs{max-width:none;} .wm-geo{opacity:.16;width:60%;right:-8%;} .geo-subs{max-width:none;} .geo-card .txt p{max-width:none;} .wm-hist{opacity:.13;width:80%;right:-10%;} .hist-subs{max-width:none;} .hist-card .txt p{max-width:none;} .wm-sweet{opacity:.13;width:70%;right:-8%;} .sweet-subs{max-width:none;} .sweet-card .txt p{max-width:none;} .wm-quote{opacity:.1;} .quote-subs{max-width:none;} .wm-games{opacity:.12;width:70%;right:-6%;top:10px;height:auto;bottom:10px;} .games{max-width:none;}
+    .wm-cru{opacity:.12;width:70%;right:-6%;} .cru-subs{max-width:none;} .wm-taste{opacity:.12;width:70%;right:-6%;} .taste-subs{max-width:none;} .wm-label{opacity:.16;width:58%;right:-8%;} .label-subs{max-width:none;} .wm-geo{opacity:.16;width:60%;right:-8%;} .geo-subs{max-width:none;} .wm-basics{opacity:.16;width:60%;right:-8%;} .basics-subs{max-width:none;} .basics-card .txt p{max-width:none;} .geo-card .txt p{max-width:none;} .wm-hist{opacity:.13;width:80%;right:-10%;} .hist-subs{max-width:none;} .hist-card .txt p{max-width:none;} .wm-sweet{opacity:.13;width:70%;right:-8%;} .sweet-subs{max-width:none;} .sweet-card .txt p{max-width:none;} .wm-quote{opacity:.1;} .quote-subs{max-width:none;} .wm-games{opacity:.12;width:70%;right:-6%;top:10px;height:auto;bottom:10px;} .games{max-width:none;}
     .wm-map{top:-10px;bottom:auto;width:92%;max-width:none;right:-22%;} .wm-igp{width:165px;opacity:.22;}
     .regions{grid-template-columns:1fr;}
   }
@@ -353,6 +359,24 @@ html[data-theme="cream"] footer b{color:rgba(138,93,23,0.85)}
   </header>
 
   <div class="grid">
+
+    <!-- ===== LINE 0 : the basics — start here (Infos/Geography, built by Infos/_source/geography/gen_page.py) ===== -->
+    <div class="card full basics-card">
+      <span class="wm wm-basics" aria-hidden="true"></span>
+      <div class="top">
+        <span class="ic-wrap"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20.2 7.2v9.6L12 21.5l-8.2-4.7V7.2Z"/><path d="M7 9.5c2 1.2 3.2 3.4 3.6 6M14.5 6.5c-.6 2.4.2 5 2.2 6.8"/><circle cx="12" cy="8.5" r="1"/></svg></span>
+        <div class="txt">
+          <p class="kick" data-fr="Pour commencer · deux films interactifs" data-en="Start here · two interactive films">Pour commencer · deux films interactifs</p>
+          <h3><a class="main" href="Infos/Geography/French_Wines_The_Basics.html" data-fr="Vins de France : les bases" data-en="French wines: the basics">Vins de France : les bases</a></h3>
+          <p data-fr="La façon la plus simple d’apprendre les vins de France : connaître sa géographie. Les montagnes, les six bassins et leurs fleuves, les vins qui poussent sur leurs rives — puis comment dessiner la France de mémoire et y placer ses régions viticoles." data-en="The easiest way to learn French wine: know the geography of France. The mountains, the six river basins and their rivers, the wines that grow along their banks — then how to draw France from memory and place its wine regions.">La façon la plus simple d’apprendre les vins de France : connaître sa géographie. Les montagnes, les six bassins et leurs fleuves, les vins qui poussent sur leurs rives — puis comment dessiner la France de mémoire et y placer ses régions viticoles.</p>
+        </div>
+      </div>
+      <div class="subs basics-subs">
+        <a class="sub" href="Infos/Geography/French_Wines_The_Basics.html#film-1" data-fr="Le vin et la géographie <span class=&quot;ar&quot;>→</span>" data-en="Wine and geography <span class=&quot;ar&quot;>→</span>">Le vin et la géographie <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Geography/French_Wines_The_Basics.html#garonne" data-fr="Les fleuves et leurs vins <span class=&quot;ar&quot;>→</span>" data-en="Rivers and their wines <span class=&quot;ar&quot;>→</span>">Les fleuves et leurs vins <span class="ar">→</span></a>
+        <a class="sub" href="Infos/Geography/French_Wines_The_Basics.html#film-2" data-fr="Dessiner la France <span class=&quot;ar&quot;>→</span>" data-en="Drawing France <span class=&quot;ar&quot;>→</span>">Dessiner la France <span class="ar">→</span></a>
+      </div>
+    </div>
 
     <!-- ===== LINE 1 ===== -->
     <!-- INAO appellation system -->
