@@ -20,7 +20,7 @@ SITE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 START, END = "<!--fw-theme:start-->", "<!--fw-theme:end-->"
 LIGHT_NATIVE = ("How it's made", "wine_chemistry_html")
 SKIP = ("_source", "_backups")
-HAND_TUNED = ("Cepages_et_Appellations.html",)   # has its own cream CSS; only needs the script
+HAND_TUNED = ("Cepages_et_Appellations.html", "Color_Game.html")   # has its own cream CSS; only needs the script
 
 # ---------------------------------------------------------------- colours
 NAMED = {"white": (255, 255, 255, 1.0), "black": (0, 0, 0, 1.0), "transparent": (0, 0, 0, 0.0)}

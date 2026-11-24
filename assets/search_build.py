@@ -28,7 +28,7 @@ SITE = pathlib.Path(__file__).resolve().parent.parent
 ASSETS = SITE / 'assets'
 OUT = ASSETS / 'search_index.js'
 
-GAMES = {'Infos/Literature/' + n for n in ('Jeux.html', 'Wine_Quiz.html', 'Taste_Quiz.html', 'Map_Game.html', 'Bon_Cep.html', 'IGP_Game.html')}
+GAMES = {'Infos/Literature/' + n for n in ('Jeux.html', 'Wine_Quiz.html', 'Taste_Quiz.html', 'Map_Game.html', 'Bon_Cep.html', 'IGP_Game.html', 'Color_Game.html')}
 CEP = 'Infos/Vine_and_Vineyard/Cepages/Cepages_et_Appellations.html'
 IGP_MAP = 'Vignobles de France — Carte des IGP.html'
 QUOTES = 'Infos/Literature/Wine_Quotes.html'

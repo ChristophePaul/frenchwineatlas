@@ -16,6 +16,7 @@ import quiz_bank  # noqa: E402
 import tasting_notes as TN  # noqa: E402
 import cep_bank  # noqa: E402
 import igp_bank  # noqa: E402
+import gen_color_game  # noqa: E402
 
 CATS = {
     'region': ('Régions & appellations', 'Regions & appellations', '#8e1f33'),
@@ -160,6 +161,7 @@ def main():
         html = html.replace('@@NC@@', fmt(nc)).replace('@@NA@@', str(len(cep_bank.AOCS))).replace('@@NI@@', str(ni))
         assert '@@' not in html, html[html.index('@@'):html.index('@@') + 40]
         (OUTDIR / out).write_text(html)
+    gen_color_game.build()
     print(f'quiz_data.js: {len(js) // 1024} KB, {n} questions; taste_data.js: {nt} notes; cep_data.js: {len(cjs) // 1024} KB, {nc} questions; igp_data.js: {ni} questions; pages written')
 
 

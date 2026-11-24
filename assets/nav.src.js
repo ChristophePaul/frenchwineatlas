@@ -600,7 +600,7 @@
   }
   /* ---------------- site search (assets/search.js, loaded on first use) ---------------- */
   // No search button on the cadastral plans, the games, or where the page asks not to have one.
-  var NO_SEARCH = /^(Plan Cadastraux\/|Infos\/Literature\/(Jeux|Wine_Quiz|Taste_Quiz|Map_Game|Bon_Cep|IGP_Game)\.html$)/;
+  var NO_SEARCH = /^(Plan Cadastraux\/|Infos\/Literature\/(Jeux|Wine_Quiz|Taste_Quiz|Map_Game|Bon_Cep|IGP_Game|Color_Game)\.html$)/;
   var SEARCH_V = /*@SV@*/'';         // search.js version, stamped by search_build.py / nav_build.py
   var searchBtn = null, searchJs = null;
   function hasSearch() { return !NO_SEARCH.test(here) && !document.querySelector('meta[name="fw-no-search"]'); }

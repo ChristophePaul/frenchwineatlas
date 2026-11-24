@@ -200,7 +200,8 @@ infos = grp('Comprendre le vin', 'Wine knowledge', groups=[
         item(I + 'Literature/Taste_Quiz.html', 'Goûtez votre savoir', 'Taste your knowledge'),
         item(I + 'Literature/Map_Game.html', 'Placez l’AOC', 'Pin the AOC'),
         item(I + 'Literature/Bon_Cep.html', 'Le bon cep', 'Grape Expectations'),
-        item(I + 'Literature/IGP_Game.html', 'Au pays des IGP', 'Lost in the Pays')]),
+        item(I + 'Literature/IGP_Game.html', 'Au pays des IGP', 'Lost in the Pays'),
+        item(I + 'Literature/Color_Game.html', 'De toutes les couleurs', 'True Colours')]),
     grp('Chimie du vin', 'Wine chemistry', [
         item(I + 'wine_chemistry_html/wine_chemistry_web.html', 'Chimie du vin', 'Wine chemistry'),
         item(I + 'wine_chemistry_html/wine_compound_count_web.html', 'Le vin en chiffres (composés)', 'Wine in numbers (compounds)')]),

@@ -234,7 +234,7 @@
     '/Crus_Classifications.html', '/Vine_Plant.html', '/Vine_Cycle.html', '/Vine_Terroir.html', '/Vine_Planting.html',
     '/Vine_Pruning.html', '/Vine_Canopy.html', '/Vine_Threats.html', '/Vine_Farming.html', '/Vine_Harvest.html',
     '/Vine_Glossary.html', '/Wine_Label.html', '/Wine_Tasting.html', '/History_of_Wine.html', '/Wine_Quotes.html',
-    '/Jeux.html', '/Wine_Quiz.html', '/Taste_Quiz.html', '/Map_Game.html', '/Bon_Cep.html', '/IGP_Game.html',
+    '/Jeux.html', '/Wine_Quiz.html', '/Taste_Quiz.html', '/Map_Game.html', '/Bon_Cep.html', '/IGP_Game.html', '/Color_Game.html',
     '/wine_chemistry_web.html', '/wine_compound_count_web.html', '/How brandy is made.html', '/How wine is made.html',
     '/How wine is made - Illustrated.html', '/How sparkling wine is made.html', '/Bottle_Sizes.html', '/Barrel_Making.html', '/Geology_Map.html', '/Douce_France.html'];
   var here = '';
