@@ -189,7 +189,9 @@
 
   footer{margin-top:64px;padding-top:26px;text-align:center;font-size:11px;line-height:1.8;color:var(--faint);border-top:1px solid var(--hair);}
   footer b{color:rgba(231,207,156,.85);font-weight:600;letter-spacing:.04em;}
-  .tools{display:flex;gap:8px;}
+  .tools{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;}
+  /* phones: theme button as an icon, so the toolbar never runs past the screen */
+  @media (max-width:760px){ .tools #themelbl{display:none;} }
 
   /* ================= CREAM THEME ================= */
   html[data-theme="cream"]{
