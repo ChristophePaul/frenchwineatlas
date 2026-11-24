@@ -1,0 +1,22 @@
+/* Inside pages: the dark theme's wall of AOC names (Web_Page_Background.png) — 2026-11-24.
+   Loaded by assets/theme.js on every page whose own CSS puts that picture on body with « fixed ». iPhone / iPad ignore
+   « fixed » and stretch the picture over the whole page height, so here it becomes a layer the size of the screen
+   (html::before), under body; body::before = the page's shading, which scrolls with the page. No negative z-index on
+   the picture itself: body is isolated, so it simply paints above html::before. */
+html:root body{position:relative;isolation:isolate;background-attachment:scroll !important;}
+html:root[data-theme="dark"] body{background:transparent !important;}
+html:root[data-theme="dark"]{background:#4d0d18;}
+html:root[data-theme="dark"]::before{content:"";position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:0;
+  pointer-events:none;background:url("../Web_Page_Background.png") center top / cover no-repeat #4d0d18;}
+html:root[data-theme="dark"] body::before{content:"";position:absolute;left:0;top:0;width:100%;height:100%;z-index:-1;
+  pointer-events:none;background:
+    linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
+    radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%);}
+/* upright screens: the wall fitted twice in the height, so whole names show */
+@media (max-aspect-ratio:8/9){
+  html:root[data-theme="dark"]::before{background-size:auto 50%;background-repeat:repeat-y;}
+}
+@media print{
+  html:root[data-theme]::before,html:root[data-theme] body::before{display:none;}
+  html:root[data-theme],html:root[data-theme] body{background:#fff !important;}
+}

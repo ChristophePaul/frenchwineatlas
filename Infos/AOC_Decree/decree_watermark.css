@@ -1,20 +1,21 @@
 /* « Anatomie d'un décret AOC » — vineyard-in-fog watermark (2026-10-18, user trial).
    Linked file, so assets/theme_apply.py (which only reads <style> blocks) leaves it alone.
-   Layers made by _wm_src/make_watermark.py. To remove: delete the <link> to this file in AOC_Decree.html. */
+   Layers made by _wm_src/make_watermark.py. To remove: delete the <link> to this file in AOC_Decree.html.
+   2026-11-24: fixed layers instead of background-attachment:fixed (ignored by iPhone / iPad) — the wall of names and
+   body isolation come from assets/page_background.css. */
 
 /* dark (burgundy) theme: the vines as a faint gold drawing over the wall of AOC names */
-html:root:not([data-theme="cream"]) body{
+html:root[data-theme="dark"][data-theme="dark"]::before{
   background:
-    linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
-    radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
-    url("img/wm_vineyard_dark.webp?v=3") center / cover fixed no-repeat,
-    url("../../Web_Page_Background.png") center top / cover fixed no-repeat,
-    #4d0d18 !important;}
+    url("img/wm_vineyard_dark.webp?v=3") center / cover no-repeat,
+    url("../../Web_Page_Background.png") center top / cover no-repeat,
+    #4d0d18;}
+@media (max-aspect-ratio:8/9){
+  html:root[data-theme="dark"][data-theme="dark"]::before{background-size:cover,auto 50%;background-repeat:no-repeat,repeat-y;}
+}
 
 /* cream theme: the vines as a light brown ink drawing on the cream page */
-html:root[data-theme="cream"][data-theme="cream"] body{
-  background:
-    radial-gradient(120% 70% at 50% -10%,rgba(155,34,53,.10) 0%,rgba(155,34,53,0) 55%),
-    url("img/wm_vineyard_cream.webp?v=1") center / cover fixed no-repeat,
-    linear-gradient(180deg,#f8f1e4 0%,#f3e9d6 100%) fixed,
-    #f5eee0 !important;}
+html:root[data-theme="cream"] body{isolation:isolate;}
+html:root[data-theme="cream"] body::after{content:"";position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;
+  z-index:-1;pointer-events:none;background:url("img/wm_vineyard_cream.webp?v=1") center / cover no-repeat;}
+@media print{html:root[data-theme] body::after{display:none;}}

@@ -21,25 +21,14 @@
   html,body{margin:0;min-height:100%;}
   body{
     color:var(--parchment);font-family:var(--sans);-webkit-font-smoothing:antialiased;
-    background:
-      linear-gradient(180deg,rgba(46,4,13,.42) 0%,rgba(46,4,13,.14) 26%,rgba(28,2,8,.55) 100%),
-      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(18,2,6,.62) 100%),
-      url("assets/page_bg_names_dark.png?v=20261018225015") center top / cover fixed no-repeat,
-      linear-gradient(rgba(77,13,24,.62),rgba(77,13,24,.62)) fixed,
-      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
-      #4d0d18;
+    background:#4d0d18;  /* the picture itself is in assets/home_overrides.css */
     min-height:100vh;
   }
   /* 2026-10-18 trial (user): vine-leaf photo behind the wall of AOC names (assets/_source/home_leaf_bg.py).
      Previous dark background: url("Web_Page_Background.png") — backup _backups/2026-10-18/index_before_leaf_bg.html */
   /* cream theme: same wall of appellation names as the dark background (assets/page_bg_cream_wall.png, made from
      Web_Page_Background.png), veiled by a translucent cream layer. :root selector outranks the generated fw-theme-css rule. */
-  :root[data-theme="cream"] body{
-    background:
-      radial-gradient(120% 70% at 50% -10%,rgba(120,82,40,.10) 0%,rgba(120,82,40,0) 55%),
-      url("assets/page_bg_names_cream.png?v=20261018225015") center top / cover fixed no-repeat,
-      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
-      #f5eee0;}
+  :root[data-theme="cream"] body{background:#f5eee0;}
   .wrap{max-width:1160px;margin:0 auto;padding:clamp(40px,7vw,100px) clamp(16px,4vw,44px) 64px;}
 
   /* ---------- hero ---------- */
@@ -284,18 +273,9 @@
     .regions{grid-template-columns:1fr;}
   }
 </style>
-<link rel="stylesheet" href="assets/home_overrides.css?v=3">
+<link rel="stylesheet" href="assets/home_overrides.css?v=6">
 <!--fw-theme:start--><style id="fw-theme-css">
-html[data-theme="cream"] body{color:#2e1419;background:linear-gradient(180deg,rgba(255,253,248,0.92) 0%,rgba(255,253,248,0.69) 26%,rgba(255,253,248,0.92) 100%),
-      radial-gradient(130% 90% at 50% -10%,rgba(0,0,0,0) 52%,rgba(255,253,248,0.92) 100%),
-      url("assets/page_bg_names_dark.png?v=20261018225015") center top / cover fixed no-repeat,
-      linear-gradient(rgba(255,253,248,0.92),rgba(255,253,248,0.92)) fixed,
-      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
-      #fbf6ec}
-html[data-theme="cream"][data-theme="cream"] body{background:radial-gradient(120% 70% at 50% -10%,rgba(154,106,31,0.10) 0%,rgba(120,82,40,0) 55%),
-      url("assets/page_bg_names_cream.png?v=20261018225015") center top / cover fixed no-repeat,
-      url("assets/page_bg_leaf.webp?v=20261018225015") center / cover fixed no-repeat,
-      #f5eee0}
+html[data-theme="cream"] body{color:#2e1419;background:#fbf6ec}
 html[data-theme="cream"] .eyebrow{color:#8a5d17}
 html[data-theme="cream"] h1{color:#2e1419;text-shadow:none}
 html[data-theme="cream"] h1 em{color:#8a5d17}

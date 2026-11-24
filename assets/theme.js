@@ -241,7 +241,20 @@
   try { here = decodeURIComponent(location.pathname); } catch (e) { here = location.pathname; }
   if (me && WATERMARK_PAGES.some(function (p) { return here.slice(-p.length) === p; })) {
     var wm = document.createElement('link'); wm.rel = 'stylesheet';
-    wm.href = me.replace(/theme\.js(\?.*)?$/, 'vineyard_watermark.css?v=1'); document.head.appendChild(wm);
+    wm.href = me.replace(/theme\.js(\?.*)?$/, 'vineyard_watermark.css?v=2'); document.head.appendChild(wm);
+  }
+
+  // dark wall of AOC names: pages whose CSS puts it on body as a « fixed » background (iPhone / iPad stretch it over the
+  // whole page) get it as a screen-sized layer instead (assets/page_background.css) — 2026-11-24
+  if (me) {
+    var wall = function () {
+      var st = document.querySelectorAll('style'), re = /Web_Page_Background\.png"?\)[^;}]*\bfixed\b/;
+      for (var i = 0; i < st.length; i++) if (re.test(st[i].textContent)) {
+        var pb = document.createElement('link'); pb.rel = 'stylesheet';
+        pb.href = me.replace(/theme\.js(\?.*)?$/, 'page_background.css?v=1'); document.head.appendChild(pb); return;
+      }
+    };
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wall); else wall();
   }
 
   // source pop-ups on superscript references (assets/ref_tips.js)
